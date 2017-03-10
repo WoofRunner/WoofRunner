@@ -10,11 +10,11 @@
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
 		12A82FD31E727072008B721E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FD21E727072008B721E /* GameViewController.swift */; };
-		12A82FD61E727072008B721E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD41E727072008B721E /* Main.storyboard */; };
 		12A82FD81E727072008B721E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD71E727072008B721E /* Assets.xcassets */; };
-		12A82FDB1E727072008B721E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD91E727072008B721E /* LaunchScreen.storyboard */; };
 		12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FE51E727072008B721E /* WoofRunnerTests.swift */; };
 		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
+		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
+		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +39,7 @@
 		12A82FCE1E727072008B721E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12A82FD01E727072008B721E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		12A82FD21E727072008B721E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		12A82FD51E727072008B721E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12A82FD71E727072008B721E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		12A82FDA1E727072008B721E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12A82FDC1E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A82FE11E727072008B721E /* WoofRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FE51E727072008B721E /* WoofRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerTests.swift; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FF01E727072008B721E /* WoofRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerUITests.swift; sourceTree = "<group>"; };
 		12A82FF21E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +76,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		126F50F81E7272AA000877F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		126F50F91E7272B8000877F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				12A82FD21E727072008B721E /* GameViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		126F50FB1E7272C2000877F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		126F50FC1E727319000877F1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				12A82FD01E727072008B721E /* art.scnassets */,
+				12A82FD71E727072008B721E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		126F50FD1E727332000877F1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				12A82FCE1E727072008B721E /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		126F50FE1E727355000877F1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		126F50FF1E72736E000877F1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */,
+				12EFDD661E727812005C63E2 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		12A82FC21E727071008B721E = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +154,13 @@
 		12A82FCD1E727072008B721E /* WoofRunner */ = {
 			isa = PBXGroup;
 			children = (
-				12A82FCE1E727072008B721E /* AppDelegate.swift */,
-				12A82FD01E727072008B721E /* art.scnassets */,
-				12A82FD21E727072008B721E /* GameViewController.swift */,
-				12A82FD41E727072008B721E /* Main.storyboard */,
-				12A82FD71E727072008B721E /* Assets.xcassets */,
-				12A82FD91E727072008B721E /* LaunchScreen.storyboard */,
+				126F50FD1E727332000877F1 /* Application */,
+				126F50FB1E7272C2000877F1 /* View */,
+				126F50FF1E72736E000877F1 /* Storyboards */,
+				126F50F91E7272B8000877F1 /* ViewControllers */,
+				126F50F81E7272AA000877F1 /* Models */,
+				126F50FC1E727319000877F1 /* Resources */,
+				126F50FE1E727355000877F1 /* Utilities */,
 				12A82FDC1E727072008B721E /* Info.plist */,
 			);
 			path = WoofRunner;
@@ -238,10 +294,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */,
 				12A82FD11E727072008B721E /* art.scnassets in Resources */,
-				12A82FDB1E727072008B721E /* LaunchScreen.storyboard in Resources */,
 				12A82FD81E727072008B721E /* Assets.xcassets in Resources */,
-				12A82FD61E727072008B721E /* Main.storyboard in Resources */,
+				12EFDD681E727812005C63E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,25 +357,6 @@
 			targetProxy = 12A82FED1E727072008B721E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		12A82FD41E727072008B721E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				12A82FD51E727072008B721E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		12A82FD91E727072008B721E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				12A82FDA1E727072008B721E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		12A82FF31E727072008B721E /* Debug */ = {
@@ -418,7 +455,6 @@
 		12A82FF61E727072008B721E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NX3V9E3SE4;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -431,7 +467,6 @@
 		12A82FF71E727072008B721E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NX3V9E3SE4;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -518,6 +553,7 @@
 				12A82FF71E727072008B721E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12A82FF81E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +562,7 @@
 				12A82FFA1E727072008B721E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12A82FFB1E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +571,7 @@
 				12A82FFD1E727072008B721E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
