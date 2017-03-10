@@ -1,6 +1,0 @@
-framework module Pods_WoofRunnerTests {
-  umbrella header "Pods-WoofRunnerTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
