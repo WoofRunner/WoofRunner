@@ -19,8 +19,10 @@ import CoreData
  */
 public class CoreDataStack {
 
+    private static let CORE_DATA_CONTAINER_NAME = "WoofRunner"
+
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "WoofRunner")
+        let container = NSPersistentContainer(name: CoreDataStack.CORE_DATA_CONTAINER_NAME)
         container.loadPersistentStores(completionHandler: {
             (storeDescription, error) in
 
