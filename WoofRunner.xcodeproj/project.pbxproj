@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		120208021E7448710066BD4C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208011E7448710066BD4C /* CoreDataStack.swift */; };
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
-		120208081E744C9A0066BD4C /* StoredDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 120208061E744C9A0066BD4C /* StoredDataModel.xcdatamodeld */; };
+		120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
 		12A82FD31E727072008B721E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FD21E727072008B721E /* GameViewController.swift */; };
@@ -48,7 +48,7 @@
 /* Begin PBXFileReference section */
 		120208011E7448710066BD4C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		120208071E744C9A0066BD4C /* StoredDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoredDataModel.xcdatamodel; sourceTree = "<group>"; };
+		120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FCE1E727072008B721E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12A82FD01E727072008B721E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
-				120208061E744C9A0066BD4C /* StoredDataModel.xcdatamodeld */,
+				120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -547,7 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
-				120208081E744C9A0066BD4C /* StoredDataModel.xcdatamodeld in Sources */,
+				120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */,
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
@@ -805,13 +805,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		120208061E744C9A0066BD4C /* StoredDataModel.xcdatamodeld */ = {
+		120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				120208071E744C9A0066BD4C /* StoredDataModel.xcdatamodel */,
+				120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */,
 			);
-			currentVersion = 120208071E744C9A0066BD4C /* StoredDataModel.xcdatamodel */;
-			path = StoredDataModel.xcdatamodeld;
+			currentVersion = 120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */;
+			path = WoofRunner.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
