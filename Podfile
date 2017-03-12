@@ -6,6 +6,7 @@ target 'WoofRunner' do
   use_frameworks!
 
   # Pods for WoofRunner
+  pod 'iCarousel', '~> 1.8'
 
   target 'WoofRunnerTests' do
     inherit! :search_paths
