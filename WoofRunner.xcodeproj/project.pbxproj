@@ -16,6 +16,7 @@
 		12A82FD81E727072008B721E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD71E727072008B721E /* Assets.xcassets */; };
 		12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FE51E727072008B721E /* WoofRunnerTests.swift */; };
 		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
+		12E36F971E7552A700135DB7 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E36F961E7552A700135DB7 /* Saveable.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
 		3FAE2D341E7280EE00D65B84 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D331E7280EE00D65B84 /* Menu.storyboard */; };
@@ -61,6 +62,7 @@
 		12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FF01E727072008B721E /* WoofRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerUITests.swift; sourceTree = "<group>"; };
 		12A82FF21E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12E36F961E7552A700135DB7 /* Saveable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
+				12E36F961E7552A700135DB7 /* Saveable.swift */,
 				120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */,
 			);
 			path = Storage;
@@ -550,6 +553,7 @@
 				120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */,
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
+				12E36F971E7552A700135DB7 /* Saveable.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
