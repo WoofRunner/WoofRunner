@@ -8,25 +8,93 @@
 
 import XCTest
 @testable import WoofRunner
+import BrightFutures
+import Result
 
 /**
  Test cases for reading/writing to CoreData.
  */
 class CoreDataManagerTests: XCTestCase {
 
-    let cdm = CoreDataManager()
+    var cdm = CoreDataManager()
 
     override func setUp() {
         super.setUp()
     }
 
-    func testSaveGame() {
+    override func tearDown() {
+        self.cdm.deleteAll()
+    }
+
+    func testSaveNewGame() {
+        let testUUID = "123"
+        let stub = SaveableStub(uuid: testUUID)
+
+        let expect = expectation(description: "Game is saved")
+        self.cdm.save(stub)
+            .flatMap { self.cdm.load(($0).uuid!) }
+            .onSuccess { loadedGame in
+                XCTAssertEqual(stub.uuid, loadedGame.uuid, "Saved stub should have the same UUID")
+                expect.fulfill()
+            }
+            .onFailure { error in
+                XCTFail("Failure block should not be called")
+            }
+
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testSaveExistingGame() {
+        let testUUID = "123"
+        let stub = SaveableStub(uuid: testUUID)
+
+        let expect = expectation(description: "Game is saved twice with different date")
+        self.cdm.save(stub)
+            .onSuccess { firstSavedGame in
+                self.cdm.save(stub)
+                    .onSuccess { secondSavedGame in
+                        XCTAssertNotEqual(firstSavedGame.createdAt, secondSavedGame.updatedAt,
+                                  "Create time and update time should be different")
+                        expect.fulfill()
+                    }
+            }
+
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
-    func testLoadGame() {
+    func testLoadInvalidGame() {
+        let testUUID = "123"
+
+        let expectNil = expectation(description: "CoreData should expect no games loaded with UUID")
+        self.cdm.load(testUUID)
+            .onSuccess { loadedGame in
+                XCTFail("Success block should not be called")
+
+            }
+            .onFailure { error in
+                XCTAssertEqual(error, CoreDataManagerError.notFound)
+                expectNil.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testLoadExistingGame() {
+        let testUUID = "123"
+        let stub = SaveableStub(uuid: testUUID)
+
+        let expectLoad = expectation(description: "Should load the correct data")
+        self.cdm.save(stub)
+            .flatMap { self.cdm.load(($0).uuid!) }
+            .onSuccess { loadedGame in
+                XCTAssertEqual(testUUID, loadedGame.uuid, "Loaded stub should have the same UUID")
+                expectLoad.fulfill()
+            }
+            .onFailure { error in
+                XCTFail("Failure block should not be called")
+            }
+
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
 }
