@@ -7,7 +7,7 @@ target 'WoofRunner' do
   use_frameworks!
 
   # Pods for WoofRunner
-  pod 'Alamofire', '~> 4.4'
+  pod 'BrightFutures'
 
   target 'WoofRunnerTests' do
     inherit! :search_paths
