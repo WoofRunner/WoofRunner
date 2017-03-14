@@ -9,6 +9,7 @@
 import CoreData
 import UIKit // Imported to get default context from AppDelegate
 import BrightFutures
+import Result
 
 /**
  Manages reading and writing operations from CoreData.
@@ -91,6 +92,18 @@ public class CoreDataManager {
         }
     }
 
+    /// Loads all games from CoreData, asynchronous execution that returns a Future.
+    /// - Returns: a Future object with a [StoredGame] object
+    public func loadAll() -> Future<[StoredGame], NoError> {
+        return Future { complete in
+            DispatchQueue.main.async {
+                let fetchedGames = self.fetchAll()
+
+                complete(.success(fetchedGames))
+            }
+        }
+    }
+
     /// Clears all StoredGame object in CoreData.
     public func deleteAll() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataManager.STORED_GAME)
@@ -126,6 +139,15 @@ public class CoreDataManager {
         return storedGame as! StoredGame?
     }
 
+    /// Fetches all the games from context.
+    /// - Returns: an array of StoredGame, empty array if there are no games
+    private func fetchAll() -> [StoredGame] {
+        let request = generateFetchRequest(entity: CoreDataManager.STORED_GAME)
+        let storedGames = try? context.fetch(request)
+
+        return storedGames as! [StoredGame]
+    }
+
     /// Generates a NSFetchRequest.
     /// - Parameters:
     ///     - uuid: UUID string of StoredGame to fetch
@@ -136,6 +158,13 @@ public class CoreDataManager {
         fetchRequest.predicate = NSPredicate(format: "uuid = %@", uuid)
 
         return fetchRequest
+    }
+
+    /// Generates a NSFetchRequest for all entities of a single entity type.
+    /// - Parameters:
+    ///     - entity: name of entity to get NSFetchRequest for
+    private func generateFetchRequest(entity: String) -> NSFetchRequest<NSFetchRequestResult> {
+        return NSFetchRequest<NSFetchRequestResult>(entityName: entity)
     }
 
     /// Saves the current context.

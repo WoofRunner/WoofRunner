@@ -97,4 +97,41 @@ class CoreDataManagerTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
 
+    func testLoadAllGamesEmpty() {
+        let expectLoad = expectation(description: "Should load empty array")
+        self.cdm.loadAll()
+            .onSuccess { loadedGames in
+                XCTAssertEqual(loadedGames.count, 0, "Empty array should be loaded from cdm")
+                expectLoad.fulfill()
+            }
+            .onFailure { error in
+                XCTFail("Failure block should not be called")
+            }
+
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testLoadAllGames() {
+        let stub1 = SaveableStub(uuid: "1")
+        let stub2 = SaveableStub(uuid: "2")
+        let stub3 = SaveableStub(uuid: "3")
+
+        let expectLoad = expectation(description: "Should load an array of size 3")
+        let futures = [cdm.save(stub1), cdm.save(stub2), cdm.save(stub3)]
+        futures.sequence()
+            .onSuccess { savedGames in
+                self.cdm.loadAll()
+                    .onSuccess { loadedGames in
+                        XCTAssertEqual(loadedGames.count, savedGames.count,
+                                       "\(savedGames.count) games should be loaded")
+                        expectLoad.fulfill()
+                    }
+                    .onFailure { error in
+                        XCTFail("Failure block should not be called")
+                }
+            }
+
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
 }
