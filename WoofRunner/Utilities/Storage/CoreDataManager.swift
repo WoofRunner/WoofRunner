@@ -11,17 +11,28 @@ import UIKit // Imported to get default context from AppDelegate
 import BrightFutures
 
 /**
- Singleton to manage reading and writing from CoreData.
+ Manages reading and writing operations from CoreData.
+ 
+ These methods are implemented with BrightFutures, usage examples can be found in the test cases.
+ Most of them returns a Future, which has two callbacks, `onSuccess` and `onFailure`.
+ 
+ Examples can be found in the documentation here:
+ http://cocoadocs.org/docsets/BrightFutures/5.1.0/
  */
 public class CoreDataManager {
 
+    // MARK: - Public variables
     public var delegate: CoreDataManagerDelegate?
 
+    // MARK: - Private variables
     private let context: NSManagedObjectContext
     private let privateContext = NSManagedObjectContext(
         concurrencyType: .privateQueueConcurrencyType)
+
+    // MARK: - Private constants
     private static let STORED_GAME = "StoredGame"
 
+    // MARK: - Initializers
     public init(context: NSManagedObjectContext) {
         self.context = context
         self.privateContext.parent = context
@@ -33,6 +44,8 @@ public class CoreDataManager {
         self.init(context: appDelegate.coreDataStack.persistentContainer.viewContext)
     }
 
+    // MARK: - Public methods
+
     /// Saves a Saveable object into CoreData.
     /// - Parameters:
     ///     - game: object that conforms to Saveable
@@ -43,6 +56,7 @@ public class CoreDataManager {
                 var storedGame: StoredGame
 
                 if self.exists(game) {
+                    // Force unwrap here since we know that game has to already exist in core data
                     storedGame = self.fetch(game.uuid)!
                 } else {
                     storedGame = StoredGame(context: self.context)
@@ -85,6 +99,8 @@ public class CoreDataManager {
         let _ = try? context.execute(deleteRequest)
     }
 
+    // MARK: - Private methods
+
     /// Checks if Saveable object already exists in CoreData.
     /// - Parameters:
     ///     - game: object that conforms to Saveable
@@ -99,8 +115,7 @@ public class CoreDataManager {
         return false
     }
 
-    /// Fetches a game from context. This is a private method that does not
-    /// trigger the onLoad and onRequest delegate methods.
+    /// Fetches a game from context.
     /// - Parameters:
     ///     - uuid: UUID string of a game
     /// - Returns: StoredGame of the requested game, nil if game does not exist
