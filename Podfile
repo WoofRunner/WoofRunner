@@ -8,6 +8,7 @@ target 'WoofRunner' do
 
   # Pods for WoofRunner
   pod 'BrightFutures'
+  pod 'Firebase/Core'
 
   target 'WoofRunnerTests' do
     inherit! :search_paths

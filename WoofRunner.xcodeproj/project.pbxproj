@@ -19,6 +19,8 @@
 		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
 		12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF5ABD1E75904E00823568 /* SaveableStub.swift */; };
 		12E36F971E7552A700135DB7 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E36F961E7552A700135DB7 /* Saveable.swift */; };
+		12EE38C01E78E99F00D81378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */; };
+		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
 		3FAE2D341E7280EE00D65B84 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D331E7280EE00D65B84 /* Menu.storyboard */; };
@@ -67,6 +69,8 @@
 		12A82FF21E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12BF5ABD1E75904E00823568 /* SaveableStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableStub.swift; sourceTree = "<group>"; };
 		12E36F961E7552A700135DB7 /* Saveable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
+		12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManager.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
+				12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */,
 				12E36F961E7552A700135DB7 /* Saveable.swift */,
 				120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */,
 			);
@@ -218,6 +223,7 @@
 				126F50FC1E727319000877F1 /* Resources */,
 				126F50FE1E727355000877F1 /* Utilities */,
 				12A82FDC1E727072008B721E /* Info.plist */,
+				12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */,
 			);
 			path = WoofRunner;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */,
 				12A82FD11E727072008B721E /* art.scnassets in Resources */,
 				12A82FD81E727072008B721E /* Assets.xcassets in Resources */,
+				12EE38C01E78E99F00D81378 /* GoogleService-Info.plist in Resources */,
 				3FAE2D381E7281CE00D65B84 /* LevelDesigner.storyboard in Resources */,
 				12EFDD681E727812005C63E2 /* Main.storyboard in Resources */,
 			);
@@ -571,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */,
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
 				120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */,
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
