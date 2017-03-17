@@ -316,7 +316,7 @@
 				TargetAttributes = {
 					12A82FCA1E727071008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NX3V9E3SE4;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 					};
 					12A82FE01E727072008B721E = {
@@ -663,7 +663,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;
@@ -676,7 +676,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;
