@@ -7,9 +7,11 @@
 //
 
 import XCTest
-@testable import WoofRunner
+
 import BrightFutures
 import Result
+
+@testable import WoofRunner
 
 /**
  Test cases for reading/writing to CoreData.
