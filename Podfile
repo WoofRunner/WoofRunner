@@ -11,7 +11,7 @@ target 'WoofRunner' do
   pod 'Firebase/Core'
 
   target 'WoofRunnerTests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 

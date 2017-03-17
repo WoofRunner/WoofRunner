@@ -11,6 +11,7 @@
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
 		120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */; };
 		1261D9B71E755E94004837F0 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */; };
+		128824641E7BD83E00793810 /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128824631E7BD83E00793810 /* Pods_WoofRunner.framework */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
 		12A82FD31E727072008B721E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FD21E727072008B721E /* GameViewController.swift */; };
@@ -29,6 +30,7 @@
 		3FAE2D3A1E7281F400D65B84 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D391E7281F400D65B84 /* Gameplay.storyboard */; };
 		3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
+		7090201C79498A6563A85AE4 /* Pods_WoofRunner_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC4FBBBFF573A935DDE1640 /* Pods_WoofRunner_WoofRunnerTests.framework */; };
 		DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */; };
 		F0FD03D0964371FF1EAB2705 /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,7 @@
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
+		128824631E7BD83E00793810 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_WoofRunner.framework; path = "../../Library/Developer/Xcode/DerivedData/WoofRunner-ayoelinhmggrwkcvjkseozihkhae/Build/Products/Debug-iphonesimulator/Pods_WoofRunner.framework"; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FCE1E727072008B721E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12A82FD01E727072008B721E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -82,11 +85,14 @@
 		68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.debug.xcconfig"; sourceTree = "<group>"; };
+		BFC4FBBBFF573A935DDE1640 /* Pods_WoofRunner_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76029FFF4422E0ADDB3F498 /* Pods-WoofRunner-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128824641E7BD83E00793810 /* Pods_WoofRunner.framework in Frameworks */,
 				DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */,
+				7090201C79498A6563A85AE4 /* Pods_WoofRunner_WoofRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +281,8 @@
 				74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */,
 				AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */,
 				CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */,
+				E76029FFF4422E0ADDB3F498 /* Pods-WoofRunner-WoofRunnerTests.debug.xcconfig */,
+				96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -280,9 +290,11 @@
 		B5450BA918CCF667253FFC7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				128824631E7BD83E00793810 /* Pods_WoofRunner.framework */,
 				81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */,
 				A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */,
 				DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */,
+				BFC4FBBBFF573A935DDE1640 /* Pods_WoofRunner_WoofRunnerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -369,13 +381,13 @@
 					};
 					12A82FE01E727072008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NX3V9E3SE4;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 12A82FCA1E727071008B721E;
 					};
 					12A82FEB1E727072008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NX3V9E3SE4;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 12A82FCA1E727071008B721E;
 					};
@@ -538,7 +550,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6CD40E6973EF55F41036E9F /* [CP] Embed Pods Frameworks */ = {
@@ -568,7 +580,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -743,10 +755,10 @@
 		};
 		12A82FF91E727072008B721E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */;
+			baseConfigurationReference = E76029FFF4422E0ADDB3F498 /* Pods-WoofRunner-WoofRunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
@@ -758,10 +770,10 @@
 		};
 		12A82FFA1E727072008B721E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */;
+			baseConfigurationReference = 96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
@@ -775,7 +787,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerUITests;
@@ -789,7 +801,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerUITests;
