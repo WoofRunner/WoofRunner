@@ -41,7 +41,7 @@ class CoreDataManagerTests: XCTestCase {
             }
             .onFailure { error in
                 XCTFail("Failure block should not be called")
-            }
+        }
 
         waitForExpectations(timeout: 5, handler: nil)
     }
@@ -58,7 +58,7 @@ class CoreDataManagerTests: XCTestCase {
                         XCTAssertNotEqual(firstSavedGame.createdAt, secondSavedGame.updatedAt,
                                   "Create time and update time should be different")
                         expect.fulfill()
-                    }
+                }
             }
 
         waitForExpectations(timeout: 5, handler: nil)
