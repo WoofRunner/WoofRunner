@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gqs-Oz-Epk">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gqs-Oz-Epk">
     <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Level Designer View Controller-->
         <scene sceneID="Tch-ac-uLz">
             <objects>
-                <viewController id="gqs-Oz-Epk" sceneMemberID="viewController">
+                <viewController id="gqs-Oz-Epk" customClass="LevelDesignerViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YzQ-XA-u0H"/>
                         <viewControllerLayoutGuide type="bottom" id="8MW-Lg-KoP"/>
@@ -27,6 +27,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DhZ-Qx-bsE" userLabel="SCNView" customClass="LevelDesignerSceneView" customModule="WoofRunner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -34,10 +38,13 @@
                             <constraint firstItem="sE3-hZ-9qO" firstAttribute="top" secondItem="YzQ-XA-u0H" secondAttribute="bottom" constant="206" id="oXn-1H-mi5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="levelDesignerSceneView" destination="DhZ-Qx-bsE" id="R0Y-Yc-NwO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIz-5X-nBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86" y="138"/>
+            <point key="canvasLocation" x="85.546875" y="137.48169838945827"/>
         </scene>
     </scenes>
 </document>
