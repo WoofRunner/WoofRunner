@@ -7,7 +7,7 @@
 //
 
 public protocol Serializable {
-    var id: String { get }
+    var uuid: String { get }
 
     func serialize() -> Dictionary<String, Any>
 }

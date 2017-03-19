@@ -80,7 +80,7 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: Serializable) {
-        ref.child(game.id).setValue(game.serialize())
+        ref.child(game.uuid).setValue(game.serialize())
     }
 
     /// Clears all game data in online storage manager

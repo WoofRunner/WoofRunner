@@ -10,10 +10,10 @@
 
 public class SerializableStub: Serializable {
 
-    public private(set) var id: String
+    public private(set) var uuid: String
 
-    init(id: String) {
-        self.id = id
+    init(uuid: String) {
+        self.uuid = uuid
     }
 
     public func serialize() -> Dictionary<String, Any> {
