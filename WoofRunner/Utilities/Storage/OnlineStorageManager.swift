@@ -83,6 +83,11 @@ public class OnlineStorageManager {
         ref.child(GAMES).child(game.id).setValue(game.serialize())
     }
 
+    /// Clears all game data in online storage manager
+    public func clear() {
+        ref.child(GAMES).setValue([])
+    }
+
 }
 
 public enum OnlineStorageManagerError: Error {
