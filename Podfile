@@ -12,8 +12,10 @@ target 'WoofRunner' do
   pod 'Firebase/Database'
 
   target 'WoofRunnerTests' do
-    inherit! :complete
+    inherit! :search_paths
     # Pods for testing
+    pod 'Firebase/Core'
+    pod 'Firebase/Database' # Because Firebase sets up their pods weirdly.
   end
 
   target 'WoofRunnerUITests' do
