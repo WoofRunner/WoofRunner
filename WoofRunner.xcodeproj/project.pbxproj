@@ -13,6 +13,8 @@
 		1261D9B71E755E94004837F0 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */; };
 		1270785B1E7E5DFD0043C8C4 /* Deserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270785A1E7E5DFD0043C8C4 /* Deserializable.swift */; };
 		1270785F1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270785E1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift */; };
+		127078611E7E6FDC0043C8C4 /* SerializableStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127078601E7E6FDC0043C8C4 /* SerializableStub.swift */; };
+		127A6EAC1E7E787800CB0F16 /* Pods_WoofRunner_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127A6EAB1E7E787800CB0F16 /* Pods_WoofRunner_WoofRunnerTests.framework */; };
 		128824641E7BD83E00793810 /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128824631E7BD83E00793810 /* Pods_WoofRunner.framework */; };
 		128824661E7BE21900793810 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128824651E7BE21900793810 /* Serializable.swift */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
@@ -33,7 +35,6 @@
 		3FAE2D3A1E7281F400D65B84 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D391E7281F400D65B84 /* Gameplay.storyboard */; };
 		3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
-		DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		1270785A1E7E5DFD0043C8C4 /* Deserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializable.swift; sourceTree = "<group>"; };
 		1270785E1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManagerTests.swift; sourceTree = "<group>"; };
+		127078601E7E6FDC0043C8C4 /* SerializableStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableStub.swift; sourceTree = "<group>"; };
+		127A6EAB1E7E787800CB0F16 /* Pods_WoofRunner_WoofRunnerTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_WoofRunner_WoofRunnerTests.framework; path = "Pods/../build/Debug-iphoneos/Pods_WoofRunner_WoofRunnerTests.framework"; sourceTree = "<group>"; };
 		128824631E7BD83E00793810 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_WoofRunner.framework; path = "../../Library/Developer/Xcode/DerivedData/WoofRunner-ayoelinhmggrwkcvjkseozihkhae/Build/Products/Debug-iphonesimulator/Pods_WoofRunner.framework"; sourceTree = "<group>"; };
 		128824651E7BE21900793810 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,8 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127A6EAC1E7E787800CB0F16 /* Pods_WoofRunner_WoofRunnerTests.framework in Frameworks */,
 				128824641E7BD83E00793810 /* Pods_WoofRunner.framework in Frameworks */,
-				DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +272,7 @@
 				1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */,
 				1270785E1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift */,
 				12BF5ABD1E75904E00823568 /* SaveableStub.swift */,
+				127078601E7E6FDC0043C8C4 /* SerializableStub.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -289,6 +293,7 @@
 		B5450BA918CCF667253FFC7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				127A6EAB1E7E787800CB0F16 /* Pods_WoofRunner_WoofRunnerTests.framework */,
 				128824631E7BD83E00793810 /* Pods_WoofRunner.framework */,
 				81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */,
 				A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */,
@@ -378,7 +383,6 @@
 					};
 					12A82FE01E727072008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 12A82FCA1E727071008B721E;
 					};
@@ -606,6 +610,7 @@
 				1261D9B71E755E94004837F0 /* CoreDataManagerTests.swift in Sources */,
 				12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */,
 				1270785F1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift in Sources */,
+				127078611E7E6FDC0043C8C4 /* SerializableStub.swift in Sources */,
 				12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,7 +763,11 @@
 			baseConfigurationReference = E76029FFF4422E0ADDB3F498 /* Pods-WoofRunner-WoofRunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
@@ -773,7 +782,11 @@
 			baseConfigurationReference = 96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
