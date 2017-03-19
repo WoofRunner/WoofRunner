@@ -321,13 +321,13 @@
 					};
 					12A82FE01E727072008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NX3V9E3SE4;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 12A82FCA1E727071008B721E;
 					};
 					12A82FEB1E727072008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NX3V9E3SE4;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 12A82FCA1E727071008B721E;
 					};
@@ -690,7 +690,7 @@
 			baseConfigurationReference = 68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
@@ -705,7 +705,7 @@
 			baseConfigurationReference = 74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
@@ -719,7 +719,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerUITests;
@@ -733,7 +733,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerUITests;
