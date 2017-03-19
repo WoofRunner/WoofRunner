@@ -6,8 +6,6 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import Foundation
-
 @testable import WoofRunner
 
 public class SerializableStub: Serializable {
@@ -18,7 +16,7 @@ public class SerializableStub: Serializable {
         self.id = id
     }
 
-    public func serialize() -> NSDictionary {
+    public func serialize() -> Dictionary<String, Any> {
         return ["details": "dummy detail"]
     }
 

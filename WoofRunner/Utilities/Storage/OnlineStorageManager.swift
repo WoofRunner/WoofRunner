@@ -23,7 +23,7 @@ public class OnlineStorageManager {
     private let ref: FIRDatabaseReference
 
     // MARK: - Private constants
-    private let GAMES = "games"
+    private static let GAMES = "games"
 
     // MARK: - Initializers
     private init(reference: FIRDatabaseReference) {
@@ -31,7 +31,7 @@ public class OnlineStorageManager {
     }
 
     convenience private init() {
-        self.init(reference: FIRDatabase.database().reference())
+        self.init(reference: FIRDatabase.database().reference(withPath: OnlineStorageManager.GAMES))
     }
 
     // MARK: - Public methods
@@ -67,9 +67,9 @@ public class OnlineStorageManager {
     /// - Returns: Future that contains an NSDictionary representing the game object
     public func load(_ uuid: String) -> Future<NSDictionary?, OnlineStorageManagerError> {
         return Future { complete in
-            ref.child(GAMES).child(uuid).observeSingleEvent(of: .value, with: { snapshot in
-                let value = snapshot.value as? NSDictionary
-                complete(.success(value))
+            ref.child(uuid).observeSingleEvent(of: .value, with: { snapshot in
+                let value = snapshot.value
+                complete(.success(value as? NSDictionary))
             }) { error in
                 complete(.failure(OnlineStorageManagerError.FetchError))
             }
@@ -80,12 +80,12 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: Serializable) {
-        ref.child(GAMES).child(game.id).setValue(game.serialize())
+        ref.child(game.id).setValue(game.serialize())
     }
 
     /// Clears all game data in online storage manager
     public func clear() {
-        ref.child(GAMES).setValue([])
+        ref.setValue([])
     }
 
 }
