@@ -18,7 +18,7 @@ import Result
  */
 class CoreDataManagerTests: XCTestCase {
 
-    var cdm = CoreDataManager()
+    var cdm = CoreDataManager.getInstance()
 
     override func setUp() {
         super.setUp()
