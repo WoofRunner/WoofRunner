@@ -9,6 +9,7 @@ target 'WoofRunner' do
   # Pods for WoofRunner
   pod 'BrightFutures'
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'WoofRunnerTests' do
     inherit! :complete
