@@ -6,6 +6,6 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-protocol Deserializable {
+public protocol Deserializable {
     func deserialize() -> Any
 }
