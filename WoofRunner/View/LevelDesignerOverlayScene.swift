@@ -11,21 +11,26 @@ import SpriteKit
 
 class LevelDesignerOverlayScene: SKScene {
 	
-	var pauseNode: SKSpriteNode!
-	var testPaletteButton: LevelDesignerButtonSpriteNode!
-	var scoreNode: SKLabelNode!
+	//var pauseNode: SKSpriteNode!
+	//var scoreNode: SKLabelNode!
 	//var cameraNode: SKCameraNode!
+	
+	var platformPaletteButton: LevelDesignerButtonSpriteNode!
+	var deletePaletteButton: LevelDesignerButtonSpriteNode!
 	
 	var extendedMenuBackground: SKSpriteNode!
 	var extendedMenuButton1: SKSpriteNode!
 	
 	var isExtendedMenuShowing = false
+	var currentPressedButton: LevelDesignerButtonSpriteNode? // Button that is currently on TouchBegin
 	
+	/*
 	var score = 0 {
 		didSet {
 			self.scoreNode.text = "Score: \(self.score)"
 		}
 	}
+	*/
 	
 	override init(size: CGSize) {
 		super.init(size: size)
@@ -34,26 +39,33 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		self.backgroundColor = UIColor.clear
 		
+		// Adding Palette Buttons
+		platformPaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testPaletteButton")
+		platformPaletteButton.position = CGPoint(x: size.width/12 + 8, y: size.height - size.height/6)
+		
+		deletePaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testDeletePaletteButton")
+		deletePaletteButton.position = CGPoint(x: size.width/12 + 8, y: size.height - size.height/4)
+		
+		
+		print(size.height)
+		print(size.height/12)
+		
+		/*
 		// Add cat sprite button
 		let spriteSize = size.width/12
 		self.pauseNode = SKSpriteNode(imageNamed: "testCat")
 		self.pauseNode.size = CGSize(width: spriteSize, height: spriteSize)
 		self.pauseNode.position = CGPoint(x: spriteSize + 8, y: spriteSize + 8)
+		*/
 		
-		testPaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testPaletteButton")
-		testPaletteButton.position = CGPoint(x: spriteSize + 8, y: size.height - size.height/4)
-		
-		// TODO: Add an action for the button, with the animation and stuff
-		
-		print(size.height)
-		print(size.height/12)
-		
+		/*
 		// Add score label
 		self.scoreNode = SKLabelNode(text: "Score: 0")
 		self.scoreNode.fontName = "DINAlternate-Bold"
 		self.scoreNode.fontColor = UIColor.black
 		self.scoreNode.fontSize = 24
 		self.scoreNode.position = CGPoint(x: size.width/2, y: self.pauseNode.position.y - 9)
+		*/
 		
 		// Camera setup
 		//self.cameraNode = SKCameraNode()
@@ -63,15 +75,14 @@ class LevelDesignerOverlayScene: SKScene {
 		let buttonSize = size.width/6
 		self.extendedMenuBackground = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: screenSize.width, height: screenSize.height))
 		self.extendedMenuBackground.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+		
 		self.extendedMenuButton1 = SKSpriteNode(imageNamed: "testCat")
 		self.extendedMenuButton1.size = CGSize(width: buttonSize, height: buttonSize)
 		extendedMenuBackground.addChild(extendedMenuButton1)
 		extendedMenuBackground.alpha = 0.0
 	
-		//self.addChild(self.cameraNode)
-		self.addChild(self.pauseNode)
-		self.addChild(testPaletteButton)
-		self.addChild(self.scoreNode)
+		self.addChild(platformPaletteButton)
+		self.addChild(deletePaletteButton)
 		self.addChild(extendedMenuBackground)
 		
 		// Initial Position of camera
@@ -84,73 +95,94 @@ class LevelDesignerOverlayScene: SKScene {
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
 		
-		if self.testPaletteButton.contains(location!) {
-			print("touches began")
-			var pressAction = SKAction.scale(to: 1.2, duration: 0.3)
-			pressAction.timingMode = SKActionTimingMode.easeOut
-			self.testPaletteButton.run(pressAction)
-			
-		}
-	}
-	
-	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let firstTouch = touches.first
-		let location = firstTouch?.location(in: self)
+		let pressAction = ButtonActions.getButtonPressAction()
 		
-		if self.testPaletteButton.contains(location!) {
-			//print("touches cancelled")
+		
+		// Testing to see which button is selected
+		if self.platformPaletteButton.contains(location!) {
+			currentPressedButton = platformPaletteButton
+		}
+		
+		if self.deletePaletteButton.contains(location!) {
+			currentPressedButton = deletePaletteButton
+		}
+		
+		// Run Action on selected button is exist
+		if let selectedButton = currentPressedButton {
+			selectedButton.run(pressAction)
 		}
 	}
 	
+
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
 		
-		if self.testPaletteButton.contains(location!) {
-			//print("touches moved")
-		} else {
-			print("touch moved out")
-			var releaseAction = SKAction.scale(to: 1.0, duration: 0.2)
-			releaseAction.timingMode = SKActionTimingMode.easeOut
-			self.testPaletteButton.run(releaseAction)
+		let releaseAction = ButtonActions.getButtonReleaseAction()
+		
+		guard let selectedButton = currentPressedButton else {
+			return
+		}
+		
+		// Remove current selection + play action if user pans out of the button bounds
+		if !selectedButton.contains(location!) {
+			selectedButton.run(releaseAction)
+			currentPressedButton = nil
 		}
 	}
-	
 	
 	// Handle touch events of the scene
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
 		
-		if self.pauseNode.contains(location!) {
-			toggleExtendedMenu()
-			self.isExtendedMenuShowing = !self.isExtendedMenuShowing
-			return
+		let releaseAction = ButtonActions.getButtonReleaseAction()
+		let toggleExtendedMenuAction = getToggleExtendedMenuAction()
+		
+		// If there are any currently selected button,
+		if let selectedButton = currentPressedButton {
+			
+			// Determining which button is tapped and its logic
+			if selectedButton.contains(location!) {
+				selectedButton.run(releaseAction)
+				
+				// If its grid button, do this
+				toggleExtendedMenu(action: toggleExtendedMenuAction)
+				
+				
+				// if delete button, do this
+				
+				// Remove ref to currentPressedbutton
+				currentPressedButton = nil
+				
+				return
+			}
 		}
 		
-		if self.testPaletteButton.contains(location!) {
-			print("touches ended")
-			var releaseAction = SKAction.scale(to: 1.0, duration: 0.2)
-			releaseAction.timingMode = SKActionTimingMode.easeOut
-			self.testPaletteButton.run(releaseAction)
-		}
 		
+		// If not button if tapped, check if must close extended menu
 		if isExtendedMenuShowing {
-			toggleExtendedMenu()
+			toggleExtendedMenu(action: toggleExtendedMenuAction)
 		}
 	}
 	
-	func toggleExtendedMenu() {
+	func toggleExtendedMenu(action: SKAction) {
+		self.extendedMenuBackground.run(action)
+		self.isExtendedMenuShowing = !self.isExtendedMenuShowing
+	}
+	
+	func getToggleExtendedMenuAction() -> SKAction {
 		var fadeAction: SKAction
 		
 		if isExtendedMenuShowing {
-			fadeAction = SKAction.fadeOut(withDuration: 0.5)
+			//fadeAction = SKAction.fadeOut(withDuration: 0.2)
+			fadeAction = SKAction.fadeAlpha(to: 0.0, duration: 0.2)
 		} else {
-			fadeAction = SKAction.fadeIn(withDuration: 0.5)
+			//fadeAction = SKAction.fadeIn(withDuration: 0.2)
+			fadeAction = SKAction.fadeAlpha(to: 0.95, duration: 0.2)
 		}
 		
-		extendedMenuBackground.run(fadeAction)
-		
+		return fadeAction
 		
 	}
 	
