@@ -15,8 +15,17 @@ class LevelDesignerOverlayScene: SKScene {
 	//var scoreNode: SKLabelNode!
 	//var cameraNode: SKCameraNode!
 	
+	let paletteButtonMargin = CGFloat(15)
+	let paletteBackgroundWidth = LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE + 2*15
+	let paletteBackgroundHeight = LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE * 2 + 3*15
+	let paletteButtonSize = LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE
+	
+	let paletteButtonBaseYPos = CGFloat(878) // y-coord for the topmost palette button
+	let paletteButtonBaseXPos = CGFloat(110) // x-coord for the topmost palette button
+	
 	var platformPaletteButton: LevelDesignerButtonSpriteNode!
 	var deletePaletteButton: LevelDesignerButtonSpriteNode!
+	var paletteBackground: SKShapeNode!
 	
 	var extendedMenuBackground: SKSpriteNode!
 	var extendedMenuButton1: SKSpriteNode!
@@ -41,11 +50,27 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// Adding Palette Buttons
 		platformPaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testPaletteButton")
-		platformPaletteButton.position = CGPoint(x: size.width/12 + 8, y: size.height - size.height/6)
-		
 		deletePaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testDeletePaletteButton")
-		deletePaletteButton.position = CGPoint(x: size.width/12 + 8, y: size.height - size.height/4)
 		
+		/*
+		let paletteButtonArr = [platformPaletteButton, deletePaletteButton]
+		var prevY = CGFloat(paletteBackgroundHeight - paletteButtonSize/2 - paletteButtonMargin)
+		var prevY = size.height - size.height/6
+		
+		for button in paletteButtonArr {
+			button?.position = CGPoint(x: paletteBackgroundWidth/2, y: prevY)
+			prevY = prevY - paletteButtonMargin - paletteButtonSize
+		}
+		*/
+		
+		platformPaletteButton.position = CGPoint(x: paletteButtonBaseXPos, y: paletteButtonBaseYPos)
+		deletePaletteButton.position = CGPoint(x: paletteButtonBaseXPos, y: paletteButtonBaseYPos - paletteButtonSize - paletteButtonMargin)
+		
+		
+		// Add background for Palette Buttons
+		paletteBackground = CustomShapeNodes.getRoundedRectangleNode(height: paletteBackgroundHeight, width: paletteBackgroundWidth, radius: 25, backgroundColor: SKColor(red: 0, green: 0, blue: 0, alpha: 0.95))
+		paletteBackground.position = CGPoint(x: 65, y: 758)
+			
 		
 		print(size.height)
 		print(size.height/12)
@@ -76,13 +101,17 @@ class LevelDesignerOverlayScene: SKScene {
 		self.extendedMenuBackground = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: screenSize.width, height: screenSize.height))
 		self.extendedMenuBackground.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
+		// Extended Menu Buttons
 		self.extendedMenuButton1 = SKSpriteNode(imageNamed: "testCat")
 		self.extendedMenuButton1.size = CGSize(width: buttonSize, height: buttonSize)
 		extendedMenuBackground.addChild(extendedMenuButton1)
 		extendedMenuBackground.alpha = 0.0
-	
+		
+		// Appending componenets to main view
+		self.addChild(paletteBackground)
 		self.addChild(platformPaletteButton)
 		self.addChild(deletePaletteButton)
+		
 		self.addChild(extendedMenuBackground)
 		
 		// Initial Position of camera
