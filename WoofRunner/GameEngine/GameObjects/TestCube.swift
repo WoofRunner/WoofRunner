@@ -23,6 +23,7 @@ class TestCube: GameObject {
         let redMat = SCNMaterial()
         redMat.diffuse.contents = UIColor.blue
         geometry?.materials = [redMat]
+        isTickEnabled = true
     }
     
     override convenience init() {
@@ -32,6 +33,5 @@ class TestCube: GameObject {
     override func update(_ deltaTime: Float) {
         testFloat += deltaTime
         rotation = SCNVector4(0, 1, 0, testFloat)
-        print("a")
     }
 }
