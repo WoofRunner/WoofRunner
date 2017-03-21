@@ -9,28 +9,49 @@
 import UIKit
 import SpriteKit
 
+
+struct OverlayConstants {
+	static let numberOfPaletteButtons = CGFloat(3)
+	static let paletteButtonSize = CGFloat(60)
+	static let paletteButtonMargin = CGFloat(15)
+	
+	static let paletteWidth = paletteButtonSize + (2 * paletteButtonMargin)
+	static let paletteHeight = (paletteButtonSize * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
+	
+	// NOTE: For SKShapeNode, position (origin) = bottom/left, not center!
+	static let paletteOriginX = CGFloat(60)
+	static let paletteOriginY = CGFloat(650)
+	
+	static let paletteCenterX = paletteOriginX + paletteWidth/2
+	static let paletteCenterY = paletteOriginY + paletteHeight/2
+	
+	static let paletteButtonX0 = paletteOriginX + paletteWidth/2 // y-coord for the topmost palette button
+	static let paletteButtonY0 = (paletteOriginY + paletteHeight) - (paletteButtonSize/2 + paletteButtonMargin) // x-coord for the topmost palette button
+}
+
+
+
 class LevelDesignerOverlayScene: SKScene {
 	
 	//var pauseNode: SKSpriteNode!
 	//var scoreNode: SKLabelNode!
 	//var cameraNode: SKCameraNode!
 	
-	let paletteButtonMargin = CGFloat(15)
-	let paletteBackgroundWidth = LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE + 2*15
-	let paletteBackgroundHeight = LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE * 2 + 3*15
-	let paletteButtonSize = LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE
 	
-	let paletteButtonBaseYPos = CGFloat(878) // y-coord for the topmost palette button
-	let paletteButtonBaseXPos = CGFloat(110) // x-coord for the topmost palette button
-	
+	// Palette
 	var platformPaletteButton: LevelDesignerButtonSpriteNode!
+	var obstaclePaletteButton: LevelDesignerButtonSpriteNode!
 	var deletePaletteButton: LevelDesignerButtonSpriteNode!
+	var paletteButtonArr = [LevelDesignerButtonSpriteNode]()
 	var paletteBackground: SKShapeNode!
 	
+	// Extended Menus
 	var extendedMenuBackground: SKSpriteNode!
 	var extendedMenuButton1: SKSpriteNode!
 	
+	// Variables to keep track of state
 	var isExtendedMenuShowing = false
+	var currentShowingMenuType: LevelDesignerPaletteFunctionType?
 	var currentPressedButton: LevelDesignerButtonSpriteNode? // Button that is currently on TouchBegin
 	
 	/*
@@ -48,32 +69,48 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		self.backgroundColor = UIColor.clear
 		
-		// Adding Palette Buttons
-		platformPaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testPaletteButton")
-		deletePaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testDeletePaletteButton")
+		// Creating background for Palette Buttons
+		paletteBackground = CustomShapeNodes.getRoundedRectangleNode(height: OverlayConstants.paletteHeight,
+		                                                             width: OverlayConstants.paletteWidth,
+		                                                             radius: 25,
+		                                                             backgroundColor: SKColor(red: 0, green: 0, blue: 0, alpha: 0.98))
 		
-		/*
-		let paletteButtonArr = [platformPaletteButton, deletePaletteButton]
-		var prevY = CGFloat(paletteBackgroundHeight - paletteButtonSize/2 - paletteButtonMargin)
-		var prevY = size.height - size.height/6
+		// Set palette background position
+		paletteBackground.position = CGPoint(x: OverlayConstants.paletteOriginX,
+		                                     y: OverlayConstants.paletteOriginY)
+		self.addChild(paletteBackground)
+		
+		// Creating platform buttons
+		platformPaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testPaletteButton", type: .platform)
+		obstaclePaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testObstaclePaletteButton", type: .obstacle)
+		deletePaletteButton = LevelDesignerButtonSpriteNode(imageNamed: "testDeletePaletteButton", type: .delete)
+		
+		// Adjusting positions for palette buttons
+		paletteButtonArr = [platformPaletteButton, obstaclePaletteButton, deletePaletteButton]
+		var buttonY = OverlayConstants.paletteButtonY0
+		let buttonX = OverlayConstants.paletteButtonX0
 		
 		for button in paletteButtonArr {
-			button?.position = CGPoint(x: paletteBackgroundWidth/2, y: prevY)
-			prevY = prevY - paletteButtonMargin - paletteButtonSize
+			button.position = CGPoint(x: buttonX, y: buttonY)
+			buttonY -= OverlayConstants.paletteButtonSize + OverlayConstants.paletteButtonMargin
+			self.addChild(button)
 		}
-		*/
 		
-		platformPaletteButton.position = CGPoint(x: paletteButtonBaseXPos, y: paletteButtonBaseYPos)
-		deletePaletteButton.position = CGPoint(x: paletteButtonBaseXPos, y: paletteButtonBaseYPos - paletteButtonSize - paletteButtonMargin)
+		// Extended Menu
+		let buttonSize = size.width/6
+		self.extendedMenuBackground = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: screenSize.width, height: screenSize.height))
+		self.extendedMenuBackground.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
+		// Extended Menu Buttons
+		self.extendedMenuButton1 = SKSpriteNode(imageNamed: "testCat")
+		self.extendedMenuButton1.size = CGSize(width: buttonSize, height: buttonSize)
+		extendedMenuBackground.addChild(extendedMenuButton1)
+		extendedMenuBackground.alpha = 0.0
 		
-		// Add background for Palette Buttons
-		paletteBackground = CustomShapeNodes.getRoundedRectangleNode(height: paletteBackgroundHeight, width: paletteBackgroundWidth, radius: 25, backgroundColor: SKColor(red: 0, green: 0, blue: 0, alpha: 0.95))
-		paletteBackground.position = CGPoint(x: 65, y: 758)
-			
+		// Add Extended Menu First
+		self.addChild(extendedMenuBackground)
 		
-		print(size.height)
-		print(size.height/12)
+	
 		
 		/*
 		// Add cat sprite button
@@ -96,29 +133,17 @@ class LevelDesignerOverlayScene: SKScene {
 		//self.cameraNode = SKCameraNode()
 		//self.camera = cameraNode
 		
-		// Extended Menu
-		let buttonSize = size.width/6
-		self.extendedMenuBackground = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: screenSize.width, height: screenSize.height))
-		self.extendedMenuBackground.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-		
-		// Extended Menu Buttons
-		self.extendedMenuButton1 = SKSpriteNode(imageNamed: "testCat")
-		self.extendedMenuButton1.size = CGSize(width: buttonSize, height: buttonSize)
-		extendedMenuBackground.addChild(extendedMenuButton1)
-		extendedMenuBackground.alpha = 0.0
-		
-		// Appending componenets to main view
-		self.addChild(paletteBackground)
-		self.addChild(platformPaletteButton)
-		self.addChild(deletePaletteButton)
-		
-		self.addChild(extendedMenuBackground)
-		
 		// Initial Position of camera
 		//cameraNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
 		
 	}
+	
+	
+	// - MARK: Init Nodes
+	
+	
+	// - MARK: Handle Touches
 	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let firstTouch = touches.first
@@ -126,7 +151,14 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		let pressAction = ButtonActions.getButtonPressAction()
 		
+		for button in paletteButtonArr {
+			if button.contains(location!) {
+				currentPressedButton = button
+				break
+			}
+		}
 		
+		/*
 		// Testing to see which button is selected
 		if self.platformPaletteButton.contains(location!) {
 			currentPressedButton = platformPaletteButton
@@ -135,6 +167,7 @@ class LevelDesignerOverlayScene: SKScene {
 		if self.deletePaletteButton.contains(location!) {
 			currentPressedButton = deletePaletteButton
 		}
+		*/
 		
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
@@ -168,36 +201,56 @@ class LevelDesignerOverlayScene: SKScene {
 		let releaseAction = ButtonActions.getButtonReleaseAction()
 		let toggleExtendedMenuAction = getToggleExtendedMenuAction()
 		
-		// If there are any currently selected button,
-		if let selectedButton = currentPressedButton {
-			
-			// Determining which button is tapped and its logic
-			if selectedButton.contains(location!) {
-				selectedButton.run(releaseAction)
-				
-				// If its grid button, do this
-				toggleExtendedMenu(action: toggleExtendedMenuAction)
-				
-				
-				// if delete button, do this
-				
-				// Remove ref to currentPressedbutton
-				currentPressedButton = nil
-				
-				return
-			}
-		}
-		
-		
 		// If not button if tapped, check if must close extended menu
 		if isExtendedMenuShowing {
-			toggleExtendedMenu(action: toggleExtendedMenuAction)
+			toggleExtendedMenu(funcType: currentShowingMenuType!, action: toggleExtendedMenuAction)
+		}
+		
+		// If there are any currently selected button,
+		guard let selectedButton = currentPressedButton else {
+			return
+		}
+		
+		// Determining which button is tapped and its logic
+		if selectedButton.contains(location!) {
+			selectedButton.run(releaseAction)
+			
+			switch (selectedButton.type) {
+				case .platform:
+					toggleExtendedMenu(funcType: selectedButton.type, action: toggleExtendedMenuAction)
+					currentShowingMenuType = selectedButton.type
+				
+				case .obstacle:
+					toggleExtendedMenu(funcType: selectedButton.type, action: toggleExtendedMenuAction)
+					currentShowingMenuType = selectedButton.type
+				
+				case .delete:
+					updateCurrentSelectionView(funcType: selectedButton.type)
+				
+				default:
+					// Do nothing
+					break
+			}
+			
+			// Remove ref to currentPressedbutton
+			currentPressedButton = nil
+			
+			return
 		}
 	}
 	
-	func toggleExtendedMenu(action: SKAction) {
+	func toggleExtendedMenu(funcType: LevelDesignerPaletteFunctionType, action: SKAction) {
+		// Check type first
+		
+		// Run Action to fade in/out selected menu
 		self.extendedMenuBackground.run(action)
+		
+		// Toggle boolean
 		self.isExtendedMenuShowing = !self.isExtendedMenuShowing
+	}
+	
+	func updateCurrentSelectionView(funcType: LevelDesignerPaletteFunctionType) {
+		print("Updated Current Selection Type to: \(funcType)")
 	}
 	
 	func getToggleExtendedMenuAction() -> SKAction {
@@ -210,9 +263,7 @@ class LevelDesignerOverlayScene: SKScene {
 			//fadeAction = SKAction.fadeIn(withDuration: 0.2)
 			fadeAction = SKAction.fadeAlpha(to: 0.95, duration: 0.2)
 		}
-		
 		return fadeAction
-		
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

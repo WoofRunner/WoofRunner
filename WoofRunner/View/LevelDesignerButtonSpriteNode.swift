@@ -14,6 +14,7 @@ class LevelDesignerButtonSpriteNode: RootSKSpriteNode {
 	
 	static let LEVEL_DESIGNER_PALETTE_BUTTON_SIZE = CGFloat(60)
 	var diameter: CGFloat = LEVEL_DESIGNER_PALETTE_BUTTON_SIZE
+	var type: LevelDesignerPaletteFunctionType = .platform
 	
 	/*
 	self.pauseNode = SKSpriteNode(imageNamed: "testCat")
@@ -25,10 +26,11 @@ class LevelDesignerButtonSpriteNode: RootSKSpriteNode {
 		super.init(texture: texture, color: color, size: size)
 	}
 	
-	convenience init(imageNamed: String) {
+	convenience init(imageNamed: String, type: LevelDesignerPaletteFunctionType) {
 		let size = CGSize(width: LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE,
-		                  height: LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE);
+		                  height: LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE)
 		self.init(texture: SKTexture(imageNamed: imageNamed), color: SKColor.clear, size: size)
+		self.type = type
 	}
 
 	
