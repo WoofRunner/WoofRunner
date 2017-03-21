@@ -13,9 +13,9 @@ class Player: GameObject {
 
     override init() {
         super.init()
-        geometry = SCNSphere(radius: 0.3)
+        geometry = SCNSphere(radius: 0.4)
         name = "player"
-        position = SCNVector3(x: 0, y: 0.2, z: 2)
+        position = SCNVector3(x: 0, y: 0, z: 1)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody?.contactTestBitMask = CollisionType.Player
         //sphere1.physicsBody?.collisionBitMask = bodyNames.Player
@@ -24,7 +24,7 @@ class Player: GameObject {
     }
    
     override func OnCollide(_ other: GameObject) {
-        destroy()
+        //destroy()
     }
     
     override func update(_ deltaTime: Float) {
@@ -32,7 +32,7 @@ class Player: GameObject {
     }
     
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
-        let projectedOrigin = World.projectPoint(SCNVector3Zero)
+        let projectedOrigin = World.projectPoint(position)
         let vpWithZ = SCNVector3(x: Float(location.x), y: Float(location.y), z: projectedOrigin.z)
         let worldPoint = World.unprojectPoint(vpWithZ)
         

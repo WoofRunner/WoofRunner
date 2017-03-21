@@ -15,9 +15,8 @@ class GameController: UIViewController {
         super.viewDidLoad()
         
         World.setUpWorld(self.view)
-        
 
-        let platformManager = PlatformManager()
+        let platformManager = TileManager()
         World.spawnGameObject(platformManager)
         
         let player = Player()
@@ -26,7 +25,7 @@ class GameController: UIViewController {
         
         let camera = Camera()
         World.spawnGameObject(camera)
-        World.spawnGameObject(TestCube(SCNVector3(0, 0, 5)))
+        //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
     }
  
     override func didReceiveMemoryWarning() {
