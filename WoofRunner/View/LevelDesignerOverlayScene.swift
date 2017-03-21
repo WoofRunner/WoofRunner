@@ -73,7 +73,7 @@ class LevelDesignerOverlayScene: SKScene {
 		paletteBackground = CustomShapeNodes.getRoundedRectangleNode(height: OverlayConstants.paletteHeight,
 		                                                             width: OverlayConstants.paletteWidth,
 		                                                             radius: 25,
-		                                                             backgroundColor: SKColor(red: 0, green: 0, blue: 0, alpha: 0.98))
+		                                                             backgroundColor: SKColor(red: 0, green: 0, blue: 0, alpha: 0.95))
 		
 		// Set palette background position
 		paletteBackground.position = CGPoint(x: OverlayConstants.paletteOriginX,
@@ -102,10 +102,39 @@ class LevelDesignerOverlayScene: SKScene {
 		self.extendedMenuBackground.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
 		// Extended Menu Buttons
+		let btnX = CGFloat(-230)
+		let btnY = CGFloat(180)
 		self.extendedMenuButton1 = SKSpriteNode(imageNamed: "testCat")
 		self.extendedMenuButton1.size = CGSize(width: buttonSize, height: buttonSize)
+		self.extendedMenuButton1.position = CGPoint(x: btnX, y: btnY)
+		print(self.extendedMenuButton1.position)
+		
+		
+		// Extended Menu Labels
+		let menuTitle = SKLabelNode(text: "Platforms")
+		menuTitle.fontName = "AvenirNextCondensed-Bold"
+		menuTitle.fontColor = UIColor.white
+		menuTitle.fontSize = 40
+		menuTitle.position = CGPoint(x: 0, y: 450)
+		
+		let subTitle1 = SKLabelNode(text: "Static")
+		subTitle1.fontName = "AvenirNextCondensed-DemiBold"
+		subTitle1.fontColor = UIColor.white
+		subTitle1.fontSize = 30
+		subTitle1.position = CGPoint(x: btnX - 35, y: btnY + 120)
+		
+		let buttonTitle = SKLabelNode(text: "Default")
+		buttonTitle.fontName = "AvenirNextCondensed-Medium"
+		buttonTitle.fontColor = UIColor.white
+		buttonTitle.fontSize = 20
+		buttonTitle.position = CGPoint(x: btnX, y: btnY - 110)
+		
 		extendedMenuBackground.addChild(extendedMenuButton1)
+		extendedMenuBackground.addChild(menuTitle)
+		extendedMenuBackground.addChild(subTitle1)
+		extendedMenuBackground.addChild(buttonTitle)
 		extendedMenuBackground.alpha = 0.0
+		
 		
 		// Add Extended Menu First
 		self.addChild(extendedMenuBackground)
@@ -261,7 +290,7 @@ class LevelDesignerOverlayScene: SKScene {
 			fadeAction = SKAction.fadeAlpha(to: 0.0, duration: 0.2)
 		} else {
 			//fadeAction = SKAction.fadeIn(withDuration: 0.2)
-			fadeAction = SKAction.fadeAlpha(to: 0.95, duration: 0.2)
+			fadeAction = SKAction.fadeAlpha(to: 0.98, duration: 0.2)
 		}
 		return fadeAction
 	}
