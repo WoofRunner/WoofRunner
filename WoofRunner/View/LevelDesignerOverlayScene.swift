@@ -19,7 +19,7 @@ struct OverlayConstants {
 	static let paletteHeight = (paletteButtonSize * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
 	
 	// NOTE: For SKShapeNode, position (origin) = bottom/left, not center!
-	static let paletteOriginX = CGFloat(60)
+	static let paletteOriginX = CGFloat(35)
 	static let paletteOriginY = CGFloat(650)
 	
 	static let paletteCenterX = paletteOriginX + paletteWidth/2
@@ -45,14 +45,27 @@ class LevelDesignerOverlayScene: SKScene {
 	var paletteButtonArr = [LevelDesignerButtonSpriteNode]()
 	var paletteBackground: SKShapeNode!
 	
+	// Current Selection
+	var currentSelectionHeaderLabel1: SKLabelNode!
+	var currentSelectionHeaderLabel2: SKLabelNode!
+	var currentSelectionLabel: SKLabelNode! // Temp, for debug version only
+	//var currentSelectionSprite: LevelDesignerButtonSpriteNode!
+	
 	// Extended Menus
 	var extendedMenuBackground: SKSpriteNode!
 	var extendedMenuButton1: SKSpriteNode!
 	
+	// BottomBar
+	var bottomBarMenuBackground: SKSpriteNode!
+	//var backButton: LevelDesignerButtonSpriteNode!
+	//var saveButton: LevelDesignerButtonSpriteNode!
+	//var levelNameLabel: SKLabelNode!
+	
 	// Variables to keep track of state
 	var isExtendedMenuShowing = false
 	var currentShowingMenuType: LevelDesignerPaletteFunctionType?
-	var currentPressedButton: LevelDesignerButtonSpriteNode? // Button that is currently on TouchBegin
+	var currentPressedButton: LevelDesignerButtonSpriteNode? // Palette Button that is currently on TouchBegin
+	var currentSelectedExtendedMenuButton: LevelDesignerButtonSpriteNode? // Currently selected block
 	
 	/*
 	var score = 0 {
@@ -68,6 +81,8 @@ class LevelDesignerOverlayScene: SKScene {
 		let screenSize: CGRect = UIScreen.main.bounds
 		
 		self.backgroundColor = UIColor.clear
+		
+		//******* Palette **********//
 		
 		// Creating background for Palette Buttons
 		paletteBackground = CustomShapeNodes.getRoundedRectangleNode(height: OverlayConstants.paletteHeight,
@@ -96,6 +111,35 @@ class LevelDesignerOverlayScene: SKScene {
 			self.addChild(button)
 		}
 		
+		//*********** Current Selection UI ************//
+		
+		// Current Selection UI
+		let headerPosX = CGFloat(690)
+		let headerPosY = CGFloat(880)
+		currentSelectionHeaderLabel1 = SKLabelNode(text: "Current")
+		currentSelectionHeaderLabel1.fontName = "AvenirNextCondensed-Bold"
+		currentSelectionHeaderLabel1.fontColor = UIColor.black
+		currentSelectionHeaderLabel1.fontSize = 25
+		currentSelectionHeaderLabel1.position = CGPoint(x: headerPosX, y: headerPosY)
+		
+		currentSelectionHeaderLabel2 = SKLabelNode(text: "Selection:")
+		currentSelectionHeaderLabel2.fontName = "AvenirNextCondensed-Bold"
+		currentSelectionHeaderLabel2.fontColor = UIColor.black
+		currentSelectionHeaderLabel2.fontSize = 25
+		currentSelectionHeaderLabel2.position = CGPoint(x: headerPosX, y: headerPosY - 25)
+		
+		currentSelectionLabel = SKLabelNode(text: "Test")
+		currentSelectionLabel.fontName = "AvenirNextCondensed-Bold"
+		currentSelectionLabel.fontColor = UIColor.blue
+		currentSelectionLabel.fontSize = 20
+		currentSelectionLabel.position = CGPoint(x: headerPosX, y: headerPosY - 60)
+		
+		self.addChild(currentSelectionHeaderLabel1)
+		self.addChild(currentSelectionHeaderLabel2)
+		self.addChild(currentSelectionLabel)
+		
+		//************ Extended Menu *************//
+		
 		// Extended Menu
 		let buttonSize = size.width/6
 		self.extendedMenuBackground = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: screenSize.width, height: screenSize.height))
@@ -108,7 +152,6 @@ class LevelDesignerOverlayScene: SKScene {
 		self.extendedMenuButton1.size = CGSize(width: buttonSize, height: buttonSize)
 		self.extendedMenuButton1.position = CGPoint(x: btnX, y: btnY)
 		print(self.extendedMenuButton1.position)
-		
 		
 		// Extended Menu Labels
 		let menuTitle = SKLabelNode(text: "Platforms")
@@ -139,7 +182,16 @@ class LevelDesignerOverlayScene: SKScene {
 		// Add Extended Menu First
 		self.addChild(extendedMenuBackground)
 		
-	
+		//************* Bottom Bar *************//
+		bottomBarMenuBackground = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: screenSize.width, height: screenSize.height / 11))
+		bottomBarMenuBackground.position = CGPoint(x: self.frame.midX, y: self.frame.minY + 40)
+		self.addChild(bottomBarMenuBackground)
+		/*
+		backButton =
+		saveButton: LevelDesignerButtonSpriteNode!
+		levelNameLabel: SKLabelNode!
+		*/
+		
 		
 		/*
 		// Add cat sprite button
@@ -187,17 +239,6 @@ class LevelDesignerOverlayScene: SKScene {
 			}
 		}
 		
-		/*
-		// Testing to see which button is selected
-		if self.platformPaletteButton.contains(location!) {
-			currentPressedButton = platformPaletteButton
-		}
-		
-		if self.deletePaletteButton.contains(location!) {
-			currentPressedButton = deletePaletteButton
-		}
-		*/
-		
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
 			selectedButton.run(pressAction)
@@ -230,8 +271,13 @@ class LevelDesignerOverlayScene: SKScene {
 		let releaseAction = ButtonActions.getButtonReleaseAction()
 		let toggleExtendedMenuAction = getToggleExtendedMenuAction()
 		
-		// If not button if tapped, check if must close extended menu
+		// If extended Menu is open, check which selection is selected (or if nil, just close menu)
 		if isExtendedMenuShowing {
+
+			if self.atPoint(location!) == extendedMenuButton1 {
+				updateCurrentSelection(selection: "Default Platform")
+			}
+			
 			toggleExtendedMenu(funcType: currentShowingMenuType!, action: toggleExtendedMenuAction)
 		}
 		
@@ -254,7 +300,8 @@ class LevelDesignerOverlayScene: SKScene {
 					currentShowingMenuType = selectedButton.type
 				
 				case .delete:
-					updateCurrentSelectionView(funcType: selectedButton.type)
+					//updateCurrentSelectionView(funcType: selectedButton.type)
+					updateCurrentSelection(selection: "Delete")
 				
 				default:
 					// Do nothing
@@ -278,8 +325,16 @@ class LevelDesignerOverlayScene: SKScene {
 		self.isExtendedMenuShowing = !self.isExtendedMenuShowing
 	}
 	
+	/*
 	func updateCurrentSelectionView(funcType: LevelDesignerPaletteFunctionType) {
-		print("Updated Current Selection Type to: \(funcType)")
+		//print("Updated Current Selection Type to: \(funcType)")
+	}
+	*/
+	
+	
+	// Trigger LevelDesigner to inform logic
+	func updateCurrentSelection(selection: String) {
+		currentSelectionLabel.text = selection
 	}
 	
 	func getToggleExtendedMenuAction() -> SKAction {
