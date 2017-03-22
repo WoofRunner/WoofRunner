@@ -22,9 +22,6 @@ import Result
  */
 public class CoreDataManager {
 
-    // MARK: - Public variables
-    public var delegate: CoreDataManagerDelegate?
-
     // MARK: - Private variables
     private static var instance: CoreDataManager?
     private let context: NSManagedObjectContext
@@ -208,14 +205,6 @@ public class CoreDataManager {
         }
     }
 
-}
-
-/**
- Define actions to be executed before and after CoreData load/save operations.
- */
-public protocol CoreDataManagerDelegate {
-    func onRequest()
-    func onComplete()
 }
 
 public enum CoreDataManagerError: Error {
