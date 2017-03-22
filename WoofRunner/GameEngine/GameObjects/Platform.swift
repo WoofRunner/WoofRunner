@@ -19,7 +19,7 @@ class Platform: GameObject {
     override init() {
         super.init()
         
-        geometry = SCNBox(width: PLATFORM_WIDTH, height: PLATFORM_HEIGHT, length: PLATFORM_LENGTH, chamferRadius: 0.0)
+        //geometry = SCNBox(width: PLATFORM_WIDTH, height: PLATFORM_HEIGHT, length: PLATFORM_LENGTH, chamferRadius: 0.0)
     }
     
     

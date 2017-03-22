@@ -13,7 +13,7 @@ class TileManager: GameObject {
     var platforms: [GameObject] = []
     
     var COL_COUNT: Int = 5
-    var ROW_COUNT: Int = 20
+    var ROW_COUNT: Int = 100
     
     var tilesData2: [[Int]] = [[0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
@@ -58,11 +58,12 @@ class TileManager: GameObject {
         poolManager = PoolManager(self)
         isTickEnabled = true
         position = SCNVector3(x: position.x, y: position.y, z: position.z + 2)
-        platformTail = position.z - 10.0
+        platformTail = position.z - 13.0
         spawnTiles()
         
         testCube1.position.z = 2
         testCube2.position.z = platformTail
+
     }
     
     func spawnTiles() {
@@ -78,7 +79,7 @@ class TileManager: GameObject {
             tailIndex += 1
             
             for col in 0..<COL_COUNT {
-                let tile = poolManager?.getTile()
+                let tile = poolManager?.getTile(TileType.ground)
                 //let tile = Tile()
                 tile!.position = calculateTilePosition(row, col)
                 //tiles.append(tile)

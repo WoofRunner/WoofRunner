@@ -11,7 +11,7 @@ import SceneKit
 
 class PoolManager {
 
-    let NUM_OF_TILES = 100
+    let NUM_OF_TILES = 70
     
     var availableTiles: [Tile] = []
     var inUseTiles: [Tile] = []
@@ -24,22 +24,19 @@ class PoolManager {
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
         for _ in 0..<NUM_OF_TILES {
-            let tile = Tile()
-            World.spawnGameObject(tile, parentNode)
+            let tile = createNewTile(TileType.ground)
             poolTile(tile)
         }
     }
 
-    public func getTile() -> Tile {
-        if !availableTiles.isEmpty {
-            let tile = availableTiles.removeFirst()
-            tile.isHidden = false
-            inUseTiles.append(tile)
-            return tile
+    public func getTile(_ tileType: TileType) -> Tile {
+        guard let tile = findAvailableTile(tileType) else {
+            let newTile = createNewTile(tileType)
+            inUseTiles.append(newTile)
+            return newTile
         }
-        print("create")
-        let tile = Tile()
-        World.spawnGameObject(tile, parentNode)
+        
+        tile.isHidden = false
         inUseTiles.append(tile)
         return tile
     }
@@ -51,6 +48,20 @@ class PoolManager {
         availableTiles.append(tile)
     }
 
+    private func findAvailableTile(_ tileType: TileType) -> Tile? {
+        for tile in availableTiles {
+            if tile.tileType == tileType {
+                availableTiles.remove(object: tile)
+                return tile
+            }
+        }
+        return nil
+    }
     
-    
+    private func createNewTile(_ tileType: TileType) -> Tile {
+        let tile = Ground()
+        World.spawnGameObject(tile, parentNode)
+        tile.delegate = self
+        return tile
+    }
 }
