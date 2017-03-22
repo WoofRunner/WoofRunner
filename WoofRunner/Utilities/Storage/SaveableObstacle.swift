@@ -6,10 +6,8 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import Foundation
-
 public protocol SaveableObstacle {
     var type: String { get } // TODO: Change this to an enum
-    var position: IndexPath { get }
+    var position: Position { get }
     var radius: Int { get }
 }
