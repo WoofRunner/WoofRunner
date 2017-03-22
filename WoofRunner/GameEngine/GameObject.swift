@@ -43,6 +43,7 @@ class GameObject: SCNNode, GestureDelegate {
     
     var worldPosition: SCNVector3 {
         return convertPosition(SCNVector3.zero(), to: nil)
+        //return convertPosition(position, to: nil)
     }
 }
 
