@@ -137,10 +137,13 @@
 		3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerPaletteFunctionType.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerSceneView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		4E1E11201E82D50D00AAC356 /* TileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewModel.swift; sourceTree = "<group>"; };
 		4E1E11221E82F7E600AAC356 /* TileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNode.swift; sourceTree = "<group>"; };
 		68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
+=======
+>>>>>>> master
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,8 +216,12 @@
 		126F50F81E7272AA000877F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				4E1E11201E82D50D00AAC356 /* TileViewModel.swift */,
 				4E1E11221E82F7E600AAC356 /* TileNode.swift */,
+=======
+				12610C7E1E7EDBC0006162BF /* Position.swift */,
+>>>>>>> master
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -710,6 +717,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
+				4E1E11231E82F7E600AAC356 /* TileNode.swift in Sources */,
+=======
 				12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */,
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
 				12610C7F1E7EDBC0006162BF /* Position.swift in Sources */,
@@ -737,8 +748,7 @@
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
-				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
-				4E1E11231E82F7E600AAC356 /* TileNode.swift in Sources */,
+>>>>>>> master
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
@@ -747,10 +757,13 @@
 				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+<<<<<<< HEAD
+				4E1E11211E82D50D00AAC356 /* TileViewModel.swift in Sources */,
+=======
 				F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */,
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
-				4E1E11211E82D50D00AAC356 /* TileViewModel.swift in Sources */,
+>>>>>>> master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,10 +901,13 @@
 			baseConfigurationReference = B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = W76H98A34A;
+<<<<<<< HEAD
+=======
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+>>>>>>> master
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -906,10 +922,13 @@
 			baseConfigurationReference = 3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = W76H98A34A;
+<<<<<<< HEAD
+=======
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+>>>>>>> master
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
