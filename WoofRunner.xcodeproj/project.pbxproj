@@ -35,6 +35,22 @@
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */; };
 		F0FD03D0964371FF1EAB2705 /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */; };
+		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
+		F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE001E82AACA00BD1D02 /* PoolManager.swift */; };
+		F30ABE031E82BDB300BD1D02 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE021E82BDB300BD1D02 /* Ground.swift */; };
+		F33442B51E8156F3001C1D8D /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A81E8156F3001C1D8D /* GameController.swift */; };
+		F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A91E8156F3001C1D8D /* GameEngine.swift */; };
+		F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442AA1E8156F3001C1D8D /* GameObject.swift */; };
+		F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442AB1E8156F3001C1D8D /* GestureDelegate.swift */; };
+		F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442B01E8156F3001C1D8D /* SCNVector3.swift */; };
+		F33442C01E8156F3001C1D8D /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442B31E8156F3001C1D8D /* World.swift */; };
+		F33442C91E815BFE001C1D8D /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C21E815BFE001C1D8D /* Camera.swift */; };
+		F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C31E815BFE001C1D8D /* Obstacle.swift */; };
+		F33442CB1E815BFE001C1D8D /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C41E815BFE001C1D8D /* Platform.swift */; };
+		F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C51E815BFE001C1D8D /* TileManager.swift */; };
+		F33442CD1E815BFE001C1D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C61E815BFE001C1D8D /* Player.swift */; };
+		F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C71E815BFE001C1D8D /* TestCube.swift */; };
+		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +112,22 @@
 		B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		F30ABE001E82AACA00BD1D02 /* PoolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManager.swift; sourceTree = "<group>"; };
+		F30ABE021E82BDB300BD1D02 /* Ground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
+		F33442A81E8156F3001C1D8D /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		F33442A91E8156F3001C1D8D /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		F33442AA1E8156F3001C1D8D /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		F33442AB1E8156F3001C1D8D /* GestureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureDelegate.swift; sourceTree = "<group>"; };
+		F33442B01E8156F3001C1D8D /* SCNVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3.swift; sourceTree = "<group>"; };
+		F33442B31E8156F3001C1D8D /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		F33442C21E815BFE001C1D8D /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		F33442C31E815BFE001C1D8D /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		F33442C41E815BFE001C1D8D /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		F33442C51E815BFE001C1D8D /* TileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileManager.swift; sourceTree = "<group>"; };
+		F33442C61E815BFE001C1D8D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F33442C71E815BFE001C1D8D /* TestCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCube.swift; sourceTree = "<group>"; };
+		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +255,7 @@
 		12A82FCD1E727072008B721E /* WoofRunner */ = {
 			isa = PBXGroup;
 			children = (
+				F33442A61E8156F3001C1D8D /* GameEngine */,
 				126F50FD1E727332000877F1 /* Application */,
 				126F50FB1E7272C2000877F1 /* View */,
 				126F50FF1E72736E000877F1 /* Storyboards */,
@@ -275,6 +308,37 @@
 				DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F33442A61E8156F3001C1D8D /* GameEngine */ = {
+			isa = PBXGroup;
+			children = (
+				F33442A81E8156F3001C1D8D /* GameController.swift */,
+				F33442A91E8156F3001C1D8D /* GameEngine.swift */,
+				F33442AA1E8156F3001C1D8D /* GameObject.swift */,
+				F33442AB1E8156F3001C1D8D /* GestureDelegate.swift */,
+				F33442B01E8156F3001C1D8D /* SCNVector3.swift */,
+				F33442B31E8156F3001C1D8D /* World.swift */,
+				F30ABDFE1E82A7A800BD1D02 /* Array.swift */,
+				F33442C11E815BAE001C1D8D /* GameObjects */,
+			);
+			path = GameEngine;
+			sourceTree = "<group>";
+		};
+		F33442C11E815BAE001C1D8D /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				F33442C21E815BFE001C1D8D /* Camera.swift */,
+				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
+				F33442C41E815BFE001C1D8D /* Platform.swift */,
+				F33442C61E815BFE001C1D8D /* Player.swift */,
+				F33442C71E815BFE001C1D8D /* TestCube.swift */,
+				F33442C51E815BFE001C1D8D /* TileManager.swift */,
+				F33442C81E815BFE001C1D8D /* Tile.swift */,
+				F30ABE021E82BDB300BD1D02 /* Ground.swift */,
+				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
+			);
+			path = GameObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,7 +635,20 @@
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				3FCC89A71E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
+				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
+				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
+				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
+				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
+				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
+				F30ABE031E82BDB300BD1D02 /* Ground.swift in Sources */,
+				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
+				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
+				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
+				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
+				F33442CB1E815BFE001C1D8D /* Platform.swift in Sources */,
+				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
+				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
@@ -581,6 +658,9 @@
 				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+				F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */,
+				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
+				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +795,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -728,6 +809,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
