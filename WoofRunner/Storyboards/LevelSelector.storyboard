@@ -9,31 +9,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Data Source-->
         <scene sceneID="NaZ-wR-ehr">
             <objects>
-                <viewController id="rrS-Wa-h6v" sceneMemberID="viewController">
+                <viewController id="rrS-Wa-h6v" customClass="LevelSelectorViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I4Q-kf-4qZ"/>
                         <viewControllerLayoutGuide type="bottom" id="WI5-Ax-dOi"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JD4-3v-opV">
+                    <view key="view" contentMode="scaleToFill" id="JD4-3v-opV" customClass="iCarousel">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Selector VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A8-wW-W7K">
-                                <rect key="frame" x="166" y="188" width="135" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7A8-wW-W7K" firstAttribute="leading" secondItem="JD4-3v-opV" secondAttribute="leading" constant="166" id="3MW-9t-sQN"/>
-                            <constraint firstItem="7A8-wW-W7K" firstAttribute="top" secondItem="I4Q-kf-4qZ" secondAttribute="bottom" constant="168" id="5Dh-US-cHd"/>
-                        </constraints>
+                        <connections>
+                            <outlet property="dataSource" destination="rrS-Wa-h6v" id="2L0-H8-Fb8"/>
+                            <outlet property="delegate" destination="rrS-Wa-h6v" id="eDQ-ae-LDd"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="carousel" destination="JD4-3v-opV" id="5Xy-h1-lwn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqy-Ew-SYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
