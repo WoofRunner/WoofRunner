@@ -54,7 +54,7 @@ class LevelDesignerSceneView: SCNView {
         self.showsStatistics = true
         
         // configure the view
-        self.backgroundColor = UIColor.black
+        //self.backgroundColor = UIColor.black
         
         // add a pan gesture recognizer
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
@@ -139,7 +139,7 @@ class LevelDesignerSceneView: SCNView {
         return cameraNode
     }
 
-    
+	
     func handlePan(_ sender: UIPanGestureRecognizer) {
         guard let camera = cameraNode else {
             return
@@ -188,7 +188,8 @@ class LevelDesignerSceneView: SCNView {
             break;
         }
     }
-    
+	
+	
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
         let view = self
@@ -207,6 +208,7 @@ class LevelDesignerSceneView: SCNView {
             }
         }
     }
+
     
     private func toggleGridBlock(_ pos: SCNVector3) -> Bool {
         guard let levelGrid = currentLevelGrid else {

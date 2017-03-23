@@ -17,19 +17,29 @@ class LevelDesignerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         levelDesignerSceneView.setupScene()
-        
+		levelDesignerSceneView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+		
         // Create sample level
         let sampleLevel = LevelGridStub(length: 50)
         
         // Load level
         levelDesignerSceneView.loadLevel(sampleLevel)
         
+        // Test RxSwift
         let newTile = TileStub(position: SCNVector3(1, 0, 0), size: 2.0, tileType: 0)
         let tileVM = TileViewModel(newTile)
         let tileNode = TileNode(tileVM)
         print("before - ", tileNode.position)
         tileVM.position.value = SCNVector3(2, 0, 0)
         print("after - ", tileNode.position)
+		
+		
+		// Create and attach main Scenekit Scene
+		self.view.addSubview(levelDesignerSceneView)
+		
+		// Attached overlay
+		let spriteScene = LevelDesignerOverlayScene(size: self.view.bounds.size)
+		levelDesignerSceneView.overlaySKScene = spriteScene
     }
     
     
