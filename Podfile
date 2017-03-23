@@ -12,6 +12,8 @@ target 'WoofRunner' do
   use_frameworks!
 
   # Pods for WoofRunner
+  pod 'iCarousel', '~> 1.8'
+  rx_swift
   pod 'BrightFutures'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
