@@ -9,6 +9,11 @@
 import Foundation
 import SceneKit
 
+enum GroundType {
+    case soil
+    case grass
+}
+
 class Ground : Tile {
 
     override init(_ pos: SCNVector3) {
