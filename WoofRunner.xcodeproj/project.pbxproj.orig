@@ -632,9 +632,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				3FCC89A71E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
+				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
+				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
+				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
+				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
+				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
+				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
+				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
+				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
+				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
+				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+=======
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
@@ -649,18 +661,11 @@
 				F33442CB1E815BFE001C1D8D /* Platform.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
-				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
-				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
-				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
-				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
-				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
-				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
-				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
-				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */,
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
+>>>>>>> master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
