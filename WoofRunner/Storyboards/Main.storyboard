@@ -96,6 +96,19 @@
                                     <segue destination="GQ9-AU-CvF" kind="show" id="jkw-kV-GwM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAY-xn-Hcp">
+                                <rect key="frame" x="139" y="803" width="423" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="31"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="Experimental Level Designer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hgU-LL-9Ho" kind="show" id="1xD-t7-pKE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -147,6 +160,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDB-vG-EXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="941" y="365"/>
+        </scene>
+        <!--ExperimentalLevelDesigner-->
+        <scene sceneID="FAw-Tq-hPf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ExperimentalLevelDesigner" id="hgU-LL-9Ho" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZ6-0B-oGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="898" y="422"/>
         </scene>
         <!--Gameplay-->
         <scene sceneID="syV-ZU-25E">
