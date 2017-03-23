@@ -20,6 +20,7 @@
 		3FAE2D381E7281CE00D65B84 /* LevelDesigner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */; };
 		3FAE2D3A1E7281F400D65B84 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D391E7281F400D65B84 /* Gameplay.storyboard */; };
 		3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */; };
+<<<<<<< HEAD
 		3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */; };
 		3FCC89991E7AD2A8005A7C03 /* ExperimentalLevelDesigner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FCC89981E7AD2A8005A7C03 /* ExperimentalLevelDesigner.storyboard */; };
 		3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC899A1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift */; };
@@ -30,8 +31,10 @@
 		3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */; };
 		3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */; };
 		3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */; };
+=======
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
 		4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */; };
+>>>>>>> leveldesigner
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */; };
 		F0FD03D0964371FF1EAB2705 /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */; };
@@ -75,6 +78,7 @@
 		3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesigner.storyboard; sourceTree = "<group>"; };
 		3FAE2D391E7281F400D65B84 /* Gameplay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Gameplay.storyboard; sourceTree = "<group>"; };
 		3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelMarketplace.storyboard; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		3FCC89951E73E29F005A7C03 /* WoofRunner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WoofRunner-Bridging-Header.h"; sourceTree = "<group>"; };
 		3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorViewController.swift; sourceTree = "<group>"; };
 		3FCC89981E7AD2A8005A7C03 /* ExperimentalLevelDesigner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExperimentalLevelDesigner.storyboard; sourceTree = "<group>"; };
@@ -86,8 +90,10 @@
 		3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonActions.swift; sourceTree = "<group>"; };
 		3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeNodes.swift; sourceTree = "<group>"; };
 		3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerPaletteFunctionType.swift; sourceTree = "<group>"; };
+=======
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerSceneView.swift; sourceTree = "<group>"; };
+>>>>>>> leveldesigner
 		68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +153,7 @@
 		126F50FB1E7272C2000877F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				3FCC899C1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift */,
 				3FCC899E1E7AD846005A7C03 /* ExperimentalMainScene.swift */,
 				3FCC89A21E7EB8C6005A7C03 /* RootSKSpriteNode.swift */,
@@ -154,7 +161,9 @@
 				3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */,
 				3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
+=======
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */,
+>>>>>>> leveldesigner
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,7 +363,7 @@
 				TargetAttributes = {
 					12A82FCA1E727071008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W76H98A34A;
+						DevelopmentTeam = ZMZJA96D6M;
 						ProvisioningStyle = Automatic;
 					};
 					12A82FE01E727072008B721E = {
@@ -572,15 +581,19 @@
 				3FCC89A71E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
+<<<<<<< HEAD
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
-				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
+=======
+				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
+				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+>>>>>>> leveldesigner
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,7 +726,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = ZMZJA96D6M;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;
@@ -726,7 +739,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = ZMZJA96D6M;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;

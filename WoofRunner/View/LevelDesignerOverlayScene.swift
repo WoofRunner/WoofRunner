@@ -234,6 +234,7 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		for button in paletteButtonArr {
 			if button.contains(location!) {
+				print("button touched!")
 				currentPressedButton = button
 				break
 			}
@@ -241,6 +242,7 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
+			print("Touch Begin on palette button")
 			selectedButton.run(pressAction)
 		}
 	}
@@ -283,6 +285,7 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// If there are any currently selected button,
 		guard let selectedButton = currentPressedButton else {
+			print("Touch Ended cos selectedButton is nil")
 			return
 		}
 		
@@ -292,15 +295,18 @@ class LevelDesignerOverlayScene: SKScene {
 			
 			switch (selectedButton.type) {
 				case .platform:
+					print("Ended on Platform")
 					toggleExtendedMenu(funcType: selectedButton.type, action: toggleExtendedMenuAction)
 					currentShowingMenuType = selectedButton.type
 				
 				case .obstacle:
+					print("Ended on Obstacle")
 					toggleExtendedMenu(funcType: selectedButton.type, action: toggleExtendedMenuAction)
 					currentShowingMenuType = selectedButton.type
 				
 				case .delete:
 					//updateCurrentSelectionView(funcType: selectedButton.type)
+					print("Ended on Delete")
 					updateCurrentSelection(selection: "Delete")
 				
 				default:
