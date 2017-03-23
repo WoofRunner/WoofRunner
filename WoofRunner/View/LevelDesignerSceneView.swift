@@ -277,7 +277,7 @@ class GridViewModelStub {
         shouldRender = gridModel.shouldRender
         tag = gridModel.tag
         
-        boxGeometry = SCNBox(width: size, height: size, length: size, chamferRadius: 0.0)
+        boxGeometry = SCNBox(width: size, height: size, length: size, chamferRadius: 0.05)
         for material in boxGeometry.materials {
             if !gridModel.hasItem {
                 material.emission.contents = GridViewModelStub.colors[2]

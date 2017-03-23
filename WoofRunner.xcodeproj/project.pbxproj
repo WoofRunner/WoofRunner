@@ -22,6 +22,8 @@
 		3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */; };
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
 		4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */; };
+		4E1E11211E82D50D00AAC356 /* TileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E11201E82D50D00AAC356 /* TileViewModel.swift */; };
+		4E1E11231E82F7E600AAC356 /* TileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E11221E82F7E600AAC356 /* TileNode.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		DEE692F7EFFA646583F584F1 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F81CBA8F85F3CEA2172C07 /* Pods_WoofRunnerTests.framework */; };
 		F0FD03D0964371FF1EAB2705 /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6CCD2DEA426ACC64EE013A /* Pods_WoofRunnerUITests.framework */; };
@@ -67,6 +69,8 @@
 		3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelMarketplace.storyboard; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerSceneView.swift; sourceTree = "<group>"; };
+		4E1E11201E82D50D00AAC356 /* TileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewModel.swift; sourceTree = "<group>"; };
+		4E1E11221E82F7E600AAC356 /* TileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNode.swift; sourceTree = "<group>"; };
 		68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74E9E62E3368DB6ECD428906 /* Pods-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,8 @@
 		126F50F81E7272AA000877F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4E1E11201E82D50D00AAC356 /* TileViewModel.swift */,
+				4E1E11221E82F7E600AAC356 /* TileNode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,7 +328,7 @@
 				TargetAttributes = {
 					12A82FCA1E727071008B721E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NX3V9E3SE4;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 					};
 					12A82FE01E727072008B721E = {
@@ -536,9 +542,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
+				4E1E11231E82F7E600AAC356 /* TileNode.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+				4E1E11211E82D50D00AAC356 /* TileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +679,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;
@@ -684,7 +692,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = NX3V9E3SE4;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunner;

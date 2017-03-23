@@ -23,44 +23,15 @@ class LevelDesignerViewController: UIViewController {
         
         // Load level
         levelDesignerSceneView.loadLevel(sampleLevel)
+        
+        let newTile = TileStub(position: SCNVector3(1, 0, 0), size: 2.0, tileType: 0)
+        let tileVM = TileViewModel(newTile)
+        let tileNode = TileNode(tileVM)
+        print("before - ", tileNode.position)
+        tileVM.position.value = SCNVector3(2, 0, 0)
+        print("after - ", tileNode.position)
     }
     
-//    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-//        // retrieve the SCNView
-//        guard let scnView = sceneView else {
-//            return
-//        }
-//        
-//        // check what nodes are tapped
-//        let p = gestureRecognize.location(in: scnView)
-//        let hitResults = scnView.hitTest(p, options: [:])
-//        // check that we clicked on at least one object
-//        if hitResults.count > 0 {
-//            // retrieved the first clicked object
-//            let result: AnyObject = hitResults[0]
-//            
-//            // get its material
-//            let material = result.node!.geometry!.firstMaterial!
-//            
-//            // highlight it
-//            SCNTransaction.begin()
-//            SCNTransaction.animationDuration = 0.5
-//            
-//            // on completion - unhighlight
-//            SCNTransaction.completionBlock = {
-//                SCNTransaction.begin()
-//                SCNTransaction.animationDuration = 0.5
-//                
-//                material.emission.contents = UIColor.black
-//                
-//                SCNTransaction.commit()
-//            }
-//            
-//            material.emission.contents = UIColor.red
-//            
-//            SCNTransaction.commit()
-//        }
-//    }
     
     override var shouldAutorotate: Bool {
         return false
