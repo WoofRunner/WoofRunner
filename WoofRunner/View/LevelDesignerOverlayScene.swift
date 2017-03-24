@@ -243,7 +243,7 @@ class LevelDesignerOverlayScene: SKScene {
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
 			print("Touch Begin on palette button")
-			selectedButton.run(pressAction)
+            selectedButton.run(pressAction)
 		}
 	}
 	
@@ -320,6 +320,10 @@ class LevelDesignerOverlayScene: SKScene {
 			return
 		}
 	}
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("cancelled")
+    }
 	
 	func toggleExtendedMenu(funcType: LevelDesignerPaletteFunctionType, action: SKAction) {
 		// Check type first

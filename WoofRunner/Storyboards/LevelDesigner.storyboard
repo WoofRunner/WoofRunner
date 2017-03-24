@@ -27,10 +27,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DhZ-Qx-bsE" userLabel="SCNView" customClass="LevelDesignerSceneView" customModule="WoofRunner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -38,9 +34,6 @@
                             <constraint firstItem="sE3-hZ-9qO" firstAttribute="top" secondItem="YzQ-XA-u0H" secondAttribute="bottom" constant="206" id="oXn-1H-mi5"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="levelDesignerSceneView" destination="DhZ-Qx-bsE" id="R0Y-Yc-NwO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIz-5X-nBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

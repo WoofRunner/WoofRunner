@@ -45,10 +45,11 @@
 		3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */; };
 		3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */; };
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
-		4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */; };
-		4E1E11211E82D50D00AAC356 /* TileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E11201E82D50D00AAC356 /* TileViewModel.swift */; };
-		4E1E11231E82F7E600AAC356 /* TileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E11221E82F7E600AAC356 /* TileNode.swift */; };
+		4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */; };
+		4E1E11211E82D50D00AAC356 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E11201E82D50D00AAC356 /* GridViewModel.swift */; };
+		4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */; };
 		4E90FFE91E8431690012B03F /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90FFE81E8431690012B03F /* Position.swift */; };
+		4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */; };
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
@@ -135,10 +136,11 @@
 		3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeNodes.swift; sourceTree = "<group>"; };
 		3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerPaletteFunctionType.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
-		4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerSceneView.swift; sourceTree = "<group>"; };
-		4E1E11201E82D50D00AAC356 /* TileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewModel.swift; sourceTree = "<group>"; };
-		4E1E11221E82F7E600AAC356 /* TileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNode.swift; sourceTree = "<group>"; };
+		4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerScene.swift; sourceTree = "<group>"; };
+		4E1E11201E82D50D00AAC356 /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
+		4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveGridNode.swift; sourceTree = "<group>"; };
 		4E90FFE81E8431690012B03F /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveGrid.swift; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,8 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				4E90FFE81E8431690012B03F /* Position.swift */,
-				4E1E11201E82D50D00AAC356 /* TileViewModel.swift */,
-				4E1E11221E82F7E600AAC356 /* TileNode.swift */,
+				4E1E11201E82D50D00AAC356 /* GridViewModel.swift */,
+				4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */,
+				4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,7 +241,7 @@
 				3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */,
 				3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
-				4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */,
+				4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -735,8 +738,8 @@
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
-				4E1E11231E82F7E600AAC356 /* TileNode.swift in Sources */,
-				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
+				4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */,
+				4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
@@ -748,7 +751,8 @@
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
 				4E90FFE91E8431690012B03F /* Position.swift in Sources */,
-				4E1E11211E82D50D00AAC356 /* TileViewModel.swift in Sources */,
+				4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */,
+				4E1E11211E82D50D00AAC356 /* GridViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
