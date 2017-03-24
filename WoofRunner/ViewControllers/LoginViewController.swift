@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FacebookCore
 import FacebookLogin
 
@@ -22,16 +23,27 @@ public class LoginViewController: UIViewController {
 
         addFbLoginButton()
         if let accessToken = AccessToken.current {
-            loginPrompt.text = accessToken.authenticationToken
+            loginPrompt.text = accessToken.userId
+            authWithFirebase(token: accessToken.authenticationToken)
         }
     }
 
     /// Adds a Facebook login button to the view
     private func addFbLoginButton() {
-        let loginButton = LoginButton(readPermissions: [.publicProfile])
+        let loginButton = LoginButton(readPermissions: [.publicProfile, .email])
         loginButton.center = view.center
 
         view.addSubview(loginButton)
+    }
+
+    /// Authenticates with Firebase
+    private func authWithFirebase(token: String) {
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+        }
     }
 
 }
