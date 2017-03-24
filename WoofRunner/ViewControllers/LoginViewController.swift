@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookCore
 import FacebookLogin
 
 /**
@@ -14,27 +15,23 @@ import FacebookLogin
  */
 public class LoginViewController: UIViewController {
 
+    @IBOutlet var loginPrompt: UILabel!
+
     public override func viewDidLoad() {
         super.viewDidLoad()
 
         addFbLoginButton()
+        if let accessToken = AccessToken.current {
+            loginPrompt.text = accessToken.authenticationToken
+        }
     }
 
+    /// Adds a Facebook login button to the view
     private func addFbLoginButton() {
         let loginButton = LoginButton(readPermissions: [.publicProfile])
         loginButton.center = view.center
 
         view.addSubview(loginButton)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
