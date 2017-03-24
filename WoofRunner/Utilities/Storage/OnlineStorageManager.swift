@@ -10,6 +10,7 @@ import Firebase
 import FirebaseDatabase
 import BrightFutures
 import Result
+import FBSDKLoginKit
 
 /**
  Singleton that manages the online storage of the user created games.
