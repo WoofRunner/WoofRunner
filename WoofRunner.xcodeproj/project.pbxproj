@@ -29,9 +29,6 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-		12F9B05B1E856A86009766FF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9B05A1E856A86009766FF /* FBSDKLoginKit.framework */; };
-		12F9B05D1E856AE9009766FF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9B05C1E856AE9009766FF /* FBSDKCoreKit.framework */; };
-		12F9B05F1E856B73009766FF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9B05E1E856B73009766FF /* Bolts.framework */; };
 		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3FAE2D341E7280EE00D65B84 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D331E7280EE00D65B84 /* Menu.storyboard */; };
 		3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */; };
@@ -118,9 +115,6 @@
 		12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManager.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		12F9B05A1E856A86009766FF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		12F9B05C1E856AE9009766FF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		12F9B05E1E856B73009766FF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
 		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE2D331E7280EE00D65B84 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -171,10 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12F9B05B1E856A86009766FF /* FBSDKLoginKit.framework in Frameworks */,
-				12F9B05D1E856AE9009766FF /* FBSDKCoreKit.framework in Frameworks */,
 				521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */,
-				12F9B05F1E856B73009766FF /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,9 +373,6 @@
 		B5450BA918CCF667253FFC7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				12F9B05E1E856B73009766FF /* Bolts.framework */,
-				12F9B05C1E856AE9009766FF /* FBSDKCoreKit.framework */,
-				12F9B05A1E856A86009766FF /* FBSDKLoginKit.framework */,
 				81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */,
 				33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */,
 				931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */,
@@ -893,7 +881,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -912,7 +899,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WoofRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
