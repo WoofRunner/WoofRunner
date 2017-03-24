@@ -7,6 +7,12 @@ def rx_swift
     pod 'RxCocoa',    '~> 3.0'
 end
 
+def facebook
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
+end
+
 target 'WoofRunner' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
@@ -14,6 +20,7 @@ target 'WoofRunner' do
   # Pods for WoofRunner
   pod 'iCarousel', '~> 1.8'
   rx_swift
+  facebook
   pod 'BrightFutures'
   pod 'Firebase/Core'
   pod 'Firebase/Database'

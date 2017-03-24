@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 /**
  View controller for Facebook Login view to access the Online Level Marketplace.
@@ -16,14 +17,15 @@ public class LoginViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addFbLoginButton()
     }
 
-    public override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func addFbLoginButton() {
+        let loginButton = LoginButton(readPermissions: [.publicProfile])
+        loginButton.center = view.center
+
+        view.addSubview(loginButton)
     }
-    
 
     /*
     // MARK: - Navigation
