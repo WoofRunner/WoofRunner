@@ -13,25 +13,27 @@ def facebook
     pod 'FacebookShare'
 end
 
+def firebase
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+end
+
 target 'WoofRunner' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for WoofRunner
   pod 'iCarousel', '~> 1.8'
+  pod 'BrightFutures'
   rx_swift
   facebook
-  pod 'BrightFutures'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'iCarousel', '~> 1.8'
-  rx_swift
+  firebase
 
   target 'WoofRunnerTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Firebase/Core'
-    pod 'Firebase/Database' # Because Firebase sets up their pods weirdly.
+    firebase # Because Firebase sets up their pods weirdly.
   end
 
   target 'WoofRunnerUITests' do
