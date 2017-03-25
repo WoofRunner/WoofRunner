@@ -27,6 +27,8 @@ class Tile: GameObject {
     
     var tileType: TileType = TileType.none
     
+    var autoDestroyPositionZ: Float = 4
+    
     init(_ pos: SCNVector3) {
         super.init()
         position = pos
@@ -38,8 +40,7 @@ class Tile: GameObject {
     }
 
     override func update(_ deltaTime: Float) {
-        if worldPosition.z > 2 {
-            //destroy()
+        if worldPosition.z > autoDestroyPositionZ {
             delegate?.poolTile(self)
         }
     }

@@ -9,10 +9,10 @@
 import Foundation
 import SceneKit
 
-class Obstacle: GameObject {
+class Obstacle: Tile {
     
-    init(_ pos: SCNVector3) {
-        super.init()
+    override init(_ pos: SCNVector3) {
+        super.init(pos)
         geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         position = pos
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
@@ -21,9 +21,10 @@ class Obstacle: GameObject {
         let redMat = SCNMaterial()
         redMat.diffuse.contents = UIColor.red
         geometry?.materials = [redMat]
+        tileType = TileType.rock
     }
     
-    override convenience init() {
+    convenience init() {
         self.init(SCNVector3(0, 0, 0))
     }
 }
