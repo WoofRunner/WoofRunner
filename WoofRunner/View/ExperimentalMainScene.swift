@@ -13,8 +13,8 @@ import SpriteKit
 class ExperimentalMainScene: SCNScene {
 	
 	var cubeNode: SCNNode!
-	//var cameraNode: SCNNode!
-	//var lightNode: SCNNode!
+	var cameraNode: SCNNode!
+	var lightNode: SCNNode!
 	
 	override init() {
 		super.init()
@@ -27,7 +27,6 @@ class ExperimentalMainScene: SCNScene {
 		self.cubeNode = SCNNode(geometry: cube)
 		self.cubeNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0.01, z: 0, duration: 1.0/60.0)))
 		
-		/*
 		let camera = SCNCamera()
 		camera.xFov = 60
 		camera.yFov = 60
@@ -51,11 +50,11 @@ class ExperimentalMainScene: SCNScene {
 		self.lightNode = SCNNode()
 		self.lightNode.light = omniLight
 		self.lightNode.position = SCNVector3(x: -3, y: 5, z: 3)
-		*/
+		
 		
 		self.rootNode.addChildNode(self.cubeNode)
-		//self.rootNode.addChildNode(self.cameraNode)
-		//self.rootNode.addChildNode(self.lightNode)
+		self.rootNode.addChildNode(self.cameraNode)
+		self.rootNode.addChildNode(self.lightNode)
 
 	}
 	

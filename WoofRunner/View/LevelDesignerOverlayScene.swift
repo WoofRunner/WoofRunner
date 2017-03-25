@@ -33,10 +33,26 @@ struct OverlayConstants {
 
 class LevelDesignerOverlayScene: SKScene {
 	
+	var paletteMenu = PaletteMenu()
+	
+	override init(size: CGSize) {
+		super.init(size: size)
+		self.paletteMenu = PaletteMenu()
+		self.backgroundColor = UIColor.clear
+		self.paletteMenu.renderPaletteMenu()
+		self.addChild(paletteMenu)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+
+}
 	//var pauseNode: SKSpriteNode!
 	//var scoreNode: SKLabelNode!
 	//var cameraNode: SKCameraNode!
 	
+	/*
 	
 	// Palette
 	var platformPaletteButton: LevelDesignerButtonSpriteNode!
@@ -372,3 +388,4 @@ class LevelDesignerOverlayScene: SKScene {
 		super.init(coder: aDecoder)
 	}
 }
+*/
