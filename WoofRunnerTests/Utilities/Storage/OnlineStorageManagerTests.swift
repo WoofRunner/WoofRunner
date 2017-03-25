@@ -19,7 +19,7 @@ class OnlineStorageManagerTests: XCTestCase {
     }
 
     func testUploadGame() {
-        let stub = SerializableStub(uuid: "123")
+        let stub = SaveableStub(uuid: "123")
         osm.save(stub)
 
         let expect = expectation(description: "Correct game should be loaded from Firebase")

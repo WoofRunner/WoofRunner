@@ -9,8 +9,7 @@
 /**
  Classes/structs that implements this are saveable in either CoreData or OnlineStorage.
  */
-public protocol SaveableGame: Saveable, Serializable {
-    var emptyPlatforms: [Position] { get }
-    var jumpPlatforms: [Position] { get }
+public protocol SaveableGame: Serializable {
+    var uuid: String { get }
     var obstacles: [SaveableObstacle] { get }
 }
