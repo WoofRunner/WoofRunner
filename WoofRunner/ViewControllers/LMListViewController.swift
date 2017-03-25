@@ -9,6 +9,8 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import ObjectMapper
+import FirebaseAuth
 
 public enum LevelListType {
     case Downloaded
@@ -25,6 +27,7 @@ public class LMListViewController: UIViewController {
 
     private var games = Variable<[SaveableGame]>([])
     private var cdm = CoreDataManager.getInstance()
+    private var osm = OnlineStorageManager.getInstance()
 
     // MARK: - IBOutlets
 
@@ -34,12 +37,11 @@ public class LMListViewController: UIViewController {
 
     /// Stubbed action to test out RxSwift
     @IBAction func addGame(_ sender: UIButton) {
-        // Saves a new game to CoreData
-        let stub = SaveableStub(uuid: UUID.init().uuidString)
-        cdm.save(stub)
-            .onSuccess { _ in
-                self.games.value.append(stub)
-            }
+        if listType == .Downloaded {
+            uploadOneGame()
+        } else {
+            addOneStubCreatedGame()
+        }
     }
 
     // MARK: - Lifecyle methods
@@ -83,23 +85,52 @@ public class LMListViewController: UIViewController {
         }
     }
 
+    private func addOneStubCreatedGame() {
+        // Saves a new game to CoreData
+        let stub = SaveableStub(uuid: UUID.init().uuidString)
+        cdm.save(stub)
+            .onSuccess { _ in
+                self.games.value.append(stub)
+        }
+    }
+
+    private func uploadOneGame() {
+        let stub = SaveableStub(uuid: UUID.init().uuidString)
+        osm.save(stub)
+    }
 }
 
 /**
  For testing purposes
  */
-private struct SaveableStub: SaveableGame {
-    public var uuid: String
-    public var obstacles: [SaveableObstacle]
-    public var platforms: [SaveablePlatform]
-    public var createdAt: Date
-    public var updatedAt: Date
+private struct SaveableStub: UploadableGame {
+    public var ownerID: String?
+    public var uuid: String?
+    public var obstacles: [SaveableObstacle]?
+    public var platforms: [SaveablePlatform]?
+    public var createdAt: Date?
+    public var updatedAt: Date?
 
     public init(uuid: String) {
+        self.ownerID = (FIRAuth.auth()?.currentUser?.uid)! // User should not be unauthed.
         self.uuid = uuid
         self.obstacles = []
         self.platforms = []
         self.createdAt = Date()
         self.updatedAt = Date()
+    }
+}
+
+extension SaveableStub: Mappable {
+
+    init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        ownerID <- map["ownerID"]
+        uuid <- map["uuid"]
+        obstacles <- map["obstacles"]
+        platforms <- map["platforms"]
+        createdAt <- (map["createdAt"], DateTransform())
+        updatedAt <- (map["updatedAt"], DateTransform())
     }
 }

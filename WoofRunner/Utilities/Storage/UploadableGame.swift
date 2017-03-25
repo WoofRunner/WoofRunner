@@ -9,5 +9,5 @@
 import ObjectMapper
 
 public protocol UploadableGame: SaveableGame, Mappable {
-    var ownerID: String { get set }
+    var ownerID: String? { get set }
 }

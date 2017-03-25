@@ -80,7 +80,7 @@ public class CoreDataManager {
 
                 if self.exists(game) {
                     // Force unwrap here since we know that game has to already exist in core data
-                    storedGame = self.fetch(game.uuid)!
+                    storedGame = self.fetch(game.uuid!)!
                 } else {
                     storedGame = StoredGame(context: self.context)
                     storedGame.createdAt = Date() as NSDate?
@@ -141,7 +141,7 @@ public class CoreDataManager {
     ///     - game: object that conforms to Saveable
     /// - Returns: true if the game already exists in CoreData.
     private func exists(_ game: SaveableGame) -> Bool {
-        let fetchRequest = generateFetchRequest(uuid: game.uuid)
+        let fetchRequest = generateFetchRequest(uuid: game.uuid!)
 
         guard let count = try? self.context.count(for: fetchRequest), count == 0 else {
             return true
