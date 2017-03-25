@@ -2,10 +2,28 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="StoredGame" representedClassName="StoredGame" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ownerID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="obstacles" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredObstacle" inverseName="game" inverseEntity="StoredObstacle" syncable="YES"/>
+        <relationship name="platforms" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredPlatform" inverseName="game" inverseEntity="StoredPlatform" syncable="YES"/>
+    </entity>
+    <entity name="StoredObstacle" representedClassName="StoredObstacle" syncable="YES" codeGenerationType="class">
+        <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="radius" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="obstacles" inverseEntity="StoredGame" syncable="YES"/>
+    </entity>
+    <entity name="StoredPlatform" representedClassName="StoredPlatform" syncable="YES" codeGenerationType="class">
+        <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="platforms" inverseEntity="StoredGame" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="StoredObstacle" positionX="-63" positionY="9" width="128" height="120"/>
+        <element name="StoredPlatform" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
 </model>
