@@ -79,7 +79,7 @@ public class OnlineStorageManager {
     /// Saves the game in Firebase database.
     /// - Parameters:
     ///     - game: game model object that extends Serializable
-    public func save(_ game: Serializable) {
+    public func save(_ game: SaveableGame) {
         ref.child(game.uuid).setValue(game.serialize())
     }
 
