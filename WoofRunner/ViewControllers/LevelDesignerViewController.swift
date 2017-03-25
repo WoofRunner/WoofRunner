@@ -17,6 +17,7 @@ class LevelDesignerViewController: UIViewController {
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = [GridViewModel]()
+    var currentSelectedBrush: TileType = .floor // Observing overlayScene
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +41,9 @@ class LevelDesignerViewController: UIViewController {
         // Gestures
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         self.view.addGestureRecognizer(panGesture)
-		
-		// Create and attach main Scenekit Scene
-		//sceneView.setupScene()
-		
-		//sceneView.loadLevel(sampleLevel)
-		//self.mainSceneView.scene = ExperimentalMainScene()
-		//self.view.addSubview(levelDesignerSceneView)
-		
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
 		// Attached overlay
 		let spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
 		sceneView.overlaySKScene = spriteScene
@@ -108,6 +104,22 @@ class LevelDesignerViewController: UIViewController {
         }
     }
     
+    private func toggleGrid(x: Float, y: Float) {
+        for gridVM in currentLevel {
+            guard gridVM.position.value.x == x && gridVM.position.value.y == y else {
+                continue
+            }
+            if currentSelectedBrush.isPlatform() {
+                gridVM.setPlatform(currentSelectedBrush)
+            } else if currentSelectedBrush.isObstacle() && gridVM.platformType.value != TileType.none {
+                gridVM.setPlatform(currentSelectedBrush)
+            } else if currentSelectedBrush == TileType.none {
+                // Current implementation: Delete both obstacle and platform
+                gridVM.removePlatform()
+            }
+        }
+    }
+    
     func handlePan(_ sender: UIPanGestureRecognizer) {
         let camera = LDScene.cameraNode
 
@@ -149,36 +161,22 @@ class LevelDesignerViewController: UIViewController {
         }
     }
 
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        // Check what nodes are tapped
+        let pos = gestureRecognize.location(in: sceneView)
+        let hitResults = sceneView.hitTest(pos, options: [:])
+        
+        // check that we clicked on at least one object
+        if hitResults.count > 0 {
+            for result in hitResults {
+                // Check if node is transparent
+                let gridNode = result.node
+                guard gridNode.geometry?.firstMaterial?.transparency != 0 else {
+                    continue
+                }
+                // Else toggle
+                return toggleGrid(x: gridNode.position.x, y: gridNode.position.y)
+            }
+        }
+    }
 }
-
-//class LevelGridStub {
-//    
-//    var cols = 4
-//    var rows: Int
-//    var levelGrid: [GridStub]
-//    
-//    init(length: Int) {
-//        levelGrid = [GridStub]()
-//        rows = length
-//        createEmptyLevel()
-//    }
-//    
-//    func createEmptyLevel() {
-//        for row in 0...rows - 1 {
-//            for col in 0...cols - 1 {
-//                let tagNumber = col + (row * cols)
-//                levelGrid.append(GridStub(row: row, col: col, tag: tagNumber))
-//            }
-//        }
-//    }
-//    
-//    func loadChunk(start: Int, chunkLength: Int) {
-//        for grid in levelGrid {
-//            if grid.position.row >= start && grid.position.row < start + chunkLength {
-//                grid.shouldRender = true
-//            } else {
-//                grid.shouldRender = false
-//            }
-//        }
-//    }
-//}

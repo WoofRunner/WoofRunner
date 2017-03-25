@@ -163,24 +163,7 @@ class LevelDesignerScene: SCNScene {
 //    }
 //	
 //	
-//    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-//        // retrieve the SCNView
-//        let view = self
-//        
-//        // check what nodes are tapped
-//        let p = gestureRecognize.location(in: view)
-//        let hitResults = view.hitTest(p, options: [:])
-//        // check that we clicked on at least one object
-//        if hitResults.count > 0 {
-//            for result in hitResults {
-//                let gridNode = result.node
-//                if toggleGridBlock(gridNode.position) {
-//                    updateGrid(levelGrid: currentLevelGrid!)
-//                    return
-//                }
-//            }
-//        }
-//    }
+
 //
 //    
 //    private func toggleGridBlock(_ pos: SCNVector3) -> Bool {

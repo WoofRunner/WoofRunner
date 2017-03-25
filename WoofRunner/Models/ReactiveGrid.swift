@@ -28,18 +28,21 @@ class ReactiveGrid {
             self.gridNodes.append(gridNode)
             
             if gridNode.shouldRender.value {
-                grid.addChildNode(gridNode.groundNode.value)
+                grid.addChildNode(gridNode.platformNode.value)
+                grid.addChildNode(gridNode.obstacleNode.value)
             }
             
             gridNode.shouldRender.asObservable()
-                .subscribe(onNext: {
-                    (render) in
-                    if render {
-                        self.grid.addChildNode(gridNode.groundNode.value)
-                    } else {
-                        gridNode.groundNode.value.removeFromParentNode()
-                    }
-                }).addDisposableTo(disposeBag)
+            .subscribe(onNext: {
+                (render) in
+                if render {
+                    self.grid.addChildNode(gridNode.platformNode.value)
+                    self.grid.addChildNode(gridNode.obstacleNode.value)
+                } else {
+                    gridNode.platformNode.value.removeFromParentNode()
+                    gridNode.obstacleNode.value.removeFromParentNode()
+                }
+            }).addDisposableTo(disposeBag)
         }
     }
 }

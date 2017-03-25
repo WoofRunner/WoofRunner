@@ -14,8 +14,8 @@ class GridViewModel {
     
     var position = Variable<SCNVector3>(SCNVector3(0, 0, 0))
     var size = Variable<Float>(1.0)
-    var groundType = Variable<GroundType?>(nil)
-    var obstacleType = Variable<ObstacleType?>(nil)
+    var platformType = Variable<TileType>(.none)
+    var obstacleType = Variable<TileType>(.none)
     var shouldRender = Variable<Bool>(false)
     
     static var colors = [UIColor.blue, UIColor.red, UIColor.lightGray]
@@ -25,20 +25,26 @@ class GridViewModel {
         self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
     }
     
-    func setGround(_ ground: GroundType) {
-        // Add ground
-        self.groundType.value = ground
+    init (_ platform: Platform) {
+        self.position.value = platform.position
+        self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
+        setPlatform(platform.tileType)
+    }
+    
+    func setPlatform(_ platform: TileType) {
+        // Add Platform
+        self.platformType.value = platform
     }
     
     // Also removes obstacle
-    func removeGround() {
-        groundType.value = nil
-        obstacleType.value = nil
+    func removePlatform() {
+        platformType.value = .none
+        obstacleType.value = .none
     }
     
-    func setObstacle(_ obstacle: ObstacleType) {
-        guard let _ = groundType.value else {
-            debugPrint("Error: Adding obstacle to grid without ground")
+    func setObstacle(_ obstacle: TileType) {
+        guard platformType.value != TileType.none else {
+            debugPrint("Error: Adding obstacle to grid without platform")
             return
         }
         // Add Obstacle
@@ -46,29 +52,29 @@ class GridViewModel {
     }
     
     func removeObstacle() {
-        obstacleType.value = nil
+        obstacleType.value = .none
     }
 }
 
-class GroundStub {
+class PlatformStub {
     
     var position: SCNVector3
     var size: Float
-    var groundType: GroundType?
+    var platformType: TileType
     
-    init(position: SCNVector3, groundType: GroundType?) {
+    init(position: SCNVector3, platformType: TileType) {
         self.position = position
         self.size = Float(Tile.TILE_WIDTH)
-        self.groundType = groundType
+        self.platformType = platformType
     }
 }
 
 class ObstacleStub {
     
     var position: SCNVector3
-    var obstacleType: ObstacleType?
+    var obstacleType: TileType
     
-    init(position: SCNVector3, obstacleType: ObstacleType?) {
+    init(position: SCNVector3, obstacleType: TileType) {
         self.position = position
         self.obstacleType = obstacleType
     }
