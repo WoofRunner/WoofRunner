@@ -40,7 +40,10 @@ class LMListCollectionViewController: UIViewController {
 
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension LMListCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+    // MARK: - Overriden methods
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -52,6 +55,9 @@ extension LMListCollectionViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
+    // MARK: - Private methods
+
+    /// Get a single level card size
     private func calculateLevelCardSize() -> CGSize {
         let width = (view.frame.width - 40) / 2
         let height: CGFloat = 100.0
