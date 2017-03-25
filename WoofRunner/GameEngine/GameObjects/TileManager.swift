@@ -40,15 +40,16 @@ class TileManager: GameObject {
     var platformTail: Float = 0
     let TAIL_LENGTH: Float = 21
     
+    let PLATFORM_Z_OFFSET: Float = 3
+    
     var poolManager: PoolManager?
 
     override init() {
         super.init()
         poolManager = PoolManager(self)
         isTickEnabled = true
-        position = SCNVector3(x: position.x, y: position.y, z: position.z + 3)
+        position = SCNVector3(x: position.x, y: position.y, z: position.z + PLATFORM_Z_OFFSET)
         platformTail = position.z - TAIL_LENGTH
-        //spawnTiles()
     }
     
     convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
@@ -61,26 +62,25 @@ class TileManager: GameObject {
         let curTailIndex = tailIndex
         
         for row in curTailIndex..<ROW_COUNT {
-            let rowPosition = calculateIndexPosition(row, 0)
-            let worldRowPosition = convertPosition(rowPosition, to: nil)
-
-            if worldRowPosition.z < platformTail {
-                break
-            }
+            if !canSpawnRow(row) { break }
+            
             tailIndex += 1
             
             for col in 0..<COL_COUNT {
-                if platformData[row % platformData.count][col] == 1 {
-                    let platformTile = poolManager?.getTile(TileType.floor)
-                    platformTile!.position = calculateTilePosition(row, col)
-                }
-                
-                if obstacleData[row % obstacleData.count][col] == 1 {
-                    let obstacleTile = poolManager?.getTile(TileType.rock)
-                    obstacleTile!.position = calculateObstaclePosition(row, col)
-
-                }
+                handleTileSpawning(row: row, col: col)
             }
+        }
+    }
+    
+    private func handleTileSpawning(row: Int, col: Int) {
+        if platformData[row % platformData.count][col] == 1 {
+            let platformTile = poolManager?.getTile(TileType.floor)
+            platformTile?.position = calculateTilePosition(row, col)
+        }
+        
+        if obstacleData[row % obstacleData.count][col] == 1 {
+            let obstacleTile = poolManager?.getTile(TileType.rock)
+            obstacleTile?.position = calculateObstaclePosition(row, col)
         }
     }
     
@@ -96,6 +96,12 @@ class TileManager: GameObject {
     
     private func calculateIndexPosition(_ row: Int, _ col: Int) -> SCNVector3 {
         return SCNVector3(x: (Float)(col) * Float(Tile.TILE_WIDTH) - 2.0, y: 0, z: -(Float)(row) * Float(Tile.TILE_WIDTH))
+    }
+    
+    private func canSpawnRow(_ row: Int) -> Bool {
+        let rowPosition = calculateIndexPosition(row, 0)
+        let worldRowPosition = convertPosition(rowPosition, to: nil)
+        return worldRowPosition.z > platformTail
     }
     
     override func update(_ deltaTime: Float) {
