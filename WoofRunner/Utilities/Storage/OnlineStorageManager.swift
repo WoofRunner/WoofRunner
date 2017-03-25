@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 import BrightFutures
 import Result
@@ -61,6 +62,18 @@ public class OnlineStorageManager {
         }
     }
 
+    /// Authenticates with Firebase using Facebook token.
+    /// - Parameters:
+    ///     - token: Facebook token obtained from Facebook authentication
+    public func auth(token: String) {
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+
     /// Loads a game using its UUID.
     /// - Parameters:
     ///     - uuid: UUID of the game that is requested
@@ -79,7 +92,7 @@ public class OnlineStorageManager {
     /// Saves the game in Firebase database.
     /// - Parameters:
     ///     - game: game model object that extends Serializable
-    public func save(_ game: SaveableGame) {
+    public func save(_ game: UploadableGame) {
         ref.child(game.uuid).setValue(game.serialize())
     }
 

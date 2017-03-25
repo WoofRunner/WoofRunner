@@ -20,6 +20,9 @@ public class LoginViewController: UIViewController {
     private let MESSAGE_FB_LOGIN_CANCELLED = "Login cancelled"
     private let MESSAGE_FB_LOGIN_FAILED = "Login failed"
 
+    // MARK: - Private variables
+    private let osm = OnlineStorageManager.getInstance()
+
     // MARK: - IBOutlets
 
     // Text above Facebook Login Button
@@ -67,12 +70,7 @@ public class LoginViewController: UIViewController {
     /// - Parameters:
     ///     - token: Facebook token obtained from authentication
     private func authWithFirebase(token: String) {
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            }
-        }
+        osm.auth(token: token)
     }
 
 }
