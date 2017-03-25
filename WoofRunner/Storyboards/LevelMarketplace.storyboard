@@ -134,13 +134,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITZ-8h-tl2">
-                                <rect key="frame" x="471" y="30" width="83" height="38.5"/>
+                                <rect key="frame" x="471" y="30" width="83" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vas-iU-AXi">
-                                <rect key="frame" x="0.0" y="88.5" width="1024" height="1277.5"/>
+                                <rect key="frame" x="0.0" y="90" width="1024" height="1276"/>
                                 <connections>
                                     <segue destination="jC7-Um-Iho" kind="embed" id="5vy-FN-gP7"/>
                                 </connections>
@@ -164,12 +164,12 @@
             </objects>
             <point key="canvasLocation" x="1777.7343749999998" y="150.65885797950219"/>
         </scene>
-        <!--View Controller-->
+        <!--Level Marketplace List Collection View Controller-->
         <scene sceneID="Qk3-d5-cMf">
             <objects>
-                <viewController id="jC7-Um-Iho" sceneMemberID="viewController">
+                <viewController id="jC7-Um-Iho" customClass="LevelMarketplaceListCollectionViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Xoi-4S-Qrb">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1277.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1276"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JEz-TO-gBX">
@@ -179,7 +179,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OCs-W3-1uL">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="OCs-W3-1uL">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
