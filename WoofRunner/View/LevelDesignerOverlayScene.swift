@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-
+/*
 struct OverlayConstants {
 	static let numberOfPaletteButtons = CGFloat(3)
 	static let paletteButtonSize = CGFloat(60)
@@ -28,7 +28,7 @@ struct OverlayConstants {
 	static let paletteButtonX0 = paletteOriginX + paletteWidth/2 // y-coord for the topmost palette button
 	static let paletteButtonY0 = (paletteOriginY + paletteHeight) - (paletteButtonSize/2 + paletteButtonMargin) // x-coord for the topmost palette button
 }
-
+*/
 
 
 class LevelDesignerOverlayScene: SKScene {
