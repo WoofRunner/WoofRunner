@@ -19,7 +19,7 @@ class LevelMarketplaceListCollectionViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     /// Game names stubbed
-    private let games = Observable.just(["a", "b", "c"])
+    public var games: Variable<[String]>!
 
     // MARK: - Lifecycle methods
 
@@ -29,7 +29,8 @@ class LevelMarketplaceListCollectionViewController: UIViewController {
     }
 
     private func setupCellConfiguration() {
-        games.bindTo(collectionView.rx
+        games.asObservable()
+            .bindTo(collectionView.rx
             .items(cellIdentifier: reuseIdentifier,
                    cellType: LevelMarketplaceCardViewCell.self)) { row, game, cell in
                     cell.name = game

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -140,20 +141,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vas-iU-AXi">
-                                <rect key="frame" x="0.0" y="90" width="1024" height="1276"/>
+                                <rect key="frame" x="0.0" y="89" width="1024" height="1277"/>
                                 <connections>
                                     <segue destination="jC7-Um-Iho" kind="embed" id="5vy-FN-gP7"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVb-m0-Ydw">
+                                <rect key="frame" x="912" y="30" width="72" height="30"/>
+                                <state key="normal" title="Add Game"/>
+                                <connections>
+                                    <action selector="addGame:" destination="cfW-Iz-XGc" eventType="touchUpInside" id="yni-km-qhS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vas-iU-AXi" firstAttribute="top" secondItem="ITZ-8h-tl2" secondAttribute="bottom" constant="20" id="FCD-J3-9Xt"/>
                             <constraint firstItem="ITZ-8h-tl2" firstAttribute="centerX" secondItem="hLB-f4-TU5" secondAttribute="centerX" id="PVX-mt-oGv"/>
+                            <constraint firstItem="vVb-m0-Ydw" firstAttribute="top" secondItem="LyJ-Hq-vzb" secondAttribute="bottom" constant="10" id="inB-b3-Xs4"/>
                             <constraint firstAttribute="bottom" secondItem="Vas-iU-AXi" secondAttribute="bottom" id="nP4-YM-d1n"/>
                             <constraint firstAttribute="trailing" secondItem="Vas-iU-AXi" secondAttribute="trailing" id="sAx-Ex-02L"/>
                             <constraint firstItem="ITZ-8h-tl2" firstAttribute="top" secondItem="LyJ-Hq-vzb" secondAttribute="bottom" constant="10" id="tRL-RR-3m0"/>
                             <constraint firstItem="Vas-iU-AXi" firstAttribute="leading" secondItem="hLB-f4-TU5" secondAttribute="leading" id="ukm-AF-Dlw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vVb-m0-Ydw" secondAttribute="trailing" constant="20" id="yHy-M6-dBc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -169,7 +179,7 @@
             <objects>
                 <viewController id="jC7-Um-Iho" customClass="LevelMarketplaceListCollectionViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Xoi-4S-Qrb">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1276"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1277"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JEz-TO-gBX">

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 public enum LevelListType {
     case Downloaded
@@ -15,13 +17,24 @@ public enum LevelListType {
 
 public class LevelMarketplaceListViewController: UIViewController {
 
+    // MARK: - Public variables
+
+    public var listType: LevelListType?
+
+    // MARK: - Private variables
+
+    private var games = Variable<[String]>(["a", "b", "c"])
+
     // MARK: - IBOutlets
 
     @IBOutlet var viewTitle: UILabel!
 
-    // MARK: - Public variables
+    // MARK: - IBActions
 
-    public var listType: LevelListType?
+    /// Stubbed action to test out RxSwift
+    @IBAction func addGame(_ sender: UIButton) {
+        games.value.append("z")
+    }
 
     // MARK: - Lifecyle methods
 
@@ -31,6 +44,12 @@ public class LevelMarketplaceListViewController: UIViewController {
             viewTitle.text = "Downloaded Levels"
         case .Created:
             viewTitle.text = "Created Levels"
+        }
+    }
+
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LevelMarketplaceListCollectionViewController {
+            destination.games = games
         }
     }
 
