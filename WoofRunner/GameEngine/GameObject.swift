@@ -45,6 +45,15 @@ class GameObject: SCNNode, GestureDelegate {
         return convertPosition(SCNVector3.zero(), to: nil)
         //return convertPosition(position, to: nil)
     }
+    
+    public func activate() {
+        isHidden = false
+    }
+    
+    public func deactivate() {
+        isHidden = true
+        position = SCNVector3(-100, 100, -100)
+    }
 }
 
 
