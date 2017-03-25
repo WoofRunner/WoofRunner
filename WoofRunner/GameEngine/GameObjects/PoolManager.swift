@@ -18,9 +18,6 @@ class PoolManager {
     
     let parentNode: GameObject
     
-    // deactivate collision
-    // extension poolable
-    
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
         for _ in 0..<NUM_OF_TILES {
@@ -36,14 +33,14 @@ class PoolManager {
             return newTile
         }
         
-        tile.isHidden = false
+        
+        tile.activate()
         inUseTiles.append(tile)
         return tile
     }
 
     public func poolTile(_ tile: Tile) {
-        tile.isHidden = true
-        tile.position = SCNVector3(-100, 100, -100)
+        tile.deactivate()
         inUseTiles.remove(object: tile)
         availableTiles.append(tile)
     }
@@ -59,7 +56,7 @@ class PoolManager {
     }
     
     private func createNewTile(_ tileType: TileType) -> Tile {
-        let tile = Ground()
+        let tile = Platform()
         World.spawnGameObject(tile, parentNode)
         tile.delegate = self
         return tile
