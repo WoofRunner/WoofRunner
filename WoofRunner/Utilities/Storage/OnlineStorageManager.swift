@@ -89,11 +89,24 @@ public class OnlineStorageManager {
         }
     }
 
+    /// Loads all game from Firebase database.
+    public func loadAll() -> Future<NSDictionary?, OnlineStorageManagerError> {
+        return Future { complete in
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                let value = snapshot.value
+                complete(.success(value as? NSDictionary))
+            }) { error in
+                complete(.failure(OnlineStorageManagerError.FetchError))
+            }
+        }
+    }
+
     /// Saves the game in Firebase database.
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: UploadableGame) {
-        ref.child(game.uuid).setValue(game.toJSONString(prettyPrint: true))
+        let json = try? JSONSerialization.jsonObject(with: (game.toJSONString()?.data(using: .utf8))!, options: [])
+        ref.child(game.uuid!).setValue(json)
     }
 
     /// Clears all game data in online storage manager
