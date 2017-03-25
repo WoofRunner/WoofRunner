@@ -9,12 +9,6 @@
 import Foundation
 import SceneKit
 
-enum ObstacleType {
-    case jump
-    case rock
-    case sword
-}
-
 class Obstacle: GameObject {
     
     init(_ pos: SCNVector3) {

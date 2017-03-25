@@ -21,7 +21,7 @@ class PoolManager {
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
         for _ in 0..<NUM_OF_TILES {
-            let tile = createNewTile(TileType.ground)
+            let tile = createNewTile(TileType.floor)
             poolTile(tile)
         }
     }
