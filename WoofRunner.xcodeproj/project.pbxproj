@@ -12,6 +12,7 @@
 		120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */; };
 		121387C01E85FCBD00F0861B /* UploadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121387BF1E85FCBD00F0861B /* UploadableGame.swift */; };
 		121387C41E8628D900F0861B /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121387C31E8628D900F0861B /* SaveablePlatform.swift */; };
+		121A44EB1E864AF900F3EAA8 /* LevelMarketplaceHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LevelMarketplaceHomeViewController.swift */; };
 		12610C7B1E7ECAF3006162BF /* SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12610C7A1E7ECAF3006162BF /* SaveableGame.swift */; };
 		12610C7D1E7ECE1C006162BF /* SaveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12610C7C1E7ECE1C006162BF /* SaveableObstacle.swift */; };
 		12610C7F1E7EDBC0006162BF /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12610C7E1E7EDBC0006162BF /* Position.swift */; };
@@ -90,6 +91,7 @@
 		120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		121387BF1E85FCBD00F0861B /* UploadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadableGame.swift; sourceTree = "<group>"; };
 		121387C31E8628D900F0861B /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
+		121A44EA1E864AF900F3EAA8 /* LevelMarketplaceHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMarketplaceHomeViewController.swift; sourceTree = "<group>"; };
 		12610C7A1E7ECAF3006162BF /* SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableGame.swift; sourceTree = "<group>"; };
 		12610C7C1E7ECE1C006162BF /* SaveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableObstacle.swift; sourceTree = "<group>"; };
 		12610C7E1E7EDBC0006162BF /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */,
 				3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */,
 				3FCC899A1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift */,
+				121A44EA1E864AF900F3EAA8 /* LevelMarketplaceHomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
 				12610C7F1E7EDBC0006162BF /* Position.swift in Sources */,
 				120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */,
+				121A44EB1E864AF900F3EAA8 /* LevelMarketplaceHomeViewController.swift in Sources */,
 				12610C7B1E7ECAF3006162BF /* SaveableGame.swift in Sources */,
 				12610C7D1E7ECE1C006162BF /* SaveableObstacle.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
@@ -717,7 +721,6 @@
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
 				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
-				F33442CB1E815BFE001C1D8D /* Platform.swift in Sources */,
 				12882B891E857059004C3B76 /* LoginViewController.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,

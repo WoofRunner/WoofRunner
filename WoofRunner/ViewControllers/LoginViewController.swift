@@ -45,8 +45,18 @@ public class LoginViewController: UIViewController {
 
                 self.loginSuccess(fbuid: accessToken.userId!)
                 self.authWithFirebase(token: accessToken.userId!)
+                self.performSegue(withIdentifier: "segueToMarketplace", sender: nil)
             }
         }
+    }
+
+    // MARK: - Override methods
+    public override func viewDidLoad() {
+        guard let _ = AccessToken.current else {
+            return
+        }
+
+        performSegue(withIdentifier: "segueToMarketplace", sender: nil)
     }
 
     // MARK: - Private methods

@@ -53,11 +53,42 @@
                     </view>
                     <connections>
                         <outlet property="loginPrompt" destination="F5F-TJ-JcR" id="Wh4-wj-r0M"/>
+                        <segue destination="tdJ-zR-Q21" kind="show" identifier="segueToMarketplace" animates="NO" id="zzk-5y-iY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qs-yx-dew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="109.5703125" y="147.58418740849194"/>
+        </scene>
+        <!--Level Marketplace Home View Controller-->
+        <scene sceneID="F5f-CP-fEc">
+            <objects>
+                <viewController id="tdJ-zR-Q21" customClass="LevelMarketplaceHomeViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KeS-ql-d5G"/>
+                        <viewControllerLayoutGuide type="bottom" id="y8A-dS-2n4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lpb-qU-kRV">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marketplace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-u4-owz">
+                                <rect key="frame" x="464.5" y="673" width="95" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Gd-u4-owz" firstAttribute="centerX" secondItem="lpb-qU-kRV" secondAttribute="centerX" id="FVz-xs-hKN"/>
+                            <constraint firstItem="3Gd-u4-owz" firstAttribute="centerY" secondItem="lpb-qU-kRV" secondAttribute="centerY" id="qnp-gE-Qw8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q6k-qC-jbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934.57031249999989" y="152.8550512445095"/>
         </scene>
     </scenes>
 </document>
