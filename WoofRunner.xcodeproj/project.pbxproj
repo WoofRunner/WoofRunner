@@ -27,6 +27,7 @@
 		12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF5ABD1E75904E00823568 /* SaveableStub.swift */; };
 		12DA42061E86627700C23137 /* LevelMarketplaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42051E86627700C23137 /* LevelMarketplaceListViewController.swift */; };
 		12DA42081E8666B600C23137 /* LevelMarketplaceListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42071E8666B600C23137 /* LevelMarketplaceListCollectionViewController.swift */; };
+		12DA420A1E86699200C23137 /* LevelMarketplaceCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LevelMarketplaceCardViewCell.swift */; };
 		12EE38C01E78E99F00D81378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */; };
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
@@ -114,6 +115,7 @@
 		12BF5ABD1E75904E00823568 /* SaveableStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableStub.swift; sourceTree = "<group>"; };
 		12DA42051E86627700C23137 /* LevelMarketplaceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMarketplaceListViewController.swift; sourceTree = "<group>"; };
 		12DA42071E8666B600C23137 /* LevelMarketplaceListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMarketplaceListCollectionViewController.swift; sourceTree = "<group>"; };
+		12DA42091E86699200C23137 /* LevelMarketplaceCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMarketplaceCardViewCell.swift; sourceTree = "<group>"; };
 		12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManager.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */,
+				12DA42091E86699200C23137 /* LevelMarketplaceCardViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				121387C01E85FCBD00F0861B /* UploadableGame.swift in Sources */,
 				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
+				12DA420A1E86699200C23137 /* LevelMarketplaceCardViewCell.swift in Sources */,
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
