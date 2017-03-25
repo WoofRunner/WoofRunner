@@ -15,6 +15,10 @@
 		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
+		3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */; };
+		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
+		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
+		3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */; };
 		3FAE2D341E7280EE00D65B84 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D331E7280EE00D65B84 /* Menu.storyboard */; };
 		3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */; };
 		3FAE2D381E7281CE00D65B84 /* LevelDesigner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */; };
@@ -29,7 +33,7 @@
 		3FCC89A71E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */; };
 		3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */; };
 		3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */; };
-		3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */; };
+		3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */; };
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
 		4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
@@ -86,6 +90,10 @@
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
+		3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentalSceneView.swift; sourceTree = "<group>"; };
+		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
+		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
+		3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteMenu.swift; sourceTree = "<group>"; };
 		3FAE2D331E7280EE00D65B84 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelSelector.storyboard; sourceTree = "<group>"; };
 		3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesigner.storyboard; sourceTree = "<group>"; };
@@ -101,7 +109,7 @@
 		3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerButtonSpriteNode.swift; sourceTree = "<group>"; };
 		3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonActions.swift; sourceTree = "<group>"; };
 		3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeNodes.swift; sourceTree = "<group>"; };
-		3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerPaletteFunctionType.swift; sourceTree = "<group>"; };
+		3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteFunctionType.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerSceneView.swift; sourceTree = "<group>"; };
 		68008DF9BFF1CC4DD865893A /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,13 +188,16 @@
 			isa = PBXGroup;
 			children = (
 				3FCC899C1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift */,
+				3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */,
 				3FCC899E1E7AD846005A7C03 /* ExperimentalMainScene.swift */,
 				3FCC89A21E7EB8C6005A7C03 /* RootSKSpriteNode.swift */,
 				3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */,
 				3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */,
-				3FCC89B61E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift */,
+				3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */,
+				3F7348B51E86D0D800EB1264 /* PaletteButton.swift */,
+				3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 		126F50FE1E727355000877F1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -643,6 +655,7 @@
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
 				F30ABE031E82BDB300BD1D02 /* Ground.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
+				3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
 				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
@@ -655,12 +668,15 @@
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
-				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
+				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+				3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */,
+				3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */,
 				F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */,
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
+				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

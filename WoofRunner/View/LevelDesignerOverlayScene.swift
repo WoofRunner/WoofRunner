@@ -230,11 +230,16 @@ class LevelDesignerOverlayScene: SKScene {
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
 		
+		/*
+		let hitResults = self.view?.hitTest(location!, with: event)
+		hitResults?.next?.touchesBegan(touches, with: event)
+		*/
+		
 		let pressAction = ButtonActions.getButtonPressAction()
 		
 		for button in paletteButtonArr {
 			if button.contains(location!) {
-				print("button touched!")
+				print("Touch Begin on Button!")
 				currentPressedButton = button
 				break
 			}
@@ -242,9 +247,12 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
-			print("Touch Begin on palette button")
-			selectedButton.run(pressAction)
+			print("PaletteButton begins pressed action")
+			selectedButton.run(pressAction, completion: {
+				print("Action completed!")
+			})
 		}
+		
 	}
 	
 
@@ -263,6 +271,10 @@ class LevelDesignerOverlayScene: SKScene {
 			selectedButton.run(releaseAction)
 			currentPressedButton = nil
 		}
+	}
+	
+	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		print("Touch cancelled")
 	}
 	
 	// Handle touch events of the scene

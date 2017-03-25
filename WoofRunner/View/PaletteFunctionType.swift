@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum LevelDesignerPaletteFunctionType {
+enum PaletteFunctionType {
 	case platform, obstacle, delete
 }

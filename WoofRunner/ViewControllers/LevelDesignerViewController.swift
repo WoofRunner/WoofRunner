@@ -12,11 +12,45 @@ import SceneKit
 
 class LevelDesignerViewController: UIViewController {
     
-    @IBOutlet weak var levelDesignerSceneView: LevelDesignerSceneView!
+    @IBOutlet weak var levelDesignerSceneView: LevelDesignerSceneView?
 	//var sceneView: LevelDesignerSceneView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		let scnv = LevelDesignerSceneView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+		
+		levelDesignerSceneView = scnv
+		
+		self.view.addSubview(scnv)
+		
+		scnv.setupScene()
+		print(scnv.frame.width, scnv.frame.height);
+		print(self.view.frame.width, self.view.frame.height)
+		
+		scnv.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+		
+		print(scnv.frame.width, scnv.frame.height);
+		
+		// Create sample level
+		let sampleLevel = LevelGridStub(length: 50)
+		
+		// Load level
+		scnv.loadLevel(sampleLevel)
+		
+		
+		// Create and attach main Scenekit Scene
+		//sceneView.setupScene()
+		
+		//sceneView.loadLevel(sampleLevel)
+		//self.mainSceneView.scene = ExperimentalMainScene()
+		self.view.addSubview(scnv)
+		
+		// Attached overlay
+		let spriteScene = LevelDesignerOverlayScene(size: self.view.bounds.size)
+		scnv.overlaySKScene = spriteScene
+		
+		/*
         levelDesignerSceneView.setupScene()
 		print(levelDesignerSceneView.frame.width, levelDesignerSceneView.frame.height);
 		print(self.view.frame.width, self.view.frame.height)
@@ -31,7 +65,7 @@ class LevelDesignerViewController: UIViewController {
         // Load level
         levelDesignerSceneView.loadLevel(sampleLevel)
 		
-		
+	
 		// Create and attach main Scenekit Scene
 		//sceneView.setupScene()
 		
@@ -42,7 +76,7 @@ class LevelDesignerViewController: UIViewController {
 		// Attached overlay
 		let spriteScene = LevelDesignerOverlayScene(size: self.view.bounds.size)
 		levelDesignerSceneView.overlaySKScene = spriteScene
-
+		*/
     }
     
 //    func handleTap(_ gestureRecognize: UIGestureRecognizer) {

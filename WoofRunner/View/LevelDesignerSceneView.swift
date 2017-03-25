@@ -11,18 +11,36 @@ import SceneKit
 class LevelDesignerSceneView: SCNView {
 
     let chunkLength = 10
-    
+	
+	var cubeNode: SCNNode!
     var cameraNode: SCNNode?
     var cameraLocation: SCNVector3 = SCNVector3(0, 0, 0)
     var gridVMDict: Dictionary<Int, GridViewModelStub> = Dictionary<Int, GridViewModelStub>()
     var gridNodeDict: Dictionary<Int, SCNNode> = Dictionary<Int, SCNNode>()
     
     var currentLevelGrid: LevelGridStub?
-    
+	
+	override init(frame: CGRect, options: [String : Any]? = nil) {
+		super.init(frame: frame, options: options)
+		
+		let cube = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+		let cubeMaterial = SCNMaterial()
+		cubeMaterial.diffuse.contents = UIColor.blue
+		cube.materials = [cubeMaterial]
+		self.cubeNode = SCNNode(geometry: cube)
+		self.cubeNode.runAction((SCNAction.rotateBy(x: 0, y: 0.01, z: 0, duration: 1.0/60.0)))
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)!
+	}
+	
     func setupScene() {
         // create a sample scene
         let scene = SCNScene()
         self.scene = scene
+		
+		scene.rootNode.addChildNode(self.cubeNode)
         
         // Debug
 //        let boxGeometry = SCNBox(width: 2.0, height: 2.0, length: 2.0, chamferRadius: 0.0)
@@ -58,11 +76,11 @@ class LevelDesignerSceneView: SCNView {
         
         // add a pan gesture recognizer
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        self.addGestureRecognizer(panGesture)
+        //self.addGestureRecognizer(panGesture)
         
         // add a tap gesture
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        self.addGestureRecognizer(tapGesture)
+        //self.addGestureRecognizer(tapGesture)
     }
     
     func loadLevel(_ levelGrid: LevelGridStub) {
