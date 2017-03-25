@@ -37,6 +37,8 @@ public class LoginViewController: UIViewController {
     }
 
     /// Authenticates with Firebase
+    /// - Parameters:
+    ///     - token: Facebook token obtained from authentication
     private func authWithFirebase(token: String) {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
