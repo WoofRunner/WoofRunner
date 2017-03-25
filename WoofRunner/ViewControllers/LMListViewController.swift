@@ -23,7 +23,8 @@ public class LMListViewController: UIViewController {
 
     // MARK: - Private variables
 
-    private var games = Variable<[String]>([])
+    private var games = Variable<[SaveableGame]>([])
+    private var cdm = CoreDataManager.getInstance()
 
     // MARK: - IBOutlets
 
@@ -33,7 +34,12 @@ public class LMListViewController: UIViewController {
 
     /// Stubbed action to test out RxSwift
     @IBAction func addGame(_ sender: UIButton) {
-        games.value.append("z")
+        // Saves a new game to CoreData
+        let stub = SaveableStub(uuid: UUID.init().uuidString)
+        cdm.save(stub)
+            .onSuccess { _ in
+                self.games.value.append(stub)
+            }
     }
 
     // MARK: - Lifecyle methods
@@ -45,6 +51,7 @@ public class LMListViewController: UIViewController {
         case .Created:
             viewTitle.text = "Created Levels"
         }
+
         loadGames()
     }
 
@@ -67,17 +74,32 @@ public class LMListViewController: UIViewController {
     }
 
     /// Loads all downloaded games
-    private func loadDownloadedGames() {
-        games.value.append("a")
-        games.value.append("b")
-        games.value.append("c")
-    }
+    private func loadDownloadedGames() {}
 
     /// Loads all created games
     private func loadCreatedGames() {
-        games.value.append("1")
-        games.value.append("2")
-        games.value.append("3")
+        cdm.loadAll().onSuccess { games in
+            self.games.value = games.map { SaveableStub(uuid: $0.uuid!) }
+        }
     }
 
+}
+
+/**
+ For testing purposes
+ */
+private struct SaveableStub: SaveableGame {
+    public var uuid: String
+    public var obstacles: [SaveableObstacle]
+    public var platforms: [SaveablePlatform]
+    public var createdAt: Date
+    public var updatedAt: Date
+
+    public init(uuid: String) {
+        self.uuid = uuid
+        self.obstacles = []
+        self.platforms = []
+        self.createdAt = Date()
+        self.updatedAt = Date()
+    }
 }

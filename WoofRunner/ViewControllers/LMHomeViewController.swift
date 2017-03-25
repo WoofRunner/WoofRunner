@@ -14,7 +14,7 @@ public class LMHomeViewController: UIViewController {
 
     // MARK: - Private variables
 
-    private var games = Variable<[String]>([])
+    private var games = Variable<[SaveableGame]>([])
 
     // MARK: - IBActions
 
@@ -49,8 +49,6 @@ public class LMHomeViewController: UIViewController {
     }
 
     /// Loads all games that user have yet to download
-    private func loadGames() {
-        games.value = ["12", "34", "56"]
-    }
+    private func loadGames() {}
 
 }

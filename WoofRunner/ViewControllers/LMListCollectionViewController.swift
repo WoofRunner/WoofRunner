@@ -19,7 +19,7 @@ class LMListCollectionViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     /// Game names stubbed
-    public var games: Variable<[String]>?
+    public var games: Variable<[SaveableGame]>?
 
     // MARK: - Lifecycle methods
 
@@ -33,7 +33,7 @@ class LMListCollectionViewController: UIViewController {
             .bindTo(levelList.rx
             .items(cellIdentifier: reuseIdentifier,
                    cellType: LMCardViewCell.self)) { row, game, cell in
-                    cell.name = game
+                    cell.name = game.uuid
         }
         .addDisposableTo(disposeBag)
     }
