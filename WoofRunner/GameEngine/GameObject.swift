@@ -14,6 +14,8 @@ class GameObject: SCNNode, GestureDelegate {
     var isWaitingToBeDestroyed: Bool = false
     var isTickEnabled: Bool = false
     
+    let FAR_AWAY_POSITION = SCNVector3(-100, -100, -100)
+    
     override init() {
         super.init()
     }
@@ -44,6 +46,15 @@ class GameObject: SCNNode, GestureDelegate {
     var worldPosition: SCNVector3 {
         return convertPosition(SCNVector3.zero(), to: nil)
         //return convertPosition(position, to: nil)
+    }
+    
+    public func activate() {
+        isHidden = false
+    }
+    
+    public func deactivate() {
+        isHidden = true
+        position = FAR_AWAY_POSITION
     }
 }
 

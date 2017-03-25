@@ -11,39 +11,41 @@ import SceneKit
 
 class PoolManager {
 
-    let NUM_OF_TILES = 70
+    let NUM_OF_PLATFORM = 70
+    let NUM_OF_ROCK = 5
     
     var availableTiles: [Tile] = []
     var inUseTiles: [Tile] = []
     
     let parentNode: GameObject
     
-    // deactivate collision
-    // extension poolable
-    
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
-        for _ in 0..<NUM_OF_TILES {
-            let tile = createNewTile(TileType.ground)
+        for _ in 0..<NUM_OF_PLATFORM {
+            guard let tile = createNewTile(TileType.floor) else { continue }
+            poolTile(tile)
+        }
+        
+        for _ in 0..<NUM_OF_ROCK {
+            guard let tile = createNewTile(TileType.rock) else { continue }
             poolTile(tile)
         }
     }
 
-    public func getTile(_ tileType: TileType) -> Tile {
+    public func getTile(_ tileType: TileType) -> Tile? {
         guard let tile = findAvailableTile(tileType) else {
-            let newTile = createNewTile(tileType)
+            guard let newTile = createNewTile(tileType) else { return nil }
             inUseTiles.append(newTile)
             return newTile
         }
         
-        tile.isHidden = false
+        tile.activate()
         inUseTiles.append(tile)
         return tile
     }
 
     public func poolTile(_ tile: Tile) {
-        tile.isHidden = true
-        tile.position = SCNVector3(-100, 100, -100)
+        tile.deactivate()
         inUseTiles.remove(object: tile)
         availableTiles.append(tile)
     }
@@ -58,8 +60,20 @@ class PoolManager {
         return nil
     }
     
-    private func createNewTile(_ tileType: TileType) -> Tile {
-        let tile = Ground()
+    private func createNewTile(_ tileType: TileType) -> Tile? {
+        let tile: Tile
+        
+        switch tileType {
+        case .floor:
+            tile = Platform()
+            
+        case.rock:
+            tile = Obstacle()
+            
+        default:
+            return nil
+        }
+        
         World.spawnGameObject(tile, parentNode)
         tile.delegate = self
         return tile

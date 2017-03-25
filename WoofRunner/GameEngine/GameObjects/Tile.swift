@@ -10,8 +10,14 @@ import Foundation
 import SceneKit
 
 enum TileType {
-    case ground
-    case obstacle
+    case jump
+    case rock
+    case sword
+    
+    case floor
+    case grass
+    
+    case none
 }
 
 class Tile: GameObject {
@@ -19,7 +25,9 @@ class Tile: GameObject {
     
     var delegate: PoolManager?
     
-    var tileType: TileType = TileType.ground
+    var tileType: TileType = TileType.none
+    
+    var autoDestroyPositionZ: Float = 4
     
     init(_ pos: SCNVector3) {
         super.init()
@@ -32,8 +40,7 @@ class Tile: GameObject {
     }
 
     override func update(_ deltaTime: Float) {
-        if worldPosition.z > 2 {
-            //destroy()
+        if worldPosition.z > autoDestroyPositionZ {
             delegate?.poolTile(self)
         }
     }
