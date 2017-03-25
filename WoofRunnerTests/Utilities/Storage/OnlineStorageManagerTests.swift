@@ -18,24 +18,6 @@ class OnlineStorageManagerTests: XCTestCase {
         osm.clear()
     }
 
-    func testUploadGame() {
-        let stub = SaveableStub(uuid: "123")
-        osm.save(stub)
-
-        let expect = expectation(description: "Correct game should be loaded from Firebase")
-        osm.load("123")
-            .onSuccess { loadedGame in
-                XCTAssertEqual(loadedGame?["details"] as? String, "dummy detail",
-                               "Content of object should be the same")
-                expect.fulfill()
-            }
-            .onFailure { error in
-                XCTFail("Failure block should not be called")
-        }
-
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-
     func testLoadGame() {
         let expect = expectation(description: "No games should be loaded when Firebase is empty")
         osm.load("123")

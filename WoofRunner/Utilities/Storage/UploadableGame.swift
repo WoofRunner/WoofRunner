@@ -6,6 +6,8 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-public protocol UploadableGame: SaveableGame {
-    var ownerID: String { get }
+import ObjectMapper
+
+public protocol UploadableGame: SaveableGame, Mappable {
+    var ownerID: String { get set }
 }

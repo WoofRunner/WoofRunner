@@ -6,10 +6,16 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+import Foundation
+import ObjectMapper
+
 /**
  Classes/structs that implements this are saveable in either CoreData or OnlineStorage.
  */
-public protocol SaveableGame: Serializable {
-    var uuid: String { get }
-    var obstacles: [SaveableObstacle] { get }
+public protocol SaveableGame {
+    var uuid: String { get set }
+    var obstacles: [SaveableObstacle] { get set }
+    var platforms: [SaveablePlatform] { get set }
+    var createdAt: Date { get set }
+    var updatedAt: Date { get set }
 }

@@ -6,40 +6,47 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+import ObjectMapper
 @testable import WoofRunner
 
 /**
  Stub object for Saveable
  */
-public class SaveableStub {
+public class SaveableStub: SaveableGame {
 
-    public private(set) var uuid: String
+    public var uuid: String
+    public var ownerID: String
+    public var obstacles: [SaveableObstacle]
+    public var platforms: [SaveablePlatform]
+    public var createdAt: Date
+    public var updatedAt: Date
 
+    public required convenience init?(map: Map) {
+        let uuid: String = try! map.value("uuid")
+        self.init(uuid: uuid)
+    }
 
-    init(uuid: String) {
+    public init(uuid: String) {
         self.uuid = uuid
+        self.createdAt = Date()
+        self.updatedAt = Date()
+
+        self.ownerID = "123"
+        self.obstacles = []
+        self.platforms = []
     }
 
-}
-
-extension SaveableStub: SaveableGame {
-    public var obstacles: [SaveableObstacle] {
-        get {
-            return []
-        }
-    }
-
-    public func serialize() -> Dictionary<String, Any> {
-        return [
-            "details": "dummy detail"
-        ]
-    }
 }
 
 extension SaveableStub: UploadableGame {
-    public var ownerID: String {
-        get {
-            return "owner123"
-        }
+
+    public func mapping(map: Map) {
+        uuid <- map["uuid"]
+        ownerID <- map["ownerID"]
+        createdAt <- (map["createdAt"], DateTransform())
+        updatedAt <- (map["updatedAt"], DateTransform())
+        obstacles <- map["obstacles"]
+        platforms <- map["platforms"]
     }
+
 }

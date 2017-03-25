@@ -10,6 +10,6 @@
  Indicates a position on our game grid
  */
 public struct Position {
-    private let row: Int;
-    private let col: Int;
+    public let row: Int;
+    public let col: Int;
 }
