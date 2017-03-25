@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class LMListCollectionViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var levelList: UICollectionView!
 
     // MARK: - Private variables
 
@@ -30,12 +30,33 @@ class LMListCollectionViewController: UIViewController {
 
     private func setupCellConfiguration() {
         games?.asObservable()
-            .bindTo(collectionView.rx
+            .bindTo(levelList.rx
             .items(cellIdentifier: reuseIdentifier,
                    cellType: LMCardViewCell.self)) { row, game, cell in
                     cell.name = game
         }
         .addDisposableTo(disposeBag)
+    }
+
+}
+
+extension LMListCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return calculateLevelCardSize()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
+    private func calculateLevelCardSize() -> CGSize {
+        let width = (view.frame.width - 40) / 2
+        let height: CGFloat = 100.0
+
+        return CGSize(width: width, height: height)
     }
 
 }
