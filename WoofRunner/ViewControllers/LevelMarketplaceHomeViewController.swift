@@ -20,6 +20,8 @@ class LevelMarketplaceHomeViewController: UIViewController {
         performSegue(withIdentifier: "segueToLevelList", sender: LevelListType.Created)
     }
 
+    @IBAction func unwindToLevelMarketplaceHome(segue: UIStoryboardSegue) {}
+
     // MARK: - Lifecycle methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -153,16 +153,25 @@
                                     <action selector="addGame:" destination="cfW-Iz-XGc" eventType="touchUpInside" id="yni-km-qhS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0j2-un-aaj">
+                                <rect key="frame" x="40" y="30" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="K1R-Xh-NRW" kind="unwind" unwindAction="unwindToLevelMarketplaceHomeWithSegue:" id="EaP-Ri-NnG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vas-iU-AXi" firstAttribute="top" secondItem="ITZ-8h-tl2" secondAttribute="bottom" constant="20" id="FCD-J3-9Xt"/>
                             <constraint firstItem="ITZ-8h-tl2" firstAttribute="centerX" secondItem="hLB-f4-TU5" secondAttribute="centerX" id="PVX-mt-oGv"/>
+                            <constraint firstItem="0j2-un-aaj" firstAttribute="leading" secondItem="hLB-f4-TU5" secondAttribute="leadingMargin" constant="20" id="bGe-b6-xU0"/>
                             <constraint firstItem="vVb-m0-Ydw" firstAttribute="top" secondItem="LyJ-Hq-vzb" secondAttribute="bottom" constant="10" id="inB-b3-Xs4"/>
                             <constraint firstAttribute="bottom" secondItem="Vas-iU-AXi" secondAttribute="bottom" id="nP4-YM-d1n"/>
                             <constraint firstAttribute="trailing" secondItem="Vas-iU-AXi" secondAttribute="trailing" id="sAx-Ex-02L"/>
                             <constraint firstItem="ITZ-8h-tl2" firstAttribute="top" secondItem="LyJ-Hq-vzb" secondAttribute="bottom" constant="10" id="tRL-RR-3m0"/>
                             <constraint firstItem="Vas-iU-AXi" firstAttribute="leading" secondItem="hLB-f4-TU5" secondAttribute="leading" id="ukm-AF-Dlw"/>
+                            <constraint firstItem="0j2-un-aaj" firstAttribute="top" secondItem="LyJ-Hq-vzb" secondAttribute="bottom" constant="10" id="wMt-ZM-wkP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vVb-m0-Ydw" secondAttribute="trailing" constant="20" id="yHy-M6-dBc"/>
                         </constraints>
                     </view>
@@ -171,6 +180,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OU0-TL-YvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="K1R-Xh-NRW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1777.7343749999998" y="150.65885797950219"/>
         </scene>
