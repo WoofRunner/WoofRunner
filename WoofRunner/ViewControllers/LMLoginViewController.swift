@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LMLoginViewController.swift
 //  WoofRunner
 //
 //  Created by Xu Bili on 3/24/17.
@@ -14,7 +14,7 @@ import FacebookLogin
 /**
  View controller for Facebook Login view to access the Online Level Marketplace.
  */
-public class LoginViewController: UIViewController {
+public class LMLoginViewController: UIViewController {
 
     // MARK: - Private constants
     private let MESSAGE_FB_LOGIN_CANCELLED = "Login cancelled"

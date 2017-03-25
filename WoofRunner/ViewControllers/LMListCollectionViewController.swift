@@ -1,5 +1,5 @@
 //
-//  LevelMarketplaceListCollectionViewController.swift
+//  LMListCollectionViewController.swift
 //  WoofRunner
 //
 //  Created by Xu Bili on 3/25/17.
@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class LevelMarketplaceListCollectionViewController: UIViewController {
+class LMListCollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: - Private variables
@@ -32,7 +32,7 @@ class LevelMarketplaceListCollectionViewController: UIViewController {
         games?.asObservable()
             .bindTo(collectionView.rx
             .items(cellIdentifier: reuseIdentifier,
-                   cellType: LevelMarketplaceCardViewCell.self)) { row, game, cell in
+                   cellType: LMCardViewCell.self)) { row, game, cell in
                     cell.name = game
         }
         .addDisposableTo(disposeBag)

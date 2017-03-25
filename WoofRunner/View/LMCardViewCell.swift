@@ -1,5 +1,5 @@
 //
-//  LevelMarketplaceCardViewCell.swift
+//  LMCardViewCell.swift
 //  WoofRunner
 //
 //  Created by Xu Bili on 3/25/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class LevelMarketplaceCardViewCell: UICollectionViewCell {
+public class LMCardViewCell: UICollectionViewCell {
 
     @IBOutlet var gameName: UILabel!
     public var name: String? {

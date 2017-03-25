@@ -1,5 +1,5 @@
 //
-//  LevelMarketplaceHomeViewController.swift
+//  LMHomeViewController.swift
 //  WoofRunner
 //
 //  Created by Xu Bili on 3/25/17.
@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-public class LevelMarketplaceHomeViewController: UIViewController {
+public class LMHomeViewController: UIViewController {
 
     // MARK: - Private variables
 
@@ -37,13 +37,13 @@ public class LevelMarketplaceHomeViewController: UIViewController {
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? LevelMarketplaceListViewController {
+        if let destination = segue.destination as? LMListViewController {
             let levelListType = sender as! LevelListType
             destination.listType = levelListType
         }
 
         // Embedded segues
-        if let destination = segue.destination as? LevelMarketplaceListCollectionViewController {
+        if let destination = segue.destination as? LMListCollectionViewController {
             destination.games = games
         }
     }

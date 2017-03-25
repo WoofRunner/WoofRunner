@@ -1,5 +1,5 @@
 //
-//  LevelMarketplaceListViewController.swift
+//  LMListViewController.swift
 //  WoofRunner
 //
 //  Created by Xu Bili on 3/25/17.
@@ -15,7 +15,7 @@ public enum LevelListType {
     case Created
 }
 
-public class LevelMarketplaceListViewController: UIViewController {
+public class LMListViewController: UIViewController {
 
     // MARK: - Public variables
 
@@ -50,7 +50,7 @@ public class LevelMarketplaceListViewController: UIViewController {
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // For embeded segue
-        if let destination = segue.destination as? LevelMarketplaceListCollectionViewController {
+        if let destination = segue.destination as? LMListCollectionViewController {
             destination.games = games
         }
     }
