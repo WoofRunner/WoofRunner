@@ -10,8 +10,14 @@ import Foundation
 import SceneKit
 
 enum TileType {
-    case ground
-    case obstacle
+    case jump
+    case rock
+    case sword
+    
+    case floor
+    case grass
+    
+    case none
 }
 
 class Tile: GameObject {
@@ -19,7 +25,7 @@ class Tile: GameObject {
     
     var delegate: PoolManager?
     
-    var tileType: TileType = TileType.ground
+    var tileType: TileType = TileType.none
     
     init(_ pos: SCNVector3) {
         super.init()

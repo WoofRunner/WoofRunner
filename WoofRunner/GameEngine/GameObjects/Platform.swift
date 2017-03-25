@@ -9,17 +9,12 @@
 import Foundation
 import SceneKit
 
-enum PlatformType {
-    case soil
-    case grass
-}
-
 class Platform : Tile {
 
     override init(_ pos: SCNVector3) {
         super.init(pos)
         geometry = SCNBox(width: Tile.TILE_WIDTH, height: Tile.TILE_WIDTH, length: Tile.TILE_WIDTH, chamferRadius: 0.05)
-        tileType = TileType.ground
+        tileType = TileType.floor
     }
     
     convenience init() {
