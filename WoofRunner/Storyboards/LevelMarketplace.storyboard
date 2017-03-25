@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-cG-dsx">
-                                <rect key="frame" x="87" y="633" width="350" height="100"/>
+                                <rect key="frame" x="137" y="633" width="350" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="KMQ-Ww-OTm"/>
@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-36-21e">
-                                <rect key="frame" x="587" y="633" width="350" height="100"/>
+                                <rect key="frame" x="537" y="633" width="350" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="TOx-2p-CLU"/>
@@ -106,8 +106,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zHh-36-21e" firstAttribute="centerY" secondItem="lpb-qU-kRV" secondAttribute="centerY" id="7yk-cm-7Bn"/>
-                            <constraint firstItem="TFQ-cG-dsx" firstAttribute="centerX" secondItem="lpb-qU-kRV" secondAttribute="centerX" constant="-250" id="PxL-Sf-fNI"/>
-                            <constraint firstItem="zHh-36-21e" firstAttribute="centerX" secondItem="lpb-qU-kRV" secondAttribute="centerX" constant="250" id="bQt-zB-Rof"/>
+                            <constraint firstItem="TFQ-cG-dsx" firstAttribute="centerX" secondItem="lpb-qU-kRV" secondAttribute="centerX" constant="-200" id="PxL-Sf-fNI"/>
+                            <constraint firstItem="zHh-36-21e" firstAttribute="centerX" secondItem="lpb-qU-kRV" secondAttribute="centerX" constant="200" id="bQt-zB-Rof"/>
                             <constraint firstItem="zHh-36-21e" firstAttribute="height" secondItem="TFQ-cG-dsx" secondAttribute="height" id="hfi-JB-aFM"/>
                             <constraint firstItem="TFQ-cG-dsx" firstAttribute="centerY" secondItem="lpb-qU-kRV" secondAttribute="centerY" id="ofN-rJ-Pf6"/>
                             <constraint firstItem="zHh-36-21e" firstAttribute="width" secondItem="TFQ-cG-dsx" secondAttribute="width" id="qak-VY-QNY"/>
@@ -134,16 +134,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITZ-8h-tl2">
-                                <rect key="frame" x="491" y="672.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="471" y="30" width="83" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ITZ-8h-tl2" firstAttribute="centerY" secondItem="hLB-f4-TU5" secondAttribute="centerY" id="3VM-WG-xMk"/>
                             <constraint firstItem="ITZ-8h-tl2" firstAttribute="centerX" secondItem="hLB-f4-TU5" secondAttribute="centerX" id="PVX-mt-oGv"/>
+                            <constraint firstItem="ITZ-8h-tl2" firstAttribute="top" secondItem="LyJ-Hq-vzb" secondAttribute="bottom" constant="10" id="tRL-RR-3m0"/>
                         </constraints>
                     </view>
                     <connections>
