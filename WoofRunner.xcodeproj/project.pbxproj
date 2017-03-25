@@ -24,6 +24,7 @@
 		3F7348C21E86F76E00EB1264 /* RootSKLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C11E86F76E00EB1264 /* RootSKLabelNode.swift */; };
 		3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C31E86F89F00EB1264 /* OverlayButtonSet.swift */; };
 		3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C51E86F95700EB1264 /* OverlayButton.swift */; };
+		3F7348C81E86FADC00EB1264 /* OverlayButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */; };
 		3FAE2D341E7280EE00D65B84 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D331E7280EE00D65B84 /* Menu.storyboard */; };
 		3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */; };
 		3FAE2D381E7281CE00D65B84 /* LevelDesigner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */; };
@@ -104,6 +105,7 @@
 		3F7348C11E86F76E00EB1264 /* RootSKLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSKLabelNode.swift; sourceTree = "<group>"; };
 		3F7348C31E86F89F00EB1264 /* OverlayButtonSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayButtonSet.swift; sourceTree = "<group>"; };
 		3F7348C51E86F95700EB1264 /* OverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayButton.swift; sourceTree = "<group>"; };
+		3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayButtonDelegate.swift; sourceTree = "<group>"; };
 		3FAE2D331E7280EE00D65B84 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelSelector.storyboard; sourceTree = "<group>"; };
 		3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesigner.storyboard; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */,
+				3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
 				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
+				3F7348C81E86FADC00EB1264 /* OverlayButtonDelegate.swift in Sources */,
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
 				F33442CB1E815BFE001C1D8D /* Platform.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
