@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class LevelMarketplaceHomeViewController: UIViewController {
+public class LevelMarketplaceHomeViewController: UIViewController {
+
+    // MARK: - Private variables
+
+    private var games = Variable<[String]>([])
 
     // MARK: - IBActions
 
@@ -24,10 +30,27 @@ class LevelMarketplaceHomeViewController: UIViewController {
 
     // MARK: - Lifecycle methods
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let levelListType = sender as! LevelListType
-        let destination = segue.destination as! LevelMarketplaceListViewController
-        destination.listType = levelListType
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loadGames()
+    }
+
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LevelMarketplaceListViewController {
+            let levelListType = sender as! LevelListType
+            destination.listType = levelListType
+        }
+
+        // Embedded segues
+        if let destination = segue.destination as? LevelMarketplaceListCollectionViewController {
+            destination.games = games
+        }
+    }
+
+    /// Loads all games that user have yet to download
+    private func loadGames() {
+        games.value = ["12", "34", "56"]
     }
 
 }
