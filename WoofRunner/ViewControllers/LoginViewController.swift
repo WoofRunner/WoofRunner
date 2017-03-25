@@ -16,24 +16,51 @@ import FacebookLogin
  */
 public class LoginViewController: UIViewController {
 
+    // MARK: - Private constants
+    private let MESSAGE_FB_LOGIN_CANCELLED = "Login cancelled"
+    private let MESSAGE_FB_LOGIN_FAILED = "Login failed"
+
+    // MARK: - IBOutlets
+
+    // Text above Facebook Login Button
     @IBOutlet var loginPrompt: UILabel!
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - IBActions
 
-        addFbLoginButton()
-        if let accessToken = AccessToken.current {
-            loginPrompt.text = accessToken.userId
-            authWithFirebase(token: accessToken.authenticationToken)
+    /// Handles user tap on Facebook Login Button
+    @IBAction func onFbLogin(_ sender: UIButton) {
+        let loginManager = LoginManager()
+        loginManager.logIn([.publicProfile], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed:
+                self.loginFailed()
+            case .cancelled:
+                self.loginCancelled()
+            case .success( _, _, let accessToken):
+                // Removes the button from view
+                sender.removeFromSuperview()
+
+                self.loginSuccess(fbuid: accessToken.userId!)
+                self.authWithFirebase(token: accessToken.userId!)
+            }
         }
     }
 
-    /// Adds a Facebook login button to the view
-    private func addFbLoginButton() {
-        let loginButton = LoginButton(readPermissions: [.publicProfile, .email])
-        loginButton.center = view.center
+    // MARK: - Private methods
 
-        view.addSubview(loginButton)
+    /// Handles on Facebook login success
+    private func loginSuccess(fbuid: String) {
+        loginPrompt.text = "Logged in as \(fbuid)"
+    }
+
+    /// Handles on Facebook login cancelled
+    private func loginCancelled() {
+        loginPrompt.text = MESSAGE_FB_LOGIN_CANCELLED
+    }
+
+    /// Handles on Facebook login failed
+    private func loginFailed() {
+        loginPrompt.text = MESSAGE_FB_LOGIN_FAILED
     }
 
     /// Authenticates with Firebase

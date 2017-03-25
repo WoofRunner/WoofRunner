@@ -22,16 +22,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5F-TJ-JcR">
-                                <rect key="frame" x="320" y="614" width="385" height="38.5"/>
+                                <rect key="frame" x="320" y="579.5" width="385" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rk7-pa-oBG">
+                                <rect key="frame" x="287" y="633" width="450" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Eb9-uq-Sy3"/>
+                                    <constraint firstAttribute="width" constant="450" id="eur-19-bPy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Login with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onFbLogin:" destination="Ecw-wo-h76" eventType="touchUpInside" id="l7A-93-PhV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="F5F-TJ-JcR" firstAttribute="centerX" secondItem="J27-B6-sXy" secondAttribute="centerX" id="61c-ax-Gal"/>
-                            <constraint firstItem="F5F-TJ-JcR" firstAttribute="centerY" secondItem="J27-B6-sXy" secondAttribute="centerY" constant="-50" id="So0-BV-JFi"/>
+                            <constraint firstItem="rk7-pa-oBG" firstAttribute="centerX" secondItem="J27-B6-sXy" secondAttribute="centerX" id="1j2-Cv-2ar"/>
+                            <constraint firstItem="rk7-pa-oBG" firstAttribute="top" secondItem="F5F-TJ-JcR" secondAttribute="bottom" constant="15" id="J30-CK-0Sx"/>
+                            <constraint firstItem="F5F-TJ-JcR" firstAttribute="centerX" secondItem="J27-B6-sXy" secondAttribute="centerX" id="QJR-PW-5lm"/>
+                            <constraint firstItem="rk7-pa-oBG" firstAttribute="centerY" secondItem="J27-B6-sXy" secondAttribute="centerY" id="Wkt-eM-WlI"/>
                         </constraints>
                     </view>
                     <connections>
