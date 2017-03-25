@@ -18,6 +18,24 @@ enum TileType {
     case grass
     
     case none
+    
+    func isObstacle() -> Bool {
+        switch self {
+        case .jump, .rock, .sword:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func isPlatform() -> Bool {
+        switch self {
+        case .floor, .grass:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 class Tile: GameObject {
