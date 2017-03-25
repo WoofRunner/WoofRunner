@@ -42,10 +42,10 @@ class OverlayMenuSubsection: SKNode {
 	}
 	
 	private func configureToTitleLabel(_ label: SKLabelNode) {
-		label.fontName = OverlayMenuSubsectionConstants.titleFontName
-		label.fontColor = OverlayMenuSubsectionConstants.titleFontColor
-		label.fontSize = OverlayMenuSubsectionConstants.titleFontSize
-		label.position = OverlayMenuSubsectionConstants.titlePosition
+		label.fontName = OverlayConstants.subtitleFontName
+		label.fontColor = OverlayConstants.subtitleFontColor
+		label.fontSize = OverlayConstants.subtitleFontSize
+		label.position = OverlayConstants.subtitlePosition
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

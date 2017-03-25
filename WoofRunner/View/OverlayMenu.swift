@@ -10,6 +10,22 @@ import SpriteKit
 
 struct OverlayConstants {
 	static let screenSize = UIScreen.main.bounds
+	
+	// For Subsection titles
+	static let subtitleFontName = "AvenirNextCondensed-Bold"
+	static let subtitleFontColor = UIColor.white
+	static let subtitleFontSize = CGFloat(40)
+	static let subtitlePosition = CGPoint(x: 0, y: 450)
+	
+	// For Buttons
+	static let btnBasePosX = CGFloat(-230)
+	static let btnBasePosY = CGFloat(180)
+	
+	// For Button Name Labels
+	static let btnLabelFontName = "AvenirNextCondensed-Medium"
+	static let btnLabelFontColor = UIColor.white
+	static let btnLabelFontSize = CGFloat(20)
+	static let btnLabelBasePosition = CGPoint(x: btnBasePosX, y: btnBasePosY - 110)
 }
 
 
