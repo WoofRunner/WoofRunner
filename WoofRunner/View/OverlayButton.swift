@@ -10,7 +10,7 @@ import SpriteKit
 
 class OverlayButton: RootSKSpriteNode {
 	
-	private var tileType = TileType.ground
+	private var tileType = TileType.floor
 	private var overlayButtonDelegate: OverlayButtonDelegate?
 	
 	override init(texture: SKTexture!, color: SKColor, size: CGSize) {
@@ -44,19 +44,23 @@ class OverlayButton: RootSKSpriteNode {
 	
 	static func getImageNameFromType(_ type: TileType) -> String {
 		switch type {
-		case .ground:
+		case .floor:
 			return "testCat"
-		case .obstacle:
+		case .grass:
+			return "testCat"
+		default:
 			return "testCat"
 		}
 	}
 	
 	static func getTileNameFromType(_ type: TileType) -> String {
 		switch type {
-		case .ground:
-			return "Default Tile"
-		case .obstacle:
-			return "Default Bumper"
+		case .floor:
+			return "Default Platform"
+		case .grass:
+			return "Grass"
+		default:
+			return "Tiles"
 		}
 	}
 	

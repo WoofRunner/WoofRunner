@@ -124,8 +124,8 @@ class OverlayMenu: SKNode {
 	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [TileTypeSet] {
 		if funcType == .platform {
 			return [
-				TileTypeSet(name: "Static", set: [TileType.ground, TileType.ground, TileType.obstacle, TileType.ground]),
-				TileTypeSet(name: "Dynamic", set: [TileType.ground, TileType.ground])
+				TileTypeSet(name: "Static", set: [TileType.floor, TileType.floor, TileType.grass, TileType.floor]),
+				TileTypeSet(name: "Dynamic", set: [TileType.floor, TileType.floor])
 			]
 		} else {
 			return []

@@ -15,7 +15,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
 	
-	var currentTileSelection: TileType = .ground // Default selection. Wrap this in RXSwift
+	var currentTileSelection: TileType = .floor // Default selection. Wrap this in RXSwift
 	
 	//var oldOverlayY = CGFloat(0)
 	var oldY = CGFloat(0)
