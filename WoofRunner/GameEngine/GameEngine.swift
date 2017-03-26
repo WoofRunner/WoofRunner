@@ -30,12 +30,17 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.autoenablesDefaultLighting = true
         scnView.showsStatistics = true
         scnView.isPlaying = true
-        //scnView.allowsCameraControl = true
-        
+        scnView.allowsCameraControl = true
+        //sceneView.debugOptions = SCNDebugOptionShowPhysicsShapes
+        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         setUpGesture()
     }
     
     private func setUpGesture() {
+        if scnView.allowsCameraControl {
+            return
+        }
+        
         let panGestureReg = UIPanGestureRecognizer(target: self, action: #selector((panGesture)))
         panGestureReg.minimumNumberOfTouches = 1
         panGestureReg.maximumNumberOfTouches = 1
@@ -85,11 +90,21 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        guard let gameObjectA = contact.nodeA as? GameObject else { return }
-        guard let gameObjectB = contact.nodeB as? GameObject else { return }
+        
+        contact.nodeA.OnCollide(otherSCNNode: contact.nodeB)
+        contact.nodeB.OnCollide(otherSCNNode: contact.nodeA)
+        /*
+        guard let gameObjectA = contact.nodeA as? GameObject else {
+            return
+        }
+        guard let gameObjectB = contact.nodeB as? GameObject else {
+            print(contact.nodeB)
+            return
+        }
 
         gameObjectA.OnCollide(gameObjectB)
         gameObjectB.OnCollide(gameObjectA)
+ */
     }
     
     public func destroyEngine() {

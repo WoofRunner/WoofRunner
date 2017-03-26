@@ -38,8 +38,8 @@ class TileManager: GameObject {
 
     var tailIndex: Int = 0
     var platformTail: Float = 0
-    let TAIL_LENGTH: Float = 21
     
+    let TAIL_LENGTH: Float = 21
     let PLATFORM_Z_OFFSET: Float = 3
     
     var poolManager: PoolManager?
