@@ -15,6 +15,8 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
 	
+	var currentTileSelection: TileType = .ground // Default selection. Wrap this in RXSwift
+	
 	//var oldOverlayY = CGFloat(0)
 	var oldY = CGFloat(0)
 	
@@ -28,9 +30,10 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		self.addChild(paletteMenu)
 		
 		// Overlay
-		self.overlayMenu.renderOverlayMenu(type: .platform)
+		//self.overlayMenu.renderOverlayMenu(type: .platform)
 		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-		self.overlayMenu.assignDelegateForButtons(self)
+		//self.overlayMenu.assignDelegateForButtons(self)
+		self.overlayMenu.alpha = 0.0
 		self.addChild(overlayMenu)
 	}
 	
@@ -45,11 +48,18 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		// Save y-pos of touch for calculating offset of scrolling if needed
 		self.oldY = (location?.y)!
 		
-		/*
-		if self.atPoint(location!) == extendedMenuButton1 {
-			updateCurrentSelection(selection: "Default Platform")
+		let node = self.atPoint(location!)
+		
+		if let paletteBtnNode = node as? PaletteButton {
+			paletteBtnNode.onTap()
+			return
 		}
-	*/
+		
+		if let overlayBtnNode = node as? OverlayButton {
+			overlayBtnNode.onTap()
+			return
+		}
+
 		
 	}
 
@@ -58,12 +68,28 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
 		
+		// If Menu is visible
 		if overlayMenu.alpha > 0 {
 			let offset = (location?.y)! - oldY
 			self.overlayMenu.scrollMenu(offset: offset)
 			self.oldY = (location?.y)!
 		}
-		
+	}
+	
+	// PaletteButtonDelegate
+	internal func openOverlayMenu(_ funcType: PaletteFunctionType) {
+		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+	}
+	
+	
+	// OverlayButtonDelegate
+	internal func setCurrentTileSelection(_ type: TileType) {
+		self.currentTileSelection = type
+	}
+	
+	internal func closeOverlayMenu() {
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
 	}
 
 }

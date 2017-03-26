@@ -33,7 +33,12 @@ class OverlayButton: RootSKSpriteNode {
 			return
 		}
 		
-		print("Tapped!")
+		self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
+			
+			delegate.setCurrentTileSelection(self.tileType)
+			print("Tapped!")
+			delegate.closeOverlayMenu()
+		})
 	}
 	
 	

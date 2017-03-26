@@ -54,21 +54,28 @@ struct OverlayConstants {
 class OverlayMenu: SKNode {
 	
 	private let backgroundNode = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: OverlayConstants.backgroundWidth, height: OverlayConstants.backgroundHeight))
-	private let menuNode = SKNode()
+	private var menuNode = SKNode()
 	private var maxY = CGFloat(0) // Max y-bound of MenuNode, required for scrolling bounds
 	private var arrayOfSubsections = [OverlayMenuSubsection]()
 	
 	override init() {
 		super.init()
+		
+		// Attach background first
+		self.addChild(backgroundNode)
 	}
 	
 	// Renders the palette menu at the input position (which is the bottom-left corner
 	// of the menu's frame)
-	public func renderOverlayMenu(type: PaletteFunctionType) {
+	public func renderOverlayMenu(type: PaletteFunctionType, delegate: OverlayButtonDelegate) {
+		
+		// Reset
+		self.backgroundNode.removeFromParent()
+		self.menuNode.removeFromParent()
+		self.menuNode = SKNode()
 		
 		// Attach background first
 		self.addChild(backgroundNode)
-		
 		
 		// Create and attach Menu Title
 		//let menuTitle = type.getName()
@@ -108,6 +115,9 @@ class OverlayMenu: SKNode {
 		
 		// Add menuNode last
 		self.addChild(menuNode)
+		
+		// Attach delegate
+		assignDelegateForButtons(delegate)
 		
 	}
 	

@@ -35,7 +35,11 @@ class PaletteButton: RootSKSpriteNode {
 			return
 		}
 		
-		print("Tapped!")
+		self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
+			delegate.openOverlayMenu(self.paletteFunctionType)
+			print("Tapped!")
+		})
+		
 	}
 	
 	

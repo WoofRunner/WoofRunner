@@ -10,4 +10,6 @@ import Foundation
 
 protocol PaletteButtonDelegate {
 	
+	func openOverlayMenu(_ funcType: PaletteFunctionType)
+	
 }
