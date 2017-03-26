@@ -8,44 +8,88 @@
 
 import SpriteKit
 
-struct OverlayMenuSubsectionConstants {
-	static let titleFontName = "AvenirNextCondensed-Bold"
-	static let titleFontColor = UIColor.white
-	static let titleFontSize = CGFloat(40)
-	static let titlePosition = CGPoint(x: 0, y: 450)
-}
-
 class OverlayMenuSubsection: SKNode {
 	
-	var sectionName: String = ""
+	let margin = CGFloat(15)
+	
+	//var sectionName: String = ""
 	var buttonTypeArray = [TileType]()
+	
+	var sectionTitleLabel = SKLabelNode()
+	var buttonSetArray = [OverlayButtonSet]()
 	
 	override init() {
 		super.init()
 	}
 	
-	convenience init(name: String, buttonTypeArray: [TileType], position: CGPoint) {
+	convenience init(sectionName: String, buttonTypeArray: [TileType]) {
 		self.init()
-		self.sectionName = name
+		
+		self.sectionTitleLabel = SKLabelNode(text: sectionName)
 		self.buttonTypeArray = buttonTypeArray
-		self.position = position
+		
+		renderSubsection()
 	}
 	
-	public func renderSubsection() {
+	private func renderSubsection() {
 		
 		// Render Section Title Label
-		let menuTitle = SKLabelNode(text: name)
-		configureToTitleLabel(menuTitle)
+		configureToTitleLabel(self.sectionTitleLabel)
+		self.sectionTitleLabel.position = CGPoint(x: OverlayConstants.subsectionTitleX , y: OverlayConstants.subsectionTitleY)
+		self.addChild(self.sectionTitleLabel)
 		
 		// Render ButtonSets
+		var baseX = OverlayConstants.btnSetBaseX
+		var baseY = OverlayConstants.btnSetBaseY
 		
+		for i in 0..<buttonTypeArray.count {
+			
+			let type = buttonTypeArray[i]
+			
+			//Create
+			let btnSet = OverlayButtonSet(type: type)
+			
+			if i % 3 == 0 {
+				baseX = OverlayConstants.btnSetBaseX
+				baseY = baseY - CGFloat(i) * OverlayConstants.btnSetSpacingY
+			} else {
+				baseX += OverlayConstants.btnWidth + OverlayConstants.btnSetSpacingX
+			}
+			
+			// Set Position
+			btnSet.position = CGPoint(x: baseX , y: baseY)
+			
+			// Add Node
+			self.addChild(btnSet)
+			
+			buttonSetArray.append(btnSet)
+		}
 	}
+	
+	
+	var height: CGFloat {
+		let titleHeight = self.sectionTitleLabel.frame.size.height
+		
+		print("TitleHeight: \(titleHeight)")
+		var numberOfRows = 1.0
+		
+		if self.buttonTypeArray.count >= 3 {
+			numberOfRows = ceil(Double(self.buttonTypeArray.count) / Double(3))
+		}
+		
+		let btnSetHeight = OverlayConstants.btnHeight + OverlayConstants.btnMargin + 60
+		let height = titleHeight + CGFloat(numberOfRows) * btnSetHeight
+		
+		//let centerX = origin.x + (size.width / 2)
+		//let centerY = origin.y + (size.height / 2)
+		return CGFloat(height)
+	}
+	
 	
 	private func configureToTitleLabel(_ label: SKLabelNode) {
 		label.fontName = OverlayConstants.subtitleFontName
 		label.fontColor = OverlayConstants.subtitleFontColor
 		label.fontSize = OverlayConstants.subtitleFontSize
-		label.position = OverlayConstants.subtitlePosition
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

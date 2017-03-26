@@ -49,9 +49,9 @@ class OverlayButton: RootSKSpriteNode {
 	static func getTileNameFromType(_ type: TileType) -> String {
 		switch type {
 		case .ground:
-			return "Normal"
+			return "Default Tile"
 		case .obstacle:
-			return "Normal Bumper"
+			return "Default Bumper"
 		}
 	}
 	

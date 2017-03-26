@@ -34,17 +34,28 @@ struct OverlayConstants {
 class LevelDesignerOverlayScene: SKScene {
 	
 	var paletteMenu = PaletteMenu()
+	var overlayMenu = OverlayMenu()
 	
 	override init(size: CGSize) {
 		super.init(size: size)
-		self.paletteMenu = PaletteMenu()
 		self.backgroundColor = UIColor.clear
+		
+		// Palette
 		self.paletteMenu.renderPaletteMenu()
 		self.addChild(paletteMenu)
+		
+		// Overlay
+		self.overlayMenu.renderOverlayMenu(type: .platform)
+		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+		self.addChild(overlayMenu)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		
 	}
 
 }
