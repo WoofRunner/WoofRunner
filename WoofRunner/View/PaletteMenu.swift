@@ -9,8 +9,8 @@
 import SpriteKit
 
 struct PaletteConstants {
-	static let buttonTypes: [PaletteFunctionType] = [.platform, .obstacle, .delete]
-	static let numberOfPaletteButtons = CGFloat(buttonTypes.count)
+	static let buttonTypesArray: [PaletteFunctionType] = [.platform, .obstacle, .delete]
+	static let numberOfPaletteButtons = CGFloat(buttonTypesArray.count)
 	static let paletteButtonWidth = CGFloat(60)
 	static let paletteButtonHeight = CGFloat(60)
 	static let paletteButtonSize = CGSize(width: paletteButtonWidth, height: paletteButtonHeight)
@@ -18,11 +18,6 @@ struct PaletteConstants {
 	
 	static let paletteWidth = paletteButtonWidth + (2 * paletteButtonMargin)
 	static let paletteHeight = (paletteButtonWidth * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
-	
-	//static let paletteOriginX = CGFloat(500)
-	//static let paletteOriginY = CGFloat(500)
-	//static let paletteCenterX = paletteOriginX + paletteWidth/2
-	//static let paletteCenterY = paletteOriginY + paletteHeight/2
 	
 	// The bottom-left corner of the palette's frame
 	static let palettePosition = CGPoint(x: 60, y: 680)
@@ -40,10 +35,19 @@ class PaletteMenu: SKNode {
 		                                                             width: PaletteConstants.paletteWidth,
 		                                                             radius: 25,
 		                                                             backgroundColor: PaletteConstants.paletteBackgroundColor)
+	//var buttonTypesArray = [PaletteFunctionType]()
 	
 	override init() {
 		super.init()
 	}
+	
+	/* Convenience init might be used if palette button types cannot be predetermined
+	convenience init(buttonTypesArray: [PaletteFunctionType]) {
+		self.init()
+		self.buttonTypesArray = buttonTypesArray
+		renderPaletteMenu()
+	}
+	*/
 	
 	// Renders the palette menu at the input position (which is the bottom-left corner
 	// of the menu's frame)
@@ -59,7 +63,7 @@ class PaletteMenu: SKNode {
 		self.addChild(backgroundNode)
 		
 		// Create and attach the palette button nodes
-		for type in PaletteConstants.buttonTypes {
+		for type in PaletteConstants.buttonTypesArray {
 			
 			// Create
 			let buttonImage = PaletteButton.getImageNameFromType(type)

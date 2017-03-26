@@ -9,32 +9,14 @@
 import UIKit
 import SpriteKit
 
-/*
-struct OverlayConstants {
-	static let numberOfPaletteButtons = CGFloat(3)
-	static let paletteButtonSize = CGFloat(60)
-	static let paletteButtonMargin = CGFloat(15)
-	
-	static let paletteWidth = paletteButtonSize + (2 * paletteButtonMargin)
-	static let paletteHeight = (paletteButtonSize * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
-	
-	// NOTE: For SKShapeNode, position (origin) = bottom/left, not center!
-	static let paletteOriginX = CGFloat(35)
-	static let paletteOriginY = CGFloat(650)
-	
-	static let paletteCenterX = paletteOriginX + paletteWidth/2
-	static let paletteCenterY = paletteOriginY + paletteHeight/2
-	
-	static let paletteButtonX0 = paletteOriginX + paletteWidth/2 // y-coord for the topmost palette button
-	static let paletteButtonY0 = (paletteOriginY + paletteHeight) - (paletteButtonSize/2 + paletteButtonMargin) // x-coord for the topmost palette button
-}
-*/
-
 
 class LevelDesignerOverlayScene: SKScene {
 	
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
+	
+	//var oldOverlayY = CGFloat(0)
+	var oldY = CGFloat(0)
 	
 	override init(size: CGSize) {
 		super.init(size: size)
@@ -54,7 +36,24 @@ class LevelDesignerOverlayScene: SKScene {
 		super.init(coder: aDecoder)
 	}
 	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		// Save y-pos of touch for calculating offset of scrolling if needed
+		self.oldY = (location?.y)!
+	}
+
+	
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		if overlayMenu.alpha > 0 {
+			let offset = (location?.y)! - oldY
+			self.overlayMenu.scrollMenu(offset: offset)
+			self.oldY = (location?.y)!
+		}
 		
 	}
 

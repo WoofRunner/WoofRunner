@@ -46,14 +46,15 @@ struct OverlayConstants {
 	static let btnSetBaseY = subsectionTitleY - 175 - (btnHeight/2 + btnSetMargin)
 	static let btnSetSpacingX = CGFloat(50) // X Spacing between buttonSets in a Subsection
 	static let btnSetSpacingY = CGFloat(80) // Y Spacing between buttonSets in a Subsection
-	
-	
 }
 
 
 class OverlayMenu: SKNode {
 	
 	let backgroundNode = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: OverlayConstants.backgroundWidth, height: OverlayConstants.backgroundHeight))
+	let menuNode = SKNode()
+	
+	var maxY = CGFloat(0) // Max y-bound of MenuNode, required for scrolling bounds
 	
 	override init() {
 		super.init()
@@ -69,46 +70,73 @@ class OverlayMenu: SKNode {
 		// Get the set of list of TileTypes to be rendered
 		let setOfTileTypes = getSetOfTileTypesFromFunctionType(type)
 		
+		// Create and attach the subsection nods
 		var baseY = CGFloat(450)
 		var heightOfPrevSubsection = CGFloat(0)
 		
-		// Create and attach the subsection nods
 		for i in 0..<setOfTileTypes.count {
 			
-			let array = setOfTileTypes[i]
+			let setName = setOfTileTypes[i].name
+			let array = setOfTileTypes[i].set
 			var subsectionNode: OverlayMenuSubsection
 			
 			// Create
-			if i == 0 {
-				subsectionNode = OverlayMenuSubsection(sectionName: "Static", buttonTypeArray: array)
-			} else {
-				subsectionNode = OverlayMenuSubsection(sectionName: "Dynamic", buttonTypeArray: array)
-			}
-			
+			subsectionNode = OverlayMenuSubsection(sectionName: setName, buttonTypeArray: array)
 			
 			// Position it
 			baseY -= OverlayConstants.subsectionSpacingY + heightOfPrevSubsection
 			subsectionNode.position = CGPoint(x: 0, y: baseY)
 			
 			// Add node
-			self.addChild(subsectionNode)
+			menuNode.addChild(subsectionNode)
 			
+			maxY += heightOfPrevSubsection
 			heightOfPrevSubsection = subsectionNode.height
-			
-			//print("Position of subsection: \(subsectionNode.position)")
 		}
+		
+		// Divide raw y-bounds by 2 as the origin is calculated from the center of the node
+		maxY = maxY/2
+		
+		// Add menuNode last
+		self.addChild(menuNode)
 		
 	}
 	
-	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [[TileType]] {
+	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [TileTypeSet] {
 		return [
-			[TileType.ground, TileType.ground, TileType.obstacle, TileType.ground],
-			[TileType.ground, TileType.ground]
+			TileTypeSet(name: "Static", set: [TileType.ground, TileType.ground, TileType.obstacle, TileType.ground]),
+			TileTypeSet(name: "Dynamic", set: [TileType.ground, TileType.ground])
 		]
+	}
+	
+	private func isValidScroll(_ newPos: CGFloat) -> Bool {
+		if newPos < 0 || newPos > maxY {
+			return false
+		} else {
+			return true
+		}
+	}
+	
+	public func scrollMenu(offset: CGFloat) {
+		let newYPos = self.menuNode.position.y + offset
+		
+		if isValidScroll(newYPos) {
+			self.menuNode.position.y = newYPos
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	struct TileTypeSet {
+		var name: String
+		var set: [TileType]
+		
+		init(name: String, set: [TileType]) {
+			self.name = name
+			self.set = set
+		}
 	}
 
 }
