@@ -10,13 +10,9 @@ import SpriteKit
 
 class OverlayMenuSubsection: SKNode {
 	
-	let margin = CGFloat(15)
-	
-	//var sectionName: String = ""
-	var buttonTypeArray = [TileType]()
-	
-	var sectionTitleLabel = SKLabelNode()
-	var buttonSetArray = [OverlayButtonSet]()
+	private var buttonTypeArray = [TileType]()
+	private var sectionTitleLabel = SKLabelNode()
+	private var buttonSetArray = [OverlayButtonSet]()
 	
 	override init() {
 		super.init()
@@ -69,8 +65,6 @@ class OverlayMenuSubsection: SKNode {
 	
 	var height: CGFloat {
 		let titleHeight = self.sectionTitleLabel.frame.size.height
-		
-		print("TitleHeight: \(titleHeight)")
 		var numberOfRows = 1.0
 		
 		if self.buttonTypeArray.count >= 3 {
@@ -79,17 +73,20 @@ class OverlayMenuSubsection: SKNode {
 		
 		let btnSetHeight = OverlayConstants.btnHeight + OverlayConstants.btnMargin + 60
 		let height = titleHeight + CGFloat(numberOfRows) * btnSetHeight
-		
-		//let centerX = origin.x + (size.width / 2)
-		//let centerY = origin.y + (size.height / 2)
+
 		return CGFloat(height)
 	}
-	
-	
+		
 	private func configureToTitleLabel(_ label: SKLabelNode) {
 		label.fontName = OverlayConstants.subtitleFontName
 		label.fontColor = OverlayConstants.subtitleFontColor
 		label.fontSize = OverlayConstants.subtitleFontSize
+	}
+	
+	public func assignDelegateForButtons(_ delegate: OverlayButtonDelegate) {
+		for buttonSet in buttonSetArray {
+			buttonSet.getButtonNode().setDelegate(delegate)
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

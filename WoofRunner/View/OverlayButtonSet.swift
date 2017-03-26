@@ -51,6 +51,10 @@ class OverlayButtonSet: SKNode {
 		label.position = OverlayConstants.btnLabelPosition
 	}
 	
+	public func getButtonNode() -> OverlayButton {
+		return self.btn
+	}
+	
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)

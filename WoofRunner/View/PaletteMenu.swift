@@ -31,10 +31,11 @@ struct PaletteConstants {
 
 class PaletteMenu: SKNode {
 	
-	let backgroundNode = CustomShapeNodes.getRoundedRectangleNode(height: PaletteConstants.paletteHeight,
+	private let backgroundNode = CustomShapeNodes.getRoundedRectangleNode(height: PaletteConstants.paletteHeight,
 		                                                             width: PaletteConstants.paletteWidth,
 		                                                             radius: 25,
 		                                                             backgroundColor: PaletteConstants.paletteBackgroundColor)
+	private var buttonArray = [PaletteButton]()
 	//var buttonTypesArray = [PaletteFunctionType]()
 	
 	override init() {
@@ -75,8 +76,14 @@ class PaletteMenu: SKNode {
 			
 			// Add node
 			self.addChild(buttonNode)
+			self.buttonArray.append(buttonNode)
 		}
+	}
 	
+	public func assignDelegateForButtons(_ delegate: PaletteButtonDelegate) {
+		for button in buttonArray {
+			button.setDelegate(delegate)
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

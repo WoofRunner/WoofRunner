@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 
-class LevelDesignerOverlayScene: SKScene {
+class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDelegate {
 	
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
@@ -24,11 +24,13 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// Palette
 		self.paletteMenu.renderPaletteMenu()
+		self.paletteMenu.assignDelegateForButtons(self)
 		self.addChild(paletteMenu)
 		
 		// Overlay
 		self.overlayMenu.renderOverlayMenu(type: .platform)
 		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+		self.overlayMenu.assignDelegateForButtons(self)
 		self.addChild(overlayMenu)
 	}
 	
@@ -42,6 +44,13 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// Save y-pos of touch for calculating offset of scrolling if needed
 		self.oldY = (location?.y)!
+		
+		/*
+		if self.atPoint(location!) == extendedMenuButton1 {
+			updateCurrentSelection(selection: "Default Platform")
+		}
+	*/
+		
 	}
 
 	
