@@ -9,8 +9,12 @@
 import UIKit
 import QuartzCore
 import SceneKit
+import RxSwift
+import RxCocoa
 
 class LevelDesignerViewController: UIViewController {
+	
+	let disposeBag = DisposeBag();
 
 	let levelCols = 4
     let chunkLength = 10
@@ -47,6 +51,12 @@ class LevelDesignerViewController: UIViewController {
 		// Attached overlay
 		let spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
 		sceneView.overlaySKScene = spriteScene
+		spriteScene.currentTileSelection.asObservable()
+			.subscribe(onNext: {
+				(brush) in
+				self.currentSelectedBrush = brush
+			}
+			).addDisposableTo(disposeBag);
     }
     
     

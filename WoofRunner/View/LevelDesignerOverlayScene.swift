@@ -8,14 +8,15 @@
 
 import UIKit
 import SpriteKit
-
+import RxSwift
+import RxCocoa
 
 class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDelegate {
 	
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
 	
-	var currentTileSelection: TileType = .floor // Default selection. Wrap this in RXSwift
+	var currentTileSelection = Variable<TileType>(.floor) // Default selection. Wrap this in RXSwift
 	
 	//var oldOverlayY = CGFloat(0)
 	var oldY = CGFloat(0)
@@ -85,7 +86,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	
 	// OverlayButtonDelegate
 	internal func setCurrentTileSelection(_ type: TileType) {
-		self.currentTileSelection = type
+		self.currentTileSelection.value = type
 	}
 	
 	internal func closeOverlayMenu() {
