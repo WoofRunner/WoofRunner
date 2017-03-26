@@ -308,10 +308,15 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
+<<<<<<< HEAD
 			print("PaletteButton begins pressed action")
 			selectedButton.run(pressAction, completion: {
 				print("Action completed!")
 			})
+=======
+			print("Touch Begin on palette button")
+            selectedButton.run(pressAction)
+>>>>>>> leveldesigner
 		}
 		
 	}

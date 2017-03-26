@@ -10,8 +10,32 @@ import Foundation
 import SceneKit
 
 enum TileType {
-    case ground
-    case obstacle
+    case jump
+    case rock
+    case sword
+    
+    case floor
+    case grass
+    
+    case none
+    
+    func isObstacle() -> Bool {
+        switch self {
+        case .jump, .rock, .sword:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func isPlatform() -> Bool {
+        switch self {
+        case .floor, .grass:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 class Tile: GameObject {
@@ -19,7 +43,7 @@ class Tile: GameObject {
     
     var delegate: PoolManager?
     
-    var tileType: TileType = TileType.ground
+    var tileType: TileType = TileType.none
     
     init(_ pos: SCNVector3) {
         super.init()

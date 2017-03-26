@@ -79,11 +79,9 @@ class TileManager: GameObject {
             tailIndex += 1
             
             for col in 0..<COL_COUNT {
-                let tile = poolManager?.getTile(TileType.ground)
-                //let tile = Tile()
+                let tile = poolManager?.getTile(TileType.floor)
+                
                 tile!.position = calculateTilePosition(row, col)
-                //tiles.append(tile)
-                //World.spawnGameObject(tile, self)
                 if tilesData2[row % tilesData2.count][col] == 1 {
                     World.spawnGameObject(Obstacle(calculateObstaclePosition(row, col)), self)
                 }
