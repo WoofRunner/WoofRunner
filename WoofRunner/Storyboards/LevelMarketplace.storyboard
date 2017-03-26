@@ -54,7 +54,7 @@
                     </view>
                     <connections>
                         <outlet property="loginPrompt" destination="F5F-TJ-JcR" id="Wh4-wj-r0M"/>
-                        <segue destination="tdJ-zR-Q21" kind="show" identifier="segueToMarketplace" animates="NO" id="zzk-5y-iY1"/>
+                        <segue destination="tdJ-zR-Q21" kind="show" identifier="segueToMarketplace" id="zzk-5y-iY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qs-yx-dew" userLabel="First Responder" sceneMemberID="firstResponder"/>

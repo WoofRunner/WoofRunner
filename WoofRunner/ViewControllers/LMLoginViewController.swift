@@ -32,6 +32,12 @@ public class LMLoginViewController: UIViewController {
 
     /// Handles user tap on Facebook Login Button
     @IBAction func onFbLogin(_ sender: UIButton) {
+        if let accessToken = AccessToken.current {
+            self.authWithFirebase(token: accessToken.userId!)
+            performSegue(withIdentifier: "segueToMarketplace", sender: nil)
+            return
+        }
+
         let loginManager = LoginManager()
         loginManager.logIn([.publicProfile], viewController: self) { loginResult in
             switch loginResult {
@@ -48,15 +54,6 @@ public class LMLoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "segueToMarketplace", sender: nil)
             }
         }
-    }
-
-    // MARK: - Override methods
-    public override func viewDidLoad() {
-        guard let _ = AccessToken.current else {
-            return
-        }
-
-        performSegue(withIdentifier: "segueToMarketplace", sender: nil)
     }
 
     // MARK: - Private methods
