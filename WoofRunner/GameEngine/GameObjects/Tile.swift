@@ -36,6 +36,40 @@ enum TileType {
             return false
         }
     }
+	
+	func toString() -> String {
+		switch self {
+		case .jump:
+			return "Jump Platform"
+		case .rock:
+			return "Rock"
+		case .floor:
+			return "Floor"
+		case .grass:
+			return "Grass"
+		case .none:
+			return "Delete"
+		case .sword:
+			return "Swinging Sword"
+		}
+	}
+	
+	func getSpriteImageName() -> String {
+		switch self {
+		case .jump:
+			return "testCat"
+		case .rock:
+			return "testCat"
+		case .floor:
+			return "testCat"
+		case .grass:
+			return "testCat"
+		case .none:
+			return "testCat"
+		case .sword:
+			return "testCat"
+		}
+	}
 }
 
 class Tile: GameObject {

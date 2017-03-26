@@ -18,8 +18,6 @@ class PaletteButton: RootSKSpriteNode {
 	}
 	
 	convenience init(imageNamed: String, funcType: PaletteFunctionType, size: CGSize) {
-		//let size = CGSize(width: LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE,
-		                  //height: LevelDesignerButtonSpriteNode.LEVEL_DESIGNER_PALETTE_BUTTON_SIZE)
 		self.init(texture: SKTexture(imageNamed: imageNamed), color: SKColor.clear, size: size)
 		self.paletteFunctionType = funcType
 	}
@@ -40,19 +38,6 @@ class PaletteButton: RootSKSpriteNode {
 			print("Tapped!")
 		})
 		
-	}
-	
-	
-	
-	static func getImageNameFromType(_ type: PaletteFunctionType) -> String {
-		switch type {
-			case .platform:
-				return "testPaletteButton"
-			case .obstacle:
-				return "testObstaclePaletteButton"
-			case .delete:
-				return "testDeletePaletteButton"
-		}
 	}
 	
 	

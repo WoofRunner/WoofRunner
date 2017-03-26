@@ -67,7 +67,7 @@ class PaletteMenu: SKNode {
 		for type in PaletteConstants.buttonTypesArray {
 			
 			// Create
-			let buttonImage = PaletteButton.getImageNameFromType(type)
+			let buttonImage = type.getSpriteImageName()
 			let buttonNode = PaletteButton(imageNamed: buttonImage, funcType: type, size: PaletteConstants.paletteButtonSize)
 			
 			// Set position according to offsets

@@ -41,30 +41,6 @@ class OverlayButton: RootSKSpriteNode {
 		})
 	}
 	
-	
-	static func getImageNameFromType(_ type: TileType) -> String {
-		switch type {
-		case .floor:
-			return "testCat"
-		case .grass:
-			return "testCat"
-		default:
-			return "testCat"
-		}
-	}
-	
-	static func getTileNameFromType(_ type: TileType) -> String {
-		switch type {
-		case .floor:
-			return "Default Platform"
-		case .grass:
-			return "Grass"
-		default:
-			return "Tiles"
-		}
-	}
-	
-	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}

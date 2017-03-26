@@ -15,6 +15,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
+	var currentSelectionUI = CurrentSelectionNode()
 	
 	var currentTileSelection = Variable<TileType>(.floor) // Default selection. Wrap this in RXSwift
 	
@@ -31,11 +32,15 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		self.addChild(paletteMenu)
 		
 		// Overlay
-		//self.overlayMenu.renderOverlayMenu(type: .platform)
 		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-		//self.overlayMenu.assignDelegateForButtons(self)
 		self.overlayMenu.alpha = 0.0
 		self.addChild(overlayMenu)
+		
+		// Current Selection
+		let currentSelectionPosX = CGFloat(690)
+		let currentSelectionPosY = CGFloat(880)
+		self.addChild(currentSelectionUI)
+		self.currentSelectionUI.position = CGPoint(x: currentSelectionPosX, y: currentSelectionPosY)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -87,6 +92,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	// OverlayButtonDelegate
 	internal func setCurrentTileSelection(_ type: TileType) {
 		self.currentTileSelection.value = type
+		self.currentSelectionUI.updateSelectionText(type.toString())
 	}
 	
 	internal func closeOverlayMenu() {
