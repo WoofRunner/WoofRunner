@@ -83,7 +83,15 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	}
 	
 	// PaletteButtonDelegate
-	internal func openOverlayMenu(_ funcType: PaletteFunctionType) {
+	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
+		if funcType == .delete {
+			setCurrentTileSelection(.none)
+		} else {
+			openOverlayMenu(funcType)
+		}
+	}
+	
+	func openOverlayMenu(_ funcType: PaletteFunctionType) {
 		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
 		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
 	}

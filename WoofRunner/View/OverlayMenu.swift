@@ -122,14 +122,21 @@ class OverlayMenu: SKNode {
 	}
 	
 	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [TileTypeSet] {
-		if funcType == .platform {
+		switch funcType {
+		case .platform:
 			return [
-				TileTypeSet(name: "Static", set: [TileType.floor, TileType.floor, TileType.grass, TileType.floor]),
-				TileTypeSet(name: "Dynamic", set: [TileType.floor, TileType.floor])
+				TileTypeSet(name: "Static", set: [TileType.floor, TileType.grass]),
+				TileTypeSet(name: "Dynamic", set: [TileType.jump])
 			]
-		} else {
+		case .obstacle:
+			return [
+				TileTypeSet(name: "Static", set: [TileType.rock]),
+				TileTypeSet(name: "Dynamic", set: [TileType.sword])
+			]
+		default:
 			return []
 		}
+		
 	}
 	
 	private func isValidScroll(_ newPos: CGFloat) -> Bool {
