@@ -29,7 +29,7 @@ public class GameStorageManager {
 
     // MARK: - Public static methods
 
-    /// Returns an instance of GameStorageManager
+    /// Returns an instance of GameStorageManager.
     /// - Returns: the single GameStorageManager that exists
     public static func getInstance() -> GameStorageManager {
         if let existingInstance = instance {
@@ -42,22 +42,12 @@ public class GameStorageManager {
 
     // MARK: - Public methods
 
+    /// Returns an array of all the games stored in memory.
+    /// - Returns: array of UploadableGame from memory
     public func getAllGames() -> [UploadableGame] {
         let res = [UploadableGame]()
 
         for (uuid, game) in games.value {
-            // TODO: Map StoredGame to UploadableGame
-            print(uuid)
-            print(game)
-        }
-
-        return res
-    }
-
-    public func getLocalGames() -> [UploadableGame] {
-        let res = [UploadableGame]()
-
-        for (uuid, game) in games.value {
             print(uuid)
             print(game)
             // TODO: Map StoredGame to UploadableGame
@@ -66,6 +56,8 @@ public class GameStorageManager {
         return res
     }
 
+    /// Returns all games created by the owner that have been uploaded to the marketplace.
+    /// - Returns: array of UploadableGame that has been uploaded
     public func getUploadedGames() -> [UploadableGame] {
         let res = [UploadableGame]()
 
@@ -79,20 +71,35 @@ public class GameStorageManager {
     }
 
     public func getGame(uuid: String) -> UploadableGame? {
-        // Checks between local games and online games before making the call to load from Firebase
-        return nil
+        // Loads the game from memory.
+        return games.value[uuid]
     }
 
+    /// Saves the game to CoreData.
     public func saveGame(_ game: UploadableGame) {
-        // Saves the game to CoreData
+        // Saves the game to CoreData.
+        reloadGames()
     }
 
+    /// Uploads the game with the corresponding UUID to Firebase.
+    /// - Parameters:
+    ///     - uuid: UUID string of the game to upload
     public func uploadGame(uuid: String) {
-        // Gets the game from loaded games from CoreData and upload to Firebase
+        // Uploads the game with UUID in `games` to Firebase
     }
 
+    /// Downloads the game with the corresponding UUID from Firebase into CoreData.
+    /// - Parameters:
+    ///     - uuid: UUID string of the game to download
     public func downloadGame(uuid: String) {
-        // Get the game from downloaded games from Firebase and save it to CoreData
+        // Get the game from downloaded games from Firebase and save it to CoreData.
+        // Reload games from CoreData.
+    }
+
+    // MARK: - Private methods
+
+    /// Reloads all games from CoreData and store them in memory.
+    private func reloadGames() {
     }
 
 }
