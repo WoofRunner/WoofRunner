@@ -100,6 +100,15 @@ public class GameStorageManager {
 
     /// Reloads all games from CoreData and store them in memory.
     private func reloadGames() {
+        cdm.loadAll()
+            .onSuccess { games in
+                for game in games {
+                    self.games.value[game.uuid!] = game
+                }
+            }
+            .onFailure { _ in
+                // TODO: Throw error here
+        }
     }
 
 }
