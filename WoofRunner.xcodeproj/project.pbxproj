@@ -774,12 +774,9 @@
 				12DA42061E86627700C23137 /* LMListViewController.swift in Sources */,
 				121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */,
 				12610C7B1E7ECAF3006162BF /* SaveableGame.swift in Sources */,
-<<<<<<< HEAD
-=======
 				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
 				1270785B1E7E5DFD0043C8C4 /* Deserializable.swift in Sources */,
 				128824661E7BE21900793810 /* Serializable.swift in Sources */,
->>>>>>> leveldesigner
 				12610C7D1E7ECE1C006162BF /* SaveableObstacle.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
@@ -792,13 +789,9 @@
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
 				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
-<<<<<<< HEAD
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
-=======
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
-				3FA4B16F1E88078500D93703 /* Platform.swift in Sources */,
->>>>>>> leveldesigner
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
 				3F7348C21E86F76E00EB1264 /* RootSKLabelNode.swift in Sources */,
 				3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */,
@@ -819,13 +812,10 @@
 				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
 				12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */,
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
-<<<<<<< HEAD
 				12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
-=======
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
->>>>>>> leveldesigner
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */,
@@ -835,15 +825,12 @@
 				121387C41E8628D900F0861B /* SaveablePlatform.swift in Sources */,
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
-<<<<<<< HEAD
 				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
-=======
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
 				3F7348BE1E86F1FA00EB1264 /* OverlayMenu.swift in Sources */,
 				4E90FFE91E8431690012B03F /* Position.swift in Sources */,
 				4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */,
 				4E1E11211E82D50D00AAC356 /* GridViewModel.swift in Sources */,
->>>>>>> leveldesigner
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
