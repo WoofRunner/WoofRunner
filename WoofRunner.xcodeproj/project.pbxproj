@@ -813,7 +813,6 @@
 				12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */,
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
 				12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */,
-				3FCC89B71E810D4B005A7C03 /* LevelDesignerPaletteFunctionType.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
