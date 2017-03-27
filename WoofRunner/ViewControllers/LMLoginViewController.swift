@@ -82,7 +82,7 @@ public class LMLoginViewController: UIViewController {
         vm.authWithFacebook(viewController: self)
     }
 
-    // MARK: - Lifecylce methods
+    // MARK: - Lifecycle methods
     public override func viewDidLoad() {
         vm.isAuthed
             .subscribe(onNext: { authed in
