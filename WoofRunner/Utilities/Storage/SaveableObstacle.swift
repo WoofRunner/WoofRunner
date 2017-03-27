@@ -7,7 +7,5 @@
 //
 
 public protocol SaveableObstacle {
-    var type: String { get set } // TODO: Change this to an enum
-    var position: Position { get set }
-    var radius: Int { get set }
+    func toStoredObstacle() -> StoredObstacle
 }

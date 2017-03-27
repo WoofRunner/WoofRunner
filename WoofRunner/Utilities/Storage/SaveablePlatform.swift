@@ -7,6 +7,5 @@
 //
 
 public protocol SaveablePlatform {
-    var type: String { get set } // TODO: Change this to an enum
-    var position: Position { get set }
+    func toStoredPlatform() -> StoredPlatform
 }

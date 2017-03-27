@@ -15,7 +15,7 @@ public class LMHomeViewController: UIViewController {
     // MARK: - Private variables
 
     private var vm = LMHomeViewModel()
-    private var games = Variable<[SaveableGame]>([])
+    private var games = Variable<[StoredGame]>([])
 
     // MARK: - IBActions
 

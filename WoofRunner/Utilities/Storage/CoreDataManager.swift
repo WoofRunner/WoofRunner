@@ -73,7 +73,7 @@ public class CoreDataManager {
     /// - Parameters:
     ///     - game: object that conforms to Saveable
     ///     - completion: block to be executed after game is loaded
-    public func save(_ game: SaveableGame) -> Future<StoredGame, CoreDataManagerError> {
+    public func save(_ game: StoredGame) -> Future<StoredGame, CoreDataManagerError> {
         return Future { complete in
             DispatchQueue.main.async {
                 var storedGame: StoredGame
@@ -140,7 +140,7 @@ public class CoreDataManager {
     /// - Parameters:
     ///     - game: object that conforms to Saveable
     /// - Returns: true if the game already exists in CoreData.
-    private func exists(_ game: SaveableGame) -> Bool {
+    private func exists(_ game: StoredGame) -> Bool {
         let fetchRequest = generateFetchRequest(uuid: game.uuid!)
 
         guard let count = try? self.context.count(for: fetchRequest), count == 0 else {
