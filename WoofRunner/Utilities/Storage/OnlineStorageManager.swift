@@ -65,11 +65,21 @@ public class OnlineStorageManager {
     /// Authenticates with Firebase using Facebook token.
     /// - Parameters:
     ///     - token: Facebook token obtained from Facebook authentication
-    public func auth(token: String) {
+    public func auth(token: String) -> Future<String, OnlineStorageManagerError> {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("\(error.localizedDescription)")
+
+        return Future { complete in
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                    complete(.failure(OnlineStorageManagerError.AuthError))
+                } else {
+                    if let authUser = user {
+                        complete(.success(authUser.uid))
+                    } else {
+                        complete(.failure(OnlineStorageManagerError.AuthError))
+                    }
+                }
             }
         }
     }
@@ -81,8 +91,8 @@ public class OnlineStorageManager {
     public func load(_ uuid: String) -> Future<NSDictionary?, OnlineStorageManagerError> {
         return Future { complete in
             ref.child(uuid).observeSingleEvent(of: .value, with: { snapshot in
-                let value = snapshot.value
-                complete(.success(value as? NSDictionary))
+                let value = snapshot.value as? NSDictionary
+                complete(.success(value))
             }) { error in
                 complete(.failure(OnlineStorageManagerError.FetchError))
             }
@@ -118,4 +128,5 @@ public class OnlineStorageManager {
 
 public enum OnlineStorageManagerError: Error {
     case FetchError
+    case AuthError
 }

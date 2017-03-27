@@ -17,8 +17,11 @@ public class LMLoginViewModel {
 
     public var facebookAuthed = Variable<Bool>(false)
     public var firebaseAuthed = Variable<Bool>(false)
+    public var authFailure = Variable<Bool?>(nil)
     public var isAuthed: Observable<Bool> {
-        return Observable.combineLatest(facebookAuthed.asObservable(), firebaseAuthed.asObservable()) { (facebook, firebase) in
+        return Observable.combineLatest(
+            facebookAuthed.asObservable(), firebaseAuthed.asObservable()
+        ) { (facebook, firebase) in
             return facebook && firebase
         }
     }
@@ -28,8 +31,9 @@ public class LMLoginViewModel {
     /// Authenticates with Facebook
     public func authWithFacebook(viewController vc: UIViewController) {
         if let accessToken = AccessToken.current {
-            self.authWithFirebase(token: accessToken.userId!)
-            firebaseAuthed.value = true
+            self.facebookAuthed.value = true
+            self.authWithFirebase(token: accessToken.authenticationToken)
+            return
         }
 
         let loginManager = LoginManager()
@@ -40,9 +44,8 @@ public class LMLoginViewModel {
             case .cancelled:
                 print("Log in cancelld")
             case .success( _, _, let accessToken):
-                self.authWithFirebase(token: accessToken.authenticationToken)
-                self.firebaseAuthed.value = true
                 self.facebookAuthed.value = true
+                self.authWithFirebase(token: accessToken.authenticationToken)
             }
         }
     }
@@ -52,7 +55,8 @@ public class LMLoginViewModel {
     ///     - token: Facebook token obtained from authentication
     private func authWithFirebase(token: String) {
         osm.auth(token: token)
-        firebaseAuthed.value = true
+            .onSuccess { _ in self.firebaseAuthed.value = true }
+            .onFailure { _ in self.authFailure.value = true }
     }
 
 }
@@ -83,6 +87,7 @@ public class LMLoginViewController: UIViewController {
     }
 
     // MARK: - Lifecycle methods
+
     public override func viewDidLoad() {
         vm.isAuthed
             .subscribe(onNext: { authed in
