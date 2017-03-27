@@ -115,8 +115,7 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
-        let json = try? JSONSerialization.jsonObject(with: (game.toJSONString()?.data(using: .utf8))!, options: [])
-        ref.child(game.uuid!).setValue(json)
+        ref.child(game.uuid!).setValue(game.export())
     }
 
     /// Clears all game data in online storage manager

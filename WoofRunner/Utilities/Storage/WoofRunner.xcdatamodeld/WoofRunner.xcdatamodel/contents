@@ -2,11 +2,18 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="StoredGame" representedClassName="StoredGame" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="ownerID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ownerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="obstacles" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredObstacle" inverseName="game" inverseEntity="StoredObstacle" syncable="YES"/>
-        <relationship name="platforms" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredPlatform" inverseName="game" inverseEntity="StoredPlatform" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="sync.isPrimaryKey" value="true"/>
+            </userInfo>
+        </attribute>
+        <relationship name="obstacles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredObstacle" inverseName="game" inverseEntity="StoredObstacle" syncable="YES"/>
+        <relationship name="platforms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredPlatform" inverseName="game" inverseEntity="StoredPlatform" syncable="YES"/>
+        <userInfo>
+            <entry key="key" value="value"/>
+        </userInfo>
     </entity>
     <entity name="StoredObstacle" representedClassName="StoredObstacle" syncable="YES" codeGenerationType="class">
         <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
