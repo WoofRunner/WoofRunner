@@ -38,19 +38,58 @@ extension LevelGrid: SaveableGame {
 
     func load(from storedGame: StoredGame) {
         self.storedGame = storedGame
+        let obstacles = storedGame.value(forKey: "obstacles") as! [StoredObstacle]
+        let platforms = storedGame.value(forKey: "platforms") as! [StoredPlatform]
 
-        // TODO: Map the StoredGame attribute to the game model
+        for obstacle in obstacles {
+            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = Int(obstacle.type!)!
+        }
+
+        for platform in platforms {
+            platformArray[Int(platform.positionX)][Int(platform.positionY)] = Int(platform.type!)!
+        }
     }
 
     /// Returns the StoredObstacle mapping of the current game model.
     private func getStoredObstacles() -> [StoredObstacle] {
-        return [StoredObstacle]()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var res = [StoredObstacle]()
+
+        for (row, obstacles) in obstacleArray.enumerated() {
+            for (col, obstacle) in obstacles.enumerated() {
+                let storedObstacle = StoredObstacle(context: appDelegate.dataStack.mainContext)
+                storedObstacle.setValue(String(obstacle), forKey: "type")
+                storedObstacle.setValue(col, forKey: "positionX")
+                storedObstacle.setValue(row, forKey: "positionY")
+
+                // Radius of each obstacle not determined yet
+                storedObstacle.setValue(1, forKey: "radius")
+
+                res.append(storedObstacle)
+            }
+        }
+
+        return res
     }
 
     /// Returns the StoredPlatform mapping of the current game model.
     /// - Returns: array of StoredPlatform objects
     private func getStoredPlatforms() -> [StoredPlatform] {
-        return [StoredPlatform]()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var res = [StoredPlatform]()
+
+        for (row, platforms) in platformArray.enumerated() {
+            for (col, platform) in platforms.enumerated() {
+                let storedPlatform = StoredPlatform(context: appDelegate.dataStack.mainContext)
+                storedPlatform.setValue(String(platform), forKey: "type")
+                storedPlatform.setValue(col, forKey: "positionX")
+                storedPlatform.setValue(row, forKey: "positionY")
+
+                res.append(storedPlatform)
+            }
+        }
+
+        return res
     }
 
 }
