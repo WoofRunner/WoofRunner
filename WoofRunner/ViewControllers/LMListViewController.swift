@@ -76,11 +76,19 @@ public class LMListViewController: UIViewController {
     }
 
     /// Loads all downloaded games
-    private func loadDownloadedGames() {}
+    private func loadDownloadedGames() {
+        osm.loadAll().onSuccess { gameDict in
+            let games = gameDict!
+
+            // TODO: Parse all NSDictionaries into a proper game object, currently stubbed
+            self.games.value = games.map { (uuid, game) in SaveableStub(uuid: uuid as! String) }
+        }
+    }
 
     /// Loads all created games
     private func loadCreatedGames() {
         cdm.loadAll().onSuccess { games in
+            // TODO: Parse all StoredGame back into the original game format, currently stubbed.
             self.games.value = games.map { SaveableStub(uuid: $0.uuid!) }
         }
     }
