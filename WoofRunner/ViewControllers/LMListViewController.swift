@@ -127,6 +127,10 @@ public struct SaveableStub: UploadableGame {
         self.createdAt = Date()
         self.updatedAt = Date()
     }
+
+    public func toStoredGame() -> StoredGame {
+        return StoredGame()
+    }
 }
 
 extension SaveableStub: Mappable {

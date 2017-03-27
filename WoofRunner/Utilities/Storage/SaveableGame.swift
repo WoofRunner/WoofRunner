@@ -18,4 +18,6 @@ public protocol SaveableGame {
     var platforms: [SaveablePlatform]? { get set }
     var createdAt: Date? { get set }
     var updatedAt: Date? { get set }
+
+    func toStoredGame() -> StoredGame
 }
