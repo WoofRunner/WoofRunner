@@ -21,7 +21,7 @@ public class GameStorageManager {
 
     private let osm = OnlineStorageManager.getInstance()
     private let cdm = CoreDataManager.getInstance()
-    public private(set) var games = Variable<[String: UploadableGame]>([:])
+    public private(set) var games = Variable<[String: StoredGame]>([:])
 
     // MARK: - Private initializer
 
@@ -44,8 +44,8 @@ public class GameStorageManager {
 
     /// Returns an array of all the games stored in memory.
     /// - Returns: array of UploadableGame from memory
-    public func getAllGames() -> [UploadableGame] {
-        let res = [UploadableGame]()
+    public func getAllGames() -> [StoredGame] {
+        let res = [StoredGame]()
 
         for (uuid, game) in games.value {
             print(uuid)
@@ -58,8 +58,8 @@ public class GameStorageManager {
 
     /// Returns all games created by the owner that have been uploaded to the marketplace.
     /// - Returns: array of UploadableGame that has been uploaded
-    public func getUploadedGames() -> [UploadableGame] {
-        let res = [UploadableGame]()
+    public func getUploadedGames() -> [StoredGame] {
+        let res = [StoredGame]()
 
         for (uuid, game) in games.value {
             // TODO: Map StoredGame to UploadableGame
@@ -70,13 +70,13 @@ public class GameStorageManager {
         return res
     }
 
-    public func getGame(uuid: String) -> UploadableGame? {
+    public func getGame(uuid: String) -> StoredGame? {
         // Loads the game from memory.
         return games.value[uuid]
     }
 
     /// Saves the game to CoreData.
-    public func saveGame(_ game: UploadableGame) {
+    public func saveGame(_ game: StoredGame) {
         // Saves the game to CoreData.
         reloadGames()
     }

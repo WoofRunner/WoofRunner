@@ -111,10 +111,10 @@ public class OnlineStorageManager {
         }
     }
 
-    /// Saves the game in Firebase database.
+    /// Uploads a StoredGame into Firebase database.
     /// - Parameters:
     ///     - game: game model object that extends Serializable
-    public func save(_ game: UploadableGame) {
+    public func save(_ game: StoredGame) {
         let json = try? JSONSerialization.jsonObject(with: (game.toJSONString()?.data(using: .utf8))!, options: [])
         ref.child(game.uuid!).setValue(json)
     }

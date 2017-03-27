@@ -70,27 +70,6 @@ class GridViewModel {
     }
 }
 
-extension GridViewModel: UploadableGame {
-    func toStoredGame() -> StoredGame {
-        let storedGame = StoredGame()
-        storedGame.uuid = uuid
-        storedGame.createdAt = createdAt as NSDate?
-        storedGame.updatedAt = updatedAt as NSDate?
-
-        return storedGame
-    }
-
-    func mapping(map: Map) {
-        ownerID <- map["ownerID"]
-        uuid <- map["uuid"]
-        obstacles <- map["obstacles"]
-        platforms <- map["platforms"]
-        createdAt <- (map["createdAt"], DateTransform())
-        updatedAt <- (map["updatedAt"], DateTransform())
-    }
-
-}
-
 class PlatformStub {
     
     var position: SCNVector3

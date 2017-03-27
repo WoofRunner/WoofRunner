@@ -19,7 +19,7 @@ class LMListCollectionViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     /// Game names stubbed
-    public var games: Variable<[SaveableStub]>?
+    public var games: Variable<[StoredGame]>?
 
     // MARK: - Lifecycle methods
 

@@ -12,7 +12,7 @@ public class LMHomeViewModel {
 
     // MARK: - Public variables
 
-    public var featuredGames = Variable<[SaveableStub]>([])
+    public var featuredGames = Variable<[StoredGame]>([])
     public var isLoading = Variable<Bool>(false)
 
     // MARK: - Private variables
@@ -26,10 +26,8 @@ public class LMHomeViewModel {
         osm.loadAll()
             .onSuccess { games in
                 let loadedGames = games!
-                for (uuid, _) in loadedGames {
+                for (_, _) in loadedGames {
                     // TODO: Proper mapping of game object
-                    let mappedGame = SaveableStub(uuid: uuid as! String)
-                    self.featuredGames.value.append(mappedGame)
                 }
         }
     }
