@@ -45,15 +45,7 @@ public class GameStorageManager {
     /// Returns an array of all the games stored in memory.
     /// - Returns: array of UploadableGame from memory
     public func getAllGames() -> [StoredGame] {
-        let res = [StoredGame]()
-
-        for (uuid, game) in games.value {
-            print(uuid)
-            print(game)
-            // TODO: Map StoredGame to UploadableGame
-        }
-
-        return res
+        return games.value.map { (_, game) in game }
     }
 
     /// Returns all games created by the owner that have been uploaded to the marketplace.
@@ -62,7 +54,7 @@ public class GameStorageManager {
         let res = [StoredGame]()
 
         for (uuid, game) in games.value {
-            // TODO: Map StoredGame to UploadableGame
+            // TODO: Persist a list of uploaded games
             print(uuid)
             print(game)
         }
@@ -76,16 +68,26 @@ public class GameStorageManager {
     }
 
     /// Saves the game to CoreData.
-    public func saveGame(_ game: StoredGame) {
-        // Saves the game to CoreData.
-        reloadGames()
+    public func saveGame(_ game: SaveableGame) {
+        cdm.save(game)
+            .onSuccess { _ in
+                self.reloadGames()
+            }
+            .onFailure { _ in
+                // TODO: Throw an error here
+            }
     }
 
     /// Uploads the game with the corresponding UUID to Firebase.
     /// - Parameters:
     ///     - uuid: UUID string of the game to upload
     public func uploadGame(uuid: String) {
-        // Uploads the game with UUID in `games` to Firebase
+        guard let storedGame = games.value[uuid] else {
+            // TODO: Throw an error here.
+            return
+        }
+
+        osm.save(storedGame)
     }
 
     /// Downloads the game with the corresponding UUID from Firebase into CoreData.
@@ -93,7 +95,15 @@ public class GameStorageManager {
     ///     - uuid: UUID string of the game to download
     public func downloadGame(uuid: String) {
         // Get the game from downloaded games from Firebase and save it to CoreData.
-        // Reload games from CoreData.
+        osm.load(uuid).onSuccess { game in
+            self.cdm.context.sync(
+                [game as! [String: Any]], inEntityNamed: "StoredGame") { _ in
+                self.reloadGames()
+            }
+        }
+        .onFailure { error in
+            // TODO: Throw error here
+        }
     }
 
     // MARK: - Private methods

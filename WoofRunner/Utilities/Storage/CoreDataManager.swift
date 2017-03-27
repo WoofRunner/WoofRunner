@@ -24,7 +24,7 @@ public class CoreDataManager {
 
     // MARK: - Private variables
     private static var instance: CoreDataManager?
-    private let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     private let privateContext = NSManagedObjectContext(
         concurrencyType: .privateQueueConcurrencyType)
 
