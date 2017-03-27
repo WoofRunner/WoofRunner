@@ -13,14 +13,16 @@ class Player: GameObject {
 
     override init() {
         super.init()
-        //let characterScene = SCNScene(named: "art.scnassets/ship.scn")!
-        let characterScene = SCNScene(named: "art.scnassets/cube1.scn")!
-        let characterTopLevelNode = characterScene.rootNode.childNodes[0]
-        addChildNode(characterTopLevelNode)
+        //let modelScene = SCNScene(named: "art.scnassets/cube1.scn")!
+        let modelScene = SCNScene(named: "art.scnassets/playerCube.scn")!
+        let modelNode = modelScene.rootNode.childNodes[0]
+        addChildNode(modelNode)
 
         //geometry = SCNSphere(radius: 0.4)
         name = "player"
-        position = SCNVector3(x: 0, y: -0.3, z: 1)
+        //position = SCNVector3(x: 0, y: -0.3, z: 1)
+        position = SCNVector3(x: 0, y: 0.1, z: 1.5)
+        //scale = SCNVector3(0.8, 0.8, 0.8)
         //physicsBody = characterTopLevelNode.physicsBody
         //physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         
@@ -37,10 +39,13 @@ class Player: GameObject {
         isTickEnabled = true
     }
    
-    override func OnCollide(other: GameObject) {
+    public override func OnCollide(other: GameObject) {
         print("collide")
         //print("collide" + String(describing: other))
-        //destroy()
+        
+        if other is Obstacle {
+            destroy()
+        }
     }
     
     override func update(_ deltaTime: Float) {

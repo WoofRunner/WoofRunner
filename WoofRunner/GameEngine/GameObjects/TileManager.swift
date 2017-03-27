@@ -22,19 +22,21 @@ class TileManager: GameObject {
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [0, 1, 0, 1, 0],
+                              [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0]]
     
-    var platformData: [[Int]] = [[1, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1],
-                              [0, 1, 1, 1, 1],
-                              [0, 1, 1, 1, 1],
-                              [0, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1],
-                              [1, 1, 1, 1, 1]]
+    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1]]
 
     var tailIndex: Int = 0
     var platformTail: Float = 0
@@ -74,7 +76,12 @@ class TileManager: GameObject {
     
     private func handleTileSpawning(row: Int, col: Int) {
         if platformData[row % platformData.count][col] == 1 {
-            let platformTile = poolManager?.getTile(TileType.floor)
+            let platformTile = poolManager?.getTile(TileType.floorLight)
+            platformTile?.position = calculateTilePosition(row, col)
+        }
+        
+        if platformData[row % platformData.count][col] == 2 {
+            let platformTile = poolManager?.getTile(TileType.floorDark)
             platformTile?.position = calculateTilePosition(row, col)
         }
         
@@ -86,7 +93,7 @@ class TileManager: GameObject {
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)
-        position.y = -1
+        position.y = -Tile.TILE_WIDTH
         return position
     }
     
@@ -95,7 +102,7 @@ class TileManager: GameObject {
     }
     
     private func calculateIndexPosition(_ row: Int, _ col: Int) -> SCNVector3 {
-        return SCNVector3(x: (Float)(col) * Float(Tile.TILE_WIDTH) - 2.0, y: 0, z: -(Float)(row) * Float(Tile.TILE_WIDTH))
+        return SCNVector3(x: (Float)(col) * Tile.TILE_WIDTH - 2.0, y: 0, z: -(Float)(row) * Tile.TILE_WIDTH)
     }
     
     private func canSpawnRow(_ row: Int) -> Bool {

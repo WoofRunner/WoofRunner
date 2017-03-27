@@ -15,7 +15,7 @@ class Camera: GameObject {
         super.init()
         
         camera = SCNCamera()
-        position = SCNVector3(x: 0, y: 5, z: 5)
+        position = SCNVector3(x: 0.5, y: 5, z: 5)
         rotation = SCNVector4(1, 0, 0, -0.77)
     }
 }

@@ -65,6 +65,8 @@
 		F33442CD1E815BFE001C1D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C61E815BFE001C1D8D /* Player.swift */; };
 		F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C71E815BFE001C1D8D /* TestCube.swift */; };
 		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
+		F38F48291E87F1FB005328A9 /* FloorLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* FloorLight.swift */; };
+		F38F482B1E87F28F005328A9 /* FloorDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* FloorDark.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +160,8 @@
 		F33442C61E815BFE001C1D8D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F33442C71E815BFE001C1D8D /* TestCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCube.swift; sourceTree = "<group>"; };
 		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F38F48281E87F1FB005328A9 /* FloorLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorLight.swift; sourceTree = "<group>"; };
+		F38F482A1E87F28F005328A9 /* FloorDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorDark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +409,8 @@
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
 				F33442C81E815BFE001C1D8D /* Tile.swift */,
 				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
+				F38F48281E87F1FB005328A9 /* FloorLight.swift */,
+				F38F482A1E87F28F005328A9 /* FloorDark.swift */,
 				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
 			);
@@ -717,6 +723,7 @@
 				3FCC89A71E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
+				F38F482B1E87F28F005328A9 /* FloorDark.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
 				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
@@ -728,6 +735,7 @@
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
+				F38F48291E87F1FB005328A9 /* FloorLight.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerSceneView.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,

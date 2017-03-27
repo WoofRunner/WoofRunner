@@ -21,8 +21,13 @@ class PoolManager {
     
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
-        for _ in 0..<NUM_OF_PLATFORM {
-            guard let tile = createNewTile(TileType.floor) else { continue }
+        for _ in 0..<NUM_OF_PLATFORM/2 {
+            guard let tile = createNewTile(TileType.floorLight) else { continue }
+            poolTile(tile)
+        }
+        
+        for _ in 0..<NUM_OF_PLATFORM/2 {
+            guard let tile = createNewTile(TileType.floorDark) else { continue }
             poolTile(tile)
         }
         
@@ -64,8 +69,11 @@ class PoolManager {
         let tile: Tile
         
         switch tileType {
-        case .floor:
-            tile = Platform()
+        case .floorLight:
+            tile = FloorLight()
+        
+        case .floorDark:
+            tile = FloorDark()
             
         case.rock:
             tile = Obstacle()

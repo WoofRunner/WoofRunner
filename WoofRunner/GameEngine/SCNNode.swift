@@ -12,6 +12,10 @@ import SceneKit
 extension SCNNode {
     public func OnCollide(otherSCNNode: SCNNode) {
         // notify parent SCNNode when collision happens
+        guard let otherParent = otherSCNNode.parent else {
+            return
+        }
+        parent?.OnCollide(otherSCNNode: otherParent)
         parent?.OnCollide(otherSCNNode: otherSCNNode)
     }
 }

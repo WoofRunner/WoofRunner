@@ -10,18 +10,19 @@ import Foundation
 import SceneKit
 
 enum TileType {
+    case none
+    
     case jump
     case rock
     case sword
     
-    case floor
+    case floorLight
+    case floorDark
     case grass
-    
-    case none
 }
 
 class Tile: GameObject {
-    static let TILE_WIDTH: CGFloat = 1.0
+    static let TILE_WIDTH: Float = 1
     
     var delegate: PoolManager?
     
@@ -43,5 +44,14 @@ class Tile: GameObject {
         if worldPosition.z > autoDestroyPositionZ {
             delegate?.poolTile(self)
         }
+    }
+    
+    public func loadModel(_ pathName: String) {
+        guard let modelScene = SCNScene(named: pathName) else {
+            print("WARNING: Cant find path name: " + pathName)
+            return
+        }
+        let modelNode = modelScene.rootNode.childNodes[0]
+        addChildNode(modelNode)
     }
 }
