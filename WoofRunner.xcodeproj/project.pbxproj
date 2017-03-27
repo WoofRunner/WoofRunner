@@ -234,12 +234,12 @@
 		120208031E7449FB0066BD4C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				12AD18211E8969F700EF5C46 /* SaveableGame.swift */,
-				12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */,
-				12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */,
 				12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */,
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
 				12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */,
+				12AD18211E8969F700EF5C46 /* SaveableGame.swift */,
+				12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */,
+				12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */,
 				120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */,
 			);
 			path = Storage;
