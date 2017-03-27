@@ -12,6 +12,7 @@ import RxCocoa
 
 class GridViewModel {
 
+    var gridPos: Position
     var position = Variable<SCNVector3>(SCNVector3(0, 0, 0))
     var size = Variable<Float>(1.0)
     var platformType = Variable<TileType>(.none)
@@ -20,15 +21,14 @@ class GridViewModel {
     
     static var colors = [UIColor.blue, UIColor.red, UIColor.lightGray]
     
-    init (_ position: SCNVector3) {
-        self.position.value = position
+    init (row: Int, col: Int) {
+        self.gridPos = Position(row: row, col: col)
+        self.position.value = SCNVector3(Float(gridPos.getCol()) * Tile.TILE_WIDTH, Float(gridPos.getRow()) * Tile.TILE_WIDTH, 0)
         self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
     }
     
-    init (_ platform: Platform) {
-        self.position.value = platform.position
-        self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
-        setPlatform(platform.tileType)
+    convenience init() {
+        self.init(row: 0, col: 0)
     }
     
     func setPlatform(_ platform: TileType) {
@@ -53,29 +53,5 @@ class GridViewModel {
     
     func removeObstacle() {
         obstacleType.value = .none
-    }
-}
-
-class PlatformStub {
-    
-    var position: SCNVector3
-    var size: Float
-    var platformType: TileType
-    
-    init(position: SCNVector3, platformType: TileType) {
-        self.position = position
-        self.size = Float(Tile.TILE_WIDTH)
-        self.platformType = platformType
-    }
-}
-
-class ObstacleStub {
-    
-    var position: SCNVector3
-    var obstacleType: TileType
-    
-    init(position: SCNVector3, obstacleType: TileType) {
-        self.position = position
-        self.obstacleType = obstacleType
     }
 }

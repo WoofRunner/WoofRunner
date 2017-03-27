@@ -10,6 +10,19 @@
  Indicates a position on our game grid
  */
 public struct Position {
-    public let row: Int;
-    public let col: Int;
+    private let row: Int;
+    private let col: Int;
+    
+    init(row: Int, col: Int) {
+        self.row = row
+        self.col = col
+    }
+    
+    func getRow() -> Int {
+        return self.row
+    }
+    
+    func getCol() -> Int {
+        return self.col
+    }
 }

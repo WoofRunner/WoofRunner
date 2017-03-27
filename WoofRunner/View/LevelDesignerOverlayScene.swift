@@ -11,16 +11,20 @@ import SpriteKit
 import RxSwift
 import RxCocoa
 
-class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDelegate {
+class LevelDesignerOverlayScene: SKScene,
+								PaletteButtonDelegate,
+								OverlayButtonDelegate,
+								BottomMenuButtonDelegate {
 	
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
 	var currentSelectionUI = CurrentSelectionNode()
+	var bottomMenu = LevelDesignerBottomMenu()
 	
 	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
 	
-	//var oldOverlayY = CGFloat(0)
-	var oldY = CGFloat(0)
+	
+	var oldY = CGFloat(0) // Recorded y coords of the most recent user touch
 	
 	override init(size: CGSize) {
 		super.init(size: size)
@@ -41,11 +45,19 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		let currentSelectionPosY = CGFloat(880)
 		self.addChild(currentSelectionUI)
 		self.currentSelectionUI.position = CGPoint(x: currentSelectionPosX, y: currentSelectionPosY)
+		
+		// Bottom Menu
+		self.bottomMenu.position =  CGPoint(x: self.frame.midX, y: self.frame.minY + 40)
+		self.bottomMenu.setButtonDelegates(self)
+		self.addChild(bottomMenu)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
+	
+	
+	// - MARK: Handle Touches
 	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let firstTouch = touches.first
@@ -65,6 +77,11 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 			overlayBtnNode.onTap()
 			return
 		}
+		
+		if let bottomMenuBtnNode = node as? BottomMenuButton {
+			bottomMenuBtnNode.onTap()
+			return
+		}
 	}
 	
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -79,7 +96,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 		}
 	}
 	
-	// PaletteButtonDelegate
+	// - MARK: PaletteButtonDelegate
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
 		if funcType == .delete {
 			setCurrentTileSelection(.none)
@@ -94,7 +111,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	}
 	
 	
-	// OverlayButtonDelegate
+	// - MARK: OverlayButtonDelegate
 	internal func setCurrentTileSelection(_ type: TileType) {
 		self.currentTileSelection.value = type
 		self.currentSelectionUI.updateSelectionText(type.toString())
@@ -102,6 +119,15 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	
 	internal func closeOverlayMenu() {
 		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
+	}
+	
+	// - MARK: BottomMenuButtonDelegate
+	internal func testLevel() {
+		print("test level")
+	}
+	
+	internal func saveLevel() {
+		print("save level")
 	}
 
 }
