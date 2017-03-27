@@ -65,10 +65,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 			overlayBtnNode.onTap()
 			return
 		}
-
-		
 	}
-
 	
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let firstTouch = touches.first

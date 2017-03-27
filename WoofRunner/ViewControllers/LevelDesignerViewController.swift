@@ -17,11 +17,12 @@ class LevelDesignerViewController: UIViewController {
 	let disposeBag = DisposeBag();
 
 	let levelCols = 4
-    let chunkLength = 10
+    let chunkLength = 20
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = [GridViewModel]()
     var currentSelectedBrush: TileType = .floor // Observing overlayScene
+    var spriteScene: LevelDesignerOverlayScene?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +50,12 @@ class LevelDesignerViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
         
 		// Attached overlay
-		let spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
+		spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
+        guard let skScene = spriteScene else {
+            return
+        }
 		sceneView.overlaySKScene = spriteScene
-		spriteScene.currentTileSelection.asObservable()
+		skScene.currentTileSelection.asObservable()
 			.subscribe(onNext: {
 				(brush) in
 				self.currentSelectedBrush = brush
@@ -114,6 +118,7 @@ class LevelDesignerViewController: UIViewController {
     }
     
     private func toggleGrid(x: Float, y: Float) {
+        
         for gridVM in currentLevel {
             guard gridVM.position.value.x == x && gridVM.position.value.y == y else {
                 continue
@@ -121,7 +126,7 @@ class LevelDesignerViewController: UIViewController {
             if currentSelectedBrush.isPlatform() {
                 gridVM.setPlatform(currentSelectedBrush)
             } else if currentSelectedBrush.isObstacle() && gridVM.platformType.value != TileType.none {
-                gridVM.setPlatform(currentSelectedBrush)
+                gridVM.setObstacle(currentSelectedBrush)
             } else if currentSelectedBrush == TileType.none {
                 // Current implementation: Delete both obstacle and platform
                 gridVM.removePlatform()
@@ -129,7 +134,17 @@ class LevelDesignerViewController: UIViewController {
         }
     }
     
+    private func canEdit() -> Bool {
+        guard let skScene = spriteScene else {
+            return true
+        }
+        return skScene.overlayMenu.alpha == 0
+    }
+    
     func handlePan(_ sender: UIPanGestureRecognizer) {
+        if (!canEdit()) {
+            return
+        }
         let camera = LDScene.cameraNode
 
         let translation = sender.translation(in: sceneView)
@@ -171,6 +186,9 @@ class LevelDesignerViewController: UIViewController {
     }
 
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        if (!canEdit()) {
+            return
+        }
         // Check what nodes are tapped
         let pos = gestureRecognize.location(in: sceneView)
         let hitResults = sceneView.hitTest(pos, options: [:])
