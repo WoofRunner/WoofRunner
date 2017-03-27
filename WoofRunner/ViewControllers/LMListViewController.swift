@@ -25,7 +25,7 @@ public class LMListViewController: UIViewController {
 
     // MARK: - Private variables
 
-    private var games = Variable<[SaveableGame]>([])
+    private var games = Variable<[SaveableStub]>([])
     private var cdm = CoreDataManager.getInstance()
     private var osm = OnlineStorageManager.getInstance()
 
@@ -111,7 +111,7 @@ public class LMListViewController: UIViewController {
 /**
  For testing purposes
  */
-private struct SaveableStub: UploadableGame {
+public struct SaveableStub: UploadableGame {
     public var ownerID: String?
     public var uuid: String?
     public var obstacles: [SaveableObstacle]?
@@ -131,9 +131,9 @@ private struct SaveableStub: UploadableGame {
 
 extension SaveableStub: Mappable {
 
-    init?(map: Map) {}
+    public init?(map: Map) {}
 
-    mutating func mapping(map: Map) {
+    public mutating func mapping(map: Map) {
         ownerID <- map["ownerID"]
         uuid <- map["uuid"]
         obstacles <- map["obstacles"]

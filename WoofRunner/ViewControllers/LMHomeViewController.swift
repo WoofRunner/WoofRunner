@@ -14,6 +14,7 @@ public class LMHomeViewController: UIViewController {
 
     // MARK: - Private variables
 
+    private var vm = LMHomeViewModel()
     private var games = Variable<[SaveableGame]>([])
 
     // MARK: - IBActions
@@ -32,8 +33,7 @@ public class LMHomeViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadGames()
+        vm.loadFeaturedGames()
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,11 +44,8 @@ public class LMHomeViewController: UIViewController {
 
         // Embedded segues
         if let destination = segue.destination as? LMListCollectionViewController {
-            destination.games = games
+            destination.games = vm.featuredGames
         }
     }
-
-    /// Loads all games that user have yet to download
-    private func loadGames() {}
 
 }
