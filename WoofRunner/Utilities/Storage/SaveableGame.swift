@@ -13,4 +13,5 @@ import Foundation
  */
 public protocol SaveableGame {
     func toStoredGame() -> StoredGame
+    func load(from storedGame: StoredGame)
 }

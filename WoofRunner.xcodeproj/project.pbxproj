@@ -22,6 +22,7 @@
 		12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18211E8969F700EF5C46 /* SaveableGame.swift */; };
 		12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */; };
 		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
+		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
 		12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF5ABD1E75904E00823568 /* SaveableStub.swift */; };
 		12DA42061E86627700C23137 /* LMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42051E86627700C23137 /* LMListViewController.swift */; };
 		12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LMCardViewCell.swift */; };
@@ -133,6 +134,7 @@
 		12AD18211E8969F700EF5C46 /* SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableGame.swift; sourceTree = "<group>"; };
 		12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableObstacle.swift; sourceTree = "<group>"; };
 		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
+		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
 		12BF5ABD1E75904E00823568 /* SaveableStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableStub.swift; sourceTree = "<group>"; };
 		12DA42051E86627700C23137 /* LMListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListViewController.swift; sourceTree = "<group>"; };
 		12DA42091E86699200C23137 /* LMCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCardViewCell.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */,
 				4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */,
 				4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */,
+				12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */,
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				3FCC89A71E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift in Sources */,
+				12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
