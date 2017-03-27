@@ -13,6 +13,11 @@ import RxSwift
 import RxCocoa
 
 class LevelDesignerViewController: UIViewController {
+    
+    // Camera Settings
+    static var cameraHeight: Float = 8.5
+    static var cameraAngle: Float = 30.0
+    static var cameraOffset: Float = 2.0
 	
 	let disposeBag = DisposeBag();
 
@@ -20,7 +25,7 @@ class LevelDesignerViewController: UIViewController {
     let chunkLength = 20
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
-    var currentLevel = [GridViewModel]()
+    var currentLevel = LevelGrid()
     var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
     var spriteScene: LevelDesignerOverlayScene?
 
@@ -36,12 +41,12 @@ class LevelDesignerViewController: UIViewController {
         self.view.addSubview(sceneView)
 		
         // Create sample level
-        let sampleLevel = createEmptyLevel(length: 50)
+        let sampleLevel = LevelGrid(length: 50)
         currentLevel = sampleLevel
         
         // Load level
         LDScene.loadLevel(currentLevel)
-        reloadChunk(currentLevel, from: 0)
+        sampleLevel.reloadChunk(from: 0)
         
         // Gestures
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
@@ -86,54 +91,6 @@ class LevelDesignerViewController: UIViewController {
     }
     
     // MARK: Helper Functions
-    
-    private func createEmptyLevel(length: Int) -> [GridViewModel] {
-        var emptyLevel = [GridViewModel]()
-        
-        guard length > 0 else {
-            return emptyLevel
-        }
-        
-        for row in 0...length-1 {
-            for col in 0...levelCols-1 {
-                let gridVM = GridViewModel(SCNVector3(Float(col) * Tile.TILE_WIDTH, Float(row) * Tile.TILE_WIDTH, 0))
-                emptyLevel.append(gridVM)
-            }
-        }
-        
-        return emptyLevel
-    }
-    
-    private func reloadChunk(_ level: [GridViewModel], from row: Int) {
-        let startPt: Float = Float(row) * Float(Tile.TILE_WIDTH)
-        let endPt: Float = Float(row + chunkLength) * Float(Tile.TILE_WIDTH)
-        
-        for gridVM in level {
-            if gridVM.position.value.y >= startPt && gridVM.position.value.y < endPt {
-                gridVM.shouldRender.value = true
-            } else {
-                gridVM.shouldRender.value = false
-            }
-        }
-    }
-    
-    private func toggleGrid(x: Float, y: Float) {
-        
-        for gridVM in currentLevel {
-            guard gridVM.position.value.x == x && gridVM.position.value.y == y else {
-                continue
-            }
-            if currentSelectedBrush.isPlatform() {
-                gridVM.setPlatform(currentSelectedBrush)
-            } else if currentSelectedBrush.isObstacle() && gridVM.platformType.value != TileType.none {
-                gridVM.setObstacle(currentSelectedBrush)
-            } else if currentSelectedBrush == TileType.none {
-                // Current implementation: Delete both obstacle and platform
-                gridVM.removePlatform()
-            }
-        }
-    }
-    
     private func canEdit() -> Bool {
         guard let skScene = spriteScene else {
             return true
@@ -174,11 +131,11 @@ class LevelDesignerViewController: UIViewController {
             let newPos = SCNVector3(LDScene.cameraLocation.x,
                                     LDScene.cameraLocation.y + diffR,
                                     LDScene.cameraLocation.z)
-            if (newPos.y >= -5.0) {
+            if (newPos.y >= -LevelDesignerViewController.cameraOffset) {
                 camera.position = newPos
             }
-            let startRow = Int(camera.position.y + 5.0 / Float(Tile.TILE_WIDTH))
-            reloadChunk(currentLevel, from: startRow)
+            let startRow = Int(camera.position.y + LevelDesignerViewController.cameraOffset / Tile.TILE_WIDTH)
+            currentLevel.reloadChunk(from: startRow)
             break;
         default:
             break;
@@ -202,7 +159,7 @@ class LevelDesignerViewController: UIViewController {
                     continue
                 }
                 // Else toggle
-                return toggleGrid(x: gridNode.position.x, y: gridNode.position.y)
+                return currentLevel.toggleGrid(x: gridNode.position.x, y: gridNode.position.y, currentSelectedBrush)
             }
         }
     }
