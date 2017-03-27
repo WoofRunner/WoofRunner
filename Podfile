@@ -26,7 +26,7 @@ target 'WoofRunner' do
   # Pods for WoofRunner
   pod 'iCarousel', '~> 1.8'
   pod 'BrightFutures'
-  pod 'Sync', '~> 3'
+  pod 'Sync', '~> 3.2'
   rx_swift
   facebook
   firebase
