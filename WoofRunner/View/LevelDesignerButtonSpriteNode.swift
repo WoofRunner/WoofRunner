@@ -11,7 +11,7 @@ import SpriteKit
 
 class LevelDesignerButtonSpriteNode: RootSKSpriteNode {
 	
-	
+	/*
 	static let LEVEL_DESIGNER_PALETTE_BUTTON_SIZE = CGFloat(60)
 	var diameter: CGFloat = LEVEL_DESIGNER_PALETTE_BUTTON_SIZE
 	var type: LevelDesignerPaletteFunctionType = .platform
@@ -38,5 +38,6 @@ class LevelDesignerButtonSpriteNode: RootSKSpriteNode {
 		// Decoding length here would be nice...
 		super.init(coder: aDecoder)
 	}
+	*/
 	
 }

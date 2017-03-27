@@ -8,35 +8,108 @@
 
 import UIKit
 import SpriteKit
+import RxSwift
+import RxCocoa
 
+class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDelegate {
+	
+	var paletteMenu = PaletteMenu()
+	var overlayMenu = OverlayMenu()
+	var currentSelectionUI = CurrentSelectionNode()
+	
+	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
+	
+	//var oldOverlayY = CGFloat(0)
+	var oldY = CGFloat(0)
+	
+	override init(size: CGSize) {
+		super.init(size: size)
+		self.backgroundColor = UIColor.clear
+		
+		// Palette
+		self.paletteMenu.renderPaletteMenu()
+		self.paletteMenu.assignDelegateForButtons(self)
+		self.addChild(paletteMenu)
+		
+		// Overlay
+		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+		self.overlayMenu.alpha = 0.0
+		self.addChild(overlayMenu)
+		
+		// Current Selection
+		let currentSelectionPosX = CGFloat(690)
+		let currentSelectionPosY = CGFloat(880)
+		self.addChild(currentSelectionUI)
+		self.currentSelectionUI.position = CGPoint(x: currentSelectionPosX, y: currentSelectionPosY)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		// Save y-pos of touch for calculating offset of scrolling if needed
+		self.oldY = (location?.y)!
+		
+		let node = self.atPoint(location!)
+		
+		if let paletteBtnNode = node as? PaletteButton {
+			paletteBtnNode.onTap()
+			return
+		}
+		
+		if let overlayBtnNode = node as? OverlayButton {
+			overlayBtnNode.onTap()
+			return
+		}
+	}
+	
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		// If Menu is visible
+		if overlayMenu.alpha > 0 {
+			let offset = (location?.y)! - oldY
+			self.overlayMenu.scrollMenu(offset: offset)
+			self.oldY = (location?.y)!
+		}
+	}
+	
+	// PaletteButtonDelegate
+	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
+		if funcType == .delete {
+			setCurrentTileSelection(.none)
+		} else {
+			openOverlayMenu(funcType)
+		}
+	}
+	
+	func openOverlayMenu(_ funcType: PaletteFunctionType) {
+		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+	}
+	
+	
+	// OverlayButtonDelegate
+	internal func setCurrentTileSelection(_ type: TileType) {
+		self.currentTileSelection.value = type
+		self.currentSelectionUI.updateSelectionText(type.toString())
+	}
+	
+	internal func closeOverlayMenu() {
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
+	}
 
-struct OverlayConstants {
-	static let numberOfPaletteButtons = CGFloat(3)
-	static let paletteButtonSize = CGFloat(60)
-	static let paletteButtonMargin = CGFloat(15)
-	
-	static let paletteWidth = paletteButtonSize + (2 * paletteButtonMargin)
-	static let paletteHeight = (paletteButtonSize * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
-	
-	// NOTE: For SKShapeNode, position (origin) = bottom/left, not center!
-	static let paletteOriginX = CGFloat(35)
-	static let paletteOriginY = CGFloat(650)
-	
-	static let paletteCenterX = paletteOriginX + paletteWidth/2
-	static let paletteCenterY = paletteOriginY + paletteHeight/2
-	
-	static let paletteButtonX0 = paletteOriginX + paletteWidth/2 // y-coord for the topmost palette button
-	static let paletteButtonY0 = (paletteOriginY + paletteHeight) - (paletteButtonSize/2 + paletteButtonMargin) // x-coord for the topmost palette button
 }
-
-
-
-class LevelDesignerOverlayScene: SKScene {
-	
 	//var pauseNode: SKSpriteNode!
 	//var scoreNode: SKLabelNode!
 	//var cameraNode: SKCameraNode!
 	
+	/*
 	
 	// Palette
 	var platformPaletteButton: LevelDesignerButtonSpriteNode!
@@ -230,11 +303,16 @@ class LevelDesignerOverlayScene: SKScene {
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
 		
+		/*
+		let hitResults = self.view?.hitTest(location!, with: event)
+		hitResults?.next?.touchesBegan(touches, with: event)
+		*/
+		
 		let pressAction = ButtonActions.getButtonPressAction()
 		
 		for button in paletteButtonArr {
 			if button.contains(location!) {
-				print("button touched!")
+				print("Touch Begin on Button!")
 				currentPressedButton = button
 				break
 			}
@@ -242,9 +320,12 @@ class LevelDesignerOverlayScene: SKScene {
 		
 		// Run Action on selected button is exist
 		if let selectedButton = currentPressedButton {
-			print("Touch Begin on palette button")
-			selectedButton.run(pressAction)
+			print("PaletteButton begins pressed action")
+			selectedButton.run(pressAction, completion: {
+				print("Action completed!")
+			})
 		}
+		
 	}
 	
 
@@ -263,6 +344,10 @@ class LevelDesignerOverlayScene: SKScene {
 			selectedButton.run(releaseAction)
 			currentPressedButton = nil
 		}
+	}
+	
+	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		print("Touch cancelled")
 	}
 	
 	// Handle touch events of the scene
@@ -320,6 +405,10 @@ class LevelDesignerOverlayScene: SKScene {
 			return
 		}
 	}
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("cancelled")
+    }
 	
 	func toggleExtendedMenu(funcType: LevelDesignerPaletteFunctionType, action: SKAction) {
 		// Check type first
@@ -360,3 +449,4 @@ class LevelDesignerOverlayScene: SKScene {
 		super.init(coder: aDecoder)
 	}
 }
+*/

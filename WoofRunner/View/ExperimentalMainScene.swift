@@ -19,6 +19,7 @@ class ExperimentalMainScene: SCNScene {
 	override init() {
 		super.init()
 		
+		
 		let cube = SCNBox(width: 3, height: 3, length: 3, chamferRadius: 0)
 		let cubeMaterial = SCNMaterial()
 		cubeMaterial.diffuse.contents = UIColor.blue
@@ -50,9 +51,11 @@ class ExperimentalMainScene: SCNScene {
 		self.lightNode.light = omniLight
 		self.lightNode.position = SCNVector3(x: -3, y: 5, z: 3)
 		
+		
 		self.rootNode.addChildNode(self.cubeNode)
 		self.rootNode.addChildNode(self.cameraNode)
 		self.rootNode.addChildNode(self.lightNode)
+
 	}
 	
 	required init(coder aDecoder: NSCoder) {

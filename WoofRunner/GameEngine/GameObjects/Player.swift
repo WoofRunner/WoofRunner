@@ -13,22 +13,43 @@ class Player: GameObject {
 
     override init() {
         super.init()
-        geometry = SCNSphere(radius: 0.4)
+        //let modelScene = SCNScene(named: "art.scnassets/cube1.scn")!
+        let modelScene = SCNScene(named: "art.scnassets/playerCube.scn")!
+        let modelNode = modelScene.rootNode.childNodes[0]
+        addChildNode(modelNode)
+
+        //geometry = SCNSphere(radius: 0.4)
         name = "player"
-        position = SCNVector3(x: 0, y: 0, z: 1)
-        physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody?.contactTestBitMask = CollisionType.Player
+        //position = SCNVector3(x: 0, y: -0.3, z: 1)
+        position = SCNVector3(x: 0, y: 0.1, z: 1.5)
+        //scale = SCNVector3(0.8, 0.8, 0.8)
+        //physicsBody = characterTopLevelNode.physicsBody
+        //physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+        
+        //characterTopLevelNode.physicsBody = nil
+        //characterTopLevelNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+        //physicsBody?.contactTestBitMask = CollisionType.Player
+        //physicsBody?.categoryBitMask = CollisionType.Player
+        
+        if physicsBody == nil {
+            print("body is nil")
+        }
+        
         //sphere1.physicsBody?.collisionBitMask = bodyNames.Player
-        physicsBody?.categoryBitMask = CollisionType.Player
         isTickEnabled = true
     }
    
-    override func OnCollide(_ other: GameObject) {
-        //destroy()
+    public override func OnCollide(other: GameObject) {
+        print("collide")
+        //print("collide" + String(describing: other))
+        
+        if other is Obstacle {
+            destroy()
+        }
     }
     
     override func update(_ deltaTime: Float) {
-
+        
     }
     
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
