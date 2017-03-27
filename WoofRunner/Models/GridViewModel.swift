@@ -9,9 +9,19 @@
 import SceneKit
 import RxSwift
 import RxCocoa
+import ObjectMapper
 
 class GridViewModel {
-    
+
+    // MARK: - UploadableGame protocol conformance
+
+    public var uuid: String?
+    public var ownerID: String?
+    public var obstacles: [SaveableObstacle]?
+    public var platforms: [SaveablePlatform]?
+    public var createdAt: Date?
+    public var updatedAt: Date?
+
     var position = Variable<SCNVector3>(SCNVector3(0, 0, 0))
     var size = Variable<Float>(1.0)
     var platformType = Variable<TileType>(.none)
@@ -21,15 +31,19 @@ class GridViewModel {
     static var colors = [UIColor.blue, UIColor.red, UIColor.lightGray]
     
     init (_ position: SCNVector3) {
+        self.uuid = UUID().uuidString
         self.position.value = position
         self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
     }
     
     init (_ platform: Platform) {
+        self.uuid = UUID().uuidString
         self.position.value = platform.position
         self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
         setPlatform(platform.tileType)
     }
+
+    required init?(map: Map) {}
     
     func setPlatform(_ platform: TileType) {
         // Add Platform
@@ -54,6 +68,27 @@ class GridViewModel {
     func removeObstacle() {
         obstacleType.value = .none
     }
+}
+
+extension GridViewModel: UploadableGame {
+    func toStoredGame() -> StoredGame {
+        let storedGame = StoredGame()
+        storedGame.uuid = uuid
+        storedGame.createdAt = createdAt as NSDate?
+        storedGame.updatedAt = updatedAt as NSDate?
+
+        return storedGame
+    }
+
+    func mapping(map: Map) {
+        ownerID <- map["ownerID"]
+        uuid <- map["uuid"]
+        obstacles <- map["obstacles"]
+        platforms <- map["platforms"]
+        createdAt <- (map["createdAt"], DateTransform())
+        updatedAt <- (map["updatedAt"], DateTransform())
+    }
+
 }
 
 class PlatformStub {
