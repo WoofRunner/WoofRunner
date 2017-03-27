@@ -17,7 +17,7 @@ class LevelDesignerOverlayScene: SKScene, PaletteButtonDelegate, OverlayButtonDe
 	var overlayMenu = OverlayMenu()
 	var currentSelectionUI = CurrentSelectionNode()
 	
-	var currentTileSelection = Variable<TileType>(.floor) // Default selection. Wrap this in RXSwift
+	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
 	
 	//var oldOverlayY = CGFloat(0)
 	var oldY = CGFloat(0)

@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 struct CollisionType {
-    static let Player = 0x1 << 1
+    static let Player = 1
     static let Block = 0x1 << 2
 }
 

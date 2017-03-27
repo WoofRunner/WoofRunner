@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2017-03-26T12:36:41Z</created><keywords></keywords><modified>2017-03-26T12:36:41Z</modified><revision></revision><subject></subject><title></title><unit meter="0.025400" name="centimeter"></unit><up_axis>Y_UP</up_axis></asset>
+  <library_images>
+    <image id="floor_02-image" name="floor_02"><init_from>file://C:\Users\mattira\Documents\My Dropbox\BITGEM_products\prototyper_set\textures\prototyper_floor_2.tga</init_from></image>
+  </library_images>
+  <library_materials>
+    <material id="floor_2" name="floor_2">
+      <instance_effect url="#floor_2-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="floor_2-fx" name="floor_2">
+      <profile_COMMON>
+        <technique sid="standard">
+          <phong>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.000000  0.000000 0.000000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <texture texture="floor_02-image" texcoord="CHANNEL0">
+                <extra>
+                  <technique profile="MAYA">
+                    <wrapU sid="wrapU0">TRUE</wrapU>
+                    <wrapV sid="wrapV0">TRUE</wrapV>
+                    <blend_mode>ADD</blend_mode>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.000000  0.000000 0.000000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">1.071773</float>
+            </shininess>
+            <reflective>
+              <color sid="reflective">0.000000  0.000000 0.000000 1.000000</color>
+            </reflective>
+            <reflectivity>
+              <float sid="reflectivity">1.000000</float>
+            </reflectivity>
+            <transparent opaque="RGB_ZERO">
+              <color sid="transparent">1.000000  1.000000 1.000000 1.000000</color>
+            </transparent>
+            <transparency>
+              <float sid="transparency">0.000000</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="ground_block_1x1x1_dark-lib" name="ground_block_1x1x1_darkMesh">
+      <mesh>
+        <source id="ground_block_1x1x1_dark-POSITION">
+          <float_array id="ground_block_1x1x1_dark-POSITION-array" count="24">
+0.000099 -0.000002 -100.002201
+100.000099 -0.000002 -0.002201
+0.000099 99.999998 -100.002201
+100.000099 99.999998 -0.002201
+0.000099 -0.000002 -0.002201
+100.000099 -0.000002 -100.002201
+100.000099 99.999998 -100.002201
+0.000099 99.999998 -0.002201
+</float_array>
+          <technique_common>
+            <accessor source="#ground_block_1x1x1_dark-POSITION-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="ground_block_1x1x1_dark-Normal0">
+          <float_array id="ground_block_1x1x1_dark-Normal0-array" count="108">
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#ground_block_1x1x1_dark-Normal0-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="ground_block_1x1x1_dark-UV0">
+          <float_array id="ground_block_1x1x1_dark-UV0-array" count="48">
+0.500000 0.000000
+0.500000 0.500000
+0.500000 0.500000
+0.000000 0.500000
+1.000000 1.000000
+1.000000 1.000000
+0.750000 0.500000
+0.750000 0.500000
+1.000000 0.750000
+1.000000 0.750000
+0.750000 0.000000
+0.000000 0.750000
+0.750000 1.000000
+0.750000 0.750000
+0.750000 0.750000
+0.750000 1.000000
+0.500000 0.250000
+0.750000 0.250000
+0.500000 0.750000
+0.750000 0.750000
+0.750000 0.750000
+0.500000 0.750000
+0.250000 0.750000
+0.250000 0.500000
+</float_array>
+          <technique_common>
+            <accessor source="#ground_block_1x1x1_dark-UV0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="ground_block_1x1x1_dark-VERTEX">
+          <input semantic="POSITION" source="#ground_block_1x1x1_dark-POSITION"/>
+        </vertices>
+        <triangles count="12" material="floor_2"><input semantic="VERTEX" offset="0" source="#ground_block_1x1x1_dark-VERTEX"/><input semantic="NORMAL" offset="1" source="#ground_block_1x1x1_dark-Normal0"/><input semantic="TEXCOORD" offset="2" set="0" source="#ground_block_1x1x1_dark-UV0"/><p> 3 0 2 1 1 7 5 2 20 3 3 2 5 4 20 6 5 21 5 6 13 0 7 8 2 8 4 5 9 13 2 10 4 6 11 12 7 12 15 4 13 14 3 14 5 3 15 5 4 16 14 1 17 9 3 18 22 6 19 11 7 20 23 7 21 23 6 22 11 2 23 3 7 24 18 2 25 1 4 26 19 4 27 19 2 28 1 0 29 6 4 30 16 0 31 0 1 32 17 1 33 17 0 34 0 5 35 10</p></triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_animations>
+    <animation id="ground_block_1x1x1_dark-anim" name="ground_block_1x1x1_dark"><animation><source id="ground_block_1x1x1_dark-Matrix-animation-input"><float_array id="ground_block_1x1x1_dark-Matrix-animation-input-array" count="0">
+</float_array><technique_common><accessor source="#ground_block_1x1x1_dark-Matrix-animation-input-array" count="0"><param name="TIME" type="float"/></accessor></technique_common></source><source id="ground_block_1x1x1_dark-Matrix-animation-output-transform"><float_array id="ground_block_1x1x1_dark-Matrix-animation-output-transform-array" count="0">
+</float_array><technique_common><accessor source="#ground_block_1x1x1_dark-Matrix-animation-output-transform-array" count="0" stride="16"><param type="float4x4"/></accessor></technique_common></source><source id="ground_block_1x1x1_dark-Interpolations"><Name_array id="ground_block_1x1x1_dark-Interpolations-array" count="0">
+</Name_array><technique_common><accessor source="#ground_block_1x1x1_dark-Interpolations-array" count="0"><param type="name"/></accessor></technique_common></source><sampler id="ground_block_1x1x1_dark-Matrix-animation-transform"><input semantic="INPUT" source="#ground_block_1x1x1_dark-Matrix-animation-input"/><input semantic="OUTPUT" source="#ground_block_1x1x1_dark-Matrix-animation-output-transform"/><input semantic="INTERPOLATION" source="#ground_block_1x1x1_dark-Interpolations"/></sampler><channel source="#ground_block_1x1x1_dark-Matrix-animation-transform" target="ground_block_1x1x1_dark/matrix"/></animation></animation>
+  </library_animations>
+  <library_visual_scenes>
+    <visual_scene id="floor_dark" name="floor_dark">
+      <node name="ground_block_1x1x1_dark" id="ground_block_1x1x1_dark" sid="ground_block_1x1x1_dark"><matrix sid="matrix">0.393701 0.000000 0.000000 0.000000 0.000000 0.393701 0.000000 0.000000 0.000000 0.000000 0.393701 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#ground_block_1x1x1_dark-lib"><bind_material><technique_common><instance_material symbol="floor_2" target="#floor_2"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <extra><technique profile="MAX3D"><frame_rate>30.000000</frame_rate></technique><technique profile="FCOLLADA"><start_time>0.000000</start_time><end_time>3.333333</end_time></technique></extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#floor_dark"></instance_visual_scene>
+  </scene>
+</COLLADA>

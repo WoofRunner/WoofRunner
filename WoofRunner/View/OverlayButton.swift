@@ -10,7 +10,7 @@ import SpriteKit
 
 class OverlayButton: RootSKSpriteNode {
 	
-	private var tileType = TileType.floor
+	private var tileType = TileType.floorLight
 	private var overlayButtonDelegate: OverlayButtonDelegate?
 	
 	override init(texture: SKTexture!, color: SKColor, size: CGSize) {

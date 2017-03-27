@@ -86,7 +86,7 @@ class ReactiveGridNode {
                 material.emission.contents = UIColor.green
                 material.transparency = 1
                 break
-            case .floor:
+            case .floorLight:
                 material.emission.contents = UIColor.brown
                 material.transparency = 1
                 break

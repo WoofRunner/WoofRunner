@@ -21,7 +21,7 @@ class LevelDesignerViewController: UIViewController {
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = [GridViewModel]()
-    var currentSelectedBrush: TileType = .floor // Observing overlayScene
+    var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
     var spriteScene: LevelDesignerOverlayScene?
 
     override func viewDidLoad() {
@@ -96,7 +96,7 @@ class LevelDesignerViewController: UIViewController {
         
         for row in 0...length-1 {
             for col in 0...levelCols-1 {
-                let gridVM = GridViewModel(SCNVector3(CGFloat(col) * Tile.TILE_WIDTH, CGFloat(row) * Tile.TILE_WIDTH, 0))
+                let gridVM = GridViewModel(SCNVector3(Float(col) * Tile.TILE_WIDTH, Float(row) * Tile.TILE_WIDTH, 0))
                 emptyLevel.append(gridVM)
             }
         }

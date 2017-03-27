@@ -10,14 +10,24 @@ import Foundation
 import SceneKit
 
 enum TileType {
+    case none
+    
     case jump
     case rock
     case sword
     
-    case floor
+    case floorLight
+    case floorDark
     case grass
     
-    case none
+    func isPlatform() -> Bool {
+        switch self {
+        case .floorLight, .floorDark, .grass:
+            return true
+        default:
+            return false
+        }
+    }
     
     func isObstacle() -> Bool {
         switch self {
@@ -28,56 +38,53 @@ enum TileType {
         }
     }
     
-    func isPlatform() -> Bool {
+    func toString() -> String {
         switch self {
-        case .floor, .grass:
-            return true
-        default:
-            return false
+        case .jump:
+            return "Jump Platform"
+        case .rock:
+            return "Rock"
+        case .floorLight:
+            return "Floor Light"
+        case .floorDark:
+            return "Floor Dark"
+        case .grass:
+            return "Grass"
+        case .none:
+            return "Delete"
+        case .sword:
+            return "Swinging Sword"
         }
     }
-	
-	func toString() -> String {
-		switch self {
-		case .jump:
-			return "Jump Platform"
-		case .rock:
-			return "Rock"
-		case .floor:
-			return "Floor"
-		case .grass:
-			return "Grass"
-		case .none:
-			return "Delete"
-		case .sword:
-			return "Swinging Sword"
-		}
-	}
-	
-	func getSpriteImageName() -> String {
-		switch self {
-		case .jump:
-			return "testCat"
-		case .rock:
-			return "testCat"
-		case .floor:
-			return "testCat"
-		case .grass:
-			return "testCat"
-		case .none:
-			return "testCat"
-		case .sword:
-			return "testCat"
-		}
-	}
+    
+    func getSpriteImageName() -> String {
+        switch self {
+        case .jump:
+            return "testCat"
+        case .rock:
+            return "testCat"
+        case .floorLight:
+            return "testCat"
+        case .floorDark:
+            return "testCat"
+        case .grass:
+            return "testCat"
+        case .none:
+            return "testCat"
+        case .sword:
+            return "testCat"
+        }
+    }
 }
 
 class Tile: GameObject {
-    static let TILE_WIDTH: CGFloat = 1.0
+    static let TILE_WIDTH: Float = 1
     
     var delegate: PoolManager?
     
     var tileType: TileType = TileType.none
+    
+    var autoDestroyPositionZ: Float = 4
     
     init(_ pos: SCNVector3) {
         super.init()
@@ -90,9 +97,17 @@ class Tile: GameObject {
     }
 
     override func update(_ deltaTime: Float) {
-        if worldPosition.z > 2 {
-            //destroy()
+        if worldPosition.z > autoDestroyPositionZ {
             delegate?.poolTile(self)
         }
+    }
+    
+    public func loadModel(_ pathName: String) {
+        guard let modelScene = SCNScene(named: pathName) else {
+            print("WARNING: Cant find path name: " + pathName)
+            return
+        }
+        let modelNode = modelScene.rootNode.childNodes[0]
+        addChildNode(modelNode)
     }
 }

@@ -14,6 +14,8 @@ class GameObject: SCNNode, GestureDelegate {
     var isWaitingToBeDestroyed: Bool = false
     var isTickEnabled: Bool = false
     
+    let FAR_AWAY_POSITION = SCNVector3(-100, -100, -100)
+    
     override init() {
         super.init()
     }
@@ -23,13 +25,18 @@ class GameObject: SCNNode, GestureDelegate {
     }
     
     public func update(_ deltaTime: Float) {
-        
-    
     }
 
-    public func OnCollide(_ other: GameObject) {
+    public func OnCollide(other: GameObject) {
+        
+    }
     
-    
+    public override func OnCollide(otherSCNNode: SCNNode) {
+        //super.OnCollide(otherSCNNode: otherSCNNode)
+        guard let otherGameObject = otherSCNNode as? GameObject else {
+            return
+        }
+        OnCollide(other: otherGameObject)
     }
 
     public func destroy() {
@@ -43,7 +50,6 @@ class GameObject: SCNNode, GestureDelegate {
     
     var worldPosition: SCNVector3 {
         return convertPosition(SCNVector3.zero(), to: nil)
-        //return convertPosition(position, to: nil)
     }
     
     public func activate() {
@@ -52,7 +58,7 @@ class GameObject: SCNNode, GestureDelegate {
     
     public func deactivate() {
         isHidden = true
-        position = SCNVector3(-100, 100, -100)
+        position = FAR_AWAY_POSITION
     }
 }
 

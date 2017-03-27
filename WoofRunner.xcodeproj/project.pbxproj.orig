@@ -28,7 +28,7 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-<<<<<<< HEAD
+		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -39,9 +39,8 @@
 		3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C31E86F89F00EB1264 /* OverlayButtonSet.swift */; };
 		3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C51E86F95700EB1264 /* OverlayButton.swift */; };
 		3F7348C81E86FADC00EB1264 /* OverlayButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */; };
-=======
-		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
->>>>>>> leveldesigner
+		3FA4B16F1E88078500D93703 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE021E82BDB300BD1D02 /* Platform.swift */; };
+		3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4B1721E880D5500D93703 /* CurrentSelectionNode.swift */; };
 		3FAE2D341E7280EE00D65B84 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D331E7280EE00D65B84 /* Menu.storyboard */; };
 		3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */; };
 		3FAE2D381E7281CE00D65B84 /* LevelDesigner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */; };
@@ -67,7 +66,11 @@
 		8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */; };
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
 		F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE001E82AACA00BD1D02 /* PoolManager.swift */; };
+<<<<<<< HEAD
+=======
 		F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE021E82BDB300BD1D02 /* Platform.swift */; };
+		F318BEBB1E87C16E005D0113 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318BEBA1E87C16E005D0113 /* SCNNode.swift */; };
+>>>>>>> Gameplay
 		F33442B51E8156F3001C1D8D /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A81E8156F3001C1D8D /* GameController.swift */; };
 		F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A91E8156F3001C1D8D /* GameEngine.swift */; };
 		F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442AA1E8156F3001C1D8D /* GameObject.swift */; };
@@ -80,7 +83,8 @@
 		F33442CD1E815BFE001C1D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C61E815BFE001C1D8D /* Player.swift */; };
 		F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C71E815BFE001C1D8D /* TestCube.swift */; };
 		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
-		F3372BDF1E86305000A233C2 /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3372BDE1E86305000A233C2 /* TestProtocol.swift */; };
+		F38F48291E87F1FB005328A9 /* FloorLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* FloorLight.swift */; };
+		F38F482B1E87F28F005328A9 /* FloorDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* FloorDark.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,7 +135,7 @@
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
-<<<<<<< HEAD
+		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentalSceneView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -142,9 +146,7 @@
 		3F7348C31E86F89F00EB1264 /* OverlayButtonSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayButtonSet.swift; sourceTree = "<group>"; };
 		3F7348C51E86F95700EB1264 /* OverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayButton.swift; sourceTree = "<group>"; };
 		3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayButtonDelegate.swift; sourceTree = "<group>"; };
-=======
-		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>> leveldesigner
+		3FA4B1721E880D5500D93703 /* CurrentSelectionNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSelectionNode.swift; sourceTree = "<group>"; };
 		3FAE2D331E7280EE00D65B84 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelSelector.storyboard; sourceTree = "<group>"; };
 		3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesigner.storyboard; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 		3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerButtonSpriteNode.swift; sourceTree = "<group>"; };
 		3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonActions.swift; sourceTree = "<group>"; };
 		3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeNodes.swift; sourceTree = "<group>"; };
-		3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteFunctionType.swift; sourceTree = "<group>"; };
+		3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaletteFunctionType.swift; path = ../View/PaletteFunctionType.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerScene.swift; sourceTree = "<group>"; };
 		4E1E11201E82D50D00AAC356 /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
@@ -177,7 +179,8 @@
 		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F30ABE001E82AACA00BD1D02 /* PoolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManager.swift; sourceTree = "<group>"; };
 		F30ABE021E82BDB300BD1D02 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
-		F33442A81E8156F3001C1D8D /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		F318BEBA1E87C16E005D0113 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
+		F33442A81E8156F3001C1D8D /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameController.swift; path = ../GameEngine/GameController.swift; sourceTree = "<group>"; };
 		F33442A91E8156F3001C1D8D /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		F33442AA1E8156F3001C1D8D /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		F33442AB1E8156F3001C1D8D /* GestureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureDelegate.swift; sourceTree = "<group>"; };
@@ -189,7 +192,8 @@
 		F33442C61E815BFE001C1D8D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F33442C71E815BFE001C1D8D /* TestCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCube.swift; sourceTree = "<group>"; };
 		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
-		F3372BDE1E86305000A233C2 /* TestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
+		F38F48281E87F1FB005328A9 /* FloorLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorLight.swift; sourceTree = "<group>"; };
+		F38F482A1E87F28F005328A9 /* FloorDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorDark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 		126F50F91E7272B8000877F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F33442A81E8156F3001C1D8D /* GameController.swift */,
 				4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */,
 				3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */,
 				3FCC899A1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift */,
@@ -266,20 +271,16 @@
 				3FCC89A21E7EB8C6005A7C03 /* RootSKSpriteNode.swift */,
 				3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */,
 				3FCC89A61E7EB960005A7C03 /* LevelDesignerButtonSpriteNode.swift */,
-				3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
-<<<<<<< HEAD
-				4E1E111E1E7AF35400AAC356 /* LevelDesignerSceneView.swift */,
 				3F7348B51E86D0D800EB1264 /* PaletteButton.swift */,
 				3F7348BD1E86F1FA00EB1264 /* OverlayMenu.swift */,
 				3F7348BF1E86F39A00EB1264 /* OverlayMenuSubsection.swift */,
 				3F7348C31E86F89F00EB1264 /* OverlayButtonSet.swift */,
 				3F7348C51E86F95700EB1264 /* OverlayButton.swift */,
 				3F7348C11E86F76E00EB1264 /* RootSKLabelNode.swift */,
+				3FA4B1721E880D5500D93703 /* CurrentSelectionNode.swift */,
 				3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */,
-=======
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */,
->>>>>>> leveldesigner
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,12 +306,10 @@
 		126F50FE1E727355000877F1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
+				3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */,
 				3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */,
 				3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */,
-=======
 				120208031E7449FB0066BD4C /* Storage */,
->>>>>>> leveldesigner
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -435,13 +434,13 @@
 		F33442A61E8156F3001C1D8D /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
-				F33442A81E8156F3001C1D8D /* GameController.swift */,
 				F33442A91E8156F3001C1D8D /* GameEngine.swift */,
 				F33442AA1E8156F3001C1D8D /* GameObject.swift */,
 				F33442AB1E8156F3001C1D8D /* GestureDelegate.swift */,
 				F33442B01E8156F3001C1D8D /* SCNVector3.swift */,
 				F33442B31E8156F3001C1D8D /* World.swift */,
 				F30ABDFE1E82A7A800BD1D02 /* Array.swift */,
+				F318BEBA1E87C16E005D0113 /* SCNNode.swift */,
 				F33442C11E815BAE001C1D8D /* GameObjects */,
 			);
 			path = GameEngine;
@@ -451,14 +450,15 @@
 			isa = PBXGroup;
 			children = (
 				F33442C21E815BFE001C1D8D /* Camera.swift */,
-				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
 				F33442C61E815BFE001C1D8D /* Player.swift */,
 				F33442C71E815BFE001C1D8D /* TestCube.swift */,
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
 				F33442C81E815BFE001C1D8D /* Tile.swift */,
 				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
+				F38F48281E87F1FB005328A9 /* FloorLight.swift */,
+				F38F482A1E87F28F005328A9 /* FloorDark.swift */,
+				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
-				F3372BDE1E86305000A233C2 /* TestProtocol.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -759,6 +759,7 @@
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
 				120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */,
 				12610C7B1E7ECAF3006162BF /* SaveableGame.swift in Sources */,
+				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
 				1270785B1E7E5DFD0043C8C4 /* Deserializable.swift in Sources */,
 				128824661E7BE21900793810 /* Serializable.swift in Sources */,
 				12610C7D1E7ECE1C006162BF /* SaveableObstacle.swift in Sources */,
@@ -770,19 +771,15 @@
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 <<<<<<< HEAD
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
-				12A82FD31E727072008B721E /* GameViewController.swift in Sources */,
 =======
->>>>>>> leveldesigner
+				F38F482B1E87F28F005328A9 /* FloorDark.swift in Sources */,
+>>>>>>> Gameplay
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
 				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
-<<<<<<< HEAD
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
-				F30ABE031E82BDB300BD1D02 /* Ground.swift in Sources */,
-=======
-				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
->>>>>>> leveldesigner
+				3FA4B16F1E88078500D93703 /* Platform.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
 				3F7348C21E86F76E00EB1264 /* RootSKLabelNode.swift in Sources */,
 				3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */,
@@ -792,31 +789,32 @@
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
+				F38F48291E87F1FB005328A9 /* FloorLight.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
 				4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
-				F3372BDF1E86305000A233C2 /* TestProtocol.swift in Sources */,
 				3FCC899F1E7AD846005A7C03 /* ExperimentalMainScene.swift in Sources */,
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
+<<<<<<< HEAD
 				3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */,
 				3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */,
+=======
+				F318BEBB1E87C16E005D0113 /* SCNNode.swift in Sources */,
+>>>>>>> Gameplay
 				F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */,
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
-<<<<<<< HEAD
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
 				3F7348BE1E86F1FA00EB1264 /* OverlayMenu.swift in Sources */,
-=======
 				4E90FFE91E8431690012B03F /* Position.swift in Sources */,
 				4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */,
 				4E1E11211E82D50D00AAC356 /* GridViewModel.swift in Sources */,
->>>>>>> leveldesigner
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
