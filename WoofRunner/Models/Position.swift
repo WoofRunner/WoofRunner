@@ -12,4 +12,17 @@
 public struct Position {
     private let row: Int;
     private let col: Int;
+    
+    init(row: Int, col: Int) {
+        self.row = row
+        self.col = col
+    }
+    
+    func getRow() -> Int {
+        return self.row
+    }
+    
+    func getCol() -> Int {
+        return self.col
+    }
 }

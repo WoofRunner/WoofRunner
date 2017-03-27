@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-enum TileType {
+enum TileType: Int {
     case none
     
     case jump

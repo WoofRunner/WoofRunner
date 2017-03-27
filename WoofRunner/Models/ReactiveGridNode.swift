@@ -128,6 +128,5 @@ class ReactiveGridNode {
         
         self.obstacleNode.value.geometry = obstacleBoxGeometry
         self.obstacleNode.value.position = self.position + SCNVector3(0, 0, Tile.TILE_WIDTH)
-        print(self.obstacleNode.value.position)
     }
 }
