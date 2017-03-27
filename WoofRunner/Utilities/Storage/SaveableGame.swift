@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 
 /**
  Classes/structs that implements this are saveable in either CoreData or OnlineStorage.

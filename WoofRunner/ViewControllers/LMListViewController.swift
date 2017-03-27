@@ -9,7 +9,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import ObjectMapper
 import FirebaseAuth
 
 public enum LevelListType {

@@ -6,9 +6,7 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import ObjectMapper
-
-public protocol SaveablePlatform: Mappable {
+public protocol SaveablePlatform {
     var type: String { get set } // TODO: Change this to an enum
     var position: Position { get set }
 }

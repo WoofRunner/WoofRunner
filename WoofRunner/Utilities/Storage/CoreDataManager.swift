@@ -40,7 +40,7 @@ public class CoreDataManager {
     private convenience init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-        self.init(context: appDelegate.coreDataStack.persistentContainer.viewContext)
+        self.init(context: appDelegate.dataStack.mainContext)
     }
 
     // MARK: - Public methods
