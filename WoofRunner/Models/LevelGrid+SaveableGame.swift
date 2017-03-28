@@ -27,6 +27,11 @@ extension LevelGrid: SaveableGame {
 
         // Set StoredGame values
         // TODO: Stubbed values
+        let rows = platformArray.count
+        let columns = platformArray.first?.count ?? 0
+
+        res.setValue(rows, forKey: "rows")
+        res.setValue(columns, forKey: "columns")
         res.setValue(getStoredObstacles(), forKey: "obstacles")
         res.setValue(getStoredPlatforms(), forKey: "platforms")
         res.setValue(Date() as NSDate?, forKey: "updatedAt")

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="StoredGame" representedClassName="StoredGame" syncable="YES" codeGenerationType="class">
+        <attribute name="columns" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="ownerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rows" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
@@ -29,7 +31,7 @@
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="platforms" inverseEntity="StoredGame" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="StoredObstacle" positionX="-63" positionY="9" width="128" height="120"/>
         <element name="StoredPlatform" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
