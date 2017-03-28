@@ -28,7 +28,8 @@ class ReactiveGridNode {
     
     init(_ gridVM: GridViewModel) {
         
-        self.position = gridVM.position.value
+        self.position = SCNVector3(Float(gridVM.gridPos.value.getCol()) * Tile.TILE_WIDTH,
+                                   Float(gridVM.gridPos.value.getRow()) * Tile.TILE_WIDTH, 0)
         self.size = gridVM.size.value
         self.platformType = gridVM.platformType.value
         self.obstacleType = gridVM.obstacleType.value
@@ -43,12 +44,12 @@ class ReactiveGridNode {
         updateObstacleBoxGeometry()
         
         // Subscribe to observables
-        gridVM.position.asObservable()
+        gridVM.gridPos.asObservable()
             .subscribe(onNext: {
                 (pos) in
-                self.position = pos
-                self.platformNode.value.position = pos
-                self.obstacleNode.value.position = pos + SCNVector3(0, 0, Tile.TILE_WIDTH)
+                self.position = SCNVector3(Float(pos.getCol()) * Tile.TILE_WIDTH, Float(pos.getRow()) * Tile.TILE_WIDTH, 0)
+                self.platformNode.value.position = self.position
+                self.obstacleNode.value.position = self.position + SCNVector3(0, 0, Tile.TILE_WIDTH)
             }).addDisposableTo(disposeBag)
         
         gridVM.size.asObservable()

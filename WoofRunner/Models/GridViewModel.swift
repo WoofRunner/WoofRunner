@@ -6,24 +6,19 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import SceneKit
 import RxSwift
 import RxCocoa
 
 class GridViewModel {
     
-    var gridPos: Position
-    var position = Variable<SCNVector3>(SCNVector3(0, 0, 0))
+    var gridPos: Variable<Position>
     var size = Variable<Float>(1.0)
     var platformType = Variable<TileType>(.none)
     var obstacleType = Variable<TileType>(.none)
     var shouldRender = Variable<Bool>(false)
     
-    static var colors = [UIColor.blue, UIColor.red, UIColor.lightGray]
-    
     init (row: Int, col: Int) {
-        self.gridPos = Position(row: row, col: col)
-        self.position.value = SCNVector3(Float(gridPos.getCol()) * Tile.TILE_WIDTH, Float(gridPos.getRow()) * Tile.TILE_WIDTH, 0)
+        self.gridPos = Variable<Position>(Position(row: row, col: col))
         self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
     }
     
