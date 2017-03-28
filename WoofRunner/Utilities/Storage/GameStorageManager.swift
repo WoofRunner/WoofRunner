@@ -25,7 +25,9 @@ public class GameStorageManager {
 
     // MARK: - Private initializer
 
-    private init() {}
+    private init() {
+        reloadGames()
+    }
 
     // MARK: - Public static methods
 
