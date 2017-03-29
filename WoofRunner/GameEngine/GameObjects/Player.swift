@@ -13,8 +13,8 @@ class Player: GameObject {
 
     override init() {
         super.init()
-        //let modelScene = SCNScene(named: "art.scnassets/cube1.scn")!
         let modelScene = SCNScene(named: "art.scnassets/playerCube.scn")!
+        //let modelScene = SCNScene(named: "art.scnassets/dragon2.scn")!
         let modelNode = modelScene.rootNode.childNodes[0]
         addChildNode(modelNode)
 

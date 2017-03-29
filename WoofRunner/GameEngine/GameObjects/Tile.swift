@@ -28,7 +28,7 @@ class Tile: GameObject {
     
     var tileType: TileType = TileType.none
     
-    var autoDestroyPositionZ: Float = 4
+    var autoDestroyPositionZ: Float = 5
     
     init(_ pos: SCNVector3) {
         super.init()
