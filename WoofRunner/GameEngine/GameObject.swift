@@ -32,7 +32,7 @@ class GameObject: SCNNode, GestureDelegate {
     }
     
     public override func OnCollide(otherSCNNode: SCNNode) {
-        //super.OnCollide(otherSCNNode: otherSCNNode)
+        super.OnCollide(otherSCNNode: otherSCNNode)
         guard let otherGameObject = otherSCNNode as? GameObject else {
             return
         }

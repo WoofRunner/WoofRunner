@@ -32,7 +32,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.isPlaying = true
         
         scnView.allowsCameraControl = false
-        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         
         setUpGesture()
     }
@@ -96,9 +96,9 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         
         /*
         print("A")
-        print(contact.nodeA.parent!)
+        print(contact.nodeA)
         print("B")
-        print(contact.nodeB.parent!)
+        print(contact.nodeB)
         print()
         print()
  */
