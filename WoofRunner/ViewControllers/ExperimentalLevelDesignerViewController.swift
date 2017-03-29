@@ -21,6 +21,7 @@ class ExperimentalLevelDesignerViewController: UIViewController {
 		self.mainSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
 		self.mainSceneView.scene = ExperimentalMainScene()
 		self.view.addSubview(self.mainSceneView)
+
 		
 		// Create and attach Sprite Kit Overlay scene
 		self.spriteScene = LevelDesignerOverlayScene(size: self.view.bounds.size)

@@ -17,6 +17,7 @@ struct ButtonActions {
 	static func getButtonPressAction() -> SKAction {
 		let action = SKAction.scale(to: ButtonActions.buttonScaleFactor, duration: ButtonActions.buttonAnimationDuration)
 		action.timingMode = SKActionTimingMode.easeOut
+        
 		return action
 	}
 	

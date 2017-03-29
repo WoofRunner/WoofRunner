@@ -6,11 +6,12 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+import Foundation
+
 /**
  Classes/structs that implements this are saveable in either CoreData or OnlineStorage.
  */
-public protocol SaveableGame: Serializable, Saveable {
-    var emptyPlatforms: [Position] { get }
-    var jumpPlatforms: [Position] { get }
-    var obstacles: [SaveableObstacle] { get }
+public protocol SaveableGame {
+    func toStoredGame() -> StoredGame
+    func load(from storedGame: StoredGame)
 }

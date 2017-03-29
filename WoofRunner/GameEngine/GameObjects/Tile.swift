@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-enum TileType {
+enum TileType: Int {
     case none
     
     case jump
@@ -19,6 +19,62 @@ enum TileType {
     case floorLight
     case floorDark
     case grass
+    
+    func isPlatform() -> Bool {
+        switch self {
+        case .floorLight, .floorDark, .grass:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func isObstacle() -> Bool {
+        switch self {
+        case .jump, .rock, .sword:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .jump:
+            return "Jump Platform"
+        case .rock:
+            return "Rock"
+        case .floorLight:
+            return "Floor Light"
+        case .floorDark:
+            return "Floor Dark"
+        case .grass:
+            return "Grass"
+        case .none:
+            return "Delete"
+        case .sword:
+            return "Swinging Sword"
+        }
+    }
+    
+    func getSpriteImageName() -> String {
+        switch self {
+        case .jump:
+            return "testCat"
+        case .rock:
+            return "testCat"
+        case .floorLight:
+            return "testCat"
+        case .floorDark:
+            return "testCat"
+        case .grass:
+            return "testCat"
+        case .none:
+            return "testCat"
+        case .sword:
+            return "testCat"
+        }
+    }
 }
 
 class Tile: GameObject {

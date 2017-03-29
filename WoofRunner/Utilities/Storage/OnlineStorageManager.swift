@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 import BrightFutures
 import Result
@@ -61,6 +62,28 @@ public class OnlineStorageManager {
         }
     }
 
+    /// Authenticates with Firebase using Facebook token.
+    /// - Parameters:
+    ///     - token: Facebook token obtained from Facebook authentication
+    public func auth(token: String) -> Future<String, OnlineStorageManagerError> {
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
+
+        return Future { complete in
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                    complete(.failure(OnlineStorageManagerError.AuthError))
+                } else {
+                    if let authUser = user {
+                        complete(.success(authUser.uid))
+                    } else {
+                        complete(.failure(OnlineStorageManagerError.AuthError))
+                    }
+                }
+            }
+        }
+    }
+
     /// Loads a game using its UUID.
     /// - Parameters:
     ///     - uuid: UUID of the game that is requested
@@ -68,6 +91,18 @@ public class OnlineStorageManager {
     public func load(_ uuid: String) -> Future<NSDictionary?, OnlineStorageManagerError> {
         return Future { complete in
             ref.child(uuid).observeSingleEvent(of: .value, with: { snapshot in
+                let value = snapshot.value as? NSDictionary
+                complete(.success(value))
+            }) { error in
+                complete(.failure(OnlineStorageManagerError.FetchError))
+            }
+        }
+    }
+
+    /// Loads all game from Firebase database.
+    public func loadAll() -> Future<NSDictionary?, OnlineStorageManagerError> {
+        return Future { complete in
+            ref.observeSingleEvent(of: .value, with: { snapshot in
                 let value = snapshot.value
                 complete(.success(value as? NSDictionary))
             }) { error in
@@ -76,11 +111,11 @@ public class OnlineStorageManager {
         }
     }
 
-    /// Saves the game in Firebase database.
+    /// Uploads a StoredGame into Firebase database.
     /// - Parameters:
     ///     - game: game model object that extends Serializable
-    public func save(_ game: Serializable) {
-        ref.child(game.uuid).setValue(game.serialize())
+    public func save(_ game: StoredGame) {
+        ref.child(game.uuid!).setValue(game.export())
     }
 
     /// Clears all game data in online storage manager
@@ -92,4 +127,5 @@ public class OnlineStorageManager {
 
 public enum OnlineStorageManagerError: Error {
     case FetchError
+    case AuthError
 }
