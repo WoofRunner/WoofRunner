@@ -93,7 +93,6 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         contact.nodeA.OnCollide(otherSCNNode: contact.nodeB)
         contact.nodeB.OnCollide(otherSCNNode: contact.nodeA)
-        
         /*
         print("A")
         print(contact.nodeA)
