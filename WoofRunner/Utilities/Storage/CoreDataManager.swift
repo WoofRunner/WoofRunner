@@ -24,7 +24,7 @@ public class CoreDataManager {
 
     // MARK: - Private variables
     private static var instance: CoreDataManager?
-    private let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     private let privateContext = NSManagedObjectContext(
         concurrencyType: .privateQueueConcurrencyType)
 
@@ -40,7 +40,7 @@ public class CoreDataManager {
     private convenience init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-        self.init(context: appDelegate.coreDataStack.persistentContainer.viewContext)
+        self.init(context: appDelegate.dataStack.mainContext)
     }
 
     // MARK: - Public methods
@@ -73,18 +73,14 @@ public class CoreDataManager {
     /// - Parameters:
     ///     - game: object that conforms to Saveable
     ///     - completion: block to be executed after game is loaded
-    public func save(_ game: Saveable) -> Future<StoredGame, CoreDataManagerError> {
+    public func save(_ game: SaveableGame) -> Future<StoredGame, CoreDataManagerError> {
         return Future { complete in
             DispatchQueue.main.async {
-                var storedGame: StoredGame
+                var storedGame = game.toStoredGame()
 
                 if self.exists(game) {
                     // Force unwrap here since we know that game has to already exist in core data
-                    storedGame = self.fetch(game.uuid)!
-                } else {
-                    storedGame = StoredGame(context: self.context)
-                    storedGame.createdAt = Date() as NSDate?
-                    storedGame.uuid = game.uuid
+                    storedGame = self.fetch(storedGame.uuid!)!
                 }
 
                 storedGame.updatedAt = Date() as NSDate?
@@ -140,8 +136,9 @@ public class CoreDataManager {
     /// - Parameters:
     ///     - game: object that conforms to Saveable
     /// - Returns: true if the game already exists in CoreData.
-    private func exists(_ game: Saveable) -> Bool {
-        let fetchRequest = generateFetchRequest(uuid: game.uuid)
+    private func exists(_ game: SaveableGame) -> Bool {
+        let storedGame = game.toStoredGame()
+        let fetchRequest = generateFetchRequest(uuid: storedGame.uuid!)
 
         guard let count = try? self.context.count(for: fetchRequest), count == 0 else {
             return true

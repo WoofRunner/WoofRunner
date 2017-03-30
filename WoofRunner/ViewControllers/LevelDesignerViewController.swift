@@ -29,6 +29,8 @@ class LevelDesignerViewController: UIViewController {
     var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
     var spriteScene: LevelDesignerOverlayScene?
 
+    private let gsm = GameStorageManager.getInstance()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -163,4 +165,10 @@ class LevelDesignerViewController: UIViewController {
             }
         }
     }
+
+    /// Saves the current level into CoreData.
+    private func saveGame() {
+        gsm.saveGame(currentLevel)
+    }
+
 }

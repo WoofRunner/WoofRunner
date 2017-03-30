@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class GridViewModel {
-    
+
     var gridPos: Position
     var position = Variable<SCNVector3>(SCNVector3(0, 0, 0))
     var size = Variable<Float>(1.0)
