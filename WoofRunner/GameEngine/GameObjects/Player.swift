@@ -46,8 +46,8 @@ class Player: GameObject {
 
         //let shape = SCNPhysicsShape(geometry: geometry!, options: nil)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody?.contactTestBitMask = CollisionType.Player
-        physicsBody?.categoryBitMask = CollisionType.Player
+        physicsBody?.contactTestBitMask = CollisionType.Default
+        physicsBody?.categoryBitMask = CollisionType.Default
         
         isTickEnabled = true
         
