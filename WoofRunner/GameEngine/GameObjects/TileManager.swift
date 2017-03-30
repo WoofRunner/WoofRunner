@@ -37,7 +37,7 @@ class TileManager: GameObject {
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1]]
-
+    
     var tailIndex: Int = 0
     var platformTail: Float = 0
     

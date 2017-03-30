@@ -75,6 +75,25 @@ enum TileType: Int {
             return "testCat"
         }
     }
+    
+    func getModelPath() -> String {
+        switch self {
+        case .jump:
+            return "testCat"
+        case .rock:
+            return "art.scnassets/cube2.scn"
+        case .floorLight:
+            return "testCat"
+        case .floorDark:
+            return "testCat"
+        case .grass:
+            return "testCat"
+        case .none:
+            return "testCat"
+        case .sword:
+            return "testCat"
+        }
+    }
 }
 
 class Tile: GameObject {

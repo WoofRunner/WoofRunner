@@ -13,8 +13,6 @@ class Obstacle: Tile {
     
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        loadModel("art.scnassets/cube2.scn")
-        tileType = TileType.rock
     }
     
     convenience init() {

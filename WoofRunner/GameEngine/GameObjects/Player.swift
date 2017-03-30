@@ -41,7 +41,8 @@ class Player: GameObject {
         //scale = SCNVector3(0.8, 0.8, 0.8)
         //physicsBody = characterTopLevelNode.physicsBody
 
-        physicsBody = SCNPhysicsBody(type: .kinematic, shape: sphere)
+        //let shape = SCNPhysicsShape(geometry: geometry!, options: nil)
+        physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody?.contactTestBitMask = CollisionType.Player
         physicsBody?.categoryBitMask = CollisionType.Player
         
@@ -61,8 +62,6 @@ class Player: GameObject {
     }
    
     public override func OnCollide(other: GameObject) {
-        
-        
         if other is Platform {
             print("platform")
         }
@@ -70,7 +69,7 @@ class Player: GameObject {
         if other is Obstacle {
             //print("contact")
             //destroy()
-            startJump()
+            //startJump()
         }
     }
     
