@@ -30,9 +30,34 @@ class LSLevelView: UIView {
 	}
 	
 	private func didLoad() {
-		label = UILabel(frame: CGRect(x: self.frame.midX, y: self.frame.midY, width: 500, height: 400))
-		label.sizeToFit()
-		label.textColor = UIColor.black
+		label.backgroundColor = UIColor.blue
+		label.textAlignment = .center
+		label.textColor = UIColor.white
+		label.translatesAutoresizingMaskIntoConstraints = false
+		self.addSubview(label)
+		
+		let widthConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 300)
+		let heightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
+		var constraints = NSLayoutConstraint.constraints(
+			withVisualFormat: "V:[superview]-(<=1)-[label]",
+			options: NSLayoutFormatOptions.alignAllCenterX,
+			metrics: nil,
+			views: ["superview":self, "label":label]
+		)
+		
+		self.addConstraints(constraints)
+		
+		// Center vertically
+		constraints = NSLayoutConstraint.constraints(
+			withVisualFormat: "H:[superview]-(<=1)-[label]",
+			options: NSLayoutFormatOptions.alignAllCenterY,
+			metrics: nil,
+			views: ["superview":self, "label":label]
+		)
+		
+		self.addConstraints(constraints)
+		self.addConstraints([widthConstraint, heightConstraint])
+
 	}
 	
 	func setLevelName(_ name: String) {

@@ -41,29 +41,37 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	
 	private func populateLevelData() {
 		self.levels = gsm.getAllGames()
+		print("Num of levels: \(self.levels.count)")
 	}
 	
 	func numberOfItems(in carousel: iCarousel) -> Int {
-		return items.count
+		//return self.levels.count
+		//return items.count
+		let numLevels = gsm.getAllGames().count
+		return numLevels
 	}
 	
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+		
 		
 		var levelItemView: LSLevelView
 		
 		if let view = view as? LSLevelView {
 			levelItemView = view
 		} else {
-			levelItemView = LSLevelView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+			levelItemView = LSLevelView(frame: self.view.frame)
+			levelItemView.contentMode = .center
 		}
-		
-		//var label: UILabel
-		//var itemView: UIImageView
-		//var itemView: UIView
-		//var imageView: UIImageView
 		
 		
 		/*
+		var label = UILabel()
+		//var itemView: UIImageView
+		var itemView: UIView
+		var imageView: UIImageView
+		
+		
+		
 		//reuse view if available, otherwise create a new view
 		if let view = view as? UIImageView {
 			itemView = view
@@ -85,6 +93,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 			imageView.contentMode = .center
 			itemView.addSubview(imageView)
 			
+			/*
 			//label = UILabel(frame: itemView.bounds)
 			label = UILabel()
 			label.translatesAutoresizingMaskIntoConstraints = false
@@ -102,8 +111,40 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 			
 			
 			itemView.addConstraint(constraint)
+			*/
+			
+			
+			label.backgroundColor = UIColor.blue
+			label.textAlignment = .center
+			//label.text = "Test"
+			label.textColor = UIColor.white
+			label.translatesAutoresizingMaskIntoConstraints = false
+			itemView.addSubview(label)
+			
+			let widthConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 300)
+			let heightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
+			var constraints = NSLayoutConstraint.constraints(
+				withVisualFormat: "V:[superview]-(<=1)-[label]",
+				options: NSLayoutFormatOptions.alignAllCenterX,
+				metrics: nil,
+				views: ["superview":itemView, "label":label]
+			)
+			
+			itemView.addConstraints(constraints)
+			
+			// Center vertically
+			constraints = NSLayoutConstraint.constraints(
+				withVisualFormat: "H:[superview]-(<=1)-[label]",
+				options: NSLayoutFormatOptions.alignAllCenterY,
+				metrics: nil,
+				views: ["superview":itemView, "label":label]
+			)
+						
+			itemView.addConstraints(constraints)
+			itemView.addConstraints([ widthConstraint, heightConstraint])
 		}
 		*/
+		
 		
 		//set item label
 		//remember to always set any properties of your carousel item
@@ -111,12 +152,18 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		//you'll get weird issues with carousel item content appearing
 		//in the wrong place in the carousel
 		
-		levelItemView.backgroundColor = UIColor.lightGray
-		levelItemView.setLevelName(self.levels[index].uuid!)
+		//levelItemView.backgroundColor = colorArray[index%5]
+		//levelItemView.setLevelName(self.levels[index].uuid!)
 		
-		//itemView.backgroundColor = colorArray[index]
-		//label.text = "\(items[index])"
-		//label.sizeToFit()
+		if (index%2 == 0) {
+			levelItemView.backgroundColor = UIColor.yellow
+		} else {
+			levelItemView.backgroundColor = UIColor.green
+		}
+		
+		levelItemView.setLevelName("\(levels[index].uuid!)")
+
+		//return itemView
 		
 		return levelItemView as UIView
 	}
