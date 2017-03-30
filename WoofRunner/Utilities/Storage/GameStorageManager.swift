@@ -22,6 +22,7 @@ public class GameStorageManager {
     private let osm = OnlineStorageManager.getInstance()
     private let cdm = CoreDataManager.getInstance()
     public private(set) var games = Variable<[String: StoredGame]>([:])
+    public private(set) var previews = Variable<[String: PreviewGame]>([:])
 
     public private(set) var error = Variable<Bool>(false)
     private var retryCount = 0
@@ -112,6 +113,25 @@ public class GameStorageManager {
     }
 
     // MARK: - Private methods
+
+    /// Loads a preview of all the games loaded on Firebase.
+    /// - Returns: array of GamePreviews
+    private func loadAllPreviews() {
+        // TODO: Update this method to load previews instead of actual games
+        osm.loadAll()
+            .onSuccess { games in
+                guard let loadedGames = games else {
+                    return
+                }
+
+                for _ in loadedGames {
+                    // TODO: Add games as preview games
+                }
+            }
+            .onFailure { _ in
+                // TODO: Handle failure here
+        }
+    }
 
     /// Reloads all games from CoreData and store them in memory.
     private func reloadGames() {
