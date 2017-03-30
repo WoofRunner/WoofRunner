@@ -36,7 +36,7 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		16791951B068C4BD9A717E18 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -91,6 +91,8 @@
 		F33442CD1E815BFE001C1D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C61E815BFE001C1D8D /* Player.swift */; };
 		F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C71E815BFE001C1D8D /* TestCube.swift */; };
 		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
+		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
+		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
 		F38F48291E87F1FB005328A9 /* FloorLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* FloorLight.swift */; };
 		F38F482B1E87F28F005328A9 /* FloorDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* FloorDark.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
@@ -212,6 +214,8 @@
 		F33442C61E815BFE001C1D8D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F33442C71E815BFE001C1D8D /* TestCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCube.swift; sourceTree = "<group>"; };
 		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
+		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
 		F38F48281E87F1FB005328A9 /* FloorLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorLight.swift; sourceTree = "<group>"; };
 		F38F482A1E87F28F005328A9 /* FloorDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorDark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,7 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16791951B068C4BD9A717E18 /* (null) in Frameworks */,
+				16791951B068C4BD9A717E18 /* BuildFile in Frameworks */,
 				F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,18 +485,44 @@
 		F33442C11E815BAE001C1D8D /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				F34DEDB71E8D354900BB8CA7 /* Tile */,
 				F33442C21E815BFE001C1D8D /* Camera.swift */,
 				F33442C61E815BFE001C1D8D /* Player.swift */,
 				F33442C71E815BFE001C1D8D /* TestCube.swift */,
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
-				F33442C81E815BFE001C1D8D /* Tile.swift */,
-				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
-				F38F48281E87F1FB005328A9 /* FloorLight.swift */,
-				F38F482A1E87F28F005328A9 /* FloorDark.swift */,
-				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
 			);
 			path = GameObjects;
+			sourceTree = "<group>";
+		};
+		F34DEDB71E8D354900BB8CA7 /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+				F33442C81E815BFE001C1D8D /* Tile.swift */,
+				F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */,
+				F34DEDB81E8D356A00BB8CA7 /* Platform */,
+				F34DEDB91E8D357700BB8CA7 /* Obstacle */,
+			);
+			name = Tile;
+			sourceTree = "<group>";
+		};
+		F34DEDB81E8D356A00BB8CA7 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
+				F38F482A1E87F28F005328A9 /* FloorDark.swift */,
+				F38F48281E87F1FB005328A9 /* FloorLight.swift */,
+			);
+			name = Platform;
+			sourceTree = "<group>";
+		};
+		F34DEDB91E8D357700BB8CA7 /* Obstacle */ = {
+			isa = PBXGroup;
+			children = (
+				F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */,
+				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
+			);
+			name = Obstacle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -796,6 +826,7 @@
 				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
 				3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
+				F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */,
 				4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */,
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */,
@@ -811,6 +842,7 @@
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
+				F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */,
 				3F7348C21E86F76E00EB1264 /* RootSKLabelNode.swift in Sources */,
 				3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,

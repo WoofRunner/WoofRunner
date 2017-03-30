@@ -18,6 +18,7 @@ class LevelDesignerViewController: UIViewController {
     static var cameraHeight: Float = 8.5
     static var cameraAngle: Float = 30.0
     static var cameraOffset: Float = 2.0
+    static var paddingTiles: Float = 2.0
 	
 	let disposeBag = DisposeBag();
 
@@ -37,6 +38,7 @@ class LevelDesignerViewController: UIViewController {
         sceneView.allowsCameraControl = false
         sceneView.showsStatistics = true
         sceneView.backgroundColor = UIColor.black
+        sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         
         sceneView.scene = LDScene
@@ -136,7 +138,9 @@ class LevelDesignerViewController: UIViewController {
             if (newPos.y >= -LevelDesignerViewController.cameraOffset) {
                 camera.position = newPos
             }
-            let startRow = Int(camera.position.y + LevelDesignerViewController.cameraOffset / Tile.TILE_WIDTH)
+            // Add padding to near plane clipping
+            let padding = -Tile.TILE_WIDTH * LevelDesignerViewController.paddingTiles
+            let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / Tile.TILE_WIDTH)
             currentLevel.reloadChunk(from: startRow)
             break;
         default:
@@ -159,6 +163,12 @@ class LevelDesignerViewController: UIViewController {
                 let gridNode = result.node
                 guard gridNode.geometry?.firstMaterial?.transparency != 0 else {
                     continue
+                }
+                if gridNode.name == "modelNode" {
+                    guard let parentNode = gridNode.parent else {
+                        continue
+                    }
+                    return currentLevel.toggleGrid(x: parentNode.position.x, y: parentNode.position.y, currentSelectedBrush)
                 }
                 // Else toggle
                 return currentLevel.toggleGrid(x: gridNode.position.x, y: gridNode.position.y, currentSelectedBrush)

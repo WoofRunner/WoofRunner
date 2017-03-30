@@ -16,7 +16,7 @@ class TileManager: GameObject {
     var obstacleData: [[Int]] = [[1, 0, 0, 0, 0],
                               [1, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
+                              [0, 1, 0, 1, 0],
                               [0, 0, 0, 0, 0],
                               [1, 0, 0, 1, 1],
                               [0, 0, 0, 0, 0],
@@ -37,7 +37,7 @@ class TileManager: GameObject {
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1]]
-
+    
     var tailIndex: Int = 0
     var platformTail: Float = 0
     

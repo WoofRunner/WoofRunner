@@ -20,10 +20,11 @@ class LevelDesignerScene: SCNScene {
         self.rxGrid = ReactiveGrid()
         
         let cameraNode = createCameraNode()
-        let lightNode = directionalLightNode()
+        // let lightNode = directionalLightNode()
         
         self.rootNode.addChildNode(cameraNode)
-        self.rootNode.addChildNode(lightNode)
+        // Using Default lighting
+        // self.rootNode.addChildNode(lightNode)
     }
     
     required init(coder aDecoder: NSCoder) {

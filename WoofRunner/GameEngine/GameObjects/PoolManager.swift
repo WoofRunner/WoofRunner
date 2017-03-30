@@ -76,7 +76,7 @@ class PoolManager {
             tile = FloorDark()
             
         case.rock:
-            tile = Obstacle()
+            tile = Rock()
             
         default:
             return nil
