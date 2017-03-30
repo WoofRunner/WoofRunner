@@ -185,9 +185,13 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	// - MARK: LDOverlayDelegate
 	
 	internal func saveLevel() {
-		print("Before Save: \(gsm.getAllGames().count)")
+        /// Observes game save
+        gsm.games.asObservable().subscribe(onNext: { games in
+            print("Games count: \(games.count)")
+        })
+        .addDisposableTo(disposeBag)
+
 		saveGame()
-		print("After Save: \(gsm.getAllGames().count)")
 	}
 	
 	internal func renameLevel(_ newName: String) {

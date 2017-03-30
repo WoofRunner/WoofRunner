@@ -21,16 +21,16 @@ extension LevelGrid: SaveableGame {
             res = StoredGame(context: appDelegate.dataStack.mainContext)
 
             // Set values for a new StoredGame
-            res.setValue(UUID().uuidString, forKey: "uuid")
-            res.setValue(Date() as NSDate?, forKey: "createdAt")
+            res.uuid = UUID().uuidString
+            res.createdAt = Date() as NSDate?
         }
 
         // Set StoredGame values
-        res.setValue(self.length, forKey: "rows")
-        res.setValue(LevelGrid.levelCols, forKey: "columns")
-        res.setValue(getStoredObstacles(), forKey: "obstacles")
-        res.setValue(getStoredPlatforms(), forKey: "platforms")
-        res.setValue(Date() as NSDate?, forKey: "updatedAt")
+        res.rows = Int16(self.length)
+        res.columns = Int16(LevelGrid.levelCols)
+        res.updatedAt = Date() as NSDate?
+        res.addToObstacles(NSSet(array: getStoredObstacles()))
+        res.addToPlatforms(NSSet(array: getStoredPlatforms()))
 
         storedGame = res
 
@@ -39,8 +39,16 @@ extension LevelGrid: SaveableGame {
 
     func load(from storedGame: StoredGame) {
         self.storedGame = storedGame
-        let obstacles = storedGame.value(forKey: "obstacles") as! [StoredObstacle]
-        let platforms = storedGame.value(forKey: "platforms") as! [StoredPlatform]
+
+        var obstacles = [StoredObstacle]()
+        for obstacle in storedGame.obstacles! {
+            obstacles.append(obstacle as! StoredObstacle)
+        }
+
+        var platforms = [StoredPlatform]()
+        for platform in storedGame.platforms! {
+            platforms.append(platform as! StoredPlatform)
+        }
 
         for obstacle in obstacles {
             obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = Int(obstacle.type!)!
@@ -59,12 +67,12 @@ extension LevelGrid: SaveableGame {
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
                 let storedObstacle = StoredObstacle(context: appDelegate.dataStack.mainContext)
-                storedObstacle.setValue(String(obstacle), forKey: "type")
-                storedObstacle.setValue(col, forKey: "positionX")
-                storedObstacle.setValue(row, forKey: "positionY")
+                storedObstacle.type = String(obstacle)
+                storedObstacle.positionX = Int16(col)
+                storedObstacle.positionY = Int16(row)
 
                 // Radius of each obstacle not determined yet
-                storedObstacle.setValue(1, forKey: "radius")
+                storedObstacle.radius = 1
 
                 res.append(storedObstacle)
             }
