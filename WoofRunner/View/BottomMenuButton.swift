@@ -24,10 +24,10 @@ class BottomMenuButton: SKLabelNode {
 			return
 		}
 		
-		if self.text == "Test" {
+		if self.text == "Back" {
 			
 			self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
-				self.delegate?.testLevel()
+				self.delegate?.back()
 			})
 			return
 		}

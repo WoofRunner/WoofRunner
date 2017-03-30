@@ -31,26 +31,10 @@ class LevelDesignerOverlayScene: SKScene,
 		super.init(size: size)
 		self.backgroundColor = UIColor.clear
 		
-		// Palette
-		self.paletteMenu.renderPaletteMenu()
-		self.paletteMenu.assignDelegateForButtons(self)
-		self.addChild(paletteMenu)
-		
-		// Overlay
-		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-		self.overlayMenu.alpha = 0.0
-		self.addChild(overlayMenu)
-		
-		// Current Selection
-		let currentSelectionPosX = CGFloat(690)
-		let currentSelectionPosY = CGFloat(880)
-		self.addChild(currentSelectionUI)
-		self.currentSelectionUI.position = CGPoint(x: currentSelectionPosX, y: currentSelectionPosY)
-		
-		// Bottom Menu
-		self.bottomMenu.position =  CGPoint(x: self.frame.midX, y: self.frame.minY + 40)
-		self.bottomMenu.setButtonDelegates(self)
-		self.addChild(bottomMenu)
+		initPaletteMenu()
+		initOverlayMenu()
+		initCurrentSelection()
+		initBottomMenu()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -67,6 +51,25 @@ class LevelDesignerOverlayScene: SKScene,
 		self.paletteMenu.renderPaletteMenu()
 		self.paletteMenu.assignDelegateForButtons(self)
 		self.addChild(paletteMenu)
+	}
+	
+	private func initOverlayMenu() {
+		self.overlayMenu.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+		self.overlayMenu.alpha = 0.0
+		self.addChild(overlayMenu)
+	}
+	
+	private func initCurrentSelection() {
+		let currentSelectionPosX = CGFloat(690)
+		let currentSelectionPosY = CGFloat(880)
+		self.addChild(currentSelectionUI)
+		self.currentSelectionUI.position = CGPoint(x: currentSelectionPosX, y: currentSelectionPosY)
+	}
+	
+	private func initBottomMenu() {
+		self.bottomMenu.position =  CGPoint(x: self.frame.midX, y: self.frame.minY + 40)
+		self.bottomMenu.setButtonDelegates(self)
+		self.addChild(bottomMenu)
 	}
 	
 	// - MARK: Handle Touches

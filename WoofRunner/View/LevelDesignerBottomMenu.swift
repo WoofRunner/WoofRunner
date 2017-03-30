@@ -56,14 +56,14 @@ class LevelDesignerBottomMenu: SKNode {
 		saveButton.fontColor = BottomMenuConstants.saveBtnLabelFontColor
 		saveButton.fontName = BottomMenuConstants.btnLabelFontName
 		saveButton.fontSize = BottomMenuConstants.btnLabelFontSize
-		backButton.position.x = BottomMenuConstants.barWidth / 2 - CGFloat(40)
+		saveButton.position.x = BottomMenuConstants.barWidth / 2 - CGFloat(40)
 	}
 	
 	private func configureBackButtonLabel() {
 		backButton.fontColor = BottomMenuConstants.testBtnLabelFontColor
 		backButton.fontName = BottomMenuConstants.btnLabelFontName
 		backButton.fontSize = BottomMenuConstants.btnLabelFontSize
-		saveButton.position.x = -1 * (BottomMenuConstants.barWidth / 2) + CGFloat(40)
+		backButton.position.x = -1 * (BottomMenuConstants.barWidth / 2) + CGFloat(40)
 	}
 	
 	private func configureLevelNameLabel() {
