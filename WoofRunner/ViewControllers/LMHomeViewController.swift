@@ -33,7 +33,6 @@ public class LMHomeViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        vm.loadFeaturedGames()
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

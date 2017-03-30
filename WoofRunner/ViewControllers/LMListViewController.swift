@@ -24,9 +24,9 @@ public class LMListViewController: UIViewController {
 
     // MARK: - Private variables
 
+    private var vm = LMListViewModel()
     private var games = Variable<[StoredGame]>([])
-    private var cdm = CoreDataManager.getInstance()
-    private var osm = OnlineStorageManager.getInstance()
+    private let disposeBag = DisposeBag()
 
     // MARK: - IBOutlets
 
@@ -46,14 +46,8 @@ public class LMListViewController: UIViewController {
     // MARK: - Lifecyle methods
 
     public override func viewDidLoad() {
-        switch listType! {
-        case .Downloaded:
-            viewTitle.text = "Downloaded Levels"
-        case .Created:
-            viewTitle.text = "Created Levels"
-        }
-
-        loadGames()
+        vm.setListType(listType!)
+        bindViewTitle()
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,23 +59,26 @@ public class LMListViewController: UIViewController {
 
     // MARK: - Private methods
 
-    /// Load all games depending on the list type
-    private func loadGames() {
-        if listType == .Downloaded {
-            loadDownloadedGames()
-        } else if listType == .Created {
-            loadCreatedGames()
+    /// Binds the list type variable to the viewTitle
+    private func bindViewTitle() {
+        vm.listType.asObservable().map { type in
+            switch type {
+            case .Downloaded:
+                return "Downloaded Games"
+            case .Created:
+                return "Created Games"
+            }
         }
+        .bindTo(viewTitle.rx.text)
+        .addDisposableTo(disposeBag)
     }
 
-    /// Loads all downloaded games
-    private func loadDownloadedGames() {}
+    /// Saves a new game to CoreData
+    private func addOneStubCreatedGame() {
+        vm.createOneGame()
+    }
 
-    /// Loads all created games
-    private func loadCreatedGames() {}
-
-    // Saves a new game to CoreData
-    private func addOneStubCreatedGame() {}
-
-    private func uploadOneGame() {}
+    private func uploadOneGame() {
+        vm.uploadOneGame()
+    }
 }
