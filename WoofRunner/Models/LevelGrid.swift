@@ -77,6 +77,7 @@ class LevelGrid {
             return
         }
         let gridVM = gridViewModelArray[row][col]
+        
         // Toggle grid
         if currentSelectedBrush.isPlatform() {
             gridVM.setPlatform(currentSelectedBrush)

@@ -38,6 +38,7 @@ class LevelDesignerViewController: UIViewController {
         sceneView.allowsCameraControl = false
         sceneView.showsStatistics = true
         sceneView.backgroundColor = UIColor.black
+        sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         
         sceneView.scene = LDScene
@@ -162,6 +163,12 @@ class LevelDesignerViewController: UIViewController {
                 let gridNode = result.node
                 guard gridNode.geometry?.firstMaterial?.transparency != 0 else {
                     continue
+                }
+                if gridNode.name == "modelNode" {
+                    guard let parentNode = gridNode.parent else {
+                        continue
+                    }
+                    return currentLevel.toggleGrid(x: parentNode.position.x, y: parentNode.position.y, currentSelectedBrush)
                 }
                 // Else toggle
                 return currentLevel.toggleGrid(x: gridNode.position.x, y: gridNode.position.y, currentSelectedBrush)
