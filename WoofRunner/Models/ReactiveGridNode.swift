@@ -40,8 +40,8 @@ class ReactiveGridNode {
         self.obstacleNode.value = SCNNode()
         self.shouldRender = gridVM.shouldRender
         
-        updatePlatformBoxGeometry()
-        updateObstacleBoxGeometry()
+        updatePlatformNode()
+        updateObstacleNode()
         
         // Subscribe to observables
         gridVM.gridPos.asObservable()
@@ -56,26 +56,26 @@ class ReactiveGridNode {
             .subscribe(onNext: {
                 (size) in
                 self.size = size
-                self.updatePlatformBoxGeometry()
-                self.updateObstacleBoxGeometry()
+                self.updatePlatformNode()
+                self.updateObstacleNode()
             }).addDisposableTo(disposeBag)
         
         gridVM.platformType.asObservable()
             .subscribe(onNext: {
                 (platformType) in
                 self.platformType = platformType
-                self.updatePlatformBoxGeometry()
+                self.updatePlatformNode()
             }).addDisposableTo(disposeBag)
         
         gridVM.obstacleType.asObservable()
             .subscribe(onNext: {
                 (obstacleType) in
                 self.obstacleType = obstacleType
-                self.updateObstacleBoxGeometry()
+                self.updateObstacleNode()
             }).addDisposableTo(disposeBag)
     }
     
-    private func updatePlatformBoxGeometry() {
+    private func updatePlatformNode() {
         var modelNode: SCNNode
         
         if platformType == .none {
@@ -93,7 +93,6 @@ class ReactiveGridNode {
         } else {
             return
         }
-        print(modelNode.position, platformNode.value.position, self.position)
         
         // Tag Model Node
         modelNode.name = "modelNode"
@@ -105,7 +104,7 @@ class ReactiveGridNode {
         self.platformNode.value.position = self.position
     }
     
-    private func updateObstacleBoxGeometry() {
+    private func updateObstacleNode() {
         var modelNode: SCNNode
         
         if obstacleType == .none {
