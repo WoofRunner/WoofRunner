@@ -16,6 +16,7 @@ class LevelDesignerOverlayScene: SKScene,
 								OverlayButtonDelegate,
 								BottomMenuButtonDelegate {
 	
+	var overlayDelegate: LDOverlayDelegate?
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
 	var currentSelectionUI = CurrentSelectionNode()
@@ -56,6 +57,17 @@ class LevelDesignerOverlayScene: SKScene,
 		super.init(coder: aDecoder)
 	}
 	
+	public func setDelegate(_ delegate: LDOverlayDelegate) {
+		self.overlayDelegate = delegate
+	}
+	
+	// - MARK: Init Nods
+	
+	private func initPaletteMenu() {
+		self.paletteMenu.renderPaletteMenu()
+		self.paletteMenu.assignDelegateForButtons(self)
+		self.addChild(paletteMenu)
+	}
 	
 	// - MARK: Handle Touches
 	
@@ -65,6 +77,7 @@ class LevelDesignerOverlayScene: SKScene,
 		
 		// Save y-pos of touch for calculating offset of scrolling if needed
 		self.oldY = (location?.y)!
+		
 		
 		let node = self.atPoint(location!)
 		
@@ -122,12 +135,14 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	// - MARK: BottomMenuButtonDelegate
-	internal func testLevel() {
-		print("test level")
+	internal func back() {
+		self.overlayDelegate?.back()
 	}
 	
 	internal func saveLevel() {
 		print("save level")
+		self.overlayDelegate?.saveLevel()
 	}
+	
 
 }
