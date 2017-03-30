@@ -6,18 +6,22 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+import Sync
 import UIKit
 import Firebase
+import FacebookCore
+import FacebookLogin
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
+    lazy var dataStack = DataStack(modelName: "WoofRunner")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         initFirebase()
-        return true
+        return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -44,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func initFirebase() {
         FIRApp.configure()
+    }
+
+    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
 
 }

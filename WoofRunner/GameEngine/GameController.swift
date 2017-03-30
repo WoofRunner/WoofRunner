@@ -10,6 +10,8 @@ import UIKit
 import SceneKit
 
 class GameController: UIViewController {
+
+    private let gsm = GameStorageManager.getInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,4 +38,18 @@ class GameController: UIViewController {
     override var shouldAutorotate: Bool {
         return true
     }
+
+    /// Returns a tile manager for a game loaded from CoreData.
+    /// - Parameters:
+    ///     - uuid: unique ID string of the game to identify which game to laod
+    /// - Returns: TileManager that is created using the data from loaded game
+    private func getTileManagerForGame(uuid: String) -> TileManager {
+        let game = gsm.getGame(uuid: uuid)
+
+        let obstacles = game!.getObstacles()
+        let platforms = game!.getPlatforms()
+
+        return TileManager(obstacleData: obstacles, platformData: platforms)
+    }
+
 }

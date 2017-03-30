@@ -9,7 +9,12 @@
 import Foundation
 import RxCocoa
 import RxSwift
+
 class LevelGrid {
+
+    // MARK: - SaveableGame
+
+    var storedGame: StoredGame?
     
     var disposeBag = DisposeBag()
     
