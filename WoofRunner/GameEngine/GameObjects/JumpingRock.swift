@@ -11,6 +11,13 @@ import SceneKit
 
 class JumpingRock: Obstacle {
     
+    var startHeight: Float = 0
+    var jumpSpeed: Float = 4
+    
+    var jumpTime: Float = 0
+
+    let FULL_JUMP_LENGTH: Float = 3.142
+    
     override init(_ pos: SCNVector3) {
         super.init(pos)
         tileType = TileType.jumpingRock
@@ -26,7 +33,22 @@ class JumpingRock: Obstacle {
         super.update(deltaTime)
         
         if isTriggered {
-            position.y = 3
+            jumpTime += deltaTime * jumpSpeed
+            
+            if jumpTime < FULL_JUMP_LENGTH {
+                position = SCNVector3(position.x, startHeight + sin(jumpTime) * 2, position.z)
+            }
         }
+    }
+    
+    override func triggered() {
+        if !isTriggered {
+            startHeight = position.y
+        }
+    }
+    
+    override func deactivate() {
+        super.deactivate()
+        jumpTime = 0
     }
 }
