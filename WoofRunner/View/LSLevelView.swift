@@ -10,6 +10,7 @@ import UIKit
 
 class LSLevelView: UIView {
 	
+	var controllerDelegate: LSItemDelegate?
 	var label = UILabel()
     /*
     // Only override draw() if you perform custom drawing.
@@ -57,10 +58,23 @@ class LSLevelView: UIView {
 		
 		self.addConstraints(constraints)
 		self.addConstraints([widthConstraint, heightConstraint])
+		
+		/*
+		let tap = UITapGestureRecognizer(target: self, action: Selector("tapFunction:"))
+		self.addGestureRecognizer(tap)
+		*/
 
 	}
 	
-	func setLevelName(_ name: String) {
+	func tapFunction(sender:UITapGestureRecognizer) {
+		controllerDelegate?.onTapItem()
+	}
+	
+	public func setDelegate(_ delegate: LSItemDelegate) {
+		self.controllerDelegate = delegate
+	}
+	
+	public func setLevelName(_ name: String) {
 		label.text = name
 		
 	}

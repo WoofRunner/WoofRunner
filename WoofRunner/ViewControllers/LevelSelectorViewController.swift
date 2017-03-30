@@ -9,7 +9,7 @@
 import UIKit
 import iCarousel
 
-class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
+class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate, LSItemDelegate {
 	
 	var gsm = GameStorageManager.getInstance()
 	var levels = [StoredGame]()
@@ -23,6 +23,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
         super.viewDidLoad()
 		configureCarouselView()
 		populateLevelData()
+		//self.view.addSubview(UIButton(type: .roundedRect))
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,16 +54,31 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
 		
-		
 		var levelItemView: LSLevelView
 		
+		// Check for recyled views, else create new
+		// NOTE: DO NOT do anything specific to index here
 		if let view = view as? LSLevelView {
 			levelItemView = view
 		} else {
 			levelItemView = LSLevelView(frame: self.view.frame)
 			levelItemView.contentMode = .center
+			
+			let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapFunction(_:)))
+			levelItemView.addGestureRecognizer(tapGesture)
 		}
 		
+		// Cycle between 2 bg colors for easy differentiation (for now)
+		if (index%2 == 0) {
+			levelItemView.backgroundColor = UIColor.yellow
+		} else {
+			levelItemView.backgroundColor = UIColor.green
+		}
+		
+		// Set the level name (for now its UUID)
+		levelItemView.setLevelName("\(levels[index].uuid!)")
+		
+		return levelItemView as UIView
 		
 		/*
 		var label = UILabel()
@@ -152,20 +168,8 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		//you'll get weird issues with carousel item content appearing
 		//in the wrong place in the carousel
 		
-		//levelItemView.backgroundColor = colorArray[index%5]
-		//levelItemView.setLevelName(self.levels[index].uuid!)
-		
-		if (index%2 == 0) {
-			levelItemView.backgroundColor = UIColor.yellow
-		} else {
-			levelItemView.backgroundColor = UIColor.green
-		}
-		
-		levelItemView.setLevelName("\(levels[index].uuid!)")
-
 		//return itemView
 		
-		return levelItemView as UIView
 	}
 	
 	func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
@@ -179,6 +183,22 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		}
 		return value
 	}
+	
+	// MARK: LSItemDelegate
+	
+	internal func onTapItem() {
+		print("tapped item!")
+	}
+	
+	// MARK: - Tap handlers
+	
+	func tapFunction(_ sender: UITapGestureRecognizer) {
+		if let itemView = sender.view as? LSLevelView {
+			print("Selected Item: \(itemView.label.text)")
+		}
+	}
+	
+	
 
     /*
     // MARK: - Navigation
