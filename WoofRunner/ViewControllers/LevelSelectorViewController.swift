@@ -11,34 +11,59 @@ import iCarousel
 
 class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 	
+	var gsm = GameStorageManager.getInstance()
+	var levels = [StoredGame]()
 	var items: [Int] = [1,2,3,4,5]
 	let colorArray = [UIColor.blue, UIColor.brown, UIColor.red, UIColor.green, UIColor.orange]
 	@IBOutlet var carousel: iCarousel!
 
+	// - MARK: Lifecycle methods
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		carousel.type = .linear
-		carousel.stopAtItemBoundary = true
-		carousel.scrollToItemBoundary = true
-		carousel.bounces = false
-		carousel.decelerationRate = 0.7
-		
+		configureCarouselView()
+		populateLevelData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 	
+	// - MARK: Init View Methods
+	
+	private func configureCarouselView() {
+		carousel.type = .linear
+		carousel.stopAtItemBoundary = true
+		carousel.scrollToItemBoundary = true
+		carousel.bounces = false
+		carousel.decelerationRate = 0.7
+	}
+	
+	private func populateLevelData() {
+		self.levels = gsm.getAllGames()
+	}
+	
 	func numberOfItems(in carousel: iCarousel) -> Int {
 		return items.count
 	}
 	
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-		var label: UILabel
-		//var itemView: UIImageView
-		var itemView: UIView
-		var imageView: UIImageView
 		
+		var levelItemView: LSLevelView
+		
+		if let view = view as? LSLevelView {
+			levelItemView = view
+		} else {
+			levelItemView = LSLevelView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+		}
+		
+		//var label: UILabel
+		//var itemView: UIImageView
+		//var itemView: UIView
+		//var imageView: UIImageView
+		
+		
+		/*
 		//reuse view if available, otherwise create a new view
 		if let view = view as? UIImageView {
 			itemView = view
@@ -77,20 +102,23 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 			
 			
 			itemView.addConstraint(constraint)
-			
-			
 		}
+		*/
 		
 		//set item label
 		//remember to always set any properties of your carousel item
 		//views outside of the `if (view == nil) {...}` check otherwise
 		//you'll get weird issues with carousel item content appearing
 		//in the wrong place in the carousel
-		itemView.backgroundColor = colorArray[index]
-		//label.text = "\(items[index])"
-		label.sizeToFit()
 		
-		return itemView
+		levelItemView.backgroundColor = UIColor.lightGray
+		levelItemView.setLevelName(self.levels[index].uuid!)
+		
+		//itemView.backgroundColor = colorArray[index]
+		//label.text = "\(items[index])"
+		//label.sizeToFit()
+		
+		return levelItemView as UIView
 	}
 	
 	func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {

@@ -36,7 +36,8 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-		16791951B068C4BD9A717E18 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		3F2CFBAE1E8D84F300C01036 /* LSLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSLevelView.swift */; };
 		3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -158,6 +159,7 @@
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
 		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2CFBAD1E8D84F300C01036 /* LSLevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSLevelView.swift; sourceTree = "<group>"; };
 		3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentalSceneView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -249,7 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16791951B068C4BD9A717E18 /* BuildFile in Frameworks */,
+				16791951B068C4BD9A717E18 /* (null) in Frameworks */,
 				F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +326,7 @@
 				3FA4B1721E880D5500D93703 /* CurrentSelectionNode.swift */,
 				3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */,
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */,
+				3F2CFBAD1E8D84F300C01036 /* LSLevelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
+				3F2CFBAE1E8D84F300C01036 /* LSLevelView.swift in Sources */,
 				F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
