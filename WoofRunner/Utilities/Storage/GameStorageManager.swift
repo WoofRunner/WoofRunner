@@ -23,6 +23,9 @@ public class GameStorageManager {
     private let cdm = CoreDataManager.getInstance()
     public private(set) var games = Variable<[String: StoredGame]>([:])
 
+    public private(set) var error = Variable<Bool>(false)
+    private var retryCount = 0
+
     // MARK: - Private initializer
 
     private init() {
@@ -117,10 +120,27 @@ public class GameStorageManager {
                 for game in games {
                     self.games.value[game.uuid!] = game
                 }
+
+                // Error handling
+                self.retryCount = 0
+                self.error.value = false
             }
             .onFailure { _ in
-                // TODO: Throw error here
+                // Retry for 5 times before displaying error
+                if self.retryCount < 5 {
+                    self.reloadGames()
+                    self.retryCount += 1
+                } else {
+                    self.error.value = true
+                }
         }
     }
 
+}
+
+public enum GameStorageManagerError: Error {
+    case GameNotFound
+    case GamesNotLoaded
+    case GameNotUploaded
+    case GameNotDownloaded
 }

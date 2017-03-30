@@ -26,6 +26,7 @@
 		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
 		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
 		12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF5ABD1E75904E00823568 /* SaveableStub.swift */; };
+		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
 		12DA42061E86627700C23137 /* LMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42051E86627700C23137 /* LMListViewController.swift */; };
 		12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LMCardViewCell.swift */; };
 		12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */; };
@@ -140,6 +141,7 @@
 		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
 		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
 		12BF5ABD1E75904E00823568 /* SaveableStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableStub.swift; sourceTree = "<group>"; };
+		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
 		12DA42051E86627700C23137 /* LMListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListViewController.swift; sourceTree = "<group>"; };
 		12DA42091E86699200C23137 /* LMCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCardViewCell.swift; sourceTree = "<group>"; };
 		12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */,
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
 				12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */,
+				12C457881E8D60C200CFD541 /* PreviewGame.swift */,
 				127898891E8A496000E937E0 /* LoadableGame.swift */,
 				12AD18211E8969F700EF5C46 /* SaveableGame.swift */,
 				12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */,
@@ -811,6 +814,7 @@
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
+				12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */,
 				3F7348C21E86F76E00EB1264 /* RootSKLabelNode.swift in Sources */,
 				3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
