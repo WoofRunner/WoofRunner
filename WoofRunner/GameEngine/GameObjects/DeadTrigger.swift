@@ -1,21 +1,19 @@
 //
-//  FloorLight.swift
+//  DeadPlatform.swift
 //  WoofRunner
 //
-//  Created by limte on 26/3/17.
+//  Created by limte on 30/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
 import Foundation
 import SceneKit
 
-
-class FloorLight : Platform {
-    
+class DeadTrigger : Platform {
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        loadModel("art.scnassets/floor_light.scn")
-        tileType = TileType.floorLight
+        let trigger = Trigger(SCNVector3(Tile.TILE_WIDTH/2, Tile.TILE_WIDTH/2, -Tile.TILE_WIDTH/2))
+        addChildNode(trigger)
     }
     
     convenience init() {

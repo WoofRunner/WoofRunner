@@ -126,7 +126,7 @@ class OverlayMenu: SKNode {
 		case .platform:
 			return [
 				TileTypeSet(name: "Static", set: [TileType.floorLight, TileType.grass]),
-				TileTypeSet(name: "Dynamic", set: [TileType.jump])
+				TileTypeSet(name: "Dynamic", set: [TileType.floorJump])
 			]
 		case .obstacle:
 			return [

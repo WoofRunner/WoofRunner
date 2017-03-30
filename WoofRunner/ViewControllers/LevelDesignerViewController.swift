@@ -12,7 +12,7 @@ import SceneKit
 import RxSwift
 import RxCocoa
 
-class LevelDesignerViewController: UIViewController {
+class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
     // Camera Settings
     static var cameraHeight: Float = 8.5
@@ -60,6 +60,7 @@ class LevelDesignerViewController: UIViewController {
         
 		// Attached overlay
 		spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
+		spriteScene?.setDelegate(self)
         guard let skScene = spriteScene else {
             return
         }
@@ -180,5 +181,21 @@ class LevelDesignerViewController: UIViewController {
     private func saveGame() {
         gsm.saveGame(currentLevel)
     }
+	
+	// - MARK: LDOverlayDelegate
+	
+	internal func saveLevel() {
+		print("Before Save: \(gsm.getAllGames().count)")
+		saveGame()
+		print("After Save: \(gsm.getAllGames().count)")
+	}
+	
+	internal func renameLevel(_ newName: String) {
+		
+	}
+	
+	internal func back() {
+		self.dismiss(animated: true, completion: nil)
+	}
 
 }

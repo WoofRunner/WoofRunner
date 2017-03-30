@@ -1,17 +1,21 @@
 //
-//  Ground.swift
+//  JumpFloor.swift
 //  WoofRunner
 //
-//  Created by limte on 22/3/17.
+//  Created by limte on 31/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
 import Foundation
 import SceneKit
 
-class Platform : Tile {
+
+class JumpPlatform : Platform {
+
     override init(_ pos: SCNVector3) {
         super.init(pos)
+        tileType = TileType.floorJump
+        loadModel(tileType.getModelPath())
     }
     
     convenience init() {

@@ -139,7 +139,9 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// - MARK: BottomMenuButtonDelegate
 	internal func back() {
-		self.overlayDelegate?.back()
+		DispatchQueue.main.async() {
+			self.overlayDelegate?.back()
+		}
 	}
 	
 	internal func saveLevel() {

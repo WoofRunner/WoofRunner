@@ -60,6 +60,15 @@ class GameObject: SCNNode, GestureDelegate {
         isHidden = true
         position = FAR_AWAY_POSITION
     }
+    
+    public func loadModel(_ pathName: String) {
+        guard let modelScene = SCNScene(named: pathName) else {
+            print("WARNING: Cant find path name: " + pathName)
+            return
+        }
+        let modelNode = modelScene.rootNode.childNodes[0]
+        addChildNode(modelNode)
+    }
 }
 
 
