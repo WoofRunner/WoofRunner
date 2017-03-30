@@ -27,11 +27,13 @@ class Player: GameObject {
     var isDeadFall: Bool = false
     var deadFallSpeed: Float = 3
     
+    let PLAYER_TAG = "player"
+    
     override init() {
         super.init()
         geometry = SCNSphere(radius: 0.3)
-        name = "player"
-        position = SCNVector3(x: 0, y: startHeight, z: 1.5)
+        name = PLAYER_TAG
+        position = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody?.contactTestBitMask = CollisionType.Default
         physicsBody?.categoryBitMask = CollisionType.Default
