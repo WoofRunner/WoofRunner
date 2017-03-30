@@ -17,5 +17,6 @@ extension SCNNode {
         }
         parent?.OnCollide(otherSCNNode: otherParent)
         parent?.OnCollide(otherSCNNode: otherSCNNode)
+        OnCollide(otherSCNNode: otherParent)
     }
 }
