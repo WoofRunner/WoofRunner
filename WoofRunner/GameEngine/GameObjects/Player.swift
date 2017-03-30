@@ -10,7 +10,6 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
-
     var isAir: Bool = false
     
     var jumpVelocity: SCNVector3 = SCNVector3(0, 1, 0)
@@ -23,34 +22,21 @@ class Player: GameObject {
     var jumpTime: Float = 0
     var jumpSpeed: Float = 2
     
-    var startHeight: Float = 0.4
+    var startHeight: Float = 0.3
     
     var isDeadFall: Bool = false
     var deadFallSpeed: Float = 3
     
     override init() {
         super.init()
-        /*
-        let modelScene = SCNScene(named: "art.scnassets/playerCube.scn")!
-        let modelNode = modelScene.rootNode.childNodes[0]
-        addChildNode(modelNode)
-        */
-        
-        
-        geometry = SCNSphere(radius: 0.4)
+        geometry = SCNSphere(radius: 0.3)
         name = "player"
-        //position = SCNVector3(x: 0, y: -0.3, z: 1)
         position = SCNVector3(x: 0, y: startHeight, z: 1.5)
-        //scale = SCNVector3(0.8, 0.8, 0.8)
-        //physicsBody = characterTopLevelNode.physicsBody
-
-        //let shape = SCNPhysicsShape(geometry: geometry!, options: nil)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody?.contactTestBitMask = CollisionType.Default
         physicsBody?.categoryBitMask = CollisionType.Default
         
         isTickEnabled = true
-        
     }
     
     private func startJump() {

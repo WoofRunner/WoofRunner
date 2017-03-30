@@ -1,5 +1,5 @@
 //
-//  FloorDark.swift
+//  FloorLight.swift
 //  WoofRunner
 //
 //  Created by limte on 26/3/17.
@@ -10,11 +10,11 @@ import Foundation
 import SceneKit
 
 
-class FloorDark : Platform {
+class LightPlatform : Platform {
     
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        tileType = TileType.floorDark
+        tileType = TileType.floorLight
         loadModel(tileType.getModelPath())
     }
     
