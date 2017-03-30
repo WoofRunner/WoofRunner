@@ -107,7 +107,7 @@ class ReactiveGridNode {
             case .none:
                 material.emission.contents = UIColor.purple
                 material.transparency = 0
-            case .jump:
+            case .floorJump:
                 material.ambient.contents = UIColor.orange
                 material.transparency = 1
                 break

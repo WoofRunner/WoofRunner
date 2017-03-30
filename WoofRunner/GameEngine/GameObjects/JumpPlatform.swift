@@ -11,10 +11,10 @@ import SceneKit
 
 
 class JumpPlatform : Platform {
-    
+
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        tileType = TileType.floorLight
+        tileType = TileType.floorJump
         loadModel(tileType.getModelPath())
     }
     

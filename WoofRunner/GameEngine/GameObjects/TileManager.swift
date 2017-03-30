@@ -21,7 +21,8 @@ class TileManager: GameObject {
                               [1, 0, 0, 1, 1],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 1, 0, 1, 0],
+                              [0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0]]
     
@@ -39,15 +40,16 @@ class TileManager: GameObject {
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1]]
     */
+    
     var platformData: [[Int]] = [[2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
+                                 [2, 1, 3, 1, 2],
                                  [0, 0, 1, 0, 0],
                                  [0, 0, 1, 0, 0],
                                  [0, 0, 1, 0, 0],
-                                 [2, 1, 2, 1, 2],
+                                 [0, 0, 2, 3, 2],
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1]]
@@ -103,6 +105,11 @@ class TileManager: GameObject {
         
         if platformData[row % platformData.count][col] == 2 {
             let platformTile = poolManager?.getTile(TileType.floorDark)
+            platformTile?.position = calculateTilePosition(row, col)
+        }
+        
+        if platformData[row % platformData.count][col] == 3 {
+            let platformTile = poolManager?.getTile(TileType.floorJump)
             platformTile?.position = calculateTilePosition(row, col)
         }
         

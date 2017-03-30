@@ -74,6 +74,9 @@ class PoolManager {
         
         case .floorDark:
             tile = DarkPlatform()
+        
+        case .floorJump:
+            tile = JumpPlatform()
             
         case.rock:
             tile = Rock()

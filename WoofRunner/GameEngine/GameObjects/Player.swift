@@ -48,7 +48,8 @@ class Player: GameObject {
     }
     
     public override func OnCollide(other: GameObject) {
-        if other is Platform {
+        if other is JumpPlatform {
+            startJump()
         }
         
         if other is DeadTrigger {
@@ -57,7 +58,8 @@ class Player: GameObject {
         
         if other is Obstacle {
             //destroy()
-            startJump()
+            //startJump()
+            print("collide")
         }
     }
     
