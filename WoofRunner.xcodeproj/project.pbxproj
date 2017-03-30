@@ -93,6 +93,7 @@
 		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
 		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
 		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
+		F34DEDBD1E8D41DD00BB8CA7 /* DeadTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTrigger.swift */; };
 		F38F48291E87F1FB005328A9 /* FloorLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* FloorLight.swift */; };
 		F38F482B1E87F28F005328A9 /* FloorDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* FloorDark.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
@@ -216,6 +217,7 @@
 		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
 		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
+		F34DEDBC1E8D41DD00BB8CA7 /* DeadTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTrigger.swift; sourceTree = "<group>"; };
 		F38F48281E87F1FB005328A9 /* FloorLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorLight.swift; sourceTree = "<group>"; };
 		F38F482A1E87F28F005328A9 /* FloorDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorDark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -488,9 +490,9 @@
 				F34DEDB71E8D354900BB8CA7 /* Tile */,
 				F33442C21E815BFE001C1D8D /* Camera.swift */,
 				F33442C61E815BFE001C1D8D /* Player.swift */,
-				F33442C71E815BFE001C1D8D /* TestCube.swift */,
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
+				F33442C71E815BFE001C1D8D /* TestCube.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -510,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
+				F34DEDBC1E8D41DD00BB8CA7 /* DeadTrigger.swift */,
 				F38F482A1E87F28F005328A9 /* FloorDark.swift */,
 				F38F48281E87F1FB005328A9 /* FloorLight.swift */,
 			);
@@ -519,8 +522,8 @@
 		F34DEDB91E8D357700BB8CA7 /* Obstacle */ = {
 			isa = PBXGroup;
 			children = (
-				F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */,
 				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
+				F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */,
 			);
 			name = Obstacle;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
 				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
+				F34DEDBD1E8D41DD00BB8CA7 /* DeadTrigger.swift in Sources */,
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
 				3F7348BE1E86F1FA00EB1264 /* OverlayMenu.swift in Sources */,
 				4E90FFE91E8431690012B03F /* Position.swift in Sources */,

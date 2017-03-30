@@ -25,6 +25,9 @@ class Player: GameObject {
     
     var startHeight: Float = 0.4
     
+    var isDeadFall: Bool = false
+    var deadFallSpeed: Float = 3
+    
     override init() {
         super.init()
         /*
@@ -46,8 +49,6 @@ class Player: GameObject {
         physicsBody?.contactTestBitMask = CollisionType.Player
         physicsBody?.categoryBitMask = CollisionType.Player
         
-        
-        
         isTickEnabled = true
         
     }
@@ -60,22 +61,28 @@ class Player: GameObject {
         isAir = true
         print("jump")
     }
-   
+    
     public override func OnCollide(other: GameObject) {
         if other is Platform {
             print("platform")
         }
         
+        if other is DeadTrigger {
+            print("dead trigger")
+            isDeadFall = true
+        }
+        
         if other is Obstacle {
-            //print("contact")
+            print("contact")
             //destroy()
-            //startJump()
+            startJump()
         }
     }
     
     override func update(_ deltaTime: Float) {
-        //print(isAir)
-        if isAir {
+        if isDeadFall {
+            position = SCNVector3(position.x, position.y - deadFallSpeed * deltaTime, position.z)
+        } else if isAir {
             jumpTime += deltaTime
             position = SCNVector3(position.x, startHeight + sin(jumpTime * jumpSpeed) * jumpHeight, position.z)
             
@@ -84,11 +91,14 @@ class Player: GameObject {
                 position.y = startHeight
                 
             }
- 
         }
     }
     
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
+        if isDeadFall {
+            return
+        }
+        
         let projectedOrigin = World.projectPoint(position)
         let vpWithZ = SCNVector3(x: Float(location.x), y: Float(location.y), z: projectedOrigin.z)
         let worldPoint = World.unprojectPoint(vpWithZ)
