@@ -16,15 +16,17 @@ class TileManager: GameObject {
     var obstacleData: [[Int]] = [[1, 0, 0, 0, 0],
                               [1, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
+                              [0, 1, 0, 1, 0],
                               [0, 0, 0, 0, 0],
                               [1, 0, 0, 1, 1],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 1, 0, 1, 0],
+                              [0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0]]
     
+    /*
     var platformData: [[Int]] = [[2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
@@ -37,7 +39,22 @@ class TileManager: GameObject {
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1]]
-
+    */
+    
+    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 3, 1, 2],
+                                 [0, 0, 1, 0, 0],
+                                 [0, 0, 1, 0, 0],
+                                 [0, 0, 1, 0, 0],
+                                 [0, 0, 2, 3, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1]]
+    
+    
     var tailIndex: Int = 0
     var platformTail: Float = 0
     
@@ -45,7 +62,7 @@ class TileManager: GameObject {
     let PLATFORM_Z_OFFSET: Float = 3
     
     var poolManager: PoolManager?
-
+    
     override init() {
         super.init()
         poolManager = PoolManager(self)
@@ -71,6 +88,12 @@ class TileManager: GameObject {
             for col in 0..<COL_COUNT {
                 handleTileSpawning(row: row, col: col)
             }
+            
+            var deadTrigger = DeadTrigger(calculateTilePosition(row, -1))
+            World.spawnGameObject(deadTrigger, self)
+            
+            deadTrigger = DeadTrigger(calculateTilePosition(row, COL_COUNT))
+            World.spawnGameObject(deadTrigger, self)
         }
     }
     
@@ -83,6 +106,16 @@ class TileManager: GameObject {
         if platformData[row % platformData.count][col] == 2 {
             let platformTile = poolManager?.getTile(TileType.floorDark)
             platformTile?.position = calculateTilePosition(row, col)
+        }
+        
+        if platformData[row % platformData.count][col] == 3 {
+            let platformTile = poolManager?.getTile(TileType.floorJump)
+            platformTile?.position = calculateTilePosition(row, col)
+        }
+        
+        if platformData[row % platformData.count][col] == 0 {
+            let deadTrigger = DeadTrigger(calculateTilePosition(row, col))
+            World.spawnGameObject(deadTrigger, self)
         }
         
         if obstacleData[row % obstacleData.count][col] == 1 {

@@ -32,7 +32,7 @@ class GameObject: SCNNode, GestureDelegate {
     }
     
     public override func OnCollide(otherSCNNode: SCNNode) {
-        //super.OnCollide(otherSCNNode: otherSCNNode)
+        super.OnCollide(otherSCNNode: otherSCNNode)
         guard let otherGameObject = otherSCNNode as? GameObject else {
             return
         }
@@ -59,6 +59,15 @@ class GameObject: SCNNode, GestureDelegate {
     public func deactivate() {
         isHidden = true
         position = FAR_AWAY_POSITION
+    }
+    
+    public func loadModel(_ pathName: String) {
+        guard let modelScene = SCNScene(named: pathName) else {
+            print("WARNING: Cant find path name: " + pathName)
+            return
+        }
+        let modelNode = modelScene.rootNode.childNodes[0]
+        addChildNode(modelNode)
     }
 }
 

@@ -26,7 +26,7 @@ class LevelDesignerBottomMenu: SKNode {
 	
 	private let backgroundNode = SKSpriteNode(texture: nil, color: UIColor.white, size: CGSize(width: BottomMenuConstants.barWidth, height: BottomMenuConstants.barHeight))
 	private var saveButton = BottomMenuButton(text: "Save")
-	private var testButton = BottomMenuButton(text: "Test")
+	private var backButton = BottomMenuButton(text: "Back")
 	private var levelNameLabel = SKLabelNode(text: "Custom Level 1")
 	
 	override init() {
@@ -37,18 +37,18 @@ class LevelDesignerBottomMenu: SKNode {
 		
 		// Attach SKLabels
 		self.addChild(saveButton)
-		self.addChild(testButton)
+		self.addChild(backButton)
 		self.addChild(levelNameLabel)
 		
 		configureSaveButtonLabel()
-		configureTestButtonLabel()
+		configureBackButtonLabel()
 		configureLevelNameLabel()
 		
 	}
 	
 	public func setButtonDelegates(_ delegate: BottomMenuButtonDelegate) {
 		self.saveButton.setDelegate(delegate)
-		self.testButton.setDelegate(delegate)
+		self.backButton.setDelegate(delegate)
 	}
 	
 	
@@ -56,14 +56,14 @@ class LevelDesignerBottomMenu: SKNode {
 		saveButton.fontColor = BottomMenuConstants.saveBtnLabelFontColor
 		saveButton.fontName = BottomMenuConstants.btnLabelFontName
 		saveButton.fontSize = BottomMenuConstants.btnLabelFontSize
-		saveButton.position.x = -1 * (BottomMenuConstants.barWidth / 2) + CGFloat(40)
+		saveButton.position.x = BottomMenuConstants.barWidth / 2 - CGFloat(40)
 	}
 	
-	private func configureTestButtonLabel() {
-		testButton.fontColor = BottomMenuConstants.testBtnLabelFontColor
-		testButton.fontName = BottomMenuConstants.btnLabelFontName
-		testButton.fontSize = BottomMenuConstants.btnLabelFontSize
-		testButton.position.x = BottomMenuConstants.barWidth / 2 - CGFloat(40)
+	private func configureBackButtonLabel() {
+		backButton.fontColor = BottomMenuConstants.testBtnLabelFontColor
+		backButton.fontName = BottomMenuConstants.btnLabelFontName
+		backButton.fontSize = BottomMenuConstants.btnLabelFontSize
+		backButton.position.x = -1 * (BottomMenuConstants.barWidth / 2) + CGFloat(40)
 	}
 	
 	private func configureLevelNameLabel() {

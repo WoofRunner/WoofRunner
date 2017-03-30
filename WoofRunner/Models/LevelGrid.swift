@@ -49,13 +49,13 @@ class LevelGrid {
                 // Setup observables
                 gridVM.platformType.asObservable().subscribe(onNext: {
                     (newType) in
-                    self.updatePlatformArray(row: gridVM.gridPos.getRow(),
-                                             col: gridVM.gridPos.getCol(),
+                    self.updatePlatformArray(row: gridVM.gridPos.value.getRow(),
+                                             col: gridVM.gridPos.value.getCol(),
                                              newType.rawValue)
                 }).addDisposableTo(disposeBag)
                 gridVM.obstacleType.asObservable().subscribe(onNext: { (newType) in
-                    self.updateObstacleArray(row: gridVM.gridPos.getRow(),
-                                             col: gridVM.gridPos.getCol(),
+                    self.updateObstacleArray(row: gridVM.gridPos.value.getRow(),
+                                             col: gridVM.gridPos.value.getCol(),
                                              newType.rawValue)
                 }).addDisposableTo(disposeBag)
                 // Append to array
@@ -77,6 +77,7 @@ class LevelGrid {
             return
         }
         let gridVM = gridViewModelArray[row][col]
+        
         // Toggle grid
         if currentSelectedBrush.isPlatform() {
             gridVM.setPlatform(currentSelectedBrush)
@@ -95,7 +96,8 @@ class LevelGrid {
         
         for gridVMRow in gridViewModelArray {
             for gridVM in gridVMRow {
-                if gridVM.gridPos.getRow() >= startRow && gridVM.gridPos.getRow() < endRow {
+                if gridVM.gridPos.value.getRow() >= startRow &&
+                    gridVM.gridPos.value.getRow() < endRow {
                     gridVM.shouldRender.value = true
                 } else {
                     gridVM.shouldRender.value = false

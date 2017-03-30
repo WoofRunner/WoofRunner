@@ -10,49 +10,81 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
-
+    var isAir: Bool = false
+    
+    var jumpVelocity: SCNVector3 = SCNVector3(0, 1, 0)
+    var gravity: SCNVector3 = SCNVector3(0, 0.5, 0)
+    
+    var curVelocity: SCNVector3 = SCNVector3.zero()
+    
+    var jumpHeight: Float = 2
+    
+    var jumpTime: Float = 0
+    var jumpSpeed: Float = 2
+    
+    var startHeight: Float = 0.3
+    
+    var isDeadFall: Bool = false
+    var deadFallSpeed: Float = 3
+    
+    let PLAYER_TAG = "player"
+    
     override init() {
         super.init()
-        //let modelScene = SCNScene(named: "art.scnassets/cube1.scn")!
-        let modelScene = SCNScene(named: "art.scnassets/playerCube.scn")!
-        let modelNode = modelScene.rootNode.childNodes[0]
-        addChildNode(modelNode)
-
-        //geometry = SCNSphere(radius: 0.4)
-        name = "player"
-        //position = SCNVector3(x: 0, y: -0.3, z: 1)
-        position = SCNVector3(x: 0, y: 0.1, z: 1.5)
-        //scale = SCNVector3(0.8, 0.8, 0.8)
-        //physicsBody = characterTopLevelNode.physicsBody
-        //physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+        geometry = SCNSphere(radius: 0.3)
+        name = PLAYER_TAG
+        position = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
+        physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+        physicsBody?.contactTestBitMask = CollisionType.Default
+        physicsBody?.categoryBitMask = CollisionType.Default
         
-        //characterTopLevelNode.physicsBody = nil
-        //characterTopLevelNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        //physicsBody?.contactTestBitMask = CollisionType.Player
-        //physicsBody?.categoryBitMask = CollisionType.Player
-        
-        if physicsBody == nil {
-            print("body is nil")
-        }
-        
-        //sphere1.physicsBody?.collisionBitMask = bodyNames.Player
         isTickEnabled = true
     }
-   
+    
+    private func startJump() {
+        if isAir {
+            return
+        }
+        jumpTime = 0
+        isAir = true
+    }
+    
     public override func OnCollide(other: GameObject) {
-        print("collide")
-        //print("collide" + String(describing: other))
+        if other is JumpPlatform {
+            startJump()
+        }
+        
+        if other is DeadTrigger {
+            isDeadFall = true
+        }
         
         if other is Obstacle {
-            destroy()
+            //destroy()
+            //startJump()
+            print("collide")
         }
     }
     
     override func update(_ deltaTime: Float) {
-        
+        if isDeadFall {
+            position = SCNVector3(position.x, position.y - deadFallSpeed * deltaTime, position.z)
+        } else if isAir {
+            jumpTime += deltaTime
+            position = SCNVector3(position.x, startHeight + sin(jumpTime * jumpSpeed) * jumpHeight, position.z)
+            
+            if position.y < startHeight {
+                isAir = false
+                position.y = startHeight
+                
+            }
+        }
     }
     
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
+        if isDeadFall {
+            return
+        }
+        
         let projectedOrigin = World.projectPoint(position)
         let vpWithZ = SCNVector3(x: Float(location.x), y: Float(location.y), z: projectedOrigin.z)
         let worldPoint = World.unprojectPoint(vpWithZ)

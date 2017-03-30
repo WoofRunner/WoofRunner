@@ -10,7 +10,6 @@ import Foundation
 import SceneKit
 
 class Platform : Tile {
-
     override init(_ pos: SCNVector3) {
         super.init(pos)
     }
@@ -18,8 +17,4 @@ class Platform : Tile {
     convenience init() {
         self.init(SCNVector3(0, 0, 0))
     }
-
-
-
-
 }

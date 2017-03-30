@@ -18,11 +18,18 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
 
     public var gestureDelegate: GestureDelegate?
     
+    let LEVEL_PATH = "art.scnassets/level.scn"
+    
     init?(_ view: UIView) {
         guard let view = view as? SCNView else { return nil }
-        
         self.scnView = view
-        scnScene = SCNScene()
+
+        if let newScnScene = SCNScene(named: LEVEL_PATH) {
+            scnScene = newScnScene
+        } else {
+            scnScene = SCNScene()
+        }
+        
         scnView.scene = scnScene
         super.init()
         scnView.delegate = self
@@ -32,7 +39,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.isPlaying = true
         
         scnView.allowsCameraControl = false
-        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         
         setUpGesture()
     }
@@ -93,12 +100,11 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         contact.nodeA.OnCollide(otherSCNNode: contact.nodeB)
         contact.nodeB.OnCollide(otherSCNNode: contact.nodeA)
-        
         /*
         print("A")
-        print(contact.nodeA.parent!)
+        print(contact.nodeA)
         print("B")
-        print(contact.nodeB.parent!)
+        print(contact.nodeB)
         print()
         print()
  */

@@ -10,12 +10,10 @@ import Foundation
 import SceneKit
 
 struct CollisionType {
-    static let Player = 1
-    static let Block = 0x1 << 2
+    static let Default = 1
 }
 
 class World {
-
     private static var gameEngine: GameEngine?
     
     public static func setUpWorld(_ view: UIView) {
@@ -23,32 +21,23 @@ class World {
     }
 
     public static func spawnGameObject(_ gameObject: GameObject) {
-        guard let gameEngine = gameEngine else {
-            print("WARNING: Trying to spawn object but GameEngine is nil")
-            return
-        }
-        gameEngine.spawnGameObject(gameObject)
+        _ = isGameEngineValid(taskMessage: "Trying to spawn object")
+        gameEngine?.spawnGameObject(gameObject)
     }
     
     public static func spawnGameObject(_ gameObject: GameObject, _ parent: GameObject) {
-        guard let gameEngine = gameEngine else {
-            print("WARNING: Trying to spawn object but GameEngine is nil")
-            return
-        }
-        gameEngine.spawnGameObject(gameObject, parent)
+        _ = isGameEngineValid(taskMessage: "Trying to spawn object")
+        gameEngine?.spawnGameObject(gameObject, parent)
     }
 
     public static func registerGestureInput(_ gameObject: GestureDelegate) {
-        guard let gameEngine = gameEngine else {
-            print("WARNING: Trying to register gesture input but GameEngine is nil")
-            return
-        }
-        gameEngine.gestureDelegate = gameObject
+        _ = isGameEngineValid(taskMessage: "Trying to register gesture input")
+        gameEngine?.gestureDelegate = gameObject
     }
     
     public static func projectPoint(_ vector: SCNVector3) -> SCNVector3 {
         guard let gameEngine = gameEngine else {
-            print("WARNING: Trying to project point but GameEngine is nil")
+            _ = isGameEngineValid(taskMessage: "Trying to project point")
             return SCNVector3()
         }
         return gameEngine.projectPoint(vector)
@@ -56,17 +45,22 @@ class World {
     
     public static func unprojectPoint(_ vector: SCNVector3) -> SCNVector3 {
         guard let gameEngine = gameEngine else {
-            print("WARNING: Trying to unproject point but GameEngine is nil")
+            _ = isGameEngineValid(taskMessage: "Trying to unproject point")
             return SCNVector3()
         }
         return gameEngine.unprojectPoint(vector)
     }
     
     public static func destroyWorld() {
-        guard let gameEngine = gameEngine else {
-            print("WARNING: Trying to destroy GameEngine but GameEngine is nil")
-            return
+        _ = isGameEngineValid(taskMessage: "Trying to destroy GameEngine")
+        gameEngine?.destroyEngine()
+    }
+    
+    private static func isGameEngineValid(taskMessage: String) -> Bool {
+        if World.gameEngine == nil {
+            print("WARNING: " + taskMessage + "but GameEngine is nil")
+            return false
         }
-        gameEngine.destroyEngine()
+        return true
     }
 }
