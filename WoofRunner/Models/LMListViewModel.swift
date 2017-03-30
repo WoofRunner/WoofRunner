@@ -58,7 +58,8 @@ public class LMListViewModel {
 private struct SaveableStub: SaveableGame {
 
     fileprivate func toStoredGame() -> StoredGame {
-        let saved = StoredGame()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let saved = StoredGame(context: appDelegate.dataStack.mainContext)
         saved.uuid = UUID().uuidString
         saved.createdAt = Date() as NSDate?
         saved.updatedAt = Date() as NSDate?
