@@ -18,12 +18,12 @@ class GameController: UIViewController {
         
         World.setUpWorld(self.view)
 
-        let platformManager = TileManager()
-        World.spawnGameObject(platformManager)
-        
         let player = Player()
         World.spawnGameObject(player)
         World.registerGestureInput(player)
+        
+        let platformManager = TileManager()
+        World.spawnGameObject(platformManager)
         
         let camera = Camera()
         World.spawnGameObject(camera)

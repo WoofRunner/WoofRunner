@@ -17,6 +17,11 @@ class Tile: GameObject {
     
     var autoDestroyPositionZ: Float = 5
     
+    var triggerDistance: Float = 0
+    var isTriggered: Bool = false
+    
+    
+    
     init(_ pos: SCNVector3) {
         super.init()
         position = pos
@@ -30,6 +35,10 @@ class Tile: GameObject {
     override func update(_ deltaTime: Float) {
         if worldPosition.z > autoDestroyPositionZ {
             delegate?.poolTile(self)
+        }
+        
+        if worldPosition.z > triggerDistance {
+            isTriggered = true
         }
     }
 }

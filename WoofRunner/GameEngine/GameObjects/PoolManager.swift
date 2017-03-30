@@ -78,8 +78,11 @@ class PoolManager {
         case .floorJump:
             tile = JumpPlatform()
             
-        case.rock:
+        case .rock:
             tile = Rock()
+            
+        case .jumpingRock:
+            tile = JumpingRock()
             
         default:
             return nil

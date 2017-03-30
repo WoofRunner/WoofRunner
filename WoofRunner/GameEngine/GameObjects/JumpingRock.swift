@@ -1,5 +1,5 @@
 //
-//  JumpFloor.swift
+//  JumpRock.swift
 //  WoofRunner
 //
 //  Created by limte on 31/3/17.
@@ -9,15 +9,24 @@
 import Foundation
 import SceneKit
 
-class JumpPlatform : Platform {
-
+class JumpingRock: Obstacle {
+    
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        tileType = TileType.floorJump
+        tileType = TileType.jumpingRock
         loadModel(tileType.getModelPath())
+        triggerDistance = 0
     }
     
     convenience init() {
         self.init(SCNVector3(0, 0, 0))
+    }
+    
+    override func update(_ deltaTime: Float) {
+        super.update(deltaTime)
+        
+        if isTriggered {
+            position.y = 3
+        }
     }
 }
