@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class Rock: Tile {
+class Rock: Obstacle {
     
     override init(_ pos: SCNVector3) {
         super.init(pos)

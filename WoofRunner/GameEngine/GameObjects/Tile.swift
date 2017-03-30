@@ -32,13 +32,4 @@ class Tile: GameObject {
             delegate?.poolTile(self)
         }
     }
-    
-    public func loadModel(_ pathName: String) {
-        guard let modelScene = SCNScene(named: pathName) else {
-            print("WARNING: Cant find path name: " + pathName)
-            return
-        }
-        let modelNode = modelScene.rootNode.childNodes[0]
-        addChildNode(modelNode)
-    }
 }

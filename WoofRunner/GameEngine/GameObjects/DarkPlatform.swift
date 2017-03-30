@@ -10,13 +10,11 @@ import Foundation
 import SceneKit
 
 
-class FloorDark : Platform {
-    
+class DarkPlatform : Platform {
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        loadModel("art.scnassets/floor_dark.scn")
-        
         tileType = TileType.floorDark
+        loadModel(tileType.getModelPath())
     }
     
     convenience init() {

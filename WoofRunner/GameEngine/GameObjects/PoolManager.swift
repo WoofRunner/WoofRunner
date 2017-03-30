@@ -70,10 +70,13 @@ class PoolManager {
         
         switch tileType {
         case .floorLight:
-            tile = FloorLight()
+            tile = LightPlatform()
         
         case .floorDark:
-            tile = FloorDark()
+            tile = DarkPlatform()
+        
+        case .floorJump:
+            tile = JumpPlatform()
             
         case.rock:
             tile = Rock()
