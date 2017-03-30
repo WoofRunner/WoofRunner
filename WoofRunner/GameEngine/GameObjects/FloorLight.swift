@@ -14,8 +14,8 @@ class FloorLight : Platform {
     
     override init(_ pos: SCNVector3) {
         super.init(pos)
-        loadModel("art.scnassets/floor_light.scn")
         tileType = TileType.floorLight
+        loadModel(tileType.getModelPath())
     }
     
     convenience init() {

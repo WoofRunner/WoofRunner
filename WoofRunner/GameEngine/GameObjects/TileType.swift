@@ -83,9 +83,9 @@ enum TileType: Int {
         case .rock:
             return "art.scnassets/cube2.scn"
         case .floorLight:
-            return "testCat"
+            return "art.scnassets/floor_light.scn"
         case .floorDark:
-            return "testCat"
+            return "art.scnassets/floor_dark.scn"
         case .grass:
             return "testCat"
         case .none:
