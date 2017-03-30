@@ -59,21 +59,17 @@ class Player: GameObject {
         }
         jumpTime = 0
         isAir = true
-        print("jump")
     }
     
     public override func OnCollide(other: GameObject) {
         if other is Platform {
-            print("platform")
         }
         
         if other is DeadTrigger {
-            print("dead trigger")
             isDeadFall = true
         }
         
         if other is Obstacle {
-            print("contact")
             //destroy()
             startJump()
         }
