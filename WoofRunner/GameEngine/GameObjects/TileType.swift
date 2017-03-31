@@ -11,16 +11,17 @@ import SceneKit
 
 enum TileType: Int {
     case none
-
-    case rock
-    case sword
     
-    case floorJump
     case floorLight
     case floorDark
+    case floorJump
     case grass
     
+    case rock
     case jumpingRock
+    
+    case sword
+
     
     func isPlatform() -> Bool {
         switch self {
@@ -99,7 +100,7 @@ enum TileType: Int {
         case .sword:
             return "testCat"
         case .jumpingRock:
-            return "art.scnassets/cube2.scn"
+            return "art.scnassets/cube4.scn"
         }
     }
 }

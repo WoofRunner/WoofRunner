@@ -13,13 +13,13 @@ class TileManager: GameObject {
     var COL_COUNT: Int = 5
     var ROW_COUNT: Int = 100
     
-    var obstacleData: [[Int]] = [[1, 0, 0, 0, 0],
-                              [1, 0, 0, 0, 0],
+    var obstacleData: [[Int]] = [[5, 0, 0, 0, 0],
+                              [5, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 1, 0, 1, 0],
+                              [0, 5, 0, 1, 0],
                               [0, 0, 0, 0, 0],
-                              [1, 0, 0, 1, 1],
-                              [0, 0, 0, 0, 0],
+                              [5, 0, 0, 5, 5],
+                              [0, 6, 0, 6, 0],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
@@ -98,29 +98,25 @@ class TileManager: GameObject {
     }
     
     private func handleTileSpawning(row: Int, col: Int) {
-        if platformData[row % platformData.count][col] == 1 {
-            let platformTile = poolManager?.getTile(TileType.floorLight)
-            platformTile?.position = calculateTilePosition(row, col)
+        handlePlatformSpawning(row, col)
+        handleObstacleSpawning(row, col)
+    }
+    
+    private func handlePlatformSpawning(_ row: Int, _ col: Int) {
+        if let tileType: TileType = TileType(rawValue: platformData[row % platformData.count][col]) {
+            let tile = poolManager?.getTile(tileType)
+            tile?.position = calculateTilePosition(row, col)
         }
-        
-        if platformData[row % platformData.count][col] == 2 {
-            let platformTile = poolManager?.getTile(TileType.floorDark)
-            platformTile?.position = calculateTilePosition(row, col)
-        }
-        
-        if platformData[row % platformData.count][col] == 3 {
-            let platformTile = poolManager?.getTile(TileType.floorJump)
-            platformTile?.position = calculateTilePosition(row, col)
-        }
-        
-        if platformData[row % platformData.count][col] == 0 {
-            let deadTrigger = DeadTrigger(calculateTilePosition(row, col))
-            World.spawnGameObject(deadTrigger, self)
-        }
-        
-        if obstacleData[row % obstacleData.count][col] == 1 {
-            let obstacleTile = poolManager?.getTile(TileType.jumpingRock)
-            obstacleTile?.position = calculateObstaclePosition(row, col)
+    }
+    
+    private func handleObstacleSpawning(_ row: Int, _ col: Int) {
+        if let tileType: TileType = TileType(rawValue: obstacleData[row % obstacleData.count][col]) {
+            if tileType == TileType.none {
+                return
+            }
+            
+            let tile = poolManager?.getTile(tileType)
+            tile?.position = calculateObstaclePosition(row, col)
         }
     }
     

@@ -78,6 +78,7 @@
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
 		F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE001E82AACA00BD1D02 /* PoolManager.swift */; };
 		F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE021E82BDB300BD1D02 /* Platform.swift */; };
+		F313D53C1E8E31BD0036FF84 /* PoolManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F313D53B1E8E31BD0036FF84 /* PoolManagerDelegate.swift */; };
 		F318BEBB1E87C16E005D0113 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318BEBA1E87C16E005D0113 /* SCNNode.swift */; };
 		F33442B51E8156F3001C1D8D /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A81E8156F3001C1D8D /* GameController.swift */; };
 		F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A91E8156F3001C1D8D /* GameEngine.swift */; };
@@ -207,6 +208,7 @@
 		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F30ABE001E82AACA00BD1D02 /* PoolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManager.swift; sourceTree = "<group>"; };
 		F30ABE021E82BDB300BD1D02 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		F313D53B1E8E31BD0036FF84 /* PoolManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManagerDelegate.swift; sourceTree = "<group>"; };
 		F318BEBA1E87C16E005D0113 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		F33442A81E8156F3001C1D8D /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameController.swift; path = ../GameEngine/GameController.swift; sourceTree = "<group>"; };
 		F33442A91E8156F3001C1D8D /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				F33442C61E815BFE001C1D8D /* Player.swift */,
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
+				F313D53B1E8E31BD0036FF84 /* PoolManagerDelegate.swift */,
 				F33442C71E815BFE001C1D8D /* TestCube.swift */,
 				F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */,
 			);
@@ -859,6 +862,7 @@
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,
+				F313D53C1E8E31BD0036FF84 /* PoolManagerDelegate.swift in Sources */,
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
 				F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */,

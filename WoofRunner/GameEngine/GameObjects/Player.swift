@@ -58,7 +58,7 @@ class Player: GameObject {
             isDeadFall = true
         }
         
-        if other is Obstacle {
+        if other is Rock {
             //destroy()
             //startJump()
             print("collide")
