@@ -9,10 +9,6 @@
 import Foundation
 import SceneKit
 
-struct CollisionType {
-    static let Default = 1
-}
-
 class World {
     private static var gameEngine: GameEngine?
     

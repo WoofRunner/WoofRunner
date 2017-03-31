@@ -9,7 +9,6 @@
 import Foundation
 import SceneKit
 
-
 class JumpPlatform : Platform {
 
     override init(_ pos: SCNVector3) {

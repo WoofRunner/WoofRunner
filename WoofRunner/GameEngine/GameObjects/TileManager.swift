@@ -119,7 +119,7 @@ class TileManager: GameObject {
         }
         
         if obstacleData[row % obstacleData.count][col] == 1 {
-            let obstacleTile = poolManager?.getTile(TileType.rock)
+            let obstacleTile = poolManager?.getTile(TileType.jumpingRock)
             obstacleTile?.position = calculateObstaclePosition(row, col)
         }
     }

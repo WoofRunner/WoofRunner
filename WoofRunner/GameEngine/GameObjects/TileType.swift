@@ -20,6 +20,8 @@ enum TileType: Int {
     case floorDark
     case grass
     
+    case jumpingRock
+    
     func isPlatform() -> Bool {
         switch self {
         case .floorLight, .floorDark, .grass:
@@ -54,6 +56,8 @@ enum TileType: Int {
             return "Delete"
         case .sword:
             return "Swinging Sword"
+        case .jumpingRock:
+            return "Jumping Rock"
         }
     }
     
@@ -73,6 +77,8 @@ enum TileType: Int {
             return "testCat"
         case .sword:
             return "testCat"
+        case .jumpingRock:
+            return "Jumping Rock"
         }
     }
     
@@ -92,6 +98,8 @@ enum TileType: Int {
             return "testCat"
         case .sword:
             return "testCat"
+        case .jumpingRock:
+            return "art.scnassets/cube2.scn"
         }
     }
 }
