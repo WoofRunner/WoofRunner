@@ -9,27 +9,33 @@
 import UIKit
 import SceneKit
 
-class GameController: UIViewController {
+class GameController: UIViewController, PlayerDelegate {
 
     private let gsm = GameStorageManager.getInstance()
+    
+    var player: Player?
+    var tileManager: TileManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         World.setUpWorld(self.view)
 
-        let player = Player()
-        World.spawnGameObject(player)
-        World.registerGestureInput(player)
+        let newPlayer = Player()
+        World.spawnGameObject(newPlayer)
+        World.registerGestureInput(newPlayer)
+        newPlayer.delegate = self
+        self.player = newPlayer
         
-        let platformManager = TileManager()
-        World.spawnGameObject(platformManager)
+        let tileManager = TileManager()
+        World.spawnGameObject(tileManager)
+        self.tileManager = tileManager
         
         let camera = Camera()
         World.spawnGameObject(camera)
         //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
     }
- 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,4 +58,12 @@ class GameController: UIViewController {
         return TileManager(obstacleData: obstacles, platformData: platforms)
     }
 
+    func playerDied() {
+        tileManager?.restartLevel()
+        player?.restart()
+    }
+    
+    func createNewPlayer() {
+    
+    }
 }

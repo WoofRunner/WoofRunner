@@ -88,7 +88,7 @@ class PoolManager: TileDelegate {
             tile = DeadTrigger()
             
         default:
-            print("WARNING: Cant find tile, TileType: " + String(describing: tileType))
+            print("WARNING: Cant Invalid tile, TileType: " + String(describing: tileType))
             return nil
         }
         
@@ -99,5 +99,11 @@ class PoolManager: TileDelegate {
     
     func OnTileDestroy(_ tile: Tile) {
         poolTile(tile)
+    }
+    
+    func destroyAllActiveTiles() {
+        for tile in inUseTiles {
+            tile.destroy()
+        }
     }
 }

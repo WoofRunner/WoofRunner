@@ -60,16 +60,17 @@ class TileManager: GameObject {
     
     let TAIL_LENGTH: Float = 21
     let PLATFORM_Z_OFFSET: Float = 3
+    let startPosition: SCNVector3
     
     var poolManager: PoolManager?
     
     override init() {
+        startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
         super.init()
         poolManager = PoolManager(self)
         isTickEnabled = true
-        position = SCNVector3(x: position.x, y: position.y, z: position.z + PLATFORM_Z_OFFSET)
+        position = startPosition
         platformTail = position.z - TAIL_LENGTH
-        
     }
     
     convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
@@ -146,6 +147,13 @@ class TileManager: GameObject {
         position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
 
         spawnTiles()
+    }
+    
+    public func restartLevel() {
+        position = startPosition
+        platformTail = position.z - TAIL_LENGTH
+        poolManager?.destroyAllActiveTiles()
+        tailIndex = 0
     }
 }
 

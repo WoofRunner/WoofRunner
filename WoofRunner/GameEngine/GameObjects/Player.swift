@@ -29,16 +29,28 @@ class Player: GameObject {
     
     let PLAYER_TAG = "player"
     
+    var delegate: PlayerDelegate?
+    
+    let startPosition: SCNVector3
+    
     override init() {
+        startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         super.init()
         geometry = SCNSphere(radius: 0.3)
         name = PLAYER_TAG
-        position = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody?.contactTestBitMask = CollisionType.Default
         physicsBody?.categoryBitMask = CollisionType.Default
-        
+
         isTickEnabled = true
+        restart()
+    }
+    
+    public func restart() {
+        isDeadFall = false
+        isAir = false
+        position = startPosition
+        isHidden = false
     }
     
     private func startJump() {
@@ -59,9 +71,8 @@ class Player: GameObject {
         }
         
         if other is Obstacle {
-            destroy()
-            //startJump()
-            print("collide")
+            isHidden = true
+            delegate?.playerDied()
         }
     }
     
@@ -75,7 +86,6 @@ class Player: GameObject {
             if position.y < startHeight {
                 isAir = false
                 position.y = startHeight
-                
             }
         }
     }
@@ -90,5 +100,10 @@ class Player: GameObject {
         let worldPoint = World.unprojectPoint(vpWithZ)
         
         position = SCNVector3(worldPoint.x, position.y, position.z)
+    }
+    
+    override func destroy() {
+        isHidden = true
+        delegate?.playerDied()
     }
 }
