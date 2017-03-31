@@ -13,47 +13,8 @@ class TileManager: GameObject {
     var COL_COUNT: Int = 5
     var ROW_COUNT: Int = 100
     
-    var obstacleData: [[Int]] = [[5, 0, 0, 0, 0],
-                              [5, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 5, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [5, 0, 0, 5, 5],
-                              [0, 6, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 6, 0, 0],
-                              [0, 0, 6, 0, 0]]
-    
-    /*
-    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1]]
-    */
-    
-    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 3, 1, 2],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 2, 3, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1]]
-    
+    var obstacleData: [[Int]] = []
+    var platformData: [[Int]] = []
     
     var tailIndex: Int = 0
     var platformTail: Float = 0
@@ -63,6 +24,10 @@ class TileManager: GameObject {
     let startPosition: SCNVector3
     
     var poolManager: PoolManager?
+    
+    var isDebug: Bool = true
+    
+    
     
     override init() {
         startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
@@ -75,8 +40,27 @@ class TileManager: GameObject {
     
     convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
-        self.obstacleData = obstacleData
-        self.platformData = platformData
+        
+        if isDataValid(obstacleData, platformData) {
+            self.obstacleData = obstacleData
+            self.platformData = platformData
+        } else {
+            print("WARNING: Data Loaded are Invalid")
+        }
+    }
+    
+    private func isDataValid(_ obstacleData: [[Int]], _ platformData: [[Int]]) -> Bool {
+        if obstacleData.count != platformData.count {
+            return false
+        }
+        
+        for rowIndex in 0..<obstacleData.count {
+            if obstacleData[rowIndex].count != platformData[rowIndex].count {
+                return false
+            }
+        }
+        
+        return true
     }
     
     func spawnTiles() {

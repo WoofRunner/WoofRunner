@@ -16,6 +16,33 @@ class GameController: UIViewController, PlayerDelegate {
     var player: Player?
     var tileManager: TileManager?
     
+    var obstacleData: [[Int]] = [[5, 0, 0, 0, 0],
+                                 [5, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 5, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [5, 0, 0, 5, 5],
+                                 [0, 6, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 6, 0, 0],
+                                 [0, 0, 6, 0, 0]]
+    
+    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 2, 1, 2],
+                                 [1, 2, 1, 2, 1],
+                                 [2, 1, 3, 1, 2],
+                                 [0, 0, 1, 0, 0],
+                                 [0, 0, 1, 0, 0],
+                                 [0, 0, 1, 0, 0],
+                                 [0, 0, 2, 3, 2],
+                                 [1, 0, 1, 2, 1],
+                                 [2, 0, 2, 1, 2],
+                                 [1, 0, 1, 2, 1]]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +54,7 @@ class GameController: UIViewController, PlayerDelegate {
         newPlayer.delegate = self
         self.player = newPlayer
         
-        let tileManager = TileManager()
+        let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData)
         World.spawnGameObject(tileManager)
         self.tileManager = tileManager
         
