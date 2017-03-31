@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="J4N-5P-slD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="J4N-5P-slD">
     <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-823" y="129"/>
         </scene>
-        <!--I-->
+        <!--View Controller-->
         <scene sceneID="IPo-Qv-boX">
             <objects>
-                <viewController id="J4N-5P-slD" customClass="I" sceneMemberID="viewController">
+                <viewController id="J4N-5P-slD" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c22-Pv-Vzc"/>
                         <viewControllerLayoutGuide type="bottom" id="dbh-9l-uTV"/>

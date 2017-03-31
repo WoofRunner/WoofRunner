@@ -194,20 +194,29 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	
 	func tapFunction(_ sender: UITapGestureRecognizer) {
 		if let itemView = sender.view as? LSLevelView {
-			print("Selected Item: \(itemView.label.text)")
+			let uuid = itemView.label.text
+			print("Selected Item: \(uuid)")
+			self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
 		}
 	}
 	
 	
 
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
+		if segue.identifier == "segueToGameplay" {
+			let destination = segue.destination as! GameController
+			let uuid = sender as! String
+			destination.setGameUUID(uuid)
+		}
+		
     }
-    */
+	
 
 }

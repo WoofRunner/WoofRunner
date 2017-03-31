@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Gameplay-->
+        <scene sceneID="fiP-u8-UoO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Gameplay" id="PNO-jM-qhv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aVn-dd-kjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="609" y="166"/>
+        </scene>
         <!--Data Source-->
         <scene sceneID="NaZ-wR-ehr">
             <objects>
@@ -28,6 +36,7 @@
                     </view>
                     <connections>
                         <outlet property="carousel" destination="JD4-3v-opV" id="5Xy-h1-lwn"/>
+                        <segue destination="PNO-jM-qhv" kind="show" identifier="segueToGameplay" id="YCo-GV-vdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqy-Ew-SYV" userLabel="First Responder" sceneMemberID="firstResponder"/>

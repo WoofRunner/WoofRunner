@@ -11,6 +11,7 @@ import SceneKit
 
 class GameController: UIViewController {
 
+	private var gameUUID: String?
     private let gsm = GameStorageManager.getInstance()
     
     override func viewDidLoad() {
@@ -21,9 +22,17 @@ class GameController: UIViewController {
         let player = Player()
         World.spawnGameObject(player)
         World.registerGestureInput(player)
-        
-        let platformManager = TileManager()
-        World.spawnGameObject(platformManager)
+		
+		var platformManager: TileManager
+		
+		if let uuid = gameUUID {
+			platformManager = getTileManagerForGame(uuid: uuid)
+			print("Loaded from Level: \(uuid)")
+		} else {
+			platformManager = TileManager()
+		}
+		
+		World.spawnGameObject(platformManager)
         
         let camera = Camera()
         World.spawnGameObject(camera)
@@ -39,6 +48,10 @@ class GameController: UIViewController {
         return true
     }
 
+	public func setGameUUID(_ uuid: String) {
+		self.gameUUID = uuid
+	}
+	
     /// Returns a tile manager for a game loaded from CoreData.
     /// - Parameters:
     ///     - uuid: unique ID string of the game to identify which game to laod
