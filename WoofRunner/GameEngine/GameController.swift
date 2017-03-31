@@ -57,13 +57,14 @@ class GameController: UIViewController, PlayerDelegate {
 
         return TileManager(obstacleData: obstacles, platformData: platforms)
     }
-
+    
+    // notified by player when player dies
     func playerDied() {
-        tileManager?.restartLevel()
-        player?.restart()
+        restartGame()
     }
     
-    func createNewPlayer() {
-    
+    func restartGame() {
+        tileManager?.restartLevel()
+        player?.restart()
     }
 }
