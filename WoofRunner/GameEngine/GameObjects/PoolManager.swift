@@ -86,6 +86,7 @@ class PoolManager: TileDelegate {
         
         case .none:
             tile = DeadTrigger()
+            
         default:
             print("WARNING: Cant find tile, TileType: " + String(describing: tileType))
             return nil

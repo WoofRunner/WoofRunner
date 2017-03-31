@@ -16,15 +16,15 @@ class TileManager: GameObject {
     var obstacleData: [[Int]] = [[5, 0, 0, 0, 0],
                               [5, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 5, 0, 1, 0],
+                              [0, 5, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [5, 0, 0, 5, 5],
-                              [0, 6, 0, 6, 0],
+                              [0, 6, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0]]
+                              [0, 0, 6, 0, 0],
+                              [0, 0, 6, 0, 0]]
     
     /*
     var platformData: [[Int]] = [[2, 1, 2, 1, 2],
@@ -69,6 +69,7 @@ class TileManager: GameObject {
         isTickEnabled = true
         position = SCNVector3(x: position.x, y: position.y, z: position.z + PLATFORM_Z_OFFSET)
         platformTail = position.z - TAIL_LENGTH
+        
     }
     
     convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
@@ -89,11 +90,12 @@ class TileManager: GameObject {
                 handleTileSpawning(row: row, col: col)
             }
             
-            var deadTrigger = DeadTrigger(calculateTilePosition(row, -1))
-            World.spawnGameObject(deadTrigger, self)
+            var tile = poolManager?.getTile(TileType.none)
+            tile?.position = calculateTilePosition(row, -1)
             
-            deadTrigger = DeadTrigger(calculateTilePosition(row, COL_COUNT))
-            World.spawnGameObject(deadTrigger, self)
+            tile = poolManager?.getTile(TileType.none)
+            tile?.position = calculateTilePosition(row, COL_COUNT)
+
         }
     }
     
