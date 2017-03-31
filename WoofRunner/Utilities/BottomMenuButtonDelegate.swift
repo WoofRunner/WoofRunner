@@ -10,5 +10,5 @@ import Foundation
 
 protocol BottomMenuButtonDelegate {
 	func saveLevel()
-	func testLevel()
+	func back()
 }

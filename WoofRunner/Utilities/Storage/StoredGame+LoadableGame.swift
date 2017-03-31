@@ -14,7 +14,7 @@ extension StoredGame: LoadableGame {
         let DEFAULT_VALUE = 0
 
         var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: DEFAULT_VALUE)
-        let storedPlatforms = self.value(forKey: "platforms") as! [StoredPlatform]
+        let storedPlatforms = self.platforms?.map { $0 as! StoredPlatform } ?? [StoredPlatform]()
 
         for platform in storedPlatforms {
             let col = Int(platform.positionX)
@@ -32,7 +32,7 @@ extension StoredGame: LoadableGame {
         let DEFAULT_VALUE = 0
 
         var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: DEFAULT_VALUE)
-        let storedObstacles = self.value(forKey: "obstacles") as! [StoredObstacle]
+        let storedObstacles = self.obstacles?.map { $0 as! StoredObstacle } ?? [StoredObstacle]()
 
         for obstacle in storedObstacles {
             let col = Int(obstacle.positionX)

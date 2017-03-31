@@ -17,19 +17,26 @@ public class LMHomeViewModel {
 
     // MARK: - Private variables
 
-    private let osm = OnlineStorageManager.getInstance()
+    private let gsm = GameStorageManager.getInstance()
+    private let disposeBag = DisposeBag()
+
+    // MARK: - Initializers
+
+    public init() {
+        observeFeaturedGames()
+    }
 
     // MARK: - Public methods
 
-    public func loadFeaturedGames() {
-        // TODO: Map only games that user have not downloaded
-        osm.loadAll()
-            .onSuccess { games in
-                let loadedGames = games!
-                for (_, _) in loadedGames {
-                    // TODO: Proper mapping of game object
-                }
-        }
+    public func observeFeaturedGames() {
+        featuredGames.value = gsm.getAllGames()
+
+        // TODO: Map only games that user have not downloaded from Firebase
+        // Currently stubbed to test CoreData implementation
+        gsm.games.asObservable()
+            .map { $0.values }
+            .subscribe(onNext: { self.featuredGames.value = $0.map { $0 } })
+            .addDisposableTo(disposeBag)
     }
 
 }
