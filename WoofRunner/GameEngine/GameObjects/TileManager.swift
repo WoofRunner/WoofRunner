@@ -104,7 +104,7 @@ class TileManager: GameObject {
         tile?.position = calculateTilePosition(row, -1)
         
         tile = poolManager?.getTile(TileType.none)
-        tile?.position = calculateTilePosition(row, platformData.count)
+        tile?.position = calculateTilePosition(row, platformData[row].count)
     }
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {

@@ -53,6 +53,10 @@ class Player: GameObject {
     }
     
     public override func OnCollide(other: GameObject) {
+        if other is Platform {
+
+        }
+        
         if other is JumpPlatform {
             startJump()
         }
