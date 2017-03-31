@@ -10,28 +10,19 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
-    var isAir: Bool = false
-    
-    var jumpVelocity: SCNVector3 = SCNVector3(0, 1, 0)
-    var gravity: SCNVector3 = SCNVector3(0, 0.5, 0)
-    
-    var curVelocity: SCNVector3 = SCNVector3.zero()
-    
-    var jumpHeight: Float = 2
-    
-    var jumpTime: Float = 0
-    var jumpSpeed: Float = 2
-    
     var startHeight: Float = 0.3
+    let PLAYER_TAG = "player"
+    var delegate: PlayerDelegate?
+    let startPosition: SCNVector3
     
+    var isAir: Bool = false
+    var jumpHeight: Float = 2
+    var jumpSpeed: Float = 2
+    var jumpTime: Float = 0
+
     var isDeadFall: Bool = false
     var deadFallSpeed: Float = 3
-    
-    let PLAYER_TAG = "player"
-    
-    var delegate: PlayerDelegate?
-    
-    let startPosition: SCNVector3
+    var deadFallLimitY: Float = -3
     
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
@@ -78,15 +69,27 @@ class Player: GameObject {
     
     override func update(_ deltaTime: Float) {
         if isDeadFall {
-            position = SCNVector3(position.x, position.y - deadFallSpeed * deltaTime, position.z)
+            handleDeadFall(deltaTime)
         } else if isAir {
-            jumpTime += deltaTime
-            position = SCNVector3(position.x, startHeight + sin(jumpTime * jumpSpeed) * jumpHeight, position.z)
-            
-            if position.y < startHeight {
-                isAir = false
-                position.y = startHeight
-            }
+            handleInAir(deltaTime)
+        }
+    }
+    
+    private func handleDeadFall(_ deltaTime: Float) {
+        position = SCNVector3(position.x, position.y - deadFallSpeed * deltaTime, position.z)
+        
+        if position.y < deadFallLimitY {
+            destroy()
+        }
+    }
+    
+    private func handleInAir(_ deltaTime: Float) {
+        jumpTime += deltaTime
+        position = SCNVector3(position.x, startHeight + sin(jumpTime * jumpSpeed) * jumpHeight, position.z)
+        
+        if position.y < startHeight {
+            isAir = false
+            position.y = startHeight
         }
     }
     
