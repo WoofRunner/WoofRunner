@@ -10,9 +10,6 @@ import Foundation
 import SceneKit
 
 class TileManager: GameObject {
-    var COL_COUNT: Int = 5
-    var ROW_COUNT: Int = 100
-    
     var obstacleData: [[Int]] = []
     var platformData: [[Int]] = []
     
@@ -27,7 +24,7 @@ class TileManager: GameObject {
     
     var isDebug: Bool = true
     
-    
+    let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
     
     override init() {
         startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
@@ -45,7 +42,7 @@ class TileManager: GameObject {
             self.obstacleData = obstacleData
             self.platformData = platformData
         } else {
-            print("WARNING: Data Loaded are Invalid")
+            print(WARNING_INVALID_DATA)
         }
     }
     
@@ -66,12 +63,12 @@ class TileManager: GameObject {
     func spawnTiles() {
         let curTailIndex = tailIndex
         
-        for row in curTailIndex..<ROW_COUNT {
+        for row in curTailIndex..<platformData.count {
             if !canSpawnRow(row) { break }
             
             tailIndex += 1
             
-            for col in 0..<COL_COUNT {
+            for col in 0..<platformData[row].count {
                 handleTileSpawning(row: row, col: col)
             }
             
@@ -79,7 +76,7 @@ class TileManager: GameObject {
             tile?.position = calculateTilePosition(row, -1)
             
             tile = poolManager?.getTile(TileType.none)
-            tile?.position = calculateTilePosition(row, COL_COUNT)
+            tile?.position = calculateTilePosition(row, platformData.count)
 
         }
     }
@@ -90,14 +87,14 @@ class TileManager: GameObject {
     }
     
     private func handlePlatformSpawning(_ row: Int, _ col: Int) {
-        if let tileType: TileType = TileType(rawValue: platformData[row % platformData.count][col]) {
+        if let tileType: TileType = TileType(rawValue: platformData[row][col]) {
             let tile = poolManager?.getTile(tileType)
             tile?.position = calculateTilePosition(row, col)
         }
     }
     
     private func handleObstacleSpawning(_ row: Int, _ col: Int) {
-        if let tileType: TileType = TileType(rawValue: obstacleData[row % obstacleData.count][col]) {
+        if let tileType: TileType = TileType(rawValue: obstacleData[row][col]) {
             if tileType == TileType.none {
                 return
             }
