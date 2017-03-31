@@ -11,7 +11,7 @@ import SceneKit
 class Tile: GameObject {
     static let TILE_WIDTH: Float = 1
     
-    var delegate: PoolManager?
+    var delegate: TileDelegate?
     
     var tileType: TileType = TileType.none
     
@@ -34,7 +34,8 @@ class Tile: GameObject {
 
     override func update(_ deltaTime: Float) {
         if worldPosition.z > autoDestroyPositionZ {
-            delegate?.poolTile(self)
+            //delegate?.poolTile(self)
+            delegate?.OnTileDestroy(self)
         }
         
         if worldPosition.z > triggerDistance {
@@ -49,5 +50,9 @@ class Tile: GameObject {
     override func deactivate() {
         super.deactivate()
         isTriggered = false
+    }
+    
+    override func destroy() {
+        isWaitingToBeDestroyed = true
     }
 }

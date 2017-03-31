@@ -6,6 +6,6 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-protocol PoolManagerDelegate {
-    func poolTile(_ tile: Tile)
+protocol TileDelegate {
+    func OnTileDestroy(_ tile: Tile)
 }
