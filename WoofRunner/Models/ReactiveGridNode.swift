@@ -12,6 +12,7 @@ import RxCocoa
 
 class ReactiveGridNode {
     
+    static var wireframeMaterial = "art.scnassets/wireframeMaterial.png"
     let disposeBag = DisposeBag();
     
     var shouldRender: Variable<Bool>
@@ -84,8 +85,9 @@ class ReactiveGridNode {
             let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
                                              length: CGFloat(size), chamferRadius: 0.05)
             for material in platformBoxGeometry.materials {
-                material.emission.contents = UIColor.lightGray
-                material.transparency = 0.5
+                material.diffuse.contents = UIImage(named: ReactiveGridNode.wireframeMaterial)
+                material.lightingModel = .constant
+                material.isDoubleSided = true
             }
             modelNode = SCNNode(geometry: platformBoxGeometry)
         } else if let model = loadModel(platformType.getModelPath()) {
