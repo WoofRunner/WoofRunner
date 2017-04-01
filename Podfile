@@ -25,6 +25,7 @@ target 'WoofRunner' do
 
   # Pods for WoofRunner
   pod 'iCarousel', '~> 1.8'
+  pod 'SnapKit', '~> 3.2.0'
   pod 'BrightFutures'
   pod 'Sync', '~> 3.2'
   rx_swift
