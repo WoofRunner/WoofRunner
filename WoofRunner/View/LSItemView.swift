@@ -36,9 +36,31 @@ class LSItemView: UIView {
 	}
 	
 	private func didLoad() {
-		addAndConfigureLevelNameLabel()
-		addAndConfigurePlayerScoreLabel()
-		addAndConfigureLevelImage()
+		
+		addSubview(levelNameLabel)
+		addSubview(levelImageView)
+		//addSubview(playerScoreLabel)
+	
+		levelNameLabel.sizeToFit()
+		playerScoreLabel.sizeToFit()
+		
+		// Set Constraints for Level Name label
+		levelNameLabel.snp.makeConstraints { (make) -> Void in
+			make.centerY.equalTo(self)
+			make.topMargin.equalTo(30)
+			make.bottomMargin.equalTo(30)
+		}
+		
+		// Set Constraints for level image
+		levelImageView.snp.makeConstraints { (make) -> Void in
+			make.centerY.equalTo(self)
+			make.topMargin.equalTo(30)
+			make.bottomMargin.equalTo(30)
+		}
+		
+		//addAndConfigureLevelNameLabel()
+		//addAndConfigurePlayerScoreLabel()
+		//addAndConfigureLevelImage()
 		
 		/*
 		let tap = UITapGestureRecognizer(target: self, action: Selector("tapFunction:"))
@@ -47,69 +69,6 @@ class LSItemView: UIView {
 
 	}
 	
-	private func addAndConfigurePlayerScoreLabel() {
-		playerScoreLabel.backgroundColor = UIColor.blue
-		playerScoreLabel.textAlignment = .center
-		playerScoreLabel.textColor = UIColor.white
-		playerScoreLabel.translatesAutoresizingMaskIntoConstraints = false
-		self.addSubview(playerScoreLabel)
-		
-		let widthConstraint = NSLayoutConstraint(item: playerScoreLabel, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 300)
-		let heightConstraint = NSLayoutConstraint(item: playerScoreLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
-		var constraints = NSLayoutConstraint.constraints(
-			withVisualFormat: "V:[superview]-(<=1)-[label]",
-			options: NSLayoutFormatOptions.alignAllCenterX,
-			metrics: nil,
-			views: ["superview":self, "label":playerScoreLabel]
-		)
-		
-		self.addConstraints(constraints)
-		
-		// Center vertically
-		constraints = NSLayoutConstraint.constraints(
-			withVisualFormat: "H:[superview]-(<=1)-[label]",
-			options: NSLayoutFormatOptions.alignAllCenterY,
-			metrics: nil,
-			views: ["superview":self, "label":playerScoreLabel]
-		)
-		
-		self.addConstraints(constraints)
-		self.addConstraints([widthConstraint, heightConstraint])
-	}
-	
-	private func addAndConfigureLevelImage() {
-		
-	}
-	
-	private func addAndConfigureLevelNameLabel() {
-		levelNameLabel.backgroundColor = UIColor.blue
-		levelNameLabel.textAlignment = .center
-		levelNameLabel.textColor = UIColor.white
-		levelNameLabel.translatesAutoresizingMaskIntoConstraints = false
-		self.addSubview(levelNameLabel)
-		
-		let widthConstraint = NSLayoutConstraint(item: levelNameLabel, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 300)
-		let heightConstraint = NSLayoutConstraint(item: levelNameLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
-		var constraints = NSLayoutConstraint.constraints(
-			withVisualFormat: "V:[superview]-(<=1)-[label]",
-			options: NSLayoutFormatOptions.alignAllCenterX,
-			metrics: nil,
-			views: ["superview":self, "label":levelNameLabel]
-		)
-		
-		self.addConstraints(constraints)
-		
-		// Center vertically
-		constraints = NSLayoutConstraint.constraints(
-			withVisualFormat: "H:[superview]-(<=1)-[label]",
-			options: NSLayoutFormatOptions.alignAllCenterY,
-			metrics: nil,
-			views: ["superview":self, "label":levelNameLabel]
-		)
-		
-		self.addConstraints(constraints)
-		self.addConstraints([widthConstraint, heightConstraint])
-	}
 	
 	func tapFunction(sender:UITapGestureRecognizer) {
 		controllerDelegate?.onTapItem()
@@ -126,8 +85,15 @@ class LSItemView: UIView {
 	
 	public func setupView(vm: LSListItemViewModel) {
 		levelNameLabel.text = vm.levelName
-		levelImageView.image = UIImage(named: vm.levelImageUrl)
+		levelNameLabel.font = vm.levelNameLabelFont
+		levelNameLabel.textColor = vm.levelNameLabelColor
+		
 		playerScoreLabel.text = "\(vm.playerScore)%"
+		playerScoreLabel.font = vm.playerScoreLabelFont
+		playerScoreLabel.textColor = vm.playerScoreLabelColor
+		
+		levelImageView.image = UIImage(named: vm.levelImageUrl)
+		
 	}
 	
 	
