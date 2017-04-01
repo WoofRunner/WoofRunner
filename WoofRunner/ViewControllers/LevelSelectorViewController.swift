@@ -13,8 +13,11 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	
 	var gsm = GameStorageManager.getInstance()
 	var levels = [StoredGame]()
-	var items: [Int] = [1,2,3,4,5]
-	let colorArray = [UIColor.blue, UIColor.brown, UIColor.red, UIColor.green, UIColor.orange]
+	
+	
+	//var items: [Int] = [1,2,3,4,5]
+	//let colorArray = [UIColor.blue, UIColor.brown, UIColor.red, UIColor.green, UIColor.orange]
+	
 	@IBOutlet var carousel: iCarousel!
 
 	// - MARK: Lifecycle methods
