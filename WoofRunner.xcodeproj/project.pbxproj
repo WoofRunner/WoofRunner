@@ -40,7 +40,6 @@
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
 		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */; };
-		3F2CFBB01E8D970300C01036 /* LSItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAF1E8D970300C01036 /* LSItemDelegate.swift */; };
 		3F7348B41E8571C700EB1264 /* ExperimentalSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -70,6 +69,7 @@
 		3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */; };
 		3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */; };
 		3FD5D0231E8F5BB7007573C4 /* LSListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */; };
+		3FD5D0251E8FA59F007573C4 /* UIImage+ResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */; };
 		3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */; };
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
 		4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */; };
@@ -168,7 +168,6 @@
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
 		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemView.swift; sourceTree = "<group>"; };
-		3F2CFBAF1E8D970300C01036 /* LSItemDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemDelegate.swift; sourceTree = "<group>"; };
 		3F7348B31E8571C700EB1264 /* ExperimentalSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentalSceneView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeNodes.swift; sourceTree = "<group>"; };
 		3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaletteFunctionType.swift; path = ../View/PaletteFunctionType.swift; sourceTree = "<group>"; };
 		3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSListItemViewModel.swift; sourceTree = "<group>"; };
+		3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeExtension.swift"; sourceTree = "<group>"; };
 		3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDOverlayDelegate.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerScene.swift; sourceTree = "<group>"; };
@@ -342,6 +342,7 @@
 				3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */,
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */,
 				3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */,
+				3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,7 +372,6 @@
 				3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */,
 				3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */,
 				3FA4B1781E89628D00D93703 /* BottomMenuButtonDelegate.swift */,
-				3F2CFBAF1E8D970300C01036 /* LSItemDelegate.swift */,
 				120208031E7449FB0066BD4C /* Storage */,
 				3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */,
 			);
@@ -861,6 +861,7 @@
 				3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
 				F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */,
+				3FD5D0251E8FA59F007573C4 /* UIImage+ResizeExtension.swift in Sources */,
 				4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */,
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */,
@@ -904,7 +905,6 @@
 				3FCC899B1E7AD396005A7C03 /* ExperimentalLevelDesignerViewController.swift in Sources */,
 				12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
-				3F2CFBB01E8D970300C01036 /* LSItemDelegate.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */,

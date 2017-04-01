@@ -10,8 +10,7 @@ import UIKit
 import SnapKit
 
 class LSItemView: UIView {
-	
-	var controllerDelegate: LSItemDelegate?
+
 	var levelImageView = UIImageView()
 	var levelNameLabel = UILabel()
 	var playerScoreLabel = UILabel()
@@ -37,49 +36,36 @@ class LSItemView: UIView {
 	
 	private func didLoad() {
 		
-		addSubview(levelNameLabel)
 		addSubview(levelImageView)
-		//addSubview(playerScoreLabel)
+		addSubview(levelNameLabel)
+		addSubview(playerScoreLabel)
 	
 		levelNameLabel.sizeToFit()
 		playerScoreLabel.sizeToFit()
 		
-		// Set Constraints for Level Name label
-		levelNameLabel.snp.makeConstraints { (make) -> Void in
-			make.centerY.equalTo(self)
-			make.topMargin.equalTo(30)
-			make.bottomMargin.equalTo(30)
-		}
+		setShadows()
 		
 		// Set Constraints for level image
 		levelImageView.snp.makeConstraints { (make) -> Void in
-			make.centerY.equalTo(self)
-			make.topMargin.equalTo(30)
-			make.bottomMargin.equalTo(30)
+			make.center.equalTo(self)
+			//make.topMargin.equalTo(30)
+			//make.bottomMargin.equalTo(30)
 		}
 		
-		//addAndConfigureLevelNameLabel()
-		//addAndConfigurePlayerScoreLabel()
-		//addAndConfigureLevelImage()
+		// Set Constraints for Level Name label
+		levelNameLabel.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.topMargin.equalTo(self).offset(80)
+			//make.bottomMargin.equalTo(30)
+		}
 		
-		/*
-		let tap = UITapGestureRecognizer(target: self, action: Selector("tapFunction:"))
-		self.addGestureRecognizer(tap)
-		*/
-
-	}
-	
-	
-	func tapFunction(sender:UITapGestureRecognizer) {
-		controllerDelegate?.onTapItem()
-	}
-	
-	public func setDelegate(_ delegate: LSItemDelegate) {
-		self.controllerDelegate = delegate
-	}
-	
-	public func setLevelName(_ name: String) {
-		label.text = name
+		
+		// Set Constraints for Level Name label
+		playerScoreLabel.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.bottom.equalTo(self).offset(-80)
+			//make.bottomMargin.equalTo(30)
+		}
 		
 	}
 	
@@ -92,9 +78,35 @@ class LSItemView: UIView {
 		playerScoreLabel.font = vm.playerScoreLabelFont
 		playerScoreLabel.textColor = vm.playerScoreLabelColor
 		
-		levelImageView.image = UIImage(named: vm.levelImageUrl)
+		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
+		levelImageView.image = resized
 		
+		// Set Shadows
+		setShadows()
 	}
 	
+	// TODO: Check why 1st 2 items do not have shadow rendered. Sth to do with recycling in iCarousel
+	private func setShadows() {
+		configureImageViewShadow()
+		configureLabelShadow()
+	}
+	
+	private func configureLabelShadow() {
+		//Set Shadows
+		playerScoreLabel.layer.shadowColor = UIColor.black.cgColor
+		playerScoreLabel.layer.shadowRadius = 3.0
+		playerScoreLabel.layer.shadowOpacity = 0.8
+		playerScoreLabel.layer.shadowOffset = CGSize.zero
+		playerScoreLabel.layer.masksToBounds = false
+	}
+	
+	private func configureImageViewShadow() {
+		// Set Shadows
+		levelImageView.layer.shadowColor = UIColor.black.cgColor
+		levelImageView.layer.shadowOpacity = 1
+		levelImageView.layer.shadowOffset = CGSize.zero
+		levelImageView.layer.shadowRadius = 10
+		levelImageView.layer.shadowPath = UIBezierPath(rect: levelImageView.bounds).cgPath
+	}
 	
 }
