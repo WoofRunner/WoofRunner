@@ -84,18 +84,8 @@ class LevelDesignerOverlayScene: SKScene,
 		
 		let node = self.atPoint(location!)
 		
-		if let paletteBtnNode = node as? PaletteButton {
-			paletteBtnNode.onTap()
-			return
-		}
-		
-		if let overlayBtnNode = node as? OverlayButton {
-			overlayBtnNode.onTap()
-			return
-		}
-		
-		if let bottomMenuBtnNode = node as? BottomMenuButton {
-			bottomMenuBtnNode.onTap()
+		if let btnNode = node as? LDOverlayButton {
+			btnNode.onTap()
 			return
 		}
 	}

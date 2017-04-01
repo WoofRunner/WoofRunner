@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class PaletteButton: RootSKSpriteNode {
+class PaletteButton: RootSKSpriteNode, LDOverlayButton {
 	
 	private var paletteFunctionType: PaletteFunctionType = .platform
 	private var paletteButtonDelegate: PaletteButtonDelegate?
@@ -34,9 +34,7 @@ class PaletteButton: RootSKSpriteNode {
 		}
 		
 		self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
-			//delegate.openOverlayMenu(self.paletteFunctionType)
 			delegate.handlePaletteTap(self.paletteFunctionType)
-			print("Tapped!")
 		})
 		
 	}

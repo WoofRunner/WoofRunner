@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class OverlayButton: RootSKSpriteNode {
+class OverlayButton: RootSKSpriteNode, LDOverlayButton {
 	
 	private var tileType = TileType.floorLight
 	private var overlayButtonDelegate: OverlayButtonDelegate?
@@ -36,7 +36,6 @@ class OverlayButton: RootSKSpriteNode {
 		self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
 			
 			delegate.setCurrentTileSelection(self.tileType)
-			print("Tapped!")
 			delegate.closeOverlayMenu()
 		})
 	}

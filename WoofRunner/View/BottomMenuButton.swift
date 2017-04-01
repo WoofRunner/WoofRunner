@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class BottomMenuButton: SKLabelNode {
+class BottomMenuButton: SKLabelNode, LDOverlayButton {
 	
 	var delegate: BottomMenuButtonDelegate?
 	
