@@ -57,14 +57,14 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
 		
-		var levelItemView: LSLevelView
+		var levelItemView: LSItemView
 		
 		// Check for recyled views, else create new
 		// NOTE: DO NOT do anything specific to index here
-		if let view = view as? LSLevelView {
+		if let view = view as? LSItemView {
 			levelItemView = view
 		} else {
-			levelItemView = LSLevelView(frame: self.view.frame)
+			levelItemView = LSItemView(frame: self.view.frame)
 			levelItemView.contentMode = .center
 			
 			let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapFunction(_:)))
@@ -196,7 +196,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	// MARK: - Tap handlers
 	
 	func tapFunction(_ sender: UITapGestureRecognizer) {
-		if let itemView = sender.view as? LSLevelView {
+		if let itemView = sender.view as? LSItemView {
 			let uuid = itemView.label.text
 			print("Selected Item: \(uuid)")
 			self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
