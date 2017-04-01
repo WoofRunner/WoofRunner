@@ -64,13 +64,13 @@ enum TileType: Int {
     func getSpriteImageName() -> String {
         switch self {
         case .floorJump:
-            return "testCat"
+            return "obstacle-placeholder2"
         case .rock:
-            return "testCat"
+            return "obstacle-placeholder2"
         case .floorLight:
-            return "testCat"
+            return "obstacle-placeholder1"
         case .floorDark:
-            return "testCat"
+            return "platform-placeholder"
         case .grass:
             return "testCat"
         case .none:
@@ -78,7 +78,7 @@ enum TileType: Int {
         case .sword:
             return "testCat"
         case .jumpingRock:
-            return "Jumping Rock"
+            return "testCat"
         }
     }
     

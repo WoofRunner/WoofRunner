@@ -9,16 +9,18 @@
 import Foundation
 
 enum PaletteFunctionType {
-	case platform, obstacle, delete
+	case platform, obstacle, delete, edit
 	
 	func getSpriteImageName() -> String {
 		switch self {
 		case .platform:
-			return "testPaletteButton"
+			return "add-platform-button"
 		case .obstacle:
-			return "testObstaclePaletteButton"
+			return "add-obstacle-button2"
 		case .delete:
-			return "testDeletePaletteButton"
+			return "delete-button"
+		case .edit:
+			return "edit-button"
 		}
 	}
 }

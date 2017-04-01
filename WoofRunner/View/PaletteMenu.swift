@@ -9,7 +9,7 @@
 import SpriteKit
 
 struct PaletteConstants {
-	static let buttonTypesArray: [PaletteFunctionType] = [.platform, .obstacle, .delete]
+	static let buttonTypesArray: [PaletteFunctionType] = [.platform, .obstacle, .delete, .edit]
 	static let numberOfPaletteButtons = CGFloat(buttonTypesArray.count)
 	static let paletteButtonWidth = CGFloat(60)
 	static let paletteButtonHeight = CGFloat(60)
@@ -20,7 +20,7 @@ struct PaletteConstants {
 	static let paletteHeight = (paletteButtonWidth * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
 	
 	// The bottom-left corner of the palette's frame
-	static let palettePosition = CGPoint(x: 60, y: 680)
+	static let palettePosition = CGPoint(x: 45, y: 680)
 	
 	static let paletteButtonX0 = paletteWidth/2 // y-coord for the topmost palette button
 	static let paletteButtonY0 = paletteHeight - (paletteButtonWidth/2 + paletteButtonMargin) // x-coord for the topmost palette button
