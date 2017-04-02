@@ -62,6 +62,16 @@ public class OnlineStorageManager {
         }
     }
 
+    public static func getDateFormatter() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+
+        return formatter
+    }
+
     /// Authenticates with Firebase using Facebook token.
     /// - Parameters:
     ///     - token: Facebook token obtained from Facebook authentication
@@ -136,7 +146,7 @@ public class OnlineStorageManager {
         gameJSON["obstacles"] = mapObstaclesToJSON(game: game)
         gameJSON["platforms"] = mapPlatformsToJSON(game: game)
 
-        let formatter = getDateFormatter()
+        let formatter = OnlineStorageManager.getDateFormatter()
         gameJSON["createdAt"] = formatter.string(from: game.createdAt as! Date)
         gameJSON["updatedAt"] = formatter.string(from: game.updatedAt as! Date)
 
@@ -182,16 +192,6 @@ public class OnlineStorageManager {
         }
 
         return res
-    }
-
-    private func getDateFormatter() -> DateFormatter {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-
-        return formatter
     }
 
 }

@@ -21,6 +21,7 @@
 		12A82FD81E727072008B721E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD71E727072008B721E /* Assets.xcassets */; };
 		12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FE51E727072008B721E /* WoofRunnerTests.swift */; };
 		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
+		12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */; };
 		12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18211E8969F700EF5C46 /* SaveableGame.swift */; };
 		12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */; };
 		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
@@ -143,6 +144,7 @@
 		12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FF01E727072008B721E /* WoofRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerUITests.swift; sourceTree = "<group>"; };
 		12A82FF21E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+SaveableGame.swift"; sourceTree = "<group>"; };
 		12AD18211E8969F700EF5C46 /* SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableGame.swift; sourceTree = "<group>"; };
 		12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableObstacle.swift; sourceTree = "<group>"; };
 		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		120208031E7449FB0066BD4C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */,
 				127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */,
 				12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */,
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
@@ -878,6 +881,7 @@
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
 				12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */,
 				4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */,
+				12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FA4B1751E895AC500D93703 /* LevelDesignerBottomMenu.swift in Sources */,

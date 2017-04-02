@@ -15,15 +15,15 @@
         <relationship name="platforms" toMany="YES" deletionRule="Nullify" destinationEntity="StoredPlatform" inverseName="game" inverseEntity="StoredPlatform" syncable="YES"/>
     </entity>
     <entity name="StoredObstacle" representedClassName="StoredObstacle" syncable="YES" codeGenerationType="class">
-        <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="positionY" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="radius" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="radius" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="game" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="obstacles" inverseEntity="StoredGame" syncable="YES"/>
     </entity>
     <entity name="StoredPlatform" representedClassName="StoredPlatform" syncable="YES" codeGenerationType="class">
-        <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="positionY" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="positionX" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="positionY" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="game" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="platforms" inverseEntity="StoredGame" syncable="YES"/>
     </entity>

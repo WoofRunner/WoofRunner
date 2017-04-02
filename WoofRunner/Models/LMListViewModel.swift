@@ -6,7 +6,6 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import Sync
 import Foundation
 import RxSwift
 import CoreData
@@ -70,14 +69,26 @@ public class LMListViewModel {
     // MARK: - Private methods
     private func loadGames() {
         // TODO: Filter based on list type
-        gsm.getAllGames()
-            .onSuccess { games in
-                self.games.value = games
+        if listType.value == .Created {
+            gsm.getAllGames()
+                .onSuccess { games in
+                    self.games.value = games
+                }
+                .onFailure { error in
+                    print("\(error.localizedDescription)")
+                    self.failure.value = true
             }
-            .onFailure { error in
-                print("\(error.localizedDescription)")
-                self.failure.value = true
+        } else {
+            gsm.downloadGame(uuid: "512126AB-6599-454D-8322-6A6361548EF8")
+                .onSuccess { game in
+                    self.games.value.append(game)
+                }
+                .onFailure { error in
+                    print("\(error.localizedDescription)")
+                    self.failure.value = true
             }
+        }
+
     }
 
 }
