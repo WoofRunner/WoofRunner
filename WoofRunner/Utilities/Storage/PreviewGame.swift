@@ -19,3 +19,9 @@ public struct PreviewGame {
     public let updatedAt: Date
 
 }
+
+extension PreviewGame: DisplayedGame {
+    public var id: String {
+        return uuid
+    }
+}

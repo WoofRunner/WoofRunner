@@ -12,7 +12,7 @@ public class LMHomeViewModel {
 
     // MARK: - Public variables
 
-    public private(set) var featuredGames = Variable<[StoredGame]>([])
+    public private(set) var featuredGames = Variable<[DisplayedGame]>([])
     public private(set) var failure = Variable<Bool>(false)
 
     // MARK: - Private variables

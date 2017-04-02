@@ -17,7 +17,7 @@ public class LMListViewModel {
 
     // MARK: - Public variables
     public private(set) var listType = Variable<LevelListType>(.Downloaded)
-    public private(set) var games = Variable<[StoredGame]>([])
+    public private(set) var games = Variable<[DisplayedGame]>([])
     public private(set) var failure = Variable<Bool>(false)
 
     // MARK: - Private variables
@@ -79,9 +79,9 @@ public class LMListViewModel {
                     self.failure.value = true
             }
         } else {
-            gsm.downloadGame(uuid: "512126AB-6599-454D-8322-6A6361548EF8")
-                .onSuccess { game in
-                    self.games.value.append(game)
+            gsm.loadAllPreviews()
+                .onSuccess { games in
+                    self.games.value = games
                 }
                 .onFailure { error in
                     print("\(error.localizedDescription)")

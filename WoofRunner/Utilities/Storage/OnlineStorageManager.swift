@@ -125,6 +125,7 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
+        game.ownerId = FIRAuth.auth()?.currentUser?.uid
         ref.child(game.uuid!).setValue(mapToJSON(game: game))
     }
 

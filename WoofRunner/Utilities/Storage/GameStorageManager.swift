@@ -94,14 +94,23 @@ public class GameStorageManager {
         return future
     }
 
-    // MARK: - Private methods
-
     /// Loads a preview of all the games loaded on Firebase.
     /// - Returns: array of GamePreviews
-    private func loadAllPreviews() -> Future<NSDictionary?, OnlineStorageManagerError> {
-        // TODO: Update this method to load previews instead of actual games
+    public func loadAllPreviews() -> Future<[PreviewGame], OnlineStorageManagerError> {
         return osm.loadAll()
+            .map { json in
+                let games: [NSDictionary]
+                if let values = json?.allValues {
+                    games = values as! [NSDictionary]
+                } else {
+                    games = []
+                }
+
+                return games.map { self.mapJSONtoPreviewGame(json: $0) }
+        }
     }
+
+    // MARK: - Private methods
 
     private func mapJSONtoStoredGame(json: NSDictionary) -> StoredGame {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -182,6 +191,18 @@ public class GameStorageManager {
         }
 
         return res
+    }
+
+    private func mapJSONtoPreviewGame(json: NSDictionary) -> PreviewGame {
+        let formatter = OnlineStorageManager.getDateFormatter()
+        let preview = PreviewGame(
+            uuid: json.value(forKey: "uuid") as! String,
+            ownerID: json.value(forKey: "ownerId") as! String,
+            createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
+            updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!
+        )
+
+        return preview
     }
 
 }

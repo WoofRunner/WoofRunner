@@ -22,6 +22,8 @@
 		12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FE51E727072008B721E /* WoofRunnerTests.swift */; };
 		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
 		12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */; };
+		12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856621E910CD100B5EB4E /* DisplayedGame.swift */; };
+		12A856651E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */; };
 		12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18211E8969F700EF5C46 /* SaveableGame.swift */; };
 		12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */; };
 		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
@@ -145,6 +147,8 @@
 		12A82FF01E727072008B721E /* WoofRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerUITests.swift; sourceTree = "<group>"; };
 		12A82FF21E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+SaveableGame.swift"; sourceTree = "<group>"; };
+		12A856621E910CD100B5EB4E /* DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayedGame.swift; sourceTree = "<group>"; };
+		12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+DisplayedGame.swift"; sourceTree = "<group>"; };
 		12AD18211E8969F700EF5C46 /* SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableGame.swift; sourceTree = "<group>"; };
 		12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableObstacle.swift; sourceTree = "<group>"; };
 		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 			children = (
 				12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */,
 				127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */,
+				12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */,
 				12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */,
 				120208041E744A420066BD4C /* CoreDataManager.swift */,
 				12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */,
@@ -293,6 +298,7 @@
 				4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */,
 				4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */,
 				12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */,
+				12A856621E910CD100B5EB4E /* DisplayedGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -855,6 +861,7 @@
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
 				F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */,
+				12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
 				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
@@ -907,6 +914,7 @@
 				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
 				F34DEDBD1E8D41DD00BB8CA7 /* DeadTrigger.swift in Sources */,
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
+				12A856651E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift in Sources */,
 				12C4578B1E8D6B1700CFD541 /* LMListViewModel.swift in Sources */,
 				3F7348BE1E86F1FA00EB1264 /* OverlayMenu.swift in Sources */,
 				4E90FFE91E8431690012B03F /* Position.swift in Sources */,
