@@ -24,8 +24,6 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		configureCarouselView()
 		populateLevelData()
 		configureHomeButtonView()
-		
-		
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,16 +47,22 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	// MARK: - Data retrieval
 	
 	private func populateLevelData() {
-		self.levels = gsm.getAllGames()
-		print("Num of levels: \(self.levels.count)")
+        gsm.getAllGames()
+            .onSuccess { games in
+                self.levels = games
+                self.carousel.reloadData()
+                print("\(self.levels.count) games loaded.")
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+                // TODO: Handle error
+        }
 	}
-	
-	
+
 	// MARK: - iCarouselDelegate
 	
 	func numberOfItems(in carousel: iCarousel) -> Int {
-		let numLevels = gsm.getAllGames().count
-		return numLevels
+		return levels.count
 	}
 	
 	// Configure item view

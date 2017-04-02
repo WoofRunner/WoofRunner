@@ -12,7 +12,7 @@ extension StoredGame: DisplayedGame {
     }
 
     public var owner: String {
-        return ownerId!
+        return ownerId ?? ""
     }
 
 }

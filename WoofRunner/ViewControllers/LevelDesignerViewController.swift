@@ -185,6 +185,14 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 
     /// Saves the current level into CoreData.
     private func saveGame() {
+        gsm.saveGame(currentLevel)
+            .onSuccess { _ in
+                // TODO: Handle success
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+                // TODO: Handle error
+        }
     }
 	
 	// - MARK: LDOverlayDelegate

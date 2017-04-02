@@ -33,14 +33,6 @@ extension LevelGrid: SaveableGame {
         let storedObstacles = res.mutableSetValue(forKey: "obstacles")
         let storedPlatforms = res.mutableSetValue(forKey: "platforms")
 
-        for obstacle in getStoredObstacles(game: res) {
-            storedObstacles.add(obstacle)
-        }
-
-        for platform in getStoredPlatforms(game: res) {
-            storedPlatforms.add(platform)
-        }
-
         storedGame = res
 
         return res
@@ -77,7 +69,6 @@ extension LevelGrid: SaveableGame {
             for (col, obstacle) in obstacles.enumerated() {
                 let storedObstacle = StoredObstacle(
                     context: appDelegate.coreDataStack.persistentContainer.viewContext)
-                storedObstacle.game = game
                 storedObstacle.type = String(obstacle)
                 storedObstacle.positionX = Int16(col)
                 storedObstacle.positionY = Int16(row)
@@ -102,7 +93,6 @@ extension LevelGrid: SaveableGame {
             for (col, platform) in platforms.enumerated() {
                 let storedPlatform = StoredPlatform(
                     context: appDelegate.coreDataStack.persistentContainer.viewContext)
-                storedPlatform.game = game
                 storedPlatform.type = String(platform)
                 storedPlatform.positionX = Int16(row)
                 storedPlatform.positionY = Int16(col)

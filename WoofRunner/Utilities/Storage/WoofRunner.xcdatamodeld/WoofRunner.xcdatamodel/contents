@@ -11,25 +11,25 @@
                 <entry key="hyp.isPrimaryKey" value="true"/>
             </userInfo>
         </attribute>
-        <relationship name="obstacles" toMany="YES" deletionRule="Nullify" destinationEntity="StoredObstacle" inverseName="game" inverseEntity="StoredObstacle" syncable="YES"/>
-        <relationship name="platforms" toMany="YES" deletionRule="Nullify" destinationEntity="StoredPlatform" inverseName="game" inverseEntity="StoredPlatform" syncable="YES"/>
+        <relationship name="obstacles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredObstacle" inverseName="game" inverseEntity="StoredObstacle" syncable="YES"/>
+        <relationship name="platforms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredPlatform" inverseName="game" inverseEntity="StoredPlatform" syncable="YES"/>
     </entity>
     <entity name="StoredObstacle" representedClassName="StoredObstacle" syncable="YES" codeGenerationType="class">
         <attribute name="positionX" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="radius" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="game" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="obstacles" inverseEntity="StoredGame" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="obstacles" inverseEntity="StoredGame" syncable="YES"/>
     </entity>
     <entity name="StoredPlatform" representedClassName="StoredPlatform" syncable="YES" codeGenerationType="class">
         <attribute name="positionX" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="game" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="platforms" inverseEntity="StoredGame" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredGame" inverseName="platforms" inverseEntity="StoredGame" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StoredGame" positionX="-333" positionY="24" width="128" height="163"/>
-        <element name="StoredObstacle" positionX="88" positionY="27" width="128" height="118"/>
-        <element name="StoredPlatform" positionX="88" positionY="162" width="128" height="103"/>
+        <element name="StoredGame" positionX="-333" positionY="24" width="128" height="165"/>
+        <element name="StoredObstacle" positionX="88" positionY="27" width="128" height="120"/>
+        <element name="StoredPlatform" positionX="88" positionY="162" width="128" height="105"/>
     </elements>
 </model>
