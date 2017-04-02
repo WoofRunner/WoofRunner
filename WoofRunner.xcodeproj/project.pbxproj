@@ -85,6 +85,8 @@
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
 		F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE001E82AACA00BD1D02 /* PoolManager.swift */; };
 		F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE021E82BDB300BD1D02 /* Platform.swift */; };
+		F313D53C1E8E31BD0036FF84 /* TileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */; };
+		F313D53E1E8E40FD0036FF84 /* PlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F313D53D1E8E40FD0036FF84 /* PlayerDelegate.swift */; };
 		F318BEBB1E87C16E005D0113 /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318BEBA1E87C16E005D0113 /* SCNNode.swift */; };
 		F33442B51E8156F3001C1D8D /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A81E8156F3001C1D8D /* GameController.swift */; };
 		F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442A91E8156F3001C1D8D /* GameEngine.swift */; };
@@ -221,6 +223,8 @@
 		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F30ABE001E82AACA00BD1D02 /* PoolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManager.swift; sourceTree = "<group>"; };
 		F30ABE021E82BDB300BD1D02 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDelegate.swift; sourceTree = "<group>"; };
+		F313D53D1E8E40FD0036FF84 /* PlayerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDelegate.swift; sourceTree = "<group>"; };
 		F318BEBA1E87C16E005D0113 /* SCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		F33442A81E8156F3001C1D8D /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameController.swift; path = ../GameEngine/GameController.swift; sourceTree = "<group>"; };
 		F33442A91E8156F3001C1D8D /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
@@ -522,6 +526,7 @@
 				F34DEDB71E8D354900BB8CA7 /* Tile */,
 				F33442C21E815BFE001C1D8D /* Camera.swift */,
 				F33442C61E815BFE001C1D8D /* Player.swift */,
+				F313D53D1E8E40FD0036FF84 /* PlayerDelegate.swift */,
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
 				F33442C71E815BFE001C1D8D /* TestCube.swift */,
@@ -534,6 +539,7 @@
 			isa = PBXGroup;
 			children = (
 				F33442C81E815BFE001C1D8D /* Tile.swift */,
+				F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */,
 				F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */,
 				F34DEDB81E8D356A00BB8CA7 /* Platform */,
 				F34DEDB91E8D357700BB8CA7 /* Obstacle */,
@@ -884,6 +890,7 @@
 				3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,
+				F313D53C1E8E31BD0036FF84 /* TileDelegate.swift in Sources */,
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
 				12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */,
@@ -930,6 +937,7 @@
 				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
 				F34DEDBD1E8D41DD00BB8CA7 /* DeadTrigger.swift in Sources */,
 				3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */,
+				F313D53E1E8E40FD0036FF84 /* PlayerDelegate.swift in Sources */,
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
 				12C4578B1E8D6B1700CFD541 /* LMListViewModel.swift in Sources */,
 				3F7348BE1E86F1FA00EB1264 /* OverlayMenu.swift in Sources */,

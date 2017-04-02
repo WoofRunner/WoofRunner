@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class PoolManager {
+class PoolManager: TileDelegate {
 
     let NUM_OF_PLATFORM = 70
     let NUM_OF_ROCK = 5
@@ -83,13 +83,27 @@ class PoolManager {
             
         case .jumpingRock:
             tile = JumpingRock()
+        
+        case .none:
+            tile = DeadTrigger()
             
         default:
+            print("WARNING: Cant Invalid tile, TileType: " + String(describing: tileType))
             return nil
         }
         
         World.spawnGameObject(tile, parentNode)
         tile.delegate = self
         return tile
+    }
+    
+    func OnTileDestroy(_ tile: Tile) {
+        poolTile(tile)
+    }
+    
+    func destroyAllActiveTiles() {
+        for tile in inUseTiles {
+            tile.destroy()
+        }
     }
 }
