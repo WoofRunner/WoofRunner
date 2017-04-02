@@ -8,4 +8,5 @@
 
 public protocol DisplayedGame {
     var id: String { get }
+    var owner: String { get }
 }

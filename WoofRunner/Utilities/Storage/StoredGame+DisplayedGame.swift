@@ -10,4 +10,9 @@ extension StoredGame: DisplayedGame {
     public var id: String {
         return uuid!
     }
+
+    public var owner: String {
+        return ownerId!
+    }
+
 }

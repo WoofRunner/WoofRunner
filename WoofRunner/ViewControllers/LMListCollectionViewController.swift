@@ -33,7 +33,8 @@ class LMListCollectionViewController: UIViewController {
             .bindTo(levelList.rx
             .items(cellIdentifier: reuseIdentifier,
                    cellType: LMCardViewCell.self)) { row, game, cell in
-                    cell.name = game.id
+                    cell.name = "Epic game"
+                    cell.facebookProfileId = game.owner
         }
         .addDisposableTo(disposeBag)
     }

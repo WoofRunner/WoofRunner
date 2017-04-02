@@ -225,26 +225,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fRF-Uc-2kt" userLabel="FB Display Image">
-                                                    <rect key="frame" x="18" y="18" width="35" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="OY4-yS-yeO"/>
-                                                        <constraint firstAttribute="width" constant="35" id="t9m-Mh-ExU"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wC-dd-t1Q">
-                                                    <rect key="frame" x="68" y="25" width="42" height="21"/>
+                                                    <rect key="frame" x="162" y="24.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jR0-sJ-ZLq">
+                                                    <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="cRt-LD-fxh"/>
+                                                        <constraint firstAttribute="width" constant="50" id="guw-wB-6qJ"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="fRF-Uc-2kt" firstAttribute="leading" secondItem="gBR-nG-UYm" secondAttribute="leadingMargin" constant="10" id="Rkk-mW-CxE"/>
-                                            <constraint firstItem="fRF-Uc-2kt" firstAttribute="top" secondItem="gBR-nG-UYm" secondAttribute="topMargin" constant="10" id="ZGa-9c-wg2"/>
-                                            <constraint firstItem="7wC-dd-t1Q" firstAttribute="centerY" secondItem="fRF-Uc-2kt" secondAttribute="centerY" id="n3N-al-htq"/>
-                                            <constraint firstItem="7wC-dd-t1Q" firstAttribute="leading" secondItem="fRF-Uc-2kt" secondAttribute="trailing" constant="15" id="zbk-jc-8TD"/>
+                                            <constraint firstItem="7wC-dd-t1Q" firstAttribute="centerX" secondItem="gBR-nG-UYm" secondAttribute="centerX" id="EtM-Jf-x2i"/>
+                                            <constraint firstItem="7wC-dd-t1Q" firstAttribute="centerY" secondItem="jR0-sJ-ZLq" secondAttribute="centerY" id="J8u-5Y-30J"/>
+                                            <constraint firstItem="jR0-sJ-ZLq" firstAttribute="top" secondItem="gBR-nG-UYm" secondAttribute="top" constant="10" id="OAJ-wz-HHM"/>
+                                            <constraint firstItem="jR0-sJ-ZLq" firstAttribute="leading" secondItem="gBR-nG-UYm" secondAttribute="leading" constant="10" id="Q61-4G-P1V"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -258,7 +259,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="fbDisplayImage" destination="fRF-Uc-2kt" id="TUJ-Fi-GiC"/>
+                                            <outlet property="facebookProfilePicture" destination="jR0-sJ-ZLq" id="XDp-Jo-VPh"/>
                                             <outlet property="gameName" destination="7wC-dd-t1Q" id="1q0-vH-K8W"/>
                                         </connections>
                                     </collectionViewCell>

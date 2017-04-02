@@ -21,7 +21,13 @@ public struct PreviewGame {
 }
 
 extension PreviewGame: DisplayedGame {
+
+    public var owner: String {
+        return ownerID
+    }
+
     public var id: String {
         return uuid
     }
+
 }

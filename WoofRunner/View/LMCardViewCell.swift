@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import FacebookCore
 
 public class LMCardViewCell: UICollectionViewCell {
 
     // MARK: - IBOutlets
 
-    @IBOutlet weak var fbDisplayImage: UIImageView!
+    @IBOutlet weak var facebookProfilePicture: UIView!
     @IBOutlet weak var gameName: UILabel!
 
     // MARK: - IBInspectables
@@ -52,6 +53,16 @@ public class LMCardViewCell: UICollectionViewCell {
     public var name: String? {
         didSet {
             gameName.text = name
+        }
+    }
+
+    public var facebookProfileId: String? {
+        didSet {
+            let profile = UserProfile(userId: facebookProfileId!)
+            facebookProfilePicture.addSubview(
+                UserProfile.PictureView(
+                    frame: facebookProfilePicture.frame, profile: profile)
+            )
         }
     }
 
