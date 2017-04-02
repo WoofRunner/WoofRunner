@@ -22,9 +22,11 @@ import Result
  */
 public class CoreDataManager {
 
+    // MARK: - Public variables
+    public let context: NSManagedObjectContext
+
     // MARK: - Private variables
     private static var instance: CoreDataManager?
-    public let context: NSManagedObjectContext
     private let privateContext = NSManagedObjectContext(
         concurrencyType: .privateQueueConcurrencyType)
 
@@ -83,7 +85,6 @@ public class CoreDataManager {
                 }
 
                 storedGame.updatedAt = Date() as NSDate?
-                self.save()
 
                 complete(.success(storedGame))
             }
@@ -183,22 +184,6 @@ public class CoreDataManager {
     ///     - entity: name of entity to get NSFetchRequest for
     private func generateFetchRequest(entity: String) -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-    }
-
-    /// Saves the current context.
-    private func save() {
-        do {
-            try privateContext.save()
-            context.performAndWait {
-                do {
-                    try self.context.save()
-                } catch {
-                    fatalError("Failed to save to context \(error)")
-                }
-            }
-        } catch {
-            fatalError("Failed to save to context \(error)")
-        }
     }
 
 }
