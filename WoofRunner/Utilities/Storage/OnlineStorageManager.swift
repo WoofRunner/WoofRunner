@@ -115,7 +115,8 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
-        ref.child(game.uuid!).setValue(game.export())
+        // Map StoredGame to NSDictionary
+        // ref.child(game.uuid!).setValue(game.export())
     }
 
     /// Clears all game data in online storage manager
