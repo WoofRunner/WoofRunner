@@ -94,19 +94,18 @@ class OverlayMenu: SKNode {
 		// Reset
 		backgroundNode.removeFromParent()
 		menuNode.removeFromParent()
-		closeBtnNode.removeFromParent()
 		menuNode = SKNode()
 		
 		// Attach background first
 		self.addChild(backgroundNode)
 		
 		// Attach close button
-		self.addChild(closeBtnNode)
+		menuNode.addChild(closeBtnNode)
 		closeBtnNode.position = OverlayConstants.closeBtnPosition
 		
 		// Create and attach Menu Title
 		titleNode = SKLabelNode(text: type.getOverlayMenuName())
-		self.addChild(titleNode)
+		menuNode.addChild(titleNode)
 		configureTitleNode()
 		
 		// Get the set of list of TileTypes to be rendered

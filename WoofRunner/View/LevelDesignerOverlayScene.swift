@@ -33,8 +33,8 @@ class LevelDesignerOverlayScene: SKScene,
 		
 		initPaletteMenu()
 		initCurrentSelection()
-		initOverlayMenu()
 		initBottomMenu()
+		initOverlayMenu()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -101,6 +101,22 @@ class LevelDesignerOverlayScene: SKScene,
 			self.oldY = (location?.y)!
 		}
 	}
+	
+	/*
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		print("Touch Ended \(location)")
+	}
+	
+	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		print("Touch cancelled \(location)")
+	}
+	*/
 	
 	// MARK: - Private helper methods
 	

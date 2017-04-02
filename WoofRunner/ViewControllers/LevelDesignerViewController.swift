@@ -57,6 +57,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         self.view.addGestureRecognizer(panGesture)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.view.addGestureRecognizer(tapGesture)
+		panGesture.cancelsTouchesInView = false // Turn this property to prevent touchesCancelled from happening
+		tapGesture.cancelsTouchesInView = false
         
 		// Attached overlay
 		spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
@@ -104,9 +106,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     }
     
     func handlePan(_ sender: UIPanGestureRecognizer) {
+
         if (!canEdit()) {
             return
         }
+		
         let camera = LDScene.cameraNode
 
         let translation = sender.translation(in: sceneView)
@@ -150,9 +154,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     }
 
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+		
         if (!canEdit()) {
             return
         }
+		
         // Check what nodes are tapped
         let pos = gestureRecognize.location(in: sceneView)
         let hitResults = sceneView.hitTest(pos, options: [:])
