@@ -10,14 +10,14 @@ import SpriteKit
 
 class OverlayButton: RootSKSpriteNode, LDOverlayButton {
 	
-	private var tileType = TileType.floorLight
+	private var tileType: TileType? = TileType.floorLight
 	private var overlayButtonDelegate: OverlayButtonDelegate?
 	
 	override init(texture: SKTexture!, color: SKColor, size: CGSize) {
 		super.init(texture: texture, color: color, size: size)
 	}
 	
-	convenience init(imageNamed: String, type: TileType, size: CGSize) {
+	convenience init(imageNamed: String, type: TileType?, size: CGSize) {
 		self.init(texture: SKTexture(imageNamed: imageNamed), color: SKColor.clear, size: size)
 		self.tileType = type
 	}
@@ -34,7 +34,6 @@ class OverlayButton: RootSKSpriteNode, LDOverlayButton {
 		}
 		
 		self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
-			
 			delegate.setCurrentTileSelection(self.tileType)
 			delegate.closeOverlayMenu()
 		})

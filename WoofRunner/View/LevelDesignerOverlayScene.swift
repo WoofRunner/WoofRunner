@@ -32,8 +32,8 @@ class LevelDesignerOverlayScene: SKScene,
 		self.backgroundColor = UIColor.clear
 		
 		initPaletteMenu()
-		initOverlayMenu()
 		initCurrentSelection()
+		initOverlayMenu()
 		initBottomMenu()
 	}
 	
@@ -81,13 +81,13 @@ class LevelDesignerOverlayScene: SKScene,
 		// Save y-pos of touch for calculating offset of scrolling if needed
 		self.oldY = (location?.y)!
 		
-		
 		let node = self.atPoint(location!)
 		
 		if let btnNode = node as? LDOverlayButton {
 			btnNode.onTap()
 			return
 		}
+	
 	}
 	
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -102,6 +102,28 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 	}
 	
+	// MARK: - Private helper methods
+	
+	private func isOverlayMenuVisible() -> Bool {
+		return overlayMenu.alpha > 0
+	}
+	
+	// Hides the overlay menu if it is visible currently
+	private func hideOverlayMenu() {
+		if isOverlayMenuVisible() {
+			animateOverlayMenuClose()
+		}
+	}
+	
+	private func animateOverlayMenuClose() {
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
+	}
+
+	private func animateOverlayMenuOpen() {
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+	}
+
+	
 	// - MARK: PaletteButtonDelegate
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
 		if funcType == .delete {
@@ -111,20 +133,24 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 	}
 	
-	func openOverlayMenu(_ funcType: PaletteFunctionType) {
+	private func openOverlayMenu(_ funcType: PaletteFunctionType) {
 		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
-		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+		animateOverlayMenuOpen()
 	}
 	
 	
 	// - MARK: OverlayButtonDelegate
-	internal func setCurrentTileSelection(_ type: TileType) {
-		self.currentTileSelection.value = type
-		self.currentSelectionUI.updateSelectionText(type.toString())
+	internal func setCurrentTileSelection(_ type: TileType?) {
+		guard let _ = type else {
+			return
+		}
+		
+		self.currentTileSelection.value = type!
+		self.currentSelectionUI.updateSelectionText(type!.toString())
 	}
 	
 	internal func closeOverlayMenu() {
-		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
+		hideOverlayMenu()
 	}
 	
 	// - MARK: BottomMenuButtonDelegate

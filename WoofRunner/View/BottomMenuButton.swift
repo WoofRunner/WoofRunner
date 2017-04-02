@@ -25,7 +25,6 @@ class BottomMenuButton: SKLabelNode, LDOverlayButton {
 		}
 		
 		if self.text == "Back" {
-			
 			self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
 				self.delegate?.back()
 			})

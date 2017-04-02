@@ -9,6 +9,6 @@
 import Foundation
 
 protocol OverlayButtonDelegate {
-	func setCurrentTileSelection(_ type: TileType)
+	func setCurrentTileSelection(_ type: TileType?)
 	func closeOverlayMenu()
 }

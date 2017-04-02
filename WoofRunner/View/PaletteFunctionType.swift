@@ -23,4 +23,15 @@ enum PaletteFunctionType {
 			return "edit-button"
 		}
 	}
+	
+	func getOverlayMenuName() -> String {
+		switch self {
+		case .platform:
+			return "Platforms"
+		case .obstacle:
+			return "Obstacles"
+		default:
+			return ""
+		}
+	}
 }
