@@ -12,6 +12,7 @@ import RxCocoa
 
 class ReactiveGridNode {
     
+    static var wireframeMaterial = "art.scnassets/wireframeMaterial.png"
     let disposeBag = DisposeBag();
     
     var shouldRender: Variable<Bool>
@@ -40,8 +41,8 @@ class ReactiveGridNode {
         self.obstacleNode.value = SCNNode()
         self.shouldRender = gridVM.shouldRender
         
-        updatePlatformBoxGeometry()
-        updateObstacleBoxGeometry()
+        updatePlatformNode()
+        updateObstacleNode()
         
         // Subscribe to observables
         gridVM.gridPos.asObservable()
@@ -56,26 +57,26 @@ class ReactiveGridNode {
             .subscribe(onNext: {
                 (size) in
                 self.size = size
-                self.updatePlatformBoxGeometry()
-                self.updateObstacleBoxGeometry()
+                self.updatePlatformNode()
+                self.updateObstacleNode()
             }).addDisposableTo(disposeBag)
         
         gridVM.platformType.asObservable()
             .subscribe(onNext: {
                 (platformType) in
                 self.platformType = platformType
-                self.updatePlatformBoxGeometry()
+                self.updatePlatformNode()
             }).addDisposableTo(disposeBag)
         
         gridVM.obstacleType.asObservable()
             .subscribe(onNext: {
                 (obstacleType) in
                 self.obstacleType = obstacleType
-                self.updateObstacleBoxGeometry()
+                self.updateObstacleNode()
             }).addDisposableTo(disposeBag)
     }
     
-    private func updatePlatformBoxGeometry() {
+    private func updatePlatformNode() {
         var modelNode: SCNNode
         
         if platformType == .none {
@@ -84,8 +85,9 @@ class ReactiveGridNode {
             let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
                                              length: CGFloat(size), chamferRadius: 0.05)
             for material in platformBoxGeometry.materials {
-                material.emission.contents = UIColor.lightGray
-                material.transparency = 0.5
+                material.diffuse.contents = UIImage(named: ReactiveGridNode.wireframeMaterial)
+                material.lightingModel = .constant
+                material.isDoubleSided = true
             }
             modelNode = SCNNode(geometry: platformBoxGeometry)
         } else if let model = loadModel(platformType.getModelPath()) {
@@ -93,7 +95,6 @@ class ReactiveGridNode {
         } else {
             return
         }
-        print(modelNode.position, platformNode.value.position, self.position)
         
         // Tag Model Node
         modelNode.name = "modelNode"
@@ -105,7 +106,7 @@ class ReactiveGridNode {
         self.platformNode.value.position = self.position
     }
     
-    private func updateObstacleBoxGeometry() {
+    private func updateObstacleNode() {
         var modelNode: SCNNode
         
         if obstacleType == .none {

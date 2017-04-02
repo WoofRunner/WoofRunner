@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class DeadTrigger : Platform {
+    
     override init(_ pos: SCNVector3) {
         super.init(pos)
         let trigger = Trigger(SCNVector3(Tile.TILE_WIDTH/2, Tile.TILE_WIDTH/2, -Tile.TILE_WIDTH/2))

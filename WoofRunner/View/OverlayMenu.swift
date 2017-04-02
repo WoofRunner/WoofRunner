@@ -18,13 +18,24 @@ struct OverlayConstants {
 	static let subsectionSpacingY = CGFloat(120) // Y Spacing between subsections in the menu
 	static let subsectionBaseY = CGFloat(400)
 	
+	// For Overlay Menu Title
+	static let titleFontName = "AvenirNextCondensed-Bold"
+	static let titleFontColor = UIColor.white
+	static let titleFontSize = CGFloat(55)
+	static let titlePosition = CGPoint(x: 0, y: backgroundHeight/2 - 60)
+	
+	// For Overlay Menu Close Button
+	static let closeBtnSize = CGSize(width: 45, height: 45)
+	static let closeBtnPosition = CGPoint(x: backgroundWidth/2 - 45, y: backgroundHeight/2 - 45)
+	static let closeBtnImageSprite = "close-overlay-button"
+	
 	// For Subsection titles
 	static let subtitleFontName = "AvenirNextCondensed-Bold"
 	static let subtitleFontColor = UIColor.white
 	static let subtitleFontSize = CGFloat(40)
 	static let subtitlePosition = CGPoint(x: 50, y: 50)
 	
-	// For Buttons
+	// For Tile Buttons
 	static let btnWidth = CGFloat(150)
 	static let btnHeight = CGFloat(150)
 	
@@ -54,9 +65,14 @@ struct OverlayConstants {
 class OverlayMenu: SKNode {
 	
 	private let backgroundNode = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: OverlayConstants.backgroundWidth, height: OverlayConstants.backgroundHeight))
+	private var titleNode = SKLabelNode()
+	private var closeBtnNode = OverlayButton(imageNamed: OverlayConstants.closeBtnImageSprite, type: nil, size: OverlayConstants.closeBtnSize)
+	
 	private var menuNode = SKNode()
 	private var maxY = CGFloat(0) // Max y-bound of MenuNode, required for scrolling bounds
 	private var arrayOfSubsections = [OverlayMenuSubsection]()
+	
+	// MARK: - Init Methods
 	
 	override init() {
 		super.init()
@@ -65,21 +81,32 @@ class OverlayMenu: SKNode {
 		self.addChild(backgroundNode)
 	}
 	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	// MARK: - Render Method
+	
 	// Renders the palette menu at the input position (which is the bottom-left corner
 	// of the menu's frame)
 	public func renderOverlayMenu(type: PaletteFunctionType, delegate: OverlayButtonDelegate) {
 		
 		// Reset
-		self.backgroundNode.removeFromParent()
-		self.menuNode.removeFromParent()
-		self.menuNode = SKNode()
+		backgroundNode.removeFromParent()
+		menuNode.removeFromParent()
+		menuNode = SKNode()
 		
 		// Attach background first
 		self.addChild(backgroundNode)
 		
-		// Create and attach Menu Title
-		//let menuTitle = type.getName()
+		// Attach close button
+		menuNode.addChild(closeBtnNode)
+		closeBtnNode.position = OverlayConstants.closeBtnPosition
 		
+		// Create and attach Menu Title
+		titleNode = SKLabelNode(text: type.getOverlayMenuName())
+		menuNode.addChild(titleNode)
+		configureTitleNode()
 		
 		// Get the set of list of TileTypes to be rendered
 		let setOfTileTypes = getSetOfTileTypesFromFunctionType(type)
@@ -121,23 +148,7 @@ class OverlayMenu: SKNode {
 		
 	}
 	
-	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [TileTypeSet] {
-		switch funcType {
-		case .platform:
-			return [
-				TileTypeSet(name: "Static", set: [TileType.floorLight, TileType.grass]),
-				TileTypeSet(name: "Dynamic", set: [TileType.floorJump])
-			]
-		case .obstacle:
-			return [
-				TileTypeSet(name: "Static", set: [TileType.rock]),
-				TileTypeSet(name: "Dynamic", set: [TileType.sword])
-			]
-		default:
-			return []
-		}
-		
-	}
+	// MARK: - Scroll Control
 	
 	private func isValidScroll(_ newPos: CGFloat) -> Bool {
 		return !(newPos < 0 || newPos > maxY)
@@ -151,14 +162,41 @@ class OverlayMenu: SKNode {
 		}
 	}
 	
-	public func assignDelegateForButtons(_ delegate: OverlayButtonDelegate) {
+	// MARK: - Helper Private Methods
+	
+	private func assignDelegateForButtons(_ delegate: OverlayButtonDelegate) {
 		for subsection in arrayOfSubsections {
 			subsection.assignDelegateForButtons(delegate)
 		}
+		
+		closeBtnNode.setDelegate(delegate)
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
+	private func configureTitleNode() {
+		titleNode.fontName = OverlayConstants.titleFontName
+		titleNode.fontColor = OverlayConstants.titleFontColor
+		titleNode.fontSize = OverlayConstants.titleFontSize
+		titleNode.position = OverlayConstants.titlePosition
+	}
+	
+	// MARK: - Stubs to determine what Overlay Buttons to render
+	
+	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [TileTypeSet] {
+		switch funcType {
+		case .platform:
+			return [
+				TileTypeSet(name: "Static", set: [TileType.floorLight, TileType.floorDark,  TileType.grass])
+				//TileTypeSet(name: "Dynamic", set: [TileType.floorJump])
+			]
+		case .obstacle:
+			return [
+				TileTypeSet(name: "Static", set: [TileType.rock]),
+				TileTypeSet(name: "Dynamic", set: [TileType.jumpingRock, TileType.floorJump, TileType.sword])
+			]
+		default:
+			return []
+		}
+		
 	}
 	
 	struct TileTypeSet {

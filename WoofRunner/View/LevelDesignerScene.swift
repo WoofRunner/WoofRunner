@@ -10,7 +10,6 @@ import SceneKit
 
 class LevelDesignerScene: SCNScene {
 
-    let chunkLength = 10
     var cameraNode = SCNNode()
     var cameraLocation: SCNVector3 = SCNVector3(0, 0, 0)
     var rxGrid = ReactiveGrid()
@@ -32,7 +31,8 @@ class LevelDesignerScene: SCNScene {
     }
     
     func loadLevel(_ levelGrid: LevelGrid) {
-        // Create rxGrid
+        // Dispose previous rxGrid and create new rxGrid
+        rxGrid.removeGrid()
         rxGrid = ReactiveGrid()
         
         // Prepare rxGridNodes

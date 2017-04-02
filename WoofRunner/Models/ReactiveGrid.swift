@@ -45,4 +45,8 @@ class ReactiveGrid {
             }).addDisposableTo(disposeBag)
         }
     }
+    
+    func removeGrid() {
+        self.grid.removeFromParentNode()
+    }
 }

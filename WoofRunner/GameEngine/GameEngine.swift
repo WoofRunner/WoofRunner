@@ -20,6 +20,8 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     
     let LEVEL_PATH = "art.scnassets/level.scn"
     
+    var isPause: Bool = false
+    
     init?(_ view: UIView) {
         guard let view = view as? SCNView else { return nil }
         self.scnView = view
@@ -81,6 +83,10 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     }
     
     func updateObjects(_ deltaTime: Float) {
+        if isPause {
+            return
+        }
+        
         for gameObject in gameObjects {
             if gameObject.isTickEnabled {
                 gameObject.update(deltaTime)

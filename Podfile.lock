@@ -64,6 +64,7 @@ PODS:
   - RxCocoa (3.3.1):
     - RxSwift (~> 3.3)
   - RxSwift (3.3.1)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - BrightFutures
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - iCarousel (~> 1.8)
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
+  - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -98,7 +100,8 @@ SPEC CHECKSUMS:
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: ab566ebbcb4e0ae48e2c292c426f7e6ee588d449
+PODFILE CHECKSUM: 798f6a96a40729b1a60c241cd6728d7dda44fe98
 
 COCOAPODS: 1.2.0

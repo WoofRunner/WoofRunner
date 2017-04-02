@@ -10,118 +10,101 @@ import Foundation
 import SceneKit
 
 class TileManager: GameObject {
-    var COL_COUNT: Int = 5
-    var ROW_COUNT: Int = 100
-    
-    var obstacleData: [[Int]] = [[1, 0, 0, 0, 0],
-                              [1, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 1, 0, 1, 0],
-                              [0, 0, 0, 0, 0],
-                              [1, 0, 0, 1, 1],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0],
-                              [0, 0, 0, 0, 0]]
-    
-    /*
-    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1]]
-    */
-    
-    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 3, 1, 2],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 2, 3, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1]]
-    
+    var obstacleData: [[Int]] = []
+    var platformData: [[Int]] = []
     
     var tailIndex: Int = 0
     var platformTail: Float = 0
     
     let TAIL_LENGTH: Float = 21
     let PLATFORM_Z_OFFSET: Float = 3
+    let startPosition: SCNVector3
     
     var poolManager: PoolManager?
     
+    var isDebug: Bool = true
+    
+    let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
+    
     override init() {
+        startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
         super.init()
         poolManager = PoolManager(self)
         isTickEnabled = true
-        position = SCNVector3(x: position.x, y: position.y, z: position.z + PLATFORM_Z_OFFSET)
+        position = startPosition
         platformTail = position.z - TAIL_LENGTH
     }
     
     convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
-        self.obstacleData = obstacleData
-        self.platformData = platformData
+        
+        if isDataValid(obstacleData, platformData) {
+            self.obstacleData = obstacleData
+            self.platformData = platformData
+        } else {
+            print(WARNING_INVALID_DATA)
+        }
+    }
+    
+    private func isDataValid(_ obstacleData: [[Int]], _ platformData: [[Int]]) -> Bool {
+        if obstacleData.count != platformData.count {
+            return false
+        }
+        
+        for rowIndex in 0..<obstacleData.count {
+            if obstacleData[rowIndex].count != platformData[rowIndex].count {
+                return false
+            }
+        }
+        
+        return true
     }
     
     func spawnTiles() {
         let curTailIndex = tailIndex
         
-        for row in curTailIndex..<ROW_COUNT {
+        for row in curTailIndex..<platformData.count {
             if !canSpawnRow(row) { break }
             
             tailIndex += 1
             
-            for col in 0..<COL_COUNT {
+            for col in 0..<platformData[row].count {
                 handleTileSpawning(row: row, col: col)
             }
             
-            var deadTrigger = DeadTrigger(calculateTilePosition(row, -1))
-            World.spawnGameObject(deadTrigger, self)
-            
-            deadTrigger = DeadTrigger(calculateTilePosition(row, COL_COUNT))
-            World.spawnGameObject(deadTrigger, self)
+            appendDeadTriggers(row)
         }
     }
     
     private func handleTileSpawning(row: Int, col: Int) {
-        if platformData[row % platformData.count][col] == 1 {
-            let platformTile = poolManager?.getTile(TileType.floorLight)
-            platformTile?.position = calculateTilePosition(row, col)
+        handlePlatformSpawning(row, col)
+        handleObstacleSpawning(row, col)
+    }
+    
+    private func handlePlatformSpawning(_ row: Int, _ col: Int) {
+        if let tileType: TileType = TileType(rawValue: platformData[row][col]) {
+            let tile = poolManager?.getTile(tileType)
+            tile?.position = calculateTilePosition(row, col)
         }
+    }
+    
+    private func handleObstacleSpawning(_ row: Int, _ col: Int) {
+        if let tileType: TileType = TileType(rawValue: obstacleData[row][col]) {
+            if tileType == TileType.none {
+                return
+            }
+            
+            let tile = poolManager?.getTile(tileType)
+            tile?.position = calculateObstaclePosition(row, col)
+        }
+    }
+    
+    private func appendDeadTriggers(_ row: Int) {
+        var tile = poolManager?.getTile(TileType.none)
+        tile?.position = calculateTilePosition(row, -1)
         
-        if platformData[row % platformData.count][col] == 2 {
-            let platformTile = poolManager?.getTile(TileType.floorDark)
-            platformTile?.position = calculateTilePosition(row, col)
-        }
-        
-        if platformData[row % platformData.count][col] == 3 {
-            let platformTile = poolManager?.getTile(TileType.floorJump)
-            platformTile?.position = calculateTilePosition(row, col)
-        }
-        
-        if platformData[row % platformData.count][col] == 0 {
-            let deadTrigger = DeadTrigger(calculateTilePosition(row, col))
-            World.spawnGameObject(deadTrigger, self)
-        }
-        
-        if obstacleData[row % obstacleData.count][col] == 1 {
-            let obstacleTile = poolManager?.getTile(TileType.rock)
-            obstacleTile?.position = calculateObstaclePosition(row, col)
-        }
+        tile = poolManager?.getTile(TileType.none)
+        tile?.position = calculateTilePosition(row, platformData[row].count)
     }
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
@@ -146,8 +129,14 @@ class TileManager: GameObject {
     
     override func update(_ deltaTime: Float) {
         position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
-
         spawnTiles()
+    }
+    
+    public func restartLevel() {
+        position = startPosition
+        platformTail = position.z - TAIL_LENGTH
+        poolManager?.destroyAllActiveTiles()
+        tailIndex = 0
     }
 }
 

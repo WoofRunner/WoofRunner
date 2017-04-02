@@ -11,17 +11,20 @@ import iCarousel
 
 class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 	
-	var items: [Int] = [1,2,3,4,5]
-	let colorArray = [UIColor.blue, UIColor.brown, UIColor.red, UIColor.green, UIColor.orange]
+	var gsm = GameStorageManager.getInstance()
+	var levels = [StoredGame]()
+	
 	@IBOutlet var carousel: iCarousel!
+	@IBOutlet weak var homeButton: UIButton!
 
+	// MARK: - Lifecycle methods
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		carousel.type = .linear
-		carousel.stopAtItemBoundary = true
-		carousel.scrollToItemBoundary = true
-		carousel.bounces = false
-		carousel.decelerationRate = 0.7
+		configureCarouselView()
+		populateLevelData()
+		configureHomeButtonView()
+		
 		
     }
 
@@ -29,70 +32,60 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
         super.didReceiveMemoryWarning()
     }
 	
-	func numberOfItems(in carousel: iCarousel) -> Int {
-		return items.count
+	// MARK: - Init View Methods
+	
+	private func configureCarouselView() {
+		carousel.type = .linear
+		carousel.stopAtItemBoundary = true
+		carousel.scrollToItemBoundary = true
+		carousel.bounces = false
+		carousel.decelerationRate = 0.7
 	}
 	
+	private func configureHomeButtonView() {
+		self.view.bringSubview(toFront: homeButton)
+	}
+	
+	// MARK: - Data retrieval
+	
+	private func populateLevelData() {
+		self.levels = gsm.getAllGames()
+		print("Num of levels: \(self.levels.count)")
+	}
+	
+	
+	// MARK: - iCarouselDelegate
+	
+	func numberOfItems(in carousel: iCarousel) -> Int {
+		let numLevels = gsm.getAllGames().count
+		return numLevels
+	}
+	
+	// Configure item view
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-		var label: UILabel
-		//var itemView: UIImageView
-		var itemView: UIView
-		var imageView: UIImageView
 		
-		//reuse view if available, otherwise create a new view
-		if let view = view as? UIImageView {
-			itemView = view
-			
-			//get a reference to the label in the recycled view
-			label = itemView.viewWithTag(1) as! UILabel
+		var levelItemView: LSItemView
+		
+		// Check for recyled views, else create new
+		// NOTE: DO NOT do anything specific to index here
+		if let view = view as? LSItemView {
+			levelItemView = view
 		} else {
-			
-			//don't do anything specific to the index within
-			//this `if ... else` statement because the view will be
-			//recycled and used with other index values later
-			let frame = self.view.frame
-			itemView = UIView(frame: frame)
-			itemView.contentMode = .center
-			//itemView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-			
-			imageView = UIImageView(frame: frame)
-			imageView.image = UIImage(named: "testCat.jpg")
-			imageView.contentMode = .center
-			itemView.addSubview(imageView)
-			
-			//label = UILabel(frame: itemView.bounds)
-			label = UILabel()
-			label.translatesAutoresizingMaskIntoConstraints = false
-			label.backgroundColor = .clear
-			label.textAlignment = .center
-			label.font = label.font.withSize(50)
-			label.tag = 1
-			label.text = "Hello"
-			
-			itemView.addSubview(label)
-			label.sizeToFit()
-			let constraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal,
-			                                    toItem: imageView, attribute: .bottom,
-			                                    multiplier: 1.0, constant: 0.0)
-			
-			
-			itemView.addConstraint(constraint)
-			
-			
+			levelItemView = LSItemView(frame: self.view.frame)
+			levelItemView.contentMode = .center
 		}
 		
-		//set item label
-		//remember to always set any properties of your carousel item
-		//views outside of the `if (view == nil) {...}` check otherwise
-		//you'll get weird issues with carousel item content appearing
-		//in the wrong place in the carousel
-		itemView.backgroundColor = colorArray[index]
-		//label.text = "\(items[index])"
-		label.sizeToFit()
+		// Set BG Color (TODO: To remove after proper BG is in avail ViewModel)
+		setBackgroundColor(view: levelItemView, index: index)
 		
-		return itemView
+		// Set up view from ViewModel
+		let vm = LSListItemViewModel(game: levels[index])
+		levelItemView.setupView(vm: vm)
+		
+		return levelItemView as UIView
 	}
 	
+	// Configure Carousel View properties
 	func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
 		if (option == .spacing) {
 			//return value * 1.1
@@ -104,15 +97,46 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		}
 		return value
 	}
-
-    /*
+	
+	// Handles tap logic
+	func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+		let selectedUUID = levels[index].uuid!
+		print("Selected Item: \(selectedUUID)")
+		//self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
+	}
+	
+	// MARK: - View Setup Methods
+	
+	// Set BG Color (Only for now, to be moved into ViewModel)
+	// Cycle between 2 bg colors for easy differentiation
+	private func setBackgroundColor(view: LSItemView, index: Int) {
+		if (index%2 == 0) {
+			view.backgroundColor = UIColor(red: 0.25, green: 0.04, blue: 0.45, alpha: 1.0)
+		} else {
+			view.backgroundColor = UIColor(red: 0.36, green: 0.11, blue: 0.61, alpha: 1.0)
+		}
+	}
+	
+	// MARK: - Actions
+	
+	@IBAction func onPressHomeBtn(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
+		if segue.identifier == "segueToGameplay" {
+			let destination = segue.destination as! GameController
+			let uuid = sender as! String
+			destination.setGameUUID(uuid)
+		}
+		
     }
-    */
+	
 
 }

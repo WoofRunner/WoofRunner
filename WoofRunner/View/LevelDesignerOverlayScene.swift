@@ -32,9 +32,9 @@ class LevelDesignerOverlayScene: SKScene,
 		self.backgroundColor = UIColor.clear
 		
 		initPaletteMenu()
-		initOverlayMenu()
 		initCurrentSelection()
 		initBottomMenu()
+		initOverlayMenu()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -60,6 +60,7 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	private func initCurrentSelection() {
+		self.currentSelectionUI = CurrentSelectionNode(defaultSelection: currentTileSelection.value)
 		let currentSelectionPosX = CGFloat(690)
 		let currentSelectionPosY = CGFloat(880)
 		self.addChild(currentSelectionUI)
@@ -81,23 +82,13 @@ class LevelDesignerOverlayScene: SKScene,
 		// Save y-pos of touch for calculating offset of scrolling if needed
 		self.oldY = (location?.y)!
 		
-		
 		let node = self.atPoint(location!)
 		
-		if let paletteBtnNode = node as? PaletteButton {
-			paletteBtnNode.onTap()
+		if let btnNode = node as? LDOverlayButton {
+			btnNode.onTap()
 			return
 		}
-		
-		if let overlayBtnNode = node as? OverlayButton {
-			overlayBtnNode.onTap()
-			return
-		}
-		
-		if let bottomMenuBtnNode = node as? BottomMenuButton {
-			bottomMenuBtnNode.onTap()
-			return
-		}
+	
 	}
 	
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -112,6 +103,44 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 	}
 	
+	/*
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		print("Touch Ended \(location)")
+	}
+	
+	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let firstTouch = touches.first
+		let location = firstTouch?.location(in: self)
+		
+		print("Touch cancelled \(location)")
+	}
+	*/
+	
+	// MARK: - Private helper methods
+	
+	private func isOverlayMenuVisible() -> Bool {
+		return overlayMenu.alpha > 0
+	}
+	
+	// Hides the overlay menu if it is visible currently
+	private func hideOverlayMenu() {
+		if isOverlayMenuVisible() {
+			animateOverlayMenuClose()
+		}
+	}
+	
+	private func animateOverlayMenuClose() {
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
+	}
+
+	private func animateOverlayMenuOpen() {
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+	}
+
+	
 	// - MARK: PaletteButtonDelegate
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
 		if funcType == .delete {
@@ -121,20 +150,24 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 	}
 	
-	func openOverlayMenu(_ funcType: PaletteFunctionType) {
+	private func openOverlayMenu(_ funcType: PaletteFunctionType) {
 		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
-		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+		animateOverlayMenuOpen()
 	}
 	
 	
 	// - MARK: OverlayButtonDelegate
-	internal func setCurrentTileSelection(_ type: TileType) {
-		self.currentTileSelection.value = type
-		self.currentSelectionUI.updateSelectionText(type.toString())
+	internal func setCurrentTileSelection(_ type: TileType?) {
+		guard let _ = type else {
+			return
+		}
+		
+		self.currentTileSelection.value = type!
+		self.currentSelectionUI.updateSelectionText(type!.toString())
 	}
 	
 	internal func closeOverlayMenu() {
-		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.0, duration: 0.2))
+		hideOverlayMenu()
 	}
 	
 	// - MARK: BottomMenuButtonDelegate

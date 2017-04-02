@@ -28,6 +28,26 @@ class CurrentSelectionNode: SKNode {
 	
 	override init() {
 		super.init()
+	}
+	
+	convenience init(defaultSelection: TileType) {
+		self.init()
+		initLabels(defaultType: defaultSelection)
+		addLabelNodes()
+		
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	private func addLabelNodes() {
+		self.addChild(headerCurrentLabel)
+		self.addChild(headerSelectionLabel)
+		self.addChild(selectionLabel)
+	}
+	
+	private func initLabels(defaultType: TileType) {
 		headerCurrentLabel = SKLabelNode(text: "Current")
 		configureHeaderLabel(headerCurrentLabel)
 		
@@ -35,17 +55,9 @@ class CurrentSelectionNode: SKNode {
 		configureHeaderLabel(headerSelectionLabel)
 		headerSelectionLabel.position = CGPoint(x: 0, y: -1 * SelectionConstants.spacingBetweenHeaders)
 		
-		selectionLabel = SKLabelNode(text: "Floor")
+		selectionLabel = SKLabelNode(text: defaultType.toString())
 		configureSelectionLabel()
 		selectionLabel.position = CGPoint(x: 0, y: -1 * SelectionConstants.spacingBetweenHeaderAndSelection)
-		
-		self.addChild(headerCurrentLabel)
-		self.addChild(headerSelectionLabel)
-		self.addChild(selectionLabel)
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
 	}
 	
 	private func configureHeaderLabel(_ label: SKLabelNode) {

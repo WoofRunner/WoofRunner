@@ -11,14 +11,17 @@ import SceneKit
 
 enum TileType: Int {
     case none
-
-    case rock
-    case sword
     
-    case floorJump
     case floorLight
     case floorDark
+    case floorJump
     case grass
+    
+    case rock
+    case jumpingRock
+    
+    case sword
+
     
     func isPlatform() -> Bool {
         switch self {
@@ -54,24 +57,28 @@ enum TileType: Int {
             return "Delete"
         case .sword:
             return "Swinging Sword"
+        case .jumpingRock:
+            return "Jumping Rock"
         }
     }
     
     func getSpriteImageName() -> String {
         switch self {
         case .floorJump:
-            return "testCat"
+            return "obstacle-placeholder2"
         case .rock:
-            return "testCat"
+            return "obstacle-placeholder2"
         case .floorLight:
-            return "testCat"
+            return "obstacle-placeholder1"
         case .floorDark:
-            return "testCat"
+            return "platform-placeholder"
         case .grass:
             return "testCat"
         case .none:
             return "testCat"
         case .sword:
+            return "testCat"
+        case .jumpingRock:
             return "testCat"
         }
     }
@@ -92,6 +99,8 @@ enum TileType: Int {
             return "testCat"
         case .sword:
             return "testCat"
+        case .jumpingRock:
+            return "art.scnassets/cube4.scn"
         }
     }
 }
