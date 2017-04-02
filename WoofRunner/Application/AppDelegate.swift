@@ -6,7 +6,6 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import Sync
 import UIKit
 import Firebase
 import FacebookCore
@@ -16,7 +15,7 @@ import FacebookLogin
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var dataStack = DataStack(modelName: "WoofRunner")
+    lazy var coreDataStack = CoreDataStack()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         initFirebase()

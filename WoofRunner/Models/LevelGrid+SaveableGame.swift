@@ -18,7 +18,7 @@ extension LevelGrid: SaveableGame {
             res = currentStoredGame
         } else {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            res = StoredGame(context: appDelegate.dataStack.mainContext)
+            res = StoredGame(context: appDelegate.coreDataStack.persistentContainer.viewContext)
 
             // Set values for a new StoredGame
             res.uuid = UUID().uuidString
@@ -75,7 +75,8 @@ extension LevelGrid: SaveableGame {
 
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
-                let storedObstacle = StoredObstacle(context: appDelegate.dataStack.mainContext)
+                let storedObstacle = StoredObstacle(
+                    context: appDelegate.coreDataStack.persistentContainer.viewContext)
                 storedObstacle.game = game
                 storedObstacle.type = String(obstacle)
                 storedObstacle.positionX = Int16(col)
@@ -99,7 +100,8 @@ extension LevelGrid: SaveableGame {
 
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
-                let storedPlatform = StoredPlatform(context: appDelegate.dataStack.mainContext)
+                let storedPlatform = StoredPlatform(
+                    context: appDelegate.coreDataStack.persistentContainer.viewContext)
                 storedPlatform.game = game
                 storedPlatform.type = String(platform)
                 storedPlatform.positionX = Int16(row)
