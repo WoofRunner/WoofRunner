@@ -11,8 +11,6 @@
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
 		120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */; };
 		121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */; };
-		1261D9B71E755E94004837F0 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */; };
-		1270785F1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270785E1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
 		12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12882B881E857059004C3B76 /* LMLoginViewController.swift */; };
@@ -28,7 +26,6 @@
 		12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */; };
 		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
 		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
-		12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BF5ABD1E75904E00823568 /* SaveableStub.swift */; };
 		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
 		12C4578B1E8D6B1700CFD541 /* LMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4578A1E8D6B1700CFD541 /* LMListViewModel.swift */; };
 		12DA42061E86627700C23137 /* LMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42051E86627700C23137 /* LMListViewController.swift */; };
@@ -139,8 +136,6 @@
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
-		1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
-		1270785E1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManagerTests.swift; sourceTree = "<group>"; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
 		12882B881E857059004C3B76 /* LMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +157,6 @@
 		12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableObstacle.swift; sourceTree = "<group>"; };
 		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
 		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
-		12BF5ABD1E75904E00823568 /* SaveableStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableStub.swift; sourceTree = "<group>"; };
 		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
 		12C4578A1E8D6B1700CFD541 /* LMListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListViewModel.swift; sourceTree = "<group>"; };
 		12DA42051E86627700C23137 /* LMListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListViewController.swift; sourceTree = "<group>"; };
@@ -482,9 +476,6 @@
 		12E36F991E7552EF00135DB7 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				1261D9B61E755E94004837F0 /* CoreDataManagerTests.swift */,
-				1270785E1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift */,
-				12BF5ABD1E75904E00823568 /* SaveableStub.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -965,9 +956,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1261D9B71E755E94004837F0 /* CoreDataManagerTests.swift in Sources */,
-				12BF5ABE1E75904E00823568 /* SaveableStub.swift in Sources */,
-				1270785F1E7E60FD0043C8C4 /* OnlineStorageManagerTests.swift in Sources */,
 				12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
