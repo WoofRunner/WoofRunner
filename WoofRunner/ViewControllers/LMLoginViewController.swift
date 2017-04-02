@@ -27,11 +27,6 @@ public class LMLoginViewController: UIViewController {
     private let vm = LMLoginViewModel()
     private let disposeBag = DisposeBag()
 
-    // MARK: - IBOutlets
-
-    // Text above Facebook Login Button
-    @IBOutlet var loginPrompt: UILabel!
-
     // MARK: - IBActions
 
     /// Handles user tap on Facebook Login Button
@@ -48,11 +43,6 @@ public class LMLoginViewController: UIViewController {
                     self.performSegue(withIdentifier: "segueToMarketplace", sender: nil)
                 }
             })
-            .addDisposableTo(disposeBag)
-
-        vm.isAuthed
-            .map { $0 ? "Logged in" : "Please log in" }
-            .bindTo(loginPrompt.rx.text)
             .addDisposableTo(disposeBag)
     }
 
