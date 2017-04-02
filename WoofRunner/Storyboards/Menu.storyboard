@@ -21,13 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-background" translatesAutoresizingMaskIntoConstraints="NO" id="9v6-Z5-pT5">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WOOF RUNNER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMm-BA-atA">
                                 <rect key="frame" x="116" y="28" width="536" height="204"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="DBg-UB-lt2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="70"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.83600068720312126" green="1" blue="0.89592379635715846" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-level-image" translatesAutoresizingMaskIntoConstraints="NO" id="Z04-lj-eqj">
@@ -44,6 +48,9 @@
                                     <constraint firstAttribute="height" constant="95" id="dSq-yd-TYl"/>
                                 </constraints>
                                 <state key="normal" image="custom-btn"/>
+                                <connections>
+                                    <segue destination="KWp-NW-dJb" kind="show" id="ReE-sQ-ToZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2d-nQ-NcI" userLabel="playBtn">
                                 <rect key="frame" x="216" y="776" width="336" height="95"/>
@@ -82,9 +89,18 @@
             </objects>
             <point key="canvasLocation" x="537" y="274"/>
         </scene>
+        <!--CustomLevel-->
+        <scene sceneID="3Tp-X8-TEV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CustomLevel" id="KWp-NW-dJb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pcR-HS-ebd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="515" y="387"/>
+        </scene>
     </scenes>
     <resources>
         <image name="custom-btn" width="282" height="95"/>
+        <image name="menu-background" width="384" height="512"/>
         <image name="play-btn" width="282" height="95"/>
         <image name="test-level-image" width="768" height="1024"/>
     </resources>
