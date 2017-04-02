@@ -112,7 +112,7 @@ public class CoreDataManager {
 
     /// Loads all games from CoreData, asynchronous execution that returns a Future.
     /// - Returns: a Future object with a [StoredGame] object
-    public func loadAll() -> Future<[StoredGame], NoError> {
+    public func loadAll() -> Future<[StoredGame], CoreDataManagerError> {
         return Future { complete in
             DispatchQueue.main.async {
                 let fetchedGames = self.fetchAll()

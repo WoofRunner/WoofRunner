@@ -23,7 +23,6 @@ public class LMListViewModel {
     private let gsm = GameStorageManager.getInstance()
 
     public init() {
-        self.games.value = gsm.getAllGames()
     }
 
     // MARK: - Public method
@@ -38,19 +37,11 @@ public class LMListViewModel {
     /// FOR TESTING ONLY.
     /// Creates a dummy game in CoreData.
     public func createOneGame() {
-        gsm.saveGame(SaveableStub())
     }
 
     /// FOR TESTING ONLY.
     /// Creates a dummy game in Firebase.
     public func uploadOneGame() {
-        guard let game = gsm.getAllGames().first else {
-            print("Game does not exist yet")
-            return
-        }
-
-        print("Uploading \(game.uuid)...")
-        gsm.uploadGame(uuid: game.uuid!)
     }
 
 }

@@ -7,6 +7,8 @@
 //
 
 import RxSwift
+import Result
+import BrightFutures
 
 /**
  Singleton method to handle game storage, both online and offline.
@@ -21,17 +23,10 @@ public class GameStorageManager {
 
     private let osm = OnlineStorageManager.getInstance()
     private let cdm = CoreDataManager.getInstance()
-    public private(set) var games = Variable<[String: StoredGame]>([:])
-    public private(set) var previews = Variable<[String: PreviewGame]>([:])
-
-    public private(set) var error = Variable<Bool>(false)
-    private var retryCount = 0
 
     // MARK: - Private initializer
 
-    private init() {
-        reloadGames()
-    }
+    private init() {}
 
     // MARK: - Public static methods
 
@@ -50,110 +45,53 @@ public class GameStorageManager {
 
     /// Returns an array of all the games stored in memory.
     /// - Returns: array of UploadableGame from memory
-    public func getAllGames() -> [StoredGame] {
-        return games.value.map { (_, game) in game }
+    public func getAllGames() -> Future<[StoredGame], CoreDataManagerError> {
+        return cdm.loadAll()
     }
 
     /// Returns all games created by the owner that have been uploaded to the marketplace.
     /// - Returns: array of UploadableGame that has been uploaded
-    public func getUploadedGames() -> [StoredGame] {
-        let res = [StoredGame]()
-
-        for (uuid, game) in games.value {
-            // TODO: Persist a list of uploaded games
-            print(uuid)
-            print(game)
-        }
-
-        return res
+    public func getUploadedGames() -> Future<[StoredGame], CoreDataManagerError> {
+        // TODO: Implement filter for uploaded games
+        return cdm.loadAll()
     }
 
-    public func getGame(uuid: String) -> StoredGame? {
-        // Loads the game from memory.
-        return games.value[uuid]
+    public func getGame(uuid: String) -> Future<StoredGame, CoreDataManagerError> {
+        return cdm.load(uuid)
     }
 
     /// Saves the game to CoreData.
-    public func saveGame(_ game: SaveableGame) {
-        cdm.save(game)
-            .onSuccess { _ in
-                self.reloadGames()
-            }
-            .onFailure { _ in
-                // TODO: Throw an error here
-            }
+    public func saveGame(_ game: SaveableGame) -> Future<StoredGame, CoreDataManagerError> {
+        return cdm.save(game)
     }
 
     /// Uploads the game with the corresponding UUID to Firebase.
     /// - Parameters:
     ///     - uuid: UUID string of the game to upload
     public func uploadGame(uuid: String) {
-        guard let storedGame = games.value[uuid] else {
-            // TODO: Throw an error here.
-            return
-        }
-
-        osm.save(storedGame)
+        cdm.load(uuid)
+            .onSuccess { game in
+                self.osm.save(game)
+            }
+            .onFailure { _ in
+                // TODO: Handle error
+            }
     }
 
     /// Downloads the game with the corresponding UUID from Firebase into CoreData.
     /// - Parameters:
     ///     - uuid: UUID string of the game to download
-    public func downloadGame(uuid: String) {
-        // Get the game from downloaded games from Firebase and save it to CoreData.
-        osm.load(uuid).onSuccess { game in
-            self.cdm.context.sync(
-                [game as! [String: Any]], inEntityNamed: "StoredGame") { _ in
-                self.reloadGames()
-            }
-        }
-        .onFailure { error in
-            // TODO: Throw error here
-        }
+    public func downloadGame(uuid: String) -> Future<NSDictionary?, OnlineStorageManagerError> {
+        return osm.load(uuid)
     }
 
     // MARK: - Private methods
 
     /// Loads a preview of all the games loaded on Firebase.
     /// - Returns: array of GamePreviews
-    private func loadAllPreviews() {
+    private func loadAllPreviews() -> Future<NSDictionary?, OnlineStorageManagerError> {
         // TODO: Update this method to load previews instead of actual games
-        osm.loadAll()
-            .onSuccess { games in
-                guard let loadedGames = games else {
-                    return
-                }
-
-                for _ in loadedGames {
-                    // TODO: Add games as preview games
-                }
-            }
-            .onFailure { _ in
-                // TODO: Handle failure here
-        }
-    }
-
-    /// Reloads all games from CoreData and store them in memory.
-    private func reloadGames() {
-        cdm.loadAll()
-            .onSuccess { games in
-                for game in games {
-                    self.games.value[game.uuid!] = game
-                }
-
-                // Error handling
-                self.retryCount = 0
-                self.error.value = false
-            }
-            .onFailure { _ in
-                // Retry for 5 times before displaying error
-                if self.retryCount < 5 {
-                    self.reloadGames()
-                    self.retryCount += 1
-                } else {
-                    self.error.value = true
-                }
-        }
+        return osm.loadAll()
     }
 
 }

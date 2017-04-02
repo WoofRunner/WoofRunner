@@ -44,12 +44,7 @@ class GameController: UIViewController {
     ///     - uuid: unique ID string of the game to identify which game to laod
     /// - Returns: TileManager that is created using the data from loaded game
     private func getTileManagerForGame(uuid: String) -> TileManager {
-        let game = gsm.getGame(uuid: uuid)
-
-        let obstacles = game!.getObstacles()
-        let platforms = game!.getPlatforms()
-
-        return TileManager(obstacleData: obstacles, platformData: platforms)
+        return TileManager(obstacleData: [], platformData: [])
     }
 
 }

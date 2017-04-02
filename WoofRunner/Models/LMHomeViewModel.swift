@@ -29,14 +29,6 @@ public class LMHomeViewModel {
     // MARK: - Public methods
 
     public func observeFeaturedGames() {
-        featuredGames.value = gsm.getAllGames()
-
-        // TODO: Map only games that user have not downloaded from Firebase
-        // Currently stubbed to test CoreData implementation
-        gsm.games.asObservable()
-            .map { $0.values }
-            .subscribe(onNext: { self.featuredGames.value = $0.map { $0 } })
-            .addDisposableTo(disposeBag)
     }
 
 }

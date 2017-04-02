@@ -179,18 +179,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 
     /// Saves the current level into CoreData.
     private func saveGame() {
-        gsm.saveGame(currentLevel)
     }
 	
 	// - MARK: LDOverlayDelegate
 	
 	internal func saveLevel() {
-        /// Observes game save
-        gsm.games.asObservable().subscribe(onNext: { games in
-            print("Games count: \(games.count)")
-        })
-        .addDisposableTo(disposeBag)
-
 		saveGame()
 	}
 	
