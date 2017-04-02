@@ -60,6 +60,7 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	private func initCurrentSelection() {
+		self.currentSelectionUI = CurrentSelectionNode(defaultSelection: currentTileSelection.value)
 		let currentSelectionPosX = CGFloat(690)
 		let currentSelectionPosY = CGFloat(880)
 		self.addChild(currentSelectionUI)

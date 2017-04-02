@@ -71,6 +71,7 @@
 		3FD5D0231E8F5BB7007573C4 /* LSListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */; };
 		3FD5D0251E8FA59F007573C4 /* UIImage+ResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */; };
 		3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */; };
+		3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */; };
 		3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */; };
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
 		4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */; };
@@ -201,6 +202,7 @@
 		3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSListItemViewModel.swift; sourceTree = "<group>"; };
 		3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeExtension.swift"; sourceTree = "<group>"; };
 		3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDOverlayButton.swift; sourceTree = "<group>"; };
+		3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuButtonType.swift; sourceTree = "<group>"; };
 		3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDOverlayDelegate.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerScene.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				120208031E7449FB0066BD4C /* Storage */,
 				3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */,
 				3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */,
+				3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
+				3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,

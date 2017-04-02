@@ -8,23 +8,37 @@
 
 import SpriteKit
 
-class BottomMenuButton: SKLabelNode, LDOverlayButton {
+class BottomMenuButton: SKSpriteNode, LDOverlayButton {
 	
-	var delegate: BottomMenuButtonDelegate?
+	private var type: BottomMenuButtonType = .save
+	private var delegate: BottomMenuButtonDelegate?
+	
+	override init(texture: SKTexture!, color: SKColor, size: CGSize) {
+		super.init(texture: texture, color: color, size: size)
+	}
+	
+	convenience init(type: BottomMenuButtonType, size: CGSize) {
+		self.init(texture: SKTexture(imageNamed: type.getImageSprite()), color: SKColor.clear, size: size)
+		self.type = type
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
 	
 	public func setDelegate(_ delegate: BottomMenuButtonDelegate) {
 		self.delegate = delegate
 	}
 	
 	public func onTap() {
-		if self.text == "Save" {
+		if self.type == .save {
 			self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
 				self.delegate?.saveLevel()
 			})
 			return
 		}
 		
-		if self.text == "Back" {
+		if self.type == .back {
 			self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
 				self.delegate?.back()
 			})
