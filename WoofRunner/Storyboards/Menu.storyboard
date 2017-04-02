@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bM1-wq-hg5">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,26 +18,74 @@
                         <viewControllerLayoutGuide type="bottom" id="jjC-J2-fu1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ktK-jY-r7L">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyK-v0-k6p">
-                                <rect key="frame" x="491" y="673" width="43" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WOOF RUNNER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMm-BA-atA">
+                                <rect key="frame" x="116" y="28" width="536" height="204"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="204" id="DBg-UB-lt2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="70"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-level-image" translatesAutoresizingMaskIntoConstraints="NO" id="Z04-lj-eqj">
+                                <rect key="frame" x="178" y="240" width="412" height="495"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="495" id="9dx-FK-bMy"/>
+                                    <constraint firstAttribute="width" constant="412" id="mKA-Yi-Hmv"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9d-GK-BQI">
+                                <rect key="frame" x="243" y="900" width="282" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="282" id="amb-DQ-whB"/>
+                                    <constraint firstAttribute="height" constant="95" id="dSq-yd-TYl"/>
+                                </constraints>
+                                <state key="normal" image="custom-btn"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2d-nQ-NcI" userLabel="playBtn">
+                                <rect key="frame" x="216" y="776" width="336" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="336" id="EO1-Ll-sCM"/>
+                                    <constraint firstAttribute="height" constant="95" id="awv-5b-ccv"/>
+                                </constraints>
+                                <state key="normal" image="play-btn"/>
+                                <connections>
+                                    <segue destination="nbQ-hY-7Ds" kind="show" id="R3E-N8-hso"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wyK-v0-k6p" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="76O-3y-edS"/>
-                            <constraint firstItem="wyK-v0-k6p" firstAttribute="centerY" secondItem="ktK-jY-r7L" secondAttribute="centerY" id="gNU-Bf-Q5N"/>
+                            <constraint firstItem="Z04-lj-eqj" firstAttribute="centerY" secondItem="ktK-jY-r7L" secondAttribute="centerY" constant="-24.5" id="0fh-3q-5MH"/>
+                            <constraint firstItem="SMm-BA-atA" firstAttribute="top" secondItem="KmX-fy-WkO" secondAttribute="bottom" constant="8" id="3Zw-0X-oze"/>
+                            <constraint firstItem="jjC-J2-fu1" firstAttribute="top" secondItem="j9d-GK-BQI" secondAttribute="bottom" constant="29" id="3x2-0j-k5T"/>
+                            <constraint firstItem="d2d-nQ-NcI" firstAttribute="top" secondItem="Z04-lj-eqj" secondAttribute="bottom" constant="41" id="6dZ-bG-TlM"/>
+                            <constraint firstItem="j9d-GK-BQI" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="Eev-1V-nEr"/>
+                            <constraint firstItem="SMm-BA-atA" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="div-Wg-lxe"/>
+                            <constraint firstItem="d2d-nQ-NcI" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="pz0-BY-CsJ"/>
+                            <constraint firstItem="Z04-lj-eqj" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="xHy-SY-9wo"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEh-KI-pKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60" y="124"/>
+            <point key="canvasLocation" x="59.375" y="123.63281249999999"/>
+        </scene>
+        <!--LevelSelector-->
+        <scene sceneID="N6G-kK-2Mb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LevelSelector" id="nbQ-hY-7Ds" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Cp-ca-JqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="274"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="custom-btn" width="282" height="95"/>
+        <image name="play-btn" width="282" height="95"/>
+        <image name="test-level-image" width="768" height="1024"/>
+    </resources>
 </document>
