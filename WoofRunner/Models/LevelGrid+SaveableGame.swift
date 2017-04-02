@@ -33,6 +33,14 @@ extension LevelGrid: SaveableGame {
         let storedObstacles = res.mutableSetValue(forKey: "obstacles")
         let storedPlatforms = res.mutableSetValue(forKey: "platforms")
 
+        for obstacle in getStoredObstacles(game: res) {
+            storedObstacles.add(obstacle)
+        }
+
+        for platform in getStoredPlatforms(game: res) {
+            storedPlatforms.add(platform)
+        }
+
         storedGame = res
 
         return res
