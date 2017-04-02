@@ -12,8 +12,8 @@ public class LMHomeViewModel {
 
     // MARK: - Public variables
 
-    public var featuredGames = Variable<[StoredGame]>([])
-    public var isLoading = Variable<Bool>(false)
+    public private(set) var featuredGames = Variable<[StoredGame]>([])
+    public private(set) var failure = Variable<Bool>(false)
 
     // MARK: - Private variables
 
@@ -23,12 +23,21 @@ public class LMHomeViewModel {
     // MARK: - Initializers
 
     public init() {
-        observeFeaturedGames()
+        loadGames()
     }
 
-    // MARK: - Public methods
+    // MARK: - Private methods
 
-    public func observeFeaturedGames() {
+    /// Loads all games from Core Data.
+    private func loadGames() {
+        gsm.getAllGames()
+            .onSuccess { games in
+                self.featuredGames.value = games
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+                self.failure.value = true
+            }
     }
 
 }
