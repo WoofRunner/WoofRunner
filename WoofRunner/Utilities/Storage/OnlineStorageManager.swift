@@ -115,13 +115,83 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
-        // Map StoredGame to NSDictionary
-        // ref.child(game.uuid!).setValue(game.export())
+        ref.child(game.uuid!).setValue(mapToJSON(game: game))
     }
 
     /// Clears all game data in online storage manager
     public func clear() {
         ref.setValue([])
+    }
+
+    // MARK: - Private methods
+
+    private func mapToJSON(game: StoredGame) -> NSDictionary {
+        var gameJSON = [String: Any]()
+
+        gameJSON["uuid"] = game.uuid
+        gameJSON["ownerId"] = game.ownerId
+        gameJSON["rows"] = game.rows
+        gameJSON["columns"] = game.columns
+
+        gameJSON["obstacles"] = mapObstaclesToJSON(game: game)
+        gameJSON["platforms"] = mapPlatformsToJSON(game: game)
+
+        let formatter = getDateFormatter()
+        gameJSON["createdAt"] = formatter.string(from: game.createdAt as! Date)
+        gameJSON["updatedAt"] = formatter.string(from: game.updatedAt as! Date)
+
+        return NSDictionary(dictionary: gameJSON)
+    }
+
+    private func mapObstaclesToJSON(game: StoredGame) -> [NSDictionary] {
+        guard let obstacles = game.obstacles else {
+            return []
+        }
+
+        var res = [NSDictionary]()
+        for item in obstacles {
+            let obstacle = item as! StoredObstacle
+            var obstacleJSON = [String: Any]()
+
+            obstacleJSON["positionX"] = obstacle.positionX
+            obstacleJSON["positionY"] = obstacle.positionY
+            obstacleJSON["radius"] = obstacle.radius
+            obstacleJSON["type"] = obstacle.type
+
+            res.append(NSDictionary(dictionary: obstacleJSON))
+        }
+
+        return res
+    }
+
+    private func mapPlatformsToJSON(game: StoredGame) -> [NSDictionary] {
+        guard let platforms = game.platforms else {
+            return []
+        }
+
+        var res = [NSDictionary]()
+        for item in platforms {
+            let platform = item as! StoredPlatform
+            var platformJSON = [String: Any]()
+
+            platformJSON["positionX"] = platform.positionX
+            platformJSON["positionY"] = platform.positionY
+            platformJSON["type"] = platform.type
+
+            res.append(NSDictionary(dictionary: platformJSON))
+        }
+
+        return res
+    }
+
+    private func getDateFormatter() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+
+        return formatter
     }
 
 }
