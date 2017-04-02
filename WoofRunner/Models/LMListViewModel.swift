@@ -16,16 +16,17 @@ import CoreData
 public class LMListViewModel {
 
     // MARK: - Public variables
-    public private(set) var listType = Variable<LevelListType>(.Downloaded)
+    public private(set) var listType = Variable<LevelListType>(.Created)
     public private(set) var games = Variable<[DisplayedGame]>([])
     public private(set) var failure = Variable<Bool>(false)
 
     // MARK: - Private variables
 
     private let gsm = GameStorageManager.getInstance()
+    private let disposeBag = DisposeBag()
 
     public init() {
-        loadGames()
+        subscribeToListType()
     }
 
     // MARK: - Public methods
@@ -67,28 +68,29 @@ public class LMListViewModel {
     }
 
     // MARK: - Private methods
-    private func loadGames() {
-        // TODO: Filter based on list type
-        if listType.value == .Created {
-            gsm.getAllGames()
-                .onSuccess { games in
-                    self.games.value = games
+    private func subscribeToListType() {
+        listType.asObservable().subscribe { type in
+            if type.element == .Created {
+                self.gsm.getAllGames()
+                    .onSuccess { games in
+                        self.games.value = games
+                    }
+                    .onFailure { error in
+                        print("\(error.localizedDescription)")
+                        self.failure.value = true
                 }
-                .onFailure { error in
-                    print("\(error.localizedDescription)")
-                    self.failure.value = true
-            }
-        } else {
-            gsm.loadAllPreviews()
-                .onSuccess { games in
-                    self.games.value = games
+            } else {
+                self.gsm.loadAllPreviews()
+                    .onSuccess { games in
+                        self.games.value = games
+                    }
+                    .onFailure { error in
+                        print("\(error.localizedDescription)")
+                        self.failure.value = true
                 }
-                .onFailure { error in
-                    print("\(error.localizedDescription)")
-                    self.failure.value = true
             }
         }
-
+        .addDisposableTo(disposeBag)
     }
 
 }
