@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,10 +31,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnG-P1-GCq">
-                                <rect key="frame" x="20" y="20" width="141" height="65"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="35"/>
-                                <state key="normal" title="Home">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnG-P1-GCq">
+                                <rect key="frame" x="30" y="28" width="80" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="B1B-jb-yVH"/>
+                                    <constraint firstAttribute="width" secondItem="VnG-P1-GCq" secondAttribute="height" multiplier="305:256" id="aDR-um-qEc"/>
+                                </constraints>
+                                <state key="normal" title="Home" image="home-button">
                                     <color key="titleColor" red="0.85329520962012562" green="0.69795945232376311" blue="1" alpha="0.83834546232876717" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -43,8 +47,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VnG-P1-GCq" firstAttribute="leading" secondItem="JD4-3v-opV" secondAttribute="leadingMargin" id="Na8-38-G6A"/>
-                            <constraint firstItem="VnG-P1-GCq" firstAttribute="top" secondItem="I4Q-kf-4qZ" secondAttribute="bottom" id="obZ-eV-28G"/>
+                            <constraint firstItem="VnG-P1-GCq" firstAttribute="leading" secondItem="JD4-3v-opV" secondAttribute="leadingMargin" constant="10" id="Na8-38-G6A"/>
+                            <constraint firstItem="VnG-P1-GCq" firstAttribute="top" secondItem="I4Q-kf-4qZ" secondAttribute="bottom" constant="8" id="obZ-eV-28G"/>
                         </constraints>
                         <connections>
                             <outlet property="dataSource" destination="rrS-Wa-h6v" id="2L0-H8-Fb8"/>
@@ -62,4 +66,7 @@
             <point key="canvasLocation" x="136.5234375" y="196.77891654465591"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home-button" width="256" height="256"/>
+    </resources>
 </document>
