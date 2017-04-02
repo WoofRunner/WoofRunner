@@ -22,6 +22,7 @@ public class OnlineStorageManager {
 
     // MARK: - Private variables
     private let ref: FIRDatabaseReference
+    private var facebookUserId: String?
 
     // MARK: - Private constants
     private static let GAMES = "games"
@@ -75,7 +76,9 @@ public class OnlineStorageManager {
     /// Authenticates with Firebase using Facebook token.
     /// - Parameters:
     ///     - token: Facebook token obtained from Facebook authentication
-    public func auth(token: String) -> Future<String, OnlineStorageManagerError> {
+    public func auth(token: String, userId: String) -> Future<String, OnlineStorageManagerError> {
+        self.facebookUserId = userId
+
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
 
         return Future { complete in
@@ -125,7 +128,7 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
-        game.ownerId = FIRAuth.auth()?.currentUser?.uid
+        game.ownerId = facebookUserId
         ref.child(game.uuid!).setValue(mapToJSON(game: game))
     }
 

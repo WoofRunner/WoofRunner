@@ -35,7 +35,8 @@ public class LMLoginViewModel {
     public func authWithFacebook(viewController vc: UIViewController) {
         if let accessToken = AccessToken.current {
             self.facebookAuthed.value = true
-            self.authWithFirebase(token: accessToken.authenticationToken)
+            self.authWithFirebase(token: accessToken.authenticationToken,
+                                  userId: accessToken.userId!)
             return
         }
 
@@ -48,7 +49,8 @@ public class LMLoginViewModel {
                 print("Log in cancelld")
             case .success( _, _, let accessToken):
                 self.facebookAuthed.value = true
-                self.authWithFirebase(token: accessToken.authenticationToken)
+                self.authWithFirebase(token: accessToken.authenticationToken,
+                                      userId: accessToken.userId!)
             }
         }
     }
@@ -56,8 +58,8 @@ public class LMLoginViewModel {
     /// Authenticates with Firebase
     /// - Parameters:
     ///     - token: Facebook token obtained from authentication
-    private func authWithFirebase(token: String) {
-        osm.auth(token: token)
+    private func authWithFirebase(token: String, userId: String) {
+        osm.auth(token: token, userId: userId)
             .onSuccess { _ in self.firebaseAuthed.value = true }
             .onFailure { _ in self.authFailure.value = true }
     }
