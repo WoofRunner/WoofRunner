@@ -28,9 +28,10 @@ public class LMHomeViewModel {
 
     // MARK: - Private methods
 
-    /// Loads all games from Core Data.
+    /// Loads all games from Firebase. Featured games are basically games uploaded into Firebase,
+    /// for now.
     private func loadGames() {
-        gsm.getAllGames()
+        gsm.loadAllPreviews()
             .onSuccess { games in
                 self.featuredGames.value = games
             }
