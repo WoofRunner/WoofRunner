@@ -25,7 +25,6 @@ public class LMListViewController: UIViewController {
     // MARK: - Private variables
 
     private var vm = LMListViewModel()
-    private var games = Variable<[StoredGame]>([])
     private let disposeBag = DisposeBag()
 
     // MARK: - IBOutlets
@@ -53,7 +52,7 @@ public class LMListViewController: UIViewController {
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // For embeded segue
         if let destination = segue.destination as? LMListCollectionViewController {
-            destination.games = games
+            destination.games = vm.games
         }
     }
 

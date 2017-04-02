@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-823" y="129"/>
         </scene>
-        <!--I-->
+        <!--View Controller-->
         <scene sceneID="IPo-Qv-boX">
             <objects>
-                <viewController id="J4N-5P-slD" customClass="I" sceneMemberID="viewController">
+                <viewController id="J4N-5P-slD" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c22-Pv-Vzc"/>
                         <viewControllerLayoutGuide type="bottom" id="dbh-9l-uTV"/>

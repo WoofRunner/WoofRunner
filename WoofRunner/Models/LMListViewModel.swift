@@ -6,8 +6,10 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+import Sync
 import Foundation
 import RxSwift
+import CoreData
 
 /**
  View model for LMListView.
@@ -17,15 +19,17 @@ public class LMListViewModel {
     // MARK: - Public variables
     public private(set) var listType = Variable<LevelListType>(.Downloaded)
     public private(set) var games = Variable<[StoredGame]>([])
+    public private(set) var failure = Variable<Bool>(false)
 
     // MARK: - Private variables
 
     private let gsm = GameStorageManager.getInstance()
 
     public init() {
+        loadGames()
     }
 
-    // MARK: - Public method
+    // MARK: - Public methods
 
     /// Sets the type of games shown in the current level list view.
     /// - Parameters:
@@ -37,28 +41,43 @@ public class LMListViewModel {
     /// FOR TESTING ONLY.
     /// Creates a dummy game in CoreData.
     public func createOneGame() {
+        let stub = LevelGrid()
+        gsm.saveGame(stub)
+            .flatMap { _ in self.gsm.getAllGames() }
+            .onSuccess { games in
+                self.games.value = games
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+                self.failure.value = true
+        }
     }
 
     /// FOR TESTING ONLY.
     /// Creates a dummy game in Firebase.
     public func uploadOneGame() {
+        let stub = LevelGrid()
+        gsm.saveGame(stub)
+            .onSuccess { game in
+                self.gsm.uploadGame(uuid: game.uuid!)
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+                self.failure.value = true
+        }
     }
 
-}
-
-private struct SaveableStub: SaveableGame {
-
-    fileprivate func toStoredGame() -> StoredGame {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let saved = StoredGame(context: appDelegate.dataStack.mainContext)
-        saved.uuid = UUID().uuidString
-        saved.createdAt = Date() as NSDate?
-        saved.updatedAt = Date() as NSDate?
-
-        return saved
-    }
-
-    fileprivate func load(from storedGame: StoredGame) {
+    // MARK: - Private methods
+    private func loadGames() {
+        // TODO: Filter based on list type
+        gsm.getAllGames()
+            .onSuccess { games in
+                self.games.value = games
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+                self.failure.value = true
+            }
     }
 
 }

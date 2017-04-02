@@ -29,8 +29,17 @@ extension LevelGrid: SaveableGame {
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
         res.updatedAt = Date() as NSDate?
-        res.addToObstacles(NSSet(array: getStoredObstacles()))
-        res.addToPlatforms(NSSet(array: getStoredPlatforms()))
+
+        let storedObstacles = res.mutableSetValue(forKey: "obstacles")
+        let storedPlatforms = res.mutableSetValue(forKey: "platforms")
+
+        for obstacle in getStoredObstacles(game: res) {
+            storedObstacles.add(obstacle)
+        }
+
+        for platform in getStoredPlatforms(game: res) {
+            storedPlatforms.add(platform)
+        }
 
         storedGame = res
 
@@ -60,13 +69,14 @@ extension LevelGrid: SaveableGame {
     }
 
     /// Returns the StoredObstacle mapping of the current game model.
-    private func getStoredObstacles() -> [StoredObstacle] {
+    private func getStoredObstacles(game: StoredGame) -> [StoredObstacle] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var res = [StoredObstacle]()
 
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
                 let storedObstacle = StoredObstacle(context: appDelegate.dataStack.mainContext)
+                storedObstacle.game = game
                 storedObstacle.type = String(obstacle)
                 storedObstacle.positionX = Int16(col)
                 storedObstacle.positionY = Int16(row)
@@ -83,16 +93,17 @@ extension LevelGrid: SaveableGame {
 
     /// Returns the StoredPlatform mapping of the current game model.
     /// - Returns: array of StoredPlatform objects
-    private func getStoredPlatforms() -> [StoredPlatform] {
+    private func getStoredPlatforms(game: StoredGame) -> [StoredPlatform] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var res = [StoredPlatform]()
 
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
                 let storedPlatform = StoredPlatform(context: appDelegate.dataStack.mainContext)
-                storedPlatform.setValue(String(platform), forKey: "type")
-                storedPlatform.setValue(col, forKey: "positionX")
-                storedPlatform.setValue(row, forKey: "positionY")
+                storedPlatform.game = game
+                storedPlatform.type = String(platform)
+                storedPlatform.positionX = Int16(row)
+                storedPlatform.positionY = Int16(col)
 
                 res.append(storedPlatform)
             }
