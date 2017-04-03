@@ -115,7 +115,7 @@ class ReactiveGridNode {
             let obstacleBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
                                              length: CGFloat(size), chamferRadius: 0.05)
             for material in obstacleBoxGeometry.materials {
-                material.emission.contents = UIColor.lightGray
+                material.diffuse.contents = UIColor.lightGray
                 material.transparency = 0
             }
             modelNode = SCNNode(geometry: obstacleBoxGeometry)
@@ -124,6 +124,7 @@ class ReactiveGridNode {
         } else {
             return
         }
+        
         // Tag ModelNode
         modelNode.name = GridViewModel.modelNodeName
         

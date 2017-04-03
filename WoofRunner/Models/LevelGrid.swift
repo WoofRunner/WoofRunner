@@ -73,8 +73,8 @@ class LevelGrid {
         } else if currentSelectedBrush.isObstacle() && gridVM.platformType.value != TileType.none {
             gridVM.setObstacle(currentSelectedBrush)
         } else if currentSelectedBrush == TileType.none {
-            // Current implementation: Delete both obstacle and platform
-            gridVM.removePlatform()
+            // Current implementation: Delete top level node; obstacle if any else platform
+            gridVM.removeTop()
         }
         
     }
@@ -122,6 +122,17 @@ class LevelGrid {
         
         // Update level length
         self.length += extend
+    }
+    
+    func beginSelection(_ pos: (x: Float, y: Float)) {
+        // Identify grid
+        let col = Int(pos.x / Tile.TILE_WIDTH)
+        let row = Int(pos.y / Tile.TILE_WIDTH)
+        // Check valid coord
+        guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < self.length else {
+            return
+        }
+        print(row, col)
     }
     
     private func setupObservables(_ gridVM: GridViewModel) {

@@ -33,6 +33,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var currentLevel = LevelGrid()
     var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
     var spriteScene: LevelDesignerOverlayScene?
+    var longPress = false
 
     private let gsm = GameStorageManager.getInstance()
 
@@ -60,7 +61,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         self.view.addGestureRecognizer(panGesture)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapGesture)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 0.5
+        self.view.addGestureRecognizer(longPressGesture)
 		panGesture.cancelsTouchesInView = false // Turn this property to prevent touchesCancelled from happening
 		tapGesture.cancelsTouchesInView = false
         
@@ -101,28 +106,18 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
-    // MARK: Helper Functions
-    private func canEdit() -> Bool {
-        guard let skScene = spriteScene else {
-            return true
-        }
-        return skScene.overlayMenu.alpha == 0
-    }
-    
     func handlePan(_ sender: UIPanGestureRecognizer) {
-
-        if (!canEdit()) {
+        if (!canEdit() || longPress) {
             return
         }
 		
         let camera = LDScene.cameraNode
-
         let translation = sender.translation(in: sceneView)
 
         let location = sender.location(in: sceneView)
         let secLocation = CGPoint(x: location.x + translation.x,
                                   y: location.y + translation.y)
-
+        // Project tap to scene
         let P1 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 0.0))
         let P2 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 1.0))
 
@@ -157,20 +152,62 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         }
     }
 
-    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-		
+    func handleTap(_ sender: UIGestureRecognizer) {
         if (!canEdit()) {
             return
         }
 		
         // Check what nodes are tapped
-        let pos = gestureRecognize.location(in: sceneView)
+        let pos = sender.location(in: sceneView)
         let hitResults = sceneView.hitTest(pos, options: [:])
         
         // check that we clicked on at least one object
         if hitResults.count > 0 {
-            handleNodeTap(hitResults)
+            guard let toggleNode = getValidNode(hitResults) else {
+                return
+            }
+            currentLevel.toggleGrid(x: toggleNode.position.x, y: toggleNode.position.y, currentSelectedBrush)
         }
+    }
+    
+    // Bulk Toggle
+    func handleLongPress(_ sender: UIGestureRecognizer) {
+        switch(sender.state) {
+        case .began:
+            print("began")
+            longPress = true
+            let pos = sender.location(in: sceneView)
+            let hitResults = sceneView.hitTest(pos, options: [:])
+            
+            guard hitResults.count > 0 else {
+                longPress = false
+                break
+            }
+            let selectedNode = getValidNode(hitResults)
+            guard let startNode = selectedNode else {
+                longPress = false
+                break
+            }
+            currentLevel.beginSelection((x: startNode.position.x, y: startNode.position.y))
+            break
+        case .changed:
+            // print("changed")
+            break
+        default:
+            longPress = false
+            print("ended")
+            break
+        }
+        
+        
+    }
+    
+    // MARK: Helper Functions
+    private func canEdit() -> Bool {
+        guard let skScene = spriteScene else {
+            return true
+        }
+        return skScene.overlayMenu.alpha == 0
     }
     
     // Update the current level view after changes to level model
@@ -189,10 +226,10 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     }
     
     // Handle the logic for toggling of grid nodes
-    private func handleNodeTap(_ hitResults: [SCNHitTestResult]) {
+    private func getValidNode(_ hitResults: [SCNHitTestResult]) -> SCNNode? {
+        let togglingNode: SCNNode?
         for result in hitResults {
             let resultantNode = result.node
-            let togglingNode: SCNNode?
             // Skip if node is transparent
             guard resultantNode.geometry?.firstMaterial?.transparency != 0 else {
                 continue
@@ -203,17 +240,14 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                     continue
                 }
                 togglingNode = parentNode
-                return currentLevel.toggleGrid(x: parentNode.position.x, y: parentNode.position.y, currentSelectedBrush)
+            } else {
+                // Else toggle node
+                togglingNode = resultantNode
             }
-            // Else toggle node
-            togglingNode = resultantNode
             
-            // Toggle if there's a node to toggle
-            guard let toggleNode = togglingNode else {
-                return
-            }
-            return currentLevel.toggleGrid(x: toggleNode.position.x, y: toggleNode.position.y, currentSelectedBrush)
+            return togglingNode
         }
+        return nil
     }
 
     /// Saves the current level into CoreData.

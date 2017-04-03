@@ -51,4 +51,12 @@ class GridViewModel {
     func removeObstacle() {
         obstacleType.value = .none
     }
+    
+    // Remove top level node; obstacle if any else platform
+    func removeTop() {
+        guard obstacleType.value == .none else {
+            return removeObstacle()
+        }
+        return removePlatform()
+    }
 }
