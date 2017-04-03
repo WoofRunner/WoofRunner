@@ -6,7 +6,7 @@
         <attribute name="ownerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rows" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="obstacles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredObstacle" syncable="YES"/>
         <relationship name="platforms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredPlatform" syncable="YES"/>
     </entity>
