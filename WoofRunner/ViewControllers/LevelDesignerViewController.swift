@@ -11,6 +11,7 @@ import QuartzCore
 import SceneKit
 import RxSwift
 import RxCocoa
+import PopupDialog
 
 class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
@@ -28,6 +29,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
     var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
+	var currentLevelName = "Custom Level 1" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
 
     private let gsm = GameStorageManager.getInstance()
@@ -187,13 +189,51 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     private func saveGame() {
         gsm.saveGame(currentLevel)
             .onSuccess { _ in
-                // TODO: Handle success
+				self.showSaveFeedback(title: "Save Success", message: "Game is successfully saved as \(self.currentLevelName)")
             }
             .onFailure { error in
                 print("\(error.localizedDescription)")
-                // TODO: Handle error
+                self.showSaveFeedback(title: "Save Failed", message: "Oops! An error occured while saving!")
         }
     }
+	
+	// - MARK: Popup Dialogs
+	
+	private func showSaveFeedback(title: String, message: String) {
+		let popup = PopupDialog(title: title, message: message, image: nil)
+		
+		let okBtn = DefaultButton(title: "Ok") {
+			popup.dismiss()
+		}
+		
+		// Add buttons to dialog
+		popup.addButton(okBtn)
+		
+		// Customising Dialog Style
+		
+		// Casting needed as per library's requirements
+		//let vc = popup.viewController as! PopupDialogDefaultViewController
+		//vc.modalTransitionStyle = .zoomIn
+		
+		let dialogAppearance = PopupDialogDefaultView.appearance()
+		dialogAppearance.titleFont            = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
+		dialogAppearance.titleColor           = UIColor(white: 0.4, alpha: 1)
+		dialogAppearance.titleTextAlignment   = .center
+		dialogAppearance.messageFont          = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
+		dialogAppearance.messageColor         = UIColor(white: 0.6, alpha: 1)
+		dialogAppearance.messageTextAlignment = .center
+		
+		let overlayAppearance = PopupDialogOverlayView.appearance()
+		overlayAppearance.color       = UIColor.black
+		overlayAppearance.blurRadius  = 30
+		overlayAppearance.blurEnabled = true
+		overlayAppearance.liveBlur    = false
+		overlayAppearance.opacity     = 0.2
+		
+
+		self.present(popup, animated: true, completion: nil)
+	}
+	
 	
 	// - MARK: LDOverlayDelegate
 	
