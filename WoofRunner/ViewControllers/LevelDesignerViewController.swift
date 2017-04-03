@@ -20,10 +20,14 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     static var cameraOffset: Float = 2.0
     static var paddingTiles: Float = 2.0
 	
+    // Level Designer Settings
+    static var autoExtendLevel = true
+    static var extensionLength = 10
+    
 	let disposeBag = DisposeBag();
 
 	let levelCols = 4
-    let chunkLength = 20
+    let chunkLength = 15
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
@@ -146,7 +150,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             // Add padding to near plane clipping
             let padding = -Tile.TILE_WIDTH * LevelDesignerViewController.paddingTiles
             let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / Tile.TILE_WIDTH)
-            currentLevel.reloadChunk(from: startRow)
+            updateCurrentLevel(from: startRow)
             break;
         default:
             break;
@@ -165,21 +169,50 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         
         // check that we clicked on at least one object
         if hitResults.count > 0 {
-            for result in hitResults {
-                // Check if node is transparent
-                let gridNode = result.node
-                guard gridNode.geometry?.firstMaterial?.transparency != 0 else {
+            handleNodeTap(hitResults)
+        }
+    }
+    
+    // Update the current level view after changes to level model
+    private func updateCurrentLevel(from startRow: Int) {
+        if LevelDesignerViewController.autoExtendLevel {
+            if startRow + chunkLength > currentLevel.length {
+                // Extend the level in bulk of {extensionLength}, reduce overhead
+                let extend = startRow + chunkLength - currentLevel.length
+                            + LevelDesignerViewController.extensionLength - 1
+                let originalLength = currentLevel.length
+                currentLevel.extendLevel(by: extend)
+                LDScene.updateLevel(currentLevel, from: originalLength)
+            }
+        }
+        currentLevel.reloadChunk(from: startRow)
+    }
+    
+    // Handle the logic for toggling of grid nodes
+    private func handleNodeTap(_ hitResults: [SCNHitTestResult]) {
+        for result in hitResults {
+            let resultantNode = result.node
+            let togglingNode: SCNNode?
+            // Skip if node is transparent
+            guard resultantNode.geometry?.firstMaterial?.transparency != 0 else {
+                continue
+            }
+            // Take parent is node is a model
+            if resultantNode.name == GridViewModel.modelNodeName {
+                guard let parentNode = resultantNode.parent else {
                     continue
                 }
-                if gridNode.name == "modelNode" {
-                    guard let parentNode = gridNode.parent else {
-                        continue
-                    }
-                    return currentLevel.toggleGrid(x: parentNode.position.x, y: parentNode.position.y, currentSelectedBrush)
-                }
-                // Else toggle
-                return currentLevel.toggleGrid(x: gridNode.position.x, y: gridNode.position.y, currentSelectedBrush)
+                togglingNode = parentNode
+                return currentLevel.toggleGrid(x: parentNode.position.x, y: parentNode.position.y, currentSelectedBrush)
             }
+            // Else toggle node
+            togglingNode = resultantNode
+            
+            // Toggle if there's a node to toggle
+            guard let toggleNode = togglingNode else {
+                return
+            }
+            return currentLevel.toggleGrid(x: toggleNode.position.x, y: toggleNode.position.y, currentSelectedBrush)
         }
     }
 

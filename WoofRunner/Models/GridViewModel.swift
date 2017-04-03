@@ -11,6 +11,8 @@ import RxCocoa
 
 class GridViewModel {
     
+    static var modelNodeName = "modelNode"
+    
     var gridPos: Variable<Position>
     var size = Variable<Float>(1.0)
     var platformType = Variable<TileType>(.none)
