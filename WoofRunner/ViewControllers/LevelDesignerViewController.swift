@@ -202,7 +202,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	private func showSaveFeedback(title: String, message: String) {
 		let popup = PopupDialog(title: title, message: message, image: nil)
 		
-		let okBtn = DefaultButton(title: "Ok") {
+		let okBtn = DefaultButton(title: "OK") {
 			popup.dismiss()
 		}
 		
@@ -210,11 +210,33 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		popup.addButton(okBtn)
 		
 		// Customising Dialog Style
+		customisePopupDialog()
+
+		self.present(popup, animated: true, completion: nil)
+	}
+	
+	private func showBackWarning() {
+		let popup = PopupDialog(title: "Warning", message: "Any unsaved changes will be lost, proceed anyway?", image: nil)
 		
-		// Casting needed as per library's requirements
-		//let vc = popup.viewController as! PopupDialogDefaultViewController
-		//vc.modalTransitionStyle = .zoomIn
+		let okBtn = DefaultButton(title: "OK") {
+			self.dismiss(animated: true, completion: nil)
+		}
 		
+		let cancelBtn = CancelButton(title: "CANCEL") {
+			popup.dismiss()
+		}
+		
+		// Add buttons to dialog
+		popup.addButtons([okBtn, cancelBtn])
+		
+		// Customising Dialog Style
+		customisePopupDialog()
+		
+		self.present(popup, animated: true, completion: nil)
+	}
+	
+	private func customisePopupDialog() {
+		// Dialog
 		let dialogAppearance = PopupDialogDefaultView.appearance()
 		dialogAppearance.titleFont            = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
 		dialogAppearance.titleColor           = UIColor(white: 0.4, alpha: 1)
@@ -223,15 +245,20 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		dialogAppearance.messageColor         = UIColor(white: 0.6, alpha: 1)
 		dialogAppearance.messageTextAlignment = .center
 		
+		// overlay
 		let overlayAppearance = PopupDialogOverlayView.appearance()
-		overlayAppearance.color       = UIColor.black
+		overlayAppearance.color       = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
 		overlayAppearance.blurRadius  = 30
 		overlayAppearance.blurEnabled = true
 		overlayAppearance.liveBlur    = false
-		overlayAppearance.opacity     = 0.2
 		
-
-		self.present(popup, animated: true, completion: nil)
+		// Default buttons
+		let defaultBtnAppearance = DefaultButton.appearance()
+		defaultBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+		
+		// Cancel Button
+		let cancelBtnAppearance = CancelButton.appearance()
+		cancelBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
 	}
 	
 	
@@ -246,7 +273,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	}
 	
 	internal func back() {
-		self.dismiss(animated: true, completion: nil)
+		showBackWarning()
 	}
 
 }
