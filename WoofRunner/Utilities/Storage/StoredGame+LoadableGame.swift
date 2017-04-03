@@ -20,7 +20,7 @@ extension StoredGame: LoadableGame {
             let col = Int(platform.positionX)
             let row = Int(platform.positionY)
 
-            res[row][col] = Int(platform.type!)!
+            res[col][row] = Int(platform.type!)!
         }
 
         return res
@@ -38,7 +38,7 @@ extension StoredGame: LoadableGame {
             let col = Int(obstacle.positionX)
             let row = Int(obstacle.positionY)
 
-            res[row][col] = Int(obstacle.type!)!
+            res[col][row] = Int(obstacle.type!)!
         }
 
         return res
