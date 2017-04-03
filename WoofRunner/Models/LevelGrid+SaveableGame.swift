@@ -70,8 +70,8 @@ extension LevelGrid: SaveableGame {
             for (col, obstacle) in obstacles.enumerated() {
                 let storedObstacle = StoredObstacle(context: context)
                 storedObstacle.type = String(obstacle)
-                storedObstacle.positionX = Int16(col)
-                storedObstacle.positionY = Int16(row)
+                storedObstacle.positionX = Int16(row)
+                storedObstacle.positionY = Int16(col)
 
                 // Radius of each obstacle not determined yet
                 storedObstacle.radius = 1
