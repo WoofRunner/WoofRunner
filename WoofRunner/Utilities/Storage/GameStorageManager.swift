@@ -113,9 +113,7 @@ public class GameStorageManager {
     // MARK: - Private methods
 
     private func mapJSONtoStoredGame(json: NSDictionary) -> StoredGame {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let storedGame = StoredGame(
-            context: appDelegate.coreDataStack.persistentContainer.viewContext)
+        let storedGame = StoredGame(context: cdm.context)
 
         storedGame.uuid = json.value(forKey: "uuid") as? String
         storedGame.ownerId = json.value(forKey: "ownerId") as? String
@@ -157,12 +155,9 @@ public class GameStorageManager {
     }
 
     private func mapJSONtoStoredPlatforms(json: [NSDictionary]) -> [StoredPlatform] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
         var res = [StoredPlatform]()
         for platformJSON in json {
-            let platform = StoredPlatform(
-                context: appDelegate.coreDataStack.persistentContainer.viewContext)
+            let platform = StoredPlatform(context: cdm.context)
 
             platform.positionX = Int16(platformJSON.value(forKey: "positionX") as! String)!
             platform.positionY = Int16(platformJSON.value(forKey: "positionY") as! String)!
@@ -175,12 +170,9 @@ public class GameStorageManager {
     }
 
     private func mapJSONtoStoredObstacles(json: [NSDictionary]) -> [StoredObstacle] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
         var res = [StoredObstacle]()
         for obstacleJSON in json {
-            let obstacle = StoredObstacle(
-                context: appDelegate.coreDataStack.persistentContainer.viewContext)
+            let obstacle = StoredObstacle(context: cdm.context)
 
             obstacle.positionX = Int16(obstacleJSON.value(forKey: "positionX") as! String)!
             obstacle.positionY = Int16(obstacleJSON.value(forKey: "positionY") as! String)!

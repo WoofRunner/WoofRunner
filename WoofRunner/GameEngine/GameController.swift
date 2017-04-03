@@ -94,22 +94,18 @@ class GameController: UIViewController, PlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        World.setUpWorld(self.view)
 
-        let newPlayer = Player()
-        World.spawnGameObject(newPlayer)
-        World.registerGestureInput(newPlayer)
-        newPlayer.delegate = self
-        self.player = newPlayer
-        
-        let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData)
-        World.spawnGameObject(tileManager)
-        self.tileManager = tileManager
-        
-        let camera = Camera()
-        World.spawnGameObject(camera)
-        //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
+        guard let uuid = gameUUID else {
+            fatalError("Game UUID not defined")
+        }
+
+        GameStorageManager.getInstance().getGame(uuid: uuid)
+            .onSuccess { game in
+                self.setup(game: game)
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,12 +121,23 @@ class GameController: UIViewController, PlayerDelegate {
 		self.gameUUID = uuid
 	}
 	
-    /// Returns a tile manager for a game loaded from CoreData.
-    /// - Parameters:
-    ///     - uuid: unique ID string of the game to identify which game to laod
-    /// - Returns: TileManager that is created using the data from loaded game
-    private func getTileManagerForGame(uuid: String) -> TileManager {
-        return TileManager(obstacleData: [], platformData: [])
+    private func setup(game: StoredGame) {
+        World.setUpWorld(self.view)
+
+        let newPlayer = Player()
+        World.spawnGameObject(newPlayer)
+        World.registerGestureInput(newPlayer)
+        newPlayer.delegate = self
+        self.player = newPlayer
+
+        let tileManager = TileManager(obstacleData: game.getObstacles(),
+                                      platformData: game.getPlatforms())
+        World.spawnGameObject(tileManager)
+        self.tileManager = tileManager
+
+        let camera = Camera()
+        World.spawnGameObject(camera)
+        //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
     }
     
     // notified by player when player dies

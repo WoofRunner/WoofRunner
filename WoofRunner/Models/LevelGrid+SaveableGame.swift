@@ -6,19 +6,21 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension LevelGrid: SaveableGame {
 
     func toStoredGame() -> StoredGame {
+        let cdm = CoreDataManager.getInstance()
+        let context = cdm.context
+
         // If the game was originally loaded, we return the
         let res: StoredGame
 
         if let currentStoredGame = storedGame {
             res = currentStoredGame
         } else {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            res = StoredGame(context: appDelegate.coreDataStack.persistentContainer.viewContext)
+            res = StoredGame(context: context)
 
             // Set values for a new StoredGame
             res.uuid = UUID().uuidString
@@ -28,18 +30,9 @@ extension LevelGrid: SaveableGame {
         // Set StoredGame values
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
-        res.updatedAt = Date() as NSDate?
 
-        let storedObstacles = res.mutableSetValue(forKey: "obstacles")
-        let storedPlatforms = res.mutableSetValue(forKey: "platforms")
-
-        for obstacle in getStoredObstacles(game: res) {
-            storedObstacles.add(obstacle)
-        }
-
-        for platform in getStoredPlatforms(game: res) {
-            storedPlatforms.add(platform)
-        }
+        createStoredObstacles(game: res)
+        createStoredPlatforms(game: res)
 
         storedGame = res
 
@@ -69,47 +62,41 @@ extension LevelGrid: SaveableGame {
     }
 
     /// Returns the StoredObstacle mapping of the current game model.
-    private func getStoredObstacles(game: StoredGame) -> [StoredObstacle] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        var res = [StoredObstacle]()
+    private func createStoredObstacles(game: StoredGame) {
+        let cdm = CoreDataManager.getInstance()
+        let context = cdm.context
 
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
-                let storedObstacle = StoredObstacle(
-                    context: appDelegate.coreDataStack.persistentContainer.viewContext)
+                let storedObstacle = StoredObstacle(context: context)
                 storedObstacle.type = String(obstacle)
-                storedObstacle.positionX = Int16(col)
-                storedObstacle.positionY = Int16(row)
+                storedObstacle.positionX = Int16(row)
+                storedObstacle.positionY = Int16(col)
 
                 // Radius of each obstacle not determined yet
                 storedObstacle.radius = 1
 
-                res.append(storedObstacle)
+                game.addToObstacles(storedObstacle)
             }
         }
-
-        return res
     }
 
     /// Returns the StoredPlatform mapping of the current game model.
     /// - Returns: array of StoredPlatform objects
-    private func getStoredPlatforms(game: StoredGame) -> [StoredPlatform] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        var res = [StoredPlatform]()
+    private func createStoredPlatforms(game: StoredGame) {
+        let cdm = CoreDataManager.getInstance()
+        let context = cdm.context
 
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
-                let storedPlatform = StoredPlatform(
-                    context: appDelegate.coreDataStack.persistentContainer.viewContext)
+                let storedPlatform = StoredPlatform(context: context)
                 storedPlatform.type = String(platform)
                 storedPlatform.positionX = Int16(row)
                 storedPlatform.positionY = Int16(col)
 
-                res.append(storedPlatform)
+                game.addToPlatforms(storedPlatform)
             }
         }
-
-        return res
     }
 
 }

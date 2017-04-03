@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		120208021E7448710066BD4C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208011E7448710066BD4C /* CoreDataStack.swift */; };
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
-		120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */; };
 		121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */; };
+		123F4F8E1E915F52000E1B1C /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F4F8D1E915F52000E1B1C /* CoreDataTest.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
 		12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12882B881E857059004C3B76 /* LMLoginViewController.swift */; };
+		12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
 		12A82FD81E727072008B721E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD71E727072008B721E /* Assets.xcassets */; };
@@ -134,11 +135,12 @@
 		07727E6850DA4FD03086A970 /* Pods-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		120208011E7448710066BD4C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
+		123F4F8D1E915F52000E1B1C /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataTest.swift; path = WoofRunnerTests/CoreDataTest.swift; sourceTree = SOURCE_ROOT; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
 		12882B881E857059004C3B76 /* LMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewController.swift; sourceTree = "<group>"; };
+		12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FCE1E727072008B721E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12A82FD01E727072008B721E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -293,7 +295,7 @@
 				12AD18211E8969F700EF5C46 /* SaveableGame.swift */,
 				12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */,
 				12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */,
-				120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */,
+				12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -476,6 +478,7 @@
 		12E36F991E7552EF00135DB7 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				123F4F8D1E915F52000E1B1C /* CoreDataTest.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -865,7 +868,6 @@
 				12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */,
 				12DC8DBA1E8928FB00B8A40C /* GameStorageManager.swift in Sources */,
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
-				120208081E744C9A0066BD4C /* WoofRunner.xcdatamodeld in Sources */,
 				3FD5D0231E8F5BB7007573C4 /* LSListItemViewModel.swift in Sources */,
 				12DA42061E86627700C23137 /* LMListViewController.swift in Sources */,
 				121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */,
@@ -922,6 +924,7 @@
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */,
+				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */,
@@ -956,6 +959,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123F4F8E1E915F52000E1B1C /* CoreDataTest.swift in Sources */,
 				12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1213,12 +1217,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		120208061E744C9A0066BD4C /* WoofRunner.xcdatamodeld */ = {
+		12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */,
+				12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */,
 			);
-			currentVersion = 120208071E744C9A0066BD4C /* WoofRunner.xcdatamodel */;
+			currentVersion = 12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */;
 			path = WoofRunner.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

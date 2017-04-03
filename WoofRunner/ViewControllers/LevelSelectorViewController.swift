@@ -106,7 +106,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
 		let selectedUUID = levels[index].uuid!
 		print("Selected Item: \(selectedUUID)")
-		//self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
+		self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
 	}
 	
 	// MARK: - View Setup Methods

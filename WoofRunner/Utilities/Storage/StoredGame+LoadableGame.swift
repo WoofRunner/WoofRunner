@@ -17,8 +17,8 @@ extension StoredGame: LoadableGame {
         let storedPlatforms = self.platforms?.map { $0 as! StoredPlatform } ?? [StoredPlatform]()
 
         for platform in storedPlatforms {
-            let col = Int(platform.positionX)
-            let row = Int(platform.positionY)
+            let row = Int(platform.positionX)
+            let col = Int(platform.positionY)
 
             res[row][col] = Int(platform.type!)!
         }
@@ -35,8 +35,8 @@ extension StoredGame: LoadableGame {
         let storedObstacles = self.obstacles?.map { $0 as! StoredObstacle } ?? [StoredObstacle]()
 
         for obstacle in storedObstacles {
-            let col = Int(obstacle.positionX)
-            let row = Int(obstacle.positionY)
+            let row = Int(obstacle.positionX)
+            let col = Int(obstacle.positionY)
 
             res[row][col] = Int(obstacle.type!)!
         }
@@ -45,7 +45,7 @@ extension StoredGame: LoadableGame {
     }
 
     private func create2DArray(rows: Int, cols: Int, initialValue: Int) -> [[Int]] {
-        return [[Int]](repeating: [Int](repeating: initialValue, count: rows), count: cols)
+        return [[Int]](repeating: [Int](repeating: initialValue, count: cols), count: rows)
     }
 
 }
