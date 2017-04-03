@@ -1,5 +1,5 @@
 //
-//  CustomLevelViewController.swift
+//  MenuViewController.swift
 //  WoofRunner
 //
 //  Created by See Loo Jane on 3/4/17.
@@ -8,12 +8,10 @@
 
 import UIKit
 
-class CustomLevelViewController: UIViewController {
-	
-	
-	@IBOutlet weak var createBtn: UIButton!
-	@IBOutlet weak var levelsBtn: UIButton!
-	@IBOutlet weak var marketplaceBtn: UIButton!
+class MenuViewController: UIViewController {
+
+	@IBOutlet weak var customBtn: UIButton!
+	@IBOutlet weak var playBtn: UIButton!
 	
 	// MARK: - Life Cycle Methods
 	
@@ -26,24 +24,15 @@ class CustomLevelViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
+    
 	// MARK: - Init Views
-	
 	private func configureButtonViews() {
-		createBtn.setShadow()
-		levelsBtn.setShadow()
-		marketplaceBtn.setShadow()
-		
+		playBtn.setShadow()
+		customBtn.setShadow()
 	}
-	
-	
-	// MARK: - ACTIONS
-	
-	@IBAction func onTapHome(_ sender: UIButton) {
-		self.dismiss(animated: true, completion: nil)
-	}
-	
 
+	
+	
     /*
     // MARK: - Navigation
 

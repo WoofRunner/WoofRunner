@@ -70,6 +70,11 @@
                             <constraint firstItem="J7c-Mr-EEi" firstAttribute="top" secondItem="8sc-jE-S8M" secondAttribute="bottom" id="ycA-Zb-3gG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createBtn" destination="2v2-CI-sDh" id="Tvp-WD-xeH"/>
+                        <outlet property="levelsBtn" destination="d50-mf-2rd" id="dam-ur-H2q"/>
+                        <outlet property="marketplaceBtn" destination="2cO-HL-Kko" id="vGV-Jo-kPv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTz-WN-Pb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
