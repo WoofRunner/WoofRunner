@@ -39,5 +39,43 @@
             </objects>
             <point key="canvasLocation" x="85.546875" y="137.48169838945827"/>
         </scene>
+        <!--Rename Dialog View Controller-->
+        <scene sceneID="MNI-vs-zIg">
+            <objects>
+                <viewController id="B7Z-Hq-jL8" customClass="RenameDialogViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L3l-rU-Qbt"/>
+                        <viewControllerLayoutGuide type="bottom" id="I1F-fY-Aoy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dF7-Xj-c8y">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rename Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQp-WB-ZWL">
+                                <rect key="frame" x="395" y="643" width="235" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFJ-GA-TTX">
+                                <rect key="frame" x="330" y="693" width="365" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="levelNameTextField" destination="BFJ-GA-TTX" id="tDY-De-v40"/>
+                        <outlet property="sd" destination="BFJ-GA-TTX" id="SiU-CW-IhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acn-ZG-hAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825.5859375" y="139.67789165446558"/>
+        </scene>
     </scenes>
 </document>

@@ -235,8 +235,36 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		self.present(popup, animated: true, completion: nil)
 	}
 	
+	private func showRenameDialog() {
+		// Create a custom view controller
+		let renameVC = RenameDialogViewController()
+		
+		// Create the dialog
+		let popup = PopupDialog(viewController: renameVC, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false)
+		
+		// Configure and add buttons
+		let cancelBtn = CancelButton(title: "CANCEL", height: 60) {
+			popup.dismiss()
+		}
+		
+		let okBtn = DefaultButton(title: "OK", height: 60) {
+			self.currentLevelName = renameVC.getLevelName()
+		}
+	
+		popup.addButtons([cancelBtn, okBtn])
+		customiseDialogButtons()
+		
+		// Present dialog
+		present(popup, animated: true, completion: nil)
+	}
+	
 	private func customisePopupDialog() {
-		// Dialog
+		customiseDialogAppearance()
+		customiseDialogOverlayAppearance()
+		customiseDialogButtons()
+	}
+	
+	private func customiseDialogAppearance() {
 		let dialogAppearance = PopupDialogDefaultView.appearance()
 		dialogAppearance.titleFont            = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
 		dialogAppearance.titleColor           = UIColor(white: 0.4, alpha: 1)
@@ -244,14 +272,17 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		dialogAppearance.messageFont          = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
 		dialogAppearance.messageColor         = UIColor(white: 0.6, alpha: 1)
 		dialogAppearance.messageTextAlignment = .center
-		
-		// overlay
+	}
+	
+	private func customiseDialogOverlayAppearance() {
 		let overlayAppearance = PopupDialogOverlayView.appearance()
 		overlayAppearance.color       = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
 		overlayAppearance.blurRadius  = 30
 		overlayAppearance.blurEnabled = true
 		overlayAppearance.liveBlur    = false
-		
+	}
+	
+	private func customiseDialogButtons() {
 		// Default buttons
 		let defaultBtnAppearance = DefaultButton.appearance()
 		defaultBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
@@ -268,8 +299,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		saveGame()
 	}
 	
-	internal func renameLevel(_ newName: String) {
-		
+	internal func renameLevel() {
+		showRenameDialog()
 	}
 	
 	internal func back() {
