@@ -7,6 +7,7 @@
 //
 
 extension StoredGame: DisplayedGame {
+
     public var id: String {
         return uuid!
     }
