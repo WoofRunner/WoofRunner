@@ -190,8 +190,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 longPress = false
                 break
             }
-            currentLevel.beginSelection((x: startNode.position.x, y: startNode.position.y),
-                                        currentSelectedBrush)
+            currentLevel.toggleGrid(x: startNode.position.x, y: startNode.position.y, currentSelectedBrush)
+            currentLevel.beginSelection((x: startNode.position.x, y: startNode.position.y))
             break
         case .changed:
             let pos = sender.location(in: sceneView)
