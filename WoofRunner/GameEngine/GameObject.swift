@@ -66,7 +66,7 @@ class GameObject: SCNNode, GestureDelegate {
             print("WARNING: Cant find path name: " + pathName)
             return
         }
-        let modelNode = modelScene.rootNode.childNodes[0]
+        guard let modelNode = modelScene.rootNode.childNodes.first else { return }
         addChildNode(modelNode)
     }
 }

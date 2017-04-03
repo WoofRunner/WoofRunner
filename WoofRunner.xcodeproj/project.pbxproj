@@ -111,6 +111,7 @@
 		F34DEDC71E8D754D00BB8CA7 /* JumpingRock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */; };
 		F38F48291E87F1FB005328A9 /* LightPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* LightPlatform.swift */; };
 		F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* DarkPlatform.swift */; };
+		F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +251,7 @@
 		F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingRock.swift; sourceTree = "<group>"; };
 		F38F48281E87F1FB005328A9 /* LightPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightPlatform.swift; sourceTree = "<group>"; };
 		F38F482A1E87F28F005328A9 /* DarkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPlatform.swift; sourceTree = "<group>"; };
+		F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingAxe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -567,6 +569,7 @@
 			children = (
 				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
 				F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */,
+				F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */,
 				F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */,
 				F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */,
 			);
@@ -931,6 +934,7 @@
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */,
 				F34DEDC71E8D754D00BB8CA7 /* JumpingRock.swift in Sources */,
+				F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */,
 				1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */,
 				F34DEDC51E8D744C00BB8CA7 /* CollisionType.swift in Sources */,
 				3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */,

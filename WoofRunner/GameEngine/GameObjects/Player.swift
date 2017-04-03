@@ -35,6 +35,7 @@ class Player: GameObject {
 
         isTickEnabled = true
         restart()
+        World.registerGestureInput(self)
     }
     
     public func restart() {

@@ -99,7 +99,6 @@ class GameController: UIViewController, PlayerDelegate {
 
         let newPlayer = Player()
         World.spawnGameObject(newPlayer)
-        World.registerGestureInput(newPlayer)
         newPlayer.delegate = self
         self.player = newPlayer
         

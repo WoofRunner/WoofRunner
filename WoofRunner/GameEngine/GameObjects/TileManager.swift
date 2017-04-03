@@ -128,7 +128,7 @@ class TileManager: GameObject {
     }
     
     override func update(_ deltaTime: Float) {
-        position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
+        //position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
         spawnTiles()
     }
     

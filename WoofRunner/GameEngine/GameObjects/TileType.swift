@@ -19,6 +19,7 @@ enum TileType: Int {
     
     case rock
     case jumpingRock
+    case rotatingAxe
     
     case sword
 
@@ -59,6 +60,8 @@ enum TileType: Int {
             return "Swinging Sword"
         case .jumpingRock:
             return "Jumping Rock"
+        default:
+            return ""
         }
     }
     
@@ -80,6 +83,8 @@ enum TileType: Int {
             return "testCat"
         case .jumpingRock:
             return "testCat"
+        default:
+            return ""
         }
     }
     
@@ -101,6 +106,10 @@ enum TileType: Int {
             return "testCat"
         case .jumpingRock:
             return "art.scnassets/cube4.scn"
+        case .rotatingAxe:
+            return "art.scnassets/cube4.scn"
+        default:
+            return ""
         }
     }
 }

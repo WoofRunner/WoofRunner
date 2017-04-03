@@ -79,7 +79,7 @@ class PoolManager: TileDelegate {
             tile = JumpPlatform()
             
         case .rock:
-            tile = Rock()
+            tile = RotatingAxe()
             
         case .jumpingRock:
             tile = JumpingRock()
