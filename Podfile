@@ -27,6 +27,7 @@ target 'WoofRunner' do
   pod 'iCarousel', '~> 1.8'
   pod 'SnapKit', '~> 3.2.0'
   pod 'BrightFutures'
+  pod 'PopupDialog', '~> 0.5'
   rx_swift
   facebook
   firebase

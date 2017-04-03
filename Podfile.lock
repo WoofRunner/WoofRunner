@@ -60,6 +60,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - iCarousel (1.8.3)
+  - PopupDialog (0.5.4)
   - Result (3.2.1)
   - RxCocoa (3.3.1):
     - RxSwift (~> 3.3)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - iCarousel (~> 1.8)
+  - PopupDialog (~> 0.5)
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
   - SnapKit (~> 3.2.0)
@@ -97,11 +99,12 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 07973777d5b930b7f1deb338629509c8d8163648
+PODFILE CHECKSUM: f7c69e6717f3d0fb2ea091726cd636083798f460
 
 COCOAPODS: 1.2.0
