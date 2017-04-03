@@ -7,6 +7,7 @@
         <attribute name="ownerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="progress" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rows" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="screenshot" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="obstacles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoredObstacle" syncable="YES"/>
@@ -24,7 +25,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="StoredObstacle" positionX="-54" positionY="36" width="128" height="105"/>
         <element name="StoredPlatform" positionX="-36" positionY="54" width="128" height="90"/>
     </elements>
