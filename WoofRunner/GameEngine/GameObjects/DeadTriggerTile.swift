@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class DeadTrigger : Platform {
+class DeadTriggerTile : Tile {
     
     override init(_ pos: SCNVector3) {
         super.init(pos)

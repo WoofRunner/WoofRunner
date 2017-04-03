@@ -85,7 +85,7 @@ class PoolManager: TileDelegate {
             tile = JumpingRock()
         
         case .none:
-            tile = DeadTrigger()
+            tile = DeadTriggerTile()
             
         default:
             print("WARNING: Cant Invalid tile, TileType: " + String(describing: tileType))
