@@ -26,6 +26,9 @@ class TileManager: GameObject {
     
     let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
     
+    var isMoving: Bool = false
+    var delay: Float = 3
+    
     override init() {
         startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
         super.init()
@@ -33,9 +36,10 @@ class TileManager: GameObject {
         isTickEnabled = true
         position = startPosition
         platformTail = position.z - TAIL_LENGTH
+        restartLevel()
     }
     
-    convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
+    convenience init?(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
         
         if isDataValid(obstacleData, platformData) {
@@ -43,6 +47,7 @@ class TileManager: GameObject {
             self.platformData = platformData
         } else {
             print(WARNING_INVALID_DATA)
+            return nil
         }
     }
     
@@ -128,7 +133,20 @@ class TileManager: GameObject {
     }
     
     override func update(_ deltaTime: Float) {
-        position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
+        delay -= deltaTime
+        
+        if delay < 0 {
+            isMoving = true
+        }
+        
+        
+        print(deltaTime)
+        
+        if isMoving {
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.1 * deltaTime)
+            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
+        }
+        
         spawnTiles()
     }
     

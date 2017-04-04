@@ -10,14 +10,14 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
-    var startHeight: Float = 0.3
+    var startHeight: Float = 0
     let PLAYER_TAG = "player"
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3
     
     var isAir: Bool = false
     var jumpHeight: Float = 2
-    var jumpSpeed: Float = 2
+    var jumpSpeed: Float = 3.1
     var jumpTime: Float = 0
 
     var isDeadFall: Bool = false
@@ -51,9 +51,11 @@ class Player: GameObject {
     }
     
     private func startJump() {
+        /*
         if isAir {
             return
         }
+ */
         jumpTime = 0
         isAir = true
     }
@@ -72,7 +74,7 @@ class Player: GameObject {
         
         if other is Obstacle {
             isHidden = true
-            //delegate?.playerDied()
+            delegate?.playerDied()
             print("collide with obstacle")
         }
     }

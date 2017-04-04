@@ -41,7 +41,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.isPlaying = true
         
         scnView.allowsCameraControl = false
-        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         
         setUpGesture()
     }
