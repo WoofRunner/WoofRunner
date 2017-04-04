@@ -34,8 +34,6 @@ class TileManager: GameObject {
         super.init()
         poolManager = PoolManager(self)
         isTickEnabled = true
-        position = startPosition
-        platformTail = position.z - TAIL_LENGTH
         restartLevel()
     }
     
@@ -140,8 +138,7 @@ class TileManager: GameObject {
         }
         //4.3
         if isMoving {
-            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
-            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
+            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
         }
         
         spawnTiles()

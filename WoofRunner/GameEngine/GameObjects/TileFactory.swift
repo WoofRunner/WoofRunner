@@ -36,6 +36,9 @@ final class TileFactory {
         case .jumpingRock:
             tile = JumpingRock()
             
+        case .movingPlatform:
+            tile = MovingPlatform()
+            
         case .none:
             tile = DeadTriggerTile()
             

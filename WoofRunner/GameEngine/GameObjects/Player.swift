@@ -11,7 +11,6 @@ import SceneKit
 
 class Player: GameObject {
     var startHeight: Float = 0
-    let PLAYER_TAG = "player"
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3
     
@@ -27,17 +26,7 @@ class Player: GameObject {
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         super.init()
-        
-        name = PLAYER_TAG
-        
-        /*
-        geometry = SCNSphere(radius: 0.3)
-        physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody?.contactTestBitMask = CollisionType.Tile
-        physicsBody?.categoryBitMask = CollisionType.Player
-*/
         loadModel("art.scnassets/player.scn")
-        
         isTickEnabled = true
         restart()
         World.registerGestureInput(self)

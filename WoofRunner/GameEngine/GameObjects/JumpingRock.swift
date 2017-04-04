@@ -41,7 +41,7 @@ class JumpingRock: Obstacle {
         }
     }
     
-    override func triggered() {
+    override func onTriggered() {
         if !isTriggered {
             startHeight = position.y
         }

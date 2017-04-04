@@ -39,11 +39,11 @@ class Tile: GameObject {
         
         if worldPosition.z > triggerDistance {
             isTriggered = true
-            triggered()
+            onTriggered()
         }
     }
     
-    func triggered() {
+    func onTriggered() {
     }
     
     override func deactivate() {
