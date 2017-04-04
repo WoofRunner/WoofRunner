@@ -17,7 +17,7 @@ class Player: GameObject {
     
     var isAir: Bool = false
     var jumpHeight: Float = 2
-    var jumpSpeed: Float = 3.1
+    var jumpSpeed: Float = 3.4
     var jumpTime: Float = 0
 
     var isDeadFall: Bool = false

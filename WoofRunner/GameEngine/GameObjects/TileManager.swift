@@ -138,12 +138,9 @@ class TileManager: GameObject {
         if delay < 0 {
             isMoving = true
         }
-        
-        
-        print(deltaTime)
-        
+        //4.3
         if isMoving {
-            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.1 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
             //position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
         }
         
