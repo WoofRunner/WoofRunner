@@ -7,5 +7,6 @@
 //
 
 struct CollisionType {
-    static let Default = 1
+    static let Player = 1
+    static let Tile = 2
 }

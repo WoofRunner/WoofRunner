@@ -30,8 +30,8 @@ class Player: GameObject {
         geometry = SCNSphere(radius: 0.3)
         name = PLAYER_TAG
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody?.contactTestBitMask = CollisionType.Default
-        physicsBody?.categoryBitMask = CollisionType.Default
+        physicsBody?.contactTestBitMask = CollisionType.Tile
+        physicsBody?.categoryBitMask = CollisionType.Player
 
         isTickEnabled = true
         restart()
@@ -67,7 +67,8 @@ class Player: GameObject {
         
         if other is Obstacle {
             isHidden = true
-            delegate?.playerDied()
+            //delegate?.playerDied()
+            print("collide with obstacle")
         }
     }
     

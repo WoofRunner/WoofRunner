@@ -107,7 +107,7 @@ enum TileType: Int {
         case .jumpingRock:
             return "art.scnassets/cube4.scn"
         case .rotatingAxe:
-            return "art.scnassets/cube4.scn"
+            return "art.scnassets/cubeAxe.scn"
         default:
             return ""
         }

@@ -18,8 +18,8 @@ class TestCube: GameObject {
         geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         position = pos
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody?.contactTestBitMask = CollisionType.Default
-        physicsBody?.categoryBitMask = CollisionType.Default
+        physicsBody?.contactTestBitMask = CollisionType.Player
+        physicsBody?.categoryBitMask = CollisionType.Tile
         let redMat = SCNMaterial()
         redMat.diffuse.contents = UIColor.blue
         geometry?.materials = [redMat]

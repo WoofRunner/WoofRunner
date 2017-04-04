@@ -17,8 +17,8 @@ class Trigger : GameObject {
         
         let physicShape = SCNPhysicsShape(geometry: triggerGeometry, options: nil)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicShape)
-        physicsBody?.contactTestBitMask = CollisionType.Default
-        physicsBody?.categoryBitMask = CollisionType.Default
+        physicsBody?.contactTestBitMask = CollisionType.Player
+        physicsBody?.categoryBitMask = CollisionType.Tile
     }
     
     override convenience init() {

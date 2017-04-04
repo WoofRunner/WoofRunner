@@ -31,7 +31,7 @@ final class TileFactory {
             tile = JumpPlatform()
             
         case .rock:
-            tile = RotatingAxe()
+            tile = Rock()
             
         case .jumpingRock:
             tile = JumpingRock()
