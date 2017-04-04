@@ -12,6 +12,8 @@ import SceneKit
 final class TileFactory {
     static let sharedInstance: TileFactory = TileFactory()
 
+    let WARNING_INVALID_TILE = "WARNING: Cant create tile, TileType: "
+    
     private init() {
     }
     
@@ -38,7 +40,7 @@ final class TileFactory {
             tile = DeadTriggerTile()
             
         default:
-            print("WARNING: Cant Invalid tile, TileType: " + String(describing: tileType))
+            print(WARNING_INVALID_TILE + String(describing: tileType))
             return nil
         }
         

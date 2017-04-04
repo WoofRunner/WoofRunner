@@ -551,8 +551,8 @@
 				F33442C81E815BFE001C1D8D /* Tile.swift */,
 				F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */,
 				F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */,
-				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */,
 				F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */,
+				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */,
 				F34DEDB81E8D356A00BB8CA7 /* Platform */,
 				F34DEDB91E8D357700BB8CA7 /* Obstacle */,
 			);
