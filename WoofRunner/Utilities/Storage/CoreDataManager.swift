@@ -186,6 +186,22 @@ public class CoreDataManager {
         return NSFetchRequest<NSFetchRequestResult>(entityName: entity)
     }
 
+    /// Saves the current context.
+    private func save() {
+        do {
+            try privateContext.save()
+            context.performAndWait {
+                do {
+                    try self.context.save()
+                } catch {
+                    fatalError("Failed to save to context \(error)")
+                }
+            }
+        } catch {
+            fatalError("Failed to save to context \(error)")
+        }
+    }
+
 }
 
 public enum CoreDataManagerError: Error {
