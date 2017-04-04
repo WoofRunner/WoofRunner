@@ -20,6 +20,8 @@ class Tile: GameObject {
     var triggerDistance: Float = 0
     var isTriggered: Bool = false
     
+    var positionOffSet: SCNVector3 = SCNVector3.zero()
+    
     init(_ pos: SCNVector3) {
         super.init()
         position = pos
@@ -51,5 +53,9 @@ class Tile: GameObject {
     
     override func destroy() {
         delegate?.onTileDestroy(self)
+    }
+    
+    func setPositionWithOffset(position: SCNVector3) {
+        self.position = position + positionOffSet
     }
 }

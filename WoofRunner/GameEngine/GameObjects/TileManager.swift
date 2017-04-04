@@ -84,7 +84,7 @@ class TileManager: GameObject {
     private func handlePlatformSpawning(_ row: Int, _ col: Int) {
         if let tileType: TileType = TileType(rawValue: platformData[row][col]) {
             let tile = poolManager?.getTile(tileType)
-            tile?.position = calculateTilePosition(row, col)
+            tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
         }
     }
     
@@ -95,16 +95,16 @@ class TileManager: GameObject {
             }
             
             let tile = poolManager?.getTile(tileType)
-            tile?.position = calculateObstaclePosition(row, col)
+            tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
         }
     }
     
     private func appendDeadTriggers(_ row: Int) {
         var tile = poolManager?.getTile(TileType.none)
-        tile?.position = calculateTilePosition(row, -1)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
         
         tile = poolManager?.getTile(TileType.none)
-        tile?.position = calculateTilePosition(row, platformData[row].count)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
     }
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {

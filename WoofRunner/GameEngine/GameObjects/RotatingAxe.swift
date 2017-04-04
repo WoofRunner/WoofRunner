@@ -16,7 +16,7 @@ class RotatingAxe: Obstacle {
         super.init(pos)
         tileType = TileType.rotatingAxe
         loadModel(tileType.getModelPath())
-        position += SCNVector3(0.5, 0, 0)
+        positionOffSet = SCNVector3(0.5, 0, -0.5)
         pivot = SCNMatrix4MakeTranslation(0.5, 0, -0.5)
     }
     
@@ -26,11 +26,6 @@ class RotatingAxe: Obstacle {
     
     override func update(_ deltaTime: Float) {
         currentRotation += deltaTime
-        //rotation = SCNVector4(0, 1, 0, currentRotation)
-        /*
-        for child in childNodes {
-            child.rotation = SCNVector4(0, 1, 0, currentRotation)
-        }
- */
+        rotation = SCNVector4(0, 1, 0, currentRotation)
     }
 }
