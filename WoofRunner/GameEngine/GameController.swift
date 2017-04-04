@@ -94,7 +94,7 @@ class GameController: UIViewController, PlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+/*
         World.setUpWorld(self.view)
         let newPlayer = Player()
         World.spawnGameObject(newPlayer)
@@ -109,8 +109,8 @@ class GameController: UIViewController, PlayerDelegate {
         
         let camera = Camera()
         World.spawnGameObject(camera)
+  */
         
-        /*
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
         }
@@ -122,7 +122,7 @@ class GameController: UIViewController, PlayerDelegate {
             .onFailure { error in
                 print("\(error.localizedDescription)")
         }
- */
+ 
     }
     
     override func didReceiveMemoryWarning() {
