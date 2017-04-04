@@ -50,6 +50,6 @@ class Tile: GameObject {
     }
     
     override func destroy() {
-        delegate?.OnTileDestroy(self)
+        delegate?.onTileDestroy(self)
     }
 }

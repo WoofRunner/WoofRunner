@@ -58,7 +58,7 @@ class PoolManager: TileDelegate {
         return tile
     }
     
-    func OnTileDestroy(_ tile: Tile) {
+    func onTileDestroy(_ tile: Tile) {
         poolTile(tile)
     }
     

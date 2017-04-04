@@ -7,5 +7,5 @@
 //
 
 protocol TileDelegate {
-    func OnTileDestroy(_ tile: Tile)
+    func onTileDestroy(_ tile: Tile)
 }

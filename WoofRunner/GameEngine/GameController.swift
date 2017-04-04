@@ -94,22 +94,7 @@ class GameController: UIViewController, PlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-/*
-        World.setUpWorld(self.view)
-        let newPlayer = Player()
-        World.spawnGameObject(newPlayer)
-        World.registerGestureInput(newPlayer)
-        newPlayer.delegate = self
-        self.player = newPlayer
         
-        let tileManager = TileManager(obstacleData: obstacleData,
-                                      platformData: platformData)
-        World.spawnGameObject(tileManager)
-        self.tileManager = tileManager
-        
-        let camera = Camera()
-        World.spawnGameObject(camera)
-  */
         
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
@@ -122,7 +107,7 @@ class GameController: UIViewController, PlayerDelegate {
             .onFailure { error in
                 print("\(error.localizedDescription)")
         }
- 
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,6 +140,23 @@ class GameController: UIViewController, PlayerDelegate {
         let camera = Camera()
         World.spawnGameObject(camera)
         //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
+    }
+    
+    private func tempSetup() {
+        World.setUpWorld(self.view)
+        let newPlayer = Player()
+        World.spawnGameObject(newPlayer)
+        World.registerGestureInput(newPlayer)
+        newPlayer.delegate = self
+        self.player = newPlayer
+        
+        let tileManager = TileManager(obstacleData: obstacleData,
+                                      platformData: platformData)
+        World.spawnGameObject(tileManager)
+        self.tileManager = tileManager
+        
+        let camera = Camera()
+        World.spawnGameObject(camera)
     }
     
     // notified by player when player dies
