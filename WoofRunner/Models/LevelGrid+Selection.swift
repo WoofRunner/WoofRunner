@@ -54,6 +54,7 @@ extension LevelGrid {
         selectionCache = [String: [TileType]]()
         selectionStartPos = nil
         selectionEndPos = nil
+        selectionTemplate = [TileType.none, TileType.none]
     }
     
     private func revertGridInPosition(_ pos: Position) {

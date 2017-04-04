@@ -44,10 +44,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         sceneView.allowsCameraControl = false
         sceneView.showsStatistics = true
-        sceneView.backgroundColor = UIColor.black
+        // sceneView.backgroundColor = UIColor.black
         sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         
+        LDScene.background.contents = UIImage(named: "art.scnassets/skybox01_cube.png") as UIImage!
         sceneView.scene = LDScene
         self.view.addSubview(sceneView)
 		
@@ -213,8 +214,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             print("ended")
             break
         }
-        
-        
     }
     
     // MARK: Helper Functions
