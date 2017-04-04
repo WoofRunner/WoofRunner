@@ -27,12 +27,17 @@ class Player: GameObject {
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         super.init()
-        geometry = SCNSphere(radius: 0.3)
+        
         name = PLAYER_TAG
+        
+        /*
+        geometry = SCNSphere(radius: 0.3)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody?.contactTestBitMask = CollisionType.Tile
         physicsBody?.categoryBitMask = CollisionType.Player
-
+*/
+        loadModel("art.scnassets/player.scn")
+        
         isTickEnabled = true
         restart()
         World.registerGestureInput(self)
