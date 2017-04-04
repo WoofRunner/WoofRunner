@@ -86,6 +86,8 @@ public class CoreDataManager {
 
                 storedGame.updatedAt = Date() as NSDate?
 
+                self.save()
+
                 complete(.success(storedGame))
             }
         }
