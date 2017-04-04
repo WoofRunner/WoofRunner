@@ -103,22 +103,6 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 	}
 	
-	/*
-	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let firstTouch = touches.first
-		let location = firstTouch?.location(in: self)
-		
-		print("Touch Ended \(location)")
-	}
-	
-	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let firstTouch = touches.first
-		let location = firstTouch?.location(in: self)
-		
-		print("Touch cancelled \(location)")
-	}
-	*/
-	
 	// MARK: - Private helper methods
 	
 	private func isOverlayMenuVisible() -> Bool {
@@ -144,7 +128,7 @@ class LevelDesignerOverlayScene: SKScene,
 	// - MARK: PaletteButtonDelegate
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
 		if funcType == .delete {
-			setCurrentTileSelection(.none)
+			setCurrentTileSelection(TileType.none)
 		} else {
 			openOverlayMenu(funcType)
 		}
@@ -178,8 +162,11 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	internal func saveLevel() {
-		print("save level")
 		self.overlayDelegate?.saveLevel()
+	}
+	
+	internal func renameLevel() {
+		self.overlayDelegate?.renameLevel()
 	}
 	
 

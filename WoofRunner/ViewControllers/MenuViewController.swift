@@ -1,31 +1,23 @@
 //
-//  ExperimentalLevelDesignerViewController.swift
+//  MenuViewController.swift
 //  WoofRunner
 //
-//  Created by See Loo Jane on 16/3/17.
+//  Created by See Loo Jane on 3/4/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
 import UIKit
-import SceneKit
 
-class ExperimentalLevelDesignerViewController: UIViewController {
+class MenuViewController: UIViewController {
 
-	var mainSceneView: SCNView!
-	var spriteScene: LevelDesignerOverlayScene!
+	@IBOutlet weak var customBtn: UIButton!
+	@IBOutlet weak var playBtn: UIButton!
+	
+	// MARK: - Life Cycle Methods
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		// Create and attach main Scenekit Scene
-		self.mainSceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-		self.mainSceneView.scene = ExperimentalMainScene()
-		self.view.addSubview(self.mainSceneView)
-
-		
-		// Create and attach Sprite Kit Overlay scene
-		self.spriteScene = LevelDesignerOverlayScene(size: self.view.bounds.size)
-		self.mainSceneView.overlaySKScene = self.spriteScene
+		configureButtonViews()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +25,14 @@ class ExperimentalLevelDesignerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+	// MARK: - Init Views
+	private func configureButtonViews() {
+		playBtn.setShadow()
+		customBtn.setShadow()
+	}
 
+	
+	
     /*
     // MARK: - Navigation
 

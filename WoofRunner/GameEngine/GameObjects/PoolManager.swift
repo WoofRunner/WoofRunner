@@ -11,9 +11,6 @@ import SceneKit
 
 class PoolManager: TileDelegate {
 
-    let NUM_OF_PLATFORM = 70
-    let NUM_OF_ROCK = 5
-    
     var availableTiles: [Tile] = []
     var inUseTiles: [Tile] = []
     
@@ -21,20 +18,6 @@ class PoolManager: TileDelegate {
     
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
-        for _ in 0..<NUM_OF_PLATFORM/2 {
-            guard let tile = createNewTile(TileType.floorLight) else { continue }
-            poolTile(tile)
-        }
-        
-        for _ in 0..<NUM_OF_PLATFORM/2 {
-            guard let tile = createNewTile(TileType.floorDark) else { continue }
-            poolTile(tile)
-        }
-        
-        for _ in 0..<NUM_OF_ROCK {
-            guard let tile = createNewTile(TileType.rock) else { continue }
-            poolTile(tile)
-        }
     }
 
     public func getTile(_ tileType: TileType) -> Tile? {
@@ -66,29 +49,7 @@ class PoolManager: TileDelegate {
     }
     
     private func createNewTile(_ tileType: TileType) -> Tile? {
-        let tile: Tile
-        
-        switch tileType {
-        case .floorLight:
-            tile = LightPlatform()
-        
-        case .floorDark:
-            tile = DarkPlatform()
-        
-        case .floorJump:
-            tile = JumpPlatform()
-            
-        case .rock:
-            tile = RotatingAxe()
-            
-        case .jumpingRock:
-            tile = JumpingRock()
-        
-        case .none:
-            tile = DeadTriggerTile()
-            
-        default:
-            print("WARNING: Cant Invalid tile, TileType: " + String(describing: tileType))
+        guard let tile = TileFactory.sharedInstance.createTile(tileType) else {
             return nil
         }
         
