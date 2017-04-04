@@ -86,6 +86,8 @@ public class CoreDataManager {
 
                 storedGame.updatedAt = Date() as NSDate?
 
+                self.save()
+
                 complete(.success(storedGame))
             }
         }
@@ -184,6 +186,22 @@ public class CoreDataManager {
     ///     - entity: name of entity to get NSFetchRequest for
     private func generateFetchRequest(entity: String) -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+    }
+
+    /// Saves the current context.
+    private func save() {
+        do {
+            try privateContext.save()
+            context.performAndWait {
+                do {
+                    try self.context.save()
+                } catch {
+                    fatalError("Failed to save to context \(error)")
+                }
+            }
+        } catch {
+            fatalError("Failed to save to context \(error)")
+        }
     }
 
 }
