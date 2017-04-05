@@ -94,6 +94,11 @@ class Player: GameObject {
         }
     }
     
+    override func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {
+        let action = SCNAction.move(by: SCNVector3Make(0, 0, -1), duration: 1)
+        runAction(action)
+    }
+    
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
         if isDeadFall {
             return
