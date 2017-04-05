@@ -61,6 +61,24 @@ extension LevelGrid: SaveableGame {
         for platform in platforms {
             platformArray[Int(platform.positionX)][Int(platform.positionY)] = Int(platform.type!)!
         }
+		
+		// Reinit Level
+		length = platformArray.count
+		gridViewModelArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
+		                                                                  count: LevelGrid.levelCols),
+		                                       count: length)
+		
+		// Setup GridVMs
+		for row in 0...length - 1 {
+			for col in 0...LevelGrid.levelCols - 1 {
+				let gridVM = GridViewModel(row: row, col: col)
+				gridVM.setType(platform: TileType(rawValue: platformArray[row][col])!,
+				               obstacle: TileType(rawValue: obstacleArray[row][col])!)
+				setupObservables(gridVM)
+				// Append to array
+				gridViewModelArray[row][col] = gridVM
+			}
+		}
     }
 
     /// Returns the StoredObstacle mapping of the current game model.

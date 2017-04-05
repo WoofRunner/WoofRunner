@@ -46,6 +46,7 @@
 		3F0F81BD1E929A7000114CD0 /* UIButton+ShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81BC1E929A7000114CD0 /* UIButton+ShadowExtension.swift */; };
 		3F0F81BF1E92BC4900114CD0 /* RenameDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81BE1E92BC4900114CD0 /* RenameDialogViewController.swift */; };
 		3F0F81C11E9556F400114CD0 /* LevelSelectorItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81C01E9556F400114CD0 /* LevelSelectorItemButton.swift */; };
+		3F0F81C31E955E7C00114CD0 /* LevelSelectorItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */; };
 		3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -187,6 +188,7 @@
 		3F0F81BC1E929A7000114CD0 /* UIButton+ShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ShadowExtension.swift"; sourceTree = "<group>"; };
 		3F0F81BE1E92BC4900114CD0 /* RenameDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameDialogViewController.swift; sourceTree = "<group>"; };
 		3F0F81C01E9556F400114CD0 /* LevelSelectorItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorItemButton.swift; sourceTree = "<group>"; };
+		3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorItemImageView.swift; sourceTree = "<group>"; };
 		3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */,
 				3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */,
 				3F0F81C01E9556F400114CD0 /* LevelSelectorItemButton.swift */,
+				3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 			files = (
 				12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */,
 				12DC8DBA1E8928FB00B8A40C /* GameStorageManager.swift in Sources */,
+				3F0F81C31E955E7C00114CD0 /* LevelSelectorItemImageView.swift in Sources */,
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
 				3FD5D0231E8F5BB7007573C4 /* LSListItemViewModel.swift in Sources */,
 				12DA42061E86627700C23137 /* LMListViewController.swift in Sources */,

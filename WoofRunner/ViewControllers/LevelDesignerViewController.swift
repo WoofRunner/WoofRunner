@@ -36,6 +36,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var longPress = false
 
     private let gsm = GameStorageManager.getInstance()
+	var loadedLevel: StoredGame?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,13 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         sceneView.scene = LDScene
         self.view.addSubview(sceneView)
 		
-        // Create sample level
-        let sampleLevel = LevelGrid(length: 50)
-        currentLevel = sampleLevel
+		let sampleLevel = LevelGrid(length: 50)
+		currentLevel = sampleLevel
+		
+		// Load a level if initialised from previous ViewController
+		if let _ = loadedLevel {
+			currentLevel.load(from: loadedLevel!)
+		}
         
         // Load level
         LDScene.loadLevel(currentLevel)

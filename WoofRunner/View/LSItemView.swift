@@ -11,7 +11,7 @@ import SnapKit
 
 class LSItemView: UIView {
 
-	private var levelImageView = UIImageView()
+	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
 	private var levelNameLabel = UILabel()
 	private var playerScoreLabel = UILabel()
 	
@@ -91,11 +91,13 @@ class LSItemView: UIView {
 		
 		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
 		levelImageView.image = resized
+		levelImageView.isUserInteractionEnabled = true
 		
 		// Set Shadows
 		setShadows()
 		
 		editButton.bindUUID(vm.levelUUID)
+		levelImageView.bindUUID(vm.levelUUID)
 		
 	}
 	

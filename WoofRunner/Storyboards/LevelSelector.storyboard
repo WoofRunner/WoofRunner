@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="609" y="166"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--LevelDesigner-->
         <scene sceneID="DrD-s3-7CN">
             <objects>
-                <viewControllerPlaceholder id="Z7U-IL-8mf" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="LevelDesigner" id="Z7U-IL-8mf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXC-sF-8Gk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="579" y="295"/>

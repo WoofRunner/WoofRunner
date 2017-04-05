@@ -89,6 +89,10 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		// Set Selectors for buttons
 		levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
 		
+		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
+		levelItemView.levelImageView.addGestureRecognizer(playTapRecogniser)
+		
+		
 		return levelItemView as UIView
 	}
 	
@@ -109,12 +113,40 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
 		let selectedUUID = levels[index].uuid!
 		print("Selected Item: \(selectedUUID)")
-		self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
+		//self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
+	}
+	
+	func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+	{
+		let tappedImage = tapGestureRecognizer.view as! UIImageView
+		
+		// Your action
+	}
+	
+	func playLevelHandler(_ sender: UITapGestureRecognizer) {
+		
+		let imageView = sender.view as! LevelSelectorItemImageView
+		let uuid = imageView.getBindedUUID()
+		
+		print("Selected Item To Play: \(uuid)")
+		
+		self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
 	}
 	
 	func editLevelHandler(_ sender: UIButton) {
 		let btn = sender as! LevelSelectorItemButton
-		self.performSegue(withIdentifier: "segueToLevelDesigner", sender: selectedUUID)
+		let uuid = btn.getBindedUUID()
+		
+		print("Selected Item To Edit: \(uuid)")
+		
+		gsm.getGame(uuid: uuid)
+			.onSuccess { loadedGame in
+				self.performSegue(withIdentifier: "segueToLevelDesigner", sender: loadedGame)
+			}
+			.onFailure { error in
+				print("\(error.localizedDescription)")
+			}
+		
 	}
 	
 	// MARK: - View Setup Methods
@@ -150,8 +182,8 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		
 		if segue.identifier == "segueToLevelDesigner" {
 			let destination = segue.destination as! LevelDesignerViewController
-			let uuid = sender as! String
-			// TODO: Set UUID variable in LevelDesignerViewController
+			let loadedGame = sender as! StoredGame
+			destination.loadedLevel = loadedGame
 		}
 		
     }
