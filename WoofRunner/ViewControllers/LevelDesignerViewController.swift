@@ -26,9 +26,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     static var extensionLength = 10
     
 	let disposeBag = DisposeBag();
-
-	let levelCols = 4
-    let chunkLength = 15
+    
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
@@ -146,8 +144,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 camera.position = newPos
             }
             // Add padding to near plane clipping
-            let padding = -Tile.TILE_WIDTH * LevelDesignerViewController.paddingTiles
-            let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / Tile.TILE_WIDTH)
+            let padding = -GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
+            let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / GameSettings.TILE_WIDTH)
             updateCurrentLevel(from: startRow)
             break;
         default:
@@ -227,9 +225,10 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     // Update the current level view after changes to level model
     private func updateCurrentLevel(from startRow: Int) {
         if LevelDesignerViewController.autoExtendLevel {
-            if startRow + chunkLength > currentLevel.length {
+            if startRow + LevelGrid.chunkLength > currentLevel.length {
+                
                 // Extend the level in bulk of {extensionLength}, reduce overhead
-                let extend = startRow + chunkLength - currentLevel.length
+                let extend = startRow + LevelGrid.chunkLength - currentLevel.length
                             + LevelDesignerViewController.extensionLength - 1
                 let originalLength = currentLevel.length
                 currentLevel.extendLevel(by: extend)

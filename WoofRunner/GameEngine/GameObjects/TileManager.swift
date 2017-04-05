@@ -17,7 +17,7 @@ class TileManager: GameObject {
     var platformTail: Float = 0
     
     let TAIL_LENGTH: Float = 21
-    let PLATFORM_Z_OFFSET: Float = 3
+    let PLATFORM_Z_OFFSET: Float = 3.5
     let startPosition: SCNVector3
     
     var poolManager: PoolManager?
@@ -26,16 +26,18 @@ class TileManager: GameObject {
     
     let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
     
+    var isMoving: Bool = false
+    var delay: Float = 3
+    
     override init() {
         startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
         super.init()
         poolManager = PoolManager(self)
         isTickEnabled = true
-        position = startPosition
-        platformTail = position.z - TAIL_LENGTH
+        restartLevel()
     }
     
-    convenience init(obstacleData: [[Int]], platformData: [[Int]]) {
+    convenience init?(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
         
         if isDataValid(obstacleData, platformData) {
@@ -43,6 +45,7 @@ class TileManager: GameObject {
             self.platformData = platformData
         } else {
             print(WARNING_INVALID_DATA)
+            return nil
         }
     }
     
@@ -84,7 +87,7 @@ class TileManager: GameObject {
     private func handlePlatformSpawning(_ row: Int, _ col: Int) {
         if let tileType: TileType = TileType(rawValue: platformData[row][col]) {
             let tile = poolManager?.getTile(tileType)
-            tile?.position = calculateTilePosition(row, col)
+            tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
         }
     }
     
@@ -95,21 +98,21 @@ class TileManager: GameObject {
             }
             
             let tile = poolManager?.getTile(tileType)
-            tile?.position = calculateObstaclePosition(row, col)
+            tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
         }
     }
     
     private func appendDeadTriggers(_ row: Int) {
         var tile = poolManager?.getTile(TileType.none)
-        tile?.position = calculateTilePosition(row, -1)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
         
         tile = poolManager?.getTile(TileType.none)
-        tile?.position = calculateTilePosition(row, platformData[row].count)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
     }
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)
-        position.y = -Tile.TILE_WIDTH
+        position.y = -GameSettings.TILE_WIDTH
         return position
     }
     
@@ -118,7 +121,7 @@ class TileManager: GameObject {
     }
     
     private func calculateIndexPosition(_ row: Int, _ col: Int) -> SCNVector3 {
-        return SCNVector3(x: (Float)(col) * Tile.TILE_WIDTH - 2.0, y: 0, z: -(Float)(row) * Tile.TILE_WIDTH)
+        return SCNVector3(x: (Float)(col) * GameSettings.TILE_WIDTH - Float(GameSettings.PLATFORM_COLUMNS/2), y: 0, z: -(Float)(row) * GameSettings.TILE_WIDTH)
     }
     
     private func canSpawnRow(_ row: Int) -> Bool {
@@ -128,7 +131,16 @@ class TileManager: GameObject {
     }
     
     override func update(_ deltaTime: Float) {
-        position = SCNVector3(x: position.x, y: position.y, z: position.z + 0.05)
+        delay -= deltaTime
+        
+        if delay < 0 {
+            isMoving = true
+        }
+        //4.3
+        if isMoving {
+            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
+        }
+        
         spawnTiles()
     }
     

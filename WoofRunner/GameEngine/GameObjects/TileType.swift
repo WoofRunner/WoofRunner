@@ -15,17 +15,20 @@ enum TileType: Int {
     case floorLight
     case floorDark
     case floorJump
-    case grass
+    
     
     case rock
     case jumpingRock
+    case rotatingAxe
+    
+    case movingPlatform
     
     case sword
-
+    case grass
     
     func isPlatform() -> Bool {
         switch self {
-        case .floorLight, .floorDark, .grass:
+        case .floorLight, .floorDark, .movingPlatform:
             return true
         default:
             return false
@@ -51,14 +54,16 @@ enum TileType: Int {
             return "Floor Light"
         case .floorDark:
             return "Floor Dark"
-        case .grass:
-            return "Grass"
+        case .movingPlatform:
+            return "Moving Platform"
         case .none:
             return "Delete"
         case .sword:
             return "Swinging Sword"
         case .jumpingRock:
             return "Jumping Rock"
+        default:
+            return ""
         }
     }
     
@@ -72,7 +77,7 @@ enum TileType: Int {
             return "obstacle-placeholder1"
         case .floorDark:
             return "platform-placeholder"
-        case .grass:
+        case .movingPlatform:
             return "testCat"
         case .none:
             return "testCat"
@@ -80,6 +85,8 @@ enum TileType: Int {
             return "testCat"
         case .jumpingRock:
             return "testCat"
+        default:
+            return ""
         }
     }
     
@@ -93,14 +100,18 @@ enum TileType: Int {
             return "art.scnassets/floor_light.scn"
         case .floorDark:
             return "art.scnassets/floor_dark.scn"
-        case .grass:
-            return "testCat"
+        case .movingPlatform:
+            return "art.scnassets/floor_dark.scn"
         case .none:
             return "testCat"
         case .sword:
             return "testCat"
         case .jumpingRock:
             return "art.scnassets/cube4.scn"
+        case .rotatingAxe:
+            return "art.scnassets/cubeAxe.scn"
+        default:
+            return ""
         }
     }
 }

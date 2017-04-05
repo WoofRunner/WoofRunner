@@ -17,8 +17,8 @@ class LevelGrid {
     var storedGame: StoredGame?
     var disposeBag = DisposeBag()
     
-    static var levelCols = 5
-    static var chunkLength = 20
+    static var levelCols = GameSettings.PLATFORM_COLUMNS
+    static var chunkLength = 15
     
     var length: Int
     var platformArray: [[Int]]
@@ -128,8 +128,8 @@ class LevelGrid {
     
     func getValidGrid(_ pos: (x: Float, y: Float)) -> GridViewModel? {
         // Identify grid
-        let col = Int(pos.x / Tile.TILE_WIDTH)
-        let row = Int(pos.y / Tile.TILE_WIDTH)
+        let col = Int(pos.x / GameSettings.TILE_WIDTH)
+        let row = Int(pos.y / GameSettings.TILE_WIDTH)
         // Check valid coord
         guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < self.length else {
             return nil

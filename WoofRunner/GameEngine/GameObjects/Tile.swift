@@ -9,8 +9,6 @@ import Foundation
 import SceneKit
 
 class Tile: GameObject {
-    static let TILE_WIDTH: Float = 1
-    
     var delegate: TileDelegate?
     
     var tileType: TileType = TileType.none
@@ -19,6 +17,8 @@ class Tile: GameObject {
     
     var triggerDistance: Float = 0
     var isTriggered: Bool = false
+    
+    var positionOffSet: SCNVector3 = SCNVector3.zero()
     
     init(_ pos: SCNVector3) {
         super.init()
@@ -36,12 +36,14 @@ class Tile: GameObject {
         }
         
         if worldPosition.z > triggerDistance {
-            isTriggered = true
-            triggered()
+            if !isTriggered {
+                onTriggered()
+                isTriggered = true
+            }
         }
     }
     
-    func triggered() {
+    func onTriggered() {
     }
     
     override func deactivate() {
@@ -50,6 +52,10 @@ class Tile: GameObject {
     }
     
     override func destroy() {
-        delegate?.OnTileDestroy(self)
+        delegate?.onTileDestroy(self)
+    }
+    
+    func setPositionWithOffset(position: SCNVector3) {
+        self.position = position + positionOffSet
     }
 }

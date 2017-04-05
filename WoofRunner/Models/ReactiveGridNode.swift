@@ -29,8 +29,8 @@ class ReactiveGridNode {
     
     init(_ gridVM: GridViewModel) {
         
-        self.position = SCNVector3(Float(gridVM.gridPos.value.getCol()) * Tile.TILE_WIDTH,
-                                   Float(gridVM.gridPos.value.getRow()) * Tile.TILE_WIDTH, 0)
+        self.position = SCNVector3(Float(gridVM.gridPos.value.getCol()) * gridVM.size.value,
+                                   Float(gridVM.gridPos.value.getRow()) * gridVM.size.value, 0)
         self.size = gridVM.size.value
         self.platformType = gridVM.platformType.value
         self.obstacleType = gridVM.obstacleType.value
@@ -48,9 +48,10 @@ class ReactiveGridNode {
         gridVM.gridPos.asObservable()
             .subscribe(onNext: {
                 (pos) in
-                self.position = SCNVector3(Float(pos.getCol()) * Tile.TILE_WIDTH, Float(pos.getRow()) * Tile.TILE_WIDTH, 0)
+                self.position = SCNVector3(Float(pos.getCol()) * gridVM.size.value,
+                                           Float(pos.getRow()) * gridVM.size.value, 0)
                 self.platformNode.value.position = self.position
-                self.obstacleNode.value.position = self.position + SCNVector3(0, 0, Tile.TILE_WIDTH)
+                self.obstacleNode.value.position = self.position + SCNVector3(0, 0, gridVM.size.value)
             }).addDisposableTo(disposeBag)
         
         gridVM.size.asObservable()
@@ -81,7 +82,7 @@ class ReactiveGridNode {
         
         if platformType == .none {
             // Placeholder block for .none platform
-            let size = Tile.TILE_WIDTH
+            let size = self.size
             let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
                                              length: CGFloat(size), chamferRadius: 0.05)
             for material in platformBoxGeometry.materials {
@@ -111,7 +112,7 @@ class ReactiveGridNode {
         
         if obstacleType == .none {
             // Invisible block
-            let size = Tile.TILE_WIDTH
+            let size = self.size
             let obstacleBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
                                              length: CGFloat(size), chamferRadius: 0.05)
             for material in obstacleBoxGeometry.materials {
@@ -132,7 +133,7 @@ class ReactiveGridNode {
         self.obstacleModelNode.removeFromParentNode()
         self.obstacleModelNode = modelNode
         self.obstacleNode.value.addChildNode(obstacleModelNode)
-        self.obstacleNode.value.position = self.position + SCNVector3(0, 0, Tile.TILE_WIDTH)
+        self.obstacleNode.value.position = self.position + SCNVector3(0, 0, size)
     }
     
     // Returns a model node that would be added to gridNode as a childnode

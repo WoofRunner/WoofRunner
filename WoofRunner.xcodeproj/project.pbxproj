@@ -85,6 +85,7 @@
 		4E9DB3761E92EAAE0023A2A8 /* LevelGrid+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */; };
+		F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304D04C1E950D6D0021CB68 /* GameSettings.swift */; };
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
 		F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE001E82AACA00BD1D02 /* PoolManager.swift */; };
 		F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE021E82BDB300BD1D02 /* Platform.swift */; };
@@ -105,7 +106,7 @@
 		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
 		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
 		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
-		F34DEDBD1E8D41DD00BB8CA7 /* DeadTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTrigger.swift */; };
+		F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */; };
 		F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */; };
 		F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */; };
 		F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */; };
@@ -113,6 +114,9 @@
 		F34DEDC71E8D754D00BB8CA7 /* JumpingRock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */; };
 		F38F48291E87F1FB005328A9 /* LightPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* LightPlatform.swift */; };
 		F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* DarkPlatform.swift */; };
+		F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */; };
+		F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */; };
+		F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +230,7 @@
 		AF7CB611F2EB570C3A204704 /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F304D04C1E950D6D0021CB68 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSettings.swift; path = GameEngine/GameSettings.swift; sourceTree = "<group>"; };
 		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F30ABE001E82AACA00BD1D02 /* PoolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManager.swift; sourceTree = "<group>"; };
 		F30ABE021E82BDB300BD1D02 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
@@ -246,7 +251,7 @@
 		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
 		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
-		F34DEDBC1E8D41DD00BB8CA7 /* DeadTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTrigger.swift; sourceTree = "<group>"; };
+		F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTriggerTile.swift; sourceTree = "<group>"; };
 		F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpTrigger.swift; sourceTree = "<group>"; };
 		F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpPlatform.swift; sourceTree = "<group>"; };
@@ -254,6 +259,9 @@
 		F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingRock.swift; sourceTree = "<group>"; };
 		F38F48281E87F1FB005328A9 /* LightPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightPlatform.swift; sourceTree = "<group>"; };
 		F38F482A1E87F28F005328A9 /* DarkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPlatform.swift; sourceTree = "<group>"; };
+		F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
+		F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingPlatform.swift; sourceTree = "<group>"; };
+		F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingAxe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +447,7 @@
 		12A82FCD1E727072008B721E /* WoofRunner */ = {
 			isa = PBXGroup;
 			children = (
+				F304D04C1E950D6D0021CB68 /* GameSettings.swift */,
 				F33442A61E8156F3001C1D8D /* GameEngine */,
 				126F50FD1E727332000877F1 /* Application */,
 				126F50FB1E7272C2000877F1 /* View */,
@@ -550,6 +559,8 @@
 				F33442C81E815BFE001C1D8D /* Tile.swift */,
 				F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */,
 				F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */,
+				F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */,
+				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */,
 				F34DEDB81E8D356A00BB8CA7 /* Platform */,
 				F34DEDB91E8D357700BB8CA7 /* Obstacle */,
 			);
@@ -560,7 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
-				F34DEDBC1E8D41DD00BB8CA7 /* DeadTrigger.swift */,
+				F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */,
 				F38F482A1E87F28F005328A9 /* DarkPlatform.swift */,
 				F38F48281E87F1FB005328A9 /* LightPlatform.swift */,
 				F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */,
@@ -573,6 +584,7 @@
 			children = (
 				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
 				F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */,
+				F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */,
 				F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */,
 				F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */,
 			);
@@ -886,6 +898,7 @@
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
+				F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */,
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
 				3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */,
@@ -932,10 +945,12 @@
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */,
 				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
+				F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */,
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */,
 				F34DEDC71E8D754D00BB8CA7 /* JumpingRock.swift in Sources */,
+				F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */,
 				1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */,
 				4E9DB3761E92EAAE0023A2A8 /* LevelGrid+Selection.swift in Sources */,
 				F34DEDC51E8D744C00BB8CA7 /* CollisionType.swift in Sources */,
@@ -947,7 +962,8 @@
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
 				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
-				F34DEDBD1E8D41DD00BB8CA7 /* DeadTrigger.swift in Sources */,
+				F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */,
+				F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */,
 				3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */,
 				F313D53E1E8E40FD0036FF84 /* PlayerDelegate.swift in Sources */,
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,

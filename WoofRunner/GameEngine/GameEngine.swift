@@ -41,7 +41,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.isPlaying = true
         
         scnView.allowsCameraControl = false
-        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         
         setUpGesture()
     }
@@ -104,8 +104,8 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        contact.nodeA.OnCollide(otherSCNNode: contact.nodeB)
-        contact.nodeB.OnCollide(otherSCNNode: contact.nodeA)
+        contact.nodeA.onCollide(otherSCNNode: contact.nodeB)
+        contact.nodeB.onCollide(otherSCNNode: contact.nodeA)
         /*
         print("A")
         print(contact.nodeA)

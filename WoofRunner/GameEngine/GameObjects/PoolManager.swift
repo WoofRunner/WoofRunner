@@ -11,8 +11,7 @@ import SceneKit
 
 class PoolManager: TileDelegate {
 
-    let NUM_OF_PLATFORM = 70
-    let NUM_OF_ROCK = 5
+    let NUM_FLOOR = 70
     
     var availableTiles: [Tile] = []
     var inUseTiles: [Tile] = []
@@ -21,19 +20,15 @@ class PoolManager: TileDelegate {
     
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
-        for _ in 0..<NUM_OF_PLATFORM/2 {
-            guard let tile = createNewTile(TileType.floorLight) else { continue }
-            poolTile(tile)
-        }
         
-        for _ in 0..<NUM_OF_PLATFORM/2 {
-            guard let tile = createNewTile(TileType.floorDark) else { continue }
-            poolTile(tile)
+        for _ in 0..<NUM_FLOOR/2 {
+            poolTile(createNewTile(TileType.floorDark)!)
         }
-        
-        for _ in 0..<NUM_OF_ROCK {
-            guard let tile = createNewTile(TileType.rock) else { continue }
-            poolTile(tile)
+        for _ in 0..<NUM_FLOOR/2 {
+            poolTile(createNewTile(TileType.floorLight)!)
+        }
+        for _ in 0..<10 {
+            poolTile(createNewTile(TileType.rock)!)
         }
     }
 
@@ -66,29 +61,7 @@ class PoolManager: TileDelegate {
     }
     
     private func createNewTile(_ tileType: TileType) -> Tile? {
-        let tile: Tile
-        
-        switch tileType {
-        case .floorLight:
-            tile = LightPlatform()
-        
-        case .floorDark:
-            tile = DarkPlatform()
-        
-        case .floorJump:
-            tile = JumpPlatform()
-            
-        case .rock:
-            tile = Rock()
-            
-        case .jumpingRock:
-            tile = JumpingRock()
-        
-        case .none:
-            tile = DeadTrigger()
-            
-        default:
-            print("WARNING: Cant Invalid tile, TileType: " + String(describing: tileType))
+        guard let tile = TileFactory.sharedInstance.createTile(tileType) else {
             return nil
         }
         
@@ -97,7 +70,7 @@ class PoolManager: TileDelegate {
         return tile
     }
     
-    func OnTileDestroy(_ tile: Tile) {
+    func onTileDestroy(_ tile: Tile) {
         poolTile(tile)
     }
     

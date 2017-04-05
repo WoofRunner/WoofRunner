@@ -18,7 +18,7 @@ class World {
     static let MSG_UNPROJECT_POINT = "Trying to unproject point"
     static let MSG_DESTROY_ENGINE = "Trying to destroy GameEngine"
     static let MSG_WARNING = "WARNING: "
-    static let MSG_GAME_ENGINE_NIL = "but GameEngine is nil"
+    static let MSG_GAME_ENGINE_NIL = " but GameEngine is nil"
     
     public static func setUpWorld(_ view: UIView) {
         gameEngine = GameEngine(view)

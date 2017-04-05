@@ -10,31 +10,28 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
-    var startHeight: Float = 0.3
-    let PLAYER_TAG = "player"
+    var startHeight: Float = 0
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3
     
     var isAir: Bool = false
     var jumpHeight: Float = 2
-    var jumpSpeed: Float = 2
+    var jumpSpeed: Float = 3.4
     var jumpTime: Float = 0
 
     var isDeadFall: Bool = false
     var deadFallSpeed: Float = 3
     var deadFallLimitY: Float = -3
     
+    let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
+    
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         super.init()
-        geometry = SCNSphere(radius: 0.3)
-        name = PLAYER_TAG
-        physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody?.contactTestBitMask = CollisionType.Default
-        physicsBody?.categoryBitMask = CollisionType.Default
-
+        loadModel(PLAYER_MODEL_PATH)
         isTickEnabled = true
         restart()
+        World.registerGestureInput(self)
     }
     
     public func restart() {
@@ -45,14 +42,16 @@ class Player: GameObject {
     }
     
     private func startJump() {
+        /*
         if isAir {
             return
         }
+ */
         jumpTime = 0
         isAir = true
     }
     
-    public override func OnCollide(other: GameObject) {
+    public override func onCollide(other: GameObject) {
         if other is Platform {
         }
         
@@ -60,13 +59,14 @@ class Player: GameObject {
             startJump()
         }
         
-        if other is DeadTrigger {
+        if other is DeadTriggerTile {
             isDeadFall = true
         }
         
         if other is Obstacle {
             isHidden = true
             delegate?.playerDied()
+            print("collide with obstacle")
         }
     }
     
@@ -95,7 +95,7 @@ class Player: GameObject {
             position.y = startHeight
         }
     }
-    
+
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
         if isDeadFall {
             return

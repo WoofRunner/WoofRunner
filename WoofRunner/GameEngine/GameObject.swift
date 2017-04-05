@@ -1,11 +1,10 @@
 //
 //  GameObject.swift
-//  test
 //
 //  Created by limte on 18/3/17.
 //  Copyright © 2017 nus.cs3217.a0126356. All rights reserved.
 //
-
+// GameObject is a SCNNode wrapper for the GameEngine
 import Foundation
 import SceneKit
 
@@ -27,46 +26,56 @@ class GameObject: SCNNode, GestureDelegate {
     public func update(_ deltaTime: Float) {
     }
 
-    public func OnCollide(other: GameObject) {
+    // to be overriden by subclass to receive onCollide event
+    public func onCollide(other: GameObject) {
         
     }
     
-    public override func OnCollide(otherSCNNode: SCNNode) {
-        super.OnCollide(otherSCNNode: otherSCNNode)
+    // called when this GameObject collide with another scnnode
+    public override func onCollide(otherSCNNode: SCNNode) {
+        super.onCollide(otherSCNNode: otherSCNNode)
         guard let otherGameObject = otherSCNNode as? GameObject else {
             return
         }
-        OnCollide(other: otherGameObject)
+        onCollide(other: otherGameObject)
     }
 
+    // set to pending destroy to be destroyed by game engine
     public func destroy() {
         isWaitingToBeDestroyed = true
     }
     
+    // to be overriden by subclass to receive panGesture
     public func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {}
     
+    // to be overriden by subclass to receive tapGesture
     public func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {}
     
-    
+    // world position based on local position
     var worldPosition: SCNVector3 {
         return convertPosition(SCNVector3.zero(), to: nil)
     }
     
+     // activate GameObject by unhidding
     public func activate() {
         isHidden = false
     }
     
+    // deactivate GameObject by hidding and move far away from screen
     public func deactivate() {
         isHidden = true
         position = FAR_AWAY_POSITION
     }
     
+    // load model from a scene and add as a child to self
+    // - parameters:
+    //      -pathName: path to scene
     public func loadModel(_ pathName: String) {
         guard let modelScene = SCNScene(named: pathName) else {
             print("WARNING: Cant find path name: " + pathName)
             return
         }
-        let modelNode = modelScene.rootNode.childNodes[0]
+        guard let modelNode = modelScene.rootNode.childNodes.first else { return }
         addChildNode(modelNode)
     }
 }

@@ -14,33 +14,33 @@ class GameController: UIViewController, PlayerDelegate {
 	private var gameUUID: String?
     private let gsm = GameStorageManager.getInstance()
     
-    var player: Player?
-    var tileManager: TileManager?
+    private var player: Player?
+    private var tileManager: TileManager?
     
-    var obstacleData: [[Int]] = [[5, 0, 0, 0, 0],
-                                 [5, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 5, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [5, 0, 0, 5, 5],
-                                 [0, 6, 0, 0, 0],
+    var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 6, 0, 0],
-                                 [0, 0, 6, 0, 0],
-                                 [5, 0, 0, 0, 0],
-                                 [5, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 5, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [5, 0, 0, 5, 5],
-                                 [0, 6, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 6, 0, 0],
-                                 [0, 0, 6, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
                                  [5, 0, 0, 0, 0],
                                  [5, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
@@ -54,27 +54,27 @@ class GameController: UIViewController, PlayerDelegate {
                                  [0, 0, 6, 0, 0],
                                  [0, 0, 6, 0, 0]]
     
-    var platformData: [[Int]] = [[2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 3, 1, 2],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 1],
-                                 [2, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 3, 1, 2],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 2, 1, 2],
+    var platformData: [[Int]] = [[1, 1, 1, 1, 1],
+                                 [1, 1, 1, 1, 1],
+                                 [1, 1, 1, 1, 1],
+                                 [7, 0, 0, 0, 0],
+                                 [1, 1, 3, 1, 1],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 3, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [3, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 3],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 3, 1, 2],
                                  [1, 0, 1, 2, 1],
                                  [2, 0, 2, 1, 2],
                                  [1, 0, 1, 2, 1],
@@ -94,7 +94,10 @@ class GameController: UIViewController, PlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //tempSetup()
+        
+        
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
         }
@@ -106,6 +109,7 @@ class GameController: UIViewController, PlayerDelegate {
             .onFailure { error in
                 print("\(error.localizedDescription)")
         }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,14 +134,33 @@ class GameController: UIViewController, PlayerDelegate {
         newPlayer.delegate = self
         self.player = newPlayer
 
-        let tileManager = TileManager(obstacleData: game.getObstacles(),
-                                      platformData: game.getPlatforms())
-        World.spawnGameObject(tileManager)
-        self.tileManager = tileManager
+        if let tileManager = TileManager(obstacleData: game.getObstacles(), platformData: game.getPlatforms()) {
+            World.spawnGameObject(tileManager)
+            self.tileManager = tileManager
+        }
+        
 
         let camera = Camera()
         World.spawnGameObject(camera)
         //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
+    }
+    
+    private func tempSetup() {
+        World.setUpWorld(self.view)
+        let newPlayer = Player()
+        World.spawnGameObject(newPlayer)
+        World.registerGestureInput(newPlayer)
+        newPlayer.delegate = self
+        self.player = newPlayer
+        
+        if let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData) {
+            World.spawnGameObject(tileManager)
+            self.tileManager = tileManager
+        }
+        
+        
+        let camera = Camera()
+        World.spawnGameObject(camera)
     }
     
     // notified by player when player dies
