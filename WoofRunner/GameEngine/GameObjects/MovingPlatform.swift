@@ -26,9 +26,6 @@ class MovingPlatform : Platform {
         tileType = TileType.floorDark
         loadModel(tileType.getModelPath())
         triggerDistance = -10
-        
-        
-        
     }
     
     convenience init() {

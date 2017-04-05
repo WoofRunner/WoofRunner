@@ -23,6 +23,12 @@ class JumpingRock: Obstacle {
         tileType = TileType.jumpingRock
         loadModel(tileType.getModelPath())
         triggerDistance = 0
+        
+        /*
+        let timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        let action = SCNAction.move(by: SCNVector3Make(0, 0, -1), duration: 1)
+        runAction(action)
+ */
     }
     
     convenience init() {

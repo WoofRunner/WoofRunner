@@ -38,10 +38,9 @@ class Tile: GameObject {
         }
         
         if worldPosition.z > triggerDistance {
-            isTriggered = true
-            
             if !isTriggered {
                 onTriggered()
+                isTriggered = true
             }
         }
     }

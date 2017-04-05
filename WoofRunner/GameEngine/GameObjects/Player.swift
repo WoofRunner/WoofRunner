@@ -23,10 +23,12 @@ class Player: GameObject {
     var deadFallSpeed: Float = 3
     var deadFallLimitY: Float = -3
     
+    let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
+    
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
         super.init()
-        loadModel("art.scnassets/player.scn")
+        loadModel(PLAYER_MODEL_PATH)
         isTickEnabled = true
         restart()
         World.registerGestureInput(self)
@@ -93,12 +95,7 @@ class Player: GameObject {
             position.y = startHeight
         }
     }
-    
-    override func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {
-        let action = SCNAction.move(by: SCNVector3Make(0, 0, -1), duration: 1)
-        runAction(action)
-    }
-    
+
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
         if isDeadFall {
             return
