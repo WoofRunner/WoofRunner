@@ -112,7 +112,7 @@ class TileManager: GameObject {
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)
-        position.y = -Tile.TILE_WIDTH
+        position.y = -GameSettings.TILE_WIDTH
         return position
     }
     
@@ -121,7 +121,7 @@ class TileManager: GameObject {
     }
     
     private func calculateIndexPosition(_ row: Int, _ col: Int) -> SCNVector3 {
-        return SCNVector3(x: (Float)(col) * Tile.TILE_WIDTH - 2.0, y: 0, z: -(Float)(row) * Tile.TILE_WIDTH)
+        return SCNVector3(x: (Float)(col) * GameSettings.TILE_WIDTH - Float(GameSettings.PLATFORM_COLUMNS/2), y: 0, z: -(Float)(row) * GameSettings.TILE_WIDTH)
     }
     
     private func canSpawnRow(_ row: Int) -> Bool {

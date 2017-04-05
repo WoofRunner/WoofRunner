@@ -13,7 +13,7 @@ class Trigger : GameObject {
     init(_ pos: SCNVector3) {
         super.init()
         position = pos
-        let triggerGeometry = SCNBox(width: CGFloat(Tile.TILE_WIDTH-0.2), height: CGFloat(Tile.TILE_WIDTH), length: CGFloat(Tile.TILE_WIDTH), chamferRadius: 0)
+        let triggerGeometry = SCNBox(width: CGFloat(GameSettings.TILE_WIDTH-0.2), height: CGFloat(GameSettings.TILE_WIDTH), length: CGFloat(GameSettings.TILE_WIDTH), chamferRadius: 0)
         
         let physicShape = SCNPhysicsShape(geometry: triggerGeometry, options: nil)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicShape)

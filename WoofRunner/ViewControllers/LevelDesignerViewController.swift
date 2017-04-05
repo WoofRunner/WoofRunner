@@ -146,8 +146,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 camera.position = newPos
             }
             // Add padding to near plane clipping
-            let padding = -Tile.TILE_WIDTH * LevelDesignerViewController.paddingTiles
-            let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / Tile.TILE_WIDTH)
+            let padding = -GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
+            let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / GameSettings.TILE_WIDTH)
             currentLevel.reloadChunk(from: startRow)
             break;
         default:

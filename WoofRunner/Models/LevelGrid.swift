@@ -70,8 +70,8 @@ class LevelGrid {
     
     func toggleGrid(x: Float, y: Float, _ currentSelectedBrush: TileType) {
         // Identify grid
-        let col = Int(x / Tile.TILE_WIDTH)
-        let row = Int(y / Tile.TILE_WIDTH)
+        let col = Int(x / GameSettings.TILE_WIDTH)
+        let row = Int(y / GameSettings.TILE_WIDTH)
         // Check valid coord
         guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < length else {
             return

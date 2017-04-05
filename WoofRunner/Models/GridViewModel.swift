@@ -19,7 +19,7 @@ class GridViewModel {
     
     init (row: Int, col: Int) {
         self.gridPos = Variable<Position>(Position(row: row, col: col))
-        self.size = Variable<Float>(Float(Tile.TILE_WIDTH))
+        self.size = Variable<Float>(Float(GameSettings.TILE_WIDTH))
     }
     
     convenience init() {

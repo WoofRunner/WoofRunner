@@ -20,8 +20,8 @@ class MovingPlatform : Platform {
     
     var moveSpeed: Float = 3
     
-    var rightBound: Float = Tile.TILE_WIDTH * 2
-    var leftBound: Float = Tile.TILE_WIDTH * -2
+    var rightBound: Float = GameSettings.TILE_WIDTH * 2
+    var leftBound: Float = GameSettings.TILE_WIDTH * -2
     
     override init(_ pos: SCNVector3) {
         super.init(pos)

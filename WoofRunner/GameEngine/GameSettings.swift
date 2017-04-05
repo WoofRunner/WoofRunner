@@ -8,5 +8,5 @@
 
 class GameSettings {
     static let TILE_WIDTH: Float = 1
-    static let PLATFORM_COL: Int = 5
+    static let PLATFORM_COLUMNS: Int = 5
 }
