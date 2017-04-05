@@ -83,6 +83,7 @@
 		4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */; };
 		4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */; };
 		4E9DB3761E92EAAE0023A2A8 /* LevelGrid+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */; };
+		4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */; };
 		F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304D04C1E950D6D0021CB68 /* GameSettings.swift */; };
@@ -223,6 +224,7 @@
 		4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveGrid.swift; sourceTree = "<group>"; };
 		4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelGrid.swift; sourceTree = "<group>"; };
 		4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+Selection.swift"; sourceTree = "<group>"; };
+		4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitExtensions.swift; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */,
 				3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */,
 				3F0F81BC1E929A7000114CD0 /* UIButton+ShadowExtension.swift */,
+				4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
 				3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */,
+				4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,
 				3F0F81BF1E92BC4900114CD0 /* RenameDialogViewController.swift in Sources */,
