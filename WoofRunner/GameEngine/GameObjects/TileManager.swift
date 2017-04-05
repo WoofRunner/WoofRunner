@@ -40,27 +40,59 @@ class TileManager: GameObject {
     convenience init?(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
         
-        if isDataValid(obstacleData, platformData) {
+        if isDatasValid(obstacleData, platformData) {
             self.obstacleData = obstacleData
-            self.platformData = platformData
+            self.platformData = processPlatformData(platformData)
         } else {
             print(WARNING_INVALID_DATA)
             return nil
         }
     }
     
-    private func isDataValid(_ obstacleData: [[Int]], _ platformData: [[Int]]) -> Bool {
+    // both obstacle and platform data must have same number of rows and cols
+    private func isDatasValid(_ obstacleData: [[Int]], _ platformData: [[Int]]) -> Bool {
         if obstacleData.count != platformData.count {
             return false
         }
         
-        for rowIndex in 0..<obstacleData.count {
-            if obstacleData[rowIndex].count != platformData[rowIndex].count {
+        if !isDataValid(obstacleData) || !isDataValid(platformData){
+            return false
+        }
+
+        return true
+    }
+    
+    private func isDataValid(_ data: [[Int]]) -> Bool {
+        for rowIndex in 0..<data.count {
+            if data[rowIndex].count !=  GameSettings.PLATFORM_COLUMNS {
                 return false
             }
         }
-        
         return true
+    }
+    
+    // remove other tiles in the same row as the moving platform
+    func processPlatformData(_ data: [[Int]]) -> [[Int]]{
+        var data = data
+        for rowIndex in 0..<data.count {
+            for colIndex in 0..<data[rowIndex].count {
+                
+                if data[rowIndex][colIndex] == TileType.movingPlatform.rawValue {
+                    data[rowIndex] = createEmptyDataRow()
+                    data[rowIndex][colIndex] = TileType.movingPlatform.rawValue
+                    continue
+                }
+            }
+        }
+        return data
+    }
+
+    func createEmptyDataRow() -> [Int] {
+        var array = [Int]()
+        for _ in 0..<GameSettings.PLATFORM_COLUMNS {
+            array.append(-1)
+        }
+        return array
     }
     
     func spawnTiles() {
