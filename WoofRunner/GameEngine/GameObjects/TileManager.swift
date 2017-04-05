@@ -16,7 +16,7 @@ class TileManager: GameObject {
     var tailIndex: Int = 0
     var platformTail: Float = 0
     
-    let TAIL_LENGTH: Float = 21
+    let TAIL_LENGTH: Float = 22
     let PLATFORM_Z_OFFSET: Float = 3.5
     let startPosition: SCNVector3
     
@@ -28,6 +28,10 @@ class TileManager: GameObject {
     
     var isMoving: Bool = false
     var delay: Float = 3
+    
+    var percentageCompleted: Float {
+        return Float(tailIndex)/Float(obstacleData.count)
+    }
     
     override init() {
         startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)

@@ -42,11 +42,6 @@ class Player: GameObject {
     }
     
     private func startJump() {
-        /*
-        if isAir {
-            return
-        }
- */
         jumpTime = 0
         isAir = true
     }
@@ -66,7 +61,6 @@ class Player: GameObject {
         if other is Obstacle {
             isHidden = true
             delegate?.playerDied()
-            print("collide with obstacle")
         }
     }
     

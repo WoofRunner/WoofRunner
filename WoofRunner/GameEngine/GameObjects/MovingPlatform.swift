@@ -26,7 +26,7 @@ class MovingPlatform : Platform {
         super.init(pos)
         tileType = TileType.movingPlatform
         loadModel(tileType.getModelPath())
-        triggerDistance = -10
+        triggerDistance = -9
         createAdjacentDeadTriggers()
     }
     
