@@ -115,6 +115,7 @@
 		F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* DarkPlatform.swift */; };
 		F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */; };
 		F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */; };
+		F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A73C6B1E95493F00B65435 /* CGFloat.swift */; };
 		F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -259,6 +260,7 @@
 		F38F482A1E87F28F005328A9 /* DarkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPlatform.swift; sourceTree = "<group>"; };
 		F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
 		F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingPlatform.swift; sourceTree = "<group>"; };
+		F3A73C6B1E95493F00B65435 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingAxe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -528,6 +530,7 @@
 				F33442B01E8156F3001C1D8D /* SCNVector3.swift */,
 				F33442B31E8156F3001C1D8D /* World.swift */,
 				F30ABDFE1E82A7A800BD1D02 /* Array.swift */,
+				F3A73C6B1E95493F00B65435 /* CGFloat.swift */,
 				F318BEBA1E87C16E005D0113 /* SCNNode.swift */,
 				F34DEDC41E8D744C00BB8CA7 /* CollisionType.swift */,
 				F33442C11E815BAE001C1D8D /* GameObjects */,
@@ -928,6 +931,7 @@
 				F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */,
 				127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
+				F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */,
 				12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */,
 				4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */,
 				12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */,

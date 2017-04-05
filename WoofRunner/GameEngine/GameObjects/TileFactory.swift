@@ -38,6 +38,9 @@ final class TileFactory {
             
         case .movingPlatform:
             tile = MovingPlatform()
+        
+        case .rotatingAxe:
+            tile = RotatingAxe()
             
         case .none:
             tile = DeadTriggerTile()

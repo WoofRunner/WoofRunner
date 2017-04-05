@@ -90,7 +90,7 @@ class TileManager: GameObject {
         }
         return data
     }
-
+    
     func createEmptyDataRow() -> [Int] {
         var array = [Int]()
         for _ in 0..<GameSettings.PLATFORM_COLUMNS {
@@ -172,7 +172,7 @@ class TileManager: GameObject {
         if delay < 0 {
             isMoving = true
         }
-        //4.3
+
         if isMoving {
             position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
         }
