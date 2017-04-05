@@ -170,7 +170,7 @@ class TileManager: GameObject {
         }
         //4.3
         if isMoving {
-            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
         }
         
         spawnTiles()
