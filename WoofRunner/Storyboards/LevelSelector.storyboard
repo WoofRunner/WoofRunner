@@ -19,6 +19,14 @@
             </objects>
             <point key="canvasLocation" x="609" y="166"/>
         </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="DrD-s3-7CN">
+            <objects>
+                <viewControllerPlaceholder id="Z7U-IL-8mf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXC-sF-8Gk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="579" y="295"/>
+        </scene>
         <!--Data Source-->
         <scene sceneID="NaZ-wR-ehr">
             <objects>
@@ -59,6 +67,7 @@
                         <outlet property="carousel" destination="JD4-3v-opV" id="5Xy-h1-lwn"/>
                         <outlet property="homeButton" destination="VnG-P1-GCq" id="Ghr-Qq-f8U"/>
                         <segue destination="PNO-jM-qhv" kind="show" identifier="segueToGameplay" id="YCo-GV-vdO"/>
+                        <segue destination="Z7U-IL-8mf" kind="show" identifier="segueToLevelDesigner" id="dCz-Mt-C2q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqy-Ew-SYV" userLabel="First Responder" sceneMemberID="firstResponder"/>

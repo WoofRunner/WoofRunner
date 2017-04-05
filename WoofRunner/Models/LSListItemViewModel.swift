@@ -11,6 +11,9 @@ import UIKit
 
 class LSListItemViewModel {
 	
+	private(set) var levelUUID: String // For tap handler
+	@objc private(set) var editCallback: (UIButton) -> Void
+	
 	private(set) var levelName: String
 	private(set) var levelNameLabelColor = StubLSConstants.levelTitleColor
 	private(set) var levelNameLabelFont = StubLSConstants.levelTitleFont
@@ -22,7 +25,9 @@ class LSListItemViewModel {
 	private(set) var playerScoreLabelColor = StubLSConstants.scoreLabelColor
 	private(set) var playerScoreLabelFont = StubLSConstants.scoreLabelFont
 	
-	init(game: StoredGame) {
+	init(game: StoredGame, editHandler: @escaping (UIButton) -> Void) {
+		self.levelUUID = game.uuid!
+		self.editCallback = editHandler
 		
 		// Get substring of uuid to act as level name for now
 		let str = game.uuid!

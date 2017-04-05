@@ -83,8 +83,11 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		setBackgroundColor(view: levelItemView, index: index)
 		
 		// Set up view from ViewModel
-		let vm = LSListItemViewModel(game: levels[index])
+		let vm = LSListItemViewModel(game: levels[index], editHandler: editLevelHandler)
 		levelItemView.setupView(vm: vm)
+		
+		// Set Selectors for buttons
+		levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
 		
 		return levelItemView as UIView
 	}
@@ -107,6 +110,11 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		let selectedUUID = levels[index].uuid!
 		print("Selected Item: \(selectedUUID)")
 		self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
+	}
+	
+	func editLevelHandler(_ sender: UIButton) {
+		let btn = sender as! LevelSelectorItemButton
+		self.performSegue(withIdentifier: "segueToLevelDesigner", sender: selectedUUID)
 	}
 	
 	// MARK: - View Setup Methods
@@ -138,6 +146,12 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 			let destination = segue.destination as! GameController
 			let uuid = sender as! String
 			destination.setGameUUID(uuid)
+		}
+		
+		if segue.identifier == "segueToLevelDesigner" {
+			let destination = segue.destination as! LevelDesignerViewController
+			let uuid = sender as! String
+			// TODO: Set UUID variable in LevelDesignerViewController
 		}
 		
     }
