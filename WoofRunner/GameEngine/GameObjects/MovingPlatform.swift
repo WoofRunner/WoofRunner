@@ -20,6 +20,8 @@ class MovingPlatform : Platform {
     
     var moveSpeed: Float = 3
     
+    var rightBound: Float = Tile.TILE_WIDTH * 2
+    var leftBound: Float = Tile.TILE_WIDTH * -2
     
     override init(_ pos: SCNVector3) {
         super.init(pos)
@@ -38,11 +40,11 @@ class MovingPlatform : Platform {
         
         position += SCNVector3(moveSpeed, 0, 0) * deltaTime
         
-        if position.x > 2 {
-            position.x = 2
+        if position.x > rightBound {
+            position.x = rightBound
             moveSpeed *= -1
-        } else if position.x < -2 {
-            position.x = -2
+        } else if position.x < leftBound {
+            position.x = leftBound
             moveSpeed *= -1
         }
         

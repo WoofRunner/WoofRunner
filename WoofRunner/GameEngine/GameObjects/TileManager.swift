@@ -17,7 +17,7 @@ class TileManager: GameObject {
     var platformTail: Float = 0
     
     let TAIL_LENGTH: Float = 21
-    let PLATFORM_Z_OFFSET: Float = 3
+    let PLATFORM_Z_OFFSET: Float = 3.5
     let startPosition: SCNVector3
     
     var poolManager: PoolManager?
