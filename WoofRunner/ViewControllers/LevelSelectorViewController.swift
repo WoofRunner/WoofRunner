@@ -109,19 +109,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		return value
 	}
 	
-	// Handles tap logic
-	func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
-		let selectedUUID = levels[index].uuid!
-		print("Selected Item: \(selectedUUID)")
-		//self.performSegue(withIdentifier: "segueToGameplay", sender: selectedUUID)
-	}
-	
-	func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-	{
-		let tappedImage = tapGestureRecognizer.view as! UIImageView
-		
-		// Your action
-	}
+	// MARK: - TAP LOGIC HANDLERS
 	
 	func playLevelHandler(_ sender: UITapGestureRecognizer) {
 		
