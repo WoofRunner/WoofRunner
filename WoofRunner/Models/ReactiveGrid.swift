@@ -27,12 +27,36 @@ class ReactiveGrid {
         for gridNode in gridNodes {
             self.gridNodes.append(gridNode)
             
+            // Check if initial value is should render
             if gridNode.shouldRender.value {
                 grid.addChildNode(gridNode.platformNode.value)
                 grid.addChildNode(gridNode.obstacleNode.value)
             }
             
-            gridNode.shouldRender.asObservable()
+            setupObservables(gridNode)
+        }
+    }
+    
+    func extendGrid(extendedGridNodes: [ReactiveGridNode]) {
+        self.gridNodes.append(contentsOf: extendedGridNodes)
+        for gridNode in extendedGridNodes {
+            
+            // Check if initial value is should render
+            if gridNode.shouldRender.value {
+                grid.addChildNode(gridNode.platformNode.value)
+                grid.addChildNode(gridNode.obstacleNode.value)
+            }
+            
+            setupObservables(gridNode)
+        }
+    }
+    
+    func removeGrid() {
+        self.grid.removeFromParentNode()
+    }
+    
+    private func setupObservables(_ gridNode: ReactiveGridNode) {
+        gridNode.shouldRender.asObservable()
             .subscribe(onNext: {
                 (render) in
                 if render {
@@ -43,10 +67,5 @@ class ReactiveGrid {
                     gridNode.obstacleNode.value.removeFromParentNode()
                 }
             }).addDisposableTo(disposeBag)
-        }
-    }
-    
-    func removeGrid() {
-        self.grid.removeFromParentNode()
     }
 }

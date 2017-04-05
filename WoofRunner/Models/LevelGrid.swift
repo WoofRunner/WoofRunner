@@ -15,16 +15,21 @@ class LevelGrid {
     // MARK: - SaveableGame
 
     var storedGame: StoredGame?
-    
     var disposeBag = DisposeBag()
     
-    static var levelCols = 5
-    static var chunkLength = 20
+    static var levelCols = GameSettings.PLATFORM_COLUMNS
+    static var chunkLength = 15
     
     var length: Int
     var platformArray: [[Int]]
     var obstacleArray: [[Int]]
     var gridViewModelArray: [[GridViewModel]]
+    
+    // Selection extension usage
+    var selectionCache = [String: [TileType]]()
+    var selectionStartPos: Position?
+    var selectionEndPos: Position?
+    var selectionTemplate = [TileType.none, TileType.none]
     
     init(length: Int) {
         self.length = length
@@ -46,18 +51,7 @@ class LevelGrid {
         for row in 0...length - 1 {
             for col in 0...LevelGrid.levelCols - 1 {
                 let gridVM = GridViewModel(row: row, col: col)
-                // Setup observables
-                gridVM.platformType.asObservable().subscribe(onNext: {
-                    (newType) in
-                    self.updatePlatformArray(row: gridVM.gridPos.value.getRow(),
-                                             col: gridVM.gridPos.value.getCol(),
-                                             newType.rawValue)
-                }).addDisposableTo(disposeBag)
-                gridVM.obstacleType.asObservable().subscribe(onNext: { (newType) in
-                    self.updateObstacleArray(row: gridVM.gridPos.value.getRow(),
-                                             col: gridVM.gridPos.value.getCol(),
-                                             newType.rawValue)
-                }).addDisposableTo(disposeBag)
+                setupObservables(gridVM)
                 // Append to array
                 gridViewModelArray[row][col] = gridVM
             }
@@ -69,25 +63,22 @@ class LevelGrid {
     }
     
     func toggleGrid(x: Float, y: Float, _ currentSelectedBrush: TileType) {
-        // Identify grid
-        let col = Int(x / GameSettings.TILE_WIDTH)
-        let row = Int(y / GameSettings.TILE_WIDTH)
-        // Check valid coord
-        guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < length else {
+        guard let gridVM = getValidGrid((x: x, y: y)) else {
             return
         }
-        let gridVM = gridViewModelArray[row][col]
-        
+        return toggleGrid(gridVM, currentSelectedBrush)
+    }
+    
+    func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: TileType) {
         // Toggle grid
         if currentSelectedBrush.isPlatform() {
             gridVM.setPlatform(currentSelectedBrush)
         } else if currentSelectedBrush.isObstacle() && gridVM.platformType.value != TileType.none {
             gridVM.setObstacle(currentSelectedBrush)
         } else if currentSelectedBrush == TileType.none {
-            // Current implementation: Delete both obstacle and platform
-            gridVM.removePlatform()
+            // Current implementation: Delete top level node; obstacle if any else platform
+            gridVM.removeTop()
         }
-        
     }
     
     func reloadChunk(from startRow: Int) {
@@ -106,6 +97,61 @@ class LevelGrid {
         }
     }
     
+    func extendLevel(by extend: Int) {
+        // Prepare empty arrays for extension
+        let extendedPlatformArray = [[Int]](repeating: [Int](repeating: TileType.none.rawValue,
+                                                             count: LevelGrid.levelCols),
+                                            count: extend)
+        self.platformArray.append(contentsOf: extendedPlatformArray)
+        let extendedObstacleArray = [[Int]](repeating: [Int](repeating: TileType.none.rawValue,
+                                                             count: LevelGrid.levelCols),
+                                            count: extend)
+        self.obstacleArray.append(contentsOf: extendedObstacleArray)
+        let extendedGridVMArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
+                                                                               count: LevelGrid.levelCols),
+                                                    count: extend)
+        self.gridViewModelArray.append(contentsOf: extendedGridVMArray)
+        
+        // Initialise extended array data
+        for row in length...length + extend - 1 {
+            for col in 0...LevelGrid.levelCols - 1 {
+                let gridVM = GridViewModel(row: row, col: col)
+                setupObservables(gridVM)
+                // Append to array
+                gridViewModelArray[row][col] = gridVM
+            }
+        }
+        
+        // Update level length
+        self.length += extend
+    }
+    
+    func getValidGrid(_ pos: (x: Float, y: Float)) -> GridViewModel? {
+        // Identify grid
+        let col = Int(pos.x / GameSettings.TILE_WIDTH)
+        let row = Int(pos.y / GameSettings.TILE_WIDTH)
+        // Check valid coord
+        guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < self.length else {
+            return nil
+        }
+        return gridViewModelArray[row][col]
+    }
+    
+    private func setupObservables(_ gridVM: GridViewModel) {
+        // Setup observation on gridVM tileType
+        gridVM.platformType.asObservable().subscribe(onNext: {
+            (newType) in
+            self.updatePlatformArray(row: gridVM.gridPos.value.getRow(),
+                                     col: gridVM.gridPos.value.getCol(),
+                                     newType.rawValue)
+        }).addDisposableTo(disposeBag)
+        gridVM.obstacleType.asObservable().subscribe(onNext: { (newType) in
+            self.updateObstacleArray(row: gridVM.gridPos.value.getRow(),
+                                     col: gridVM.gridPos.value.getCol(),
+                                     newType.rawValue)
+        }).addDisposableTo(disposeBag)
+    }
+
     private func updatePlatformArray(row: Int, col: Int, _ newValue: Int) {
         platformArray[row][col] = newValue
     }
