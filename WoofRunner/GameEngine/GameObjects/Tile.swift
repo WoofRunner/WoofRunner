@@ -9,6 +9,7 @@ import Foundation
 import SceneKit
 
 class Tile: GameObject {
+    
     var delegate: TileDelegate?
     
     var tileType: TileType = TileType.none

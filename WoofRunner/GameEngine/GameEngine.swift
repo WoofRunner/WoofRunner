@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  {
+    
     public var gameObjects: [GameObject] = []
     let scnView: SCNView
     let scnScene: SCNScene

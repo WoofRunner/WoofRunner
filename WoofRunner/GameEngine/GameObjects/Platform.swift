@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class Platform : Tile {
+    
     override init(_ pos: SCNVector3) {
         super.init(pos)
     }

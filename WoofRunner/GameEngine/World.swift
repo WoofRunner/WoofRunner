@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class World {
+    
     private static var gameEngine: GameEngine?
     
     static let MSG_SPAWN_OBJECT = "Trying to spawn object"

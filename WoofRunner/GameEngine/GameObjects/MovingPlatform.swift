@@ -11,6 +11,7 @@ import SceneKit
 
 // A platform that moves to and fro from the start to the end column
 class MovingPlatform : Platform {
+    
     enum MoveDirection {
         case right
         case left

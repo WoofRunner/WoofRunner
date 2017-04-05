@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 final class TileFactory {
+    
     static let sharedInstance: TileFactory = TileFactory()
 
     let WARNING_INVALID_TILE = "WARNING: Cant create tile, TileType: "

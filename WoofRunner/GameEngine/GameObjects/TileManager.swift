@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class TileManager: GameObject {
+    
     var obstacleData: [[Int]] = []
     var platformData: [[Int]] = []
     

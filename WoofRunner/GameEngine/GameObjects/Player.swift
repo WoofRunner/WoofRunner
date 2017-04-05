@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
+    
     var startHeight: Float = 0
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3

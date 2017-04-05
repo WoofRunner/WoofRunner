@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class RotatingAxe: Obstacle {
+    
     var interval: Float = 1
     var curTime: Float
     var rotateAmount: CGFloat = CGFloat(90).degreesToRadians
