@@ -9,19 +9,18 @@
 import Foundation
 import SceneKit
 
+// A platform that moves to and fro from the start to the end column
 class MovingPlatform : Platform {
-    
     enum MoveDirection {
         case right
         case left
     }
     
-    var isMovingToRight: Bool = true
-    
+    var moveDirection: MoveDirection = MoveDirection.right
     var moveSpeed: Float = 3
     
-    var rightBound: Float = GameSettings.TILE_WIDTH * 2
-    var leftBound: Float = GameSettings.TILE_WIDTH * -2
+    var rightBound: Float = GameSettings.TILE_WIDTH * Float(GameSettings.PLATFORM_COLUMNS/2)
+    var leftBound: Float = GameSettings.TILE_WIDTH * -Float(GameSettings.PLATFORM_COLUMNS/2)
     
     override init(_ pos: SCNVector3) {
         super.init(pos)
@@ -38,19 +37,26 @@ class MovingPlatform : Platform {
         super.update(deltaTime)
         if !isTriggered { return }
         
-        position += SCNVector3(moveSpeed, 0, 0) * deltaTime
-        
-        if position.x > rightBound {
-            position.x = rightBound
-            moveSpeed *= -1
-        } else if position.x < leftBound {
-            position.x = leftBound
-            moveSpeed *= -1
+        let displacement = SCNVector3(moveSpeed, 0, 0) * deltaTime
+
+        switch moveDirection {
+        case .right:
+            position += displacement
+            if position.x > rightBound {
+                position.x = rightBound
+                moveDirection = MoveDirection.left
+            }
+            
+        case .left:
+            position -= displacement
+            if position.x < leftBound {
+                position.x = leftBound
+                moveDirection = MoveDirection.right
+            }
         }
-        
     }
     
     override func onTriggered() {
-        print("move trigered")
+
     }
 }
