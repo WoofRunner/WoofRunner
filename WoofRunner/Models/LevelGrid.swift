@@ -137,7 +137,7 @@ class LevelGrid {
         return gridViewModelArray[row][col]
     }
     
-    private func setupObservables(_ gridVM: GridViewModel) {
+    func setupObservables(_ gridVM: GridViewModel) {
         // Setup observation on gridVM tileType
         gridVM.platformType.asObservable().subscribe(onNext: {
             (newType) in
