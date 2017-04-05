@@ -1,6 +1,5 @@
 //
 //  GameObject.swift
-//  test
 //
 //  Created by limte on 18/3/17.
 //  Copyright © 2017 nus.cs3217.a0126356. All rights reserved.
