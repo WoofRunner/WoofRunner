@@ -11,6 +11,8 @@ import RxCocoa
 
 class GridViewModel {
     
+    static var modelNodeName = "modelNode"
+    
     var gridPos: Variable<Position>
     var size = Variable<Float>(1.0)
     var platformType = Variable<TileType>(.none)
@@ -48,5 +50,18 @@ class GridViewModel {
     
     func removeObstacle() {
         obstacleType.value = .none
+    }
+    
+    // Remove top level node; obstacle if any else platform
+    func removeTop() {
+        guard obstacleType.value == .none else {
+            return removeObstacle()
+        }
+        return removePlatform()
+    }
+    
+    func setType(platform pType: TileType, obstacle oType: TileType) {
+        platformType.value = pType
+        obstacleType.value = oType
     }
 }

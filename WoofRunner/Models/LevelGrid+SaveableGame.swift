@@ -28,9 +28,11 @@ extension LevelGrid: SaveableGame {
         }
 
         // Set StoredGame values
+        preprocessLevel()
+        
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
-
+        
         createStoredObstacles(game: res)
         createStoredPlatforms(game: res)
 
@@ -97,6 +99,35 @@ extension LevelGrid: SaveableGame {
                 game.addToPlatforms(storedPlatform)
             }
         }
+    }
+    
+    // Pre-process the level before saving
+    private func preprocessLevel() {
+        // Truncate trailling empty rows
+        var platformLength = self.length - 1
+        for index in 0...platformLength {
+            let row = gridViewModelArray[platformLength - index]
+            if !isEmptyRow(row) {
+                platformLength = platformLength - index
+                break
+            }
+        }
+        gridViewModelArray = Array(gridViewModelArray.prefix(platformLength + 1))
+        platformArray = Array(platformArray.prefix(platformLength + 1))
+        obstacleArray = Array(obstacleArray.prefix(platformLength + 1))
+        
+        length = platformLength + 1
+    }
+    
+    // Returns if the row is empty of platform and obstacles
+    private func isEmptyRow(_ row: [GridViewModel]) -> Bool {
+        for gridVM in row {
+            if gridVM.platformType.value != TileType.none
+                || gridVM.obstacleType.value != TileType.none {
+                return false
+            }
+        }
+        return true
     }
 
 }
