@@ -27,17 +27,17 @@ class GameObject: SCNNode, GestureDelegate {
     }
 
     // to be overriden by subclass to receive onCollide event
-    public func OnCollide(other: GameObject) {
+    public func onCollide(other: GameObject) {
         
     }
     
     // called when this GameObject collide with another scnnode
-    public override func OnCollide(otherSCNNode: SCNNode) {
-        super.OnCollide(otherSCNNode: otherSCNNode)
+    public override func onCollide(otherSCNNode: SCNNode) {
+        super.onCollide(otherSCNNode: otherSCNNode)
         guard let otherGameObject = otherSCNNode as? GameObject else {
             return
         }
-        OnCollide(other: otherGameObject)
+        onCollide(other: otherGameObject)
     }
 
     // set to pending destroy to be destroyed by game engine

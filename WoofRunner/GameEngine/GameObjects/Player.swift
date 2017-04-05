@@ -49,7 +49,7 @@ class Player: GameObject {
         isAir = true
     }
     
-    public override func OnCollide(other: GameObject) {
+    public override func onCollide(other: GameObject) {
         if other is Platform {
         }
         
