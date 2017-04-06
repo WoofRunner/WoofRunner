@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>limtaeu</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.6;  Revision: 43</authoring_tool>
+    </contributor>
+    <created>2017-04-06T16:40:14</created>
+    <modified>2017-04-06T16:40:14</modified>
+    <unit name="inch" meter="0.0254"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="floor_2">
+      <profile_COMMON>
+        <newparam sid="prototyper_floor_2_tga-surface">
+          <surface type="2D">
+            <init_from>prototyper_floor_2_tga</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="prototyper_floor_2_tga-sampler">
+          <sampler2D>
+            <source>prototyper_floor_2_tga-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="prototyper_floor_2_tga-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>0</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <opacity_type sid="opacity_type" type="int">0</opacity_type>
+            <falloff_type sid="falloff_type" type="int">0</falloff_type>
+            <falloff sid="falloff" type="float">0</falloff>
+            <index_of_refraction sid="index_of_refraction" type="float">1.5</index_of_refraction>
+            <wire_size sid="wire_size" type="float">1</wire_size>
+            <wire_units sid="wire_units" type="int">0</wire_units>
+            <apply_reflection_dimming sid="apply_reflection_dimming" type="bool">0</apply_reflection_dimming>
+            <dim_level sid="dim_level" type="float">0</dim_level>
+            <reflection_level sid="reflection_level" type="float">3</reflection_level>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_texture_lock sid="ambient_diffuse_texture_lock" type="bool">1</ambient_diffuse_texture_lock>
+            <ambient_diffuse_lock sid="ambient_diffuse_lock" type="bool">0</ambient_diffuse_lock>
+            <diffuse_specular_lock sid="diffuse_specular_lock" type="bool">0</diffuse_specular_lock>
+            <use_self_illum_color sid="use_self_illum_color" type="bool">0</use_self_illum_color>
+            <self_illumination sid="self_illumination" type="float">0</self_illumination>
+            <specular_level sid="specular_level" type="float">0</specular_level>
+            <soften sid="soften" type="float">0.1</soften>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="floor_2-material" name="floor_2">
+      <instance_effect url="#floor_2"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-ground_block_1x1x1_dark" name="ground_block_1x1x1_dark">
+      <mesh>
+        <source id="geom-ground_block_1x1x1_dark-positions">
+          <float_array id="geom-ground_block_1x1x1_dark-positions-array" count="24">-50 0 -50 50 0 50 -50 100 -50 50 100 50 -50 0 50 50 0 -50 50 100 -50 -50 100 50</float_array>
+          <technique_common>
+            <accessor source="#geom-ground_block_1x1x1_dark-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-ground_block_1x1x1_dark-normals">
+          <float_array id="geom-ground_block_1x1x1_dark-normals-array" count="72">1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#geom-ground_block_1x1x1_dark-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-ground_block_1x1x1_dark-map1">
+          <float_array id="geom-ground_block_1x1x1_dark-map1-array" count="72">0.5 0 0 0.5 0.5 0 0.5 0.5 0 0 0.5 0 1 1 0 1 1 0 0.75 0.5 0 0.75 0.5 0 1 0.75 0 1 0.75 0 0.75 0 0 0 0.75 0 0.75 1 0 0.75 0.75 0 0.75 0.75 0 0.75 1 0 0.5 0.25 0 0.75 0.25 0 0.5 0.75 0 0.75 0.75 0 0.75 0.75 0 0.5 0.75 0 0.25 0.75 0 0.25 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#geom-ground_block_1x1x1_dark-map1-array" count="24" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-ground_block_1x1x1_dark-vertices">
+          <input semantic="POSITION" source="#geom-ground_block_1x1x1_dark-positions"/>
+        </vertices>
+        <triangles material="floor_2" count="12">
+          <input semantic="VERTEX" source="#geom-ground_block_1x1x1_dark-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-ground_block_1x1x1_dark-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-ground_block_1x1x1_dark-map1" offset="2" set="0"/>
+          <p>5 0 20 6 1 21 3 2 2 3 2 2 1 3 7 5 0 20 2 4 4 6 5 12 5 6 13 5 6 13 0 7 8 2 4 4 3 8 5 7 9 15 4 10 14 4 10 14 1 11 9 3 8 5 7 12 23 3 13 22 6 14 11 6 14 11 2 15 3 7 12 23 4 16 19 7 17 18 2 18 1 2 18 1 0 19 6 4 16 19 1 20 17 4 21 16 0 22 0 0 22 0 5 23 10 1 20 17</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="prototyper_floor_2_tga">
+      <init_from>file:///E:/cs3217/images/0_prototyper_floor_2.tga</init_from>
+    </image>
+  </library_images>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-ground_block_1x1x1_dark" name="ground_block_1x1x1_dark">
+        <translate>-53.20457 -47.93747 0</translate>
+        <rotate>-1 0 0 -90</rotate>
+        <scale>1 0.3337321 1</scale>
+        <node>
+          <matrix>1 0 0 50.41348 0 1 0 -8.22439e-6 0 0 1 -50.48093 0 0 0 1</matrix>
+          <instance_geometry url="#geom-ground_block_1x1x1_dark">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="floor_2" target="#floor_2-material">
+                  <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+            <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+            <primary_visibility sid="primary_visibility" type="bool">1</primary_visibility>
+            <secondary_visibility sid="secondary_visibility" type="bool">1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>
