@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,36 +23,34 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-ns-iG4">
                     <rect key="frame" x="0.0" y="0.0" width="401" height="179"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Level Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hws-cS-w2j">
-                            <rect key="frame" x="39" y="110" width="323" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="B9m-Fp-WuI"/>
-                            </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="25"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Level As:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESv-EL-H5h">
                             <rect key="frame" x="62" y="44" width="277" height="41"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="41" id="JKH-CW-FwU"/>
-                                <constraint firstAttribute="width" constant="277" id="qa6-5f-nhl"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Level Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hws-cS-w2j">
+                            <rect key="frame" x="57" y="107" width="286" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="B9m-Fp-WuI"/>
+                                <constraint firstAttribute="width" constant="286" id="Ttd-tI-Nwd"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="25"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="hws-cS-w2j" firstAttribute="centerX" secondItem="Thc-ns-iG4" secondAttribute="centerX" id="AH4-V8-PBe"/>
                         <constraint firstAttribute="height" constant="179" id="EAK-r7-r6v"/>
-                        <constraint firstItem="hws-cS-w2j" firstAttribute="leading" secondItem="Thc-ns-iG4" secondAttribute="leadingMargin" constant="31" id="KMQ-M8-hsz"/>
-                        <constraint firstAttribute="trailingMargin" secondItem="ESv-EL-H5h" secondAttribute="trailing" constant="54" id="MSX-Yn-q2g"/>
-                        <constraint firstAttribute="bottom" secondItem="hws-cS-w2j" secondAttribute="bottom" constant="39" id="c9L-p5-lGB"/>
-                        <constraint firstAttribute="trailingMargin" secondItem="hws-cS-w2j" secondAttribute="trailing" constant="31" id="pO3-lM-XaU"/>
-                        <constraint firstItem="ESv-EL-H5h" firstAttribute="leading" secondItem="Thc-ns-iG4" secondAttribute="leadingMargin" constant="54" id="qtK-nJ-9rC"/>
+                        <constraint firstItem="ESv-EL-H5h" firstAttribute="leading" secondItem="Thc-ns-iG4" secondAttribute="leading" constant="62" id="FtN-bd-j2v"/>
+                        <constraint firstAttribute="bottom" secondItem="hws-cS-w2j" secondAttribute="bottom" constant="42" id="c9L-p5-lGB"/>
+                        <constraint firstAttribute="trailing" secondItem="ESv-EL-H5h" secondAttribute="trailing" constant="62" id="d50-2p-j9v"/>
                         <constraint firstItem="ESv-EL-H5h" firstAttribute="top" secondItem="Thc-ns-iG4" secondAttribute="top" constant="44" id="tj1-xJ-RYs"/>
-                        <constraint firstItem="hws-cS-w2j" firstAttribute="centerX" secondItem="Thc-ns-iG4" secondAttribute="centerX" id="zGS-yR-Z3s"/>
                         <constraint firstAttribute="width" constant="401" id="zf5-yN-OG8"/>
                     </constraints>
                 </view>

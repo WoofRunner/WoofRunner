@@ -332,9 +332,16 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		}
 		
 		let okBtn = DefaultButton(title: "OK", height: 60) {
-			self.currentLevelName = renameVC.getLevelName()
-			self.spriteScene?.updateDisplayedLevelName(self.currentLevelName)
+			if self.validateLevelName(renameVC.getLevelName()) {
+				self.currentLevelName = renameVC.getLevelName()
+				self.spriteScene?.updateDisplayedLevelName(self.currentLevelName)
+				popup.dismiss()
+			} else {
+				print("Name Invalid!")
+			}
 		}
+		okBtn.dismissOnTap = false
+		
 	
 		popup.addButtons([cancelBtn, okBtn])
 		customiseDialogButtons()
@@ -377,6 +384,10 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		// Cancel Button
 		let cancelBtnAppearance = CancelButton.appearance()
 		cancelBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+	}
+	
+	private func validateLevelName(_ name: String) -> Bool {
+		return !(name.characters.count < 5 || name.characters.count > 40)
 	}
 	
 	
