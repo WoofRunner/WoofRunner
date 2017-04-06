@@ -16,10 +16,11 @@ import PopupDialog
 class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
     // Camera Settings
-    static var cameraHeight: Float = 8.5
-    static var cameraAngle: Float = 30.0
-    static var cameraOffset: Float = 2.0
+    static var cameraHeight: Float = 6
+    static var cameraAngle: Float = -0.77
+    static var cameraOffset: Float = 3.5
     static var paddingTiles: Float = 2.0
+    static var panningSensitivity: Float = 15 // Default = 15
 	
     // Level Designer Settings
     static var autoExtendLevel = true
@@ -120,22 +121,26 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         let camera = LDScene.cameraNode
         let translation = sender.translation(in: sceneView)
 
-        let location = sender.location(in: sceneView)
-        let secLocation = CGPoint(x: location.x + translation.x,
-                                  y: location.y + translation.y)
+//        let location = sender.location(in: sceneView)
+//        let secLocation = CGPoint(x: location.x + translation.x,
+//                                  y: location.y + translation.y)
         // Project tap to scene
-        let P1 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 0.0))
-        let P2 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 1.0))
-
-        let Q1 = sceneView.unprojectPoint(SCNVector3(x: Float(secLocation.x), y: Float(secLocation.y), z: 0.0))
-        let Q2 = sceneView.unprojectPoint(SCNVector3(x: Float(secLocation.x), y: Float(secLocation.y), z: 1.0))
-
-        let t1 = -P1.z / (P2.z - P1.z)
-        let y1 = P1.y + t1 * (P2.y - P1.y)
-        let P0 = SCNVector3Make(0, y1,0)
-        let y2 = Q1.y + t1 * (Q2.y - Q1.y)
-        let Q0 = SCNVector3Make(0, y2, 0)
-        let diffR = P0.y - Q0.y
+//        let P1 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 0.0))
+//        let P2 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 1.0))
+//
+//        let Q1 = sceneView.unprojectPoint(SCNVector3(x: Float(secLocation.x), y: Float(secLocation.y), z: 0.0))
+//        let Q2 = sceneView.unprojectPoint(SCNVector3(x: Float(secLocation.x), y: Float(secLocation.y), z: 1.0))
+//        let startLine = P1.y - P2.y
+//        let endLine = Q1.y - Q2.y
+//        let propToZeroForStart = P1.y / startLine
+//        let propToZeroForEnd = Q1.y / endLine
+//        let startZ = P1.z - propToZeroForStart * (P1.z - P2.z)
+//        let endZ = Q1.z - propToZeroForEnd * (Q1.z - Q2.z)
+//        let diffR = startZ - endZ
+//        print(propToZeroForStart, propToZeroForEnd)
+        // Normal method
+        let diffR = Float(translation.y / self.view.frame.height)
+            * LevelDesignerViewController.panningSensitivity
 
         switch sender.state {
         case .began:
@@ -143,14 +148,16 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             break;
         case .changed:
             let newPos = SCNVector3(LDScene.cameraLocation.x,
-                                    LDScene.cameraLocation.y + diffR,
-                                    LDScene.cameraLocation.z)
-            if (newPos.y >= -LevelDesignerViewController.cameraOffset) {
+                                    LDScene.cameraLocation.y,
+                                    LDScene.cameraLocation.z - diffR)
+            if (newPos.z <= LevelDesignerViewController.cameraOffset) {
                 camera.position = newPos
             }
             // Add padding to near plane clipping
-            let padding = -GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
-            let startRow = Int(camera.position.y + (LevelDesignerViewController.cameraOffset + padding) / GameSettings.TILE_WIDTH)
+            let padding = GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
+            let startRow = Int(-camera.position.z +
+                                (LevelDesignerViewController.cameraOffset - padding) / GameSettings.TILE_WIDTH)
+            print(startRow)
             updateCurrentLevel(from: startRow)
             break;
         default:
@@ -172,7 +179,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             guard let toggleNode = getValidNode(hitResults) else {
                 return
             }
-            currentLevel.toggleGrid(x: toggleNode.position.x, y: toggleNode.position.y, currentSelectedBrush)
+            currentLevel.toggleGrid(x: toggleNode.position.x, z: toggleNode.position.z, currentSelectedBrush)
         }
     }
     
@@ -194,8 +201,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 longPress = false
                 break
             }
-            currentLevel.toggleGrid(x: startNode.position.x, y: startNode.position.y, currentSelectedBrush)
-            currentLevel.beginSelection((x: startNode.position.x, y: startNode.position.y))
+            currentLevel.toggleGrid(x: startNode.position.x, z: startNode.position.z, currentSelectedBrush)
+            currentLevel.beginSelection((x: startNode.position.x, z: startNode.position.z))
             break
         case .changed:
             let pos = sender.location(in: sceneView)
@@ -209,7 +216,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 longPress = false
                 break
             }
-            currentLevel.updateSelection((x: currentNode.position.x, y: currentNode.position.y))
+            currentLevel.updateSelection((x: currentNode.position.x, z: currentNode.position.z))
             break
         default:
             longPress = false

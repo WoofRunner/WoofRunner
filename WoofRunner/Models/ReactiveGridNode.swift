@@ -30,7 +30,8 @@ class ReactiveGridNode {
     init(_ gridVM: GridViewModel) {
         
         self.position = SCNVector3(Float(gridVM.gridPos.value.getCol()) * gridVM.size.value,
-                                   Float(gridVM.gridPos.value.getRow()) * gridVM.size.value, 0)
+                                   0.0,
+                                   -Float(gridVM.gridPos.value.getRow()) * gridVM.size.value)
         self.size = gridVM.size.value
         self.platformType = gridVM.platformType.value
         self.obstacleType = gridVM.obstacleType.value
@@ -49,9 +50,10 @@ class ReactiveGridNode {
             .subscribe(onNext: {
                 (pos) in
                 self.position = SCNVector3(Float(pos.getCol()) * gridVM.size.value,
-                                           Float(pos.getRow()) * gridVM.size.value, 0)
+                                           0.0,
+                                           -Float(pos.getRow()) * gridVM.size.value)
                 self.platformNode.value.position = self.position
-                self.obstacleNode.value.position = self.position + SCNVector3(0, 0, gridVM.size.value)
+                self.obstacleNode.value.position = self.position + SCNVector3(0.0, gridVM.size.value, 0.0)
             }).addDisposableTo(disposeBag)
         
         gridVM.size.asObservable()
@@ -133,7 +135,7 @@ class ReactiveGridNode {
         self.obstacleModelNode.removeFromParentNode()
         self.obstacleModelNode = modelNode
         self.obstacleNode.value.addChildNode(obstacleModelNode)
-        self.obstacleNode.value.position = self.position + SCNVector3(0, 0, size)
+        self.obstacleNode.value.position = self.position + SCNVector3(0.0, size, 0.0)
     }
     
     // Returns a model node that would be added to gridNode as a childnode

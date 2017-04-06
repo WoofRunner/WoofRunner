@@ -18,7 +18,7 @@ class LevelGrid {
     var disposeBag = DisposeBag()
     
     static var levelCols = GameSettings.PLATFORM_COLUMNS
-    static var chunkLength = 15
+    static var chunkLength = 20
     
     var length: Int
     var platformArray: [[Int]]
@@ -62,8 +62,8 @@ class LevelGrid {
         self.init(length: 0);
     }
     
-    func toggleGrid(x: Float, y: Float, _ currentSelectedBrush: TileType) {
-        guard let gridVM = getValidGrid((x: x, y: y)) else {
+    func toggleGrid(x: Float, z: Float, _ currentSelectedBrush: TileType) {
+        guard let gridVM = getValidGrid((x: x, z: z)) else {
             return
         }
         return toggleGrid(gridVM, currentSelectedBrush)
@@ -126,10 +126,10 @@ class LevelGrid {
         self.length += extend
     }
     
-    func getValidGrid(_ pos: (x: Float, y: Float)) -> GridViewModel? {
+    func getValidGrid(_ pos: (x: Float, z: Float)) -> GridViewModel? {
         // Identify grid
         let col = Int(pos.x / GameSettings.TILE_WIDTH)
-        let row = Int(pos.y / GameSettings.TILE_WIDTH)
+        let row = Int(-pos.z / GameSettings.TILE_WIDTH)
         // Check valid coord
         guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < self.length else {
             return nil

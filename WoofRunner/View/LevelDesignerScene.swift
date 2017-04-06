@@ -72,13 +72,14 @@ class LevelDesignerScene: SCNScene {
         cameraNode.name = "Camera"
         
         // Position
-        cameraNode.position = SCNVector3Make(-0.5 + Float(LevelGrid.levelCols) * 0.5,
-                                             -LevelDesignerViewController.cameraOffset,
-                                             LevelDesignerViewController.cameraHeight)
+        let size = GameSettings.TILE_WIDTH
+        cameraNode.position = SCNVector3((-size * 0.5) + (Float(LevelGrid.levelCols) * (size * 0.5)),
+                                         LevelDesignerViewController.cameraHeight,
+                                         LevelDesignerViewController.cameraOffset)
         cameraLocation = cameraNode.position
         
         // Facing Direction
-        cameraNode.eulerAngles = SCNVector3Make((LevelDesignerViewController.cameraAngle / 180.0) * Float.pi, 0.0, 0.0)
+        cameraNode.rotation = SCNVector4(1.0, 0.0, 0.0, LevelDesignerViewController.cameraAngle)
         
         // Orthographic = false
         guard let cameraObject = cameraNode.camera else {
