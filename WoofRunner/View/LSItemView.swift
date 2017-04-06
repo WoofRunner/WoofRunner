@@ -11,11 +11,12 @@ import SnapKit
 
 class LSItemView: UIView {
 
-	var levelImageView = UIImageView()
-	var levelNameLabel = UILabel()
-	var playerScoreLabel = UILabel()
+	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
+	private var levelNameLabel = UILabel()
+	private var playerScoreLabel = UILabel()
 	
-	var label = UILabel()
+	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR DEBUG ONLY
+	
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -28,6 +29,7 @@ class LSItemView: UIView {
 		super.init(frame: frame)
 		didLoad()
 	}
+	
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -60,12 +62,21 @@ class LSItemView: UIView {
 		}
 		
 		
-		// Set Constraints for Level Name label
+		// Set Constraints for score label
 		playerScoreLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
 			make.bottom.equalTo(self).offset(-80)
 			//make.bottomMargin.equalTo(30)
 		}
+		
+		// Add and configure debug Edit button
+		addSubview(editButton)
+		editButton.setTitle("Edit", for: .normal)
+		editButton.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.bottom.equalTo(self).offset(-40)
+		}
+		
 		
 	}
 	
@@ -80,10 +91,16 @@ class LSItemView: UIView {
 		
 		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
 		levelImageView.image = resized
+		levelImageView.isUserInteractionEnabled = true
 		
 		// Set Shadows
 		setShadows()
+		
+		editButton.bindUUID(vm.levelUUID)
+		levelImageView.bindUUID(vm.levelUUID)
+		
 	}
+	
 	
 	// TODO: Check why 1st 2 items do not have shadow rendered. Sth to do with recycling in iCarousel
 	private func setShadows() {
