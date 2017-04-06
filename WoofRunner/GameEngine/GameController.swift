@@ -132,9 +132,9 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tempSetup()
+        //tempSetup()
         
-        /*
+        
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
         }
@@ -146,7 +146,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
             .onFailure { error in
                 print("\(error.localizedDescription)")
         }
-*/
+
     }
     
     override func didReceiveMemoryWarning() {
