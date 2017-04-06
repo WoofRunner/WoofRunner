@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class GameController: UIViewController, PlayerDelegate {
+class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
 
 	private var gameUUID: String?
     private let gsm = GameStorageManager.getInstance()
@@ -46,13 +46,13 @@ class GameController: UIViewController, PlayerDelegate {
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 6],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6]]
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0]]
     /*
     var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
@@ -173,6 +173,7 @@ class GameController: UIViewController, PlayerDelegate {
 
         if let tileManager = TileManager(obstacleData: game.getObstacles(), platformData: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
+            tileManager.delegate = self
             self.tileManager = tileManager
         }
         
@@ -192,6 +193,7 @@ class GameController: UIViewController, PlayerDelegate {
         
         if let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData) {
             World.spawnGameObject(tileManager)
+            tileManager.delegate = self
             self.tileManager = tileManager
         }
         
@@ -208,5 +210,9 @@ class GameController: UIViewController, PlayerDelegate {
     func restartGame() {
         tileManager?.restartLevel()
         player?.restart()
+    }
+    
+    func onTileManagerEnded() {
+        restartGame()
     }
 }
