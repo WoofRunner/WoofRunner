@@ -28,7 +28,7 @@ enum TileType: Int {
     
     func isPlatform() -> Bool {
         switch self {
-        case .floorLight, .floorDark, .movingPlatform:
+        case .floorLight, .floorDark, .floorJump, .movingPlatform:
             return true
         default:
             return false
@@ -37,7 +37,7 @@ enum TileType: Int {
     
     func isObstacle() -> Bool {
         switch self {
-        case .floorJump, .rock, .sword:
+        case .jumpingRock, .rock, .rotatingAxe:
             return true
         default:
             return false

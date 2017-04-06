@@ -99,8 +99,8 @@ class ReactiveGridNode {
             return
         }
         
-        // Tag Model Node
-        modelNode.name = GridViewModel.modelNodeName
+        // Tag Grid Node
+        self.platformNode.value.name = GridViewModel.gridNodeName
         
         // Replace modelNode
         self.platformModelNode.removeFromParentNode()
@@ -128,8 +128,8 @@ class ReactiveGridNode {
             return
         }
         
-        // Tag ModelNode
-        modelNode.name = GridViewModel.modelNodeName
+        // Tag GridNode
+        self.obstacleNode.value.name = GridViewModel.gridNodeName
         
         // Replace obstacleModelNode
         self.obstacleModelNode.removeFromParentNode()

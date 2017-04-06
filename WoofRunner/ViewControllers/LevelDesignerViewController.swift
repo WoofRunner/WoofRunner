@@ -67,9 +67,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Gestures
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         self.view.addGestureRecognizer(panGesture)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         tapGesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapGesture)
+        
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
         longPressGesture.minimumPressDuration = 0.5
         self.view.addGestureRecognizer(longPressGesture)
@@ -121,47 +123,29 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         let camera = LDScene.cameraNode
         let translation = sender.translation(in: sceneView)
 
-//        let location = sender.location(in: sceneView)
-//        let secLocation = CGPoint(x: location.x + translation.x,
-//                                  y: location.y + translation.y)
-        // Project tap to scene
-//        let P1 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 0.0))
-//        let P2 = sceneView.unprojectPoint(SCNVector3(x: Float(location.x), y: Float(location.y), z: 1.0))
-//
-//        let Q1 = sceneView.unprojectPoint(SCNVector3(x: Float(secLocation.x), y: Float(secLocation.y), z: 0.0))
-//        let Q2 = sceneView.unprojectPoint(SCNVector3(x: Float(secLocation.x), y: Float(secLocation.y), z: 1.0))
-//        let startLine = P1.y - P2.y
-//        let endLine = Q1.y - Q2.y
-//        let propToZeroForStart = P1.y / startLine
-//        let propToZeroForEnd = Q1.y / endLine
-//        let startZ = P1.z - propToZeroForStart * (P1.z - P2.z)
-//        let endZ = Q1.z - propToZeroForEnd * (Q1.z - Q2.z)
-//        let diffR = startZ - endZ
-//        print(propToZeroForStart, propToZeroForEnd)
         // Normal method
         let diffR = Float(translation.y / self.view.frame.height)
             * LevelDesignerViewController.panningSensitivity
 
         switch sender.state {
-        case .began:
-            LDScene.cameraLocation = camera.position
-            break;
-        case .changed:
-            let newPos = SCNVector3(LDScene.cameraLocation.x,
-                                    LDScene.cameraLocation.y,
-                                    LDScene.cameraLocation.z - diffR)
-            if (newPos.z <= LevelDesignerViewController.cameraOffset) {
-                camera.position = newPos
-            }
-            // Add padding to near plane clipping
-            let padding = GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
-            let startRow = Int(-camera.position.z +
-                                (LevelDesignerViewController.cameraOffset - padding) / GameSettings.TILE_WIDTH)
-            print(startRow)
-            updateCurrentLevel(from: startRow)
-            break;
-        default:
-            break;
+            case .began:
+                LDScene.cameraLocation = camera.position
+                break;
+            case .changed:
+                let newPos = SCNVector3(LDScene.cameraLocation.x,
+                                        LDScene.cameraLocation.y,
+                                        LDScene.cameraLocation.z - diffR)
+                if (newPos.z <= LevelDesignerViewController.cameraOffset) {
+                    camera.position = newPos
+                }
+                // Add padding to near plane clipping
+                let padding = GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
+                let startRow = Int(-camera.position.z +
+                                    (LevelDesignerViewController.cameraOffset - padding) / GameSettings.TILE_WIDTH)
+                updateCurrentLevel(from: startRow)
+                break;
+            default:
+                break;
         }
     }
 
@@ -187,7 +171,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     func handleLongPress(_ sender: UIGestureRecognizer) {
         switch(sender.state) {
         case .began:
-            print("began")
             longPress = true
             let pos = sender.location(in: sceneView)
             let hitResults = sceneView.hitTest(pos, options: [:])
@@ -221,7 +204,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         default:
             longPress = false
             currentLevel.endSelection()
-            print("ended")
             break
         }
     }
@@ -252,27 +234,36 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
     // Handle the logic for toggling of grid nodes
     private func getValidNode(_ hitResults: [SCNHitTestResult]) -> SCNNode? {
-        let togglingNode: SCNNode?
+        var togglingNode: SCNNode? = nil
         for result in hitResults {
             let resultantNode = result.node
             // Skip if node is transparent
             guard resultantNode.geometry?.firstMaterial?.transparency != 0 else {
                 continue
             }
-            // Take parent is node is a model
-            if resultantNode.name == GridViewModel.modelNodeName {
-                guard let parentNode = resultantNode.parent else {
-                    continue
-                }
-                togglingNode = parentNode
-            } else {
-                // Else toggle node
-                togglingNode = resultantNode
+            
+            // Find GridNode
+            if resultantNode.name != GridViewModel.gridNodeName {
+                togglingNode = findParentGridNode(resultantNode)
             }
             
+            guard togglingNode != nil else {
+                continue
+            }
             return togglingNode
         }
         return nil
+    }
+    
+    private func findParentGridNode(_ node: SCNNode) -> SCNNode? {
+        guard let parentNode = node.parent else {
+            return nil
+        }
+        guard parentNode.name == GridViewModel.gridNodeName else {
+            return findParentGridNode(parentNode)
+        }
+        
+        return parentNode
     }
 
     /// Saves the current level into CoreData.
