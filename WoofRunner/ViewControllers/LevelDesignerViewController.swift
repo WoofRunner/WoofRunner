@@ -332,12 +332,21 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		}
 		
 		let okBtn = DefaultButton(title: "OK", height: 60) {
+			
+			// Validate Input Level Name
 			if self.validateLevelName(renameVC.getLevelName()) {
+				
+				// Hide warning text (in case it was previously visible)
+				renameVC.hideWarningText()
+				
+				// Update Level Name
 				self.currentLevelName = renameVC.getLevelName()
 				self.spriteScene?.updateDisplayedLevelName(self.currentLevelName)
+				
+				// Dismiss popup
 				popup.dismiss()
 			} else {
-				print("Name Invalid!")
+				renameVC.showWarningText()
 			}
 		}
 		okBtn.dismissOnTap = false
@@ -348,8 +357,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		
 		// Present dialog
 		present(popup, animated: true, completion: nil)
-		
-		print("Showed Dialog")
 	}
 	
 	private func customisePopupDialog() {
@@ -399,7 +406,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	
 	internal func renameLevel(_ name: String) {
 		self.currentLevelName = name
-		print("Inside VC: RenameLevel")
 		showRenameDialog()
 	}
 	
