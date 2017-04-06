@@ -10,6 +10,7 @@ import UIKit
 
 class RenameDialogViewController: UIViewController {
 	
+	
 	@IBOutlet weak var levelNameTextField: UITextField!
 	
 	var levelName: String = "" // Set by calling ViewController at the beginning for the placeholder text

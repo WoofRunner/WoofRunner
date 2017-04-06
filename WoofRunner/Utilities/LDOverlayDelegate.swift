@@ -10,6 +10,6 @@ import Foundation
 
 protocol LDOverlayDelegate {	
 	func saveLevel()
-	func renameLevel()
+	func renameLevel(_ name: String)
 	func back()
 }

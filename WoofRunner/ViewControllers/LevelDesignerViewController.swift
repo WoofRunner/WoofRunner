@@ -319,8 +319,9 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	}
 	
 	private func showRenameDialog() {
+		
 		// Create a custom view controller
-		let renameVC = RenameDialogViewController()
+		let renameVC = RenameDialogViewController(nibName: "RenameDialogViewController", bundle: nil)
 		
 		// Create the dialog
 		let popup = PopupDialog(viewController: renameVC, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false)
@@ -332,6 +333,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		
 		let okBtn = DefaultButton(title: "OK", height: 60) {
 			self.currentLevelName = renameVC.getLevelName()
+			self.spriteScene?.updateDisplayedLevelName(self.currentLevelName)
 		}
 	
 		popup.addButtons([cancelBtn, okBtn])
@@ -339,6 +341,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		
 		// Present dialog
 		present(popup, animated: true, completion: nil)
+		
+		print("Showed Dialog")
 	}
 	
 	private func customisePopupDialog() {
@@ -349,30 +353,30 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	
 	private func customiseDialogAppearance() {
 		let dialogAppearance = PopupDialogDefaultView.appearance()
-		dialogAppearance.titleFont            = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
-		dialogAppearance.titleColor           = UIColor(white: 0.4, alpha: 1)
-		dialogAppearance.titleTextAlignment   = .center
-		dialogAppearance.messageFont          = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
-		dialogAppearance.messageColor         = UIColor(white: 0.6, alpha: 1)
+		dialogAppearance.titleFont = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
+		dialogAppearance.titleColor = UIColor(white: 0.4, alpha: 1)
+		dialogAppearance.titleTextAlignment = .center
+		dialogAppearance.messageFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
+		dialogAppearance.messageColor = UIColor(white: 0.6, alpha: 1)
 		dialogAppearance.messageTextAlignment = .center
 	}
 	
 	private func customiseDialogOverlayAppearance() {
 		let overlayAppearance = PopupDialogOverlayView.appearance()
-		overlayAppearance.color       = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
-		overlayAppearance.blurRadius  = 30
+		overlayAppearance.color = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
+		overlayAppearance.blurRadius = 30
 		overlayAppearance.blurEnabled = true
-		overlayAppearance.liveBlur    = false
+		overlayAppearance.liveBlur = false
 	}
 	
 	private func customiseDialogButtons() {
 		// Default buttons
 		let defaultBtnAppearance = DefaultButton.appearance()
-		defaultBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+		defaultBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
 		
 		// Cancel Button
 		let cancelBtnAppearance = CancelButton.appearance()
-		cancelBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+		cancelBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
 	}
 	
 	
@@ -382,7 +386,9 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		saveGame()
 	}
 	
-	internal func renameLevel() {
+	internal func renameLevel(_ name: String) {
+		self.currentLevelName = name
+		print("Inside VC: RenameLevel")
 		showRenameDialog()
 	}
 	

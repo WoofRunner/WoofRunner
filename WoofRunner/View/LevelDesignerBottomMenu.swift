@@ -24,22 +24,43 @@ struct BottomMenuConstants {
 	static let levelNameLabelFontSize = CGFloat(45)
 
 	static let backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+	
+	static let defaultLevelName = "Custom Level"
 }
 
 class LevelDesignerBottomMenu: SKNode {
 	
-	private let backgroundNode = SKSpriteNode(texture: nil, color: BottomMenuConstants.backgroundColor, size: CGSize(width: BottomMenuConstants.barWidth, height: BottomMenuConstants.barHeight))
-	private var saveButton = BottomMenuButton(type: .save, size: BottomMenuConstants.btnSize)
-	private var backButton = BottomMenuButton(type: .back, size: BottomMenuConstants.btnSize)
-	private var levelNameLabel = SKLabelNode(text: "Custom Level 1")
+	// MARK: - Private Variables
+	
+	private let backgroundNode = SKSpriteNode(texture: nil,
+	                                          color: BottomMenuConstants.backgroundColor,
+	                                          size: CGSize(width: BottomMenuConstants.barWidth,
+	                                                       height: BottomMenuConstants.barHeight))
+	private var saveButton = BottomMenuSpriteButton(type: .save, size: BottomMenuConstants.btnSize)
+	private var backButton = BottomMenuSpriteButton(type: .back, size: BottomMenuConstants.btnSize)
+	private var levelNameLabel = BottomMenuLabelButton(type: .rename,
+	                                                   text: BottomMenuConstants.defaultLevelName)
+	
+	// MARK: - Initialisers
 	
 	override init() {
 		super.init()
+		setupNode()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	// MARK: - Private Methods
+	
+	// Setup node upon initialising
+	private func setupNode() {
 		
-		// Attach BG First
+		// Attach BG
 		self.addChild(backgroundNode)
 		
-		// Attach SKLabels
+		// Attach Buttons
 		self.addChild(saveButton)
 		self.addChild(backButton)
 		self.addChild(levelNameLabel)
@@ -47,14 +68,7 @@ class LevelDesignerBottomMenu: SKNode {
 		configureSaveButton()
 		configureBackButton()
 		configureLevelNameLabel()
-		
 	}
-	
-	public func setButtonDelegates(_ delegate: BottomMenuButtonDelegate) {
-		self.saveButton.setDelegate(delegate)
-		self.backButton.setDelegate(delegate)
-	}
-	
 	
 	private func configureSaveButton() {
 		saveButton.position.x = BottomMenuConstants.barWidth / 2 - CGFloat(40)
@@ -73,10 +87,17 @@ class LevelDesignerBottomMenu: SKNode {
 		levelNameLabel.position.x = CGFloat(0)
 	}
 	
+	// MARK: - Public Methods
 	
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
+	public func setButtonDelegates(_ delegate: BottomMenuButtonDelegate) {
+		self.saveButton.setDelegate(delegate)
+		self.backButton.setDelegate(delegate)
+		self.levelNameLabel.setDelegate(delegate)
 	}
+	
+	public func setLevelName(_ name: String) {
+		levelNameLabel.text = name
+	}
+
 	
 }

@@ -29,16 +29,17 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	override init(size: CGSize) {
 		super.init(size: size)
-		self.backgroundColor = UIColor.clear
-		
-		initPaletteMenu()
-		initCurrentSelection()
-		initBottomMenu()
-		initOverlayMenu()
+		didLoad()
+	}
+	
+	convenience init(size: CGSize, levelName: String) {
+		self.init(size: size)
+		bottomMenu.setLevelName(levelName)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+		didLoad()
 	}
 	
 	public func setDelegate(_ delegate: LDOverlayDelegate) {
@@ -46,6 +47,14 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	// - MARK: Init Nods
+	
+	private func didLoad() {
+		self.backgroundColor = UIColor.clear
+		initPaletteMenu()
+		initCurrentSelection()
+		initBottomMenu()
+		initOverlayMenu()
+	}
 	
 	private func initPaletteMenu() {
 		self.paletteMenu.renderPaletteMenu()
@@ -75,6 +84,9 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// - MARK: Handle Naming
 	
+	public func updateDisplayedLevelName(_ name: String) {
+		bottomMenu.setLevelName(name)
+	}
 	
 	// - MARK: Handle Touches
 	
@@ -169,8 +181,8 @@ class LevelDesignerOverlayScene: SKScene,
 		self.overlayDelegate?.saveLevel()
 	}
 	
-	internal func renameLevel() {
-		self.overlayDelegate?.renameLevel()
+	internal func renameLevel(_ name: String) {
+		self.overlayDelegate?.renameLevel(name)
 	}
 	
 

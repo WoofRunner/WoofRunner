@@ -1,5 +1,5 @@
 //
-//  BottomMenuButton.swift
+//  BottomMenuSpriteButton.swift
 //  WoofRunner
 //
 //  Created by See Loo Jane on 27/3/17.
@@ -8,10 +8,15 @@
 
 import SpriteKit
 
-class BottomMenuButton: SKSpriteNode, LDOverlayButton {
+class BottomMenuSpriteButton: SKSpriteNode, LDOverlayButton {
+	
+	// MARK: - Private Variables
 	
 	private var type: BottomMenuButtonType = .save
 	private var delegate: BottomMenuButtonDelegate?
+	
+	
+	// MARK: - Initialisers
 	
 	override init(texture: SKTexture!, color: SKColor, size: CGSize) {
 		super.init(texture: texture, color: color, size: size)
@@ -25,6 +30,8 @@ class BottomMenuButton: SKSpriteNode, LDOverlayButton {
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
+	
+	// MARK: - Public Functions
 	
 	public func setDelegate(_ delegate: BottomMenuButtonDelegate) {
 		self.delegate = delegate
