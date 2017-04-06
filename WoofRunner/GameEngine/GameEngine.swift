@@ -139,4 +139,25 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     public func unprojectPoint(_ vector: SCNVector3) -> SCNVector3 {
         return scnView.unprojectPoint(vector)
     }
+    
+    public func shakeScreen() {
+        scnScene.rootNode.runAction(SCNAction.shake(initialPosition: SCNVector3.zero(), duration: 0.3))
+        print("shake")
+    }
+}
+
+extension SCNAction {
+    class func shake(initialPosition:SCNVector3, duration:Float, amplitudeX:Int = 1, amplitudeY:Int = 1) -> SCNAction {
+        let startingX = initialPosition.x
+        let startingY = initialPosition.y
+        let numberOfShakes = duration / 0.015
+        var actionsArray:[SCNAction] = []
+        for index in 1...Int(numberOfShakes) {
+            let newXPos = startingX + Float(arc4random_uniform(UInt32(amplitudeX))) - Float(amplitudeX / 2)
+            let newYPos = startingY + Float(arc4random_uniform(UInt32(amplitudeY))) - Float(amplitudeY / 2)
+            actionsArray.append(SCNAction.move(to: SCNVector3(newXPos, newYPos, 0), duration: 0.015))
+        }
+        actionsArray.append(SCNAction.move(to: initialPosition, duration: 0.015))
+        return SCNAction.sequence(actionsArray)
+    }
 }

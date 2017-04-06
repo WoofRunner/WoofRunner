@@ -90,6 +90,11 @@ class Player: GameObject {
             position.y = startHeight
         }
     }
+    
+    override func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {
+        //World.shake()
+        runAction(SCNAction.shake(initialPosition: SCNVector3.zero(), duration: 1))
+    }
 
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
         if isDeadFall {

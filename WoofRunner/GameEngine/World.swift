@@ -61,6 +61,11 @@ class World {
         gameEngine?.destroyEngine()
     }
     
+    public static func shake() {
+        _ = isGameEngineValid(taskMessage: MSG_DESTROY_ENGINE)
+        gameEngine?.shakeScreen()
+    }
+    
     private static func isGameEngineValid(taskMessage: String) -> Bool {
         if World.gameEngine == nil {
             print(MSG_WARNING + taskMessage + MSG_GAME_ENGINE_NIL)

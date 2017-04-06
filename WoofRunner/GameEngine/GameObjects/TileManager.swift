@@ -11,6 +11,14 @@ import SceneKit
 
 class TileManager: GameObject {
     
+    enum MoveState {
+        case wait
+        case moving
+        case ended
+    }
+    
+    var moveState: MoveState = MoveState.wait
+    
     var obstacleData: [[Int]] = []
     var platformData: [[Int]] = []
     
@@ -19,8 +27,7 @@ class TileManager: GameObject {
     
     let TAIL_LENGTH: Float = 22
     let PLATFORM_Z_OFFSET: Float = 3.5
-    let startPosition: SCNVector3
-    
+
     var poolManager: PoolManager?
     
     var isDebug: Bool = true
@@ -30,12 +37,19 @@ class TileManager: GameObject {
     var isMoving: Bool = false
     var delay: Float = 3
     
+    var startPosition: SCNVector3 {
+        return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
+    }
+    
+    var stopPosition: SCNVector3 {
+        return SCNVector3(x: 0, y: 0, z: Float(platformData.count) * GameSettings.TILE_WIDTH)
+    }
+    
     var percentageCompleted: Float {
         return Float(tailIndex)/Float(obstacleData.count)
     }
     
     override init() {
-        startPosition = SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
         super.init()
         poolManager = PoolManager(self)
         isTickEnabled = true
@@ -52,6 +66,14 @@ class TileManager: GameObject {
             print(WARNING_INVALID_DATA)
             return nil
         }
+    }
+    
+    public func restartLevel() {
+        position = startPosition
+        platformTail = position.z - TAIL_LENGTH
+        poolManager?.destroyAllActiveTiles()
+        tailIndex = 0
+        moveState = MoveState.wait
     }
     
     // both obstacle and platform data must have same number of rows and cols
@@ -170,22 +192,24 @@ class TileManager: GameObject {
     override func update(_ deltaTime: Float) {
         delay -= deltaTime
         
-        if delay < 0 {
-            isMoving = true
+        switch moveState {
+        case .wait:
+            if delay < 0 {
+                moveState = MoveState.moving
+            }
+            
+        case .moving:
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
+            
+            if position.z > stopPosition.z {
+                moveState = MoveState.ended
+            }
+            
+        case .ended:
+            break
         }
 
-        if isMoving {
-            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
-        }
-        
         spawnTiles()
-    }
-    
-    public func restartLevel() {
-        position = startPosition
-        platformTail = position.z - TAIL_LENGTH
-        poolManager?.destroyAllActiveTiles()
-        tailIndex = 0
     }
 }
 
