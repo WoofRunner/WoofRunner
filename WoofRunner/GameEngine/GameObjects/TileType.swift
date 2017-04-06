@@ -95,21 +95,21 @@ enum TileType: Int {
         case .floorJump:
             return "art.scnassets/cube3.scn"
         case .rock:
-            return "art.scnassets/cube2.scn"
+            return "art.scnassets/rock/rock.scn"
         case .floorLight:
             return "art.scnassets/floor_light.scn"
         case .floorDark:
             return "art.scnassets/floor_dark.scn"
         case .movingPlatform:
-            return "art.scnassets/floor_dark.scn"
+            return "art.scnassets/movingPlatform.scn"
         case .none:
             return "testCat"
         case .sword:
             return "testCat"
         case .jumpingRock:
-            return "art.scnassets/cube4.scn"
+            return "art.scnassets/rock/jumpRock.scn"
         case .rotatingAxe:
-            return "art.scnassets/cubeAxe.scn"
+            return "art.scnassets/rock/rockWithAxe.scn"
         default:
             return ""
         }

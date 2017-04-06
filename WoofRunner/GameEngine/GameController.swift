@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class GameController: UIViewController, PlayerDelegate {
+class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
 
 	private var gameUUID: String?
     private let gsm = GameStorageManager.getInstance()
@@ -17,6 +17,43 @@ class GameController: UIViewController, PlayerDelegate {
     private var player: Player?
     private var tileManager: TileManager?
     
+    var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 5],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 5],
+                                 [4, 4, 0, 0, 0],
+                                 [4, 4, 0, 0, 5],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 6],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0]]
+    /*
     var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
@@ -41,19 +78,19 @@ class GameController: UIViewController, PlayerDelegate {
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [5, 0, 0, 0, 0],
-                                 [5, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 5, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [5, 0, 0, 5, 5],
-                                 [0, 6, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 6, 0, 0],
-                                 [0, 0, 6, 0, 0]]
-    
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0]]
+    */
     var platformData: [[Int]] = [[1, 1, 1, 1, 1],
                                  [1, 1, 1, 1, 1],
                                  [1, 1, 1, 1, 1],
@@ -66,11 +103,11 @@ class GameController: UIViewController, PlayerDelegate {
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [3, 0, 0, 0, 0],
+                                 [0, 0, 3, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 3],
+                                 [0, 0, 3, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
@@ -81,15 +118,15 @@ class GameController: UIViewController, PlayerDelegate {
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 3, 1, 2],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 1, 0, 0],
-                                 [0, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 1],
+                                 [1, 2, 7, 2, 1],
+                                 [2, 1, 7, 1, 2],
+                                 [0, 0, 7, 0, 0],
+                                 [0, 0, 7, 0, 0],
+                                 [0, 0, 7, 0, 0],
+                                 [0, 0, 7, 1, 2],
+                                 [1, 0, 7, 2, 1],
                                  [2, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 1]]
+                                 [1, 1, 1, 2, 1]]
 
     
     override func viewDidLoad() {
@@ -136,6 +173,7 @@ class GameController: UIViewController, PlayerDelegate {
 
         if let tileManager = TileManager(obstacleData: game.getObstacles(), platformData: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
+            tileManager.delegate = self
             self.tileManager = tileManager
         }
         
@@ -155,6 +193,7 @@ class GameController: UIViewController, PlayerDelegate {
         
         if let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData) {
             World.spawnGameObject(tileManager)
+            tileManager.delegate = self
             self.tileManager = tileManager
         }
         
@@ -171,5 +210,9 @@ class GameController: UIViewController, PlayerDelegate {
     func restartGame() {
         tileManager?.restartLevel()
         player?.restart()
+    }
+    
+    func onTileManagerEnded() {
+        restartGame()
     }
 }

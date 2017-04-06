@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class World {
+    
     private static var gameEngine: GameEngine?
     
     static let MSG_SPAWN_OBJECT = "Trying to spawn object"
@@ -58,6 +59,11 @@ class World {
     public static func destroyWorld() {
         _ = isGameEngineValid(taskMessage: MSG_DESTROY_ENGINE)
         gameEngine?.destroyEngine()
+    }
+    
+    public static func shake() {
+        _ = isGameEngineValid(taskMessage: MSG_DESTROY_ENGINE)
+        gameEngine?.shakeScreen()
     }
     
     private static func isGameEngineValid(taskMessage: String) -> Bool {

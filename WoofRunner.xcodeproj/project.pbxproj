@@ -88,6 +88,7 @@
 		4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */; };
+		F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */; };
 		F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304D04C1E950D6D0021CB68 /* GameSettings.swift */; };
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
 		F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABE001E82AACA00BD1D02 /* PoolManager.swift */; };
@@ -119,6 +120,7 @@
 		F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* DarkPlatform.swift */; };
 		F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */; };
 		F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */; };
+		F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A73C6B1E95493F00B65435 /* CGFloat.swift */; };
 		F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */; };
 		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -236,8 +238,9 @@
 		AF7CB611F2EB570C3A204704 /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.debug.xcconfig"; sourceTree = "<group>"; };
 		CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileManagerDelegate.swift; sourceTree = "<group>"; };
 		F304D04C1E950D6D0021CB68 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSettings.swift; path = GameEngine/GameSettings.swift; sourceTree = "<group>"; };
-		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = GameEngine/Array.swift; sourceTree = "<group>"; };
 		F30ABE001E82AACA00BD1D02 /* PoolManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolManager.swift; sourceTree = "<group>"; };
 		F30ABE021E82BDB300BD1D02 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 		F38F482A1E87F28F005328A9 /* DarkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPlatform.swift; sourceTree = "<group>"; };
 		F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
 		F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingPlatform.swift; sourceTree = "<group>"; };
+		F3A73C6B1E95493F00B65435 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = GameEngine/CGFloat.swift; sourceTree = "<group>"; };
 		F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingAxe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -456,6 +460,7 @@
 		12A82FCD1E727072008B721E /* WoofRunner */ = {
 			isa = PBXGroup;
 			children = (
+				F3A73C6D1E954A4600B65435 /* Extension */,
 				F304D04C1E950D6D0021CB68 /* GameSettings.swift */,
 				F33442A61E8156F3001C1D8D /* GameEngine */,
 				126F50FD1E727332000877F1 /* Application */,
@@ -539,7 +544,6 @@
 				F33442AB1E8156F3001C1D8D /* GestureDelegate.swift */,
 				F33442B01E8156F3001C1D8D /* SCNVector3.swift */,
 				F33442B31E8156F3001C1D8D /* World.swift */,
-				F30ABDFE1E82A7A800BD1D02 /* Array.swift */,
 				F318BEBA1E87C16E005D0113 /* SCNNode.swift */,
 				F34DEDC41E8D744C00BB8CA7 /* CollisionType.swift */,
 				F33442C11E815BAE001C1D8D /* GameObjects */,
@@ -555,6 +559,7 @@
 				F33442C61E815BFE001C1D8D /* Player.swift */,
 				F313D53D1E8E40FD0036FF84 /* PlayerDelegate.swift */,
 				F33442C51E815BFE001C1D8D /* TileManager.swift */,
+				F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */,
 				F30ABE001E82AACA00BD1D02 /* PoolManager.swift */,
 				F33442C71E815BFE001C1D8D /* TestCube.swift */,
 				F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */,
@@ -598,6 +603,15 @@
 				F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */,
 			);
 			name = Obstacle;
+			sourceTree = "<group>";
+		};
+		F3A73C6D1E954A4600B65435 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3A73C6B1E95493F00B65435 /* CGFloat.swift */,
+				F30ABDFE1E82A7A800BD1D02 /* Array.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -943,12 +957,14 @@
 				F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */,
 				127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
+				F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */,
 				12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */,
 				4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */,
 				12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */,
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FA4B1751E895AC500D93703 /* LevelDesignerBottomMenu.swift in Sources */,
+				F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */,
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */,
 				12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */,

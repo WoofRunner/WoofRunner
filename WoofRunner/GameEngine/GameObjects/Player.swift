@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class Player: GameObject {
+    
     var startHeight: Float = 0
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3
@@ -42,11 +43,6 @@ class Player: GameObject {
     }
     
     private func startJump() {
-        /*
-        if isAir {
-            return
-        }
- */
         jumpTime = 0
         isAir = true
     }
@@ -66,7 +62,6 @@ class Player: GameObject {
         if other is Obstacle {
             isHidden = true
             delegate?.playerDied()
-            print("collide with obstacle")
         }
     }
     
@@ -94,6 +89,11 @@ class Player: GameObject {
             isAir = false
             position.y = startHeight
         }
+    }
+    
+    override func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {
+        //World.shake()
+        runAction(SCNAction.shake(initialPosition: SCNVector3.zero(), duration: 1))
     }
 
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {

@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 class Trigger : GameObject {
+    
     init(_ pos: SCNVector3) {
         super.init()
         position = pos

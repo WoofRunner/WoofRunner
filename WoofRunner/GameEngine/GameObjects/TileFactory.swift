@@ -10,6 +10,7 @@ import Foundation
 import SceneKit
 
 final class TileFactory {
+    
     static let sharedInstance: TileFactory = TileFactory()
 
     let WARNING_INVALID_TILE = "WARNING: Cant create tile, TileType: "
@@ -38,6 +39,9 @@ final class TileFactory {
             
         case .movingPlatform:
             tile = MovingPlatform()
+        
+        case .rotatingAxe:
+            tile = RotatingAxe()
             
         case .none:
             tile = DeadTriggerTile()
