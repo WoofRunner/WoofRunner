@@ -37,6 +37,8 @@ class TileManager: GameObject {
     var isMoving: Bool = false
     var delay: Float = 3
     
+    var delegate: TileManagerDelegate?
+    
     var startPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
     }
@@ -203,6 +205,7 @@ class TileManager: GameObject {
             
             if position.z > stopPosition.z {
                 moveState = MoveState.ended
+                delegate?.onTileManagerEnded()
             }
             
         case .ended:
