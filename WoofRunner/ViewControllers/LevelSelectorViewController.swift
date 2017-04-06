@@ -83,7 +83,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		setBackgroundColor(view: levelItemView, index: index)
 		
 		// Set up view from ViewModel
-		let vm = LSListItemViewModel(game: levels[index], editHandler: editLevelHandler)
+		let vm = LSListItemViewModel(game: levels[index])
 		levelItemView.setupView(vm: vm)
 		
 		// Set Selectors for buttons
@@ -99,7 +99,6 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	// Configure Carousel View properties
 	func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
 		if (option == .spacing) {
-			//return value * 1.1
 			return 1.0
 		}
 		

@@ -50,15 +50,12 @@ class LSItemView: UIView {
 		// Set Constraints for level image
 		levelImageView.snp.makeConstraints { (make) -> Void in
 			make.center.equalTo(self)
-			//make.topMargin.equalTo(30)
-			//make.bottomMargin.equalTo(30)
 		}
 		
 		// Set Constraints for Level Name label
 		levelNameLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
 			make.topMargin.equalTo(self).offset(80)
-			//make.bottomMargin.equalTo(30)
 		}
 		
 		
@@ -66,7 +63,6 @@ class LSItemView: UIView {
 		playerScoreLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
 			make.bottom.equalTo(self).offset(-80)
-			//make.bottomMargin.equalTo(30)
 		}
 		
 		// Add and configure debug Edit button
