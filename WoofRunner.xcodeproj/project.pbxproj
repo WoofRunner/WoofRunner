@@ -49,6 +49,9 @@
 		3F0F81C31E955E7C00114CD0 /* LevelSelectorItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */; };
 		3F0F81C51E96935200114CD0 /* BottomMenuLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81C41E96935200114CD0 /* BottomMenuLabelButton.swift */; };
 		3F0F81C71E969F0A00114CD0 /* RenameDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81C61E969F0A00114CD0 /* RenameDialogViewController.xib */; };
+		3F0F81CF1E97253200114CD0 /* OverlaySubsectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */; };
+		3F0F81D11E97269B00114CD0 /* BrushSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D01E97269B00114CD0 /* BrushSelection.swift */; };
+		3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */; };
 		3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -192,6 +195,9 @@
 		3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorItemImageView.swift; sourceTree = "<group>"; };
 		3F0F81C41E96935200114CD0 /* BottomMenuLabelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuLabelButton.swift; sourceTree = "<group>"; };
 		3F0F81C61E969F0A00114CD0 /* RenameDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RenameDialogViewController.xib; sourceTree = "<group>"; };
+		3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySubsectionViewModel.swift; sourceTree = "<group>"; };
+		3F0F81D01E97269B00114CD0 /* BrushSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelection.swift; sourceTree = "<group>"; };
+		3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelectionType.swift; sourceTree = "<group>"; };
 		3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 				12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */,
 				12A856621E910CD100B5EB4E /* DisplayedGame.swift */,
 				3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */,
+				3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -401,6 +408,8 @@
 				3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */,
 				3F0F81BC1E929A7000114CD0 /* UIButton+ShadowExtension.swift */,
 				4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */,
+				3F0F81D01E97269B00114CD0 /* BrushSelection.swift */,
+				3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -953,6 +962,7 @@
 				121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */,
 				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
 				3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */,
+				3F0F81CF1E97253200114CD0 /* OverlaySubsectionViewModel.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
 				F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */,
 				3F0F81C11E9556F400114CD0 /* LevelSelectorItemButton.swift in Sources */,
@@ -960,6 +970,7 @@
 				4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */,
 				3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */,
 				12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */,
+				3F0F81D11E97269B00114CD0 /* BrushSelection.swift in Sources */,
 				3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */,
 				F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */,
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
@@ -973,6 +984,7 @@
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
 				3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */,
+				3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */,
 				4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,

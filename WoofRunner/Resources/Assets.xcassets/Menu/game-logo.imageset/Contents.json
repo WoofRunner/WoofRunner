@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "RRPlayButton.png",
+      "filename" : "RollRunnerLogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "RRPlayButton-1.png",
+      "filename" : "RollRunnerLogo-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "RRPlayButton-2.png",
+      "filename" : "RollRunnerLogo-2.png",
       "scale" : "3x"
     }
   ],
