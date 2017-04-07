@@ -89,6 +89,7 @@ class LSItemView: UIView {
 		playerScoreLabel.font = vm.playerScoreLabelFont
 		playerScoreLabel.textColor = vm.playerScoreLabelColor
 		
+		// Resize image
 		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
 		levelImageView.image = resized
 		levelImageView.isUserInteractionEnabled = true
@@ -96,6 +97,10 @@ class LSItemView: UIView {
 		// Set Shadows
 		setShadows()
 		
+		// Set BG Color
+		self.backgroundColor = UIColor.clear
+		
+		// Binding current item's UUID to the buttons for callbacks later
 		editButton.bindUUID(vm.levelUUID)
 		levelImageView.bindUUID(vm.levelUUID)
 		
