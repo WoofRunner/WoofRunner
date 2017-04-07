@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Data Source-->
+        <scene sceneID="9gM-Ah-byb">
+            <objects>
+                <viewController id="khD-N4-YD9" customClass="CustomLevelSelectorViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2e5-WH-JKz"/>
+                        <viewControllerLayoutGuide type="bottom" id="0kn-f6-P6R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T15-I5-Oxx" customClass="iCarousel">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-background" translatesAutoresizingMaskIntoConstraints="NO" id="2RR-bA-L83">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfU-rX-Owx">
+                                <rect key="frame" x="30" y="28" width="80" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="1ZU-DQ-xb9"/>
+                                    <constraint firstAttribute="width" secondItem="RfU-rX-Owx" secondAttribute="height" multiplier="305:256" id="mwQ-zv-vPD"/>
+                                </constraints>
+                                <state key="normal" image="home-button">
+                                    <color key="titleColor" red="0.85329520960000005" green="0.69795945230000001" blue="1" alpha="0.83834546229999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPressHomeBtn:" destination="khD-N4-YD9" eventType="touchUpInside" id="Zbl-x1-wcF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RfU-rX-Owx" firstAttribute="leading" secondItem="T15-I5-Oxx" secondAttribute="leadingMargin" constant="10" id="8j7-7a-hYh"/>
+                            <constraint firstItem="RfU-rX-Owx" firstAttribute="top" secondItem="2e5-WH-JKz" secondAttribute="bottom" constant="8" id="Kok-rW-ks1"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="dataSource" destination="khD-N4-YD9" id="cu4-MQ-Z3d"/>
+                            <outlet property="delegate" destination="khD-N4-YD9" id="NyQ-WT-4oW"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="carousel" destination="T15-I5-Oxx" id="J1t-bC-DZh"/>
+                        <outlet property="homeButton" destination="RfU-rX-Owx" id="4Uc-pS-u0k"/>
+                        <segue destination="kO6-g0-2qW" kind="show" identifier="segueToGameplay" id="LPc-bD-kw7"/>
+                        <segue destination="AHP-Hq-rQX" kind="show" identifier="segueToLevelDesigner" id="hb0-os-MbX"/>
+                        <segue destination="rye-4C-JNM" kind="show" identifier="segueToMarketplace" id="v4Y-6Y-vNW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8UI-aE-Fa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.5234375" y="196.77891654465591"/>
+        </scene>
+        <!--Gameplay-->
+        <scene sceneID="6zY-VW-YzL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Gameplay" id="kO6-g0-2qW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H89-TI-Ye6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="29"/>
+        </scene>
+        <!--LevelDesigner-->
+        <scene sceneID="p1w-zO-ylE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LevelDesigner" id="AHP-Hq-rQX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkG-Hb-Zj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="127"/>
+        </scene>
+        <!--LevelMarketplace-->
+        <scene sceneID="ddC-ey-t3K">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LevelMarketplace" id="rye-4C-JNM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrr-IM-ieo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="230"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home-button" width="70" height="70"/>
+        <image name="menu-background" width="384" height="512"/>
+    </resources>
+</document>

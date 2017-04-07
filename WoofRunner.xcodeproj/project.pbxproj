@@ -53,7 +53,9 @@
 		3F0F81D11E97269B00114CD0 /* BrushSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D01E97269B00114CD0 /* BrushSelection.swift */; };
 		3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */; };
 		3F0F81D51E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */; };
-		3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */; };
+		3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D81E980F0700114CD0 /* CustomLevelSelectorViewController.swift */; };
+		3F0F81DB1E980F7300114CD0 /* CustomLevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81DA1E980F7300114CD0 /* CustomLevelSelector.storyboard */; };
+		3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
 		3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */; };
@@ -77,7 +79,7 @@
 		3FCC89AF1E802A45005A7C03 /* ButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */; };
 		3FCC89B51E804C07005A7C03 /* CustomShapeNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */; };
 		3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */; };
-		3FD5D0231E8F5BB7007573C4 /* LSListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */; };
+		3FD5D0231E8F5BB7007573C4 /* PreloadedLevelCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0221E8F5BB7007573C4 /* PreloadedLevelCardViewModel.swift */; };
 		3FD5D0251E8FA59F007573C4 /* UIImage+ResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */; };
 		3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */; };
 		3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */; };
@@ -208,7 +210,9 @@
 		3F0F81D01E97269B00114CD0 /* BrushSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelection.swift; sourceTree = "<group>"; };
 		3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelectionType.swift; sourceTree = "<group>"; };
 		3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+StrokedLabelExtension.swift"; sourceTree = "<group>"; };
-		3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemView.swift; sourceTree = "<group>"; };
+		3F0F81D81E980F0700114CD0 /* CustomLevelSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLevelSelectorViewController.swift; sourceTree = "<group>"; };
+		3F0F81DA1E980F7300114CD0 /* CustomLevelSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomLevelSelector.storyboard; sourceTree = "<group>"; };
+		3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedLevelCardView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
 		3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteMenu.swift; sourceTree = "<group>"; };
@@ -233,7 +237,7 @@
 		3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonActions.swift; sourceTree = "<group>"; };
 		3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeNodes.swift; sourceTree = "<group>"; };
 		3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteFunctionType.swift; sourceTree = "<group>"; };
-		3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSListItemViewModel.swift; sourceTree = "<group>"; };
+		3FD5D0221E8F5BB7007573C4 /* PreloadedLevelCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedLevelCardViewModel.swift; sourceTree = "<group>"; };
 		3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeExtension.swift"; sourceTree = "<group>"; };
 		3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDOverlayButton.swift; sourceTree = "<group>"; };
 		3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuButtonType.swift; sourceTree = "<group>"; };
@@ -359,7 +363,7 @@
 				4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */,
 				12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */,
 				12A856621E910CD100B5EB4E /* DisplayedGame.swift */,
-				3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */,
+				3FD5D0221E8F5BB7007573C4 /* PreloadedLevelCardViewModel.swift */,
 				3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */,
 			);
 			path = Models;
@@ -378,6 +382,7 @@
 				3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */,
 				3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */,
 				3F0F81BE1E92BC4900114CD0 /* RenameDialogViewController.swift */,
+				3F0F81D81E980F0700114CD0 /* CustomLevelSelectorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				12EFDD661E727812005C63E2 /* Main.storyboard */,
 				3FAE2D331E7280EE00D65B84 /* Menu.storyboard */,
 				3FAE2D351E72818900D65B84 /* LevelSelector.storyboard */,
+				3F0F81DA1E980F7300114CD0 /* CustomLevelSelector.storyboard */,
 				3FAE2D371E7281CE00D65B84 /* LevelDesigner.storyboard */,
 				3FAE2D391E7281F400D65B84 /* Gameplay.storyboard */,
 				3FAE2D3B1E72838200D65B84 /* LevelMarketplace.storyboard */,
@@ -596,7 +602,7 @@
 		3F0F81CD1E96C2B600114CD0 /* LevelSelector */ = {
 			isa = PBXGroup;
 			children = (
-				3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */,
+				3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */,
 				3F0F81C01E9556F400114CD0 /* LevelSelectorItemButton.swift */,
 				3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */,
 			);
@@ -827,6 +833,7 @@
 				12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */,
 				3FAE2D3A1E7281F400D65B84 /* Gameplay.storyboard in Resources */,
 				3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */,
+				3F0F81DB1E980F7300114CD0 /* CustomLevelSelector.storyboard in Resources */,
 				3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */,
 				12A82FD11E727072008B721E /* art.scnassets in Resources */,
 				12A82FD81E727072008B721E /* Assets.xcassets in Resources */,
@@ -1000,7 +1007,7 @@
 				12DC8DBA1E8928FB00B8A40C /* GameStorageManager.swift in Sources */,
 				3F0F81C31E955E7C00114CD0 /* LevelSelectorItemImageView.swift in Sources */,
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
-				3FD5D0231E8F5BB7007573C4 /* LSListItemViewModel.swift in Sources */,
+				3FD5D0231E8F5BB7007573C4 /* PreloadedLevelCardViewModel.swift in Sources */,
 				12DA42061E86627700C23137 /* LMListViewController.swift in Sources */,
 				121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */,
 				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
@@ -1018,7 +1025,8 @@
 				F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */,
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
-				3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */,
+				3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */,
+				3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCardView.swift in Sources */,
 				F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */,
 				12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
