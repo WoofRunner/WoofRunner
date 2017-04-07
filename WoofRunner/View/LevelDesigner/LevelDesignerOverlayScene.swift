@@ -136,7 +136,7 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 
 	private func animateOverlayMenuOpen() {
-		self.overlayMenu.run(SKAction.fadeAlpha(to: 0.98, duration: 0.2))
+		self.overlayMenu.run(SKAction.fadeAlpha(to: 1.0, duration: 0.2))
 	}
 
 	

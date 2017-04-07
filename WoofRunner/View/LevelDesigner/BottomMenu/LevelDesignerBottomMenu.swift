@@ -10,7 +10,7 @@ import SpriteKit
 
 struct BottomMenuConstants {
 	static let barWidth = UIScreen.main.bounds.width
-	static let barHeight = UIScreen.main.bounds.height / 11
+	static let barHeight = UIScreen.main.bounds.height / 5
 	
 	static let btnLabelFontName = "AvenirNextCondensed-Bold"
 	static let saveBtnLabelFontColor = UIColor.green
@@ -20,10 +20,10 @@ struct BottomMenuConstants {
 	static let btnSize = CGSize(width: 45, height: 45)
 	
 	static let levelNameLabelFontName = "AvenirNextCondensed-DemiBold"
-	static let levelNameLabelFontColor = UIColor.black
+	static let levelNameLabelFontColor = UIColor.white
 	static let levelNameLabelFontSize = CGFloat(45)
 
-	static let backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+	static let backgroundColor = UIColor.clear
 	
 	static let defaultLevelName = "Custom Level"
 }
@@ -32,7 +32,7 @@ class LevelDesignerBottomMenu: SKNode {
 	
 	// MARK: - Private Variables
 	
-	private let backgroundNode = SKSpriteNode(texture: nil,
+	private let backgroundNode = SKSpriteNode(texture: SKTexture(imageNamed: "bottom-menu-bg"),
 	                                          color: BottomMenuConstants.backgroundColor,
 	                                          size: CGSize(width: BottomMenuConstants.barWidth,
 	                                                       height: BottomMenuConstants.barHeight))

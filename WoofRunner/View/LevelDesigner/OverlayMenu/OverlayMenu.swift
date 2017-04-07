@@ -13,6 +13,7 @@ struct OverlayConstants {
 	// For Background
 	static let backgroundWidth = UIScreen.main.bounds.width
 	static let backgroundHeight = UIScreen.main.bounds.height
+	static let backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.99)
 	
 	// For OverlayMenu positioning
 	static let subsectionSpacingY = CGFloat(120) // Y Spacing between subsections in the menu
@@ -64,7 +65,7 @@ struct OverlayConstants {
 
 class OverlayMenu: SKNode {
 	
-	private let backgroundNode = SKSpriteNode(texture: nil, color: UIColor.black, size: CGSize(width: OverlayConstants.backgroundWidth, height: OverlayConstants.backgroundHeight))
+	private let backgroundNode = SKSpriteNode(texture: nil, color: OverlayConstants.backgroundColor, size: CGSize(width: OverlayConstants.backgroundWidth, height: OverlayConstants.backgroundHeight))
 	private var titleNode = SKLabelNode()
 	private var closeBtnNode = OverlayButton(imageNamed: OverlayConstants.closeBtnImageSprite, type: nil, size: OverlayConstants.closeBtnSize)
 	
@@ -76,9 +77,6 @@ class OverlayMenu: SKNode {
 	
 	override init() {
 		super.init()
-		
-		// Attach background first
-		self.addChild(backgroundNode)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -98,6 +96,8 @@ class OverlayMenu: SKNode {
 		
 		// Attach background first
 		self.addChild(backgroundNode)
+		
+		backgroundNode.blendMode = .multiply
 		
 		// Attach close button
 		menuNode.addChild(closeBtnNode)
