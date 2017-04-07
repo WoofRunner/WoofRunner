@@ -22,7 +22,6 @@ struct SelectionConstants {
 
 class CurrentSelectionNode: SKNode {
 	
-	
 	var headerCurrentLabel = SKLabelNode()
 	var headerSelectionLabel = SKLabelNode()
 	var selectionLabel = SKLabelNode()

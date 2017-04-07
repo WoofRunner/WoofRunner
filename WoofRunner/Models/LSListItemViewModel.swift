@@ -1,5 +1,5 @@
 //
-//  LSListItemViewModel.swift
+//  PreloadedLevelCardViewModel.swift
 //  WoofRunner
 //
 //  Created by See Loo Jane on 1/4/17.
@@ -9,22 +9,22 @@
 import Foundation
 import UIKit
 
-class LSListItemViewModel {
+class PreloadedLevelCardViewModel {
 	
 	private(set) var levelUUID: String // For tap handler
 	
 	private(set) var levelName: String
-	private(set) var levelNameLabelColor = StubLSConstants.levelTitleColor
-	private(set) var levelNameLabelFont = StubLSConstants.levelTitleFont
-	private(set) var levelNameStrokeColor = StubLSConstants.levelNameStrokeColor
-	private(set) var levelNameStrokeSize = StubLSConstants.levelNameStrokeSize
+	private(set) var levelNameLabelColor = StubPreloadedLevelCardConstants.levelTitleColor
+	private(set) var levelNameLabelFont = StubPreloadedLevelCardConstants.levelTitleFont
+	private(set) var levelNameStrokeColor = StubPreloadedLevelCardConstants.levelNameStrokeColor
+	private(set) var levelNameStrokeSize = StubPreloadedLevelCardConstants.levelNameStrokeSize
 	
 	private(set) var levelImageUrl: String
-	private(set) var imageRectSize = StubLSConstants.levelImageSize
+	private(set) var imageRectSize = StubPreloadedLevelCardConstants.levelImageSize
 	
 	private(set) var playerScore: Int
-	private(set) var playerScoreLabelColor = StubLSConstants.scoreLabelColor
-	private(set) var playerScoreLabelFont = StubLSConstants.scoreLabelFont
+	private(set) var playerScoreLabelColor = StubPreloadedLevelCardConstants.scoreLabelColor
+	private(set) var playerScoreLabelFont = StubPreloadedLevelCardConstants.scoreLabelFont
 	
 	init(game: StoredGame) {
 		self.levelUUID = game.uuid!
@@ -35,10 +35,10 @@ class LSListItemViewModel {
 		self.levelName = str.substring(to: index)
 		
 		self.levelImageUrl = "test-level-image" // Stub
-		self.playerScore = StubLSConstants.stubPlayerScore // Stub
+		self.playerScore = StubPreloadedLevelCardConstants.stubPlayerScore // Stub
 	}
 	
-	struct StubLSConstants {
+	struct StubPreloadedLevelCardConstants {
 		static let levelTitleColor = UIColor(red: 0.96, green: 0.87, blue: 0.72, alpha: 1.0)
 		static let scoreLabelColor = UIColor(red: 0.85, green: 0.82, blue: 0.91, alpha: 1.0)
 		static let levelTitleFont = UIFont(name: "AvenirNext-Bold", size: 40)

@@ -1,5 +1,5 @@
 //
-//  LSItemView.swift
+//  PreloadedLevelCardView.swift
 //  WoofRunner
 //
 //  Created by See Loo Jane on 31/3/17.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class LSItemView: UIView {
+class PreloadedLevelCardView: UIView {
 
 	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
 	private var levelNameLabel = StrokedLabel()
@@ -76,7 +76,7 @@ class LSItemView: UIView {
 		
 	}
 	
-	public func setupView(vm: LSListItemViewModel) {
+	public func setupView(vm: PreloadedLevelCardViewModel) {
 		levelNameLabel.text = vm.levelName
 		levelNameLabel.strokedText(strokeColor: vm.levelNameStrokeColor, fontColor: vm.levelNameLabelColor, strokeSize: vm.levelNameStrokeSize, font: vm.levelNameLabelFont!)
 		levelNameLabel.font = vm.levelNameLabelFont
