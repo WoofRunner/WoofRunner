@@ -108,6 +108,7 @@
 		F33442CD1E815BFE001C1D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C61E815BFE001C1D8D /* Player.swift */; };
 		F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C71E815BFE001C1D8D /* TestCube.swift */; };
 		F33442CF1E815BFE001C1D8D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33442C81E815BFE001C1D8D /* Tile.swift */; };
+		F33754E71E97812D00839AFD /* TileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754E61E97812D00839AFD /* TileModel.swift */; };
 		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
 		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
 		F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */; };
@@ -258,6 +259,7 @@
 		F33442C61E815BFE001C1D8D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F33442C71E815BFE001C1D8D /* TestCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCube.swift; sourceTree = "<group>"; };
 		F33442C81E815BFE001C1D8D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F33754E61E97812D00839AFD /* TileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileModel.swift; sourceTree = "<group>"; };
 		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
 		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
 		F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTriggerTile.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		126F50F81E7272AA000877F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F33754E51E97811F00839AFD /* TileModel */,
 				4E90FFE81E8431690012B03F /* Position.swift */,
 				12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */,
 				12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */,
@@ -565,6 +568,14 @@
 				F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */,
 			);
 			path = GameObjects;
+			sourceTree = "<group>";
+		};
+		F33754E51E97811F00839AFD /* TileModel */ = {
+			isa = PBXGroup;
+			children = (
+				F33754E61E97812D00839AFD /* TileModel.swift */,
+			);
+			name = TileModel;
 			sourceTree = "<group>";
 		};
 		F34DEDB71E8D354900BB8CA7 /* Tile */ = {
@@ -968,6 +979,7 @@
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */,
 				12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */,
+				F33754E71E97812D00839AFD /* TileModel.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
