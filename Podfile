@@ -31,16 +31,4 @@ target 'WoofRunner' do
   rx_swift
   facebook
   firebase
-
-  target 'WoofRunnerTests' do
-    inherit! :search_paths
-    # Pods for testing
-    firebase # Because Firebase sets up their pods weirdly.
-  end
-
-  target 'WoofRunnerUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
