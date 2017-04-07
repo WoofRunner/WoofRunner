@@ -113,6 +113,7 @@
 		F33754EB1E97851F00839AFD /* ObstacleBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754EA1E97851F00839AFD /* ObstacleBehaviour.swift */; };
 		F33754ED1E97859600839AFD /* PlatformModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754EC1E97859600839AFD /* PlatformModel.swift */; };
 		F33754EF1E9786E400839AFD /* ObstacleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754EE1E9786E400839AFD /* ObstacleModel.swift */; };
+		F33754F11E97886D00839AFD /* TileModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754F01E97886D00839AFD /* TileModelFactory.swift */; };
 		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
 		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
 		F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */; };
@@ -268,6 +269,7 @@
 		F33754EA1E97851F00839AFD /* ObstacleBehaviour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObstacleBehaviour.swift; path = ../../Models/ObstacleBehaviour.swift; sourceTree = "<group>"; };
 		F33754EC1E97859600839AFD /* PlatformModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformModel.swift; sourceTree = "<group>"; };
 		F33754EE1E9786E400839AFD /* ObstacleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleModel.swift; sourceTree = "<group>"; };
+		F33754F01E97886D00839AFD /* TileModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileModelFactory.swift; sourceTree = "<group>"; };
 		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
 		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
 		F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTriggerTile.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			children = (
 				F3A73C6D1E954A4600B65435 /* Extension */,
 				F304D04C1E950D6D0021CB68 /* GameSettings.swift */,
+				F33754F01E97886D00839AFD /* TileModelFactory.swift */,
 				F33442A61E8156F3001C1D8D /* GameEngine */,
 				126F50FD1E727332000877F1 /* Application */,
 				126F50FB1E7272C2000877F1 /* View */,
@@ -961,6 +964,7 @@
 				4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,
+				F33754F11E97886D00839AFD /* TileModelFactory.swift in Sources */,
 				3F0F81BF1E92BC4900114CD0 /* RenameDialogViewController.swift in Sources */,
 				3F0F81BB1E92974E00114CD0 /* MenuViewController.swift in Sources */,
 				F33754ED1E97859600839AFD /* PlatformModel.swift in Sources */,

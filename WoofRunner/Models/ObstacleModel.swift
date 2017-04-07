@@ -10,10 +10,10 @@ import Foundation
 
 class ObstacleModel: TileModel {
     
-    let platformBehaviour: ObstacleBehaviour
+    let obstacleBehaviour: ObstacleBehaviour
     
-    init(name: String, scenePath: String, iconPath: String, platformBehaviour: ObstacleBehaviour) {
-        self.platformBehaviour = platformBehaviour
+    init(name: String, scenePath: String, iconPath: String, obstacleBehaviour: ObstacleBehaviour) {
+        self.obstacleBehaviour = obstacleBehaviour
         super.init(name:name, scenePath: scenePath, iconPath: iconPath)
     }
 }
