@@ -10,7 +10,7 @@ import Foundation
 
 extension LevelGrid {
     
-    func beginSelection(_ pos: (x: Float, y: Float)) {
+    func beginSelection(_ pos: (x: Float, z: Float)) {
         guard let startGridVM = getValidGrid(pos) else {
             return
         }
@@ -27,7 +27,7 @@ extension LevelGrid {
                              startGridVM.obstacleType.value]
     }
     
-    func updateSelection(_ pos: (x: Float, y: Float)) {
+    func updateSelection(_ pos: (x: Float, z: Float)) {
         guard let startPos = selectionStartPos else {
             return
         }
