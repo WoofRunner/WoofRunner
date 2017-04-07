@@ -10,17 +10,18 @@ import SpriteKit
 
 struct SelectionConstants {
 	static let headerFontName = "AvenirNextCondensed-Bold"
-	static let headerFontColor = UIColor.white
+	static let headerFontColor = UIColor.black
 	static let headerFontSize = CGFloat(25)
 	static let spacingBetweenHeaders = CGFloat(25)
 	
 	static let selectionFontName = "AvenirNextCondensed-Bold"
-	static let selectionFontColor = UIColor.lightGray
+	static let selectionFontColor = UIColor.darkGray
 	static let selectionFontSize = CGFloat(20)
 	static let spacingBetweenHeaderAndSelection = CGFloat(60)
 }
 
 class CurrentSelectionNode: SKNode {
+	
 	
 	var headerCurrentLabel = SKLabelNode()
 	var headerSelectionLabel = SKLabelNode()
