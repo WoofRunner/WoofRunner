@@ -141,11 +141,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	// Set BG Color (Only for now, to be moved into ViewModel)
 	// Cycle between 2 bg colors for easy differentiation
 	private func setBackgroundColor(view: LSItemView, index: Int) {
-		if (index%2 == 0) {
-			view.backgroundColor = UIColor(red: 0.25, green: 0.04, blue: 0.45, alpha: 1.0)
-		} else {
-			view.backgroundColor = UIColor(red: 0.36, green: 0.11, blue: 0.61, alpha: 1.0)
-		}
+		view.backgroundColor = UIColor.clear
 	}
 	
 	// MARK: - Actions

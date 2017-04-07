@@ -9,7 +9,7 @@
 import Foundation
 
 enum BottomMenuButtonType {
-	case save, back
+	case save, back, rename
 	
 	func getImageSprite() -> String {
 		switch self {
@@ -17,6 +17,8 @@ enum BottomMenuButtonType {
 			return "save-level-button"
 		case .back:
 			return "back-button"
+		default:
+			return ""
 		}
 	}
 }

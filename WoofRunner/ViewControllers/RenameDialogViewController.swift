@@ -10,17 +10,19 @@ import UIKit
 
 class RenameDialogViewController: UIViewController {
 	
-	@IBOutlet weak var levelNameTextField: UITextField!
 	
-	var levelName: String = "" // Set by calling ViewController at the beginning for the placeholder text
+	@IBOutlet weak var levelNameTextField: UITextField!
+	@IBOutlet weak var invalidWarningText: UILabel!
+	
+	private var levelName: String = ""
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		// Configure TextField
-		levelNameTextField.placeholder = levelName
 		levelNameTextField.delegate = self
-		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+		invalidWarningText.isHidden = true
+
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -28,14 +30,20 @@ class RenameDialogViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	func endEditing() {
-		view.endEditing(true)
-	}
-	
 	public func getLevelName() -> String {
 		//return self.levelName
 		return self.levelNameTextField.text ?? ""
 	}
+	
+	public func showWarningText() {
+		invalidWarningText.isHidden = false
+	}
+	
+	public func hideWarningText() {
+		invalidWarningText.isHidden = true
+	}
+	
+
 	
 	/*
 	// MARK: - Navigation
@@ -52,7 +60,7 @@ class RenameDialogViewController: UIViewController {
 extension RenameDialogViewController: UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		endEditing()
+		//endEditing()
 		return true
 	}
 	
