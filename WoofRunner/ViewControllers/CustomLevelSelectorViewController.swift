@@ -70,14 +70,14 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 	// Configure item view
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
 		
-		var levelItemView: PreloadedLevelCardView
+		var levelItemView: CustomLevelSelectorCard
 		
 		// Check for recyled views, else create new
 		// NOTE: DO NOT do anything specific to index here
-		if let view = view as? PreloadedLevelCardView {
+		if let view = view as? CustomLevelSelectorCard {
 			levelItemView = view
 		} else {
-			levelItemView = PreloadedLevelCardView(frame: self.view.frame)
+			levelItemView = CustomLevelSelectorCard(frame: self.view.frame)
 			levelItemView.contentMode = .center
 		}
 		
@@ -87,7 +87,9 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		
 		// Set Selectors for buttons
 		levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
+		// TODO: Selectors for other buttons
 		
+		// Set up tap gesture for level (Tap image to play game)
 		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
 		levelItemView.levelImageView.addGestureRecognizer(playTapRecogniser)
 		

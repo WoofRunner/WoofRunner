@@ -52,9 +52,12 @@
 		3F0F81CF1E97253200114CD0 /* OverlaySubsectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */; };
 		3F0F81D11E97269B00114CD0 /* BrushSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D01E97269B00114CD0 /* BrushSelection.swift */; };
 		3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */; };
-		3F0F81D51E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */; };
+		3F0F81D51E97FA1300114CD0 /* StrokedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D41E97FA1300114CD0 /* StrokedLabel.swift */; };
 		3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D81E980F0700114CD0 /* CustomLevelSelectorViewController.swift */; };
 		3F0F81DB1E980F7300114CD0 /* CustomLevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81DA1E980F7300114CD0 /* CustomLevelSelector.storyboard */; };
+		3F0F81DD1E9813DC00114CD0 /* CustomLevelSelectorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81DC1E9813DC00114CD0 /* CustomLevelSelectorCard.swift */; };
+		3F0F81DF1E98140D00114CD0 /* UILabel+ShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */; };
+		3F0F81E11E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */; };
 		3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -209,9 +212,12 @@
 		3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySubsectionViewModel.swift; sourceTree = "<group>"; };
 		3F0F81D01E97269B00114CD0 /* BrushSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelection.swift; sourceTree = "<group>"; };
 		3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelectionType.swift; sourceTree = "<group>"; };
-		3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+StrokedLabelExtension.swift"; sourceTree = "<group>"; };
+		3F0F81D41E97FA1300114CD0 /* StrokedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokedLabel.swift; sourceTree = "<group>"; };
 		3F0F81D81E980F0700114CD0 /* CustomLevelSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLevelSelectorViewController.swift; sourceTree = "<group>"; };
 		3F0F81DA1E980F7300114CD0 /* CustomLevelSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomLevelSelector.storyboard; sourceTree = "<group>"; };
+		3F0F81DC1E9813DC00114CD0 /* CustomLevelSelectorCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLevelSelectorCard.swift; sourceTree = "<group>"; };
+		3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ShadowExtension.swift"; sourceTree = "<group>"; };
+		3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelSelectorItemImageView+ShadowExtension.swift"; sourceTree = "<group>"; };
 		3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedLevelCardView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -434,7 +440,9 @@
 				4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */,
 				3F0F81D01E97269B00114CD0 /* BrushSelection.swift */,
 				3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */,
-				3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */,
+				3F0F81D41E97FA1300114CD0 /* StrokedLabel.swift */,
+				3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */,
+				3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -605,6 +613,7 @@
 				3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */,
 				3F0F81C01E9556F400114CD0 /* LevelSelectorItemButton.swift */,
 				3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */,
+				3F0F81DC1E9813DC00114CD0 /* CustomLevelSelectorCard.swift */,
 			);
 			path = LevelSelector;
 			sourceTree = "<group>";
@@ -1013,6 +1022,7 @@
 				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
 				3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */,
 				3F0F81CF1E97253200114CD0 /* OverlaySubsectionViewModel.swift in Sources */,
+				3F0F81DD1E9813DC00114CD0 /* CustomLevelSelectorCard.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
 				F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */,
 				3F0F81C11E9556F400114CD0 /* LevelSelectorItemButton.swift in Sources */,
@@ -1049,6 +1059,7 @@
 				3F0F81C51E96935200114CD0 /* BottomMenuLabelButton.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
 				12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */,
+				3F0F81E11E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift in Sources */,
 				F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
 				F33754EB1E97851F00839AFD /* ObstacleBehaviour.swift in Sources */,
@@ -1099,6 +1110,7 @@
 				F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */,
 				F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */,
 				3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */,
+				3F0F81DF1E98140D00114CD0 /* UILabel+ShadowExtension.swift in Sources */,
 				F313D53E1E8E40FD0036FF84 /* PlayerDelegate.swift in Sources */,
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,
 				12A856651E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift in Sources */,
@@ -1108,7 +1120,7 @@
 				4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */,
 				4E1E11211E82D50D00AAC356 /* GridViewModel.swift in Sources */,
 				F33754E91E9784F900839AFD /* PlatformBehaviour.swift in Sources */,
-				3F0F81D51E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift in Sources */,
+				3F0F81D51E97FA1300114CD0 /* StrokedLabel.swift in Sources */,
 				3FA4B1791E89628D00D93703 /* BottomMenuButtonDelegate.swift in Sources */,
 				3FA4B1771E89617D00D93703 /* BottomMenuButton.swift in Sources */,
 				3F0F81BD1E929A7000114CD0 /* UIButton+ShadowExtension.swift in Sources */,

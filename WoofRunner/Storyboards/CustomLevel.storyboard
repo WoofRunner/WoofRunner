@@ -51,6 +51,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d50-mf-2rd">
                                         <rect key="frame" x="0.0" y="115" width="215" height="75"/>
                                         <state key="normal" image="levels-btn"/>
+                                        <connections>
+                                            <segue destination="nZ1-M8-q29" kind="show" id="uni-19-H2m"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cO-HL-Kko">
                                         <rect key="frame" x="0.0" y="230" width="215" height="75"/>
@@ -95,6 +98,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxT-b9-eee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-140" y="55"/>
+        </scene>
+        <!--CustomLevelSelector-->
+        <scene sceneID="rI0-jq-pay">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CustomLevelSelector" id="nZ1-M8-q29" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLC-iX-PgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-164" y="-28"/>
         </scene>
     </scenes>
     <resources>

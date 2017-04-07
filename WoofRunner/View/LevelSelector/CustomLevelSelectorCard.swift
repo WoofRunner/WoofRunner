@@ -1,29 +1,22 @@
 //
-//  PreloadedLevelCardView.swift
+//  CustomLevelSelectorCard.swift
 //  WoofRunner
 //
-//  Created by See Loo Jane on 31/3/17.
+//  Created by See Loo Jane on 8/4/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
-class PreloadedLevelCardView: UIView {
-
+class CustomLevelSelectorCard: UIView {
 	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
 	private var levelNameLabel = StrokedLabel()
 	private var playerScoreLabel = UILabel()
 	
-	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR DEBUG ONLY
-	
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+	var deleteButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+	var uploadButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -41,7 +34,7 @@ class PreloadedLevelCardView: UIView {
 		addSubview(levelImageView)
 		addSubview(levelNameLabel)
 		addSubview(playerScoreLabel)
-	
+		
 		levelNameLabel.sizeToFit()
 		playerScoreLabel.sizeToFit()
 		
@@ -63,15 +56,31 @@ class PreloadedLevelCardView: UIView {
 		// Set Constraints for score label
 		playerScoreLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-80)
+			make.bottom.equalTo(self).offset(-40)
 		}
 		
 		// Add and configure debug Edit button
 		addSubview(editButton)
 		editButton.setTitle("Edit", for: .normal)
 		editButton.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-40)
+			make.left.equalTo(self).offset(-450)
+			make.bottom.equalTo(self).offset(-160)
+		}
+		
+		// Add and configure debug Delete button
+		addSubview(deleteButton)
+		deleteButton.setTitle("Delete", for: .normal)
+		deleteButton.snp.makeConstraints { (make) -> Void in
+			make.right.equalTo(self).offset(450)
+			make.bottom.equalTo(self).offset(-160)
+		}
+		
+		// Add and configure debug Upload button
+		addSubview(uploadButton)
+		uploadButton.setTitle("Upload", for: .normal)
+		uploadButton.snp.makeConstraints { (make) -> Void in
+			make.right.equalTo(self).offset(600)
+			make.bottom.equalTo(self).offset(-850)
 		}
 		
 		
@@ -101,6 +110,8 @@ class PreloadedLevelCardView: UIView {
 		// Binding current item's UUID to the buttons for callbacks later
 		editButton.bindUUID(vm.levelUUID)
 		levelImageView.bindUUID(vm.levelUUID)
+		deleteButton.bindUUID(vm.levelUUID)
+		uploadButton.bindUUID(vm.levelUUID)
 		
 	}
 	
@@ -119,5 +130,4 @@ class PreloadedLevelCardView: UIView {
 	private func configureImageViewShadow() {
 		levelImageView.setShadow()
 	}
-	
 }
