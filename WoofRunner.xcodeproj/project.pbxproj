@@ -52,6 +52,7 @@
 		3F0F81CF1E97253200114CD0 /* OverlaySubsectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */; };
 		3F0F81D11E97269B00114CD0 /* BrushSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D01E97269B00114CD0 /* BrushSelection.swift */; };
 		3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */; };
+		3F0F81D51E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */; };
 		3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -198,6 +199,7 @@
 		3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySubsectionViewModel.swift; sourceTree = "<group>"; };
 		3F0F81D01E97269B00114CD0 /* BrushSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelection.swift; sourceTree = "<group>"; };
 		3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelectionType.swift; sourceTree = "<group>"; };
+		3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+StrokedLabelExtension.swift"; sourceTree = "<group>"; };
 		3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */,
 				3F0F81D01E97269B00114CD0 /* BrushSelection.swift */,
 				3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */,
+				3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1049,6 +1052,7 @@
 				4E90FFE91E8431690012B03F /* Position.swift in Sources */,
 				4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */,
 				4E1E11211E82D50D00AAC356 /* GridViewModel.swift in Sources */,
+				3F0F81D51E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift in Sources */,
 				3FA4B1791E89628D00D93703 /* BottomMenuButtonDelegate.swift in Sources */,
 				3FA4B1771E89617D00D93703 /* BottomMenuButton.swift in Sources */,
 				3F0F81BD1E929A7000114CD0 /* UIButton+ShadowExtension.swift in Sources */,

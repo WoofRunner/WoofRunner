@@ -12,7 +12,7 @@ import SnapKit
 class LSItemView: UIView {
 
 	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
-	private var levelNameLabel = UILabel()
+	private var levelNameLabel = StrokedLabel()
 	private var playerScoreLabel = UILabel()
 	
 	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR DEBUG ONLY
@@ -82,6 +82,7 @@ class LSItemView: UIView {
 	
 	public func setupView(vm: LSListItemViewModel) {
 		levelNameLabel.text = vm.levelName
+		levelNameLabel.strokedText(strokeColor: vm.levelNameStrokeColor, fontColor: vm.levelNameLabelColor, strokeSize: vm.levelNameStrokeSize, font: vm.levelNameLabelFont!)
 		levelNameLabel.font = vm.levelNameLabelFont
 		levelNameLabel.textColor = vm.levelNameLabelColor
 		

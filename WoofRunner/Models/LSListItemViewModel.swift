@@ -12,11 +12,12 @@ import UIKit
 class LSListItemViewModel {
 	
 	private(set) var levelUUID: String // For tap handler
-	@objc private(set) var editCallback: (UIButton) -> Void
 	
 	private(set) var levelName: String
 	private(set) var levelNameLabelColor = StubLSConstants.levelTitleColor
 	private(set) var levelNameLabelFont = StubLSConstants.levelTitleFont
+	private(set) var levelNameStrokeColor = StubLSConstants.levelNameStrokeColor
+	private(set) var levelNameStrokeSize = StubLSConstants.levelNameStrokeSize
 	
 	private(set) var levelImageUrl: String
 	private(set) var imageRectSize = StubLSConstants.levelImageSize
@@ -25,9 +26,8 @@ class LSListItemViewModel {
 	private(set) var playerScoreLabelColor = StubLSConstants.scoreLabelColor
 	private(set) var playerScoreLabelFont = StubLSConstants.scoreLabelFont
 	
-	init(game: StoredGame, editHandler: @escaping (UIButton) -> Void) {
+	init(game: StoredGame) {
 		self.levelUUID = game.uuid!
-		self.editCallback = editHandler
 		
 		// Get substring of uuid to act as level name for now
 		let str = game.uuid!
@@ -39,10 +39,12 @@ class LSListItemViewModel {
 	}
 	
 	struct StubLSConstants {
-		static let levelTitleColor = UIColor(red: 0.56, green: 0.30, blue: 0.72, alpha: 0.8)
+		static let levelTitleColor = UIColor(red: 0.96, green: 0.87, blue: 0.72, alpha: 1.0)
 		static let scoreLabelColor = UIColor(red: 0.85, green: 0.82, blue: 0.91, alpha: 1.0)
 		static let levelTitleFont = UIFont(name: "AvenirNext-Bold", size: 40)
 		static let scoreLabelFont = UIFont(name: "AvenirNext-Bold", size: 55)
+		static let levelNameStrokeColor = UIColor(red: 0.78, green: 0.47, blue: 0.20, alpha: 1.0)
+		static let levelNameStrokeSize = CGFloat(4.0)
 		static let levelImageSize = CGSize(width: 600, height: 600)
 		static let stubPlayerScore = 47
 	}

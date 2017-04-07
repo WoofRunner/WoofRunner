@@ -83,7 +83,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		setBackgroundColor(view: levelItemView, index: index)
 		
 		// Set up view from ViewModel
-		let vm = LSListItemViewModel(game: levels[index], editHandler: editLevelHandler)
+		let vm = LSListItemViewModel(game: levels[index])
 		levelItemView.setupView(vm: vm)
 		
 		// Set Selectors for buttons
