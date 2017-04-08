@@ -80,7 +80,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		}
 		
 		// Set up view from ViewModel
-		let vm = PreloadedLevelCardViewModel(game: levels[index])
+		let vm = LevelCardViewModel(game: levels[index])
 		levelItemView.setupView(vm: vm)
 		
 		// Set Selectors for buttons

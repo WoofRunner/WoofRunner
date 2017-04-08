@@ -83,7 +83,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		}
 		
 		// Set up view from ViewModel
-		let vm = PreloadedLevelCardViewModel(game: levels[index])
+		let vm = LevelCardViewModel(game: levels[index])
 		levelItemView.setupView(vm: vm)
 		
 		// Setup tap logic for buttons and image (Tap Image to play game)

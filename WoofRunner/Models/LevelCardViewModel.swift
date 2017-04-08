@@ -1,5 +1,5 @@
 //
-//  PreloadedLevelCardViewModel.swift
+//  LevelCardViewModel.swift
 //  WoofRunner
 //
 //  Created by See Loo Jane on 1/4/17.
@@ -9,50 +9,40 @@
 import Foundation
 import UIKit
 
-class PreloadedLevelCardViewModel {
+class LevelCardViewModel {
 	
 	private(set) var levelUUID: String // For tap handler
 	
 	// Level Name
 	private(set) var levelName: String
-	private(set) var levelNameLabelColor = StubPreloadedLevelCardConstants.levelTitleColor
-	private(set) var levelNameLabelFont = StubPreloadedLevelCardConstants.levelTitleFont
-	private(set) var levelNameStrokeColor = StubPreloadedLevelCardConstants.levelNameStrokeColor
-	private(set) var levelNameStrokeSize = StubPreloadedLevelCardConstants.levelNameStrokeSize
+	private(set) var levelNameLabelColor = StubLevelCardConstants.levelTitleColor
+	private(set) var levelNameLabelFont = StubLevelCardConstants.levelTitleFont
+	private(set) var levelNameStrokeColor = StubLevelCardConstants.levelNameStrokeColor
+	private(set) var levelNameStrokeSize = StubLevelCardConstants.levelNameStrokeSize
 	
 	// Level image
 	private(set) var levelImageUrl: String
-	private(set) var imageRectSize = StubPreloadedLevelCardConstants.levelImageSize
+	private(set) var imageRectSize = StubLevelCardConstants.levelImageSize
 	
 	// Player Score
 	private(set) var playerScore: Int
-	private(set) var playerScoreLabelColor = StubPreloadedLevelCardConstants.scoreLabelColor
-	private(set) var playerScoreLabelFont = StubPreloadedLevelCardConstants.scoreLabelFont
+	private(set) var playerScoreLabelColor = StubLevelCardConstants.scoreLabelColor
+	private(set) var playerScoreLabelFont = StubLevelCardConstants.scoreLabelFont
 	
 	// Author
 	private(set) var author = "You"
-	private(set) var authorLabelFont = StubPreloadedLevelCardConstants.authorLabelFont
-	private(set) var authorLabelColor = StubPreloadedLevelCardConstants.authorLabelColor
+	private(set) var authorLabelFont = StubLevelCardConstants.authorLabelFont
+	private(set) var authorLabelColor = StubLevelCardConstants.authorLabelColor
 	
 	init(game: StoredGame) {
 		self.levelUUID = game.uuid!
-		
-		// Get substring of uuid to act as level name for now
-		let str = game.uuid!
-		let index = str.index(str.startIndex, offsetBy: 5)
-		self.levelName = str.substring(to: index)
-		
+		self.levelName = game.name ?? "No Title"
 		self.levelImageUrl = "test-level-image" // Stub
-		self.playerScore = StubPreloadedLevelCardConstants.stubPlayerScore // Stub
-		
-		/* Uncomment once author variable is availabel in StoredGame
-		if let author = game.author {
-			self.author = author
-		}
-		*/
+		self.playerScore = StubLevelCardConstants.stubPlayerScore // Stub
+		self.author = game.owner
 	}
 	
-	struct StubPreloadedLevelCardConstants {
+	struct StubLevelCardConstants {
 		// Level Title
 		static let levelTitleColor = UIColor(red: 0.96, green: 0.87, blue: 0.72, alpha: 1.0)
 		static let levelTitleFont = UIFont(name: "AvenirNext-Bold", size: 40)

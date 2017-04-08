@@ -103,7 +103,7 @@ class CustomLevelSelectorCard: UIView {
 	// MARK: - Public Method
 	
 	// Call this method to setup the View using the input view model object
-	public func setupView(vm: PreloadedLevelCardViewModel) {
+	public func setupView(vm: LevelCardViewModel) {
 		self.backgroundColor = UIColor.clear
 	
 		// Setup Child Views
@@ -120,7 +120,7 @@ class CustomLevelSelectorCard: UIView {
 	
 	// MARK: - Private Helper Methods
 	
-	private func setupLevelNameLabel(viewModel: PreloadedLevelCardViewModel) {
+	private func setupLevelNameLabel(viewModel: LevelCardViewModel) {
 		levelNameLabel.text = viewModel.levelName
 		levelNameLabel.strokedText(strokeColor: viewModel.levelNameStrokeColor,
 		                           fontColor: viewModel.levelNameLabelColor,
@@ -130,19 +130,19 @@ class CustomLevelSelectorCard: UIView {
 		levelNameLabel.textColor = viewModel.levelNameLabelColor
 	}
 	
-	private func setupScoreLabel(viewModel: PreloadedLevelCardViewModel) {
+	private func setupScoreLabel(viewModel: LevelCardViewModel) {
 		playerScoreLabel.text = "\(viewModel.playerScore)%"
 		playerScoreLabel.font = viewModel.playerScoreLabelFont
 		playerScoreLabel.textColor = viewModel.playerScoreLabelColor
 	}
 	
-	private func setupAuthorLabel(viewModel: PreloadedLevelCardViewModel) {
+	private func setupAuthorLabel(viewModel: LevelCardViewModel) {
 		authorLabel.text = "Level Created By \(viewModel.author)"
 		authorLabel.font = viewModel.authorLabelFont
 		authorLabel.textColor = viewModel.authorLabelColor
 	}
 	
-	private func setupImageView(viewModel: PreloadedLevelCardViewModel) {
+	private func setupImageView(viewModel: LevelCardViewModel) {
 		
 		// Resizes the image while keeping the aspect ratio
 		let resized = UIImage(named: viewModel.levelImageUrl)?
