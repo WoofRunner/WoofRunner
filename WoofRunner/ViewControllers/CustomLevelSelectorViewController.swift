@@ -76,6 +76,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		// NOTE: DO NOT do anything specific to index here
 		if let view = view as? CustomLevelSelectorCard {
 			levelItemView = view
+			
 		} else {
 			levelItemView = CustomLevelSelectorCard(frame: self.view.frame)
 			levelItemView.contentMode = .center

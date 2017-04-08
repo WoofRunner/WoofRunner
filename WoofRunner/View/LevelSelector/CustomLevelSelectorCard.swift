@@ -13,6 +13,7 @@ class CustomLevelSelectorCard: UIView {
 	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
 	private var levelNameLabel = StrokedLabel()
 	private var playerScoreLabel = UILabel()
+	private var authorLabel = UILabel()
 	
 	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	var deleteButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -34,9 +35,11 @@ class CustomLevelSelectorCard: UIView {
 		addSubview(levelImageView)
 		addSubview(levelNameLabel)
 		addSubview(playerScoreLabel)
+		addSubview(authorLabel)
 		
 		levelNameLabel.sizeToFit()
 		playerScoreLabel.sizeToFit()
+		authorLabel.sizeToFit()
 		
 		setShadows()
 		
@@ -56,45 +59,62 @@ class CustomLevelSelectorCard: UIView {
 		// Set Constraints for score label
 		playerScoreLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-40)
+			make.bottom.equalTo(self).offset(-190)
+		}
+		
+		// Set Constraints for author label
+		authorLabel.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.bottom.equalTo(self).offset(-15)
 		}
 		
 		// Add and configure debug Edit button
 		addSubview(editButton)
-		editButton.setTitle("Edit", for: .normal)
+		editButton.setImage(UIImage(named: "ls-edit-button"), for: .normal)
+		editButton.isUserInteractionEnabled = true
 		editButton.snp.makeConstraints { (make) -> Void in
-			make.left.equalTo(self).offset(-450)
-			make.bottom.equalTo(self).offset(-160)
+			make.right.equalTo(self).offset(320)
+			make.bottom.equalTo(self).offset(-90)
 		}
 		
 		// Add and configure debug Delete button
 		addSubview(deleteButton)
-		deleteButton.setTitle("Delete", for: .normal)
+		deleteButton.setImage(UIImage(named: "ls-delete-button"), for: .normal)
+		editButton.isUserInteractionEnabled = true
 		deleteButton.snp.makeConstraints { (make) -> Void in
-			make.right.equalTo(self).offset(450)
-			make.bottom.equalTo(self).offset(-160)
+			make.left.equalTo(self).offset(-430)
+			make.bottom.equalTo(self).offset(-90)
 		}
 		
 		// Add and configure debug Upload button
 		addSubview(uploadButton)
-		uploadButton.setTitle("Upload", for: .normal)
+		uploadButton.setImage(UIImage(named: "upload-button"), for: .normal)
+		editButton.isUserInteractionEnabled = true
 		uploadButton.snp.makeConstraints { (make) -> Void in
-			make.right.equalTo(self).offset(600)
-			make.bottom.equalTo(self).offset(-850)
+			make.left.equalTo(self).offset(-200)
+			make.bottom.equalTo(self).offset(-90)
 		}
 		
 		
 	}
 	
 	public func setupView(vm: PreloadedLevelCardViewModel) {
+		
+		// Set up Level Name
 		levelNameLabel.text = vm.levelName
 		levelNameLabel.strokedText(strokeColor: vm.levelNameStrokeColor, fontColor: vm.levelNameLabelColor, strokeSize: vm.levelNameStrokeSize, font: vm.levelNameLabelFont!)
 		levelNameLabel.font = vm.levelNameLabelFont
 		levelNameLabel.textColor = vm.levelNameLabelColor
 		
+		// Set up player score
 		playerScoreLabel.text = "\(vm.playerScore)%"
 		playerScoreLabel.font = vm.playerScoreLabelFont
 		playerScoreLabel.textColor = vm.playerScoreLabelColor
+		
+		// Set up level author
+		authorLabel.text = "Level Created By \(vm.author)"
+		authorLabel.font = vm.authorLabelFont
+		authorLabel.textColor = vm.authorLabelColor
 		
 		// Resize image
 		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
@@ -113,6 +133,9 @@ class CustomLevelSelectorCard: UIView {
 		deleteButton.bindUUID(vm.levelUUID)
 		uploadButton.bindUUID(vm.levelUUID)
 		
+		editButton.isUserInteractionEnabled = true
+		deleteButton.isUserInteractionEnabled = true
+		uploadButton.isUserInteractionEnabled = true
 	}
 	
 	
