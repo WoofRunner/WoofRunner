@@ -39,7 +39,7 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-		16791951B068C4BD9A717E18 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		16791951B068C4BD9A717E18 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		3F0F81B71E916B7900114CD0 /* CustomLevel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81B61E916B7900114CD0 /* CustomLevel.storyboard */; };
 		3F0F81B91E91707400114CD0 /* CustomLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */; };
 		3F0F81BB1E92974E00114CD0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */; };
@@ -53,6 +53,7 @@
 		3F0F81D11E97269B00114CD0 /* BrushSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D01E97269B00114CD0 /* BrushSelection.swift */; };
 		3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */; };
 		3F0F81D51E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */; };
+		3F0F81E31E98E9A700114CD0 /* LDOverlayMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81E21E98E9A700114CD0 /* LDOverlayMenuViewModel.swift */; };
 		3F2CFBAE1E8D84F300C01036 /* LSItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
@@ -92,7 +93,6 @@
 		4E9DB3761E92EAAE0023A2A8 /* LevelGrid+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */; };
 		4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
-		8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */; };
 		F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */; };
 		F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304D04C1E950D6D0021CB68 /* GameSettings.swift */; };
 		F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30ABDFE1E82A7A800BD1D02 /* Array.swift */; };
@@ -133,7 +133,6 @@
 		F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */; };
 		F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A73C6B1E95493F00B65435 /* CGFloat.swift */; };
 		F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */; };
-		F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,7 +153,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07727E6850DA4FD03086A970 /* Pods-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		120208011E7448710066BD4C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +206,7 @@
 		3F0F81D01E97269B00114CD0 /* BrushSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelection.swift; sourceTree = "<group>"; };
 		3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrushSelectionType.swift; sourceTree = "<group>"; };
 		3F0F81D41E97FA1300114CD0 /* UILabel+StrokedLabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+StrokedLabelExtension.swift"; sourceTree = "<group>"; };
+		3F0F81E21E98E9A700114CD0 /* LDOverlayMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDOverlayMenuViewModel.swift; sourceTree = "<group>"; };
 		3F2CFBAD1E8D84F300C01036 /* LSItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSItemView.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
@@ -250,10 +249,7 @@
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
-		AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		AF7CB611F2EB570C3A204704 /* Pods-WoofRunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.debug.xcconfig"; sourceTree = "<group>"; };
-		CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunnerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileManagerDelegate.swift; sourceTree = "<group>"; };
 		F304D04C1E950D6D0021CB68 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSettings.swift; path = GameEngine/GameSettings.swift; sourceTree = "<group>"; };
 		F30ABDFE1E82A7A800BD1D02 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = GameEngine/Array.swift; sourceTree = "<group>"; };
@@ -309,7 +305,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F083D22F3147FCC9E3318B2 /* Pods_WoofRunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +312,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16791951B068C4BD9A717E18 /* (null) in Frameworks */,
-				F8367D206A4F7A62AE0156FF /* Pods_WoofRunnerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +354,7 @@
 				12A856621E910CD100B5EB4E /* DisplayedGame.swift */,
 				3FD5D0221E8F5BB7007573C4 /* LSListItemViewModel.swift */,
 				3F0F81CE1E97253200114CD0 /* OverlaySubsectionViewModel.swift */,
+				3F0F81E21E98E9A700114CD0 /* LDOverlayMenuViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -533,11 +527,7 @@
 			children = (
 				B1A0187123DD43F203A750D3 /* Pods-WoofRunner.debug.xcconfig */,
 				3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */,
-				AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */,
-				CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */,
 				96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */,
-				07727E6850DA4FD03086A970 /* Pods-WoofRunnerTests.release.xcconfig */,
-				AF7CB611F2EB570C3A204704 /* Pods-WoofRunnerTests.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -730,12 +720,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12A82FF81E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerTests" */;
 			buildPhases = (
-				4C6EC2D3F18A05DF73489509 /* [CP] Check Pods Manifest.lock */,
 				12A82FDD1E727072008B721E /* Sources */,
 				12A82FDE1E727072008B721E /* Frameworks */,
 				12A82FDF1E727072008B721E /* Resources */,
-				FCB2483E5A8A09A7F293E98C /* [CP] Embed Pods Frameworks */,
-				C62D800D06B254B2B020EAF6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -751,12 +738,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12A82FFB1E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerUITests" */;
 			buildPhases = (
-				4726A64ABC9E4D8234233FF4 /* [CP] Check Pods Manifest.lock */,
 				12A82FE81E727072008B721E /* Sources */,
 				12A82FE91E727072008B721E /* Frameworks */,
 				12A82FEA1E727072008B721E /* Resources */,
-				F6CD40E6973EF55F41036E9F /* [CP] Embed Pods Frameworks */,
-				C3F9ECACC9AA4DAB4548A527 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -899,96 +883,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4726A64ABC9E4D8234233FF4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4C6EC2D3F18A05DF73489509 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C3F9ECACC9AA4DAB4548A527 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C62D800D06B254B2B020EAF6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6CD40E6973EF55F41036E9F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunnerUITests/Pods-WoofRunnerUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCB2483E5A8A09A7F293E98C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WoofRunnerTests/Pods-WoofRunnerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1104,6 +998,7 @@
 				3FA4B1791E89628D00D93703 /* BottomMenuButtonDelegate.swift in Sources */,
 				3FA4B1771E89617D00D93703 /* BottomMenuButton.swift in Sources */,
 				3F0F81BD1E929A7000114CD0 /* UIButton+ShadowExtension.swift in Sources */,
+				3F0F81E31E98E9A700114CD0 /* LDOverlayMenuViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,7 +1166,6 @@
 		};
 		12A82FF91E727072008B721E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF7CB611F2EB570C3A204704 /* Pods-WoofRunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = W76H98A34A;
@@ -1286,7 +1180,6 @@
 		};
 		12A82FFA1E727072008B721E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07727E6850DA4FD03086A970 /* Pods-WoofRunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = W76H98A34A;
@@ -1301,7 +1194,6 @@
 		};
 		12A82FFC1E727072008B721E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA3E35DCCDA4D591A7D83282 /* Pods-WoofRunnerUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
@@ -1315,7 +1207,6 @@
 		};
 		12A82FFD1E727072008B721E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDB45AD256815AA318864BCC /* Pods-WoofRunnerUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;

@@ -25,7 +25,7 @@ struct PaletteConstants {
 	static let paletteButtonX0 = paletteWidth/2 // y-coord for the topmost palette button
 	static let paletteButtonY0 = paletteHeight - (paletteButtonWidth/2 + paletteButtonMargin) // x-coord for the topmost palette button
 	
-	static let paletteBackgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.95)
+	static let paletteBackgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.8)
 }
 
 
