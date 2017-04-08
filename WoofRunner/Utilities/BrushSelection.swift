@@ -10,7 +10,7 @@ struct BrushSelection {
 	var selectionType: BrushSelectionType
 	var tileModel: TileModel?
 	
-	static var defaultSelection = BrushSelection(selectionType: .platform, tileModel: nil)
+	static var defaultSelection = BrushSelection(selectionType: .delete, tileModel: nil)
 	
 	init(selectionType: BrushSelectionType, tileModel: TileModel?) {
 		self.selectionType = selectionType
