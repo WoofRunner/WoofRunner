@@ -76,7 +76,6 @@ class LevelCardView: UIView {
 		// Setup Child Views
 		setupLevelNameLabel(viewModel: vm)
 		setupScoreLabel(viewModel: vm)
-		//setupAuthorLabel(viewModel: vm)
 		setupImageView(viewModel: vm)
 		
 		// Bind current item's UUID to the buttons for callbacks later
