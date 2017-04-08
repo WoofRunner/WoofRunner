@@ -16,6 +16,10 @@ class LevelDesignerOverlayScene: SKScene,
 								OverlayButtonDelegate,
 								BottomMenuButtonDelegate {
 	
+	// Retrieve list of unique TileModels
+	let factory = TileModelFactory.sharedInstance
+	let allTileModels = TileModelFactory.tileModels
+	
 	var overlayDelegate: LDOverlayDelegate?
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
@@ -23,7 +27,7 @@ class LevelDesignerOverlayScene: SKScene,
 	var bottomMenu = LevelDesignerBottomMenu()
 	
 	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
-	
+	var currentBrushSelection = Variable<BrushSelection>(BrushSelection.defaultSelection)
 	
 	var oldY = CGFloat(0) // Recorded y coords of the most recent user touch
 	
@@ -124,11 +128,14 @@ class LevelDesignerOverlayScene: SKScene,
 		return overlayMenu.alpha > 0
 	}
 	
-	// Hides the overlay menu if it is visible currently
-	private func hideOverlayMenu() {
-		if isOverlayMenuVisible() {
-			animateOverlayMenuClose()
+	private func getTileModelFromName(_ name: String) -> TileModel? {
+		for tileModel in allTileModels {
+			if tileModel.name == name {
+				return tileModel
+			}
 		}
+		
+		return nil
 	}
 	
 	private func animateOverlayMenuClose() {
@@ -142,31 +149,58 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// - MARK: PaletteButtonDelegate
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
-		if funcType == .delete {
-			setCurrentTileSelection(TileType.none)
-		} else {
-			openOverlayMenu(funcType)
+		switch funcType {
+			case .delete:
+				updateBrushSelection(.delete)
+			case .obstacle:
+				updateBrushSelection(.obstacle)
+				openOverlayMenu(funcType)
+			case .platform:
+				updateBrushSelection(.platform)
+				openOverlayMenu(funcType)
+			default:
+				break
 		}
 	}
 	
 	private func openOverlayMenu(_ funcType: PaletteFunctionType) {
-		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
+		let vm = LDOverlayMenuViewModel(funcType: funcType, allTileModels: allTileModels)
+		self.overlayMenu.renderOverlayMenu(vm: vm, delegate: self)
 		animateOverlayMenuOpen()
 	}
 	
+	// Updates the current brush selection BrushSelectionType attribute
+	private func updateBrushSelection(_ selectionType: BrushSelectionType) {
+		self.currentBrushSelection.value.selectionType = selectionType
+	}
+	
+	// Updates the current brush selection TileModel attribute
+	private func updateBrushSelection(_ tileModel: TileModel?) {
+		self.currentBrushSelection.value.tileModel = tileModel
+	}
 	
 	// - MARK: OverlayButtonDelegate
-	internal func setCurrentTileSelection(_ type: TileType?) {
-		guard let _ = type else {
+	
+	// Fetch the TileModel using the input tileName,
+	// and use it to update the current brush selection
+	internal func setCurrentTileSelection(_ tileName: String?) {
+		guard let _ = tileName else {
 			return
 		}
 		
-		self.currentTileSelection.value = type!
-		self.currentSelectionUI.updateSelectionText(type!.toString())
+		let tileModel = getTileModelFromName(tileName!)
+		
+		guard let _ = tileModel else {
+			return
+		}
+		
+		updateBrushSelection(tileModel)
+		self.currentSelectionUI.updateSelectionText(tileName!)
 	}
 	
+	// Closes the OverlayMenu with an animation
 	internal func closeOverlayMenu() {
-		hideOverlayMenu()
+		animateOverlayMenuClose()
 	}
 	
 	// - MARK: BottomMenuButtonDelegate

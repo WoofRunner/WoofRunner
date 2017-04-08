@@ -7,11 +7,14 @@
 //
 
 struct BrushSelection {
-	private(set) var selectionType: BrushSelectionType
-	private(set) var tileType: TileType?
+	var selectionType: BrushSelectionType
+	var tileModel: TileModel?
 	
-	init(selectionType: BrushSelectionType, tileType: TileType?) {
+	static var defaultSelection = BrushSelection(selectionType: .platform, tileModel: nil)
+	
+	init(selectionType: BrushSelectionType, tileModel: TileModel?) {
 		self.selectionType = selectionType
-		self.tileType = tileType
+		self.tileModel = tileModel
 	}
+	
 }
