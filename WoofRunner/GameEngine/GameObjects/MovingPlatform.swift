@@ -27,6 +27,7 @@ class MovingPlatform : Platform {
         super.init(pos)
         tileType = TileType.movingPlatform
         loadModel(tileType.getModelPath())
+        loadModel(tileType.getModelPath(), offsetPostion: SCNVector3(GameSettings.TILE_WIDTH, 0, 0))
         triggerDistance = -9
         createAdjacentDeadTriggers()
     }

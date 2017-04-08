@@ -71,19 +71,19 @@ class GameObject: SCNNode, GestureDelegate {
     // - parameters:
     //      -pathName: path to scene
     public func loadModel(_ pathName: String) {
+        loadModel(pathName, offsetPostion: SCNVector3.zero())
+    }
+    
+    public func loadModel(_ pathName: String, offsetPostion: SCNVector3) {
         guard let modelScene = SCNScene(named: pathName) else {
             print("WARNING: Cant find path name: " + pathName)
             return
         }
         
         for child in modelScene.rootNode.childNodes {
+            child.position += offsetPostion
             addChildNode(child)
         }
-        
-        /*
-        guard let modelNode = modelScene.rootNode.childNodes.first else { return }
-        addChildNode(modelNode)
- */
     }
 }
 
