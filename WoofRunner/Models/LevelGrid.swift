@@ -62,23 +62,23 @@ class LevelGrid {
         self.init(length: 0);
     }
     
-    func toggleGrid(x: Float, z: Float, _ currentSelectedBrush: TileType) {
+    func toggleGrid(x: Float, z: Float, _ currentSelectedBrush: BrushSelection) {
         guard let gridVM = getValidGrid((x: x, z: z)) else {
             return
         }
         return toggleGrid(gridVM, currentSelectedBrush)
     }
     
-    func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: TileModel?) {
-        guard let _ = currentSelectedBrush else {
-            // Delete Brush
+    func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: BrushSelection) {
+        if currentSelectedBrush.selectionType == .delete {
             gridVM.removeTop()
         }
         
+        let tileModel = currentSelectedBrush.tileModel
         // Toggle grid with platform / obstacle
-        if let platform = currentSelectedBrush as? PlatformModel {
+        if let platform = tileModel as? PlatformModel {
             gridVM.setPlatform(platform)
-        } else if let obstacle = currentSelectedBrush as? ObstacleModel {
+        } else if let obstacle = tileModel as? ObstacleModel {
             if gridVM.platformType.value != nil {
                 gridVM.setObstacle(obstacle)
             }

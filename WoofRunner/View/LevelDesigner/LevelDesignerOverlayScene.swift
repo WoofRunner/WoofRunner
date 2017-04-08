@@ -26,7 +26,8 @@ class LevelDesignerOverlayScene: SKScene,
 	var currentSelectionUI = CurrentSelectionNode()
 	var bottomMenu = LevelDesignerBottomMenu()
 	
-	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
+	var currentTileSelection = Variable<TileType>(.floorLight) // Depreacated?
+    // Default selection. Wrap this in RXSwift
 	var currentBrushSelection = Variable<BrushSelection>(BrushSelection.defaultSelection)
 	
 	var oldY = CGFloat(0) // Recorded y coords of the most recent user touch
