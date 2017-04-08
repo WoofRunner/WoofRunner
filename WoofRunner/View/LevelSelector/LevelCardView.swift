@@ -1,21 +1,19 @@
 //
-//  PreloadedLevelCardView.swift
+//  LevelCardView.swift
 //  WoofRunner
 //
-//  Created by See Loo Jane on 31/3/17.
+//  Created by See Loo Jane on 9/4/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 
-class PreloadedLevelCardView: UIView {
-
-	var levelImageView = LevelSelectorItemImageView() // Public access to set Tap Handler Gesture
+class LevelCardView: UIView {
+	
+	// Views that are shared across all subclasses of LevelCardView
+	var levelImageView = LevelSelectorItemImageView() // Requires public access to set Tap Handler Gesture
 	private var levelNameLabel = StrokedLabel()
 	private var playerScoreLabel = UILabel()
-	
-	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR DEBUG ONLY
 	
 	// MARK: - Initialisers
 	
@@ -30,16 +28,21 @@ class PreloadedLevelCardView: UIView {
 		didLoad()
 	}
 	
-	private func didLoad() {
+	// Override this method to initialise more customised child views
+	internal func didLoad() {
 		
+		// Add child views
 		addSubview(levelImageView)
 		addSubview(levelNameLabel)
 		addSubview(playerScoreLabel)
-	
+		
+		// Sizing label views
 		levelNameLabel.sizeToFit()
 		playerScoreLabel.sizeToFit()
 		
 		setShadows()
+		
+		//******** Setting Constraints *******//
 		
 		// Set Constraints for level image
 		levelImageView.snp.makeConstraints { (make) -> Void in
@@ -57,33 +60,29 @@ class PreloadedLevelCardView: UIView {
 		// Set Constraints for score label
 		playerScoreLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-80)
+			make.bottom.equalTo(self).offset(-190)
 		}
-		
-		// Add and configure debug Edit button
-		addSubview(editButton)
-		editButton.setTitle("Edit", for: .normal)
-		editButton.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-40)
-		}
+	
 	}
+	
 	
 	// MARK: - Public Method
 	
 	// Call this method to setup the View using the input view model object
+	// Override this method if you have more child views to be set up
 	public func setupView(vm: LevelCardViewModel) {
-		setupLevelNameLabel(viewModel: vm)
-		setupScoreLabel(viewModel: vm)
-		setupImageView(viewModel: vm)
-		
-		setShadows()
 		self.backgroundColor = UIColor.clear
 		
-		// Binding current item's UUID to the buttons for callbacks later
-		editButton.bindUUID(vm.levelUUID)
-		levelImageView.bindUUID(vm.levelUUID)
+		// Setup Child Views
+		setupLevelNameLabel(viewModel: vm)
+		setupScoreLabel(viewModel: vm)
+		//setupAuthorLabel(viewModel: vm)
+		setupImageView(viewModel: vm)
 		
+		// Bind current item's UUID to the buttons for callbacks later
+		bindUUIDToButtons(vm.levelUUID)
+		
+		setShadows()
 	}
 	
 	// MARK: - Private Helper Methods
@@ -113,7 +112,11 @@ class PreloadedLevelCardView: UIView {
 		levelImageView.isUserInteractionEnabled = true
 	}
 	
-	// Setup shadows for views
+	// Override this method to bind more buttons
+	internal func bindUUIDToButtons(_ uuid: String) {
+		levelImageView.bindUUID(uuid)
+	}
+	
 	// TODO: Check why 1st 2 items do not have shadow rendered. Sth to do with recycling in iCarousel
 	private func setShadows() {
 		configureImageViewShadow()
@@ -128,5 +131,5 @@ class PreloadedLevelCardView: UIView {
 	private func configureImageViewShadow() {
 		levelImageView.setShadow()
 	}
-	
+
 }

@@ -68,14 +68,14 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	// Configure item view
 	func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
 		
-		var levelItemView: PreloadedLevelCardView
+		var levelItemView: PreloadedLevelCard
 		
 		// Check for recyled views, else create new
 		// NOTE: DO NOT do anything specific to index here
-		if let view = view as? PreloadedLevelCardView {
+		if let view = view as? PreloadedLevelCard {
 			levelItemView = view
 		} else {
-			levelItemView = PreloadedLevelCardView(frame: self.view.frame)
+			levelItemView = PreloadedLevelCard(frame: self.view.frame)
 			levelItemView.contentMode = .center
 		}
 		

@@ -57,7 +57,9 @@
 		3F0F81DD1E9813DC00114CD0 /* CustomLevelSelectorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81DC1E9813DC00114CD0 /* CustomLevelSelectorCard.swift */; };
 		3F0F81DF1E98140D00114CD0 /* UILabel+ShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */; };
 		3F0F81E11E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */; };
-		3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */; };
+		3F0F81E51E99639D00114CD0 /* MarketplaceLevelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81E41E99639D00114CD0 /* MarketplaceLevelCard.swift */; };
+		3F0F81E71E9964BC00114CD0 /* LevelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81E61E9964BC00114CD0 /* LevelCardView.swift */; };
+		3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCard.swift */; };
 		3F7348B61E86D0D800EB1264 /* PaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B51E86D0D800EB1264 /* PaletteButton.swift */; };
 		3F7348B81E86D96000EB1264 /* PaletteButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */; };
 		3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */; };
@@ -214,7 +216,9 @@
 		3F0F81DC1E9813DC00114CD0 /* CustomLevelSelectorCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLevelSelectorCard.swift; sourceTree = "<group>"; };
 		3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ShadowExtension.swift"; sourceTree = "<group>"; };
 		3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelSelectorItemImageView+ShadowExtension.swift"; sourceTree = "<group>"; };
-		3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedLevelCardView.swift; sourceTree = "<group>"; };
+		3F0F81E41E99639D00114CD0 /* MarketplaceLevelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketplaceLevelCard.swift; sourceTree = "<group>"; };
+		3F0F81E61E9964BC00114CD0 /* LevelCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCardView.swift; sourceTree = "<group>"; };
+		3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedLevelCard.swift; sourceTree = "<group>"; };
 		3F7348B51E86D0D800EB1264 /* PaletteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButton.swift; sourceTree = "<group>"; };
 		3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteButtonDelegate.swift; sourceTree = "<group>"; };
 		3F7348BB1E86DACF00EB1264 /* PaletteMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteMenu.swift; sourceTree = "<group>"; };
@@ -596,10 +600,12 @@
 		3F0F81CD1E96C2B600114CD0 /* LevelSelector */ = {
 			isa = PBXGroup;
 			children = (
-				3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCardView.swift */,
+				3F2CFBAD1E8D84F300C01036 /* PreloadedLevelCard.swift */,
+				3F0F81E61E9964BC00114CD0 /* LevelCardView.swift */,
 				3F0F81C01E9556F400114CD0 /* LevelSelectorItemButton.swift */,
 				3F0F81C21E955E7C00114CD0 /* LevelSelectorItemImageView.swift */,
 				3F0F81DC1E9813DC00114CD0 /* CustomLevelSelectorCard.swift */,
+				3F0F81E41E99639D00114CD0 /* MarketplaceLevelCard.swift */,
 			);
 			path = LevelSelector;
 			sourceTree = "<group>";
@@ -926,7 +932,7 @@
 				F33442B61E8156F3001C1D8D /* GameEngine.swift in Sources */,
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
 				3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */,
-				3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCardView.swift in Sources */,
+				3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCard.swift in Sources */,
 				F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */,
 				12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
@@ -945,11 +951,13 @@
 				F33754ED1E97859600839AFD /* PlatformModel.swift in Sources */,
 				F313D53C1E8E31BD0036FF84 /* TileDelegate.swift in Sources */,
 				F33754EF1E9786E400839AFD /* ObstacleModel.swift in Sources */,
+				3F0F81E51E99639D00114CD0 /* MarketplaceLevelCard.swift in Sources */,
 				3F7348C61E86F95700EB1264 /* OverlayButton.swift in Sources */,
 				3F0F81C51E96935200114CD0 /* BottomMenuLabelButton.swift in Sources */,
 				F33442CD1E815BFE001C1D8D /* Player.swift in Sources */,
 				12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */,
 				3F0F81E11E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift in Sources */,
+				3F0F81E71E9964BC00114CD0 /* LevelCardView.swift in Sources */,
 				F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
 				F33754EB1E97851F00839AFD /* ObstacleBehaviour.swift in Sources */,
