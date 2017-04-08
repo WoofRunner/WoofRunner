@@ -85,6 +85,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return
         }
 		sceneView.overlaySKScene = spriteScene
+        // Observe currentTileSelection
 		skScene.currentTileSelection.asObservable()
 			.subscribe(onNext: {
 				(brush) in
