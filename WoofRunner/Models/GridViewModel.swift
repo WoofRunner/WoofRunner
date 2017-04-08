@@ -15,8 +15,8 @@ class GridViewModel {
     
     var gridPos: Variable<Position>
     var size = Variable<Float>(1.0)
-    var platformType = Variable<TileType>(.none)
-    var obstacleType = Variable<TileType>(.none)
+    var platformType = Variable<PlatformModel?>(nil)
+    var obstacleType = Variable<ObstacleModel?>(nil)
     var shouldRender = Variable<Bool>(false)
     
     init (row: Int, col: Int) {
@@ -28,19 +28,19 @@ class GridViewModel {
         self.init(row: 0, col: 0)
     }
     
-    func setPlatform(_ platform: TileType) {
+    func setPlatform(_ platform: PlatformModel) {
         // Add Platform
         self.platformType.value = platform
     }
     
     // Also removes obstacle
     func removePlatform() {
-        platformType.value = .none
-        obstacleType.value = .none
+        platformType.value = nil
+        obstacleType.value = nil
     }
     
-    func setObstacle(_ obstacle: TileType) {
-        guard platformType.value != TileType.none else {
+    func setObstacle(_ obstacle: ObstacleModel) {
+        guard platformType.value != nil else {
             debugPrint("Error: Adding obstacle to grid without platform")
             return
         }
@@ -54,14 +54,14 @@ class GridViewModel {
     
     // Remove top level node; obstacle if any else platform
     func removeTop() {
-        guard obstacleType.value == .none else {
+        guard obstacleType.value == nil else {
             return removeObstacle()
         }
         return removePlatform()
     }
     
-    func setType(platform pType: TileType, obstacle oType: TileType) {
-        platformType.value = pType
-        obstacleType.value = oType
+    func setType(platform: PlatformModel, obstacle: ObstacleModel) {
+        platformType.value = platform
+        obstacleType.value = obstacle
     }
 }

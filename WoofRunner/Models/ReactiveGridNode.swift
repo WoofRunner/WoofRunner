@@ -21,8 +21,8 @@ class ReactiveGridNode {
     
     var position: SCNVector3
     var size: Float
-    var platformType: TileType
-    var obstacleType: TileType
+    var platformType: PlatformModel?
+    var obstacleType: ObstacleModel?
     var platformModelNode: SCNNode
     var obstacleModelNode: SCNNode
     
@@ -82,7 +82,7 @@ class ReactiveGridNode {
     private func updatePlatformNode() {
         var modelNode: SCNNode
         
-        if platformType == .none {
+        if platformType == nil {
             // Placeholder block for .none platform
             let size = self.size
             let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
@@ -93,7 +93,7 @@ class ReactiveGridNode {
                 material.isDoubleSided = true
             }
             modelNode = SCNNode(geometry: platformBoxGeometry)
-        } else if let model = loadModel(platformType.getModelPath()) {
+        } else if let model = loadModel(platformType!.scenePath) {
             modelNode = model
         } else {
             return
@@ -112,7 +112,7 @@ class ReactiveGridNode {
     private func updateObstacleNode() {
         var modelNode: SCNNode
         
-        if obstacleType == .none {
+        if obstacleType == nil {
             // Invisible block
             let size = self.size
             let obstacleBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
@@ -122,7 +122,7 @@ class ReactiveGridNode {
                 material.transparency = 0
             }
             modelNode = SCNNode(geometry: obstacleBoxGeometry)
-        } else if let model = loadModel(obstacleType.getModelPath()) {
+        } else if let model = loadModel(obstacleType!.scenePath) {
             modelNode = model
         } else {
             return

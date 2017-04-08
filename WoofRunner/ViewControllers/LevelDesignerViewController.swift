@@ -115,6 +115,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    // MARK: Handle Gestures
     func handlePan(_ sender: UIPanGestureRecognizer) {
         if (!canEdit() || longPress) {
             return

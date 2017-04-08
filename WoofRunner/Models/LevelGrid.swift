@@ -21,24 +21,24 @@ class LevelGrid {
     static var chunkLength = 20
     
     var length: Int
-    var platformArray: [[Int]]
-    var obstacleArray: [[Int]]
+    var platformArray: [[PlatformModel?]]
+    var obstacleArray: [[ObstacleModel?]]
     var gridViewModelArray: [[GridViewModel]]
     
     // Selection extension usage
-    var selectionCache = [String: [TileType]]()
+    var selectionCache = [String: [TileModel?]]()
     var selectionStartPos: Position?
     var selectionEndPos: Position?
-    var selectionTemplate = [TileType.none, TileType.none]
+    var selectionTemplate: [TileModel?] = [nil, nil]
     
     init(length: Int) {
         self.length = length
-        self.platformArray = [[Int]](repeating: [Int](repeating: TileType.none.rawValue,
-                                                      count: LevelGrid.levelCols),
-                                     count: length)
-        self.obstacleArray = [[Int]](repeating: [Int](repeating: TileType.none.rawValue,
-                                                      count: LevelGrid.levelCols),
-                                     count: length)
+        self.platformArray = [[PlatformModel?]](repeating: [PlatformModel?](repeating: nil,
+                                                                            count: LevelGrid.levelCols),
+                                                count: length)
+        self.obstacleArray = [[ObstacleModel?]](repeating: [ObstacleModel?](repeating: nil,
+                                                                            count: LevelGrid.levelCols),
+                                                count: length)
         self.gridViewModelArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
                                                                                count: LevelGrid.levelCols),
                                                     count: length)
@@ -69,15 +69,19 @@ class LevelGrid {
         return toggleGrid(gridVM, currentSelectedBrush)
     }
     
-    func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: TileType) {
-        // Toggle grid
-        if currentSelectedBrush.isPlatform() {
-            gridVM.setPlatform(currentSelectedBrush)
-        } else if currentSelectedBrush.isObstacle() && gridVM.platformType.value != TileType.none {
-            gridVM.setObstacle(currentSelectedBrush)
-        } else if currentSelectedBrush == TileType.none {
-            // Current implementation: Delete top level node; obstacle if any else platform
+    func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: TileModel?) {
+        guard let _ = currentSelectedBrush else {
+            // Delete Brush
             gridVM.removeTop()
+        }
+        
+        // Toggle grid with platform / obstacle
+        if let platform = currentSelectedBrush as? PlatformModel {
+            gridVM.setPlatform(platform)
+        } else if let obstacle = currentSelectedBrush as? ObstacleModel {
+            if gridVM.platformType.value != nil {
+                gridVM.setObstacle(obstacle)
+            }
         }
     }
     
@@ -99,13 +103,13 @@ class LevelGrid {
     
     func extendLevel(by extend: Int) {
         // Prepare empty arrays for extension
-        let extendedPlatformArray = [[Int]](repeating: [Int](repeating: TileType.none.rawValue,
-                                                             count: LevelGrid.levelCols),
-                                            count: extend)
+        let extendedPlatformArray = [[PlatformModel?]](repeating: [PlatformModel?](repeating: nil,
+                                                                                   count: LevelGrid.levelCols),
+                                                       count: extend)
         self.platformArray.append(contentsOf: extendedPlatformArray)
-        let extendedObstacleArray = [[Int]](repeating: [Int](repeating: TileType.none.rawValue,
-                                                             count: LevelGrid.levelCols),
-                                            count: extend)
+        let extendedObstacleArray = [[ObstacleModel?]](repeating: [ObstacleModel?](repeating: nil,
+                                                                                   count: LevelGrid.levelCols),
+                                                       count: extend)
         self.obstacleArray.append(contentsOf: extendedObstacleArray)
         let extendedGridVMArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
                                                                                count: LevelGrid.levelCols),
@@ -140,23 +144,24 @@ class LevelGrid {
 	func setupObservables(_ gridVM: GridViewModel) {
         // Setup observation on gridVM tileType
         gridVM.platformType.asObservable().subscribe(onNext: {
-            (newType) in
+            (newModel) in
             self.updatePlatformArray(row: gridVM.gridPos.value.getRow(),
                                      col: gridVM.gridPos.value.getCol(),
-                                     newType.rawValue)
+                                     newModel)
         }).addDisposableTo(disposeBag)
-        gridVM.obstacleType.asObservable().subscribe(onNext: { (newType) in
+        gridVM.obstacleType.asObservable().subscribe(onNext: {
+            (newModel) in
             self.updateObstacleArray(row: gridVM.gridPos.value.getRow(),
                                      col: gridVM.gridPos.value.getCol(),
-                                     newType.rawValue)
+                                     newModel)
         }).addDisposableTo(disposeBag)
     }
 
-    private func updatePlatformArray(row: Int, col: Int, _ newValue: Int) {
-        platformArray[row][col] = newValue
+    private func updatePlatformArray(row: Int, col: Int, _ newModel: PlatformModel?) {
+        platformArray[row][col] = newModel
     }
     
-    private func updateObstacleArray(row: Int, col: Int, _ newValue: Int) {
-        obstacleArray[row][col] = newValue
+    private func updateObstacleArray(row: Int, col: Int, _ newModel: ObstacleModel?) {
+        obstacleArray[row][col] = newModel
     }
 }
