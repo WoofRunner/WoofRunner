@@ -17,13 +17,7 @@ class PreloadedLevelCardView: UIView {
 	
 	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR DEBUG ONLY
 	
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+	// MARK: - Initialisers
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -73,29 +67,17 @@ class PreloadedLevelCardView: UIView {
 			make.centerX.equalTo(self)
 			make.bottom.equalTo(self).offset(-40)
 		}
-		
-		
 	}
 	
+	// MARK: - Public Method
+	
+	// Call this method to setup the View using the input view model object
 	public func setupView(vm: PreloadedLevelCardViewModel) {
-		levelNameLabel.text = vm.levelName
-		levelNameLabel.strokedText(strokeColor: vm.levelNameStrokeColor, fontColor: vm.levelNameLabelColor, strokeSize: vm.levelNameStrokeSize, font: vm.levelNameLabelFont!)
-		levelNameLabel.font = vm.levelNameLabelFont
-		levelNameLabel.textColor = vm.levelNameLabelColor
+		setupLevelNameLabel(viewModel: vm)
+		setupScoreLabel(viewModel: vm)
+		setupImageView(viewModel: vm)
 		
-		playerScoreLabel.text = "\(vm.playerScore)%"
-		playerScoreLabel.font = vm.playerScoreLabelFont
-		playerScoreLabel.textColor = vm.playerScoreLabelColor
-		
-		// Resize image
-		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
-		levelImageView.image = resized
-		levelImageView.isUserInteractionEnabled = true
-		
-		// Set Shadows
 		setShadows()
-		
-		// Set BG Color
 		self.backgroundColor = UIColor.clear
 		
 		// Binding current item's UUID to the buttons for callbacks later
@@ -104,7 +86,34 @@ class PreloadedLevelCardView: UIView {
 		
 	}
 	
+	// MARK: - Private Helper Methods
 	
+	private func setupLevelNameLabel(viewModel: PreloadedLevelCardViewModel) {
+		levelNameLabel.text = viewModel.levelName
+		levelNameLabel.strokedText(strokeColor: viewModel.levelNameStrokeColor,
+		                           fontColor: viewModel.levelNameLabelColor,
+		                           strokeSize: viewModel.levelNameStrokeSize,
+		                           font: viewModel.levelNameLabelFont!)
+		levelNameLabel.font = viewModel.levelNameLabelFont
+		levelNameLabel.textColor = viewModel.levelNameLabelColor
+	}
+	
+	private func setupScoreLabel(viewModel: PreloadedLevelCardViewModel) {
+		playerScoreLabel.text = "\(viewModel.playerScore)%"
+		playerScoreLabel.font = viewModel.playerScoreLabelFont
+		playerScoreLabel.textColor = viewModel.playerScoreLabelColor
+	}
+	
+	private func setupImageView(viewModel: PreloadedLevelCardViewModel) {
+		
+		// Resizes the image while keeping the aspect ratio
+		let resized = UIImage(named: viewModel.levelImageUrl)?
+			.resizedImageWithinRect(rectSize: viewModel.imageRectSize)
+		levelImageView.image = resized
+		levelImageView.isUserInteractionEnabled = true
+	}
+	
+	// Setup shadows for views
 	// TODO: Check why 1st 2 items do not have shadow rendered. Sth to do with recycling in iCarousel
 	private func setShadows() {
 		configureImageViewShadow()

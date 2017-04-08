@@ -15,9 +15,12 @@ class CustomLevelSelectorCard: UIView {
 	private var playerScoreLabel = UILabel()
 	private var authorLabel = UILabel()
 	
-	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
 	var deleteButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	var uploadButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+	
+	
+	// MARK: - Initialisers
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -68,76 +71,92 @@ class CustomLevelSelectorCard: UIView {
 			make.bottom.equalTo(self).offset(-15)
 		}
 		
-		// Add and configure debug Edit button
+		// Add and configure Edit button
 		addSubview(editButton)
 		editButton.setImage(UIImage(named: "ls-edit-button"), for: .normal)
-		editButton.isUserInteractionEnabled = true
 		editButton.snp.makeConstraints { (make) -> Void in
-			make.right.equalTo(self).offset(320)
-			make.bottom.equalTo(self).offset(-90)
+			make.bottom.equalToSuperview().offset(-90)
+			make.left.equalToSuperview().offset(80)
 		}
+		
 		
 		// Add and configure debug Delete button
 		addSubview(deleteButton)
 		deleteButton.setImage(UIImage(named: "ls-delete-button"), for: .normal)
-		editButton.isUserInteractionEnabled = true
 		deleteButton.snp.makeConstraints { (make) -> Void in
-			make.left.equalTo(self).offset(-430)
-			make.bottom.equalTo(self).offset(-90)
+			make.bottom.equalToSuperview().offset(-90)
+			make.left.equalToSuperview().offset(310)
 		}
+		
 		
 		// Add and configure debug Upload button
 		addSubview(uploadButton)
 		uploadButton.setImage(UIImage(named: "upload-button"), for: .normal)
-		editButton.isUserInteractionEnabled = true
 		uploadButton.snp.makeConstraints { (make) -> Void in
-			make.left.equalTo(self).offset(-200)
-			make.bottom.equalTo(self).offset(-90)
+			make.bottom.equalToSuperview().offset(-90)
+			make.left.equalToSuperview().offset(550)
 		}
 		
-		
 	}
 	
+	
+	// MARK: - Public Method
+	
+	// Call this method to setup the View using the input view model object
 	public func setupView(vm: PreloadedLevelCardViewModel) {
+		self.backgroundColor = UIColor.clear
+	
+		// Setup Child Views
+		setupLevelNameLabel(viewModel: vm)
+		setupScoreLabel(viewModel: vm)
+		setupAuthorLabel(viewModel: vm)
+		setupImageView(viewModel: vm)
 		
-		// Set up Level Name
-		levelNameLabel.text = vm.levelName
-		levelNameLabel.strokedText(strokeColor: vm.levelNameStrokeColor, fontColor: vm.levelNameLabelColor, strokeSize: vm.levelNameStrokeSize, font: vm.levelNameLabelFont!)
-		levelNameLabel.font = vm.levelNameLabelFont
-		levelNameLabel.textColor = vm.levelNameLabelColor
+		// Bind current item's UUID to the buttons for callbacks later
+		bindUUIDToButtons(vm.levelUUID)
 		
-		// Set up player score
-		playerScoreLabel.text = "\(vm.playerScore)%"
-		playerScoreLabel.font = vm.playerScoreLabelFont
-		playerScoreLabel.textColor = vm.playerScoreLabelColor
+		setShadows()
+	}
+	
+	// MARK: - Private Helper Methods
+	
+	private func setupLevelNameLabel(viewModel: PreloadedLevelCardViewModel) {
+		levelNameLabel.text = viewModel.levelName
+		levelNameLabel.strokedText(strokeColor: viewModel.levelNameStrokeColor,
+		                           fontColor: viewModel.levelNameLabelColor,
+		                           strokeSize: viewModel.levelNameStrokeSize,
+		                           font: viewModel.levelNameLabelFont!)
+		levelNameLabel.font = viewModel.levelNameLabelFont
+		levelNameLabel.textColor = viewModel.levelNameLabelColor
+	}
+	
+	private func setupScoreLabel(viewModel: PreloadedLevelCardViewModel) {
+		playerScoreLabel.text = "\(viewModel.playerScore)%"
+		playerScoreLabel.font = viewModel.playerScoreLabelFont
+		playerScoreLabel.textColor = viewModel.playerScoreLabelColor
+	}
+	
+	private func setupAuthorLabel(viewModel: PreloadedLevelCardViewModel) {
+		authorLabel.text = "Level Created By \(viewModel.author)"
+		authorLabel.font = viewModel.authorLabelFont
+		authorLabel.textColor = viewModel.authorLabelColor
+	}
+	
+	private func setupImageView(viewModel: PreloadedLevelCardViewModel) {
 		
-		// Set up level author
-		authorLabel.text = "Level Created By \(vm.author)"
-		authorLabel.font = vm.authorLabelFont
-		authorLabel.textColor = vm.authorLabelColor
-		
-		// Resize image
-		let resized = UIImage(named: vm.levelImageUrl)?.resizedImageWithinRect(rectSize: vm.imageRectSize)
+		// Resizes the image while keeping the aspect ratio
+		let resized = UIImage(named: viewModel.levelImageUrl)?
+					.resizedImageWithinRect(rectSize: viewModel.imageRectSize)
 		levelImageView.image = resized
 		levelImageView.isUserInteractionEnabled = true
-		
-		// Set Shadows
-		setShadows()
-		
-		// Set BG Color
-		self.backgroundColor = UIColor.clear
-		
-		// Binding current item's UUID to the buttons for callbacks later
-		editButton.bindUUID(vm.levelUUID)
-		levelImageView.bindUUID(vm.levelUUID)
-		deleteButton.bindUUID(vm.levelUUID)
-		uploadButton.bindUUID(vm.levelUUID)
-		
-		editButton.isUserInteractionEnabled = true
-		deleteButton.isUserInteractionEnabled = true
-		uploadButton.isUserInteractionEnabled = true
 	}
 	
+	private func bindUUIDToButtons(_ uuid: String) {
+		editButton.bindUUID(uuid)
+		levelImageView.bindUUID(uuid)
+		deleteButton.bindUUID(uuid)
+		uploadButton.bindUUID(uuid)
+	}
 	
 	// TODO: Check why 1st 2 items do not have shadow rendered. Sth to do with recycling in iCarousel
 	private func setShadows() {

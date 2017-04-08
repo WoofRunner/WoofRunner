@@ -86,14 +86,9 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		let vm = PreloadedLevelCardViewModel(game: levels[index])
 		levelItemView.setupView(vm: vm)
 		
-		// Set Selectors for buttons
-		levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
-		// TODO: Selectors for other buttons
-		
-		// Set up tap gesture for level (Tap image to play game)
-		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
-		levelItemView.levelImageView.addGestureRecognizer(playTapRecogniser)
-		
+		// Setup tap logic for buttons and image (Tap Image to play game)
+		setupButtonHandlers(levelItemView)
+		setupImageTapHandler(levelItemView)
 		
 		return levelItemView as UIView
 	}
@@ -122,7 +117,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
 	}
 	
-	func editLevelHandler(_ sender: UIButton) {
+	func editLevelHandler(sender: UIButton!) {
 		let btn = sender as! LevelSelectorItemButton
 		let uuid = btn.getBindedUUID()
 		
@@ -135,11 +130,42 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 			.onFailure { error in
 				print("\(error.localizedDescription)")
 		}
+	}
+	
+	func deleteLevelHandler(sender: UIButton!) {
+		let btn = sender as! LevelSelectorItemButton
+		let uuid = btn.getBindedUUID()
+		
+		print("Selected Item To Delete: \(uuid)")
+		
+		// TODO: Delete level on GSM
+		
+		self.carousel.reloadData()
+	}
+	
+	func uploadLevelHandler(sender: UIButton!) {
+		let btn = sender as! LevelSelectorItemButton
+		let uuid = btn.getBindedUUID()
+		
+		print("Selected Item To Upload: \(uuid)")
+		
+		// TODO: Code to Upload level
 		
 	}
 	
 	// MARK: - View Setup Methods
 	
+	// Add button selectors to the input CustomLevelSelectorCard view
+	private func setupButtonHandlers(_ view: CustomLevelSelectorCard) {
+		view.editButton.addTarget(self, action: #selector(editLevelHandler), for: .touchUpInside)
+		view.deleteButton.addTarget(self, action: #selector(deleteLevelHandler), for: .touchUpInside)
+		view.uploadButton.addTarget(self, action: #selector(uploadLevelHandler), for: .touchUpInside)
+	}
+	
+	private func setupImageTapHandler(_ view: CustomLevelSelectorCard) {
+		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
+		view.levelImageView.addGestureRecognizer(playTapRecogniser)
+	}
 	
 	// MARK: - Actions
 	
