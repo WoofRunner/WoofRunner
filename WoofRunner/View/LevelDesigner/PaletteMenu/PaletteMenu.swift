@@ -9,7 +9,7 @@
 import SpriteKit
 
 struct PaletteConstants {
-	static let buttonTypesArray: [PaletteFunctionType] = [.platform, .obstacle, .delete, .edit]
+	static let buttonTypesArray: [PaletteFunctionType] = [.platform, .obstacle, .delete]
 	static let numberOfPaletteButtons = CGFloat(buttonTypesArray.count)
 	static let paletteButtonWidth = CGFloat(60)
 	static let paletteButtonHeight = CGFloat(60)
