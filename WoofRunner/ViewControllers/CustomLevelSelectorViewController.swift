@@ -151,6 +151,8 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 	func uploadLevelHandler(sender: UIButton!) {
 		let btn = sender as! LevelSelectorItemButton
 		let uuid = btn.getBindedUUID()
+
+        // TODO: Prompt Facebook login with view
         gsm.uploadGame(uuid: uuid)
 	}
 	
