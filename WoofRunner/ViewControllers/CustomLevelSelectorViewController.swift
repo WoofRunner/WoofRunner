@@ -138,8 +138,14 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		
 		print("Selected Item To Delete: \(uuid)")
 		
-		// TODO: Delete level on GSM
-		self.carousel.reloadData()
+		gsm.deleteGame(uuid)
+            .onSuccess { _ in
+                print("Game: \(uuid) deleted")
+                self.carousel.reloadData()
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+        }
 	}
 	
 	func uploadLevelHandler(sender: UIButton!) {

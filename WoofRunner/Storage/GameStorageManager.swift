@@ -66,6 +66,11 @@ public class GameStorageManager {
         return cdm.save(game)
     }
 
+    /// Deletes a game from CoreData.
+    public func deleteGame(_ uuid: String) -> Future<Bool, CoreDataManagerError> {
+        return cdm.delete(uuid: uuid)
+    }
+
     /// Uploads the game with the corresponding UUID to Firebase.
     /// - Parameters:
     ///     - uuid: UUID string of the game to upload
