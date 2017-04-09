@@ -131,10 +131,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tempSetup()
-        
-        
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
         }
@@ -146,7 +142,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
             .onFailure { error in
                 print("\(error.localizedDescription)")
         }
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -171,11 +166,11 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         newPlayer.delegate = self
         self.player = newPlayer
 
-        if let tileManager = TileManager(obstacleData: game.getObstacles(), platformData: game.getPlatforms()) {
+        if let tileManager = TileManager(obstacleModels: game.getObstacles(), platformModels: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
             tileManager.delegate = self
             self.tileManager = tileManager
-        }
+        }       
 
         let camera = Camera()
         World.spawnGameObject(camera)

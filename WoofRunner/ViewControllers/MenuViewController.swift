@@ -10,8 +10,16 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    // MARK: - IBOutlets
+
 	@IBOutlet weak var customBtn: UIButton!
 	@IBOutlet weak var playBtn: UIButton!
+
+    // MARK: - IBActions
+
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
+        // Unwind to menu
+    }
 	
 	// MARK: - Life Cycle Methods
 	

@@ -16,17 +16,16 @@
     <entity name="StoredObstacle" representedClassName="StoredObstacle" syncable="YES" codeGenerationType="class">
         <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="radius" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="StoredPlatform" representedClassName="StoredPlatform" syncable="YES" codeGenerationType="class">
         <attribute name="positionX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="positionY" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="StoredGame" positionX="-63" positionY="-18" width="128" height="210"/>
-        <element name="StoredObstacle" positionX="-54" positionY="36" width="128" height="105"/>
+        <element name="StoredObstacle" positionX="-54" positionY="36" width="128" height="90"/>
         <element name="StoredPlatform" positionX="-36" positionY="54" width="128" height="90"/>
     </elements>
 </model>
