@@ -26,7 +26,9 @@ class LevelDesignerOverlayScene: SKScene,
 	var currentSelectionUI = CurrentSelectionNode()
 	var bottomMenu = LevelDesignerBottomMenu()
 	
-	//var currentTileSelection = Variable<TileType>(.floorLight) // Depreacated?
+	// To keep track internally which selection type is last activated
+	var currentBrushSelectionType: BrushSelectionType = .delete
+	
     // Default selection. Wrap this in RXSwift
 	var currentBrushSelection = Variable<BrushSelection>(BrushSelection.defaultSelection)
 	
@@ -152,12 +154,15 @@ class LevelDesignerOverlayScene: SKScene,
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
 		switch funcType {
 			case .delete:
-				updateBrushSelection(.delete)
+				print("Handling Delete palette tap")
+				updateBrushSelectionType(.delete)
+				updateBrushSelection(nil)
+				updateCurrentSelectionUI()
 			case .obstacle:
-				updateBrushSelection(.obstacle)
+				updateBrushSelectionType(.obstacle)
 				openOverlayMenu(funcType)
 			case .platform:
-				updateBrushSelection(.platform)
+				updateBrushSelectionType(.platform)
 				openOverlayMenu(funcType)
 			default:
 				break
@@ -170,21 +175,33 @@ class LevelDesignerOverlayScene: SKScene,
 		animateOverlayMenuOpen()
 	}
 	
-	// Updates the current brush selection BrushSelectionType attribute
-	private func updateBrushSelection(_ selectionType: BrushSelectionType) {
-		self.currentBrushSelection.value.selectionType = selectionType
+	// Updates the current BrushSelectionType
+	private func updateBrushSelectionType(_ selectionType: BrushSelectionType) {
+		currentBrushSelectionType = selectionType
 	}
 	
-	// Updates the current brush selection TileModel attribute
+	// Updates the currentBrushSelection, using the last recorded brushSelectionType
+	// as the value for the selectionType attribute, and the input TileModel 
+	// for the tileModel attribute.
+	// Also updates the currentSelectionUI accordingly
 	private func updateBrushSelection(_ tileModel: TileModel?) {
-		self.currentBrushSelection.value.tileModel = tileModel
+		currentBrushSelection.value.tileModel = tileModel
+		currentBrushSelection.value.selectionType = currentBrushSelectionType
+		updateCurrentSelectionUI()
+	}
+	
+	// Updates the selection UI text according to the currentBrushSelection
+	private func updateCurrentSelectionUI() {
+		currentSelectionUI.updateSelectionText(currentBrushSelection.value.getSelectionName())
 	}
 	
 	// - MARK: OverlayButtonDelegate
 	
-	// Fetch the TileModel using the input tileName and use it to update 
-	// the current brush selection. TileName is used so that child node classes
-	// such as OverlayButtonSet and OverlayButton will not be couple to TileModel
+	// Fetch the TileModel using the input tileName and use it to update
+	// the current brush selection, followed by updating the selectionUI text
+	//
+	// NOTE: TileName is used so that child node classes such as OverlayButtonSet 
+	// and OverlayButton will not be coupled to TileModel
 	internal func setCurrentTileSelection(_ tileName: String?) {
 		guard let _ = tileName else {
 			return
@@ -197,7 +214,6 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 		
 		updateBrushSelection(tileModel)
-		currentSelectionUI.updateSelectionText(currentBrushSelection.value.getSelectionName())
 	}
 	
 	// Closes the OverlayMenu with an animation

@@ -12,16 +12,17 @@ struct LDOverlayMenuViewModel {
 	
 	init(funcType: PaletteFunctionType, allTileModels: [TileModel]) {
 		
+		self.menuName = funcType.getOverlayMenuName()
+		
+		
 		// Filter list according to the funcType
 		switch funcType {
-			
 			case .platform:
 				for tileModel in allTileModels {
 					if let tileModel = tileModel as? PlatformModel {
 						self.tileModelArray.append(tileModel)
 					}
 				}
-				self.menuName = "Platforms"
 				
 			case .obstacle:
 				for tileModel in allTileModels {
@@ -29,7 +30,6 @@ struct LDOverlayMenuViewModel {
 						self.tileModelArray.append(tileModel)
 					}
 				}
-				self.menuName = "Obstacles"
 				
 			default:
 				return
