@@ -72,8 +72,8 @@ extension LevelGrid: SaveableGame {
 		for row in 0...length - 1 {
 			for col in 0...LevelGrid.levelCols - 1 {
 				let gridVM = GridViewModel(row: row, col: col)
-				gridVM.setType(platform: platformArray[row][col]!,
-				               obstacle: obstacleArray[row][col]!)
+				gridVM.setType(platform: platformArray[row][col],
+				               obstacle: obstacleArray[row][col])
 				setupObservables(gridVM)
 				// Append to array
 				gridViewModelArray[row][col] = gridVM
