@@ -11,6 +11,8 @@ import SpriteKit
 
 class GameplayOverlayScene: SKScene {
     
+    private var paletteMenu = PaletteMenu()
+    
     override init(size: CGSize) {
         super.init(size: size)
         didLoad()
@@ -21,6 +23,12 @@ class GameplayOverlayScene: SKScene {
     }
     
     private func didLoad() {
-        
+        initPaletteMenu()
+    }
+    
+    private func initPaletteMenu() {
+        self.paletteMenu.renderPaletteMenu()
+        // self.paletteMenu.assignDelegateForButtons(self)
+        self.addChild(paletteMenu)
     }
 }

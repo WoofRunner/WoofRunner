@@ -19,15 +19,23 @@ class SampleGameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        sceneView.allowsCameraControl = false
+        sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.isPlaying = true
+        sceneView.backgroundColor = UIColor.clear
+        
         if let newScnScene = SCNScene(named: LEVEL_PATH) {
+            print("found scn")
             scnScene = newScnScene
         }
+        let cameraNode = Camera();
+        scnScene.rootNode.addChildNode(cameraNode)
         sceneView.scene = scnScene
+        self.view.addSubview(sceneView)
         
         gameplayOverlay = GameplayOverlayScene(size: self.view.frame.size)
         sceneView.overlaySKScene = gameplayOverlay
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
