@@ -30,9 +30,9 @@ class CurrentSelectionNode: SKNode {
 		super.init()
 	}
 	
-	convenience init(defaultSelection: TileType) {
+	convenience init(defaultSelectionText: String) {
 		self.init()
-		initLabels(defaultType: defaultSelection)
+		initLabels(defaultSelectionText: defaultSelectionText)
 		addLabelNodes()
 		
 	}
@@ -47,7 +47,7 @@ class CurrentSelectionNode: SKNode {
 		self.addChild(selectionLabel)
 	}
 	
-	private func initLabels(defaultType: TileType) {
+	private func initLabels(defaultSelectionText: String) {
 		headerCurrentLabel = SKLabelNode(text: "Current")
 		configureHeaderLabel(headerCurrentLabel)
 		
@@ -55,7 +55,7 @@ class CurrentSelectionNode: SKNode {
 		configureHeaderLabel(headerSelectionLabel)
 		headerSelectionLabel.position = CGPoint(x: 0, y: -1 * SelectionConstants.spacingBetweenHeaders)
 		
-		selectionLabel = SKLabelNode(text: defaultType.toString())
+		selectionLabel = SKLabelNode(text: defaultSelectionText)
 		configureSelectionLabel()
 		selectionLabel.position = CGPoint(x: 0, y: -1 * SelectionConstants.spacingBetweenHeaderAndSelection)
 	}

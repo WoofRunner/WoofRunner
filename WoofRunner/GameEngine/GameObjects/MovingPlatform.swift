@@ -23,6 +23,12 @@ class MovingPlatform : Platform {
     var rightBound: Float = GameSettings.TILE_WIDTH * Float(GameSettings.PLATFORM_COLUMNS/2) - GameSettings.TILE_WIDTH
     var leftBound: Float = GameSettings.TILE_WIDTH * -Float(GameSettings.PLATFORM_COLUMNS/2)
 
+    override init(_ tileModel: TileModel) {
+        super.init(tileModel)
+        triggerDistance = -9
+        createAdjacentDeadTriggers()
+    }
+    /*
     override init(_ pos: SCNVector3) {
         super.init(pos)
         tileType = TileType.movingPlatform
@@ -35,15 +41,17 @@ class MovingPlatform : Platform {
     convenience init() {
         self.init(SCNVector3(0, 0, 0))
     }
+    */
     
+    // TODO
     func createAdjacentDeadTriggers() {
         if GameSettings.PLATFORM_COLUMNS < 1 { return }
         
         for colIndex in 1..<GameSettings.PLATFORM_COLUMNS {
-            var deadTrigger = DeadTriggerTile(SCNVector3(colIndex+1, 0, 0))
-            addChildNode(deadTrigger)
-            deadTrigger = DeadTriggerTile(SCNVector3(-colIndex, 0, 0))
-            addChildNode(deadTrigger)
+            //var deadTrigger = DeadTriggerTile(SCNVector3(colIndex+1, 0, 0))
+            //addChildNode(deadTrigger)
+            //deadTrigger = DeadTriggerTile(SCNVector3(-colIndex, 0, 0))
+            //addChildNode(deadTrigger)
         }
     }
     

@@ -76,7 +76,7 @@ class TileManager: GameObject {
         self.obstacleData = obstacleModels.map { columns in
             columns.map { item in
                 // Empty obstacle
-                guard let type = item?.uniqueId else {
+                guard let type = item?.tileId else {
                     return 0
                 }
 
@@ -87,7 +87,7 @@ class TileManager: GameObject {
         self.platformData = platformModels.map { columns in
             columns.map { item in
                 // Empty platform
-                guard let type = item?.uniqueId else {
+                guard let type = item?.tileId else {
                     return 0
                 }
 
@@ -221,7 +221,7 @@ class TileManager: GameObject {
     }
 
     private func mapToTileType(_ model: TileModel) -> Int {
-        return model.uniqueId
+        return model.tileId
     }
     
     override func update(_ deltaTime: Float) {

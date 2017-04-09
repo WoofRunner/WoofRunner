@@ -11,11 +11,7 @@ import SceneKit
 
 class Platform : Tile {
     
-    override init(_ pos: SCNVector3) {
-        super.init(pos)
-    }
-    
-    convenience init() {
-        self.init(SCNVector3(0, 0, 0))
+    override init(_ tileModel: TileModel) {
+        super.init(tileModel)
     }
 }

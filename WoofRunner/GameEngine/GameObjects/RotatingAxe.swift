@@ -15,18 +15,12 @@ class RotatingAxe: Obstacle {
     var curTime: Float
     var rotateAmount: CGFloat = CGFloat(90).degreesToRadians
     
-    override init(_ pos: SCNVector3) {
+    override init(_ tileModel: TileModel) {
         curTime = interval
-        super.init(pos)
-        tileType = TileType.rotatingAxe
-        loadModel(tileType.getModelPath())
+        super.init(tileModel)
         positionOffSet = SCNVector3(GameSettings.TILE_WIDTH/2, 0, -GameSettings.TILE_WIDTH/2)
         pivot = SCNMatrix4MakeTranslation(GameSettings.TILE_WIDTH/2, 0, -GameSettings.TILE_WIDTH/2)
         triggerDistance = -5
-    }
-    
-    convenience init() {
-        self.init(SCNVector3(0, 0, 0))
     }
 
     func rotateAxe() {

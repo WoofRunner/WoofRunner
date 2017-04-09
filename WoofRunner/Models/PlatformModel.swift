@@ -12,7 +12,7 @@ class PlatformModel: TileModel {
     
     let platformBehaviour: PlatformBehaviour
     
-    init(name: String, scenePath: String, iconPath: String, platformBehaviour: PlatformBehaviour) {
+    init(name: String, scenePath: String?, iconPath: String?, platformBehaviour: PlatformBehaviour) {
         self.platformBehaviour = platformBehaviour
         super.init(name:name, scenePath: scenePath, iconPath: iconPath)
     }

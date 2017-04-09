@@ -19,6 +19,8 @@ final class TileFactory {
     }
     
     public func createTile(_ tileType: TileType) -> Tile? {
+        return nil
+        /*
         let tile: Tile
         
         switch tileType {
@@ -52,6 +54,7 @@ final class TileFactory {
         }
         
         return tile
+ */
     }
 
 }

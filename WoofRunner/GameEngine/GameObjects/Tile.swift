@@ -21,14 +21,16 @@ class Tile: GameObject {
     
     var positionOffSet: SCNVector3 = SCNVector3.zero()
     
-    init(_ pos: SCNVector3) {
+    var tileId: Int = 0
+
+    init(_ tileModel: TileModel) {
         super.init()
-        position = pos
+        
         isTickEnabled = true
     }
     
-    override convenience init() {
-        self.init(SCNVector3(0, 0, 0))
+    convenience required init?(coder aDecoder: NSCoder) {
+        return nil
     }
 
     override func update(_ deltaTime: Float) {
