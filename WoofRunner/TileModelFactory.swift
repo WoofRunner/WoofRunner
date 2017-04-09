@@ -31,7 +31,7 @@ public final class TileModelFactory {
 
     func createDarkPlatform() {
         let platformModel = PlatformModel(name: "Dark Platform",
-                                          scenePath: "art.scnassets/floor_dark.scn",
+                                          scenePath: "art.scnassets/platform/floor_flat_dark.scn",
                                           iconPath: "platform-placeholder",
                                           platformBehaviour: PlatformBehaviour.none)
         
@@ -40,7 +40,7 @@ public final class TileModelFactory {
     
     func createLightPlatform() {
         let platformModel = PlatformModel(name: "Light floor",
-                                          scenePath: "art.scnassets/floor_light.scn",
+                                          scenePath: "art.scnassets/platform/floor_flat_light.scn",
                                           iconPath: "obstacle-placeholder1",
                                           platformBehaviour: PlatformBehaviour.none)
         
