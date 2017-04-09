@@ -25,6 +25,10 @@ final class TileModelFactory {
         createRotatingAxeObstacle()
     }
 
+    public static func getTile(id: Int) -> TileModel {
+        return TileModelFactory.tileModels[id]
+    }
+
     func createDarkPlatform() {
         let platformModel = PlatformModel(name: "Dark Platform",
                                           scenePath: "art.scnassets/floor_dark.scn",
@@ -87,4 +91,5 @@ final class TileModelFactory {
         
         TileModelFactory.tileModels.append(obstacleModel)
     }
+
 }

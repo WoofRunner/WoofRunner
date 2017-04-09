@@ -171,7 +171,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         newPlayer.delegate = self
         self.player = newPlayer
 
-        if let tileManager = TileManager(obstacleData: game.getObstacles(), platformData: game.getPlatforms()) {
+        if let tileManager = TileManager(obstacleModels: game.getObstacles(), platformModels: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
             tileManager.delegate = self
             self.tileManager = tileManager

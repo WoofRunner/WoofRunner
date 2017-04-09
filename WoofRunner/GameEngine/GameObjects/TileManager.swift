@@ -69,6 +69,30 @@ class TileManager: GameObject {
             return nil
         }
     }
+
+    convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
+        self.init()
+
+        for (row, columns) in obstacleModels.enumerated() {
+            for (col, item) in columns.enumerated() {
+                guard let type = item?.uniqueId else {
+                    fatalError("Obstacle type not loaded")
+                }
+
+                self.obstacleData[row][col] = type
+            }
+        }
+
+        for (row, columns) in platformModels.enumerated() {
+            for (col, item) in columns.enumerated() {
+                guard let type = item?.uniqueId else {
+                    fatalError("Obstacle type not loaded")
+                }
+
+                self.platformData[row][col] = type
+            }
+        }
+    }
     
     public func restartLevel() {
         position = startPosition
@@ -189,6 +213,10 @@ class TileManager: GameObject {
         let rowPosition = calculateIndexPosition(row, 0)
         let worldRowPosition = convertPosition(rowPosition, to: nil)
         return worldRowPosition.z > platformTail
+    }
+
+    private func mapToTileType(_ model: TileModel) -> Int {
+        return model.uniqueId
     }
     
     override func update(_ deltaTime: Float) {
