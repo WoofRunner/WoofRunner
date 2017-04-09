@@ -55,11 +55,11 @@ extension LevelGrid: SaveableGame {
         }
 
         for obstacle in obstacles {
-            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = TileModelFactory.sharedInstance.getTile(id: Int(obstacle.type)) as? ObstacleModel
+            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = TileModelFactory.sharedInstance.getTile(tileId: Int(obstacle.type)) as? ObstacleModel
         }
 
         for platform in platforms {
-            platformArray[Int(platform.positionX)][Int(platform.positionY)] = TileModelFactory.sharedInstance.getTile(id: Int(platform.type)) as? PlatformModel
+            platformArray[Int(platform.positionX)][Int(platform.positionY)] = TileModelFactory.sharedInstance.getTile(tileId: Int(platform.type)) as? PlatformModel
         }
 		
 		// Reinit Level

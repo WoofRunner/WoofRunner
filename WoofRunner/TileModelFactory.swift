@@ -14,7 +14,7 @@ public final class TileModelFactory {
     
     public static let sharedInstance: TileModelFactory = TileModelFactory()
     
-	public var tileModels: [TileModel] = []
+	private(set) var tileModels: [TileModel] = []
     
     private init() {
         createDarkPlatform()
@@ -28,8 +28,13 @@ public final class TileModelFactory {
         createKillPlatform()
     }
 
-    public func getTile(id: Int) -> TileModel {
-        return tileModels[id]
+    public func getTile(tileId: Int) -> TileModel? {
+        for tileModel in tileModels {
+            if tileModel.tileId == tileId {
+                return tileModel
+            }
+        }
+        return nil
     }
     
     public func findTileModel(name: String) -> TileModel? {
@@ -41,7 +46,7 @@ public final class TileModelFactory {
         return nil
     }
 
-    func createDarkPlatform() {
+    private func createDarkPlatform() {
         let platformModel = PlatformModel(name: "Dark Platform",
                                           scenePath: "art.scnassets/platform/floor_flat_dark.scn",
                                           iconPath: "platform-placeholder",
@@ -50,7 +55,7 @@ public final class TileModelFactory {
         tileModels.append(platformModel)
     }
     
-    func createLightPlatform() {
+    private func createLightPlatform() {
         let platformModel = PlatformModel(name: "Light floor",
                                           scenePath: "art.scnassets/platform/floor_flat_light.scn",
                                           iconPath: "obstacle-placeholder1",
@@ -59,7 +64,7 @@ public final class TileModelFactory {
         tileModels.append(platformModel)
     }
     
-    func createMovingPlatform() {
+    private func createMovingPlatform() {
         let platformModel = PlatformModel(name: "Moving Platform",
                                           scenePath: "art.scnassets/movingPlatform.scn",
                                           iconPath: "testCat",
@@ -68,7 +73,7 @@ public final class TileModelFactory {
         tileModels.append(platformModel)
     }
     
-    func createAllowsJumpingPlatform() {
+    private func createAllowsJumpingPlatform() {
         let platformModel = PlatformModel(name: "Jumping Platform",
                                           scenePath: "art.scnassets/cube3.scn",
                                           iconPath: "obstacle-placeholder2",
@@ -77,7 +82,7 @@ public final class TileModelFactory {
         tileModels.append(platformModel)
     }
     
-    func createKillPlatform() {
+    private func createKillPlatform() {
         let platformModel = PlatformModel(name: "Kill Platform",
                                           scenePath: nil,
                                           iconPath: nil,
@@ -86,7 +91,7 @@ public final class TileModelFactory {
         tileModels.append(platformModel)
     }
 
-    func createStaticObstacle() {
+    private func createStaticObstacle() {
         let obstacleModel = ObstacleModel(name: "Rock",
                                           scenePath: "art.scnassets/rock/rock.scn",
                                           iconPath: "obstacle-placeholder2",
@@ -95,7 +100,7 @@ public final class TileModelFactory {
         tileModels.append(obstacleModel)
     }
     
-    func createJumpingObstacle() {
+    private func createJumpingObstacle() {
         let obstacleModel = ObstacleModel(name: "Jumping Obstacle",
                                           scenePath: "art.scnassets/rock/jumpRock.scn",
                                           iconPath: "testCat",
@@ -104,7 +109,7 @@ public final class TileModelFactory {
         tileModels.append(obstacleModel)
     }
     
-    func createRotatingAxeObstacle() {
+    private func createRotatingAxeObstacle() {
         let obstacleModel = ObstacleModel(name: "Rotating Axe",
                                           scenePath: "art.scnassets/rock/rockWithAxe.scn",
                                           iconPath: "testCat",
