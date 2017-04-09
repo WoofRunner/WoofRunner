@@ -105,12 +105,16 @@ extension LMHomeViewController: iCarouselDataSource {
     public func carousel(_ carousel: iCarousel,
                          viewForItemAt index: Int,
                          reusing view: UIView?) -> UIView {
+
+        // Create a new view model
         let levelCardVm = vm.viewModelForGame(at: index)
 
+        // Initialize new card view
         let marketplaceCardView = MarketplaceLevelCard(frame: self.view.frame)
         marketplaceCardView.isUserInteractionEnabled = true
         marketplaceCardView.setupView(vm: levelCardVm)
 
+        // Add tap gesture recognizer
         let recognizer = DownloadGameTapGesture(target: self, action: #selector(downloadButtonTap))
         recognizer.setUUID(levelCardVm.levelUUID)
         marketplaceCardView.downloadButton.addGestureRecognizer(recognizer)
