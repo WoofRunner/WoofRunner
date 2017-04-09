@@ -65,6 +65,15 @@ public final class TileModelFactory {
         tileModels.append(platformModel)
     }
     
+    func createKillPlatform() {
+        let platformModel = PlatformModel(name: "Kill Platform",
+                                          scenePath: "art.scnassets/cube3.scn",
+                                          iconPath: "obstacle-placeholder2",
+                                          platformBehaviour: PlatformBehaviour.kill)
+        
+        tileModels.append(platformModel)
+    }
+
     func createStaticObstacle() {
         let obstacleModel = ObstacleModel(name: "Jumping Platform",
                                           scenePath: "art.scnassets/cube3.scn",

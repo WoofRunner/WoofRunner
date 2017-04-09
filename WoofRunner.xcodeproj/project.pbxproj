@@ -39,7 +39,6 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-		16791951B068C4BD9A717E18 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		3F0F81B71E916B7900114CD0 /* CustomLevel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81B61E916B7900114CD0 /* CustomLevel.storyboard */; };
 		3F0F81B91E91707400114CD0 /* CustomLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */; };
 		3F0F81BB1E92974E00114CD0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */; };
@@ -286,7 +285,7 @@
 		F34DEDC61E8D754D00BB8CA7 /* JumpingRock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingRock.swift; sourceTree = "<group>"; };
 		F38F48281E87F1FB005328A9 /* LightPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightPlatform.swift; sourceTree = "<group>"; };
 		F38F482A1E87F28F005328A9 /* DarkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPlatform.swift; sourceTree = "<group>"; };
-		F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
+		F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileFactory.swift; path = GameEngine/GameObjects/TileFactory.swift; sourceTree = "<group>"; };
 		F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingPlatform.swift; sourceTree = "<group>"; };
 		F3A73C6B1E95493F00B65435 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = GameEngine/CGFloat.swift; sourceTree = "<group>"; };
 		F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingAxe.swift; sourceTree = "<group>"; };
@@ -472,6 +471,7 @@
 				F3A73C6D1E954A4600B65435 /* Extension */,
 				F304D04C1E950D6D0021CB68 /* GameSettings.swift */,
 				F33754F01E97886D00839AFD /* TileModelFactory.swift */,
+				F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */,
 				F33442A61E8156F3001C1D8D /* GameEngine */,
 				126F50FD1E727332000877F1 /* Application */,
 				126F50FB1E7272C2000877F1 /* View */,
@@ -650,8 +650,6 @@
 				F33442C81E815BFE001C1D8D /* Tile.swift */,
 				F313D53B1E8E31BD0036FF84 /* TileDelegate.swift */,
 				F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */,
-				F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */,
-				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */,
 				F34DEDB81E8D356A00BB8CA7 /* Platform */,
 				F34DEDB91E8D357700BB8CA7 /* Obstacle */,
 			);
@@ -667,6 +665,7 @@
 				F38F482A1E87F28F005328A9 /* DarkPlatform.swift */,
 				F38F48281E87F1FB005328A9 /* LightPlatform.swift */,
 				F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */,
+				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */,
 			);
 			name = Platform;
 			sourceTree = "<group>";

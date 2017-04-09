@@ -21,6 +21,8 @@ class Tile: GameObject {
     
     var positionOffSet: SCNVector3 = SCNVector3.zero()
     
+    
+    
     init(_ pos: SCNVector3) {
         super.init()
         position = pos
