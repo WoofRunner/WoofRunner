@@ -120,7 +120,7 @@
 		F33754F11E97886D00839AFD /* TileModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754F01E97886D00839AFD /* TileModelFactory.swift */; };
 		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
 		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
-		F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */; };
+		F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift */; };
 		F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */; };
 		F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */; };
 		F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */; };
@@ -277,7 +277,7 @@
 		F33754F01E97886D00839AFD /* TileModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileModelFactory.swift; sourceTree = "<group>"; };
 		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
 		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
-		F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTriggerTile.swift; sourceTree = "<group>"; };
+		F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTriggerPlatform.swift; sourceTree = "<group>"; };
 		F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpTrigger.swift; sourceTree = "<group>"; };
 		F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpPlatform.swift; sourceTree = "<group>"; };
@@ -665,7 +665,7 @@
 				F38F482A1E87F28F005328A9 /* DarkPlatform.swift */,
 				F38F48281E87F1FB005328A9 /* LightPlatform.swift */,
 				F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */,
-				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerTile.swift */,
+				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift */,
 			);
 			name = Platform;
 			sourceTree = "<group>";
@@ -982,7 +982,7 @@
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
 				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
 				F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */,
-				F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerTile.swift in Sources */,
+				F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift in Sources */,
 				3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */,
 				F313D53E1E8E40FD0036FF84 /* PlayerDelegate.swift in Sources */,
 				3F7348BC1E86DACF00EB1264 /* PaletteMenu.swift in Sources */,

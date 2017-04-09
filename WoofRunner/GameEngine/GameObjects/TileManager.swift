@@ -33,11 +33,14 @@ class TileManager: GameObject {
     var isDebug: Bool = true
     
     let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
+    let WARNING_CANT_FIND_DEAD_TRIGGER = "WARNING: Cant Find Dead Trigger"
     
     var isMoving: Bool = false
     var delay: Float = 3
     
     var delegate: TileManagerDelegate?
+    
+    let deadTriggerModel: TileModel? = TileModelFactory.sharedInstance.findTileModel(name: "Kill Platform")
     
     var startPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
@@ -168,13 +171,17 @@ class TileManager: GameObject {
     
     
     private func appendDeadTriggers(_ row: Int) {
-        /*
-        var tile = poolManager?.getTile(TileType.none)
+        guard let deadTriggerModel = deadTriggerModel else {
+            print(WARNING_CANT_FIND_DEAD_TRIGGER)
+            return
+        }
+        
+        var tile = poolManager?.getTile(deadTriggerModel)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
         
-        tile = poolManager?.getTile(TileType.none)
+        tile = poolManager?.getTile(deadTriggerModel)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
- */
+
     }
     
     

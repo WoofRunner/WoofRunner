@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class DeadTriggerTile : Platform {
+class DeadTriggerPlatform : Platform {
     
     override init(_ tileModel: TileModel) {
         super.init(tileModel)

@@ -39,7 +39,7 @@ final class TileFactory {
             platform = JumpPlatform(platformModel)
         
         case .kill:
-            platform = Platform(platformModel)
+            platform = DeadTriggerPlatform(platformModel)
             
         case .moving:
             platform = MovingPlatform(platformModel)
