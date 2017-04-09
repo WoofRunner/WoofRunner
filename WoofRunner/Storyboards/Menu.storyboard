@@ -39,9 +39,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2d-nQ-NcI" userLabel="playBtn">
-                                <rect key="frame" x="216" y="535" width="336" height="95"/>
+                                <rect key="frame" x="243" y="535" width="282" height="95"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="336" id="EO1-Ll-sCM"/>
+                                    <constraint firstAttribute="width" constant="282" id="EO1-Ll-sCM"/>
                                     <constraint firstAttribute="height" constant="95" id="awv-5b-ccv"/>
                                 </constraints>
                                 <state key="normal" image="play-btn"/>
