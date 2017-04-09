@@ -86,8 +86,7 @@ public class LMHomeViewController: UIViewController {
 
     /// Tap gesture action for home button.
     func dismissView(_ sender: UITapGestureRecognizer) {
-        // TODO: change this to unwind segue
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "unwindToMenu", sender: nil)
     }
 
     /// Loads levels from GameStorageManager into the ViewModel.
