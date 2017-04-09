@@ -39,8 +39,8 @@ public class LMHomeViewController: UIViewController {
     /// Setup all the views in marketplace.
     private func setupView() {
         setupBackgroundView()
-        setupHomeButton()
         setupCarouselView()
+        setupHomeButton()
     }
 
     /// Setup the iCarousel view.
@@ -86,6 +86,7 @@ public class LMHomeViewController: UIViewController {
 
     /// Tap gesture action for home button.
     func dismissView(_ sender: UITapGestureRecognizer) {
+        // TODO: change this to unwind segue
         self.dismiss(animated: true, completion: nil)
     }
 
