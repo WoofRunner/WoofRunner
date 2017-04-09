@@ -60,7 +60,7 @@ class GridViewModel {
         return removePlatform()
     }
     
-	func setType(platform: PlatformModel, obstacle: ObstacleModel) {
+	func setType(platform: PlatformModel?, obstacle: ObstacleModel?) {
 		platformType.value = platform
 		obstacleType.value = obstacle
     }
