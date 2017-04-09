@@ -55,11 +55,11 @@ extension LevelGrid: SaveableGame {
         }
 
         for obstacle in obstacles {
-            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = Int(obstacle.type!)!
+            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = TileModelFactory.getTile(id: Int(obstacle.type)) as? ObstacleModel
         }
 
         for platform in platforms {
-            platformArray[Int(platform.positionX)][Int(platform.positionY)] = Int(platform.type!)!
+            platformArray[Int(platform.positionX)][Int(platform.positionY)] = TileModelFactory.getTile(id: Int(platform.type)) as? PlatformModel
         }
 		
 		// Reinit Level
@@ -88,13 +88,15 @@ extension LevelGrid: SaveableGame {
 
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
+                // Obstacle does not exist
+                guard let obstacleId = obstacle?.uniqueId else {
+                    continue
+                }
+
                 let storedObstacle = StoredObstacle(context: context)
-                storedObstacle.type = String(obstacle)
+                storedObstacle.type = Int16(obstacleId)
                 storedObstacle.positionX = Int16(row)
                 storedObstacle.positionY = Int16(col)
-
-                // Radius of each obstacle not determined yet
-                storedObstacle.radius = 1
 
                 game.addToObstacles(storedObstacle)
             }
@@ -109,8 +111,13 @@ extension LevelGrid: SaveableGame {
 
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
+                // Platform does not exist
+                guard let platformId = platform?.uniqueId else {
+                    continue
+                }
+
                 let storedPlatform = StoredPlatform(context: context)
-                storedPlatform.type = String(platform)
+                storedPlatform.type = Int16(platformId)
                 storedPlatform.positionX = Int16(row)
                 storedPlatform.positionY = Int16(col)
 

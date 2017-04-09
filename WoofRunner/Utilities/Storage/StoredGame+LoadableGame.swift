@@ -12,7 +12,13 @@ extension StoredGame: LoadableGame {
     /// - Returns: 2D array of platform types
     public func getPlatforms() -> [[TileModel?]] {
         var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
-        let storedPlatforms = self.platforms?.map { $0 as! StoredPlatform } ?? [StoredPlatform]()
+        let storedPlatforms = self.platforms?.map { platform in
+            guard let storedPlatform = platform as? StoredPlatform else {
+                fatalError("Unable to convert to StoredPlatform")
+            }
+
+            return storedPlatform
+        } ?? [StoredPlatform]()
 
         for platform in storedPlatforms {
             let row = Int(platform.positionX)
@@ -41,19 +47,19 @@ extension StoredGame: LoadableGame {
     }
 
     private func mapToObstacleModel(_ obstacle: StoredObstacle) -> ObstacleModel? {
-        guard let tileId = Int(obstacle.type!) else {
-            return nil
-        }
-
-        return TileModelFactory.getTile(id: tileId) as? ObstacleModel
+        let tileId = Int(obstacle.type)
+        // TODO: Fix this sharedInstance bug
+        let factory = TileModelFactory.sharedInstance
+        let tiles = TileModelFactory.tileModels
+        return tiles[tileId] as? ObstacleModel
     }
 
     private func mapToPlatformModel(_ platform: StoredPlatform) -> PlatformModel? {
-        guard let tileId = Int(platform.type!) else {
-            return nil
-        }
-
-        return TileModelFactory.getTile(id: tileId) as? PlatformModel
+        let tileId = Int(platform.type)
+        // TODO: Fix this sharedInstance bug
+        let factory = TileModelFactory.sharedInstance
+        let tiles = TileModelFactory.tileModels
+        return tiles[tileId] as? PlatformModel
     }
 
     private func create2DArray(rows: Int, cols: Int, initialValue: TileModel?) -> [[TileModel?]] {

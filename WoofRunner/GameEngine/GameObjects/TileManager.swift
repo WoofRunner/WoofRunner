@@ -73,23 +73,28 @@ class TileManager: GameObject {
     convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
         self.init()
 
-        for (row, columns) in obstacleModels.enumerated() {
-            for (col, item) in columns.enumerated() {
+        self.obstacleData = obstacleModels.map { columns in
+            columns.map { item in
+                // Empty obstacle
                 guard let type = item?.uniqueId else {
-                    fatalError("Obstacle type not loaded")
+                    return 0
                 }
 
-                self.obstacleData[row][col] = type
+                return type
             }
         }
 
-        for (row, columns) in platformModels.enumerated() {
-            for (col, item) in columns.enumerated() {
+        self.platformData = platformModels.map { columns in
+            columns.map { item in
+                // Empty platform
                 guard let type = item?.uniqueId else {
-                    fatalError("Obstacle type not loaded")
+                    return 0
                 }
 
-                self.platformData[row][col] = type
+                // +1 because currently TileType is using 0 for empty tile, while TileModelFactory
+                // returns DarkFloor for type 0.
+                // TODO: Fix this please.
+                return type + 1
             }
         }
     }
