@@ -60,7 +60,18 @@ public class LMHomeViewController: UIViewController {
             .onFailure { error in
                 print("\(error.localizedDescription)")
                 self.vm.setFailure(true)
+        }
+    }
+
+    /// Downloads the level to stored
+    fileprivate func downloadLevel(uuid: String) {
+        gsm.downloadGame(uuid: uuid)
+            .onSuccess { game in
+                print("Download \(uuid) success")
             }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+        }
     }
 
     /// Links the ViewModel to the carousel view.
@@ -69,6 +80,15 @@ public class LMHomeViewController: UIViewController {
             self.carousel?.reloadData()
         })
         .addDisposableTo(disposeBag)
+    }
+
+    /// Download button tap gesture recognizer
+    public func downloadButtonTap(_ sender: DownloadGameTapGesture) {
+        guard let uuid = sender.uuid else {
+            fatalError("Game does not have UUID attached")
+        }
+
+        downloadLevel(uuid: uuid)
     }
 
 }
@@ -86,10 +106,16 @@ extension LMHomeViewController: iCarouselDataSource {
                          viewForItemAt index: Int,
                          reusing view: UIView?) -> UIView {
         let levelCardVm = vm.viewModelForGame(at: index)
-        let levelCardView = LevelCardView(frame: self.view.frame)
-        levelCardView.setupView(vm: levelCardVm)
 
-        return levelCardView
+        let marketplaceCardView = MarketplaceLevelCard(frame: self.view.frame)
+        marketplaceCardView.isUserInteractionEnabled = true
+        marketplaceCardView.setupView(vm: levelCardVm)
+
+        let recognizer = DownloadGameTapGesture(target: self, action: #selector(downloadButtonTap))
+        recognizer.setUUID(levelCardVm.levelUUID)
+        marketplaceCardView.downloadButton.addGestureRecognizer(recognizer)
+
+        return marketplaceCardView
     }
 
 }

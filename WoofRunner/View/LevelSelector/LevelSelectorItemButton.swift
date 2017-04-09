@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LevelSelectorItemButton: UIButton {
+public class LevelSelectorItemButton: UIButton {
 	
 	private var uuid: String = "" // The level UUID tied to the level selector item that the button is in
 

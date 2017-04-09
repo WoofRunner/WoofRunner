@@ -28,6 +28,7 @@
 		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
 		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
 		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
+		12CCB69C1E9A17B300C4FD45 /* DownloadGameTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */; };
 		12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LMCardViewCell.swift */; };
 		12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */; };
 		12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */; };
@@ -182,6 +183,7 @@
 		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
 		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
 		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
+		12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadGameTapGesture.swift; sourceTree = "<group>"; };
 		12DA42091E86699200C23137 /* LMCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCardViewCell.swift; sourceTree = "<group>"; };
 		12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewModel.swift; sourceTree = "<group>"; };
 		12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewModel.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				3F0F81D41E97FA1300114CD0 /* StrokedLabel.swift */,
 				3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */,
 				3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */,
+				12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
 				F33442CC1E815BFE001C1D8D /* TileManager.swift in Sources */,
+				12CCB69C1E9A17B300C4FD45 /* DownloadGameTapGesture.swift in Sources */,
 				F30ABDFF1E82A7A800BD1D02 /* Array.swift in Sources */,
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
 				3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */,
