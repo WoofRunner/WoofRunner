@@ -115,14 +115,6 @@ class ReactiveGridNode {
         
         if obstacleType == nil {
             // Empty Node
-//            let size = self.size
-//            let obstacleBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
-//                                             length: CGFloat(size), chamferRadius: 0.05)
-//            for material in obstacleBoxGeometry.materials {
-//                material.diffuse.contents = UIColor.lightGray
-//                material.transparency = 0
-//            }
-//            modelNode = SCNNode(geometry: obstacleBoxGeometry)
             modelNode = SCNNode()
         } else if let model = loadModel(obstacleType!.scenePath) {
             modelNode = model
@@ -141,12 +133,12 @@ class ReactiveGridNode {
     }
     
     // Returns a model node that would be added to gridNode as a childnode
-    private func loadModel(_ pathName: String) -> SCNNode? {
-        guard pathName.characters.count > 0 else {
-            return SCNNode();
+    private func loadModel(_ pathName: String?) -> SCNNode? {
+        guard let path = pathName else {
+            return nil
         }
-        guard let modelScene = SCNScene(named: pathName) else {
-            print("WARNING: Cant find path name: " + pathName)
+        guard let modelScene = SCNScene(named: path) else {
+            print("WARNING: Cant find path name: " + path)
             return nil
         }
         let modelNode = SCNNode()

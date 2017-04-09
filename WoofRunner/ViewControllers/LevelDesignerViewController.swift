@@ -32,7 +32,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
     var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
-	var currentLevelName = "Custom Level 1" // Default Name
+	var currentLevelName = "Custom Level" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
     var longPress = false
 
