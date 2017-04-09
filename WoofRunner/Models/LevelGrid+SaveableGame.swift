@@ -89,7 +89,7 @@ extension LevelGrid: SaveableGame {
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
                 // Obstacle does not exist
-                guard let obstacleId = obstacle?.uniqueId else {
+                guard let obstacleId = obstacle?.tileId else {
                     continue
                 }
 
@@ -112,7 +112,7 @@ extension LevelGrid: SaveableGame {
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
                 // Platform does not exist
-                guard let platformId = platform?.uniqueId else {
+                guard let platformId = platform?.tileId else {
                     continue
                 }
 

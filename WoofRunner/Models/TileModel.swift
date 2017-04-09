@@ -11,17 +11,17 @@ import Foundation
 public class TileModel {
     static var tileModelCount = 0
     
-    let uniqueId: Int
+    let tileId: Int
     let name: String
-    let scenePath: String
-    let iconPath: String
-    
-    init(name: String, scenePath: String, iconPath: String) {
+    private(set) var scenePath: String?
+    private(set) var iconPath: String?
+
+    init(name: String, scenePath: String?, iconPath: String?) {
         self.name = name
         self.scenePath = scenePath
         self.iconPath = iconPath
         
-        uniqueId = TileModel.tileModelCount
+        tileId = TileModel.tileModelCount
         TileModel.tileModelCount += 1
     }
 }

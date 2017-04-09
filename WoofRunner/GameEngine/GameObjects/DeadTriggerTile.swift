@@ -11,13 +11,9 @@ import SceneKit
 
 class DeadTriggerTile : Platform {
     
-    override init(_ pos: SCNVector3) {
-        super.init(pos)
+    override init(_ tileModel: TileModel) {
+        super.init(tileModel)
         let trigger = Trigger(SCNVector3(GameSettings.TILE_WIDTH/2, GameSettings.TILE_WIDTH/2, -GameSettings.TILE_WIDTH/2))
         addChildNode(trigger)
-    }
-    
-    convenience init() {
-        self.init(SCNVector3(0, 0, 0))
     }
 }

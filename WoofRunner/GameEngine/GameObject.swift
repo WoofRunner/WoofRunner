@@ -15,12 +15,8 @@ class GameObject: SCNNode, GestureDelegate {
     
     let FAR_AWAY_POSITION = SCNVector3(-100, -100, -100)
     
-    override init() {
-        super.init()
-    }
-    
     convenience required init?(coder aDecoder: NSCoder) {
-        self.init()
+        return nil
     }
     
     public func update(_ deltaTime: Float) {

@@ -44,8 +44,12 @@ class OverlayMenuSubsection: SKNode {
 			
 			let tileModel = tileModelArray[i]
 			
+            guard let iconPath = tileModel.iconPath else {
+                continue
+            }
+            
 			//Create
-			let btnSet = OverlayButtonSet(name: tileModel.name, imageNamed: tileModel.iconPath)
+			let btnSet = OverlayButtonSet(name: tileModel.name, imageNamed: iconPath)
 			
 			if i % 3 == 0 {
 				baseX = OverlayConstants.btnSetBaseX

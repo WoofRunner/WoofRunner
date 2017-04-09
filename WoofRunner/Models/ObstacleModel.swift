@@ -12,7 +12,7 @@ class ObstacleModel: TileModel {
     
     let obstacleBehaviour: ObstacleBehaviour
     
-    init(name: String, scenePath: String, iconPath: String, obstacleBehaviour: ObstacleBehaviour) {
+    init(name: String, scenePath: String?, iconPath: String?, obstacleBehaviour: ObstacleBehaviour) {
         self.obstacleBehaviour = obstacleBehaviour
         super.init(name:name, scenePath: scenePath, iconPath: iconPath)
     }
