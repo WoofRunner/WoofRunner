@@ -164,6 +164,10 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		
         // Check what nodes are tapped
         let pos = sender.location(in: sceneView)
+        // Ensure not tapping menu
+        guard !isTappingMenu(tap_y: pos.y) else {
+            return
+        }
         let hitResults = sceneView.hitTest(pos, options: [:])
         
         // check that we clicked on at least one object
@@ -225,6 +229,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return true
         }
         return skScene.overlayMenu.alpha == 0
+    }
+    
+    private func isTappingMenu(tap_y: CGFloat) -> Bool {
+        let menuHeight = self.view.bounds.height - BottomMenuConstants.barHeight / 2
+        return tap_y > menuHeight
     }
     
     // Update the current level view after changes to level model
