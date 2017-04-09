@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class JumpingRock: Obstacle {
+class JumpingObstacle: Obstacle {
     
     var startHeight: Float = 0
     var jumpSpeed: Float = 4

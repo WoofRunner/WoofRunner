@@ -19,8 +19,8 @@ class TileManager: GameObject {
     
     var moveState: MoveState = MoveState.wait
     
-    var obstacleData: [[Int]] = []
-    var platformData: [[Int]] = []
+    var obstacleData: [[TileModel?]] = []
+    var platformData: [[TileModel?]] = []
     
     var tailIndex: Int = 0
     var platformTail: Float = 0
@@ -58,6 +58,7 @@ class TileManager: GameObject {
         restartLevel()
     }
     
+    /*
     convenience init?(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
         
@@ -69,10 +70,14 @@ class TileManager: GameObject {
             return nil
         }
     }
-
+*/
+    // TODO process platform
     convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
         self.init()
 
+        self.obstacleData = obstacleModels
+        self.platformData = platformModels
+        /*
         self.obstacleData = obstacleModels.map { columns in
             columns.map { item in
                 // Empty obstacle
@@ -97,6 +102,7 @@ class TileManager: GameObject {
                 return type + 1
             }
         }
+ */
     }
     
     public func restartLevel() {
@@ -165,7 +171,7 @@ class TileManager: GameObject {
                 handleTileSpawning(row: row, col: col)
             }
             
-            appendDeadTriggers(row)
+            //appendDeadTriggers(row)
         }
     }
     
@@ -175,23 +181,18 @@ class TileManager: GameObject {
     }
     
     private func handlePlatformSpawning(_ row: Int, _ col: Int) {
-        if let tileType: TileType = TileType(rawValue: platformData[row][col]) {
-            let tile = poolManager?.getTile(tileType)
-            tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
-        }
+        guard let tileModel: TileModel = platformData[row][col] else { return }
+        let tile = poolManager?.getTile(tileModel)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
     }
     
     private func handleObstacleSpawning(_ row: Int, _ col: Int) {
-        if let tileType: TileType = TileType(rawValue: obstacleData[row][col]) {
-            if tileType == TileType.none {
-                return
-            }
-            
-            let tile = poolManager?.getTile(tileType)
-            tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
-        }
+        guard let tileModel: TileModel = obstacleData[row][col] else { return }
+        let tile = poolManager?.getTile(tileModel)
+        tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
     }
     
+    /*
     private func appendDeadTriggers(_ row: Int) {
         var tile = poolManager?.getTile(TileType.none)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
@@ -199,6 +200,7 @@ class TileManager: GameObject {
         tile = poolManager?.getTile(TileType.none)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
     }
+    */
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)

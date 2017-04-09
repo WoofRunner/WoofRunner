@@ -11,7 +11,7 @@ import Foundation
 public final class TileModelFactory {
     
     public static let sharedInstance: TileModelFactory = TileModelFactory()
-
+    
 	public var tileModels: [TileModel] = []
     
     private init() {
@@ -100,5 +100,5 @@ public final class TileModelFactory {
         
         tileModels.append(obstacleModel)
     }
-
+    
 }

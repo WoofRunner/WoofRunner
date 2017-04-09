@@ -21,6 +21,7 @@ class PoolManager: TileDelegate {
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
         
+        /*
         for _ in 0..<NUM_FLOOR/2 {
             poolTile(createNewTile(TileType.floorDark)!)
         }
@@ -30,11 +31,12 @@ class PoolManager: TileDelegate {
         for _ in 0..<10 {
             poolTile(createNewTile(TileType.rock)!)
         }
+ */
     }
 
-    public func getTile(_ tileType: TileType) -> Tile? {
-        guard let tile = findAvailableTile(tileType) else {
-            guard let newTile = createNewTile(tileType) else { return nil }
+    public func getTile(_ tileModel: TileModel) -> Tile? {
+        guard let tile = findAvailableTile(tileModel) else {
+            guard let newTile = createNewTile(tileModel) else { return nil }
             inUseTiles.append(newTile)
             return newTile
         }
@@ -50,9 +52,9 @@ class PoolManager: TileDelegate {
         availableTiles.append(tile)
     }
 
-    private func findAvailableTile(_ tileType: TileType) -> Tile? {
+    private func findAvailableTile(_ tileModel: TileModel) -> Tile? {
         for tile in availableTiles {
-            if tile.tileType == tileType {
+            if tile.equal(tileModel: tileModel) {
                 availableTiles.remove(object: tile)
                 return tile
             }
@@ -60,8 +62,8 @@ class PoolManager: TileDelegate {
         return nil
     }
     
-    private func createNewTile(_ tileType: TileType) -> Tile? {
-        guard let tile = TileFactory.sharedInstance.createTile(tileType) else {
+    private func createNewTile(_ tileModel: TileModel) -> Tile? {
+        guard let tile = TileFactory.sharedInstance.createTile(tileModel) else {
             return nil
         }
         

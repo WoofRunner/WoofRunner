@@ -185,13 +185,14 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         World.registerGestureInput(newPlayer)
         newPlayer.delegate = self
         self.player = newPlayer
-        
+       
+        /*
         if let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData) {
             World.spawnGameObject(tileManager)
             tileManager.delegate = self
             self.tileManager = tileManager
         }
-        
+        */
         
         let camera = Camera()
         World.spawnGameObject(camera)

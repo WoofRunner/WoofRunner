@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class RotatingAxe: Obstacle {
+class RotatingObstacle: Obstacle {
     
     var interval: Float = 1
     var curTime: Float
