@@ -135,23 +135,6 @@
 		F3E51D3E1E92917D001FBAB2 /* RotatingAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E51D3D1E92917D001FBAB2 /* RotatingAxe.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		12A82FE21E727072008B721E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 12A82FC31E727071008B721E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 12A82FCA1E727071008B721E;
-			remoteInfo = WoofRunner;
-		};
-		12A82FED1E727072008B721E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 12A82FC31E727071008B721E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 12A82FCA1E727071008B721E;
-			remoteInfo = WoofRunner;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		120208011E7448710066BD4C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -165,8 +148,6 @@
 		12A82FD01E727072008B721E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		12A82FD71E727072008B721E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12A82FDC1E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		12A82FE11E727072008B721E /* WoofRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+SaveableGame.swift"; sourceTree = "<group>"; };
 		12A856621E910CD100B5EB4E /* DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayedGame.swift; sourceTree = "<group>"; };
 		12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+DisplayedGame.swift"; sourceTree = "<group>"; };
@@ -297,20 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		12A82FDE1E727072008B721E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		12A82FE91E727072008B721E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,8 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				12A82FCB1E727072008B721E /* WoofRunner.app */,
-				12A82FE11E727072008B721E /* WoofRunnerTests.xctest */,
-				12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -682,42 +647,6 @@
 			productReference = 12A82FCB1E727072008B721E /* WoofRunner.app */;
 			productType = "com.apple.product-type.application";
 		};
-		12A82FE01E727072008B721E /* WoofRunnerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 12A82FF81E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerTests" */;
-			buildPhases = (
-				12A82FDD1E727072008B721E /* Sources */,
-				12A82FDE1E727072008B721E /* Frameworks */,
-				12A82FDF1E727072008B721E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				12A82FE31E727072008B721E /* PBXTargetDependency */,
-			);
-			name = WoofRunnerTests;
-			productName = WoofRunnerTests;
-			productReference = 12A82FE11E727072008B721E /* WoofRunnerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		12A82FEB1E727072008B721E /* WoofRunnerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 12A82FFB1E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerUITests" */;
-			buildPhases = (
-				12A82FE81E727072008B721E /* Sources */,
-				12A82FE91E727072008B721E /* Frameworks */,
-				12A82FEA1E727072008B721E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				12A82FEE1E727072008B721E /* PBXTargetDependency */,
-			);
-			name = WoofRunnerUITests;
-			productName = WoofRunnerUITests;
-			productReference = 12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -732,18 +661,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
-					};
-					12A82FE01E727072008B721E = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W76H98A34A;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 12A82FCA1E727071008B721E;
-					};
-					12A82FEB1E727072008B721E = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W76H98A34A;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 12A82FCA1E727071008B721E;
 					};
 				};
 			};
@@ -761,8 +678,6 @@
 			projectRoot = "";
 			targets = (
 				12A82FCA1E727071008B721E /* WoofRunner */,
-				12A82FE01E727072008B721E /* WoofRunnerTests */,
-				12A82FEB1E727072008B721E /* WoofRunnerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -785,20 +700,6 @@
 				3F0F81C71E969F0A00114CD0 /* RenameDialogViewController.xib in Resources */,
 				3FAE2D381E7281CE00D65B84 /* LevelDesigner.storyboard in Resources */,
 				12EFDD681E727812005C63E2 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		12A82FDF1E727072008B721E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		12A82FEA1E727072008B721E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -972,34 +873,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		12A82FDD1E727072008B721E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		12A82FE81E727072008B721E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		12A82FE31E727072008B721E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 12A82FCA1E727071008B721E /* WoofRunner */;
-			targetProxy = 12A82FE21E727072008B721E /* PBXContainerItemProxy */;
-		};
-		12A82FEE1E727072008B721E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 12A82FCA1E727071008B721E /* WoofRunner */;
-			targetProxy = 12A82FED1E727072008B721E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12A82FF31E727072008B721E /* Debug */ = {
@@ -1131,60 +1005,6 @@
 			};
 			name = Release;
 		};
-		12A82FF91E727072008B721E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = W76H98A34A;
-				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WoofRunner.app/WoofRunner";
-			};
-			name = Debug;
-		};
-		12A82FFA1E727072008B721E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = W76H98A34A;
-				INFOPLIST_FILE = WoofRunnerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WoofRunner.app/WoofRunner";
-			};
-			name = Release;
-		};
-		12A82FFC1E727072008B721E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = W76H98A34A;
-				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = WoofRunner;
-			};
-			name = Debug;
-		};
-		12A82FFD1E727072008B721E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = W76H98A34A;
-				INFOPLIST_FILE = WoofRunnerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.woofrunner.WoofRunnerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = WoofRunner;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1202,24 +1022,6 @@
 			buildConfigurations = (
 				12A82FF61E727072008B721E /* Debug */,
 				12A82FF71E727072008B721E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		12A82FF81E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				12A82FF91E727072008B721E /* Debug */,
-				12A82FFA1E727072008B721E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		12A82FFB1E727072008B721E /* Build configuration list for PBXNativeTarget "WoofRunnerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				12A82FFC1E727072008B721E /* Debug */,
-				12A82FFD1E727072008B721E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
