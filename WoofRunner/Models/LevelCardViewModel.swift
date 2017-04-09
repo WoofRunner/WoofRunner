@@ -39,7 +39,11 @@ class LevelCardViewModel {
 		self.levelName = game.name ?? "No Title"
 		self.levelImageUrl = "test-level-image" // Stub
 		self.playerScore = StubLevelCardConstants.stubPlayerScore // Stub
-		self.author = game.owner
+		
+		// If there's no ownerId tied to the game, level is created locally
+		if let _ = game.ownerId {
+			self.author = game.owner
+		}
 	}
 	
 	struct StubLevelCardConstants {
