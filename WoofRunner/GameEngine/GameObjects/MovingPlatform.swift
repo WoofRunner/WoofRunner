@@ -17,42 +17,37 @@ class MovingPlatform : Platform {
         case left
     }
     
-    var moveDirection: MoveDirection = MoveDirection.right
-    var moveSpeed: Float = 3
+    private var moveDirection: MoveDirection = MoveDirection.right
+    private var moveSpeed: Float = 3
     
-    var rightBound: Float = GameSettings.TILE_WIDTH * Float(GameSettings.PLATFORM_COLUMNS/2) - GameSettings.TILE_WIDTH
-    var leftBound: Float = GameSettings.TILE_WIDTH * -Float(GameSettings.PLATFORM_COLUMNS/2)
+    private var rightBound: Float = GameSettings.TILE_WIDTH * Float(GameSettings.PLATFORM_COLUMNS/2) - GameSettings.TILE_WIDTH
+    private var leftBound: Float = GameSettings.TILE_WIDTH * -Float(GameSettings.PLATFORM_COLUMNS/2)
 
+    let KILL_PLATFORM_NAME = "Kill Platform"
+    var deadTriggerModel: TileModel? {
+        return TileModelFactory.sharedInstance.findTileModel(name: KILL_PLATFORM_NAME)
+    }
+    
     override init(_ tileModel: TileModel) {
         super.init(tileModel)
         triggerDistance = -9
         createAdjacentDeadTriggers()
     }
-    /*
-    override init(_ pos: SCNVector3) {
-        super.init(pos)
-        tileType = TileType.movingPlatform
-        loadModel(tileType.getModelPath())
-        loadModel(tileType.getModelPath(), offsetPostion: SCNVector3(GameSettings.TILE_WIDTH, 0, 0))
-        triggerDistance = -9
-        createAdjacentDeadTriggers()
-    }
-    
-    convenience init() {
-        self.init(SCNVector3(0, 0, 0))
-    }
-    */
-    
-    // TODO
-    func createAdjacentDeadTriggers() {
+
+    private func createAdjacentDeadTriggers() {
         if GameSettings.PLATFORM_COLUMNS < 1 { return }
         
         for colIndex in 1..<GameSettings.PLATFORM_COLUMNS {
-            //var deadTrigger = DeadTriggerTile(SCNVector3(colIndex+1, 0, 0))
-            //addChildNode(deadTrigger)
-            //deadTrigger = DeadTriggerTile(SCNVector3(-colIndex, 0, 0))
-            //addChildNode(deadTrigger)
+            createDeadTriggers(SCNVector3(colIndex+1, 0, 0))
+            createDeadTriggers(SCNVector3(-colIndex, 0, 0))
         }
+    }
+    
+    private func createDeadTriggers(_ position: SCNVector3) {
+        guard let deadTriggerModel = deadTriggerModel else { return }
+        guard let deadTrigger = TileFactory.sharedInstance.createTile(deadTriggerModel) else { return }
+        deadTrigger.setPositionWithOffset(position: position)
+        addChildNode(deadTrigger)
     }
     
     override func update(_ deltaTime: Float) {

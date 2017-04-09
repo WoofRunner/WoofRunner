@@ -40,7 +40,11 @@ class TileManager: GameObject {
     
     var delegate: TileManagerDelegate?
     
-    let deadTriggerModel: TileModel? = TileModelFactory.sharedInstance.findTileModel(name: "Kill Platform")
+    let KILL_PLATFORM_NAME = "Kill Platform"
+    
+    var deadTriggerModel: TileModel? {
+        return TileModelFactory.sharedInstance.findTileModel(name: KILL_PLATFORM_NAME)
+    }
     
     
     var startPosition: SCNVector3 {
