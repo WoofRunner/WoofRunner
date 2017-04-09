@@ -10,7 +10,6 @@
 		120208021E7448710066BD4C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208011E7448710066BD4C /* CoreDataStack.swift */; };
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
 		121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */; };
-		123F4F8E1E915F52000E1B1C /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F4F8D1E915F52000E1B1C /* CoreDataTest.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
 		12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12882B881E857059004C3B76 /* LMLoginViewController.swift */; };
@@ -18,8 +17,6 @@
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
 		12A82FD81E727072008B721E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD71E727072008B721E /* Assets.xcassets */; };
-		12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FE51E727072008B721E /* WoofRunnerTests.swift */; };
-		12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FF01E727072008B721E /* WoofRunnerUITests.swift */; };
 		12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */; };
 		12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856621E910CD100B5EB4E /* DisplayedGame.swift */; };
 		12A856651E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */; };
@@ -159,7 +156,6 @@
 		120208011E7448710066BD4C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
-		123F4F8D1E915F52000E1B1C /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataTest.swift; path = WoofRunnerTests/CoreDataTest.swift; sourceTree = SOURCE_ROOT; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
 		12882B881E857059004C3B76 /* LMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewController.swift; sourceTree = "<group>"; };
@@ -170,11 +166,7 @@
 		12A82FD71E727072008B721E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12A82FDC1E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A82FE11E727072008B721E /* WoofRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		12A82FE51E727072008B721E /* WoofRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerTests.swift; sourceTree = "<group>"; };
-		12A82FE71E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A82FEC1E727072008B721E /* WoofRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		12A82FF01E727072008B721E /* WoofRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofRunnerUITests.swift; sourceTree = "<group>"; };
-		12A82FF21E727072008B721E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+SaveableGame.swift"; sourceTree = "<group>"; };
 		12A856621E910CD100B5EB4E /* DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayedGame.swift; sourceTree = "<group>"; };
 		12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+DisplayedGame.swift"; sourceTree = "<group>"; };
@@ -455,8 +447,6 @@
 			isa = PBXGroup;
 			children = (
 				12A82FCD1E727072008B721E /* WoofRunner */,
-				12A82FE41E727072008B721E /* WoofRunnerTests */,
-				12A82FEF1E727072008B721E /* WoofRunnerUITests */,
 				12A82FCC1E727072008B721E /* Products */,
 				3D56D0FB756B43BA7BA5F70B /* Pods */,
 				B5450BA918CCF667253FFC7B /* Frameworks */,
@@ -493,41 +483,6 @@
 				3FCC89951E73E29F005A7C03 /* WoofRunner-Bridging-Header.h */,
 			);
 			path = WoofRunner;
-			sourceTree = "<group>";
-		};
-		12A82FE41E727072008B721E /* WoofRunnerTests */ = {
-			isa = PBXGroup;
-			children = (
-				12E36F981E7552E700135DB7 /* Utilities */,
-				12A82FE51E727072008B721E /* WoofRunnerTests.swift */,
-				12A82FE71E727072008B721E /* Info.plist */,
-			);
-			path = WoofRunnerTests;
-			sourceTree = "<group>";
-		};
-		12A82FEF1E727072008B721E /* WoofRunnerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				12A82FF01E727072008B721E /* WoofRunnerUITests.swift */,
-				12A82FF21E727072008B721E /* Info.plist */,
-			);
-			path = WoofRunnerUITests;
-			sourceTree = "<group>";
-		};
-		12E36F981E7552E700135DB7 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				12E36F991E7552EF00135DB7 /* Storage */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		12E36F991E7552EF00135DB7 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				123F4F8D1E915F52000E1B1C /* CoreDataTest.swift */,
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 		3D56D0FB756B43BA7BA5F70B /* Pods */ = {
@@ -1021,8 +976,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				123F4F8E1E915F52000E1B1C /* CoreDataTest.swift in Sources */,
-				12A82FE61E727072008B721E /* WoofRunnerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,7 +983,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12A82FF11E727072008B721E /* WoofRunnerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
