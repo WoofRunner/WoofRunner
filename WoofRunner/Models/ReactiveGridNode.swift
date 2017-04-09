@@ -83,7 +83,7 @@ class ReactiveGridNode {
         var modelNode: SCNNode
         
         if platformType == nil {
-            // Placeholder block for .none platform
+            // Placeholder block for nil platform
             let size = self.size
             let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
                                              length: CGFloat(size), chamferRadius: 0.05)
@@ -93,6 +93,7 @@ class ReactiveGridNode {
                 material.isDoubleSided = true
             }
             modelNode = SCNNode(geometry: platformBoxGeometry)
+            modelNode.position = SCNVector3(0.5 * size, 0.75 * size, -0.5 * size)
         } else if let model = loadModel(platformType!.scenePath) {
             modelNode = model
         } else {
@@ -103,7 +104,7 @@ class ReactiveGridNode {
         self.platformNode.value.name = GridViewModel.gridNodeName
         
         // Replace modelNode
-        self.platformModelNode.removeFromParentNode()
+        freeNode(self.platformModelNode)
         self.platformModelNode = modelNode
         self.platformNode.value.addChildNode(platformModelNode)
         self.platformNode.value.position = self.position
@@ -113,15 +114,16 @@ class ReactiveGridNode {
         var modelNode: SCNNode
         
         if obstacleType == nil {
-            // Invisible block
-            let size = self.size
-            let obstacleBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
-                                             length: CGFloat(size), chamferRadius: 0.05)
-            for material in obstacleBoxGeometry.materials {
-                material.diffuse.contents = UIColor.lightGray
-                material.transparency = 0
-            }
-            modelNode = SCNNode(geometry: obstacleBoxGeometry)
+            // Empty Node
+//            let size = self.size
+//            let obstacleBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
+//                                             length: CGFloat(size), chamferRadius: 0.05)
+//            for material in obstacleBoxGeometry.materials {
+//                material.diffuse.contents = UIColor.lightGray
+//                material.transparency = 0
+//            }
+//            modelNode = SCNNode(geometry: obstacleBoxGeometry)
+            modelNode = SCNNode()
         } else if let model = loadModel(obstacleType!.scenePath) {
             modelNode = model
         } else {
@@ -132,7 +134,7 @@ class ReactiveGridNode {
         self.obstacleNode.value.name = GridViewModel.gridNodeName
         
         // Replace obstacleModelNode
-        self.obstacleModelNode.removeFromParentNode()
+        freeNode(self.obstacleModelNode)
         self.obstacleModelNode = modelNode
         self.obstacleNode.value.addChildNode(obstacleModelNode)
         self.obstacleNode.value.position = self.position + SCNVector3(0.0, size, 0.0)
@@ -140,14 +142,30 @@ class ReactiveGridNode {
     
     // Returns a model node that would be added to gridNode as a childnode
     private func loadModel(_ pathName: String) -> SCNNode? {
+        guard pathName.characters.count > 0 else {
+            return SCNNode();
+        }
         guard let modelScene = SCNScene(named: pathName) else {
             print("WARNING: Cant find path name: " + pathName)
             return nil
         }
-        guard let modelNode = modelScene.rootNode.childNodes.first else {
-            return nil
+        let modelNode = SCNNode()
+        for childNode in modelScene.rootNode.childNodes {
+            modelNode.addChildNode(childNode)
         }
-        modelNode.position = SCNVector3(-size * 0.5, -size * 0.5, size * 0.5)
+        
         return modelNode
+    }
+    
+    // Remove all reference to node to free up memory
+    private func freeNode(_ node: SCNNode) {
+        if node.childNodes.count > 0 {
+            for childNode in node.childNodes {
+                freeNode(childNode)
+            }
+        }
+        // Additional measures to de-reference texture from geometry not included
+        node.geometry = nil
+        node.removeFromParentNode()
     }
 }

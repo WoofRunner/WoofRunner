@@ -72,11 +72,17 @@ class LevelGrid {
     func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: BrushSelection) {
         if currentSelectedBrush.selectionType == .delete {
             gridVM.removeTop()
+            return
         }
         
         let tileModel = currentSelectedBrush.tileModel
         // Toggle grid with platform / obstacle
         if let platform = tileModel as? PlatformModel {
+            // Custom handler for moving platforms
+            guard platform.platformBehaviour != .moving else {
+                return postProcessMovingPlatform(gridVM.gridPos.value.getRow(),
+                                                 platform)
+            }
             gridVM.setPlatform(platform)
         } else if let obstacle = tileModel as? ObstacleModel {
             if gridVM.platformType.value != nil {
@@ -155,6 +161,20 @@ class LevelGrid {
                                      col: gridVM.gridPos.value.getCol(),
                                      newModel)
         }).addDisposableTo(disposeBag)
+    }
+    
+    // Used for moving platforms
+    internal func postProcessMovingPlatform(_ row: Int, _ movingPlatform: PlatformModel) {
+        for gridVM in gridViewModelArray[row] {
+            setGridVMType(gridVM, platform: nil, obstacle: nil)
+        }
+        let middleCol = (LevelGrid.levelCols / 2)
+        let middleGridVM = gridViewModelArray[row][middleCol]
+        setGridVMType(middleGridVM, platform: movingPlatform, obstacle: nil)
+    }
+    
+    internal func setGridVMType(_ gridVM: GridViewModel, platform: PlatformModel?, obstacle: ObstacleModel?) {
+        gridVM.setType(platform: platform, obstacle: obstacle)
     }
 
     private func updatePlatformArray(row: Int, col: Int, _ newModel: PlatformModel?) {

@@ -73,7 +73,7 @@ class LevelDesignerScene: SCNScene {
         
         // Position
         let size = GameSettings.TILE_WIDTH
-        cameraNode.position = SCNVector3((-size * 0.5) + (Float(LevelGrid.levelCols) * (size * 0.5)),
+        cameraNode.position = SCNVector3((Float(LevelGrid.levelCols) * (size * 0.5)),
                                          LevelDesignerViewController.cameraHeight,
                                          LevelDesignerViewController.cameraOffset)
         cameraLocation = cameraNode.position

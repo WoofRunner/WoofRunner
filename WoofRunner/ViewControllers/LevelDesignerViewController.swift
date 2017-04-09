@@ -44,7 +44,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         sceneView.allowsCameraControl = false
         sceneView.showsStatistics = true
-        // sceneView.backgroundColor = UIColor.black
         sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         
@@ -187,6 +186,9 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 break
             }
             currentLevel.toggleGrid(x: startNode.position.x, z: startNode.position.z, currentSelectedBrush)
+            guard isNotMovingPlatform(currentSelectedBrush) else {
+                break;
+            }
             currentLevel.beginSelection((x: startNode.position.x, z: startNode.position.z))
             break
         case .changed:
@@ -266,6 +268,22 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         }
         
         return parentNode
+    }
+    
+    private func isNotMovingPlatform(_ currentBrush: BrushSelection) -> Bool {
+        guard currentBrush.selectionType == .platform else {
+            return true
+        }
+        guard let tileModel = currentBrush.tileModel else {
+            return true
+        }
+        guard let platform = tileModel as? PlatformModel else {
+            return true
+        }
+        guard platform.platformBehaviour == .moving else {
+            return true
+        }
+        return false
     }
 
     /// Saves the current level into CoreData.

@@ -64,11 +64,17 @@ extension LevelGrid {
         }
         // Revert
         let gridVM = gridViewModelArray[pos.getRow()][pos.getCol()]
-        guard let platform = prevTileType[0] as? PlatformModel else {
-            return
+        var platform: PlatformModel? = nil
+        var obstacle: ObstacleModel? = nil
+        if prevTileType[0] != nil {
+            if let platformType = prevTileType[0] as? PlatformModel {
+                platform = platformType
+            }
         }
-        guard let obstacle = prevTileType[1] as? ObstacleModel else {
-            return
+        if prevTileType[1] != nil {
+            if let obstacleType = prevTileType[1] as? ObstacleModel {
+                obstacle = obstacleType
+            }
         }
         setGridVMType(gridVM,
                       platform: platform,
@@ -83,11 +89,17 @@ extension LevelGrid {
             selectionCache[posString] = [gridVM.platformType.value,
                                          gridVM.obstacleType.value]
         }
-        guard let platform = selectionTemplate[0] as? PlatformModel else {
-            return
+        var platform: PlatformModel? = nil
+        var obstacle: ObstacleModel? = nil
+        if selectionTemplate[0] != nil {
+            if let platformType = selectionTemplate[0] as? PlatformModel {
+                platform = platformType
+            }
         }
-        guard let obstacle = selectionTemplate[1] as? ObstacleModel else {
-            return
+        if selectionTemplate[1] != nil {
+            if let obstacleType = selectionTemplate[1] as? ObstacleModel {
+                obstacle = obstacleType
+            }
         }
         setGridVMType(gridVM,
                       platform: platform,
@@ -146,8 +158,4 @@ extension LevelGrid {
     private func getPosString(_ gridPos: Position) -> String {
         return String(gridPos.getRow()) + "," + String(gridPos.getCol())
     }
-    
-    private func setGridVMType(_ gridVM: GridViewModel, platform: PlatformModel, obstacle: ObstacleModel) {
-        gridVM.setType(platform: platform, obstacle: obstacle)
-    }    
 }
