@@ -8,37 +8,29 @@
 
 import RxSwift
 
-public class LMHomeViewModel {
+public struct LMHomeViewModel {
 
     // MARK: - Public variables
 
-    public private(set) var featuredGames = Variable<[DisplayedGame]>([])
+    public private(set) var games = Variable<[DisplayedGame]>([])
     public private(set) var failure = Variable<Bool>(false)
 
-    // MARK: - Private variables
+    // MARK: - Public methods
 
-    private let gsm = GameStorageManager.getInstance()
-    private let disposeBag = DisposeBag()
-
-    // MARK: - Initializers
-
-    public init() {
-        loadGames()
+    public mutating func setGames(_ games: [PreviewGame]) {
+        self.games.value = games
     }
 
-    // MARK: - Private methods
+    public mutating func setFailure(_ failure: Bool) {
+        self.failure.value = failure
+    }
 
-    /// Loads all games from Firebase. Featured games are basically games uploaded into Firebase,
-    /// for now.
-    private func loadGames() {
-        gsm.loadAllPreviews()
-            .onSuccess { games in
-                self.featuredGames.value = games
-            }
-            .onFailure { error in
-                print("\(error.localizedDescription)")
-                self.failure.value = true
-            }
+    public func viewModelForGame(at index: Int) -> LevelCardViewModel {
+        guard index < games.value.count else {
+            fatalError("Index is more than the number of games loaded in LMHomeViewModel")
+        }
+
+        return LevelCardViewModel(game: games.value[index])
     }
 
 }

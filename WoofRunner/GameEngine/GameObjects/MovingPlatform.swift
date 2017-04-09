@@ -34,7 +34,7 @@ class MovingPlatform : Platform {
         createAdjacentDeadTriggers()
     }
 
-    private func createAdjacentDeadTriggers() {
+    func createAdjacentDeadTriggers() {
         if GameSettings.PLATFORM_COLUMNS < 1 { return }
         
         for colIndex in 1..<GameSettings.PLATFORM_COLUMNS {

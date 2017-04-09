@@ -111,12 +111,12 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
                                  [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 2, 2],
-                                 [1, 0, 1, 2, 2],
+                                 [0, 0, 3, 1, 2],
+                                 [1, 0, 1, 2, 1],
                                  [2, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 2],
+                                 [1, 0, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 2],
+                                 [1, 2, 1, 2, 1],
                                  [2, 1, 2, 1, 2],
                                  [1, 2, 7, 2, 1],
                                  [2, 1, 7, 1, 2],
@@ -131,7 +131,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
         }
@@ -172,7 +171,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
             tileManager.delegate = self
             self.tileManager = tileManager
         }       
-        
+
         let camera = Camera()
         World.spawnGameObject(camera)
         //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))

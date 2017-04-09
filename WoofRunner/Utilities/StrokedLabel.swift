@@ -1,5 +1,5 @@
 //
-//  UILabel+StrokedLabelExtension.swift
+//  StrokedLabel.swift
 //  WoofRunner
 //
 //  Created by See Loo Jane on 8/4/17.

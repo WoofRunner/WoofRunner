@@ -164,8 +164,6 @@ class LevelDesignerOverlayScene: SKScene,
 			case .platform:
 				updateBrushSelectionType(.platform)
 				openOverlayMenu(funcType)
-			default:
-				break
 		}
 	}
 	

@@ -1,16 +1,15 @@
 //
-//  UIButton+ShadowExtension.swift
+//  UILabel+ShadowExtension.swift
 //  WoofRunner
 //
-//  Created by See Loo Jane on 3/4/17.
+//  Created by See Loo Jane on 8/4/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
 import UIKit
 
-// TODO: May Be Unused!
-
-extension UIButton {
+extension UILabel {
+	
 	public func setShadow() {
 		self.layer.shadowColor = UIColor.black.cgColor
 		self.layer.shadowRadius = 3.0
