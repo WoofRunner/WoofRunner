@@ -26,7 +26,7 @@ class LevelDesignerOverlayScene: SKScene,
 	var currentSelectionUI = CurrentSelectionNode()
 	var bottomMenu = LevelDesignerBottomMenu()
 	
-	var currentTileSelection = Variable<TileType>(.floorLight) // Depreacated?
+	//var currentTileSelection = Variable<TileType>(.floorLight) // Depreacated?
     // Default selection. Wrap this in RXSwift
 	var currentBrushSelection = Variable<BrushSelection>(BrushSelection.defaultSelection)
 	
@@ -74,7 +74,7 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	private func initCurrentSelection() {
-		self.currentSelectionUI = CurrentSelectionNode(defaultSelection: currentTileSelection.value)
+		self.currentSelectionUI = CurrentSelectionNode(defaultSelectionText: currentBrushSelection.value.getSelectionName())
 		let currentSelectionPosX = CGFloat(660)
 		let currentSelectionPosY = CGFloat(880)
 		self.addChild(currentSelectionUI)
@@ -182,8 +182,9 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// - MARK: OverlayButtonDelegate
 	
-	// Fetch the TileModel using the input tileName,
-	// and use it to update the current brush selection
+	// Fetch the TileModel using the input tileName and use it to update 
+	// the current brush selection. TileName is used so that child node classes
+	// such as OverlayButtonSet and OverlayButton will not be couple to TileModel
 	internal func setCurrentTileSelection(_ tileName: String?) {
 		guard let _ = tileName else {
 			return
@@ -196,7 +197,7 @@ class LevelDesignerOverlayScene: SKScene,
 		}
 		
 		updateBrushSelection(tileModel)
-		self.currentSelectionUI.updateSelectionText(tileName!)
+		currentSelectionUI.updateSelectionText(currentBrushSelection.value.getSelectionName())
 	}
 	
 	// Closes the OverlayMenu with an animation

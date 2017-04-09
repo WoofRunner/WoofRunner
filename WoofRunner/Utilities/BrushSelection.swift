@@ -17,4 +17,18 @@ struct BrushSelection {
 		self.tileModel = tileModel
 	}
 	
+	public func getSelectionName() -> String {
+		if let _ = tileModel {
+			return tileModel!.name
+		}
+		
+		if selectionType == .delete {
+			return "Delete"
+		}
+		
+		print("Error: Cannot determind name for current selection type \(selectionType)")
+		return ""
+		
+	}
+	
 }
