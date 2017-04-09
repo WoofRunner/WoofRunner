@@ -58,11 +58,7 @@ class Player: GameObject {
         if other is DeadTriggerPlatform {
             isDeadFall = true
         }
-        
-        if other is Obstacle {
-            isHidden = true
-            delegate?.playerDied()
-        }
+
     }
     
     override func update(_ deltaTime: Float) {
@@ -111,5 +107,9 @@ class Player: GameObject {
     override func destroy() {
         isHidden = true
         delegate?.playerDied()
+    }
+    
+    public func infiniteFalling() {
+        isDeadFall = true
     }
 }

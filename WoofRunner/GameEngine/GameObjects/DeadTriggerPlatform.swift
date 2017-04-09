@@ -16,4 +16,6 @@ class DeadTriggerPlatform : Platform {
         let trigger = Trigger(SCNVector3(GameSettings.TILE_WIDTH/2, GameSettings.TILE_WIDTH/2, -GameSettings.TILE_WIDTH/2))
         addChildNode(trigger)
     }
+    
+    
 }

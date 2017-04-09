@@ -120,16 +120,12 @@
 		F33754ED1E97859600839AFD /* PlatformModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754EC1E97859600839AFD /* PlatformModel.swift */; };
 		F33754EF1E9786E400839AFD /* ObstacleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754EE1E9786E400839AFD /* ObstacleModel.swift */; };
 		F33754F11E97886D00839AFD /* TileModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33754F01E97886D00839AFD /* TileModelFactory.swift */; };
-		F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */; };
 		F34DEDBB1E8D35E100BB8CA7 /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */; };
 		F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift */; };
 		F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */; };
-		F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */; };
 		F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */; };
 		F34DEDC51E8D744C00BB8CA7 /* CollisionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC41E8D744C00BB8CA7 /* CollisionType.swift */; };
 		F34DEDC71E8D754D00BB8CA7 /* JumpingObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DEDC61E8D754D00BB8CA7 /* JumpingObstacle.swift */; };
-		F38F48291E87F1FB005328A9 /* LightPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F48281E87F1FB005328A9 /* LightPlatform.swift */; };
-		F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F482A1E87F28F005328A9 /* DarkPlatform.swift */; };
 		F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */; };
 		F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */; };
 		F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A73C6B1E95493F00B65435 /* CGFloat.swift */; };
@@ -258,16 +254,12 @@
 		F33754EC1E97859600839AFD /* PlatformModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformModel.swift; sourceTree = "<group>"; };
 		F33754EE1E9786E400839AFD /* ObstacleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleModel.swift; sourceTree = "<group>"; };
 		F33754F01E97886D00839AFD /* TileModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileModelFactory.swift; sourceTree = "<group>"; };
-		F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
 		F34DEDBA1E8D35E100BB8CA7 /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
 		F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadTriggerPlatform.swift; sourceTree = "<group>"; };
 		F34DEDBE1E8D608900BB8CA7 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
-		F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpTrigger.swift; sourceTree = "<group>"; };
 		F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpPlatform.swift; sourceTree = "<group>"; };
 		F34DEDC41E8D744C00BB8CA7 /* CollisionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionType.swift; sourceTree = "<group>"; };
 		F34DEDC61E8D754D00BB8CA7 /* JumpingObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingObstacle.swift; sourceTree = "<group>"; };
-		F38F48281E87F1FB005328A9 /* LightPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightPlatform.swift; sourceTree = "<group>"; };
-		F38F482A1E87F28F005328A9 /* DarkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPlatform.swift; sourceTree = "<group>"; };
 		F39DF6081E93C6AA00A72CF0 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileFactory.swift; path = GameEngine/GameObjects/TileFactory.swift; sourceTree = "<group>"; };
 		F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingPlatform.swift; sourceTree = "<group>"; };
 		F3A73C6B1E95493F00B65435 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = GameEngine/CGFloat.swift; sourceTree = "<group>"; };
@@ -597,8 +589,6 @@
 				F33754E81E9784F900839AFD /* PlatformBehaviour.swift */,
 				F30ABE021E82BDB300BD1D02 /* Platform.swift */,
 				F39DF60A1E940DA300A72CF0 /* MovingPlatform.swift */,
-				F38F482A1E87F28F005328A9 /* DarkPlatform.swift */,
-				F38F48281E87F1FB005328A9 /* LightPlatform.swift */,
 				F34DEDC21E8D6A1F00BB8CA7 /* JumpPlatform.swift */,
 				F34DEDBC1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift */,
 			);
@@ -610,10 +600,8 @@
 			children = (
 				F33754EA1E97851F00839AFD /* ObstacleBehaviour.swift */,
 				F33442C31E815BFE001C1D8D /* Obstacle.swift */,
-				F34DEDB51E8D33DF00BB8CA7 /* Rock.swift */,
 				F3E51D3D1E92917D001FBAB2 /* RotatingObstacle.swift */,
 				F34DEDC61E8D754D00BB8CA7 /* JumpingObstacle.swift */,
-				F34DEDC01E8D63B500BB8CA7 /* JumpTrigger.swift */,
 			);
 			name = Obstacle;
 			sourceTree = "<group>";
@@ -785,7 +773,6 @@
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
 				3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */,
 				3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCard.swift in Sources */,
-				F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */,
 				12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
 				F33442B71E8156F3001C1D8D /* GameObject.swift in Sources */,
@@ -811,7 +798,6 @@
 				12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */,
 				3F0F81E11E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift in Sources */,
 				3F0F81E71E9964BC00114CD0 /* LevelCardView.swift in Sources */,
-				F34DEDB61E8D33DF00BB8CA7 /* Rock.swift in Sources */,
 				F33442BD1E8156F3001C1D8D /* SCNVector3.swift in Sources */,
 				F33754EB1E97851F00839AFD /* ObstacleBehaviour.swift in Sources */,
 				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
@@ -820,7 +806,6 @@
 				12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
-				F38F48291E87F1FB005328A9 /* LightPlatform.swift in Sources */,
 				F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */,
 				127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
@@ -839,7 +824,6 @@
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
-				F34DEDC11E8D63B500BB8CA7 /* JumpTrigger.swift in Sources */,
 				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
 				F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */,
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,

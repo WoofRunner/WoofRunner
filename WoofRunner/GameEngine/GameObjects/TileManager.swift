@@ -207,10 +207,6 @@ class TileManager: GameObject {
         return worldRowPosition.z > platformTail
     }
 
-    private func mapToTileType(_ model: TileModel) -> Int {
-        return model.tileId
-    }
-    
     override func update(_ deltaTime: Float) {
         delay -= deltaTime
         
@@ -221,7 +217,7 @@ class TileManager: GameObject {
             }
             
         case .moving:
-            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
             
             if position.z > stopPosition.z {
                 moveState = MoveState.ended
