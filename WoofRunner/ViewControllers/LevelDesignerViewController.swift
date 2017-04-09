@@ -270,14 +270,21 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 
     /// Saves the current level into CoreData.
     private func saveGame() {
-        gsm.saveGame(currentLevel)
-            .onSuccess { _ in
+		
+		// Converts currentLevel to a storedGame objcet and set its levelName property
+		let storedGame = currentLevel.toStoredGame()
+		storedGame.name = self.currentLevelName
+		
+		// Save game
+		gsm.saveGame(storedGame)
+			.onSuccess { _ in
 				self.showSaveFeedback(title: "Save Success", message: "Game is successfully saved as \(self.currentLevelName)")
-            }
-            .onFailure { error in
-                print("\(error.localizedDescription)")
-                self.showSaveFeedback(title: "Save Failed", message: "Oops! An error occured while saving!")
-        }
+			}
+			.onFailure { error in
+				print("\(error.localizedDescription)")
+				self.showSaveFeedback(title: "Save Failed", message: "Oops! An error occured while saving!")
+		}
+
     }
 	
 	// - MARK: Popup Dialogs
