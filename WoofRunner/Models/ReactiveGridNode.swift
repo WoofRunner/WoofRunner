@@ -93,7 +93,7 @@ class ReactiveGridNode {
                 material.isDoubleSided = true
             }
             modelNode = SCNNode(geometry: platformBoxGeometry)
-        } else if let model = loadModel(platformType!.scenePath) {
+        } else if let model = loadModel(platformType!.scenePath!) {
             modelNode = model
         } else {
             return
@@ -122,7 +122,7 @@ class ReactiveGridNode {
                 material.transparency = 0
             }
             modelNode = SCNNode(geometry: obstacleBoxGeometry)
-        } else if let model = loadModel(obstacleType!.scenePath) {
+        } else if let model = loadModel(obstacleType!.scenePath!) {
             modelNode = model
         } else {
             return

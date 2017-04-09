@@ -18,17 +18,11 @@ class JumpingRock: Obstacle {
 
     let FULL_JUMP_LENGTH: Float = 3.142
     
-    override init(_ pos: SCNVector3) {
-        super.init(pos)
-        tileType = TileType.jumpingRock
-        loadModel(tileType.getModelPath())
+    override init(_ tileModel: TileModel) {
+        super.init(tileModel)
         triggerDistance = 0
     }
-    
-    convenience init() {
-        self.init(SCNVector3(0, 0, 0))
-    }
-    
+
     override func update(_ deltaTime: Float) {
         super.update(deltaTime)
         
