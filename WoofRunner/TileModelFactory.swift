@@ -100,5 +100,10 @@ public final class TileModelFactory {
         
         tileModels.append(obstacleModel)
     }
-    
+
+    /*
+    public func findPlatformModel(name: String) -> {
+        let platformModels = tileModels.filter{ $0 is PlatformModel && $0.name == name}
+    }
+ */
 }

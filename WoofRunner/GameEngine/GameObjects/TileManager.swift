@@ -77,32 +77,6 @@ class TileManager: GameObject {
 
         self.obstacleData = obstacleModels
         self.platformData = platformModels
-        /*
-        self.obstacleData = obstacleModels.map { columns in
-            columns.map { item in
-                // Empty obstacle
-                guard let type = item?.tileId else {
-                    return 0
-                }
-
-                return type
-            }
-        }
-
-        self.platformData = platformModels.map { columns in
-            columns.map { item in
-                // Empty platform
-                guard let type = item?.tileId else {
-                    return 0
-                }
-
-                // +1 because currently TileType is using 0 for empty tile, while TileModelFactory
-                // returns DarkFloor for type 0.
-                // TODO: Fix this please.
-                return type + 1
-            }
-        }
- */
     }
     
     public func restartLevel() {
@@ -171,7 +145,7 @@ class TileManager: GameObject {
                 handleTileSpawning(row: row, col: col)
             }
             
-            //appendDeadTriggers(row)
+            appendDeadTriggers(row)
         }
     }
     
@@ -192,15 +166,17 @@ class TileManager: GameObject {
         tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
     }
     
-    /*
+    
     private func appendDeadTriggers(_ row: Int) {
+        /*
         var tile = poolManager?.getTile(TileType.none)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
         
         tile = poolManager?.getTile(TileType.none)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
+ */
     }
-    */
+    
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)
@@ -236,7 +212,7 @@ class TileManager: GameObject {
             }
             
         case .moving:
-            //position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
             
             if position.z > stopPosition.z {
                 moveState = MoveState.ended
