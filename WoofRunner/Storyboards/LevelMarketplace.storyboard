@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="109.5703125" y="147.58418740849194"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="fHY-ae-bzS">
             <objects>
-                <viewController id="tPe-qI-lLi" sceneMemberID="viewController">
+                <viewController id="tPe-qI-lLi" customClass="LMHomeViewController" customModule="WoofRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k3F-rz-uH0"/>
                         <viewControllerLayoutGuide type="bottom" id="uO0-dA-5fd"/>
