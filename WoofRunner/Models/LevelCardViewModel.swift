@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LevelCardViewModel {
+public class LevelCardViewModel {
 	
 	private(set) var levelUUID: String // For tap handler
 	
@@ -41,6 +41,15 @@ class LevelCardViewModel {
 		self.playerScore = StubLevelCardConstants.stubPlayerScore // Stub
 		self.author = game.owner
 	}
+
+    init(game: DisplayedGame) {
+        self.levelUUID = game.id
+        // TODO: Add name in DisplayedGame
+        self.levelName = "Stubbed"
+        self.levelImageUrl = "test-level-image" // Stubbed
+        self.playerScore = StubLevelCardConstants.stubPlayerScore
+        self.author = game.owner
+    }
 	
 	struct StubLevelCardConstants {
 		// Level Title
