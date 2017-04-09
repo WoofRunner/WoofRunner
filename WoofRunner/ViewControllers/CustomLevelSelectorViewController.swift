@@ -139,18 +139,13 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		print("Selected Item To Delete: \(uuid)")
 		
 		// TODO: Delete level on GSM
-		
 		self.carousel.reloadData()
 	}
 	
 	func uploadLevelHandler(sender: UIButton!) {
 		let btn = sender as! LevelSelectorItemButton
 		let uuid = btn.getBindedUUID()
-		
-		print("Selected Item To Upload: \(uuid)")
-		
-		// TODO: Code to Upload level
-		
+        gsm.uploadGame(uuid: uuid)
 	}
 	
 	// MARK: - View Setup Methods
