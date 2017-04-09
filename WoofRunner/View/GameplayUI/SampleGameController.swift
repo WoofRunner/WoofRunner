@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import SpriteKit
 
 class SampleGameController: UIViewController {
     
@@ -35,6 +36,11 @@ class SampleGameController: UIViewController {
         self.view.addSubview(sceneView)
         
         gameplayOverlay = GameplayOverlayScene(size: self.view.frame.size)
+//        guard let skScene = SKScene(fileNamed: "GameplayOverlayScene") else {
+//            print("cannot find scene")
+//            return
+//        }
+        //skScene.= CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         sceneView.overlaySKScene = gameplayOverlay
     }
 

@@ -94,7 +94,7 @@
 		4EA8B1FC1E9A449300626010 /* GameplayOverlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */; };
 		4EA8B2001E9A484D00626010 /* SampleGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */; };
 		4EA8B2021E9A49A400626010 /* GameplayOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */; };
-		4EA8B2041E9A4D5D00626010 /* GameplayOverlay.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2031E9A4D5D00626010 /* GameplayOverlay.sks */; };
+		4EA8B2041E9A4D5D00626010 /* GameplayOverlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */; };
 		F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304D04C1E950D6D0021CB68 /* GameSettings.swift */; };
@@ -252,7 +252,7 @@
 		4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayScene.swift; sourceTree = "<group>"; };
 		4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGameController.swift; sourceTree = "<group>"; };
 		4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameplayOverlay.storyboard; sourceTree = "<group>"; };
-		4EA8B2031E9A4D5D00626010 /* GameplayOverlay.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayOverlay.sks; sourceTree = "<group>"; };
+		4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayOverlayScene.sks; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -608,7 +608,7 @@
 			children = (
 				4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */,
 				4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */,
-				4EA8B2031E9A4D5D00626010 /* GameplayOverlay.sks */,
+				4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */,
 			);
 			path = GameplayUI;
 			sourceTree = "<group>";
@@ -831,7 +831,7 @@
 				3FAE2D3A1E7281F400D65B84 /* Gameplay.storyboard in Resources */,
 				4EA8B2021E9A49A400626010 /* GameplayOverlay.storyboard in Resources */,
 				3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */,
-				4EA8B2041E9A4D5D00626010 /* GameplayOverlay.sks in Resources */,
+				4EA8B2041E9A4D5D00626010 /* GameplayOverlayScene.sks in Resources */,
 				3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */,
 				12A82FD11E727072008B721E /* art.scnassets in Resources */,
 				12A82FD81E727072008B721E /* Assets.xcassets in Resources */,
