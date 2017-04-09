@@ -56,8 +56,13 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		currentLevel = sampleLevel
 		
 		// Load a level if initialised from previous ViewController
-		if let _ = loadedLevel {
-			currentLevel.load(from: loadedLevel!)
+		if let loadedLevel = loadedLevel {
+			currentLevel.load(from: loadedLevel)
+			
+			// Update current level name to the one in the loadedLevel if it exists
+			if let levelName = loadedLevel.name {
+				currentLevelName = levelName
+			}
 		}
         
         // Load level
@@ -85,6 +90,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return
         }
 		sceneView.overlaySKScene = spriteScene
+		spriteScene?.updateDisplayedLevelName(currentLevelName)
+		
         // Observe currentTileSelection
 		skScene.currentBrushSelection.asObservable()
 			.subscribe(onNext: {
