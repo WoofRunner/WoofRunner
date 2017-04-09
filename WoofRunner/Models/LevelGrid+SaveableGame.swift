@@ -55,11 +55,11 @@ extension LevelGrid: SaveableGame {
         }
 
         for obstacle in obstacles {
-            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = Int(obstacle.type!)!
+            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = TileModelFactory.sharedInstance.getTile(id: Int(obstacle.type)) as? ObstacleModel
         }
 
         for platform in platforms {
-            platformArray[Int(platform.positionX)][Int(platform.positionY)] = Int(platform.type!)!
+            platformArray[Int(platform.positionX)][Int(platform.positionY)] = TileModelFactory.sharedInstance.getTile(id: Int(platform.type)) as? PlatformModel
         }
 		
 		// Reinit Level
@@ -72,8 +72,8 @@ extension LevelGrid: SaveableGame {
 		for row in 0...length - 1 {
 			for col in 0...LevelGrid.levelCols - 1 {
 				let gridVM = GridViewModel(row: row, col: col)
-				gridVM.setType(platform: TileType(rawValue: platformArray[row][col])!,
-				               obstacle: TileType(rawValue: obstacleArray[row][col])!)
+				gridVM.setType(platform: platformArray[row][col],
+				               obstacle: obstacleArray[row][col])
 				setupObservables(gridVM)
 				// Append to array
 				gridViewModelArray[row][col] = gridVM
@@ -88,13 +88,15 @@ extension LevelGrid: SaveableGame {
 
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
+                // Obstacle does not exist
+                guard let obstacleId = obstacle?.uniqueId else {
+                    continue
+                }
+
                 let storedObstacle = StoredObstacle(context: context)
-                storedObstacle.type = String(obstacle)
+                storedObstacle.type = Int16(obstacleId)
                 storedObstacle.positionX = Int16(row)
                 storedObstacle.positionY = Int16(col)
-
-                // Radius of each obstacle not determined yet
-                storedObstacle.radius = 1
 
                 game.addToObstacles(storedObstacle)
             }
@@ -109,8 +111,13 @@ extension LevelGrid: SaveableGame {
 
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
+                // Platform does not exist
+                guard let platformId = platform?.uniqueId else {
+                    continue
+                }
+
                 let storedPlatform = StoredPlatform(context: context)
-                storedPlatform.type = String(platform)
+                storedPlatform.type = Int16(platformId)
                 storedPlatform.positionX = Int16(row)
                 storedPlatform.positionY = Int16(col)
 
@@ -140,8 +147,8 @@ extension LevelGrid: SaveableGame {
     // Returns if the row is empty of platform and obstacles
     private func isEmptyRow(_ row: [GridViewModel]) -> Bool {
         for gridVM in row {
-            if gridVM.platformType.value != TileType.none
-                || gridVM.obstacleType.value != TileType.none {
+            if gridVM.platformType.value != nil
+                || gridVM.obstacleType.value != nil {
                 return false
             }
         }

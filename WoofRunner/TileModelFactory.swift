@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class TileModelFactory {
+public final class TileModelFactory {
     
-    static let sharedInstance: TileModelFactory = TileModelFactory()
+    public static let sharedInstance: TileModelFactory = TileModelFactory()
 
-	static var tileModels: [TileModel] = []
+	public var tileModels: [TileModel] = []
     
     private init() {
         createDarkPlatform()
@@ -25,22 +25,26 @@ final class TileModelFactory {
         createRotatingAxeObstacle()
     }
 
+    public func getTile(id: Int) -> TileModel {
+        return tileModels[id]
+    }
+
     func createDarkPlatform() {
         let platformModel = PlatformModel(name: "Dark Platform",
-                                          scenePath: "art.scnassets/floor_dark.scn",
+                                          scenePath: "art.scnassets/platform/floor_flat_dark.scn",
                                           iconPath: "platform-placeholder",
                                           platformBehaviour: PlatformBehaviour.none)
         
-        TileModelFactory.tileModels.append(platformModel)
+        tileModels.append(platformModel)
     }
     
     func createLightPlatform() {
         let platformModel = PlatformModel(name: "Light floor",
-                                          scenePath: "art.scnassets/floor_light.scn",
+                                          scenePath: "art.scnassets/platform/floor_flat_light.scn",
                                           iconPath: "obstacle-placeholder1",
                                           platformBehaviour: PlatformBehaviour.none)
         
-        TileModelFactory.tileModels.append(platformModel)
+        tileModels.append(platformModel)
     }
     
     func createMovingPlatform() {
@@ -49,7 +53,7 @@ final class TileModelFactory {
                                           iconPath: "testCat",
                                           platformBehaviour: PlatformBehaviour.moving)
         
-        TileModelFactory.tileModels.append(platformModel)
+        tileModels.append(platformModel)
     }
     
     func createAllowsJumpingPlatform() {
@@ -58,7 +62,7 @@ final class TileModelFactory {
                                           iconPath: "obstacle-placeholder2",
                                           platformBehaviour: PlatformBehaviour.allowsJumping)
         
-        TileModelFactory.tileModels.append(platformModel)
+        tileModels.append(platformModel)
     }
     
     func createStaticObstacle() {
@@ -67,7 +71,7 @@ final class TileModelFactory {
                                           iconPath: "obstacle-placeholder2",
                                           obstacleBehaviour: ObstacleBehaviour.none)
         
-        TileModelFactory.tileModels.append(obstacleModel)
+        tileModels.append(obstacleModel)
     }
     
     func createJumpingObstacle() {
@@ -76,7 +80,7 @@ final class TileModelFactory {
                                           iconPath: "testCat",
                                           obstacleBehaviour: ObstacleBehaviour.jumping)
         
-        TileModelFactory.tileModels.append(obstacleModel)
+        tileModels.append(obstacleModel)
     }
     
     func createRotatingAxeObstacle() {
@@ -85,6 +89,7 @@ final class TileModelFactory {
                                           iconPath: "testCat",
                                           obstacleBehaviour: ObstacleBehaviour.rotating)
         
-        TileModelFactory.tileModels.append(obstacleModel)
+        tileModels.append(obstacleModel)
     }
+
 }

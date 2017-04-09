@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TileModel {
+public class TileModel {
     static var tileModelCount = 0
     
     let uniqueId: Int

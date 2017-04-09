@@ -7,6 +7,6 @@
 //
 
 public protocol LoadableGame {
-    func getObstacles() -> [[Int]]
-    func getPlatforms() -> [[Int]]
+    func getObstacles() -> [[TileModel?]]
+    func getPlatforms() -> [[TileModel?]]
 }

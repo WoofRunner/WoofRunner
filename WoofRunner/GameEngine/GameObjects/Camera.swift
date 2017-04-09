@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 class Camera: GameObject {
-    
+        
     override init() {
         super.init()
         

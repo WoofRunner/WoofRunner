@@ -12,4 +12,5 @@ enum PlatformBehaviour {
     case none
     case allowsJumping
     case moving
+    case kill
 }

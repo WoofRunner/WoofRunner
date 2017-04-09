@@ -31,7 +31,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
-    var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
+    var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
 	var currentLevelName = "Custom Level 1" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
     var longPress = false
@@ -85,7 +85,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return
         }
 		sceneView.overlaySKScene = spriteScene
-		skScene.currentTileSelection.asObservable()
+        // Observe currentTileSelection
+		skScene.currentBrushSelection.asObservable()
 			.subscribe(onNext: {
 				(brush) in
 				self.currentSelectedBrush = brush
@@ -115,6 +116,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    // MARK: Handle Gestures
     func handlePan(_ sender: UIPanGestureRecognizer) {
         if (!canEdit() || longPress) {
             return

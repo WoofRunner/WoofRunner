@@ -18,7 +18,7 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// Retrieve list of unique TileModels
 	let factory = TileModelFactory.sharedInstance
-	let allTileModels = TileModelFactory.tileModels
+	let allTileModels = TileModelFactory.sharedInstance.tileModels
 	
 	var overlayDelegate: LDOverlayDelegate?
 	var paletteMenu = PaletteMenu()
@@ -26,7 +26,8 @@ class LevelDesignerOverlayScene: SKScene,
 	var currentSelectionUI = CurrentSelectionNode()
 	var bottomMenu = LevelDesignerBottomMenu()
 	
-	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
+	var currentTileSelection = Variable<TileType>(.floorLight) // Depreacated?
+    // Default selection. Wrap this in RXSwift
 	var currentBrushSelection = Variable<BrushSelection>(BrushSelection.defaultSelection)
 	
 	var oldY = CGFloat(0) // Recorded y coords of the most recent user touch

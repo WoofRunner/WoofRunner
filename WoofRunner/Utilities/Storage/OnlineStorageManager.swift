@@ -169,7 +169,6 @@ public class OnlineStorageManager {
 
             obstacleJSON["positionX"] = obstacle.positionX
             obstacleJSON["positionY"] = obstacle.positionY
-            obstacleJSON["radius"] = obstacle.radius
             obstacleJSON["type"] = obstacle.type
 
             res.append(NSDictionary(dictionary: obstacleJSON))
