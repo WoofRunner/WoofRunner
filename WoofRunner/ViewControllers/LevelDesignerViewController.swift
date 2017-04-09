@@ -241,20 +241,16 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         var togglingNode: SCNNode? = nil
         for result in hitResults {
             let resultantNode = result.node
-            // Skip if node is transparent
-            guard resultantNode.geometry?.firstMaterial?.transparency != 0 else {
-                continue
-            }
             
             // Find GridNode
             if resultantNode.name != GridViewModel.gridNodeName {
                 togglingNode = findParentGridNode(resultantNode)
             }
             
-            guard togglingNode != nil else {
+            guard let validNode = togglingNode else {
                 continue
             }
-            return togglingNode
+            return validNode
         }
         return nil
     }

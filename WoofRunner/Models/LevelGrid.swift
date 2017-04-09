@@ -85,9 +85,10 @@ class LevelGrid {
             }
             gridVM.setPlatform(platform)
         } else if let obstacle = tileModel as? ObstacleModel {
-            if gridVM.platformType.value != nil {
-                gridVM.setObstacle(obstacle)
+            guard let _ = gridVM.platformType.value else {
+                return
             }
+            gridVM.setObstacle(obstacle)
         }
     }
     

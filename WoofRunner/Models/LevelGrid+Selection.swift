@@ -66,13 +66,13 @@ extension LevelGrid {
         let gridVM = gridViewModelArray[pos.getRow()][pos.getCol()]
         var platform: PlatformModel? = nil
         var obstacle: ObstacleModel? = nil
-        if prevTileType[0] != nil {
-            if let platformType = prevTileType[0] as? PlatformModel {
+        if let prevPlatform = prevTileType[0] {
+            if let platformType = prevPlatform as? PlatformModel {
                 platform = platformType
             }
         }
-        if prevTileType[1] != nil {
-            if let obstacleType = prevTileType[1] as? ObstacleModel {
+        if let prevObstacle = prevTileType[1] {
+            if let obstacleType = prevObstacle as? ObstacleModel {
                 obstacle = obstacleType
             }
         }
@@ -91,13 +91,13 @@ extension LevelGrid {
         }
         var platform: PlatformModel? = nil
         var obstacle: ObstacleModel? = nil
-        if selectionTemplate[0] != nil {
-            if let platformType = selectionTemplate[0] as? PlatformModel {
+        if let selectionPlatform = selectionTemplate[0] {
+            if let platformType = selectionPlatform as? PlatformModel {
                 platform = platformType
             }
         }
-        if selectionTemplate[1] != nil {
-            if let obstacleType = selectionTemplate[1] as? ObstacleModel {
+        if let selectionObstacle = selectionTemplate[1] {
+            if let obstacleType = selectionObstacle as? ObstacleModel {
                 obstacle = obstacleType
             }
         }
