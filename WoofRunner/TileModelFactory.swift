@@ -8,6 +8,8 @@
 
 import Foundation
 
+// make sure no same name
+
 public final class TileModelFactory {
     
     public static let sharedInstance: TileModelFactory = TileModelFactory()
@@ -23,10 +25,20 @@ public final class TileModelFactory {
         createStaticObstacle()
         createJumpingObstacle()
         createRotatingAxeObstacle()
+        createKillPlatform()
     }
 
     public func getTile(id: Int) -> TileModel {
         return tileModels[id]
+    }
+    
+    public func findTileModel(name: String) -> TileModel? {
+        for tileModel in tileModels {
+            if tileModel.name == name {
+                return tileModel
+            }
+        }
+        return nil
     }
 
     func createDarkPlatform() {
@@ -100,10 +112,4 @@ public final class TileModelFactory {
         
         tileModels.append(obstacleModel)
     }
-
-    /*
-    public func findPlatformModel(name: String) -> {
-        let platformModels = tileModels.filter{ $0 is PlatformModel && $0.name == name}
-    }
- */
 }
