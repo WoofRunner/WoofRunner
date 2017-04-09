@@ -124,6 +124,21 @@ public class CoreDataManager {
         }
     }
 
+    /// Deletes the game with the specified UUID.
+    /// - Parameters:
+    ///     - uuid: unique ID of game to delete
+    /// - Returns: a Future object with a boolean status
+    public func delete(uuid: String) -> Future<Bool, CoreDataManagerError> {
+        return Future { complete in
+            if let game = fetch(uuid) {
+                context.delete(game)
+                complete(.success(true))
+            } else {
+                complete(.failure(CoreDataManagerError.notFound))
+            }
+        }
+    }
+
     /// Clears all StoredGame object in CoreData.
     public func deleteAll() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataManager.STORED_GAME)
