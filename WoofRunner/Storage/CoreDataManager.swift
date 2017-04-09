@@ -79,7 +79,7 @@ public class CoreDataManager {
             DispatchQueue.main.async {
                 var storedGame = game.toStoredGame()
 
-                if self.exists(game) {
+                if self.exists(storedGame.uuid!) {
                     // Force unwrap here since we know that game has to already exist in core data
                     storedGame = self.fetch(storedGame.uuid!)!
                 }
@@ -138,10 +138,8 @@ public class CoreDataManager {
     /// - Parameters:
     ///     - game: object that conforms to Saveable
     /// - Returns: true if the game already exists in CoreData.
-    private func exists(_ game: SaveableGame) -> Bool {
-        let storedGame = game.toStoredGame()
-        let fetchRequest = generateFetchRequest(uuid: storedGame.uuid!)
-
+    private func exists(_ uuid: String) -> Bool {
+        let fetchRequest = generateFetchRequest(uuid: uuid)
         guard let count = try? self.context.count(for: fetchRequest), count == 0 else {
             return true
         }

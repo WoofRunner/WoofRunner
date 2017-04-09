@@ -10,17 +10,21 @@ extension StoredGame: LoadableGame {
 
     /// Returns the stored platforms as a 2D array.
     /// - Returns: 2D array of platform types
-    public func getPlatforms() -> [[Int]] {
-        let DEFAULT_VALUE = 0
+    public func getPlatforms() -> [[TileModel?]] {
+        var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
+        let storedPlatforms = self.platforms?.map { platform in
+            guard let storedPlatform = platform as? StoredPlatform else {
+                fatalError("Unable to convert to StoredPlatform")
+            }
 
-        var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: DEFAULT_VALUE)
-        let storedPlatforms = self.platforms?.map { $0 as! StoredPlatform } ?? [StoredPlatform]()
+            return storedPlatform
+        } ?? [StoredPlatform]()
 
         for platform in storedPlatforms {
             let row = Int(platform.positionX)
             let col = Int(platform.positionY)
 
-            res[row][col] = Int(platform.type!)!
+            res[row][col] = mapToPlatformModel(platform)
         }
 
         return res
@@ -28,24 +32,38 @@ extension StoredGame: LoadableGame {
 
     /// Returns the stored obstacles of a game as a 2D array.
     /// - Returns: 2D array of obstacle types
-    public func getObstacles() -> [[Int]] {
-        let DEFAULT_VALUE = 0
-
-        var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: DEFAULT_VALUE)
+    public func getObstacles() -> [[TileModel?]] {
+        var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
         let storedObstacles = self.obstacles?.map { $0 as! StoredObstacle } ?? [StoredObstacle]()
 
         for obstacle in storedObstacles {
             let row = Int(obstacle.positionX)
             let col = Int(obstacle.positionY)
 
-            res[row][col] = Int(obstacle.type!)!
+            res[row][col] = mapToObstacleModel(obstacle)
         }
 
         return res
     }
 
-    private func create2DArray(rows: Int, cols: Int, initialValue: Int) -> [[Int]] {
-        return [[Int]](repeating: [Int](repeating: initialValue, count: cols), count: rows)
+    private func mapToObstacleModel(_ obstacle: StoredObstacle) -> ObstacleModel? {
+        let tileId = Int(obstacle.type)
+        // TODO: Fix this sharedInstance bug
+        let factory = TileModelFactory.sharedInstance
+        let tiles = TileModelFactory.tileModels
+        return tiles[tileId] as? ObstacleModel
+    }
+
+    private func mapToPlatformModel(_ platform: StoredPlatform) -> PlatformModel? {
+        let tileId = Int(platform.type)
+        // TODO: Fix this sharedInstance bug
+        let factory = TileModelFactory.sharedInstance
+        let tiles = TileModelFactory.tileModels
+        return tiles[tileId] as? PlatformModel
+    }
+
+    private func create2DArray(rows: Int, cols: Int, initialValue: TileModel?) -> [[TileModel?]] {
+        return [[TileModel?]](repeating: [TileModel?](repeating: initialValue, count: cols), count: rows)
     }
 
 }

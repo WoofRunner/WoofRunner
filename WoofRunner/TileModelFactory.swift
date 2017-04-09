@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class TileModelFactory {
+public final class TileModelFactory {
     
-    static let sharedInstance: TileModelFactory = TileModelFactory()
+    public static let sharedInstance: TileModelFactory = TileModelFactory()
 
-    static var tileModels: [TileModel] = []
+	public static var tileModels: [TileModel] = []
     
     private init() {
         createDarkPlatform()
@@ -23,6 +23,10 @@ final class TileModelFactory {
         createStaticObstacle()
         createJumpingObstacle()
         createRotatingAxeObstacle()
+    }
+
+    public static func getTile(id: Int) -> TileModel {
+        return TileModelFactory.tileModels[id]
     }
 
     func createDarkPlatform() {
@@ -87,4 +91,5 @@ final class TileModelFactory {
         
         TileModelFactory.tileModels.append(obstacleModel)
     }
+
 }

@@ -69,6 +69,35 @@ class TileManager: GameObject {
             return nil
         }
     }
+
+    convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
+        self.init()
+
+        self.obstacleData = obstacleModels.map { columns in
+            columns.map { item in
+                // Empty obstacle
+                guard let type = item?.uniqueId else {
+                    return 0
+                }
+
+                return type
+            }
+        }
+
+        self.platformData = platformModels.map { columns in
+            columns.map { item in
+                // Empty platform
+                guard let type = item?.uniqueId else {
+                    return 0
+                }
+
+                // +1 because currently TileType is using 0 for empty tile, while TileModelFactory
+                // returns DarkFloor for type 0.
+                // TODO: Fix this please.
+                return type + 1
+            }
+        }
+    }
     
     public func restartLevel() {
         position = startPosition
@@ -189,6 +218,10 @@ class TileManager: GameObject {
         let rowPosition = calculateIndexPosition(row, 0)
         let worldRowPosition = convertPosition(rowPosition, to: nil)
         return worldRowPosition.z > platformTail
+    }
+
+    private func mapToTileType(_ model: TileModel) -> Int {
+        return model.uniqueId
     }
     
     override func update(_ deltaTime: Float) {

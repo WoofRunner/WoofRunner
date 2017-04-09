@@ -161,7 +161,7 @@ public class GameStorageManager {
 
             platform.positionX = Int16(platformJSON.value(forKey: "positionX") as! String)!
             platform.positionY = Int16(platformJSON.value(forKey: "positionY") as! String)!
-            platform.type = platformJSON.value(forKey: "type") as? String
+            platform.type = Int16(platformJSON.value(forKey: "type") as! String)!
 
             res.append(platform)
         }
@@ -176,8 +176,7 @@ public class GameStorageManager {
 
             obstacle.positionX = Int16(obstacleJSON.value(forKey: "positionX") as! String)!
             obstacle.positionY = Int16(obstacleJSON.value(forKey: "positionY") as! String)!
-            obstacle.radius = Int16(obstacleJSON.value(forKey: "radius") as! String)!
-            obstacle.type = obstacleJSON.value(forKey: "type") as? String
+            obstacle.type = Int16(obstacleJSON.value(forKey: "type") as! String)!
 
             res.append(obstacle)
         }
