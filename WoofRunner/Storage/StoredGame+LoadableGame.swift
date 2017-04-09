@@ -50,7 +50,7 @@ extension StoredGame: LoadableGame {
         let tileId = Int(obstacle.type)
         // TODO: Fix this sharedInstance bug
         let factory = TileModelFactory.sharedInstance
-        let tiles = TileModelFactory.tileModels
+        let tiles = TileModelFactory.sharedInstance.tileModels
         return tiles[tileId] as? ObstacleModel
     }
 
@@ -58,7 +58,7 @@ extension StoredGame: LoadableGame {
         let tileId = Int(platform.type)
         // TODO: Fix this sharedInstance bug
         let factory = TileModelFactory.sharedInstance
-        let tiles = TileModelFactory.tileModels
+        let tiles = TileModelFactory.sharedInstance.tileModels
         return tiles[tileId] as? PlatformModel
     }
 

@@ -19,8 +19,8 @@ class TileManager: GameObject {
     
     var moveState: MoveState = MoveState.wait
     
-    var obstacleData: [[Int]] = []
-    var platformData: [[Int]] = []
+    var obstacleData: [[TileModel?]] = []
+    var platformData: [[TileModel?]] = []
     
     var tailIndex: Int = 0
     var platformTail: Float = 0
@@ -33,11 +33,14 @@ class TileManager: GameObject {
     var isDebug: Bool = true
     
     let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
+    let WARNING_CANT_FIND_DEAD_TRIGGER = "WARNING: Cant Find Dead Trigger"
     
     var isMoving: Bool = false
     var delay: Float = 3
     
     var delegate: TileManagerDelegate?
+    
+    let deadTriggerModel: TileModel? = TileModelFactory.sharedInstance.findTileModel(name: "Kill Platform")
     
     var startPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
@@ -58,6 +61,7 @@ class TileManager: GameObject {
         restartLevel()
     }
     
+    /*
     convenience init?(obstacleData: [[Int]], platformData: [[Int]]) {
         self.init()
         
@@ -69,34 +73,13 @@ class TileManager: GameObject {
             return nil
         }
     }
-
+*/
+    // TODO process platform
     convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
         self.init()
 
-        self.obstacleData = obstacleModels.map { columns in
-            columns.map { item in
-                // Empty obstacle
-                guard let type = item?.uniqueId else {
-                    return 0
-                }
-
-                return type
-            }
-        }
-
-        self.platformData = platformModels.map { columns in
-            columns.map { item in
-                // Empty platform
-                guard let type = item?.uniqueId else {
-                    return 0
-                }
-
-                // +1 because currently TileType is using 0 for empty tile, while TileModelFactory
-                // returns DarkFloor for type 0.
-                // TODO: Fix this please.
-                return type + 1
-            }
-        }
+        self.obstacleData = obstacleModels
+        self.platformData = platformModels
     }
     
     public func restartLevel() {
@@ -175,30 +158,32 @@ class TileManager: GameObject {
     }
     
     private func handlePlatformSpawning(_ row: Int, _ col: Int) {
-        if let tileType: TileType = TileType(rawValue: platformData[row][col]) {
-            let tile = poolManager?.getTile(tileType)
-            tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
-        }
+        guard let tileModel: TileModel = platformData[row][col] else { return }
+        let tile = poolManager?.getTile(tileModel)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
     }
     
     private func handleObstacleSpawning(_ row: Int, _ col: Int) {
-        if let tileType: TileType = TileType(rawValue: obstacleData[row][col]) {
-            if tileType == TileType.none {
-                return
-            }
-            
-            let tile = poolManager?.getTile(tileType)
-            tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
-        }
+        guard let tileModel: TileModel = obstacleData[row][col] else { return }
+        let tile = poolManager?.getTile(tileModel)
+        tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
     }
     
+    
     private func appendDeadTriggers(_ row: Int) {
-        var tile = poolManager?.getTile(TileType.none)
+        guard let deadTriggerModel = deadTriggerModel else {
+            print(WARNING_CANT_FIND_DEAD_TRIGGER)
+            return
+        }
+        
+        var tile = poolManager?.getTile(deadTriggerModel)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
         
-        tile = poolManager?.getTile(TileType.none)
+        tile = poolManager?.getTile(deadTriggerModel)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
+
     }
+    
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)
@@ -221,7 +206,7 @@ class TileManager: GameObject {
     }
 
     private func mapToTileType(_ model: TileModel) -> Int {
-        return model.uniqueId
+        return model.tileId
     }
     
     override func update(_ deltaTime: Float) {

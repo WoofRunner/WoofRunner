@@ -31,7 +31,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
-    var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
+    var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
 	var currentLevelName = "Custom Level 1" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
     var longPress = false
@@ -44,7 +44,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         sceneView.allowsCameraControl = false
         sceneView.showsStatistics = true
-        // sceneView.backgroundColor = UIColor.black
         sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         
@@ -56,10 +55,15 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		currentLevel = sampleLevel
 		
 		// Load a level if initialised from previous ViewController
-		if let _ = loadedLevel {
-			currentLevel.load(from: loadedLevel!)
+		if let loadedLevel = loadedLevel {
+			currentLevel.load(from: loadedLevel)
+			
+			// Update current level name to the one in the loadedLevel if it exists
+			if let levelName = loadedLevel.name {
+				currentLevelName = levelName
+			}
 		}
-        
+
         // Load level
         LDScene.loadLevel(currentLevel)
         sampleLevel.reloadChunk(from: 0)
@@ -85,7 +89,10 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return
         }
 		sceneView.overlaySKScene = spriteScene
-		skScene.currentTileSelection.asObservable()
+		spriteScene?.updateDisplayedLevelName(currentLevelName)
+
+        // Observe currentTileSelection
+		skScene.currentBrushSelection.asObservable()
 			.subscribe(onNext: {
 				(brush) in
 				self.currentSelectedBrush = brush
@@ -115,6 +122,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    // MARK: Handle Gestures
     func handlePan(_ sender: UIPanGestureRecognizer) {
         if (!canEdit() || longPress) {
             return
@@ -185,6 +193,9 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 break
             }
             currentLevel.toggleGrid(x: startNode.position.x, z: startNode.position.z, currentSelectedBrush)
+            guard isNotMovingPlatform(currentSelectedBrush) else {
+                break;
+            }
             currentLevel.beginSelection((x: startNode.position.x, z: startNode.position.z))
             break
         case .changed:
@@ -237,20 +248,16 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         var togglingNode: SCNNode? = nil
         for result in hitResults {
             let resultantNode = result.node
-            // Skip if node is transparent
-            guard resultantNode.geometry?.firstMaterial?.transparency != 0 else {
-                continue
-            }
             
             // Find GridNode
             if resultantNode.name != GridViewModel.gridNodeName {
                 togglingNode = findParentGridNode(resultantNode)
             }
             
-            guard togglingNode != nil else {
+            guard let validNode = togglingNode else {
                 continue
             }
-            return togglingNode
+            return validNode
         }
         return nil
     }
@@ -265,10 +272,32 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         
         return parentNode
     }
+    
+    private func isNotMovingPlatform(_ currentBrush: BrushSelection) -> Bool {
+        guard currentBrush.selectionType == .platform else {
+            return true
+        }
+        guard let tileModel = currentBrush.tileModel else {
+            return true
+        }
+        guard let platform = tileModel as? PlatformModel else {
+            return true
+        }
+        guard platform.platformBehaviour == .moving else {
+            return true
+        }
+        return false
+    }
 
     /// Saves the current level into CoreData.
     private func saveGame() {
-        gsm.saveGame(currentLevel)
+		
+		// Converts currentLevel to a storedGame objcet and set its levelName property
+		let storedGame = currentLevel.toStoredGame()
+		storedGame.name = self.currentLevelName
+
+		// Save Game
+        gsm.saveGame(storedGame)
             .onSuccess { _ in
 				self.showSaveFeedback(title: "Save Success", message: "Game is successfully saved as \(self.currentLevelName)")
             }

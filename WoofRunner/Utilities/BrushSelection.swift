@@ -7,11 +7,28 @@
 //
 
 struct BrushSelection {
-	private(set) var selectionType: BrushSelectionType
-	private(set) var tileType: TileType?
+	var selectionType: BrushSelectionType
+	var tileModel: TileModel?
 	
-	init(selectionType: BrushSelectionType, tileType: TileType?) {
+	static var defaultSelection = BrushSelection(selectionType: .delete, tileModel: nil)
+	
+	init(selectionType: BrushSelectionType, tileModel: TileModel?) {
 		self.selectionType = selectionType
-		self.tileType = tileType
+		self.tileModel = tileModel
 	}
+	
+	public func getSelectionName() -> String {
+		if let _ = tileModel {
+			return tileModel!.name
+		}
+		
+		if selectionType == .delete {
+			return "Delete"
+		}
+		
+		print("Error: Cannot determind name for current selection type \(selectionType)")
+		return ""
+		
+	}
+	
 }

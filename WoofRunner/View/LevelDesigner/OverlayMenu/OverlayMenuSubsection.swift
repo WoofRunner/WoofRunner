@@ -10,7 +10,7 @@ import SpriteKit
 
 class OverlayMenuSubsection: SKNode {
 	
-	private var buttonTypeArray = [TileType]()
+	private var tileModelArray = [TileModel]()
 	private var sectionTitleLabel = SKLabelNode()
 	private var buttonSetArray = [OverlayButtonSet]()
 	
@@ -18,32 +18,38 @@ class OverlayMenuSubsection: SKNode {
 		super.init()
 	}
 	
-	convenience init(sectionName: String, buttonTypeArray: [TileType]) {
+	convenience init(tileModelArray: [TileModel]) {
 		self.init()
 		
-		self.sectionTitleLabel = SKLabelNode(text: sectionName)
-		self.buttonTypeArray = buttonTypeArray
+		//self.sectionTitleLabel = SKLabelNode(text: sectionName)
+		self.tileModelArray	= tileModelArray
 		
 		renderSubsection()
 	}
 	
 	private func renderSubsection() {
 		
+		/*
 		// Render Section Title Label
 		configureToTitleLabel(self.sectionTitleLabel)
 		self.sectionTitleLabel.position = CGPoint(x: OverlayConstants.subsectionTitleX , y: OverlayConstants.subsectionTitleY)
 		self.addChild(self.sectionTitleLabel)
+		*/
 		
 		// Render ButtonSets
 		var baseX = OverlayConstants.btnSetBaseX
 		var baseY = OverlayConstants.btnSetBaseY
 		
-		for i in 0..<buttonTypeArray.count {
+		for i in 0..<tileModelArray.count {
 			
-			let type = buttonTypeArray[i]
+			let tileModel = tileModelArray[i]
 			
+            guard let iconPath = tileModel.iconPath else {
+                continue
+            }
+            
 			//Create
-			let btnSet = OverlayButtonSet(type: type)
+			let btnSet = OverlayButtonSet(name: tileModel.name, imageNamed: iconPath)
 			
 			if i % 3 == 0 {
 				baseX = OverlayConstants.btnSetBaseX
@@ -67,11 +73,12 @@ class OverlayMenuSubsection: SKNode {
 		let titleHeight = self.sectionTitleLabel.frame.size.height
 		var numberOfRows = 1.0
 		
-		if self.buttonTypeArray.count >= 3 {
-			numberOfRows = ceil(Double(self.buttonTypeArray.count) / Double(3))
+		if self.tileModelArray.count >= 3 {
+			numberOfRows = ceil(Double(self.tileModelArray.count) / Double(3))
 		}
 		
-		let btnSetHeight = OverlayConstants.btnHeight + OverlayConstants.btnMargin + 60
+		// 60 is the estimated height of the Subsection title
+		let btnSetHeight = OverlayConstants.btnHeight + OverlayConstants.btnMargin
 		let height = titleHeight + CGFloat(numberOfRows) * btnSetHeight
 
 		return CGFloat(height)

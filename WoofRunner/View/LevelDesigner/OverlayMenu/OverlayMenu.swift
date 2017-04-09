@@ -67,11 +67,11 @@ class OverlayMenu: SKNode {
 	
 	private let backgroundNode = SKSpriteNode(texture: nil, color: OverlayConstants.backgroundColor, size: CGSize(width: OverlayConstants.backgroundWidth, height: OverlayConstants.backgroundHeight))
 	private var titleNode = SKLabelNode()
-	private var closeBtnNode = OverlayButton(imageNamed: OverlayConstants.closeBtnImageSprite, type: nil, size: OverlayConstants.closeBtnSize)
-	
+	private var closeBtnNode = OverlayButton(imageNamed: OverlayConstants.closeBtnImageSprite, tileName: nil, size: OverlayConstants.closeBtnSize)
+	private var subsectionNode = OverlayMenuSubsection()
 	private var menuNode = SKNode()
+	
 	private var maxY = CGFloat(0) // Max y-bound of MenuNode, required for scrolling bounds
-	private var arrayOfSubsections = [OverlayMenuSubsection]()
 	
 	// MARK: - Init Methods
 	
@@ -85,9 +85,8 @@ class OverlayMenu: SKNode {
 	
 	// MARK: - Render Method
 	
-	// Renders the palette menu at the input position (which is the bottom-left corner
-	// of the menu's frame)
-	public func renderOverlayMenu(type: PaletteFunctionType, delegate: OverlayButtonDelegate) {
+	// Renders the palette menu given the input ViewModel
+	public func renderOverlayMenu(vm: LDOverlayMenuViewModel, delegate: OverlayButtonDelegate) {
 		
 		// Reset
 		backgroundNode.removeFromParent()
@@ -96,49 +95,24 @@ class OverlayMenu: SKNode {
 		
 		// Attach background first
 		self.addChild(backgroundNode)
-		
-		backgroundNode.blendMode = .multiply
+		backgroundNode.blendMode = .multiply // To ensure that nodes behind the overlay wont be seen
 		
 		// Attach close button
 		menuNode.addChild(closeBtnNode)
 		closeBtnNode.position = OverlayConstants.closeBtnPosition
 		
 		// Create and attach Menu Title
-		titleNode = SKLabelNode(text: type.getOverlayMenuName())
+		titleNode = SKLabelNode(text: vm.menuName)
 		menuNode.addChild(titleNode)
 		configureTitleNode()
 		
-		// Get the set of list of TileTypes to be rendered
-		let setOfTileTypes = getSetOfTileTypesFromFunctionType(type)
+		// Create and attach
+		subsectionNode = OverlayMenuSubsection(tileModelArray: vm.tileModelArray)
+		menuNode.addChild(subsectionNode)
 		
-		// Create and attach the subsection nods
-		var baseY = OverlayConstants.subsectionBaseY
-		var heightOfPrevSubsection = CGFloat(0)
-		
-		for i in 0..<setOfTileTypes.count {
-			
-			let setName = setOfTileTypes[i].name
-			let array = setOfTileTypes[i].set
-			var subsectionNode: OverlayMenuSubsection
-			
-			// Create
-			subsectionNode = OverlayMenuSubsection(sectionName: setName, buttonTypeArray: array)
-			
-			// Position it
-			baseY -= OverlayConstants.subsectionSpacingY + heightOfPrevSubsection
-			subsectionNode.position = CGPoint(x: 0, y: baseY)
-			
-			// Add node
-			menuNode.addChild(subsectionNode)
-			arrayOfSubsections.append(subsectionNode)
-			
-			// Update variables for scroll/position calc
-			maxY += heightOfPrevSubsection
-			heightOfPrevSubsection = subsectionNode.height
-		}
-		
-		// Divide raw y-bounds by 2 as the origin is calculated from the center of the node
-		maxY = maxY / 2
+		// Position it
+		subsectionNode.position = CGPoint(x: 0, y: OverlayConstants.subsectionBaseY)
+		maxY = subsectionNode.height / 2 // Divded by 2 because the origin is in the center of the screen
 		
 		// Add menuNode last
 		self.addChild(menuNode)
@@ -151,7 +125,13 @@ class OverlayMenu: SKNode {
 	// MARK: - Scroll Control
 	
 	private func isValidScroll(_ newPos: CGFloat) -> Bool {
-		return !(newPos < 0 || newPos > maxY)
+		var maximumYBounds = CGFloat(0)
+		
+		if (OverlayConstants.subsectionBaseY + maxY >= OverlayConstants.backgroundHeight) {
+			maximumYBounds = maxY
+		}
+		
+		return !(newPos < 0 || newPos > maximumYBounds)
 	}
 	
 	public func scrollMenu(offset: CGFloat) {
@@ -165,10 +145,7 @@ class OverlayMenu: SKNode {
 	// MARK: - Helper Private Methods
 	
 	private func assignDelegateForButtons(_ delegate: OverlayButtonDelegate) {
-		for subsection in arrayOfSubsections {
-			subsection.assignDelegateForButtons(delegate)
-		}
-		
+		subsectionNode.assignDelegateForButtons(delegate)
 		closeBtnNode.setDelegate(delegate)
 	}
 	
@@ -177,38 +154,6 @@ class OverlayMenu: SKNode {
 		titleNode.fontColor = OverlayConstants.titleFontColor
 		titleNode.fontSize = OverlayConstants.titleFontSize
 		titleNode.position = OverlayConstants.titlePosition
-	}
-	
-	// MARK: - Stubs to determine what Overlay Buttons to render
-	
-	private func getSetOfTileTypesFromFunctionType(_ funcType: PaletteFunctionType) -> [TileTypeSet] {
-		switch funcType {
-		case .platform:
-			return [
-				TileTypeSet(name: "Static", set: [TileType.floorLight, TileType.floorDark, TileType.floorJump]),
-				TileTypeSet(name: "Dynamic", set: [TileType.movingPlatform])
-			]
-		case .obstacle:
-			return [
-				TileTypeSet(name: "Static", set: [TileType.rock]),
-				TileTypeSet(name: "Dynamic", set: [TileType.jumpingRock, TileType.rotatingAxe, TileType.sword])
-			]
-		default:
-			return []
-		}
-		
-	}
-	
-	
-	
-	struct TileTypeSet {
-		var name: String
-		var set: [TileType]
-		
-		init(name: String, set: [TileType]) {
-			self.name = name
-			self.set = set
-		}
 	}
 
 }

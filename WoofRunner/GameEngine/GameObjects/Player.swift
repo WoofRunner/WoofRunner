@@ -55,7 +55,7 @@ class Player: GameObject {
             startJump()
         }
         
-        if other is DeadTriggerTile {
+        if other is DeadTriggerPlatform {
             isDeadFall = true
         }
         

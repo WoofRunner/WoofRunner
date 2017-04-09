@@ -15,7 +15,7 @@ extension LevelGrid {
             return
         }
         // init selection cache
-        selectionCache = [String: [TileType]]()
+        selectionCache = [String: [TileModel?]]()
         let startGridKey = getPosString(startGridVM.gridPos.value)
         selectionCache[startGridKey] = [startGridVM.platformType.value,
                                         startGridVM.obstacleType.value]
@@ -51,10 +51,10 @@ extension LevelGrid {
     
     func endSelection() {
         // Empty selection
-        selectionCache = [String: [TileType]]()
+        selectionCache = [String: [TileModel?]]()
         selectionStartPos = nil
         selectionEndPos = nil
-        selectionTemplate = [TileType.none, TileType.none]
+        selectionTemplate = [nil, nil]
     }
     
     private func revertGridInPosition(_ pos: Position) {
@@ -64,9 +64,21 @@ extension LevelGrid {
         }
         // Revert
         let gridVM = gridViewModelArray[pos.getRow()][pos.getCol()]
+        var platform: PlatformModel? = nil
+        var obstacle: ObstacleModel? = nil
+        if let prevPlatform = prevTileType[0] {
+            if let platformType = prevPlatform as? PlatformModel {
+                platform = platformType
+            }
+        }
+        if let prevObstacle = prevTileType[1] {
+            if let obstacleType = prevObstacle as? ObstacleModel {
+                obstacle = obstacleType
+            }
+        }
         setGridVMType(gridVM,
-                      platform: prevTileType[0],
-                      obstacle: prevTileType[1])
+                      platform: platform,
+                      obstacle: obstacle)
     }
     
     private func toggleGridInPosition(_ pos: Position) {
@@ -77,9 +89,21 @@ extension LevelGrid {
             selectionCache[posString] = [gridVM.platformType.value,
                                          gridVM.obstacleType.value]
         }
+        var platform: PlatformModel? = nil
+        var obstacle: ObstacleModel? = nil
+        if let selectionPlatform = selectionTemplate[0] {
+            if let platformType = selectionPlatform as? PlatformModel {
+                platform = platformType
+            }
+        }
+        if let selectionObstacle = selectionTemplate[1] {
+            if let obstacleType = selectionObstacle as? ObstacleModel {
+                obstacle = obstacleType
+            }
+        }
         setGridVMType(gridVM,
-                      platform: selectionTemplate[0],
-                      obstacle: selectionTemplate[1])
+                      platform: platform,
+                      obstacle: obstacle)
     }
     
     private func getSelection(_ start: Position, _ end: Position) -> [Position] {
@@ -134,8 +158,4 @@ extension LevelGrid {
     private func getPosString(_ gridPos: Position) -> String {
         return String(gridPos.getRow()) + "," + String(gridPos.getCol())
     }
-    
-    private func setGridVMType(_ gridVM: GridViewModel, platform pType: TileType, obstacle oType: TileType) {
-        gridVM.setType(platform: pType, obstacle: oType)
-    }    
 }

@@ -20,13 +20,13 @@ class OverlayButtonSet: SKNode {
 	
 	// Init method will take in TileType and render the nodes for 
 	// button label node and button node
-	convenience init(type: TileType) {
+	convenience init(name: String, imageNamed: String) {
 		self.init()
-		let buttonName = type.toString()
-		let imageNamed = type.getSpriteImageName()
+		let buttonName = name
+		let imageNamed = imageNamed
 		
 		self.btnLabel = SKLabelNode(text: buttonName)
-		self.btn = OverlayButton(imageNamed: imageNamed, type: type, size: CGSize(width: OverlayConstants.btnWidth, height: OverlayConstants.btnHeight))
+		self.btn = OverlayButton(imageNamed: imageNamed, tileName: buttonName, size: CGSize(width: OverlayConstants.btnWidth, height: OverlayConstants.btnHeight))
 		
 		renderOverlayButtonSet()
 	}

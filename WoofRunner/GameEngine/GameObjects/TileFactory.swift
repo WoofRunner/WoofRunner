@@ -18,40 +18,53 @@ final class TileFactory {
     private init() {
     }
     
-    public func createTile(_ tileType: TileType) -> Tile? {
-        let tile: Tile
-        
-        switch tileType {
-        case .floorLight:
-            tile = LightPlatform()
-            
-        case .floorDark:
-            tile = DarkPlatform()
-            
-        case .floorJump:
-            tile = JumpPlatform()
-            
-        case .rock:
-            tile = Rock()
-            
-        case .jumpingRock:
-            tile = JumpingRock()
-            
-        case .movingPlatform:
-            tile = MovingPlatform()
-        
-        case .rotatingAxe:
-            tile = RotatingAxe()
-            
-        case .none:
-            tile = DeadTriggerTile()
-            
-        default:
-            print(WARNING_INVALID_TILE + String(describing: tileType))
-            return nil
+    public func createTile(_ tileModel: TileModel) -> Tile? {
+
+        if let platformModel = tileModel as?  PlatformModel {
+            return createPlatformTile(platformModel)
         }
         
-        return tile
+        if let obstacleModel = tileModel as?  ObstacleModel {
+            return createObstacleTile(obstacleModel)
+        }
+        
+        return nil
     }
 
+    private func createPlatformTile(_ platformModel: PlatformModel) -> Platform {
+        var platform: Platform
+        
+        switch platformModel.platformBehaviour {
+        case .allowsJumping:
+            platform = JumpPlatform(platformModel)
+        
+        case .kill:
+            platform = DeadTriggerPlatform(platformModel)
+            
+        case .moving:
+            platform = MovingPlatform(platformModel)
+            
+        case .none:
+            platform = Platform(platformModel)
+        
+        }
+        return platform
+    }
+    
+    private func createObstacleTile(_ obstacleModel: ObstacleModel) -> Obstacle {
+        var obstacle: Obstacle
+        
+        switch obstacleModel.obstacleBehaviour {
+        case .jumping:
+            obstacle = JumpingObstacle(obstacleModel)
+            
+        case .rotating:
+            obstacle = RotatingObstacle(obstacleModel)
+            
+        case .none:
+            obstacle = Rock(obstacleModel)
+            
+        }
+        return obstacle
+    }
 }

@@ -16,14 +16,21 @@ class LevelDesignerOverlayScene: SKScene,
 								OverlayButtonDelegate,
 								BottomMenuButtonDelegate {
 	
+	// Retrieve list of unique TileModels
+	let factory = TileModelFactory.sharedInstance
+	let allTileModels = TileModelFactory.sharedInstance.tileModels
+	
 	var overlayDelegate: LDOverlayDelegate?
 	var paletteMenu = PaletteMenu()
 	var overlayMenu = OverlayMenu()
 	var currentSelectionUI = CurrentSelectionNode()
 	var bottomMenu = LevelDesignerBottomMenu()
 	
-	var currentTileSelection = Variable<TileType>(.floorLight) // Default selection. Wrap this in RXSwift
+	// To keep track internally which selection type is last activated
+	var currentBrushSelectionType: BrushSelectionType = .delete
 	
+    // Default selection. Wrap this in RXSwift
+	var currentBrushSelection = Variable<BrushSelection>(BrushSelection.defaultSelection)
 	
 	var oldY = CGFloat(0) // Recorded y coords of the most recent user touch
 	
@@ -69,8 +76,8 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	private func initCurrentSelection() {
-		self.currentSelectionUI = CurrentSelectionNode(defaultSelection: currentTileSelection.value)
-		let currentSelectionPosX = CGFloat(690)
+		self.currentSelectionUI = CurrentSelectionNode(defaultSelectionText: currentBrushSelection.value.getSelectionName())
+		let currentSelectionPosX = CGFloat(660)
 		let currentSelectionPosY = CGFloat(880)
 		self.addChild(currentSelectionUI)
 		self.currentSelectionUI.position = CGPoint(x: currentSelectionPosX, y: currentSelectionPosY)
@@ -124,11 +131,14 @@ class LevelDesignerOverlayScene: SKScene,
 		return overlayMenu.alpha > 0
 	}
 	
-	// Hides the overlay menu if it is visible currently
-	private func hideOverlayMenu() {
-		if isOverlayMenuVisible() {
-			animateOverlayMenuClose()
+	private func getTileModelFromName(_ name: String) -> TileModel? {
+		for tileModel in allTileModels {
+			if tileModel.name == name {
+				return tileModel
+			}
 		}
+		
+		return nil
 	}
 	
 	private func animateOverlayMenuClose() {
@@ -142,31 +152,71 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// - MARK: PaletteButtonDelegate
 	internal func handlePaletteTap(_ funcType: PaletteFunctionType) {
-		if funcType == .delete {
-			setCurrentTileSelection(TileType.none)
-		} else {
-			openOverlayMenu(funcType)
+		switch funcType {
+			case .delete:
+				print("Handling Delete palette tap")
+				updateBrushSelectionType(.delete)
+				updateBrushSelection(nil)
+				updateCurrentSelectionUI()
+			case .obstacle:
+				updateBrushSelectionType(.obstacle)
+				openOverlayMenu(funcType)
+			case .platform:
+				updateBrushSelectionType(.platform)
+				openOverlayMenu(funcType)
 		}
 	}
 	
 	private func openOverlayMenu(_ funcType: PaletteFunctionType) {
-		self.overlayMenu.renderOverlayMenu(type: funcType, delegate: self)
+		let vm = LDOverlayMenuViewModel(funcType: funcType, allTileModels: allTileModels)
+		self.overlayMenu.renderOverlayMenu(vm: vm, delegate: self)
 		animateOverlayMenuOpen()
 	}
 	
+	// Updates the current BrushSelectionType
+	private func updateBrushSelectionType(_ selectionType: BrushSelectionType) {
+		currentBrushSelectionType = selectionType
+	}
+	
+	// Updates the currentBrushSelection, using the last recorded brushSelectionType
+	// as the value for the selectionType attribute, and the input TileModel 
+	// for the tileModel attribute.
+	// Also updates the currentSelectionUI accordingly
+	private func updateBrushSelection(_ tileModel: TileModel?) {
+		currentBrushSelection.value.tileModel = tileModel
+		currentBrushSelection.value.selectionType = currentBrushSelectionType
+		updateCurrentSelectionUI()
+	}
+	
+	// Updates the selection UI text according to the currentBrushSelection
+	private func updateCurrentSelectionUI() {
+		currentSelectionUI.updateSelectionText(currentBrushSelection.value.getSelectionName())
+	}
 	
 	// - MARK: OverlayButtonDelegate
-	internal func setCurrentTileSelection(_ type: TileType?) {
-		guard let _ = type else {
+	
+	// Fetch the TileModel using the input tileName and use it to update
+	// the current brush selection, followed by updating the selectionUI text
+	//
+	// NOTE: TileName is used so that child node classes such as OverlayButtonSet 
+	// and OverlayButton will not be coupled to TileModel
+	internal func setCurrentTileSelection(_ tileName: String?) {
+		guard let _ = tileName else {
 			return
 		}
 		
-		self.currentTileSelection.value = type!
-		self.currentSelectionUI.updateSelectionText(type!.toString())
+		let tileModel = getTileModelFromName(tileName!)
+		
+		guard let _ = tileModel else {
+			return
+		}
+		
+		updateBrushSelection(tileModel)
 	}
 	
+	// Closes the OverlayMenu with an animation
 	internal func closeOverlayMenu() {
-		hideOverlayMenu()
+		animateOverlayMenuClose()
 	}
 	
 	// - MARK: BottomMenuButtonDelegate

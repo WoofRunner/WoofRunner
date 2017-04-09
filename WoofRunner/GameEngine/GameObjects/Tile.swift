@@ -21,14 +21,21 @@ class Tile: GameObject {
     
     var positionOffSet: SCNVector3 = SCNVector3.zero()
     
-    init(_ pos: SCNVector3) {
+    let tileId: Int
+
+    init(_ tileModel: TileModel) {
+        tileId = tileModel.tileId
         super.init()
-        position = pos
         isTickEnabled = true
+        
+        guard let scenePath = tileModel.scenePath else {
+            return
+        }
+        loadModel(scenePath)
     }
     
-    override convenience init() {
-        self.init(SCNVector3(0, 0, 0))
+    convenience required init?(coder aDecoder: NSCoder) {
+        return nil
     }
 
     override func update(_ deltaTime: Float) {
@@ -58,5 +65,9 @@ class Tile: GameObject {
     
     func setPositionWithOffset(position: SCNVector3) {
         self.position = position + positionOffSet
+    }
+    
+    public func equal(tileModel: TileModel) -> Bool {
+        return tileId == tileModel.tileId
     }
 }
