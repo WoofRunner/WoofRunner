@@ -42,6 +42,7 @@ class TileManager: GameObject {
     
     let deadTriggerModel: TileModel? = TileModelFactory.sharedInstance.findTileModel(name: "Kill Platform")
     
+    
     var startPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
     }
@@ -60,26 +61,17 @@ class TileManager: GameObject {
         isTickEnabled = true
         restartLevel()
     }
-    
-    /*
-    convenience init?(obstacleData: [[Int]], platformData: [[Int]]) {
+
+    convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
         self.init()
-        
+
         if isDatasValid(obstacleData, platformData) {
-            self.obstacleData = obstacleData
-            self.platformData = processPlatformData(platformData)
+            self.obstacleData = obstacleModels
+            self.platformData = processPlatformData(platformModels)
         } else {
             print(WARNING_INVALID_DATA)
             return nil
         }
-    }
-*/
-    // TODO process platform
-    convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
-        self.init()
-
-        self.obstacleData = obstacleModels
-        self.platformData = platformModels
     }
     
     public func restartLevel() {
@@ -91,7 +83,7 @@ class TileManager: GameObject {
     }
     
     // both obstacle and platform data must have same number of rows and cols
-    private func isDatasValid(_ obstacleData: [[Int]], _ platformData: [[Int]]) -> Bool {
+    private func isDatasValid(_ obstacleData: [[TileModel?]], _ platformData: [[TileModel?]]) -> Bool {
         if obstacleData.count != platformData.count {
             return false
         }
@@ -103,7 +95,7 @@ class TileManager: GameObject {
         return true
     }
     
-    private func isDataValid(_ data: [[Int]]) -> Bool {
+    private func isDataValid(_ data: [[TileModel?]]) -> Bool {
         for rowIndex in 0..<data.count {
             if data[rowIndex].count !=  GameSettings.PLATFORM_COLUMNS {
                 return false
@@ -113,25 +105,32 @@ class TileManager: GameObject {
     }
     
     // remove other tiles in the same row as the moving platform
-    func processPlatformData(_ data: [[Int]]) -> [[Int]]{
+    func processPlatformData(_ data: [[TileModel?]]) -> [[TileModel?]]{
         var data = data
         for rowIndex in 0..<data.count {
             for colIndex in 0..<data[rowIndex].count {
                 
-                if data[rowIndex][colIndex] == TileType.movingPlatform.rawValue {
-                    data[rowIndex] = createEmptyDataRow()
-                    data[rowIndex][colIndex] = TileType.movingPlatform.rawValue
+                if data[rowIndex][colIndex] == nil {
+                    data[rowIndex][colIndex] = deadTriggerModel
                     continue
+                }
+                
+                let platformModel = data[rowIndex][colIndex] as? PlatformModel
+                if platformModel?.platformBehaviour == PlatformBehaviour.moving {
+                    let tempPlatformModel = platformModel
+                    data[rowIndex] = createEmptyDataRow()
+                    data[rowIndex][colIndex] = tempPlatformModel
+                    break
                 }
             }
         }
         return data
     }
     
-    func createEmptyDataRow() -> [Int] {
-        var array = [Int]()
+    func createEmptyDataRow() -> [TileModel?] {
+        var array = [TileModel?]()
         for _ in 0..<GameSettings.PLATFORM_COLUMNS {
-            array.append(-1)
+            array.append(nil)
         }
         return array
     }
@@ -168,20 +167,19 @@ class TileManager: GameObject {
         let tile = poolManager?.getTile(tileModel)
         tile?.setPositionWithOffset(position: calculateObstaclePosition(row, col))
     }
-    
-    
+
     private func appendDeadTriggers(_ row: Int) {
+        addDeadTrigger(row: row, col: -1)
+        addDeadTrigger(row: row, col: platformData[row].count)
+    }
+    
+    private func addDeadTrigger(row: Int, col: Int) {
         guard let deadTriggerModel = deadTriggerModel else {
             print(WARNING_CANT_FIND_DEAD_TRIGGER)
             return
         }
-        
-        var tile = poolManager?.getTile(deadTriggerModel)
-        tile?.setPositionWithOffset(position: calculateTilePosition(row, -1))
-        
-        tile = poolManager?.getTile(deadTriggerModel)
-        tile?.setPositionWithOffset(position: calculateTilePosition(row, platformData[row].count))
-
+        let tile = poolManager?.getTile(deadTriggerModel)
+        tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
     }
     
     
