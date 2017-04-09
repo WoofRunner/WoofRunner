@@ -21,7 +21,6 @@ public final class TileModelFactory {
         createLightPlatform()
         createMovingPlatform()
         createAllowsJumpingPlatform()
-        
         createStaticObstacle()
         createJumpingObstacle()
         createRotatingAxeObstacle()
