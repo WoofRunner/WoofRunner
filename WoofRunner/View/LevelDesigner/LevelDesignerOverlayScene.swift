@@ -18,7 +18,7 @@ class LevelDesignerOverlayScene: SKScene,
 	
 	// Retrieve list of unique TileModels
 	let factory = TileModelFactory.sharedInstance
-	let allTileModels = TileModelFactory.tileModels
+	let allTileModels = TileModelFactory.sharedInstance.tileModels
 	
 	var overlayDelegate: LDOverlayDelegate?
 	var paletteMenu = PaletteMenu()
