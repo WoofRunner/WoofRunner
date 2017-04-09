@@ -32,7 +32,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
     var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
-	var currentLevelName = "Custom Level" // Default Name
+	var currentLevelName = "Custom Level 1" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
     var longPress = false
 
@@ -55,10 +55,15 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		currentLevel = sampleLevel
 		
 		// Load a level if initialised from previous ViewController
-		if let _ = loadedLevel {
-			currentLevel.load(from: loadedLevel!)
+		if let loadedLevel = loadedLevel {
+			currentLevel.load(from: loadedLevel)
+			
+			// Update current level name to the one in the loadedLevel if it exists
+			if let levelName = loadedLevel.name {
+				currentLevelName = levelName
+			}
 		}
-        
+
         // Load level
         LDScene.loadLevel(currentLevel)
         sampleLevel.reloadChunk(from: 0)
@@ -84,6 +89,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return
         }
 		sceneView.overlaySKScene = spriteScene
+		spriteScene?.updateDisplayedLevelName(currentLevelName)
+
         // Observe currentTileSelection
 		skScene.currentBrushSelection.asObservable()
 			.subscribe(onNext: {
@@ -284,7 +291,13 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 
     /// Saves the current level into CoreData.
     private func saveGame() {
-        gsm.saveGame(currentLevel)
+		
+		// Converts currentLevel to a storedGame objcet and set its levelName property
+		let storedGame = currentLevel.toStoredGame()
+		storedGame.name = self.currentLevelName
+
+		// Save Game
+        gsm.saveGame(storedGame)
             .onSuccess { _ in
 				self.showSaveFeedback(title: "Save Success", message: "Game is successfully saved as \(self.currentLevelName)")
             }
