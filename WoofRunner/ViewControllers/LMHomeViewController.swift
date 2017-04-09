@@ -16,34 +16,10 @@ public class LMHomeViewController: UIViewController {
 
     private var vm = LMHomeViewModel()
 
-    // MARK: - IBActions
-
-    @IBAction func navigateToDownloadedGames(_ sender: UIButton) {
-        performSegue(withIdentifier: "segueToLevelList", sender: LevelListType.Downloaded)
-    }
-
-    @IBAction func navigateToCreatedGames(_ sender: UIButton) {
-        performSegue(withIdentifier: "segueToLevelList", sender: LevelListType.Created)
-    }
-
-    @IBAction func unwindToLevelMarketplaceHome(segue: UIStoryboardSegue) {}
-
     // MARK: - Lifecycle methods
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? LMListViewController {
-            let levelListType = sender as! LevelListType
-            destination.listType = levelListType
-        }
-
-        // Embedded segues
-        if let destination = segue.destination as? LMListCollectionViewController {
-            destination.games = vm.featuredGames
-        }
     }
 
 }

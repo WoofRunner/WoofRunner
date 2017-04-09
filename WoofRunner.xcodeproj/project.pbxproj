@@ -29,12 +29,10 @@
 		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
 		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
 		12C4578B1E8D6B1700CFD541 /* LMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4578A1E8D6B1700CFD541 /* LMListViewModel.swift */; };
-		12DA42061E86627700C23137 /* LMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42051E86627700C23137 /* LMListViewController.swift */; };
 		12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LMCardViewCell.swift */; };
 		12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */; };
 		12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */; };
 		12DC8DBA1E8928FB00B8A40C /* GameStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */; };
-		12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E308861E86DCC400F670C9 /* LMListCollectionViewController.swift */; };
 		12EE38C01E78E99F00D81378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */; };
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
@@ -186,12 +184,10 @@
 		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
 		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
 		12C4578A1E8D6B1700CFD541 /* LMListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListViewModel.swift; sourceTree = "<group>"; };
-		12DA42051E86627700C23137 /* LMListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListViewController.swift; sourceTree = "<group>"; };
 		12DA42091E86699200C23137 /* LMCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCardViewCell.swift; sourceTree = "<group>"; };
 		12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewModel.swift; sourceTree = "<group>"; };
 		12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewModel.swift; sourceTree = "<group>"; };
 		12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStorageManager.swift; sourceTree = "<group>"; };
-		12E308861E86DCC400F670C9 /* LMListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMListCollectionViewController.swift; sourceTree = "<group>"; };
 		12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManager.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -377,8 +373,6 @@
 				3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */,
 				12882B881E857059004C3B76 /* LMLoginViewController.swift */,
 				121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */,
-				12DA42051E86627700C23137 /* LMListViewController.swift */,
-				12E308861E86DCC400F670C9 /* LMListCollectionViewController.swift */,
 				3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */,
 				3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */,
 				3F0F81BE1E92BC4900114CD0 /* RenameDialogViewController.swift */,
@@ -913,7 +907,6 @@
 				3F0F81C31E955E7C00114CD0 /* LevelSelectorItemImageView.swift in Sources */,
 				120208021E7448710066BD4C /* CoreDataStack.swift in Sources */,
 				3FD5D0231E8F5BB7007573C4 /* LevelCardViewModel.swift in Sources */,
-				12DA42061E86627700C23137 /* LMListViewController.swift in Sources */,
 				121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */,
 				3FA4B1731E880D5500D93703 /* CurrentSelectionNode.swift in Sources */,
 				3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */,
@@ -981,7 +974,6 @@
 				F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */,
 				3FCC89A31E7EB8C6005A7C03 /* RootSKSpriteNode.swift in Sources */,
 				12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */,
-				12E308871E86DCC400F670C9 /* LMListCollectionViewController.swift in Sources */,
 				F33754E71E97812D00839AFD /* TileModel.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
