@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rrS-Wa-h6v">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -36,16 +36,20 @@
                         <viewControllerLayoutGuide type="bottom" id="WI5-Ax-dOi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JD4-3v-opV" customClass="iCarousel">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-background" translatesAutoresizingMaskIntoConstraints="NO" id="2oB-0I-0Au">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnG-P1-GCq">
                                 <rect key="frame" x="30" y="28" width="80" height="67"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="B1B-jb-yVH"/>
                                     <constraint firstAttribute="width" secondItem="VnG-P1-GCq" secondAttribute="height" multiplier="305:256" id="aDR-um-qEc"/>
                                 </constraints>
-                                <state key="normal" title="Home" image="home-button">
+                                <state key="normal" image="home-button">
                                     <color key="titleColor" red="0.85329520962012562" green="0.69795945232376311" blue="1" alpha="0.83834546232876717" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -76,6 +80,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home-button" width="256" height="256"/>
+        <image name="home-button" width="70" height="70"/>
+        <image name="menu-background" width="384" height="512"/>
     </resources>
 </document>

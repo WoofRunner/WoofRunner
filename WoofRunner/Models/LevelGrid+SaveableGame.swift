@@ -72,8 +72,8 @@ extension LevelGrid: SaveableGame {
 		for row in 0...length - 1 {
 			for col in 0...LevelGrid.levelCols - 1 {
 				let gridVM = GridViewModel(row: row, col: col)
-				gridVM.setType(platform: TileType(rawValue: platformArray[row][col])!,
-				               obstacle: TileType(rawValue: obstacleArray[row][col])!)
+				gridVM.setType(platform: platformArray[row][col],
+				               obstacle: obstacleArray[row][col])
 				setupObservables(gridVM)
 				// Append to array
 				gridViewModelArray[row][col] = gridVM
@@ -140,8 +140,8 @@ extension LevelGrid: SaveableGame {
     // Returns if the row is empty of platform and obstacles
     private func isEmptyRow(_ row: [GridViewModel]) -> Bool {
         for gridVM in row {
-            if gridVM.platformType.value != TileType.none
-                || gridVM.obstacleType.value != TileType.none {
+            if gridVM.platformType.value != nil
+                || gridVM.obstacleType.value != nil {
                 return false
             }
         }

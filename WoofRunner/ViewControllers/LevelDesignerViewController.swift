@@ -31,7 +31,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var LDScene = LevelDesignerScene()
     var sceneView = SCNView()
     var currentLevel = LevelGrid()
-    var currentSelectedBrush: TileType = .floorLight // Observing overlayScene
+    var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
 	var currentLevelName = "Custom Level 1" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
     var longPress = false
@@ -85,7 +85,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             return
         }
 		sceneView.overlaySKScene = spriteScene
-		skScene.currentTileSelection.asObservable()
+        // Observe currentTileSelection
+		skScene.currentBrushSelection.asObservable()
 			.subscribe(onNext: {
 				(brush) in
 				self.currentSelectedBrush = brush
@@ -115,6 +116,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    // MARK: Handle Gestures
     func handlePan(_ sender: UIPanGestureRecognizer) {
         if (!canEdit() || longPress) {
             return
@@ -317,8 +319,9 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	}
 	
 	private func showRenameDialog() {
+		
 		// Create a custom view controller
-		let renameVC = RenameDialogViewController()
+		let renameVC = RenameDialogViewController(nibName: "RenameDialogViewController", bundle: nil)
 		
 		// Create the dialog
 		let popup = PopupDialog(viewController: renameVC, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false)
@@ -329,8 +332,25 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		}
 		
 		let okBtn = DefaultButton(title: "OK", height: 60) {
-			self.currentLevelName = renameVC.getLevelName()
+			
+			// Validate Input Level Name
+			if self.validateLevelName(renameVC.getLevelName()) {
+				
+				// Hide warning text (in case it was previously visible)
+				renameVC.hideWarningText()
+				
+				// Update Level Name
+				self.currentLevelName = renameVC.getLevelName()
+				self.spriteScene?.updateDisplayedLevelName(self.currentLevelName)
+				
+				// Dismiss popup
+				popup.dismiss()
+			} else {
+				renameVC.showWarningText()
+			}
 		}
+		okBtn.dismissOnTap = false
+		
 	
 		popup.addButtons([cancelBtn, okBtn])
 		customiseDialogButtons()
@@ -347,30 +367,34 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	
 	private func customiseDialogAppearance() {
 		let dialogAppearance = PopupDialogDefaultView.appearance()
-		dialogAppearance.titleFont            = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
-		dialogAppearance.titleColor           = UIColor(white: 0.4, alpha: 1)
-		dialogAppearance.titleTextAlignment   = .center
-		dialogAppearance.messageFont          = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
-		dialogAppearance.messageColor         = UIColor(white: 0.6, alpha: 1)
+		dialogAppearance.titleFont = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
+		dialogAppearance.titleColor = UIColor(white: 0.4, alpha: 1)
+		dialogAppearance.titleTextAlignment = .center
+		dialogAppearance.messageFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
+		dialogAppearance.messageColor = UIColor(white: 0.6, alpha: 1)
 		dialogAppearance.messageTextAlignment = .center
 	}
 	
 	private func customiseDialogOverlayAppearance() {
 		let overlayAppearance = PopupDialogOverlayView.appearance()
-		overlayAppearance.color       = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
-		overlayAppearance.blurRadius  = 30
+		overlayAppearance.color = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
+		overlayAppearance.blurRadius = 30
 		overlayAppearance.blurEnabled = true
-		overlayAppearance.liveBlur    = false
+		overlayAppearance.liveBlur = false
 	}
 	
 	private func customiseDialogButtons() {
 		// Default buttons
 		let defaultBtnAppearance = DefaultButton.appearance()
-		defaultBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+		defaultBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
 		
 		// Cancel Button
 		let cancelBtnAppearance = CancelButton.appearance()
-		cancelBtnAppearance.titleFont      = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+		cancelBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
+	}
+	
+	private func validateLevelName(_ name: String) -> Bool {
+		return !(name.characters.count < 5 || name.characters.count > 40)
 	}
 	
 	
@@ -380,7 +404,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		saveGame()
 	}
 	
-	internal func renameLevel() {
+	internal func renameLevel(_ name: String) {
+		self.currentLevelName = name
 		showRenameDialog()
 	}
 	

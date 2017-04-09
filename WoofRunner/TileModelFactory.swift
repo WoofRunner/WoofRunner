@@ -12,7 +12,7 @@ final class TileModelFactory {
     
     static let sharedInstance: TileModelFactory = TileModelFactory()
 
-    static var tileModels: [TileModel] = []
+	static var tileModels: [TileModel] = []
     
     private init() {
         createDarkPlatform()

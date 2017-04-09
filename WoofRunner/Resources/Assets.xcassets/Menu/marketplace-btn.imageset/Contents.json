@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "marketplace-btn.png",
+      "filename" : "RRMarketplaceButton.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "marketplace-btn-1.png",
+      "filename" : "RRMarketplaceButton-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "marketplace-btn-2.png",
+      "filename" : "RRMarketplaceButton-2.png",
       "scale" : "3x"
     }
   ],

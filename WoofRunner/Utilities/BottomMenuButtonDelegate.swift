@@ -11,5 +11,5 @@ import Foundation
 protocol BottomMenuButtonDelegate {
 	func saveLevel()
 	func back()
-	func renameLevel()
+	func renameLevel(_ name: String)
 }
