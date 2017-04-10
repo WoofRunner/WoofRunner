@@ -8,9 +8,11 @@
 
 import UIKit
 import SceneKit
+import SpriteKit
 
-class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
-
+class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, GameplayOverlayDelegate {
+	
+	private var overlaySpriteScene: GameplayOverlayScene?
 	private var gameUUID: String?
     private let gsm = GameStorageManager.getInstance()
     
@@ -160,6 +162,19 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     private func setup(game: StoredGame) {
         World.setUpWorld(self.view)
         
+		guard let sceneView = self.view as? SCNView else {
+			print("Error: Unable to setup game world as SCNView cannt be found!")
+			return
+		}
+		
+		// TODO: Swap self.view with sceneView
+		World.setUpWorld(self.view)
+		
+		// Setup Gameplay Overlay UI
+		overlaySpriteScene = GameplayOverlayScene(size: sceneView.frame.size)
+		sceneView.overlaySKScene = overlaySpriteScene
+		overlaySpriteScene?.setDelegate(self)
+
         let newPlayer = Player()
         World.spawnGameObject(newPlayer)
         World.registerGestureInput(newPlayer)
@@ -222,4 +237,23 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     func getCompletedPercentage() -> Float {
         return tileManager?.percentageCompleted ?? 0.0
     }
+	
+	// MARK: - GameplayOverlayDelegate
+	
+	internal func pauseGame() {
+		// TODO
+	}
+	
+	internal func resumeGame() {
+		// TODO
+	}
+	
+	internal func exitGame() {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+	internal func retryGame() {
+		// TODO
+		restartGame()
+	}
 }
