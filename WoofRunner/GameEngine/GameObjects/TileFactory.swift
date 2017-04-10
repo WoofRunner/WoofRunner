@@ -12,7 +12,7 @@ import SceneKit
 final class TileFactory {
     
     static let sharedInstance: TileFactory = TileFactory()
-
+    
     private init() {
     }
     
