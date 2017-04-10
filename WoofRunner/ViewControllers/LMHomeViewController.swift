@@ -19,6 +19,7 @@ public class LMHomeViewController: UIViewController {
     fileprivate var carousel: iCarousel!
     fileprivate var homeButton: UIButton!
     fileprivate var fbLoginOverlay: FacebookLoginOverlay?
+	fileprivate var loadingOverlay = UIImageView(image: UIImage(named: "loading-bg"))
 
     // MARK: - Private variables
 
@@ -38,6 +39,7 @@ public class LMHomeViewController: UIViewController {
         } else {
             addFacebookLoginOverlay()
         }
+		
     }
 
     // MARK: - Private methods
@@ -79,7 +81,18 @@ public class LMHomeViewController: UIViewController {
         setupBackgroundView()
         setupCarouselView()
         setupHomeButton()
+		setupLoadingOverlay()
     }
+	
+	// Setup the loading overlay view
+	private func setupLoadingOverlay() {
+		loadingOverlay.image = UIImage(named: "loading-bg")
+		self.view.addSubview(loadingOverlay)
+		loadingOverlay.frame.size = CGSize(width: 350, height: 350)
+		loadingOverlay.frame.origin.x = (view.frame.size.width / 2) - (loadingOverlay.frame.size.width / 2)
+		loadingOverlay.frame.origin.y = (view.frame.size.height / 2) - (loadingOverlay.frame.size.height / 2)
+		loadingOverlay.isHidden = false
+	}
 
     /// Setup the iCarousel view.
     private func setupCarouselView() {
@@ -129,24 +142,30 @@ public class LMHomeViewController: UIViewController {
 
     /// Loads levels from GameStorageManager into the ViewModel.
     private func loadLevels() {
+		self.loadingOverlay.isHidden = false
         gsm.loadAllPreviews()
             .onSuccess { games in
                 self.vm.setGames(games)
+				self.loadingOverlay.isHidden = true
             }
             .onFailure { error in
                 print("\(error.localizedDescription)")
                 self.vm.setFailure(true)
+				self.loadingOverlay.isHidden = true
         }
     }
 
     /// Downloads the level to stored
     fileprivate func downloadLevel(uuid: String) {
+		self.loadingOverlay.isHidden = false
         gsm.downloadGame(uuid: uuid)
             .onSuccess { game in
                 print("Download \(uuid) success")
+				self.loadingOverlay.isHidden = true
             }
             .onFailure { error in
                 print("\(error.localizedDescription)")
+				self.loadingOverlay.isHidden = true
         }
     }
 
