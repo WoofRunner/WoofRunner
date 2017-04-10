@@ -16,12 +16,11 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     let scnScene: SCNScene
     
     var lastTime: TimeInterval = 0
-
     public var gestureDelegate: GestureDelegate?
-    
     let LEVEL_PATH = "art.scnassets/level.scn"
     
     var isPause: Bool = false
+    var isDebug: Bool = false
     
     init(_ view: SCNView) {
         self.scnView = view
@@ -39,9 +38,11 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.autoenablesDefaultLighting = true
         scnView.showsStatistics = true
         scnView.isPlaying = true
-        
         scnView.allowsCameraControl = false
-        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        
+        if isDebug {
+            scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        }
         
         setUpGesture()
     }
@@ -110,14 +111,6 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         contact.nodeA.onCollide(otherSCNNode: contact.nodeB)
         contact.nodeB.onCollide(otherSCNNode: contact.nodeA)
-        /*
-        print("A")
-        print(contact.nodeA)
-        print("B")
-        print(contact.nodeB)
-        print()
-        print()
- */
     }
     
     public func destroyEngine() {

@@ -14,6 +14,7 @@ class RotatingObstacle: Obstacle {
     var interval: Float = 1
     var curTime: Float
     var rotateAmount: CGFloat = CGFloat(90).degreesToRadians
+    var rotateDuration: Double = 0.3
     
     override init(_ tileModel: TileModel) {
         curTime = interval
@@ -24,7 +25,7 @@ class RotatingObstacle: Obstacle {
     }
 
     func rotateAxe() {
-        let action = SCNAction.rotateBy(x: 0, y: rotateAmount, z: 0, duration: 0.3)
+        let action = SCNAction.rotateBy(x: 0, y: rotateAmount, z: 0, duration: rotateDuration)
         runAction(action)
     }
 
