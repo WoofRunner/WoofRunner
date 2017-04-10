@@ -16,10 +16,10 @@ import PopupDialog
 class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
     // Camera Settings
-    static var cameraHeight: Float = 6
-    static var cameraAngle: Float = -0.77
-    static var cameraOffset: Float = 3.5
-    static var paddingTiles: Float = 2.0
+    static var cameraHeight: Float = 6.75
+    static var cameraAngle: Float = -1.0
+    static var cameraOffset: Float = 3.0
+    static var paddingTiles: Float = 4.0
     static var panningSensitivity: Float = 15 // Default = 15
 	
     // Level Designer Settings

@@ -29,12 +29,12 @@ extension LevelGrid: SaveableGame {
 
         // Set StoredGame values
         preprocessLevel()
-        print(self.length, obstacleArray.count, platformArray.count, gridViewModelArray.count)
+
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
 
         removeCurrentObstacles(game: res)
-        removeCurrentObstacles(game: res)
+        removeCurrentPlatforms(game: res)
         createStoredObstacles(game: res)
         createStoredPlatforms(game: res)
 
@@ -169,7 +169,7 @@ extension LevelGrid: SaveableGame {
         for index in 0...platformLength - 1 {
             let row = gridViewModelArray[platformLength - index - 1]
             if !isEmptyRow(row) {
-                platformLength = platformLength - index - 1
+                platformLength = platformLength - index
                 break
             }
         }
