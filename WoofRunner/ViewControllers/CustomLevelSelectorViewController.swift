@@ -53,9 +53,9 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 	private func populateLevelData() {
 		gsm.getAllGames()
 			.onSuccess { games in
+                print("\(games.count) games loaded.")
 				self.levels = games
 				self.carousel.reloadData()
-				print("\(self.levels.count) games loaded.")
 			}
 			.onFailure { error in
 				print("\(error.localizedDescription)")
@@ -143,8 +143,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		gsm.deleteGame(uuid)
             .onSuccess { _ in
                 print("Game: \(uuid) deleted")
-                self.levels = self.levels.filter { $0.uuid != uuid }
-                self.carousel.reloadData()
+                self.populateLevelData()
             }
             .onFailure { error in
                 print("\(error.localizedDescription)")
