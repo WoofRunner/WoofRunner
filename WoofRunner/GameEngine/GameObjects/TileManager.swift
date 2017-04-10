@@ -231,6 +231,12 @@ class TileManager: GameObject {
         }
 
         spawnTiles()
+        
+        delegate?.onCompletionUpdated(percentageCompleted)
+    }
+    
+    public func stopMoving() {
+        moveState = MoveState.ended
     }
 }
 

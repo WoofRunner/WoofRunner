@@ -84,7 +84,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     // notified by player when player dies
     func playerDied() {
-        //restartGame()
+        tileManager?.stopMoving()
 		overlaySpriteScene?.showLoseMenu()
     }
     
@@ -95,12 +95,15 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     }
     
     func onTileManagerEnded() {
-		//restartGame()
 		overlaySpriteScene?.showWinMenu()
     }
     
     func getCompletedPercentage() -> Float {
         return tileManager?.percentageCompleted ?? 0.0
+    }
+    
+    func onCompletionUpdated(_ percentageCompleted: Float) {
+        overlaySpriteScene?.updateScore(percentageCompleted * Float(100))
     }
     
     // Play background music
