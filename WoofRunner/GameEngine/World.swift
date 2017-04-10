@@ -21,7 +21,7 @@ class World {
     static let MSG_WARNING = "WARNING: "
     static let MSG_GAME_ENGINE_NIL = " but GameEngine is nil"
     
-    public static func setUpWorld(_ view: UIView) {
+    public static func setUpWorld(_ view: SCNView) {
         gameEngine = GameEngine(view)
     }
 
@@ -66,6 +66,10 @@ class World {
         gameEngine?.shakeScreen()
     }
     
+    public static func setPause(isPaused: Bool) {
+        gameEngine?.isPause = isPaused
+    }
+    
     private static func isGameEngineValid(taskMessage: String) -> Bool {
         if World.gameEngine == nil {
             print(MSG_WARNING + taskMessage + MSG_GAME_ENGINE_NIL)
@@ -73,4 +77,6 @@ class World {
         }
         return true
     }
+    
+    
 }

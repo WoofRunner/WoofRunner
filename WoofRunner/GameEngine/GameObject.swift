@@ -35,7 +35,7 @@ class GameObject: SCNNode, GestureDelegate {
         }
         onCollide(other: otherGameObject)
     }
-
+    
     // set to pending destroy to be destroyed by game engine
     public func destroy() {
         isWaitingToBeDestroyed = true

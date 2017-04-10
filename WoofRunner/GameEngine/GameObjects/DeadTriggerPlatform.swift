@@ -16,4 +16,10 @@ class DeadTriggerPlatform : Platform {
         let trigger = Trigger(SCNVector3(GameSettings.TILE_WIDTH/2, GameSettings.TILE_WIDTH/2, -GameSettings.TILE_WIDTH/2))
         addChildNode(trigger)
     }
+    
+    override func onCollide(other: GameObject) {
+        if let player = other as? Player {
+            player.infiniteFalling()
+        }
+    }
 }

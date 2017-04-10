@@ -23,6 +23,8 @@ class MovingPlatform : Platform {
     private var rightBound: Float = GameSettings.TILE_WIDTH * Float(GameSettings.PLATFORM_COLUMNS/2) - GameSettings.TILE_WIDTH
     private var leftBound: Float = GameSettings.TILE_WIDTH * -Float(GameSettings.PLATFORM_COLUMNS/2)
 
+    private let MIN_NUM_OF_COL = 1
+    
     let KILL_PLATFORM_NAME = "Kill Platform"
     var deadTriggerModel: TileModel? {
         return TileModelFactory.sharedInstance.findTileModel(name: KILL_PLATFORM_NAME)
@@ -35,10 +37,10 @@ class MovingPlatform : Platform {
     }
 
     func createAdjacentDeadTriggers() {
-        if GameSettings.PLATFORM_COLUMNS < 1 { return }
+        if GameSettings.PLATFORM_COLUMNS < MIN_NUM_OF_COL { return }
         
-        for colIndex in 1..<GameSettings.PLATFORM_COLUMNS {
-            createDeadTriggers(SCNVector3(colIndex+1, 0, 0))
+        for colIndex in MIN_NUM_OF_COL..<GameSettings.PLATFORM_COLUMNS {
+            createDeadTriggers(SCNVector3(Float(colIndex) + GameSettings.TILE_WIDTH, 0, 0))
             createDeadTriggers(SCNVector3(-colIndex, 0, 0))
         }
     }

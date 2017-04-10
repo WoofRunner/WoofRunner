@@ -23,10 +23,9 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     
     var isPause: Bool = false
     
-    init?(_ view: UIView) {
-        guard let view = view as? SCNView else { return nil }
+    init(_ view: SCNView) {
         self.scnView = view
-
+        
         if let newScnScene = SCNScene(named: LEVEL_PATH) {
             scnScene = newScnScene
         } else {
@@ -42,7 +41,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.isPlaying = true
         
         scnView.allowsCameraControl = false
-        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         
         setUpGesture()
     }
@@ -53,11 +52,15 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         }
         
         let panGestureReg = UIPanGestureRecognizer(target: self, action: #selector((panGesture)))
+		panGestureReg.cancelsTouchesInView = false // Allow Gameplay UI to receive touches
+		
         panGestureReg.minimumNumberOfTouches = 1
         panGestureReg.maximumNumberOfTouches = 1
         scnView.addGestureRecognizer(panGestureReg)
-        
-        scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
+		
+		let tapGestureReg = UITapGestureRecognizer(target: self, action: #selector((tapGesture)))
+		tapGestureReg.cancelsTouchesInView = false // Allow Gameplay UI to receive touches
+        scnView.addGestureRecognizer(tapGestureReg)
     }
     
     public func panGesture(gesture: UIPanGestureRecognizer) {
