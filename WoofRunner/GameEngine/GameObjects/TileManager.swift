@@ -22,6 +22,8 @@ class TileManager: GameObject {
     var obstacleData: [[TileModel?]] = []
     var platformData: [[TileModel?]] = []
     
+    var platformSpeed: Float = 6
+    
     var tailIndex: Int = 0
     var platformTail: Float = 0
     
@@ -217,7 +219,7 @@ class TileManager: GameObject {
             }
             
         case .moving:
-            position = SCNVector3(x: position.x, y: position.y, z: position.z + 6 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + platformSpeed * deltaTime)
             
             if position.z > stopPosition.z {
                 moveState = MoveState.ended
