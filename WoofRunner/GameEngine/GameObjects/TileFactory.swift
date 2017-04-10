@@ -12,14 +12,11 @@ import SceneKit
 final class TileFactory {
     
     static let sharedInstance: TileFactory = TileFactory()
-
-    let WARNING_INVALID_TILE = "WARNING: Cant create tile, TileType: "
     
     private init() {
     }
     
     public func createTile(_ tileModel: TileModel) -> Tile? {
-
         if let platformModel = tileModel as?  PlatformModel {
             return createPlatformTile(platformModel)
         }
@@ -62,7 +59,7 @@ final class TileFactory {
             obstacle = RotatingObstacle(obstacleModel)
             
         case .none:
-            obstacle = Rock(obstacleModel)
+            obstacle = Obstacle(obstacleModel)
             
         }
         return obstacle

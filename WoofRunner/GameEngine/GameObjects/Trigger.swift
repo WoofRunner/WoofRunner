@@ -11,10 +11,12 @@ import SceneKit
 
 class Trigger : GameObject {
     
+    let PADDING: Float = 0.2
+    
     init(_ pos: SCNVector3) {
         super.init()
         position = pos
-        let triggerGeometry = SCNBox(width: CGFloat(GameSettings.TILE_WIDTH-0.2), height: CGFloat(GameSettings.TILE_WIDTH), length: CGFloat(GameSettings.TILE_WIDTH), chamferRadius: 0)
+        let triggerGeometry = SCNBox(width: CGFloat(GameSettings.TILE_WIDTH - PADDING), height: CGFloat(GameSettings.TILE_WIDTH), length: CGFloat(GameSettings.TILE_WIDTH - PADDING), chamferRadius: 0)
         
         let physicShape = SCNPhysicsShape(geometry: triggerGeometry, options: nil)
         physicsBody = SCNPhysicsBody(type: .kinematic, shape: physicShape)
@@ -23,6 +25,6 @@ class Trigger : GameObject {
     }
     
     override convenience init() {
-        self.init(SCNVector3(0, 0, 0))
+        self.init(SCNVector3.zero())
     }
 }

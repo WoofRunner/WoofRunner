@@ -14,4 +14,10 @@ class JumpPlatform : Platform {
     override init(_ tileModel: TileModel) {
         super.init(tileModel)
     }
+    
+    override func onCollide(other: GameObject) {
+        if let player = other as? Player {
+            player.startJump()
+        }
+    }
 }

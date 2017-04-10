@@ -10,19 +10,15 @@ import SceneKit
 
 class Tile: GameObject {
     
+    let tileId: Int
     var delegate: TileDelegate?
-    
-    var tileType: TileType = TileType.none
-    
-    var autoDestroyPositionZ: Float = 5
     
     var triggerDistance: Float = 0
     var isTriggered: Bool = false
     
     var positionOffSet: SCNVector3 = SCNVector3.zero()
+    private var autoDestroyPositionZ: Float = 5
     
-    let tileId: Int
-
     init(_ tileModel: TileModel) {
         tileId = tileModel.tileId
         super.init()

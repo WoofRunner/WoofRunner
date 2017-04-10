@@ -8,133 +8,24 @@
 
 import UIKit
 import SceneKit
+import SpriteKit
 
-class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
-
-	private var gameUUID: String?
+class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, GameplayOverlayDelegate {
+    
+    private var overlaySpriteScene: GameplayOverlayScene?
+    private var gameUUID: String?
     private let gsm = GameStorageManager.getInstance()
     
     private var player: Player?
     private var tileManager: TileManager?
-    
-    var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 5],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 5],
-                                 [4, 4, 0, 0, 0],
-                                 [4, 4, 0, 0, 5],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0]]
-    /*
-    var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0]]
-    */
-    var platformData: [[Int]] = [[1, 1, 1, 1, 1],
-                                 [1, 1, 1, 1, 1],
-                                 [1, 1, 1, 1, 1],
-                                 [7, 0, 0, 0, 0],
-                                 [1, 1, 3, 1, 1],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 1, 2],
-                                 [1, 0, 1, 2, 1],
-                                 [2, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 7, 2, 1],
-                                 [2, 1, 7, 1, 2],
-                                 [0, 0, 7, 0, 0],
-                                 [0, 0, 7, 0, 0],
-                                 [0, 0, 7, 0, 0],
-                                 [0, 0, 7, 1, 2],
-                                 [1, 0, 7, 2, 1],
-                                 [2, 0, 2, 1, 2],
-                                 [1, 1, 1, 2, 1]]
-
+    private var bgmSoundNode = GameObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let uuid = gameUUID else {
             fatalError("Game UUID not defined")
         }
-
+        
         GameStorageManager.getInstance().getGame(uuid: uuid)
             .onSuccess { game in
                 self.setup(game: game)
@@ -148,59 +39,47 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override var shouldAutorotate: Bool {
         return true
     }
-
-	public func setGameUUID(_ uuid: String) {
-		self.gameUUID = uuid
-	}
-	
+    
+    public func setGameUUID(_ uuid: String) {
+        self.gameUUID = uuid
+    }
+    
     private func setup(game: StoredGame) {
-        World.setUpWorld(self.view)
-
+        guard let sceneView = self.view as? SCNView else {
+            print("Error: Unable to setup game world as SCNView cannt be found!")
+            return
+        }
+        
+        // TODO: Swap self.view with sceneView
+        World.setUpWorld(sceneView)
+        
+        // Setup Gameplay Overlay UI
+        overlaySpriteScene = GameplayOverlayScene(size: sceneView.frame.size)
+        sceneView.overlaySKScene = overlaySpriteScene
+        overlaySpriteScene?.setDelegate(self)
+        
         let newPlayer = Player()
         World.spawnGameObject(newPlayer)
         World.registerGestureInput(newPlayer)
         newPlayer.delegate = self
         self.player = newPlayer
-
+        
         if let tileManager = TileManager(obstacleModels: game.getObstacles(), platformModels: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
             tileManager.delegate = self
             self.tileManager = tileManager
-        }       
-
+        }
+        
         let camera = Camera()
         World.spawnGameObject(camera)
         //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
-    }
-    
-    private func tempSetup() {
-        World.setUpWorld(self.view)
-        let newPlayer = Player()
-        World.spawnGameObject(newPlayer)
-        World.registerGestureInput(newPlayer)
-        newPlayer.delegate = self
-        self.player = newPlayer
-       
-        /*
-        if let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData) {
-            World.spawnGameObject(tileManager)
-            tileManager.delegate = self
-            self.tileManager = tileManager
-        }
-        */
-        
-        let camera = Camera()
-        World.spawnGameObject(camera)
         
         // Play background music
-        let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0)
-        let bgmSoundNode = GameObject()
-        World.spawnGameObject(bgmSoundNode)
-        bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
+        playBGM()
     }
     
     // notified by player when player dies
@@ -209,11 +88,47 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     }
     
     func restartGame() {
+        resumeGame()
         tileManager?.restartLevel()
         player?.restart()
     }
     
     func onTileManagerEnded() {
+        restartGame()
+    }
+    
+    func getCompletedPercentage() -> Float {
+        return tileManager?.percentageCompleted ?? 0.0
+    }
+    
+    // Play background music
+    private func playBGM() {
+        let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0, loops: true)
+        bgmSoundNode = GameObject()
+        World.spawnGameObject(bgmSoundNode)
+        bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
+    }
+    
+    private func stopBGM() {
+        bgmSoundNode.destroy()
+    }
+    
+    // MARK: - GameplayOverlayDelegate
+    
+    internal func pauseGame() {
+        World.setPause(isPaused: true)
+    }
+    
+    internal func resumeGame() {
+        World.setPause(isPaused: false)
+    }
+    
+    internal func exitGame() {
+        stopBGM()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    internal func retryGame() {
         restartGame()
     }
 }
