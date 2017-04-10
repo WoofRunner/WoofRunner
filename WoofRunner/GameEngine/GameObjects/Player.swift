@@ -11,7 +11,7 @@ import SceneKit
 
 class Player: GameObject {
     
-    var startHeight: Float = 0
+    var startHeight: Float = -0.1
     var startOffsetX: Float = 0.5
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3
