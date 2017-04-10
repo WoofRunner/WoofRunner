@@ -18,6 +18,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     private var player: Player?
     private var tileManager: TileManager?
+    private var bgmSoundNode = GameObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,12 +101,16 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         return tileManager?.percentageCompleted ?? 0.0
     }
     
+    // Play background music
     private func playBGM() {
-        // Play background music
         let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0, loops: true)
-        let bgmSoundNode = GameObject()
+        bgmSoundNode = GameObject()
         World.spawnGameObject(bgmSoundNode)
         bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
+    }
+    
+    private func stopBGM() {
+        bgmSoundNode.destroy()
     }
     
     // MARK: - GameplayOverlayDelegate
@@ -119,6 +124,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     }
     
     internal func exitGame() {
+        stopBGM()
         self.dismiss(animated: true, completion: nil)
     }
     
