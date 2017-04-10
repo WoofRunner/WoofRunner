@@ -32,7 +32,14 @@ extension LevelGrid: SaveableGame {
         print(self.length, obstacleArray.count, platformArray.count, gridViewModelArray.count)
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
-        
+
+        guard let currentObstacles = res.obstacles, let currentPlatforms = res.platforms else {
+            fatalError("Game has no current obstacles or platforms")
+        }
+
+        res.removeFromObstacles(currentObstacles)
+        res.removeFromPlatforms(currentPlatforms)
+
         createStoredObstacles(game: res)
         createStoredPlatforms(game: res)
 
