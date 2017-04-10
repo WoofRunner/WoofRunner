@@ -32,7 +32,9 @@ extension LevelGrid: SaveableGame {
         print(self.length, obstacleArray.count, platformArray.count, gridViewModelArray.count)
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
-        
+
+        removeCurrentObstacles(game: res)
+        removeCurrentObstacles(game: res)
         createStoredObstacles(game: res)
         createStoredPlatforms(game: res)
 
@@ -123,6 +125,40 @@ extension LevelGrid: SaveableGame {
 
                 game.addToPlatforms(storedPlatform)
             }
+        }
+    }
+
+    /// Removes the current StoredPlatforms
+    private func removeCurrentPlatforms(game: StoredGame) {
+        guard let currentPlatforms = game.platforms else {
+            fatalError("Game has no current platforms")
+        }
+
+        game.removeFromPlatforms(currentPlatforms)
+
+        for item in currentPlatforms {
+            guard let platform = item as? StoredPlatform else {
+                fatalError("Current platform is not a StoredPlatform")
+            }
+
+            CoreDataManager.getInstance().context.delete(platform)
+        }
+    }
+
+    /// Removes current StoredObstacles
+    private func removeCurrentObstacles(game: StoredGame) {
+        guard let currentObstacles = game.obstacles else {
+            fatalError("Game has no current obstacles")
+        }
+
+        game.removeFromPlatforms(currentObstacles)
+
+        for item in currentObstacles {
+            guard let obstacle = item as? StoredObstacle else {
+                fatalError("Current platform is not a StoredObstacle")
+            }
+
+            CoreDataManager.getInstance().context.delete(obstacle)
         }
     }
     
