@@ -22,7 +22,6 @@ public class OnlineStorageManager {
 
     // MARK: - Private variables
     private let ref: FIRDatabaseReference
-    private var facebookUserId: String?
 
     // MARK: - Private constants
     private static let GAMES = "games"
@@ -104,7 +103,12 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
-        game.ownerId = facebookUserId
+        let auth = AuthManager.shared
+        guard let ownerId = auth.facebookToken?.userId else {
+            fatalError("Cannot call OSM save game when user is unauthenticated")
+        }
+
+        game.ownerId = ownerId
         ref.child(game.uuid!).setValue(mapToJSON(game: game))
     }
 
