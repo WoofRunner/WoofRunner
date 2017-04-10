@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		120208021E7448710066BD4C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208011E7448710066BD4C /* CoreDataStack.swift */; };
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
+		120B70881E9B7C0000E55C2B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B70871E9B7C0000E55C2B /* AuthManager.swift */; };
 		121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
@@ -34,6 +35,7 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
+		12F9B60D1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */; };
 		3F0F81B71E916B7900114CD0 /* CustomLevel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81B61E916B7900114CD0 /* CustomLevel.storyboard */; };
 		3F0F81B91E91707400114CD0 /* CustomLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */; };
 		3F0F81BB1E92974E00114CD0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */; };
@@ -139,6 +141,7 @@
 /* Begin PBXFileReference section */
 		120208011E7448710066BD4C /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		120B70871E9B7C0000E55C2B /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 		12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManager.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginOverlay.swift; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
 		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0F81B61E916B7900114CD0 /* CustomLevel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomLevel.storyboard; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
 				12DA42091E86699200C23137 /* LMCardViewCell.swift */,
 				3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */,
+				12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */,
 				3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */,
 				12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */,
+				120B70871E9B7C0000E55C2B /* AuthManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
 				3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */,
 				3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCard.swift in Sources */,
+				120B70881E9B7C0000E55C2B /* AuthManager.swift in Sources */,
 				F38F482B1E87F28F005328A9 /* DarkPlatform.swift in Sources */,
 				12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,
@@ -843,6 +850,7 @@
 				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
 				F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */,
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,
+				12F9B60D1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */,
 				F34DEDC71E8D754D00BB8CA7 /* JumpingObstacle.swift in Sources */,
