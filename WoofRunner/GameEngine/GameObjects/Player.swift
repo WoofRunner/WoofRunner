@@ -26,13 +26,11 @@ class Player: GameObject {
     
     let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
     
-    var targetPosition: SCNVector3 = SCNVector3.zero()
     var targetPositionX: Float
     let lerpSpeed: Float = 15
     
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
-        targetPosition = startPosition
         targetPositionX = 0.5
         super.init()
         loadModel(PLAYER_MODEL_PATH)

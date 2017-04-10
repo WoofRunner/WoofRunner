@@ -29,39 +29,25 @@ public class LMLoginViewModel {
         }
     }
 
-    private let osm = OnlineStorageManager.getInstance()
-
     /// Authenticates with Facebook
     public func authWithFacebook(viewController vc: UIViewController) {
-        if let accessToken = AccessToken.current {
-            self.facebookAuthed.value = true
-            self.authWithFirebase(token: accessToken.authenticationToken,
-                                  userId: accessToken.userId!)
+        let auth = AuthManager.shared
+        if let _ = auth.firebaseID, let _ = auth.facebookToken {
+            // User is already authenticated if both token exists.
             return
         }
 
-        let loginManager = LoginManager()
-        loginManager.logIn([.publicProfile], viewController: vc) { loginResult in
-            switch loginResult {
-            case .failed:
-                print("Log in failed")
-            case .cancelled:
-                print("Log in cancelld")
-            case .success( _, _, let accessToken):
-                self.facebookAuthed.value = true
-                self.authWithFirebase(token: accessToken.authenticationToken,
-                                      userId: accessToken.userId!)
-            }
+        if let facebookToken = auth.facebookToken {
+            self.facebookAuthed.value = true
+            auth.authWithFirebase(facebookToken: facebookToken.authenticationToken)
+                .onSuccess { _ in self.firebaseAuthed.value = true }
+                .onFailure { _ in self.authFailure.value = true }
+        } else {
+            auth.authWithFacebook(vc: vc)
+                .map { token in auth.authWithFirebase(facebookToken: token.authenticationToken) }
+                .onSuccess { _ in self.firebaseAuthed.value = true }
+                .onFailure { _ in self.authFailure.value = true }
         }
-    }
-
-    /// Authenticates with Firebase
-    /// - Parameters:
-    ///     - token: Facebook token obtained from authentication
-    private func authWithFirebase(token: String, userId: String) {
-        osm.auth(token: token, userId: userId)
-            .onSuccess { _ in self.firebaseAuthed.value = true }
-            .onFailure { _ in self.authFailure.value = true }
     }
 
 }

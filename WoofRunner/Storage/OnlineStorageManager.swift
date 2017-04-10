@@ -22,7 +22,6 @@ public class OnlineStorageManager {
 
     // MARK: - Private variables
     private let ref: FIRDatabaseReference
-    private var facebookUserId: String?
 
     // MARK: - Private constants
     private static let GAMES = "games"
@@ -73,30 +72,6 @@ public class OnlineStorageManager {
         return formatter
     }
 
-    /// Authenticates with Firebase using Facebook token.
-    /// - Parameters:
-    ///     - token: Facebook token obtained from Facebook authentication
-    public func auth(token: String, userId: String) -> Future<String, OnlineStorageManagerError> {
-        self.facebookUserId = userId
-
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token)
-
-        return Future { complete in
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                if let error = error {
-                    print("\(error.localizedDescription)")
-                    complete(.failure(OnlineStorageManagerError.AuthError))
-                } else {
-                    if let authUser = user {
-                        complete(.success(authUser.uid))
-                    } else {
-                        complete(.failure(OnlineStorageManagerError.AuthError))
-                    }
-                }
-            }
-        }
-    }
-
     /// Loads a game using its UUID.
     /// - Parameters:
     ///     - uuid: UUID of the game that is requested
@@ -128,7 +103,12 @@ public class OnlineStorageManager {
     /// - Parameters:
     ///     - game: game model object that extends Serializable
     public func save(_ game: StoredGame) {
-        game.ownerId = facebookUserId
+        let auth = AuthManager.shared
+        guard let ownerId = auth.facebookToken?.userId else {
+            fatalError("Cannot call OSM save game when user is unauthenticated")
+        }
+
+        game.ownerId = ownerId
         ref.child(game.uuid!).setValue(mapToJSON(game: game))
     }
 

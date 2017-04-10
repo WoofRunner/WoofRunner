@@ -8,12 +8,14 @@
 
 
 import UIKit
+import FacebookLogin
 import iCarousel
 
 class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 	
 	var gsm = GameStorageManager.getInstance()
 	var levels = [StoredGame]()
+    var fbOverlay: FacebookLoginOverlay?
 	
 	
 	@IBOutlet var carousel: iCarousel!
@@ -138,21 +140,51 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		
 		print("Selected Item To Delete: \(uuid)")
 		
-		// TODO: Delete level on GSM
-		
-		self.carousel.reloadData()
+		gsm.deleteGame(uuid)
+            .onSuccess { _ in
+                print("Game: \(uuid) deleted")
+                self.carousel.reloadData()
+            }
+            .onFailure { error in
+                print("\(error.localizedDescription)")
+        }
 	}
 	
 	func uploadLevelHandler(sender: UIButton!) {
 		let btn = sender as! LevelSelectorItemButton
 		let uuid = btn.getBindedUUID()
-		
-		print("Selected Item To Upload: \(uuid)")
-		
-		// TODO: Code to Upload level
-		
+
+        let auth = AuthManager.shared
+        if let _ = auth.facebookToken, let _ = auth.firebaseID {
+            gsm.uploadGame(uuid: uuid)
+            return
+        }
+
+        let fbOverlay = FacebookLoginOverlay(frame: view.frame)
+        let fbLoginRecognizer = PreuploadLoginTapGesture(
+            target: self, action: #selector(facebookLogin))
+        fbLoginRecognizer.uuid = uuid
+        fbOverlay.button?.addGestureRecognizer(fbLoginRecognizer)
+
+        self.fbOverlay = fbOverlay
+        view.addSubview(fbOverlay)
 	}
-	
+
+    @objc private func facebookLogin(_ sender: PreuploadLoginTapGesture) {
+        let auth = AuthManager.shared
+        auth.authWithFacebook(vc: self)
+            .flatMap { token in auth.authWithFirebase(facebookToken: token.authenticationToken) }
+            .onSuccess { _ in
+                guard let uuid = sender.uuid else {
+                    fatalError("Preupload login gesture not attached to a UUID")
+                }
+
+                self.fbOverlay?.removeFromSuperview()
+                self.gsm.uploadGame(uuid: uuid)
+            }
+            .onFailure { error in print("\(error.localizedDescription)") }
+    }
+
 	// MARK: - View Setup Methods
 	
 	// Add button selectors to the input CustomLevelSelectorCard view
@@ -193,6 +225,13 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		}
 		
 	}
+
+    /** To handle preupload Facebook authentication */
+    private class PreuploadLoginTapGesture: UITapGestureRecognizer {
+
+        public var uuid: String?
+
+    }
 	
 	
 }
