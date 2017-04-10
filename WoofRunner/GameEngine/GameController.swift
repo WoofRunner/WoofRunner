@@ -159,7 +159,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
 	
     private func setup(game: StoredGame) {
         World.setUpWorld(self.view)
-
+        
         let newPlayer = Player()
         World.spawnGameObject(newPlayer)
         World.registerGestureInput(newPlayer)

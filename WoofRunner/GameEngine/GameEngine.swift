@@ -26,7 +26,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     init?(_ view: UIView) {
         guard let view = view as? SCNView else { return nil }
         self.scnView = view
-
+        
         if let newScnScene = SCNScene(named: LEVEL_PATH) {
             scnScene = newScnScene
         } else {
@@ -42,7 +42,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.isPlaying = true
         
         scnView.allowsCameraControl = false
-        scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
+        //scnView.debugOptions = SCNDebugOptions.showPhysicsShapes
         
         setUpGesture()
     }

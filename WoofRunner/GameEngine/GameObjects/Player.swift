@@ -17,7 +17,7 @@ class Player: GameObject {
     
     var isAir: Bool = false
     var jumpHeight: Float = 2
-    var jumpSpeed: Float = 3.4
+    var jumpSpeed: Float = 4.4
     var jumpTime: Float = 0
 
     var isDeadFall: Bool = false
@@ -26,8 +26,14 @@ class Player: GameObject {
     
     let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
     
+    var targetPosition: SCNVector3 = SCNVector3.zero()
+    var targetPositionX: Float
+    let lerpSpeed: Float = 15
+    
     override init() {
         startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
+        targetPosition = startPosition
+        targetPositionX = 0.5
         super.init()
         loadModel(PLAYER_MODEL_PATH)
         isTickEnabled = true
@@ -70,6 +76,8 @@ class Player: GameObject {
         } else if isAir {
             handleInAir(deltaTime)
         }
+        
+        position = SCNVector3.lerp(position, SCNVector3(targetPositionX, position.y, position.z), deltaTime * lerpSpeed)
     }
     
     private func handleDeadFall(_ deltaTime: Float) {
@@ -104,7 +112,7 @@ class Player: GameObject {
         let vpWithZ = SCNVector3(x: Float(location.x), y: Float(location.y), z: projectedOrigin.z)
         let worldPoint = World.unprojectPoint(vpWithZ)
         
-        position = SCNVector3(worldPoint.x, position.y, position.z)
+        targetPositionX = worldPoint.x
     }
     
     override func destroy() {

@@ -217,7 +217,7 @@ class TileManager: GameObject {
             }
             
         case .moving:
-            position = SCNVector3(x: position.x, y: position.y, z: position.z + 4.5 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + 6 * deltaTime)
             
             if position.z > stopPosition.z {
                 moveState = MoveState.ended
