@@ -164,9 +164,18 @@ public class GameStorageManager {
         for platformJSON in json {
             let platform = StoredPlatform(context: cdm.context)
 
-            platform.positionX = Int16(platformJSON.value(forKey: "positionX") as! String)!
-            platform.positionY = Int16(platformJSON.value(forKey: "positionY") as! String)!
-            platform.type = Int16(platformJSON.value(forKey: "type") as! String)!
+            guard let positionX = platformJSON.value(forKey: "positionX") as? Int,
+                let positionY = platformJSON.value(forKey: "positionY") as? Int else {
+                    fatalError("Platform positions cannot be converted to Int")
+            }
+
+            guard let type = platformJSON.value(forKey: "type") as? Int else {
+                fatalError("Platform type cannot be converted to Int")
+            }
+
+            platform.positionX = Int16(positionX)
+            platform.positionY = Int16(positionY)
+            platform.type = Int16(type)
 
             res.append(platform)
         }
@@ -179,9 +188,18 @@ public class GameStorageManager {
         for obstacleJSON in json {
             let obstacle = StoredObstacle(context: cdm.context)
 
-            obstacle.positionX = Int16(obstacleJSON.value(forKey: "positionX") as! String)!
-            obstacle.positionY = Int16(obstacleJSON.value(forKey: "positionY") as! String)!
-            obstacle.type = Int16(obstacleJSON.value(forKey: "type") as! String)!
+            guard let positionX = obstacleJSON.value(forKey: "positionX") as? Int,
+                let positionY = obstacleJSON.value(forKey: "positionY") as? Int else {
+                    fatalError("Obstacle positions cannot be converted to Int")
+            }
+
+            guard let type = obstacleJSON.value(forKey: "type") as? Int else {
+                fatalError("Obstacle type cannot be converted to Int")
+            }
+
+            obstacle.positionX = Int16(positionX)
+            obstacle.positionY = Int16(positionY)
+            obstacle.type = Int16(type)
 
             res.append(obstacle)
         }
