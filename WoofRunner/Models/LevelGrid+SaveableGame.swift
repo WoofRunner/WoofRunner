@@ -34,7 +34,7 @@ extension LevelGrid: SaveableGame {
         res.columns = Int16(LevelGrid.levelCols)
 
         removeCurrentObstacles(game: res)
-        removeCurrentObstacles(game: res)
+        removeCurrentPlatforms(game: res)
         createStoredObstacles(game: res)
         createStoredPlatforms(game: res)
 
