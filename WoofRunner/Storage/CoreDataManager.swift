@@ -132,6 +132,7 @@ public class CoreDataManager {
         return Future { complete in
             if let game = fetch(uuid) {
                 context.delete(game)
+                save()
                 complete(.success(true))
             } else {
                 complete(.failure(CoreDataManagerError.notFound))
