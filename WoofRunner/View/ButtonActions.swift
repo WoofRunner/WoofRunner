@@ -12,7 +12,7 @@ import SpriteKit
 struct ButtonActions {
 	
 	static let buttonScaleFactor = CGFloat(1.2)
-	static let buttonAnimationDuration = 0.2
+	static let buttonAnimationDuration = 0.05
 	
 	static func getButtonPressAction() -> SKAction {
 		let action = SKAction.scale(to: ButtonActions.buttonScaleFactor, duration: ButtonActions.buttonAnimationDuration)

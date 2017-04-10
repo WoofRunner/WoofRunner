@@ -17,7 +17,8 @@ class GameplayOverlayButton: SKSpriteNode {
 		super.init(texture: texture, color: color, size: size)
 	}
 	
-	convenience init(imageNamed: String, type: GameplayOverlayButtonType) {
+	convenience init(type: GameplayOverlayButtonType) {
+		let imageNamed = type.getSpritePath()
 		self.init(texture: SKTexture(imageNamed: imageNamed))
 		self.type = type
 	}

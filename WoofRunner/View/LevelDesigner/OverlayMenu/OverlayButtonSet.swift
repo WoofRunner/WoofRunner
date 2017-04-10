@@ -18,8 +18,8 @@ class OverlayButtonSet: SKNode {
 		super.init()
 	}
 	
-	// Init method will take in TileType and render the nodes for 
-	// button label node and button node
+	// Initialises a button with the input imageName and a display label
+	// with the input name text
 	convenience init(name: String, imageNamed: String) {
 		self.init()
 		let buttonName = name
