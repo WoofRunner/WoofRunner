@@ -53,11 +53,15 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         }
         
         let panGestureReg = UIPanGestureRecognizer(target: self, action: #selector((panGesture)))
+		panGestureReg.cancelsTouchesInView = false // Allow Gameplay UI to receive touches
+		
         panGestureReg.minimumNumberOfTouches = 1
         panGestureReg.maximumNumberOfTouches = 1
         scnView.addGestureRecognizer(panGestureReg)
-        
-        scnView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
+		
+		let tapGestureReg = UITapGestureRecognizer(target: self, action: #selector((tapGesture)))
+		tapGestureReg.cancelsTouchesInView = false // Allow Gameplay UI to receive touches
+        scnView.addGestureRecognizer(tapGestureReg)
     }
     
     public func panGesture(gesture: UIPanGestureRecognizer) {
