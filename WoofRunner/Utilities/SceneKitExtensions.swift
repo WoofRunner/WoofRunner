@@ -11,7 +11,7 @@ import SpriteKit
 
 extension SCNAudioSource {
     convenience init(name: String, volume: Float = 1.0, positional: Bool = true, loops: Bool = false, shouldStream: Bool = false, shouldLoad: Bool = true) {
-        self.init(named: "game.scnassets/sounds/\(name)")!
+        self.init(named: "art.scnassets/\(name)")!
         self.volume = volume
         self.isPositional = positional
         self.loops = loops

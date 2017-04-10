@@ -12,12 +12,11 @@ class Tile: GameObject {
     
     let tileId: Int
     var delegate: TileDelegate?
-
+    
     var triggerDistance: Float = 0
     var isTriggered: Bool = false
     
     var positionOffSet: SCNVector3 = SCNVector3.zero()
-    
     private var autoDestroyPositionZ: Float = 5
     
     init(_ tileModel: TileModel) {
