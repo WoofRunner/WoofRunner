@@ -195,6 +195,12 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         
         let camera = Camera()
         World.spawnGameObject(camera)
+        
+        // Play background music
+        let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0)
+        let bgmSoundNode = GameObject()
+        World.spawnGameObject(bgmSoundNode)
+        bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
     }
     
     // notified by player when player dies
