@@ -17,7 +17,7 @@ class JumpPlatform : Platform {
     
     override func onCollide(other: GameObject) {
         if let player = other as? Player {
-            //player.infiniteFalling()
+            player.startJump()
         }
     }
 }

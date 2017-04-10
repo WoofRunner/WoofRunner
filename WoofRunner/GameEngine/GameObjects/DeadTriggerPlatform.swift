@@ -17,5 +17,9 @@ class DeadTriggerPlatform : Platform {
         addChildNode(trigger)
     }
     
-    
+    override func onCollide(other: GameObject) {
+        if let player = other as? Player {
+            player.infiniteFalling()
+        }
+    }
 }

@@ -42,7 +42,7 @@ class Player: GameObject {
         isHidden = false
     }
     
-    private func startJump() {
+    public func startJump() {
         jumpTime = 0
         isAir = true
     }
@@ -52,13 +52,16 @@ class Player: GameObject {
         }
         
         if other is JumpPlatform {
-            startJump()
+            //startJump()
         }
         
         if other is DeadTriggerPlatform {
-            isDeadFall = true
+            //isDeadFall = true
         }
-
+        
+        if other is Obstacle {
+            //destroy()
+        }
     }
     
     override func update(_ deltaTime: Float) {
