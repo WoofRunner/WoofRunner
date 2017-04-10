@@ -29,7 +29,7 @@ extension LevelGrid: SaveableGame {
 
         // Set StoredGame values
         preprocessLevel()
-        print(self.length, obstacleArray.count, platformArray.count, gridViewModelArray.count)
+
         res.rows = Int16(self.length)
         res.columns = Int16(LevelGrid.levelCols)
         
