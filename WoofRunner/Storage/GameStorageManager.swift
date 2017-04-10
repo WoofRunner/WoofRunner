@@ -118,10 +118,19 @@ public class GameStorageManager {
     // MARK: - Private methods
 
     private func mapJSONtoStoredGame(json: NSDictionary) -> StoredGame {
+        // TODO: Check for existing game under the same UUID
         let storedGame = StoredGame(context: cdm.context)
 
         storedGame.uuid = json.value(forKey: "uuid") as? String
         storedGame.ownerId = json.value(forKey: "ownerId") as? String
+
+        guard let rows = json.value(forKey: "rows") as? Int,
+            let columns = json.value(forKey: "columns") as? Int else {
+                fatalError("JSON value for rows or column is not a number")
+        }
+
+        storedGame.rows = Int16(rows)
+        storedGame.columns = Int16(columns)
 
         let platforms: [StoredPlatform]
         if let JSONPlatforms = json.value(forKey: "platforms") {
