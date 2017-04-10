@@ -8,7 +8,8 @@
 
 import Foundation
 
-// make sure no same name
+// Tile Model Factory allows creation of new Tile Model 
+// Store a list of created TileModel
 
 public final class TileModelFactory {
     

@@ -10,12 +10,19 @@ import Foundation
 import SceneKit
 
 class Camera: GameObject {
-        
+    
+    let height: Float = 5
+    let horizontalOffset: Float = 0.5
+    let verticalOffset: Float = 5
+    
+    let xAxis: Float = 1
+    let rotationAmount: Float = -0.77
+    
     override init() {
         super.init()
         
         camera = SCNCamera()
-        position = SCNVector3(x: 0.5, y: 5, z: 5)
-        rotation = SCNVector4(1, 0, 0, -0.77)
+        position = SCNVector3(x: horizontalOffset, y: height, z: verticalOffset)
+        rotation = SCNVector4(xAxis, 0, 0, rotationAmount)
     }
 }
