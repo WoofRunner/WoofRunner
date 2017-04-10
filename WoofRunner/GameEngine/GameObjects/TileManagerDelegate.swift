@@ -10,4 +10,6 @@ import Foundation
 
 protocol TileManagerDelegate {
     func onTileManagerEnded()
+    
+    func onCompletionUpdated(_ percentageCompleted: Float)
 }

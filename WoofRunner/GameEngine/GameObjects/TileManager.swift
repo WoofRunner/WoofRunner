@@ -22,6 +22,8 @@ class TileManager: GameObject {
     var obstacleData: [[TileModel?]] = []
     var platformData: [[TileModel?]] = []
     
+    var platformSpeed: Float = 6
+    
     var tailIndex: Int = 0
     var platformTail: Float = 0
     
@@ -84,6 +86,7 @@ class TileManager: GameObject {
         poolManager?.destroyAllActiveTiles()
         tailIndex = 0
         moveState = MoveState.wait
+        spawnTiles()
     }
     
     // both obstacle and platform data must have same number of rows and cols
@@ -217,7 +220,7 @@ class TileManager: GameObject {
             }
             
         case .moving:
-            position = SCNVector3(x: position.x, y: position.y, z: position.z + 6 * deltaTime)
+            position = SCNVector3(x: position.x, y: position.y, z: position.z + platformSpeed * deltaTime)
             
             if position.z > stopPosition.z {
                 moveState = MoveState.ended
@@ -229,6 +232,12 @@ class TileManager: GameObject {
         }
 
         spawnTiles()
+        
+        delegate?.onCompletionUpdated(percentageCompleted)
+    }
+    
+    public func stopMoving() {
+        moveState = MoveState.ended
     }
 }
 

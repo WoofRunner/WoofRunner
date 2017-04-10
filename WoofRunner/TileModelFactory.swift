@@ -74,7 +74,7 @@ public final class TileModelFactory {
     }
     
     private func createAllowsJumpingPlatform() {
-        let platformModel = PlatformModel(name: "Jumping Platform",
+        let platformModel = PlatformModel(name: "Auto Jump",
                                           scenePath: "art.scnassets/cube3.scn",
                                           iconPath: "display-platform-jump",
                                           platformBehaviour: PlatformBehaviour.allowsJumping)
