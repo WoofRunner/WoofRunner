@@ -143,6 +143,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		gsm.deleteGame(uuid)
             .onSuccess { _ in
                 print("Game: \(uuid) deleted")
+                self.levels = self.levels.filter { $0.uuid != uuid }
                 self.carousel.reloadData()
             }
             .onFailure { error in
