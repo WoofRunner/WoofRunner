@@ -17,8 +17,8 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 	
 	// Child Nodes to be attached to menuOverlay
 	private var pauseMenu = SKSpriteNode(imageNamed: "pause-menu-bg")
-	private var winMenu = SKSpriteNode(imageNamed: "pause-menu-bg")
-	private var loseMenu = SKSpriteNode(imageNamed: "pause-menu-bg")
+	private var winMenu = SKSpriteNode(imageNamed: "win-menu-bg")
+	private var loseMenu = SKSpriteNode(imageNamed: "lose-menu-bg")
 	
     private var viewportSize: CGSize = CGSize()
 	
