@@ -23,8 +23,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     
     var isPause: Bool = false
     
-    init?(_ view: UIView) {
-        guard let view = view as? SCNView else { return nil }
+    init(_ view: SCNView) {
         self.scnView = view
         
         if let newScnScene = SCNScene(named: LEVEL_PATH) {

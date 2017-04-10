@@ -12,6 +12,7 @@ import SceneKit
 class Player: GameObject {
     
     var startHeight: Float = 0
+    var startOffsetX: Float = 0.5
     var delegate: PlayerDelegate?
     let startPosition: SCNVector3
     
@@ -26,12 +27,12 @@ class Player: GameObject {
     
     let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
     
-    var targetPositionX: Float
+    var targetPositionX: Float = 0
     let lerpSpeed: Float = 15
     
     override init() {
-        startPosition = SCNVector3(x: 0.5, y: startHeight, z: 1.5)
-        targetPositionX = 0.5
+        startPosition = SCNVector3(x: startOffsetX, y: startHeight, z: 1.5)
+        
         super.init()
         loadModel(PLAYER_MODEL_PATH)
         isTickEnabled = true
@@ -44,6 +45,7 @@ class Player: GameObject {
         isAir = false
         position = startPosition
         isHidden = false
+        targetPositionX = startOffsetX
     }
     
     public func startJump() {

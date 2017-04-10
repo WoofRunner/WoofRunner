@@ -19,118 +19,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     private var player: Player?
     private var tileManager: TileManager?
     
-    var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 5],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 5],
-                                 [4, 4, 0, 0, 0],
-                                 [4, 4, 0, 0, 5],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 6],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0]]
-    /*
-    var obstacleData: [[Int]] = [[0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0]]
-    */
-    var platformData: [[Int]] = [[1, 1, 1, 1, 1],
-                                 [1, 1, 1, 1, 1],
-                                 [1, 1, 1, 1, 1],
-                                 [7, 0, 0, 0, 0],
-                                 [1, 1, 3, 1, 1],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 0, 0, 0],
-                                 [0, 0, 3, 1, 2],
-                                 [1, 0, 1, 2, 1],
-                                 [2, 0, 2, 1, 2],
-                                 [1, 0, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 1, 2, 1],
-                                 [2, 1, 2, 1, 2],
-                                 [1, 2, 7, 2, 1],
-                                 [2, 1, 7, 1, 2],
-                                 [0, 0, 7, 0, 0],
-                                 [0, 0, 7, 0, 0],
-                                 [0, 0, 7, 0, 0],
-                                 [0, 0, 7, 1, 2],
-                                 [1, 0, 7, 2, 1],
-                                 [2, 0, 2, 1, 2],
-                                 [1, 1, 1, 2, 1]]
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let uuid = gameUUID else {
@@ -160,15 +48,13 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
 	}
 	
     private func setup(game: StoredGame) {
-        World.setUpWorld(self.view)
-        
 		guard let sceneView = self.view as? SCNView else {
 			print("Error: Unable to setup game world as SCNView cannt be found!")
 			return
 		}
 		
 		// TODO: Swap self.view with sceneView
-		World.setUpWorld(self.view)
+		World.setUpWorld(sceneView)
 		
 		// Setup Gameplay Overlay UI
 		overlaySpriteScene = GameplayOverlayScene(size: sceneView.frame.size)
@@ -198,34 +84,13 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
     }
     
-    private func tempSetup() {
-        World.setUpWorld(self.view)
-        let newPlayer = Player()
-        World.spawnGameObject(newPlayer)
-        World.registerGestureInput(newPlayer)
-        newPlayer.delegate = self
-        self.player = newPlayer
-       
-        /*
-        if let tileManager = TileManager(obstacleData: obstacleData, platformData: platformData) {
-            World.spawnGameObject(tileManager)
-            tileManager.delegate = self
-            self.tileManager = tileManager
-        }
-        */
-        
-        let camera = Camera()
-        World.spawnGameObject(camera)
-        
-        
-    }
-    
     // notified by player when player dies
     func playerDied() {
         restartGame()
     }
     
     func restartGame() {
+        resumeGame()
         tileManager?.restartLevel()
         player?.restart()
     }
@@ -241,11 +106,11 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
 	// MARK: - GameplayOverlayDelegate
 	
 	internal func pauseGame() {
-		// TODO
+        World.setPause(isPaused: true)
 	}
 	
 	internal func resumeGame() {
-		// TODO
+		World.setPause(isPaused: false)
 	}
 	
 	internal func exitGame() {
@@ -253,7 +118,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
 	}
 	
 	internal func retryGame() {
-		// TODO
 		restartGame()
 	}
 }
