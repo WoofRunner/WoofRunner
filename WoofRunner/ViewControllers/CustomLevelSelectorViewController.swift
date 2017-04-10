@@ -173,7 +173,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
     @objc private func facebookLogin(_ sender: PreuploadLoginTapGesture) {
         let auth = AuthManager.shared
         auth.authWithFacebook(vc: self)
-            .map { token in auth.authWithFirebase(facebookToken: token.authenticationToken) }
+            .flatMap { token in auth.authWithFirebase(facebookToken: token.authenticationToken) }
             .onSuccess { _ in
                 guard let uuid = sender.uuid else {
                     fatalError("Preupload login gesture not attached to a UUID")
