@@ -175,6 +175,9 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         let camera = Camera()
         World.spawnGameObject(camera)
         //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
+        
+        // Play background music
+        playBGM()
     }
     
     private func tempSetup() {
@@ -197,10 +200,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
         World.spawnGameObject(camera)
         
         // Play background music
-        let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0)
-        let bgmSoundNode = GameObject()
-        World.spawnGameObject(bgmSoundNode)
-        bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
+        playBGM()
     }
     
     // notified by player when player dies
@@ -215,5 +215,13 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate {
     
     func onTileManagerEnded() {
         restartGame()
+    }
+    
+    private func playBGM() {
+        // Play background music
+        let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0, loops: true)
+        let bgmSoundNode = GameObject()
+        World.spawnGameObject(bgmSoundNode)
+        bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
     }
 }
