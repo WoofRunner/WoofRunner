@@ -18,6 +18,7 @@ public class LMHomeViewController: UIViewController {
 
     fileprivate var carousel: iCarousel!
     fileprivate var homeButton: UIButton!
+    fileprivate var fbLoginOverlay: FacebookLoginOverlay?
 
     // MARK: - Private variables
 
@@ -29,12 +30,49 @@ public class LMHomeViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+
+        let auth = AuthManager.shared
+        if let _ = auth.facebookToken, let _ = auth.firebaseID {
+            // User is authenticated.
+            setup()
+        } else {
+            addFacebookLoginOverlay()
+        }
+    }
+
+    // MARK: - Private methods
+
+    /// Adds in a Facebook login overlay if the user is not authenticated yet.
+    private func addFacebookLoginOverlay() {
+        let fbLoginOverlay = FacebookLoginOverlay(frame: view.frame)
+        let fbLoginRecognizer = UITapGestureRecognizer(
+            target: self, action: #selector(facebookLogin))
+        fbLoginOverlay.button?.addGestureRecognizer(fbLoginRecognizer)
+
+        self.fbLoginOverlay = fbLoginOverlay
+        view.addSubview(fbLoginOverlay)
+    }
+
+    /// Tap gesture handler for Facebook login overlay button.
+    @objc private func facebookLogin(_ sender: UITapGestureRecognizer) {
+        let auth = AuthManager.shared
+        auth.authWithFacebook(vc: self)
+            .flatMap { token in
+                return auth.authWithFirebase(facebookToken: token.authenticationToken)
+            }
+            .onSuccess { _ in
+                self.fbLoginOverlay?.removeFromSuperview()
+                self.setup()
+            }
+            .onFailure { error in print("\(error.localizedDescription)") }
+    }
+
+    /// Loads data, setup views and games.
+    private func setup() {
         loadLevels()
         setupView()
         setupGames()
     }
-
-    // MARK: - Private methods
 
     /// Setup all the views in marketplace.
     private func setupView() {
@@ -161,6 +199,7 @@ extension LMHomeViewController: iCarouselDataSource {
     }
 
 }
+
 
 // MARK: - iCarouselDelegate
 
