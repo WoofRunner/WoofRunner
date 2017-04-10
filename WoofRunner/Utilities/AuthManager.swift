@@ -79,13 +79,13 @@ public class AuthManager {
                     if let error = error {
                         print("\(error.localizedDescription)")
                         complete(.failure(AuthManagerError.FirebaseAuthError))
+                    } else {
+                        if let authUser = user {
+                            complete(.success(authUser.uid))
+                        } else {
+                            complete(.failure(AuthManagerError.FirebaseAuthError))
+                        }
                     }
-
-                    if let authUser = user {
-                        complete(.success(authUser.uid))
-                    }
-
-                    complete(.failure(AuthManagerError.FirebaseAuthError))
                 }
             }
         }
