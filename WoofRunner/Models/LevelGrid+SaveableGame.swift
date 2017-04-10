@@ -169,7 +169,7 @@ extension LevelGrid: SaveableGame {
         for index in 0...platformLength - 1 {
             let row = gridViewModelArray[platformLength - index - 1]
             if !isEmptyRow(row) {
-                platformLength = platformLength - index - 1
+                platformLength = platformLength - index
                 break
             }
         }
