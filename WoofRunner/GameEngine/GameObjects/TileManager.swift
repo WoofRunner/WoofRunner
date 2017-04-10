@@ -86,6 +86,7 @@ class TileManager: GameObject {
         poolManager?.destroyAllActiveTiles()
         tailIndex = 0
         moveState = MoveState.wait
+        spawnTiles()
     }
     
     // both obstacle and platform data must have same number of rows and cols
