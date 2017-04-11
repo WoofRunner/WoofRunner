@@ -173,7 +173,6 @@ extension LevelGrid {
                 toggleGridInPosition(pos)
             }
         }
-        
     }
     
     // Simple hash for caching grid nodes
