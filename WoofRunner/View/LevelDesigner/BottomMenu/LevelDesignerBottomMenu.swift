@@ -8,38 +8,20 @@
 
 import SpriteKit
 
-struct BottomMenuConstants {
-	static let barWidth = UIScreen.main.bounds.width
-	static let barHeight = UIScreen.main.bounds.height / 5
-	
-	static let btnLabelFontName = "AvenirNextCondensed-Bold"
-	static let saveBtnLabelFontColor = UIColor.green
-	static let testBtnLabelFontColor = UIColor.magenta
-	static let btnLabelFontSize = CGFloat(30)
-	
-	static let btnSize = CGSize(width: 45, height: 45)
-	
-	static let levelNameLabelFontName = "AvenirNextCondensed-DemiBold"
-	static let levelNameLabelFontColor = UIColor.white
-	static let levelNameLabelFontSize = CGFloat(45)
-
-	static let backgroundColor = UIColor.clear
-	
-	static let defaultLevelName = "Custom Level"
-}
-
 class LevelDesignerBottomMenu: SKNode {
+	
+	typealias BottomMenu = LDOverlaySceneConstants.BottomMenuConstants
 	
 	// MARK: - Private Variables
 	
-	private let backgroundNode = SKSpriteNode(texture: SKTexture(imageNamed: "bottom-menu-bg"),
-	                                          color: BottomMenuConstants.backgroundColor,
-	                                          size: CGSize(width: BottomMenuConstants.barWidth,
-	                                                       height: BottomMenuConstants.barHeight))
-	private var saveButton = BottomMenuSpriteButton(type: .save, size: BottomMenuConstants.btnSize)
-	private var backButton = BottomMenuSpriteButton(type: .back, size: BottomMenuConstants.btnSize)
+	private let backgroundNode = SKSpriteNode(texture: SKTexture(imageNamed: BottomMenu.backgroundImageName),
+	                                          color: BottomMenu.backgroundColor,
+	                                          size: CGSize(width: BottomMenu.barWidth,
+	                                                       height: BottomMenu.barHeight))
+	private var saveButton = BottomMenuSpriteButton(type: .save, size: BottomMenu.btnSize)
+	private var backButton = BottomMenuSpriteButton(type: .back, size: BottomMenu.btnSize)
 	private var levelNameLabel = BottomMenuLabelButton(type: .rename,
-	                                                   text: BottomMenuConstants.defaultLevelName)
+	                                                   text: BottomMenu.defaultLevelName)
 	
 	// MARK: - Initialisers
 	
@@ -71,30 +53,36 @@ class LevelDesignerBottomMenu: SKNode {
 	}
 	
 	private func configureSaveButton() {
-		saveButton.position.x = BottomMenuConstants.barWidth / 2 - CGFloat(40)
-		saveButton.position.y = CGFloat(10)
+		saveButton.position.x = BottomMenu.saveBtnXPosition
+		saveButton.position.y = BottomMenu.btnYPosition
 	}
 	
 	private func configureBackButton() {
-		backButton.position.x = -1 * (BottomMenuConstants.barWidth / 2) + CGFloat(40)
-		backButton.position.y = CGFloat(10)
+		backButton.position.x = BottomMenu.backBtnXPosition
+		backButton.position.y = BottomMenu.btnYPosition
 	}
 	
 	private func configureLevelNameLabel() {
-		levelNameLabel.fontColor = BottomMenuConstants.levelNameLabelFontColor
-		levelNameLabel.fontName = BottomMenuConstants.levelNameLabelFontName
-		levelNameLabel.fontSize = BottomMenuConstants.levelNameLabelFontSize
-		levelNameLabel.position.x = CGFloat(0)
+		levelNameLabel.fontColor = BottomMenu.levelNameLabelFontColor
+		levelNameLabel.fontName = BottomMenu.levelNameLabelFontName
+		levelNameLabel.fontSize = BottomMenu.levelNameLabelFontSize
+		levelNameLabel.position = BottomMenu.labelPosition
 	}
 	
 	// MARK: - Public Methods
 	
+	/**
+	Sets the BottomMenuDelegate attribute for all the BottomMenuButtons
+	*/
 	public func setButtonDelegates(_ delegate: BottomMenuButtonDelegate) {
 		self.saveButton.setDelegate(delegate)
 		self.backButton.setDelegate(delegate)
 		self.levelNameLabel.setDelegate(delegate)
 	}
 	
+	/**
+	Sets the currently displayed level name
+	*/
 	public func setLevelName(_ name: String) {
 		levelNameLabel.text = name
 	}

@@ -14,7 +14,9 @@ import RxCocoa
 import PopupDialog
 
 class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
-    
+	
+	typealias BottomMenu = LDOverlaySceneConstants.BottomMenuConstants
+	
     // Camera Settings
     static var cameraHeight: Float = 6.75
     static var cameraAngle: Float = -1.0
@@ -230,9 +232,12 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         }
         return skScene.overlayMenu.alpha == 0
     }
-    
+	
+	/**
+	Returns whether the input y coordinate is contained in the bounds of the BottomMenu 
+	*/
     private func isTappingMenu(tap_y: CGFloat) -> Bool {
-        let menuHeight = self.view.bounds.height - BottomMenuConstants.barHeight / 2
+        let menuHeight = self.view.bounds.height - BottomMenu.barHeight / 2
         return tap_y > menuHeight
     }
     

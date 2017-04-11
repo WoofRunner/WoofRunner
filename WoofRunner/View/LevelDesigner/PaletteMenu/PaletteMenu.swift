@@ -39,7 +39,7 @@ class PaletteMenu: SKNode {
 						.getRoundedRectangleNode(height: Palette.paletteHeight,
 						                         width: Palette.paletteWidth,
 		                                         radius: Palette.backgroundCornerRadius,
-		                                         backgroundColor: Palette.paletteBackgroundColor)
+		                                         backgroundColor: Palette.backgroundColor)
 		// Attach background first
 		self.addChild(backgroundNode)
 	}
@@ -69,7 +69,6 @@ class PaletteMenu: SKNode {
 	
 	/**
 	Assigns the PaletteButtonDelegate for all the PaletteButtons found in the PaletteMenu
-	
 	*/
 	public func assignDelegateForButtons(_ delegate: PaletteButtonDelegate) {
 		for button in buttonArray {

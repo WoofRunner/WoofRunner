@@ -23,7 +23,7 @@ struct LDOverlaySceneConstants {
 		// Palette Menu
 		static let paletteWidth = paletteButtonWidth + (2 * paletteButtonMargin)
 		static let paletteHeight = (paletteButtonWidth * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
-		static let paletteBackgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+		static let backgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.8)
 		static let backgroundCornerRadius = CGFloat(25)
 		
 		// The bottom-left corner of the palette's frame
@@ -32,6 +32,34 @@ struct LDOverlaySceneConstants {
 		static let paletteButtonX0 = paletteWidth/2 // y-coord for the topmost palette button
 		static let paletteButtonY0 = paletteHeight - (paletteButtonWidth/2 + paletteButtonMargin) // x-coord for the topmost palette button
 	}
+	
+	struct BottomMenuConstants {
+		
+		// Bar background
+		static let barWidth = UIScreen.main.bounds.width
+		static let barHeight = UIScreen.main.bounds.height / 5
+		static let backgroundImageName = "bottom-menu-bg"
+		static let backgroundColor = UIColor.clear
+		
+		// Buttons
+		static let btnLabelFontName = "AvenirNextCondensed-Bold"
+		static let saveBtnLabelFontColor = UIColor.green
+		static let testBtnLabelFontColor = UIColor.magenta
+		static let btnLabelFontSize = CGFloat(30)
+		static let btnSize = CGSize(width: 45, height: 45)
+		static let btnXOffset = CGFloat(40)
+		static let saveBtnXPosition = barWidth / 2 - btnXOffset
+		static let backBtnXPosition = -1 * barWidth / 2 + btnXOffset
+		static let btnYPosition = CGFloat(10)
+		
+		// Label
+		static let levelNameLabelFontName = "AvenirNextCondensed-DemiBold"
+		static let levelNameLabelFontColor = UIColor.white
+		static let levelNameLabelFontSize = CGFloat(45)
+		static let defaultLevelName = "Custom Level"
+		static let labelPosition = CGPoint(x: 0, y: 0)
+	}
+
 	
 	
 }
