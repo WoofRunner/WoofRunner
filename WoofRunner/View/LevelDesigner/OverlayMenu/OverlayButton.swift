@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class OverlayButton: RootSKSpriteNode, LDOverlayButton {
+class OverlayButton: SKSpriteNode, LDOverlayButton {
 	
 	//private var tileType: TileType? = TileType.floorLight
 	private var tileName: String? = ""
