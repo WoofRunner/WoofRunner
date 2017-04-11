@@ -21,6 +21,8 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     private var bgm: AVAudioPlayerManager?
     
+    let bgmFadeOutDuration: Float = 0.3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let uuid = gameUUID else {
@@ -83,8 +85,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     func playerDied() {
         tileManager?.stopMoving()
 		overlaySpriteScene?.showLoseMenu()
-        
-        sceneShake(shakeCount: 5, intensity: CGVector(dx: 1, dy: 1), shakeDuration: 1)
     }
     
     func restartGame() {
@@ -158,10 +158,12 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     // MARK: - GameplayOverlayDelegate
     
     internal func pauseGame() {
+        startFadeOutBGM(duration: bgmFadeOutDuration)
         World.setPause(isPaused: true)
     }
     
     internal func resumeGame() {
+        startFadeInBGM(duration: bgmFadeOutDuration)
         World.setPause(isPaused: false)
     }
     
@@ -172,16 +174,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     internal func retryGame() {
         restartGame()
-    }
-    
-    func sceneShake(shakeCount: Int, intensity: CGVector, shakeDuration: Double) {
-        let sceneView = self.view! as UIView
-        let shakeAnimation = CABasicAnimation(keyPath: "position")
-        shakeAnimation.duration = shakeDuration / Double(shakeCount)
-        shakeAnimation.repeatCount = Float(shakeCount)
-        shakeAnimation.autoreverses = true
-        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: sceneView.center.x - intensity.dx, y: sceneView.center.y - intensity.dy))
-        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: sceneView.center.x + intensity.dx, y: sceneView.center.y + intensity.dy))
-        sceneView.layer.add(shakeAnimation, forKey: "position")
+        stopBGM()
+        playBGM()
     }
 }

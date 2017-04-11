@@ -29,7 +29,7 @@ class TileManager: GameObject {
     
     let TAIL_LENGTH: Float = 22
     let PLATFORM_Z_OFFSET: Float = 3.5
-
+    
     var poolManager: PoolManager?
     var NUM_ROWS_TO_POOL = 40
     
@@ -68,7 +68,7 @@ class TileManager: GameObject {
         isTickEnabled = true
         restartLevel()
     }
-
+    
     convenience init?(obstacleModels: [[TileModel?]], platformModels: [[TileModel?]]) {
         self.init()
 
