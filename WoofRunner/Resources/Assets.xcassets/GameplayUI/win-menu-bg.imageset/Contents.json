@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "obstacle-button2.png",
+      "filename" : "RRVictoryMenu.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "RRVictoryMenu-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "RRVictoryMenu-2.png",
       "scale" : "3x"
     }
   ],

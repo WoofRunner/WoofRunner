@@ -16,7 +16,7 @@ enum PaletteFunctionType {
 		case .platform:
 			return "add-platform-button"
 		case .obstacle:
-			return "add-obstacle-button2"
+			return "add-obstacle-button"
 		case .delete:
 			return "delete-button"
 		}
