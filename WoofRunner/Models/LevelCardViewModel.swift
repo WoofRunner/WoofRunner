@@ -23,6 +23,7 @@ public class LevelCardViewModel {
 	// Level image
 	private(set) var levelImageUrl: String
 	private(set) var imageRectSize = StubLevelCardConstants.levelImageSize
+	private(set) var playIconImageUrl = StubLevelCardConstants.playIconImagePath
 	
 	// Player Score
 	private(set) var playerScore: Int
@@ -73,6 +74,7 @@ public class LevelCardViewModel {
 		
 		// Level Image
 		static let levelImageSize = CGSize(width: 600, height: 550)
+		static let playIconImagePath = "play-overlay-icon"
 		
 	}
 	

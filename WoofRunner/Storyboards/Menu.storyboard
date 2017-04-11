@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bM1-wq-hg5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bM1-wq-hg5">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,13 +49,6 @@
                                     <segue destination="nbQ-hY-7Ds" kind="show" id="R3E-N8-hso"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-logo" translatesAutoresizingMaskIntoConstraints="NO" id="VBf-YC-aN2">
-                                <rect key="frame" x="34" y="146" width="700" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="700" id="UVo-t5-P3l"/>
-                                    <constraint firstAttribute="width" secondItem="VBf-YC-aN2" secondAttribute="height" multiplier="5:4" constant="387.5" id="eBi-NO-uZW"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-eP-MWL" userLabel="customBtn">
                                 <rect key="frame" x="243" y="741" width="282" height="95"/>
                                 <constraints>
@@ -67,17 +60,24 @@
                                     <segue destination="GsT-iU-R7d" kind="show" id="3gG-Sp-53i"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-logo" translatesAutoresizingMaskIntoConstraints="NO" id="VBf-YC-aN2">
+                                <rect key="frame" x="71" y="152" width="626" height="223"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="626" id="UVo-t5-P3l"/>
+                                    <constraint firstAttribute="width" secondItem="VBf-YC-aN2" secondAttribute="height" multiplier="5:4" constant="347.25" id="eBi-NO-uZW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93523098487854883" green="1" blue="0.81973818164805135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j9d-GK-BQI" firstAttribute="top" secondItem="d2d-nQ-NcI" secondAttribute="bottom" constant="8" id="61k-L5-KCk"/>
                             <constraint firstItem="j9d-GK-BQI" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="Eev-1V-nEr"/>
-                            <constraint firstItem="d2d-nQ-NcI" firstAttribute="top" secondItem="VBf-YC-aN2" secondAttribute="bottom" constant="139" id="Kbh-mS-4UQ"/>
+                            <constraint firstItem="d2d-nQ-NcI" firstAttribute="top" secondItem="VBf-YC-aN2" secondAttribute="bottom" constant="160" id="Kbh-mS-4UQ"/>
                             <constraint firstItem="Neq-eP-MWL" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="Pa0-uy-HvG"/>
                             <constraint firstItem="VBf-YC-aN2" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="QRC-kh-snw"/>
                             <constraint firstItem="Neq-eP-MWL" firstAttribute="top" secondItem="j9d-GK-BQI" secondAttribute="bottom" constant="8" id="ceI-Y8-SNh"/>
-                            <constraint firstItem="VBf-YC-aN2" firstAttribute="top" secondItem="KmX-fy-WkO" secondAttribute="bottom" constant="126" id="k9w-Cm-8nN"/>
+                            <constraint firstItem="VBf-YC-aN2" firstAttribute="top" secondItem="KmX-fy-WkO" secondAttribute="bottom" constant="132" id="k9w-Cm-8nN"/>
                             <constraint firstItem="d2d-nQ-NcI" firstAttribute="centerX" secondItem="ktK-jY-r7L" secondAttribute="centerX" id="pz0-BY-CsJ"/>
                         </constraints>
                     </view>

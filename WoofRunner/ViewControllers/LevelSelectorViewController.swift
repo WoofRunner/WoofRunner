@@ -84,7 +84,8 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		levelItemView.setupView(vm: vm)
 		
 		// Set Selectors for buttons
-		levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
+		//levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
+		levelItemView.playButton.addTarget(self, action: #selector(playBtnHandler(_:)), for: .touchUpInside)
 		
 		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
 		levelItemView.levelImageView.addGestureRecognizer(playTapRecogniser)
@@ -100,7 +101,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		}
 		
 		if (option == iCarouselOption.wrap) {
-			return 1.0
+			return 0.0
 		}
 		return value
 	}
@@ -117,6 +118,17 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
 	}
 	
+	func playBtnHandler(_ sender: UIButton) {
+		
+		let btn = sender as! LevelSelectorItemButton
+		let uuid = btn.getBindedUUID()
+		
+		print("Selected Item To Play: \(uuid)")
+		
+		self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
+	}
+	
+	/*
 	func editLevelHandler(_ sender: UIButton) {
 		let btn = sender as! LevelSelectorItemButton
 		let uuid = btn.getBindedUUID()
@@ -132,6 +144,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 			}
 		
 	}
+	*/
 	
 	// MARK: - View Setup Methods
 

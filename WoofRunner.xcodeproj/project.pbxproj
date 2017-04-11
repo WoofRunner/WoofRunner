@@ -89,8 +89,6 @@
 		3FF229DB1E9A8F000040F0AF /* GameplayOverlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF229DA1E9A8F000040F0AF /* GameplayOverlayButton.swift */; };
 		3FF229DD1E9A8F860040F0AF /* GameplayOverlayButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF229DC1E9A8F860040F0AF /* GameplayOverlayButtonDelegate.swift */; };
 		3FF229DF1E9A98660040F0AF /* GameplayOverlayButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF229DE1E9A98660040F0AF /* GameplayOverlayButtonType.swift */; };
-		3FF229E11E9BDBE30040F0AF /* GameplayOverlayMenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF229E01E9BDBE30040F0AF /* GameplayOverlayMenuType.swift */; };
-		3FF229E31E9BDC530040F0AF /* GameplayOverlayMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF229E21E9BDC530040F0AF /* GameplayOverlayMenu.swift */; };
 		3FF229E51E9CE9AB0040F0AF /* LDOverlaySceneConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF229E41E9CE9AB0040F0AF /* LDOverlaySceneConstants.swift */; };
 		4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */; };
 		4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */; };
@@ -232,8 +230,6 @@
 		3FF229DA1E9A8F000040F0AF /* GameplayOverlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayButton.swift; sourceTree = "<group>"; };
 		3FF229DC1E9A8F860040F0AF /* GameplayOverlayButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayButtonDelegate.swift; sourceTree = "<group>"; };
 		3FF229DE1E9A98660040F0AF /* GameplayOverlayButtonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayButtonType.swift; sourceTree = "<group>"; };
-		3FF229E01E9BDBE30040F0AF /* GameplayOverlayMenuType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayMenuType.swift; sourceTree = "<group>"; };
-		3FF229E21E9BDC530040F0AF /* GameplayOverlayMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayMenu.swift; sourceTree = "<group>"; };
 		3FF229E41E9CE9AB0040F0AF /* LDOverlaySceneConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDOverlaySceneConstants.swift; sourceTree = "<group>"; };
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelDesignerScene.swift; path = WoofRunner/View/LevelDesigner/LevelDesignerScene.swift; sourceTree = SOURCE_ROOT; };
@@ -411,7 +407,6 @@
 				3FF229D81E9A8DE00040F0AF /* GameplayOverlayDelegate.swift */,
 				3FF229DC1E9A8F860040F0AF /* GameplayOverlayButtonDelegate.swift */,
 				3FF229DE1E9A98660040F0AF /* GameplayOverlayButtonType.swift */,
-				3FF229E01E9BDBE30040F0AF /* GameplayOverlayMenuType.swift */,
 				3FF229E41E9CE9AB0040F0AF /* LDOverlaySceneConstants.swift */,
 			);
 			path = Utilities;
@@ -559,7 +554,6 @@
 				4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */,
 				4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */,
 				3FF229DA1E9A8F000040F0AF /* GameplayOverlayButton.swift */,
-				3FF229E21E9BDC530040F0AF /* GameplayOverlayMenu.swift */,
 			);
 			path = GameplayUI;
 			sourceTree = "<group>";
@@ -853,7 +847,6 @@
 				3F7348C81E86FADC00EB1264 /* OverlayButtonDelegate.swift in Sources */,
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
 				12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */,
-				3FF229E31E9BDC530040F0AF /* GameplayOverlayMenu.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
 				F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */,
@@ -875,7 +868,6 @@
 				4EA8B1FC1E9A449300626010 /* GameplayOverlayScene.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
-				3FF229E11E9BDBE30040F0AF /* GameplayOverlayMenuType.swift in Sources */,
 				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
 				F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */,
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,

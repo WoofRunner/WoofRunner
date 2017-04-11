@@ -102,7 +102,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		}
 		
 		if (option == iCarouselOption.wrap) {
-			return 1.0
+			return 0.0
 		}
 		return value
 	}

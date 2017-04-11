@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,26 +19,38 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WoofRunner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVH-ae-rt6">
-                                <rect key="frame" x="371" y="652.5" width="282.5" height="62.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu-background" translatesAutoresizingMaskIntoConstraints="NO" id="E7W-Wc-RJt">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Z-oF-w8r">
+                                <rect key="frame" x="93" y="408" width="582" height="208"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="582" id="A5e-Tc-uj4"/>
+                                    <constraint firstAttribute="height" constant="208" id="hac-S2-ULt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SVH-ae-rt6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6wI-a9-3pC"/>
-                            <constraint firstItem="SVH-ae-rt6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Edd-Wr-adL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E7W-Wc-RJt" secondAttribute="trailing" constant="-20" id="M6J-xv-AEh"/>
+                            <constraint firstItem="Q2Z-oF-w8r" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UYr-0g-W30"/>
+                            <constraint firstItem="E7W-Wc-RJt" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="czi-SE-T8t"/>
+                            <constraint firstItem="E7W-Wc-RJt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="gNE-bH-vl7"/>
+                            <constraint firstItem="Q2Z-oF-w8r" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="h8S-u4-yfm"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="E7W-Wc-RJt" secondAttribute="bottom" id="hnO-jp-GAK"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.734375" y="374.67057101024886"/>
+            <point key="canvasLocation" x="52.34375" y="374.4140625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="game-logo" width="350" height="125"/>
+        <image name="menu-background" width="384" height="512"/>
+    </resources>
 </document>
