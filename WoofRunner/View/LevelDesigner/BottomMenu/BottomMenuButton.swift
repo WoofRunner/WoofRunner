@@ -33,11 +33,16 @@ class BottomMenuSpriteButton: SKSpriteNode, LDOverlayButton {
 	
 	// MARK: - Public Functions
 	
+	/**
+	Sets the BottomeMenuButtonDelegate attribute for this button
+	*/
 	public func setDelegate(_ delegate: BottomMenuButtonDelegate) {
 		self.delegate = delegate
 	}
 	
-	public func onTap() {
+	// MARK: - LDOverlayButton
+	
+	internal func onTap() {
 		if self.type == .save {
 			self.run(SKAction.sequence([ButtonActions.getButtonPressAction(), ButtonActions.getButtonReleaseAction()]), completion: {
 				self.delegate?.saveLevel()
