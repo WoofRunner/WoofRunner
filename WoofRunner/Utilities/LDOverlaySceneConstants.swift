@@ -94,6 +94,7 @@ struct LDOverlaySceneConstants {
 		// For OverlayMenu positioning
 		static let subsectionSpacingY = CGFloat(120) // Y Spacing between subsections in the menu
 		static let subsectionBaseY = CGFloat(400)
+		static let subsectionBaseX = CGFloat(0)
 		
 		// For Overlay Menu Title
 		static let titleFontName = "AvenirNextCondensed-Bold"
