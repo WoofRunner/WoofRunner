@@ -100,7 +100,7 @@
 		4E90FFEB1E844C5A0012B03F /* ReactiveGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */; };
 		4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */; };
 		4E9DB3761E92EAAE0023A2A8 /* LevelGrid+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */; };
-		4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */; };
+		4E9DB3781E954DC10023A2A8 /* AVAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3771E954DC10023A2A8 /* AVAudioPlayerManager.swift */; };
 		4EA8B1FC1E9A449300626010 /* GameplayOverlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */; };
 		4EA8B2001E9A484D00626010 /* SampleGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */; };
 		4EA8B2021E9A49A400626010 /* GameplayOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */; };
@@ -243,7 +243,7 @@
 		4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveGrid.swift; sourceTree = "<group>"; };
 		4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelGrid.swift; sourceTree = "<group>"; };
 		4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+Selection.swift"; sourceTree = "<group>"; };
-		4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitExtensions.swift; sourceTree = "<group>"; };
+		4E9DB3771E954DC10023A2A8 /* AVAudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioPlayerManager.swift; sourceTree = "<group>"; };
 		4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayScene.swift; sourceTree = "<group>"; };
 		4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGameController.swift; sourceTree = "<group>"; };
 		4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameplayOverlay.storyboard; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 				3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */,
 				3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */,
 				3F0F81BC1E929A7000114CD0 /* UIButton+ShadowExtension.swift */,
-				4E9DB3771E954DC10023A2A8 /* SceneKitExtensions.swift */,
+				4E9DB3771E954DC10023A2A8 /* AVAudioPlayerManager.swift */,
 				3F0F81D01E97269B00114CD0 /* BrushSelection.swift */,
 				3F0F81D21E97271900114CD0 /* BrushSelectionType.swift */,
 				3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */,
@@ -830,7 +830,7 @@
 				F30ABE031E82BDB300BD1D02 /* Platform.swift in Sources */,
 				3FD5D0291E91026E007573C4 /* BottomMenuButtonType.swift in Sources */,
 				3F0F81D31E97271900114CD0 /* BrushSelectionType.swift in Sources */,
-				4E9DB3781E954DC10023A2A8 /* SceneKitExtensions.swift in Sources */,
+				4E9DB3781E954DC10023A2A8 /* AVAudioPlayerManager.swift in Sources */,
 				12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */,
 				F34DEDBF1E8D608900BB8CA7 /* Trigger.swift in Sources */,
 				F33754F11E97886D00839AFD /* TileModelFactory.swift in Sources */,

@@ -244,9 +244,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 // Extend the level in bulk of {extensionLength}, reduce overhead
                 let extend = startRow + LevelGrid.chunkLength - currentLevel.length
                             + LevelDesignerViewController.extensionLength - 1
-                let originalLength = currentLevel.length
                 currentLevel.extendLevel(by: extend)
-                LDScene.updateLevel(currentLevel, from: originalLength)
             }
         }
         currentLevel.reloadChunk(from: startRow)
@@ -432,8 +430,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	private func validateLevelName(_ name: String) -> Bool {
 		return !(name.characters.count < 5 || name.characters.count > 40)
 	}
-	
-	
+
 	// - MARK: LDOverlayDelegate
 	
 	internal func saveLevel() {

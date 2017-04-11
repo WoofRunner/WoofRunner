@@ -18,7 +18,8 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     private var player: Player?
     private var tileManager: TileManager?
-    private var bgmSoundNode = GameObject()
+    
+    private var bgm: AVAudioPlayerManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         World.spawnGameObject(camera)
         
         // Play background music
+        setupBGM()
         playBGM()
     }
     
@@ -111,16 +113,46 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         self.player = newPlayer
     }
     
-    // Play background music
+    // MARK: Audio Functions
+    private func setupBGM() {
+        let audioManager = AVAudioPlayerManager(path: "art.scnassets/TheFatRat.mp3")
+        audioManager.setLoop(-1)
+        bgm = audioManager
+    }
+    
     private func playBGM() {
-        let bgmSound = SCNAudioSource(name: "TheFatRat.mp3", volume: 1.0, loops: true)
-        bgmSoundNode = GameObject()
-        World.spawnGameObject(bgmSoundNode)
-        bgmSoundNode.runAction(SCNAction.playAudio(bgmSound, waitForCompletion: false))
+        guard let sound = bgm else {
+            return
+        }
+        sound.playFromStart()
+    }
+    
+    private func resumeBGM() {
+        guard let sound = bgm else {
+            return
+        }
+        sound.play()
+    }
+    
+    private func startFadeOutBGM(duration: Float) {
+        guard let sound = bgm else {
+            return
+        }
+        sound.startFadeOut(duration: duration)
+    }
+    
+    private func startFadeInBGM(duration: Float) {
+        guard let sound = bgm else {
+            return
+        }
+        sound.startFadeIn(duration: duration)
     }
     
     private func stopBGM() {
-        bgmSoundNode.destroy()
+        guard let sound = bgm else {
+            return
+        }
+        sound.stop()
     }
     
     // MARK: - GameplayOverlayDelegate
@@ -134,8 +166,8 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     }
     
     internal func exitGame() {
-        stopBGM()
         self.dismiss(animated: true, completion: nil)
+        stopBGM()
     }
     
     internal func retryGame() {

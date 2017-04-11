@@ -10,38 +10,50 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+/// Creates a LevelGrid object that holds the GridViewModels in the level. 
+/// It also supports saving and loading of the level into StoredGameObject in CoreData. 
+/// The LevelGrid object also takes in calls from the View Controller to propagate down updates to the level.
 class LevelGrid {
 
-    // MARK: - SaveableGame
-
-    var storedGame: StoredGame?
     var disposeBag = DisposeBag()
     
-    static var levelCols = GameSettings.PLATFORM_COLUMNS
-    static var chunkLength = 20
+    // Constants
+    static let levelCols = GameSettings.PLATFORM_COLUMNS
+    static let chunkLength = 20
     
+    // Member variables
     var length: Int
     var platformArray: [[PlatformModel?]]
     var obstacleArray: [[ObstacleModel?]]
-    var gridViewModelArray: [[GridViewModel]]
+    // GridViewModelArray observed by ReactiveGrid
+    var gridViewModelArray: Variable<[[GridViewModel]]>
     
-    // Selection extension usage
+    // Selection extension variables
     var selectionCache = [String: [TileModel?]]()
     var selectionStartPos: Position?
     var selectionEndPos: Position?
     var selectionTemplate: [TileModel?] = [nil, nil]
     
+    // MARK: - SaveableGame
+    var storedGame: StoredGame?
+    
+    /**
+     Creates an empty level of specifed length number of rows.
+     This will generate rows of empty platforms and obstacles.
+     - parameter length: Number of rows
+     */
     init(length: Int) {
-        self.length = length
+        // Populate arrays
+        self.length =  length
         self.platformArray = [[PlatformModel?]](repeating: [PlatformModel?](repeating: nil,
                                                                             count: LevelGrid.levelCols),
                                                 count: length)
         self.obstacleArray = [[ObstacleModel?]](repeating: [ObstacleModel?](repeating: nil,
                                                                             count: LevelGrid.levelCols),
                                                 count: length)
-        self.gridViewModelArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
-                                                                               count: LevelGrid.levelCols),
-                                                    count: length)
+        self.gridViewModelArray = Variable<[[GridViewModel]]>([[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
+                                                                                                           count: LevelGrid.levelCols),
+                                                                                count: length))
         
         guard length > 0 else {
             return
@@ -53,7 +65,7 @@ class LevelGrid {
                 let gridVM = GridViewModel(row: row, col: col)
                 setupObservables(gridVM)
                 // Append to array
-                gridViewModelArray[row][col] = gridVM
+                gridViewModelArray.value[row][col] = gridVM
             }
         }
     }
@@ -62,6 +74,14 @@ class LevelGrid {
         self.init(length: 0);
     }
     
+    /**
+     Toggles the grid on the specified scene coordinates with the specified brush selection object
+     - parameter x: x coordinate of the tapped scene object
+     - parameter z: z coordinate of the tapped scene object
+     - parameter currentSelectedBrush: Brush selection object that holds the brush type and selection type
+     - note:
+        y coordinate of the tapped object is ignored as the level has to be planar.
+     */
     func toggleGrid(x: Float, z: Float, _ currentSelectedBrush: BrushSelection) {
         guard let gridVM = getValidGrid((x: x, z: z)) else {
             return
@@ -69,6 +89,11 @@ class LevelGrid {
         return toggleGrid(gridVM, currentSelectedBrush)
     }
     
+    /**
+     Toggles the grid for the specified GridViewModel object with the specified brush selection object
+     - parameter gridVM: GridViewModel object to be toggled
+     - parameter currentSelectedBrush: Brush selection object that holds the brush type and selection type
+     */
     func toggleGrid(_ gridVM: GridViewModel, _ currentSelectedBrush: BrushSelection) {
         if currentSelectedBrush.selectionType == .delete {
             gridVM.removeTop()
@@ -92,11 +117,19 @@ class LevelGrid {
         }
     }
     
+    /**
+     Reloads the scene from the specified start row to toggle which grid node to render
+     - parameter startRow: The row number to render from
+     - note: The rows that will be rendered will be [chunkLength] from the startRow
+     - complexity: O(n^2) where n is the number of rows in the level. 
+     Optimised by checking if current grid node is already rendered instead of naively
+     re-rendering all grid nodes.
+     */
     func reloadChunk(from startRow: Int) {
         
         let endRow = startRow + LevelGrid.chunkLength
         
-        for gridVMRow in gridViewModelArray {
+        for gridVMRow in gridViewModelArray.value {
             for gridVM in gridVMRow {
                 if gridVM.gridPos.value.getRow() >= startRow &&
                     gridVM.gridPos.value.getRow() < endRow {
@@ -108,6 +141,12 @@ class LevelGrid {
         }
     }
     
+    /**
+     Extends the level length by the specified number of rows.
+     - parameter extend: Number of rows to extend by
+     - note: This function is expensive as it will attempt to render large number of grid nodes to the level grid.
+     Advised to extend by bulk amount to reduce overhead.
+     */
     func extendLevel(by extend: Int) {
         // Prepare empty arrays for extension
         let extendedPlatformArray = [[PlatformModel?]](repeating: [PlatformModel?](repeating: nil,
@@ -118,26 +157,32 @@ class LevelGrid {
                                                                                    count: LevelGrid.levelCols),
                                                        count: extend)
         self.obstacleArray.append(contentsOf: extendedObstacleArray)
-        let extendedGridVMArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
+        var extendedGridVMArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
                                                                                count: LevelGrid.levelCols),
                                                     count: extend)
-        self.gridViewModelArray.append(contentsOf: extendedGridVMArray)
         
         // Initialise extended array data
         for row in length...length + extend - 1 {
             for col in 0...LevelGrid.levelCols - 1 {
                 let gridVM = GridViewModel(row: row, col: col)
                 setupObservables(gridVM)
-                // Append to array
-                gridViewModelArray[row][col] = gridVM
+                
+                // Populate array
+                extendedGridVMArray[row - length][col] = gridVM
             }
         }
+        
+        // Append to gridVMArray in one transcation to reduce update counts on rxVariable
+        self.gridViewModelArray.value
+            .append(contentsOf: extendedGridVMArray)
         
         // Update level length
         self.length += extend
     }
     
-    func getValidGrid(_ pos: (x: Float, z: Float)) -> GridViewModel? {
+    // MARK: Helper Functions
+    
+    internal func getValidGrid(_ pos: (x: Float, z: Float)) -> GridViewModel? {
         // Identify grid
         let col = Int(pos.x / GameSettings.TILE_WIDTH)
         let row = Int(-pos.z / GameSettings.TILE_WIDTH)
@@ -145,11 +190,12 @@ class LevelGrid {
         guard col >= 0 && col < LevelGrid.levelCols && row >= 0 && row < self.length else {
             return nil
         }
-        return gridViewModelArray[row][col]
+        return gridViewModelArray.value[row][col]
     }
-    
-	func setupObservables(_ gridVM: GridViewModel) {
-        // Setup observation on gridVM tileType
+
+    // Setup observers for grid view model's tileModel attribute to update 
+    // platform and obstacle array which will be used for saving the level
+	internal func setupObservables(_ gridVM: GridViewModel) {
         gridVM.platformType.asObservable().subscribe(onNext: {
             (newModel) in
             self.updatePlatformArray(row: gridVM.gridPos.value.getRow(),
@@ -164,13 +210,13 @@ class LevelGrid {
         }).addDisposableTo(disposeBag)
     }
     
-    // Used for moving platforms
+    // Special handler used for moving platforms to ensure that replace the entire row
     internal func postProcessMovingPlatform(_ row: Int, _ movingPlatform: PlatformModel) {
-        for gridVM in gridViewModelArray[row] {
+        for gridVM in gridViewModelArray.value[row] {
             setGridVMType(gridVM, platform: nil, obstacle: nil)
         }
         let middleCol = (LevelGrid.levelCols / 2)
-        let middleGridVM = gridViewModelArray[row][middleCol]
+        let middleGridVM = gridViewModelArray.value[row][middleCol]
         setGridVMType(middleGridVM, platform: movingPlatform, obstacle: nil)
     }
     
