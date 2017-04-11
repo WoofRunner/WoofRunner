@@ -100,7 +100,7 @@ class Player: GameObject {
     
     override func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {
         //World.shake()
-        runAction(SCNAction.shake(initialPosition: SCNVector3.zero(), duration: 1))
+        //runAction(SCNAction.shake(initialPosition: SCNVector3.zero(), duration: 1))
     }
 
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
@@ -114,9 +114,8 @@ class Player: GameObject {
         
         targetPositionX = worldPoint.x
     }
-    
+
     override func destroy() {
-        isHidden = true
         delegate?.playerDied()
     }
     

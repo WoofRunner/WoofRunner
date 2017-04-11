@@ -63,11 +63,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         sceneView.overlaySKScene = overlaySpriteScene
         overlaySpriteScene?.setDelegate(self)
         
-        let newPlayer = Player()
-        World.spawnGameObject(newPlayer)
-        World.registerGestureInput(newPlayer)
-        newPlayer.delegate = self
-        self.player = newPlayer
+        createPlayer()
         
         if let tileManager = TileManager(obstacleModels: game.getObstacles(), platformModels: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
@@ -106,6 +102,14 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     func onCompletionUpdated(_ percentageCompleted: Float) {
         overlaySpriteScene?.updateScore(percentageCompleted * Float(100))
+    }
+    
+    private func createPlayer() {
+        let newPlayer = Player()
+        World.spawnGameObject(newPlayer)
+        World.registerGestureInput(newPlayer)
+        newPlayer.delegate = self
+        self.player = newPlayer
     }
     
     // MARK: Audio Functions
