@@ -124,6 +124,11 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        LDScene.unloadScene()
+        // currentLevel.unloadLevel()
+    }
+    
     // MARK: Handle Gestures
     func handlePan(_ sender: UIPanGestureRecognizer) {
         if (!canEdit() || longPress) {

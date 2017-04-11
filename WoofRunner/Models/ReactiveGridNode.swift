@@ -31,6 +31,9 @@ class ReactiveGridNode {
     var platformModelNode: SCNNode
     var obstacleModelNode: SCNNode
     
+    var cachedPlatform: String?
+    var cachedObstacle: String?
+    
     /// Creates a Reactive Grid object that observes the specified Grid View Model
     /// - Parameters: 
     ///     - gridVM: Grid View Model object to be observed by the reactive grid node
@@ -63,14 +66,6 @@ class ReactiveGridNode {
                 self.obstacleNode.value.position = self.position + SCNVector3(0.0, gridVM.size.value, 0.0)
             }).addDisposableTo(disposeBag)
         
-        gridVM.size.asObservable()
-            .subscribe(onNext: {
-                (size) in
-                self.size = size
-                self.updatePlatformNode()
-                self.updateObstacleNode()
-            }).addDisposableTo(disposeBag)
-        
         gridVM.platformType.asObservable()
             .subscribe(onNext: {
                 (platformType) in
@@ -84,6 +79,21 @@ class ReactiveGridNode {
                 self.obstacleType = obstacleType
                 self.updateObstacleNode()
             }).addDisposableTo(disposeBag)
+
+        gridVM.shouldRender.asObservable()
+            .subscribe(onNext: {
+                (render) in
+                if render {
+                    self.updateObstacleNode()
+                    self.updatePlatformNode()
+                }
+            }).addDisposableTo(disposeBag)
+    }
+    
+    /// Unloads all resources in the grid
+    public func unloadGridNode() {
+        freeNode(platformNode.value)
+        freeNode(obstacleNode.value)
     }
     
     /// Called when observed platform TileModel changes.
@@ -91,23 +101,15 @@ class ReactiveGridNode {
     private func updatePlatformNode() {
         var modelNode: SCNNode
         
-        if platformType == nil {
-            // Empty block for nil platform
-            let size = self.size
-            let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
-                                             length: CGFloat(size), chamferRadius: 0.05)
-            for material in platformBoxGeometry.materials {
-                material.diffuse.contents = UIImage(named: ReactiveGridNode.wireframeMaterial)
-                material.lightingModel = .constant
-                material.isDoubleSided = true
-            }
-            modelNode = SCNNode(geometry: platformBoxGeometry)
-            modelNode.position = SCNVector3(0.5 * size, 0.75 * size, -0.5 * size)
-        } else if let model = loadModel(platformType!.scenePath) {
-            modelNode = model
-        } else {
+        guard shouldRender.value else {
             return
         }
+        
+        guard let model = renderPlatformNode() else {
+            return
+        }
+        
+        modelNode = model
         
         // Tag Grid Node
         self.platformNode.value.name = GridViewModel.gridNodeName
@@ -119,19 +121,81 @@ class ReactiveGridNode {
         self.platformNode.value.position = self.position
     }
     
+    private func renderPlatformNode() -> SCNNode? {
+        if let platform = platformType {
+            // Check for cached
+            guard platform.scenePath != cachedPlatform else {
+                return nil
+            }
+            
+            // Attempt to render platform
+            if let model = loadModel(platformType!.scenePath) {
+                let modelNode = model
+                cachedPlatform = platformType!.scenePath
+                return modelNode
+            } else {
+                return nil
+            }
+        } else {
+            // Platform type == nil
+            
+            // Check for cached
+            guard cachedPlatform != "empty" else {
+                return nil
+            }
+            
+            // Render empty platform
+            let size = self.size
+            let platformBoxGeometry = SCNBox(width: CGFloat(size), height: CGFloat(size),
+                                             length: CGFloat(size), chamferRadius: 0.05)
+            for material in platformBoxGeometry.materials {
+                material.diffuse.contents = UIImage(named: ReactiveGridNode.wireframeMaterial)
+                material.lightingModel = .constant
+                material.isDoubleSided = true
+            }
+            let modelNode = SCNNode(geometry: platformBoxGeometry)
+            modelNode.position = SCNVector3(0.5 * size, 0.75 * size, -0.5 * size)
+            cachedPlatform = "empty"
+            return modelNode
+        }
+    }
+    
+    private func renderObstacleNode() -> SCNNode? {
+        if let obstacle = obstacleType {
+            // Check for cached
+            guard obstacle.scenePath != cachedObstacle else {
+                return nil
+            }
+            
+            // Attempt to render obstacle
+            if let model = loadModel(obstacleType!.scenePath) {
+                let modelNode = model
+                cachedObstacle = obstacleType!.scenePath
+                return modelNode
+            } else {
+                return nil
+            }
+        } else {
+            // Obstacle type == nil, return empty node
+            let modelNode = SCNNode()
+            return modelNode
+        }
+    }
+    
     /// Called when observed obstacle TileModel changes.
     /// updates the obstacle node's model
     private func updateObstacleNode() {
         var modelNode: SCNNode
         
-        if obstacleType == nil {
-            // Empty Node
-            modelNode = SCNNode()
-        } else if let model = loadModel(obstacleType!.scenePath) {
-            modelNode = model
-        } else {
+        guard shouldRender.value else {
             return
         }
+        
+        guard let model = renderObstacleNode() else {
+            return
+        }
+        
+        modelNode = model
         
         // Tag GridNode
         self.obstacleNode.value.name = GridViewModel.gridNodeName

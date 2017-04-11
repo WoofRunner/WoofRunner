@@ -38,7 +38,6 @@ class ReactiveGrid {
         self.grid = SCNNode()
         self.gridNodes = [ReactiveGridNode]()
         self.gridVMArray = levelGrid.gridViewModelArray.value
-        
         updateGridNodes(gridVMArray)
         
         // Subscribe to gridViewModelArray
@@ -54,6 +53,19 @@ class ReactiveGrid {
     /// Removes the current grid node from the scene.
     public func removeGrid() {
         self.grid.removeFromParentNode()
+    }
+    
+    /// Unloads the resources used by grid and its components
+    public func unloadGrid() {
+        for gridNode in gridNodes {
+            gridNode.unloadGridNode()
+        }
+        // Refresh all references
+        self.grid = SCNNode()
+        self.gridNodes = [ReactiveGridNode]()
+        self.gridVMArray = [[GridViewModel]]()
+        // Unload self
+        removeGrid()
     }
     
     /// Called when the observed levelGrid has changed

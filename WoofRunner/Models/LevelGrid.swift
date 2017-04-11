@@ -133,9 +133,9 @@ class LevelGrid {
             for gridVM in gridVMRow {
                 if gridVM.gridPos.value.getRow() >= startRow &&
                     gridVM.gridPos.value.getRow() < endRow {
-                    gridVM.shouldRender.value = true
+                    renderGridVM(gridVM, true)
                 } else {
-                    gridVM.shouldRender.value = false
+                    renderGridVM(gridVM, false)
                 }
             }
         }
@@ -222,6 +222,12 @@ class LevelGrid {
     
     internal func setGridVMType(_ gridVM: GridViewModel, platform: PlatformModel?, obstacle: ObstacleModel?) {
         gridVM.setType(platform: platform, obstacle: obstacle)
+    }
+    
+    private func renderGridVM(_ gridVM: GridViewModel, _ condition: Bool) {
+        if gridVM.shouldRender.value != condition {
+            gridVM.shouldRender.value = condition
+        }
     }
 
     private func updatePlatformArray(row: Int, col: Int, _ newModel: PlatformModel?) {
