@@ -52,7 +52,10 @@ class AVAudioPlayerManager {
         guard let sound = audioPlayer else {
             return
         }
-        sound.stop()
+        if sound.isPlaying {
+            sound.pause()
+        }
+        sound.currentTime = 0
         sound.play()
     }
     
@@ -84,6 +87,7 @@ class AVAudioPlayerManager {
             return
         }
         sound.stop()
+        sound.currentTime = 0.0
     }
     
     /**
