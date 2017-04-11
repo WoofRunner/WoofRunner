@@ -238,9 +238,9 @@
 		4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelDesignerScene.swift; path = WoofRunner/View/LevelDesigner/LevelDesignerScene.swift; sourceTree = SOURCE_ROOT; };
 		4E1E11201E82D50D00AAC356 /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
-		4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveGridNode.swift; sourceTree = "<group>"; };
+		4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveGridNode.swift; path = ../../Models/ReactiveGridNode.swift; sourceTree = "<group>"; };
 		4E90FFE81E8431690012B03F /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveGrid.swift; sourceTree = "<group>"; };
+		4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveGrid.swift; path = ../../Models/ReactiveGrid.swift; sourceTree = "<group>"; };
 		4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelGrid.swift; sourceTree = "<group>"; };
 		4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+Selection.swift"; sourceTree = "<group>"; };
 		4E9DB3771E954DC10023A2A8 /* AVAudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioPlayerManager.swift; sourceTree = "<group>"; };
@@ -330,8 +330,6 @@
 				12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */,
 				12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */,
 				4E1E11201E82D50D00AAC356 /* GridViewModel.swift */,
-				4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */,
-				4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */,
 				4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */,
 				4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */,
 				12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */,
@@ -504,6 +502,8 @@
 			children = (
 				3FCC899C1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift */,
 				4E1E111E1E7AF35400AAC356 /* LevelDesignerScene.swift */,
+				4E1E11221E82F7E600AAC356 /* ReactiveGridNode.swift */,
+				4E90FFEA1E844C5A0012B03F /* ReactiveGrid.swift */,
 				3F0F81CC1E96C21F00114CD0 /* SelectionMenu */,
 				3F0F81CB1E96C20600114CD0 /* BottomMenu */,
 				3F0F81CA1E96C1CF00114CD0 /* PaletteMenu */,

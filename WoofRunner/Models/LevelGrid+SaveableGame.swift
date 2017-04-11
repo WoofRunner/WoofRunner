@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Extension. Provides saving and loading functionality
+/// for the level grid object.
 extension LevelGrid: SaveableGame {
 
     /// Translates the LevelGrid into a StoredGame object using the 
