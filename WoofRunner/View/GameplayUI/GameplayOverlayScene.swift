@@ -56,7 +56,7 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 		initGameEndMenu(menu: loseMenu)
         
         // Add view elements
-        self.addChild(scoreLabel)
+        //self.addChild(scoreLabel)
         self.addChild(menuButton)
 		self.addChild(menuOverlay)
     }
@@ -131,17 +131,24 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 		let exitButton = GameplayOverlayButton(type: .exit)
 		
 		// Attach Child View Nodes
-		menu.addChild(finalScoreLabel)
+		//menu.addChild(finalScoreLabel)
 		menu.addChild(retryButton)
 		menu.addChild(exitButton)
 		
 		// Adjust Button Positions
+		/* UNUSED AT THE MOMENT BECAUSE TEMPORARILY REMOVING SCORE LABEL
 		finalScoreLabel.position = CGPoint(x: 0,
 		                                   y: menu.size.height / 3 - 80)
 		retryButton.position = CGPoint(x: 0,
 		                               y: menu.size.height / 3 - 180)
 		exitButton.position = CGPoint(x: 0,
 		                              y: menu.size.height / 3 - 260)
+		*/
+		
+		retryButton.position = CGPoint(x: 0,
+		                               y: menu.size.height / 3 - 130)
+		exitButton.position = CGPoint(x: 0,
+		                              y: menu.size.height / 3 - 210)
 		
 		// Attach Delegates
 		retryButton.setDelegate(self)
