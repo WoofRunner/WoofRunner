@@ -10,6 +10,8 @@ import Foundation
 
 extension LevelGrid: SaveableGame {
 
+    /// Translates the LevelGrid into a StoredGame object using the 
+    /// values in the platform and obstacle arrays
     func toStoredGame() -> StoredGame {
         let cdm = CoreDataManager.getInstance()
         let context = cdm.context
@@ -43,6 +45,9 @@ extension LevelGrid: SaveableGame {
         return res
     }
 
+    /// Translate the StoredGame object back into the LevelGrid
+    /// - Parameters:
+    ///     - storedGame: StoredGame object from CoreData which holds the level data
     func load(from storedGame: StoredGame) {
         self.storedGame = storedGame
 
@@ -55,9 +60,9 @@ extension LevelGrid: SaveableGame {
 		
 		// Reinit Level
 		length = platformArray.count
-		gridViewModelArray = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
-		                                                                  count: LevelGrid.levelCols),
-		                                       count: length)
+		gridViewModelArray.value = [[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
+		                                                                        count: LevelGrid.levelCols),
+		                                             count: length)
 		
 		// Setup GridVMs
 		for row in 0...length - 1 {
@@ -67,12 +72,15 @@ extension LevelGrid: SaveableGame {
 				               obstacle: obstacleArray[row][col])
 				setupObservables(gridVM)
 				// Append to array
-				gridViewModelArray[row][col] = gridVM
+				gridViewModelArray.value[row][col] = gridVM
 			}
 		}
     }
 
     /// Returns the StoredObstacle mapping of the current game model.
+    /// - Parameters:
+    ///     - game: StoredGame object which will be populated with level obstacle data
+    /// - Returns: array of StoredObstacle objects
     private func createStoredObstacles(game: StoredGame) {
         let cdm = CoreDataManager.getInstance()
         let context = cdm.context
@@ -95,6 +103,8 @@ extension LevelGrid: SaveableGame {
     }
 
     /// Returns the StoredPlatform mapping of the current game model.
+    /// - Parameters:
+    ///     - game: StoredGame object which will be populated with level platform data
     /// - Returns: array of StoredPlatform objects
     private func createStoredPlatforms(game: StoredGame) {
         let cdm = CoreDataManager.getInstance()
@@ -156,13 +166,15 @@ extension LevelGrid: SaveableGame {
         // Truncate trailling empty rows from back to front
         var platformLength = self.length
         for index in 0...platformLength - 1 {
-            let row = gridViewModelArray[platformLength - index - 1]
+            let row = gridViewModelArray.value[platformLength - index - 1]
             if !isEmptyRow(row) {
                 platformLength = platformLength - index
                 break
             }
         }
-        gridViewModelArray = Array(gridViewModelArray.prefix(platformLength))
+        // Update level variables with new length
+        gridViewModelArray.value = Array(gridViewModelArray.value
+                                                            .prefix(platformLength))
         platformArray = Array(platformArray.prefix(platformLength))
         obstacleArray = Array(obstacleArray.prefix(platformLength))
         

@@ -60,12 +60,7 @@ class World {
         _ = isGameEngineValid(taskMessage: MSG_DESTROY_ENGINE)
         gameEngine?.destroyEngine()
     }
-    
-    public static func shake() {
-        _ = isGameEngineValid(taskMessage: MSG_DESTROY_ENGINE)
-        gameEngine?.shakeScreen()
-    }
-    
+
     public static func setPause(isPaused: Bool) {
         gameEngine?.isPause = isPaused
     }

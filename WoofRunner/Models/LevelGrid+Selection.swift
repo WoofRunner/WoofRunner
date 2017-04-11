@@ -8,9 +8,17 @@
 
 import Foundation
 
+/// Extension: Selection functionality for designing level grid.
+/// Allows the user to long tap and box an area to bulk edit.
 extension LevelGrid {
     
-    func beginSelection(_ pos: (x: Float, z: Float)) {
+    /**
+     Called on .began of gesture to start selection.
+     - parameter pos: pair of floats containing the x and z coordinates of the tapped point in scene
+     - note: Will toggle the starting grid on the specified coordinates and use that toggled grid
+     as the template for bulk edit
+     */
+    public func beginSelection(_ pos: (x: Float, z: Float)) {
         guard let startGridVM = getValidGrid(pos) else {
             return
         }
@@ -27,7 +35,13 @@ extension LevelGrid {
                              startGridVM.obstacleType.value]
     }
     
-    func updateSelection(_ pos: (x: Float, z: Float)) {
+    /**
+     Called on .changed of gesture to update selection.
+     - parameter pos: pair of floats containing the x and z coordinates of the last tapped point in scene
+     - note: Optimised with smarter rendering conditions to only render the delta of the selection correctly.
+     - remark: Expensive operation as this will have to render all the grid nodes within the selection.
+     */
+    public func updateSelection(_ pos: (x: Float, z: Float)) {
         guard let startPos = selectionStartPos else {
             return
         }
@@ -49,7 +63,10 @@ extension LevelGrid {
         selectionEndPos = endGrid.gridPos.value
     }
     
-    func endSelection() {
+    /**
+     Called on .end of gesture to terminate the selection and apply all changes.
+     */
+    public func endSelection() {
         // Empty selection
         selectionCache = [String: [TileModel?]]()
         selectionStartPos = nil
@@ -58,12 +75,12 @@ extension LevelGrid {
     }
     
     private func revertGridInPosition(_ pos: Position) {
-        // Look for cached Tiletype
+        // Look for cached tileModel
         guard let prevTileType = selectionCache[getPosString(pos)] else {
             return
         }
         // Revert
-        let gridVM = gridViewModelArray[pos.getRow()][pos.getCol()]
+        let gridVM = gridViewModelArray.value[pos.getRow()][pos.getCol()]
         var platform: PlatformModel? = nil
         var obstacle: ObstacleModel? = nil
         if let prevPlatform = prevTileType[0] {
@@ -82,8 +99,8 @@ extension LevelGrid {
     }
     
     private func toggleGridInPosition(_ pos: Position) {
-        // Cache initial type if not cached
-        let gridVM = gridViewModelArray[pos.getRow()][pos.getCol()]
+        // Cache initial tileModel if not cached
+        let gridVM = gridViewModelArray.value[pos.getRow()][pos.getCol()]
         let posString = getPosString(pos)
         if selectionCache[posString] == nil {
             selectionCache[posString] = [gridVM.platformType.value,
@@ -106,6 +123,8 @@ extension LevelGrid {
                       obstacle: obstacle)
     }
     
+    // Iterates through the top and lower bounds; start row and end row, and
+    // retrieve the grids within the box delimited by these 2 points
     private func getSelection(_ start: Position, _ end: Position) -> [Position] {
         if start.getRow() == end.getRow() && start.getCol() == end.getCol() {
             return [start]
@@ -125,6 +144,8 @@ extension LevelGrid {
         return selection
     }
     
+    // Performs a double filter with the two boxes: start to prevEnd, and start to newEnd to retrieve
+    // the delta for grids to be reverted and grids to be toggled.
     private func toggleSelectionDifference(_ start: Position, _ prevEnd: Position, _ newEnd: Position) {
         let prevSelection = getSelection(start, prevEnd)
         let newSelection = getSelection(start, newEnd)
@@ -155,6 +176,7 @@ extension LevelGrid {
         
     }
     
+    // Simple hash for caching grid nodes
     private func getPosString(_ gridPos: Position) -> String {
         return String(gridPos.getRow()) + "," + String(gridPos.getCol())
     }

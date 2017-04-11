@@ -73,7 +73,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         
         let camera = Camera()
         World.spawnGameObject(camera)
-        //World.spawnGameObject(TestCube(SCNVector3(0, 0, 0)))
         
         // Play background music
         setupBGM()
@@ -84,6 +83,8 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     func playerDied() {
         tileManager?.stopMoving()
 		overlaySpriteScene?.showLoseMenu()
+        
+        sceneShake(shakeCount: 5, intensity: CGVector(dx: 1, dy: 1), shakeDuration: 1)
     }
     
     func restartGame() {
@@ -171,5 +172,16 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     internal func retryGame() {
         restartGame()
+    }
+    
+    func sceneShake(shakeCount: Int, intensity: CGVector, shakeDuration: Double) {
+        let sceneView = self.view! as UIView
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = shakeDuration / Double(shakeCount)
+        shakeAnimation.repeatCount = Float(shakeCount)
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: sceneView.center.x - intensity.dx, y: sceneView.center.y - intensity.dy))
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: sceneView.center.x + intensity.dx, y: sceneView.center.y + intensity.dy))
+        sceneView.layer.add(shakeAnimation, forKey: "position")
     }
 }

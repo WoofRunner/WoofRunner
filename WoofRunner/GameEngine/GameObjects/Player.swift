@@ -25,10 +25,11 @@ class Player: GameObject {
     var deadFallSpeed: Float = 3
     var deadFallLimitY: Float = -3
     
-    let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
-    
     var targetPositionX: Float = 0
     let lerpSpeed: Float = 15
+    
+    let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
+    
     
     override init() {
         startPosition = SCNVector3(x: startOffsetX, y: startHeight, z: 1.5)
@@ -98,11 +99,6 @@ class Player: GameObject {
         }
     }
     
-    override func tapGesture(_ gesture: UITapGestureRecognizer, _ location: CGPoint) {
-        //World.shake()
-        //runAction(SCNAction.shake(initialPosition: SCNVector3.zero(), duration: 1))
-    }
-
     public override func panGesture(_ gesture: UIPanGestureRecognizer, _ location: CGPoint) {
         if isDeadFall {
             return
@@ -114,8 +110,9 @@ class Player: GameObject {
         
         targetPositionX = worldPoint.x
     }
-
+    
     override func destroy() {
+        isHidden = true
         delegate?.playerDied()
     }
     
