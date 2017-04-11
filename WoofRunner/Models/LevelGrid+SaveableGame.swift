@@ -46,22 +46,11 @@ extension LevelGrid: SaveableGame {
     func load(from storedGame: StoredGame) {
         self.storedGame = storedGame
 
-        var obstacles = [StoredObstacle]()
-        for obstacle in storedGame.obstacles! {
-            obstacles.append(obstacle as! StoredObstacle)
+        obstacleArray = storedGame.getObstacles().map { column in
+            return column.map { $0 as? ObstacleModel }
         }
-
-        var platforms = [StoredPlatform]()
-        for platform in storedGame.platforms! {
-            platforms.append(platform as! StoredPlatform)
-        }
-
-        for obstacle in obstacles {
-            obstacleArray[Int(obstacle.positionX)][Int(obstacle.positionY)] = TileModelFactory.sharedInstance.getTile(tileId: Int(obstacle.type)) as? ObstacleModel
-        }
-
-        for platform in platforms {
-            platformArray[Int(platform.positionX)][Int(platform.positionY)] = TileModelFactory.sharedInstance.getTile(tileId: Int(platform.type)) as? PlatformModel
+        platformArray = storedGame.getPlatforms().map { column in
+            return column.map { $0 as? PlatformModel }
         }
 		
 		// Reinit Level
