@@ -5,39 +5,33 @@
 //  Created by See Loo Jane on 26/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
+//	CurrentSelectionNode displays the name of the currently selected
+//	BrushSelection. Its position should be set by the parent object 
+//	that creates it.
 
 import SpriteKit
 
-struct SelectionConstants {
-	
-	static let menuSize = CGSize()
-	static let backgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.8)
-	static let backgroundCornerRadius = CGFloat(25)
-	static let backgroundSize = CGSize(width: 200, height: 130)
-	static let backgroundYOffset = CGFloat(-15)
-	
-	static let headerFontName = "AvenirNextCondensed-Bold"
-	static let headerFontColor = UIColor.white
-	static let headerFontSize = CGFloat(25)
-	static let spacingBetweenHeaders = CGFloat(25)
-	
-	static let selectionFontName = "AvenirNextCondensed-Bold"
-	static let selectionFontColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
-	static let selectionFontSize = CGFloat(20)
-	static let spacingBetweenHeaderAndSelection = CGFloat(60)
-}
-
 class CurrentSelectionNode: SKNode {
 	
-	var backgroundNode = SKNode()
-	var headerCurrentLabel = SKLabelNode()
-	var headerSelectionLabel = SKLabelNode()
-	var selectionLabel = SKLabelNode()
+	// CSUI is shorthand for CurrentSelectionUI
+	typealias CSUI = LDOverlaySceneConstants.UISelectionConstants
+	
+	// MARK: - Private Variables
+	
+	private var backgroundNode = SKNode()
+	private var headerCurrentLabel = SKLabelNode()
+	private var headerSelectionLabel = SKLabelNode()
+	private var selectionLabel = SKLabelNode()
+	
+	// MARK: - Initialisers 
 	
 	override init() {
 		super.init()
 	}
 	
+	/**
+	Creates a CurrentSelectionUI node with the input defaultSelectionText as the initial display text.
+	*/
 	convenience init(defaultSelectionText: String) {
 		self.init()
 		initBackground()
@@ -48,19 +42,15 @@ class CurrentSelectionNode: SKNode {
 		super.init(coder: aDecoder)
 	}
 	
-	private func addLabelNodes() {
-		self.addChild(headerCurrentLabel)
-		self.addChild(headerSelectionLabel)
-		self.addChild(selectionLabel)
-	}
+	// MARK: - Private Methods
 	
 	private func initBackground() {
-		backgroundNode = CustomShapeNodes.getRoundedRectangleNode(height: SelectionConstants.backgroundSize.height,
-		                                                          width: SelectionConstants.backgroundSize.width,
-		                                                          radius: SelectionConstants.backgroundCornerRadius,
-		                                                          backgroundColor: SelectionConstants.backgroundColor)
-		backgroundNode.position = CGPoint(x: -SelectionConstants.backgroundSize.width / 2,
-		                                  y: -SelectionConstants.backgroundSize.height / 2 + SelectionConstants.backgroundYOffset)
+		backgroundNode = CustomShapeNodes.getRoundedRectangleNode(height: CSUI.backgroundSize.height,
+		                                                          width: CSUI.backgroundSize.width,
+		                                                          radius: CSUI.backgroundCornerRadius,
+		                                                          backgroundColor: CSUI.backgroundColor)
+		backgroundNode.position = CGPoint(x: -CSUI.backgroundSize.width / 2,
+		                                  y: -CSUI.backgroundSize.height / 2 + CSUI.backgroundYOffset)
 		self.addChild(backgroundNode)
 	}
 	
@@ -70,27 +60,38 @@ class CurrentSelectionNode: SKNode {
 		
 		headerSelectionLabel = SKLabelNode(text: "Selection:")
 		configureHeaderLabel(headerSelectionLabel)
-		headerSelectionLabel.position = CGPoint(x: 0, y: -1 * SelectionConstants.spacingBetweenHeaders)
+		headerSelectionLabel.position = CSUI.headerPosition
 		
 		selectionLabel = SKLabelNode(text: defaultSelectionText)
 		configureSelectionLabel()
-		selectionLabel.position = CGPoint(x: 0, y: -1 * SelectionConstants.spacingBetweenHeaderAndSelection)
+		selectionLabel.position = CSUI.selectionLabelPosition
 		
 		addLabelNodes()
 	}
 	
+	private func addLabelNodes() {
+		self.addChild(headerCurrentLabel)
+		self.addChild(headerSelectionLabel)
+		self.addChild(selectionLabel)
+	}
+	
 	private func configureHeaderLabel(_ label: SKLabelNode) {
-		label.fontName = SelectionConstants.headerFontName
-		label.fontColor = SelectionConstants.headerFontColor
-		label.fontSize = SelectionConstants.headerFontSize
+		label.fontName = CSUI.headerFontName
+		label.fontColor = CSUI.headerFontColor
+		label.fontSize = CSUI.headerFontSize
 	}
 	
 	private func configureSelectionLabel() {
-		selectionLabel.fontName = SelectionConstants.selectionFontName
-		selectionLabel.fontColor = SelectionConstants.selectionFontColor
-		selectionLabel.fontSize = SelectionConstants.selectionFontSize
+		selectionLabel.fontName = CSUI.selectionFontName
+		selectionLabel.fontColor = CSUI.selectionFontColor
+		selectionLabel.fontSize = CSUI.selectionFontSize
 	}
 	
+	// MARK: - Public Methods
+	
+	/**
+	Updates the selectionLabel text to the input String
+	*/
 	public func updateSelectionText(_ text: String) {
 		selectionLabel.text = text
 	}
