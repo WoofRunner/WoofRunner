@@ -10,6 +10,8 @@ import SpriteKit
 
 class OverlayMenuSubsection: SKNode {
 	
+	typealias Constants = LDOverlaySceneConstants.OverlayConstants
+	
 	private var tileModelArray = [TileModel]()
 	private var sectionTitleLabel = SKLabelNode()
 	private var buttonSetArray = [OverlayButtonSet]()
@@ -32,13 +34,13 @@ class OverlayMenuSubsection: SKNode {
 		/*
 		// Render Section Title Label
 		configureToTitleLabel(self.sectionTitleLabel)
-		self.sectionTitleLabel.position = CGPoint(x: OverlayConstants.subsectionTitleX , y: OverlayConstants.subsectionTitleY)
+		self.sectionTitleLabel.position = CGPoint(x: Constants.subsectionTitleX , y: Constants.subsectionTitleY)
 		self.addChild(self.sectionTitleLabel)
 		*/
 		
 		// Render ButtonSets
-		var baseX = OverlayConstants.btnSetBaseX
-		var baseY = OverlayConstants.btnSetBaseY
+		var baseX = Constants.btnSetBaseX
+		var baseY = Constants.btnSetBaseY
 		
 		for i in 0..<tileModelArray.count {
 			
@@ -52,10 +54,10 @@ class OverlayMenuSubsection: SKNode {
 			let btnSet = OverlayButtonSet(name: tileModel.name, imageNamed: iconPath)
 			
 			if i % 3 == 0 {
-				baseX = OverlayConstants.btnSetBaseX
-				baseY = baseY - CGFloat(i) * OverlayConstants.btnSetSpacingY
+				baseX = Constants.btnSetBaseX
+				baseY = baseY - CGFloat(i) * Constants.btnSetSpacingY
 			} else {
-				baseX += OverlayConstants.btnWidth + OverlayConstants.btnSetSpacingX
+				baseX += Constants.btnWidth + Constants.btnSetSpacingX
 			}
 			
 			// Set Position
@@ -78,16 +80,16 @@ class OverlayMenuSubsection: SKNode {
 		}
 		
 		// 60 is the estimated height of the Subsection title
-		let btnSetHeight = OverlayConstants.btnHeight + OverlayConstants.btnMargin
+		let btnSetHeight = Constants.btnHeight + Constants.btnMargin
 		let height = titleHeight + CGFloat(numberOfRows) * btnSetHeight
 
 		return CGFloat(height)
 	}
 		
 	private func configureToTitleLabel(_ label: SKLabelNode) {
-		label.fontName = OverlayConstants.subtitleFontName
-		label.fontColor = OverlayConstants.subtitleFontColor
-		label.fontSize = OverlayConstants.subtitleFontSize
+		label.fontName = Constants.subtitleFontName
+		label.fontColor = Constants.subtitleFontColor
+		label.fontSize = Constants.subtitleFontSize
 	}
 	
 	public func assignDelegateForButtons(_ delegate: OverlayButtonDelegate) {
