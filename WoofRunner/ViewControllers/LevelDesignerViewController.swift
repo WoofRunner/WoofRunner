@@ -362,6 +362,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		// Create the dialog
 		let popup = PopupDialog(viewController: renameVC, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false)
 		
+		
 		// Configure and add buttons
 		let cancelBtn = CancelButton(title: "CANCEL", height: 60) {
 			popup.dismiss()
@@ -413,7 +414,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	
 	private func customiseDialogOverlayAppearance() {
 		let overlayAppearance = PopupDialogOverlayView.appearance()
-		overlayAppearance.color = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
+		overlayAppearance.color = UIColor.clear
 		overlayAppearance.blurRadius = 30
 		overlayAppearance.blurEnabled = true
 		overlayAppearance.liveBlur = false
