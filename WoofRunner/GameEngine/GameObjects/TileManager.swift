@@ -31,6 +31,7 @@ class TileManager: GameObject {
     let PLATFORM_Z_OFFSET: Float = 3.5
 
     var poolManager: PoolManager?
+    var NUM_ROWS_TO_POOL = 40
     
     var isDebug: Bool = true
     
@@ -38,7 +39,7 @@ class TileManager: GameObject {
     let WARNING_CANT_FIND_DEAD_TRIGGER = "WARNING: Cant Find Dead Trigger"
     
     var isMoving: Bool = false
-    var delay: Float = 3
+    var delay: Float = 2
     
     var delegate: TileManagerDelegate?
     
@@ -78,8 +79,9 @@ class TileManager: GameObject {
             print(WARNING_INVALID_DATA)
             return nil
         }
+        initPooling()
     }
-    
+
     public func restartLevel() {
         position = startPosition
         platformTail = position.z - TAIL_LENGTH
@@ -87,6 +89,11 @@ class TileManager: GameObject {
         tailIndex = 0
         moveState = MoveState.wait
         spawnTiles()
+    }
+    
+    public func initPooling() {
+        poolTiles()
+        poolManager?.destroyAllActiveTiles()
     }
     
     // both obstacle and platform data must have same number of rows and cols
@@ -129,6 +136,7 @@ class TileManager: GameObject {
                     data[rowIndex][colIndex] = tempPlatformModel
                     break
                 }
+                
             }
         }
         return data
@@ -154,6 +162,17 @@ class TileManager: GameObject {
                 handleTileSpawning(row: row, col: col)
             }
             
+            appendDeadTriggers(row)
+        }
+    }
+    
+    func poolTiles() {
+        let length = min(NUM_ROWS_TO_POOL, platformData.count)
+
+        for row in 0..<length {
+            for col in 0..<platformData[row].count {
+                handleTileSpawning(row: row, col: col)
+            }
             appendDeadTriggers(row)
         }
     }
@@ -188,7 +207,6 @@ class TileManager: GameObject {
         let tile = poolManager?.getTile(deadTriggerModel)
         tile?.setPositionWithOffset(position: calculateTilePosition(row, col))
     }
-    
     
     private func calculateTilePosition(_ row: Int, _ col: Int) -> SCNVector3 {
         var position = calculateIndexPosition(row, col)
