@@ -11,6 +11,8 @@ import SpriteKit
 
 class OverlayButtonSet: SKNode {
 	
+	typealias Constants = LDOverlaySceneConstants.OverlayConstants
+	
 	private var btnLabel = SKLabelNode()
 	private var btn = OverlayButton()
 	
@@ -26,7 +28,7 @@ class OverlayButtonSet: SKNode {
 		let imageNamed = imageNamed
 		
 		self.btnLabel = SKLabelNode(text: buttonName)
-		self.btn = OverlayButton(imageNamed: imageNamed, tileName: buttonName, size: CGSize(width: OverlayConstants.btnWidth, height: OverlayConstants.btnHeight))
+		self.btn = OverlayButton(imageNamed: imageNamed, tileName: buttonName, size: CGSize(width: Constants.btnWidth, height: Constants.btnHeight))
 		
 		renderOverlayButtonSet()
 	}
@@ -38,17 +40,17 @@ class OverlayButtonSet: SKNode {
 		self.addChild(self.btnLabel)
 		
 		// Set button position and add node
-		self.btn.position = CGPoint(x: OverlayConstants.btnX, y: OverlayConstants.btnY)
+		self.btn.position = CGPoint(x: Constants.btnX, y: Constants.btnY)
 		self.addChild(self.btn)
 	}
 	
 	// Sets the font, color, size and position properties of input label
 	// to the presets for a button label node
 	private func configureToNameLabel(_ label: SKLabelNode) {
-		label.fontName = OverlayConstants.btnLabelFontName
-		label.fontColor = OverlayConstants.btnLabelFontColor
-		label.fontSize = OverlayConstants.btnLabelFontSize
-		label.position = OverlayConstants.btnLabelPosition
+		label.fontName = Constants.btnLabelFontName
+		label.fontColor = Constants.btnLabelFontColor
+		label.fontSize = Constants.btnLabelFontSize
+		label.position = Constants.btnLabelPosition
 	}
 	
 	public func getButtonNode() -> OverlayButton {
