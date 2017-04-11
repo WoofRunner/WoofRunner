@@ -33,37 +33,13 @@ class LevelDesignerScene: SCNScene {
     func loadLevel(_ levelGrid: LevelGrid) {
         // Dispose previous rxGrid and create new rxGrid
         rxGrid.removeGrid()
-        rxGrid = ReactiveGrid()
         
-        // Prepare rxGridNodes
-        var rxGridNodes = [ReactiveGridNode]()
-        for gridVMRow in levelGrid.gridViewModelArray {
-            for gridVM in gridVMRow {
-                let rxGridNode = ReactiveGridNode(gridVM)
-                rxGridNodes.append(rxGridNode)
-            }
-        }
-        
-        // Attach rxGridNodes to rxGrix
-        rxGrid.setupGrid(gridNodes: rxGridNodes)
+        // Create new rxGrid that observes the current levelGrid
+        rxGrid = ReactiveGrid(levelGrid: levelGrid)
         
         // Add to scene
         rxGrid.grid.position = SCNVector3(0, 0, 0)
         self.rootNode.addChildNode(rxGrid.grid)
-    }
-    
-    func updateLevel(_ levelGrid: LevelGrid, from row: Int) {
-        // Update extension of level
-        var extendedRxGridNodes = [ReactiveGridNode]()
-        for rowIndex in row...levelGrid.length - 1 {
-            let gridVMRow = levelGrid.gridViewModelArray[rowIndex]
-            for gridVM in gridVMRow {
-                let rxGridNode = ReactiveGridNode(gridVM)
-                extendedRxGridNodes.append(rxGridNode)
-            }
-        }
-        
-        rxGrid.extendGrid(extendedGridNodes: extendedRxGridNodes)
     }
     
     func createCameraNode() -> SCNNode {

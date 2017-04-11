@@ -2,22 +2,24 @@
 //  SceneKitExtensions.swift
 //  WoofRunner
 //
-//
-// Creates an audioManager for the sound asset in the specified path.
-// If no asset is found, the manager will not perform any sound playback functions
-// - parameter path: url to the sound asset
-//
 //  Created by See Soon Kiat on 6/4/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
 import AVFoundation
 
+/// Creates an Audio Manager for the sound asset in the specified path.
+/// If no asset is found, the manager will not perform any sound playback functions.
 class AVAudioPlayerManager {
     
     private var audioPlayer: AVAudioPlayer?
     private var fadeIn = false;
     
+    /**
+     Creates an Audio Manager for the sound asset in the specified path.
+     If no asset is found, the manager will not perform any sound playback functions.
+     - parameter path: url to the sound asset
+     */
     init(path: String) {
         guard let path = Bundle.main.path(forResource: path, ofType: nil) else {
             return
