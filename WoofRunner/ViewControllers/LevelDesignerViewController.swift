@@ -126,7 +126,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         LDScene.unloadScene()
-        // currentLevel.unloadLevel()
+        currentLevel.unloadLevel()
     }
     
     // MARK: Handle Gestures

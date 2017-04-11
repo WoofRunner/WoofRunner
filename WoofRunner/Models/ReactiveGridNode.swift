@@ -232,7 +232,11 @@ class ReactiveGridNode {
                 freeNode(childNode)
             }
         }
-        // Additional measures to de-reference texture from geometry not included
+        if let materials = node.geometry?.materials {
+            for material in materials {
+                material.diffuse.contents = nil
+            }
+        }
         node.geometry = nil
         node.removeFromParentNode()
     }

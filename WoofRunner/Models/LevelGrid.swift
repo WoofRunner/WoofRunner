@@ -180,6 +180,14 @@ class LevelGrid {
         self.length += extend
     }
     
+    /// Unloads the level by de-referencing
+    func unloadLevel() {
+        platformArray = [[PlatformModel]]()
+        obstacleArray = [[ObstacleModel]]()
+        gridViewModelArray = Variable<[[GridViewModel]]>([[GridViewModel]]())
+        storedGame = nil
+    }
+    
     // MARK: Helper Functions
     
     internal func getValidGrid(_ pos: (x: Float, z: Float)) -> GridViewModel? {
