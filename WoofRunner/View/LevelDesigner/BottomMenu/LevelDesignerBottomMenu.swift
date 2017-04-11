@@ -5,6 +5,11 @@
 //  Created by See Loo Jane on 27/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
+//
+//	The LevelDesignerBottomMenu contains the BottomMenuSpriteButtons 
+//	and BottomMenuLabelButtons that is in charge of functionalities 
+//	like saving, back and renaming. Its posiiton should be set by the 
+//	object creating this menu
 
 import SpriteKit
 

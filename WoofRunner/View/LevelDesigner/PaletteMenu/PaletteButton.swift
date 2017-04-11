@@ -5,10 +5,13 @@
 //  Created by See Loo Jane on 26/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
+//	The PaletteButton subclasses SKSpriteNode and conforms
+//	to the LDOverlayButton protocol. It requires a PaletteButtonDelegate
+//	to perform tap callbacks.
 
 import SpriteKit
 
-class PaletteButton: RootSKSpriteNode, LDOverlayButton {
+class PaletteButton: SKSpriteNode, LDOverlayButton {
 	
 	
 	// MARK: - Private Variables
