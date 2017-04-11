@@ -102,7 +102,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     }
     
     func onCompletionUpdated(_ percentageCompleted: Float) {
-        overlaySpriteScene?.updateScore(percentageCompleted * Float(100))
+        //overlaySpriteScene?.updateScore(percentageCompleted * Float(100))
     }
     
     private func createPlayer() {
