@@ -840,7 +840,6 @@
 				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
 				3F7348C81E86FADC00EB1264 /* OverlayButtonDelegate.swift in Sources */,
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
-				3FF229E31E9BDC530040F0AF /* GameplayOverlayMenu.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
 				F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */,

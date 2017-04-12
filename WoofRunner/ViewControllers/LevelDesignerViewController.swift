@@ -45,7 +45,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         super.viewDidLoad()
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         sceneView.allowsCameraControl = false
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         

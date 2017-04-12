@@ -39,7 +39,7 @@ public class LevelCardViewModel {
 	init(game: StoredGame) {
 		self.levelUUID = game.uuid!
 		self.levelName = game.name ?? "No Title"
-		self.levelImageUrl = "test-level-image" // Stub
+		self.levelImageUrl = "level-preview-image" // Stub
 		self.playerScore = StubLevelCardConstants.stubPlayerScore // Stub
 		
 		// If there's no ownerId tied to the game, level is created locally
@@ -54,7 +54,7 @@ public class LevelCardViewModel {
         self.levelUUID = game.id
         // TODO: Add name in DisplayedGame
         self.levelName = "Stubbed"
-        self.levelImageUrl = "test-level-image" // Stubbed
+        self.levelImageUrl = "level-preview-image" // Stubbed
         self.playerScore = StubLevelCardConstants.stubPlayerScore
         self.author = game.owner
         setAuthorName(ownerId: game.owner)
