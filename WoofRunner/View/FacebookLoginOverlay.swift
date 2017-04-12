@@ -19,9 +19,15 @@ public class FacebookLoginOverlay: UIView {
     private static let BUTTON_TEXT = "LOGIN WITH FACEBOOK"
     private static let BUTTON_HEIGHT = 100
     private static let BUTTON_WIDTH = 350
+	private static let TITLE_STROKE_COLOR = UIColor(red: 0.78, green: 0.47, blue: 0.20, alpha: 1.0)
+	private static let TITLE_FONT_COLOR = UIColor(red: 0.96, green: 0.87, blue: 0.72, alpha: 1.0)
+	private static let TITLE_FONT = UIFont(name: "AvenirNext-Bold", size: 40)!
+	private static let TITLE_STROKE_SIZE = CGFloat(4.0)
+	private static let TITLE_TOP_OFFSET = 30
 
     // MARK: - Public variables
-
+	
+	private var title: StrokedLabel? // Cannot be declared public as it uses internal types
     public var button: UIButton?
     public var backgroundView: UIView?
 
@@ -30,6 +36,7 @@ public class FacebookLoginOverlay: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.dimBackground()
+		self.setupTitle()
         self.setupButton()
     }
 
@@ -38,21 +45,41 @@ public class FacebookLoginOverlay: UIView {
     }
 
     // MARK: - Private methods
-
+	
+	private func setupTitle() {
+		let title = StrokedLabel()
+		title.text = "Login To Marketplace"
+		title.strokedText(strokeColor: FacebookLoginOverlay.TITLE_STROKE_COLOR,
+		                  fontColor: FacebookLoginOverlay.TITLE_FONT_COLOR,
+		                  strokeSize: FacebookLoginOverlay.TITLE_STROKE_SIZE,
+		                  font: FacebookLoginOverlay.TITLE_FONT)
+		self.title = title
+		addSubview(title)
+		
+		// Set contraints
+		title.snp.makeConstraints { make in
+			make.centerX.equalToSuperview()
+			make.top.equalToSuperview().offset(FacebookLoginOverlay.TITLE_TOP_OFFSET)
+		}
+		
+	}
+	
     private func setupButton() {
         let button = UIButton()
-        button.setTitle(FacebookLoginOverlay.BUTTON_TEXT, for: .normal)
-        button.backgroundColor = UIColor.blue
-        button.alpha = 1.0
+		button.setImage(UIImage(named: "fb-login-btn"), for: .normal)
+		//button.setTitle(FacebookLoginOverlay.BUTTON_TEXT, for: .normal)
+        //button.backgroundColor = UIColor.blue
+        //button.alpha = 1.0
 
         self.button = button
         addSubview(button)
 
         // Set contraints
         button.snp.makeConstraints { make in
-            make.height.equalTo(FacebookLoginOverlay.BUTTON_HEIGHT)
-            make.width.equalTo(FacebookLoginOverlay.BUTTON_WIDTH)
-            make.center.equalTo(self)
+            //make.height.equalTo(FacebookLoginOverlay.BUTTON_HEIGHT)
+            //make.width.equalTo(FacebookLoginOverlay.BUTTON_WIDTH)
+            //make.center.equalTo(self)
+			make.center.equalToSuperview()
         }
     }
 
