@@ -34,6 +34,9 @@ class LevelGrid {
     var selectionEndPos: Position?
     var selectionTemplate: [TileModel?] = [nil, nil]
     
+    // Caching
+    var movingRows: Dictionary<Int, Bool>
+    
     // MARK: - SaveableGame
     var storedGame: StoredGame?
     
@@ -54,7 +57,7 @@ class LevelGrid {
         self.gridViewModelArray = Variable<[[GridViewModel]]>([[GridViewModel]](repeating: [GridViewModel](repeating: GridViewModel(),
                                                                                                            count: LevelGrid.levelCols),
                                                                                 count: length))
-        
+        self.movingRows = Dictionary<Int, Bool>()
         guard length > 0 else {
             return
         }
@@ -103,10 +106,9 @@ class LevelGrid {
         let tileModel = currentSelectedBrush.tileModel
         // Toggle grid with platform / obstacle
         if let platform = tileModel as? PlatformModel {
-            // Custom handler for moving platforms
-            guard platform.platformBehaviour != .moving else {
-                return postProcessMovingPlatform(gridVM.gridPos.value.getRow(),
-                                                 platform)
+            if preProcessMovingPlatform(gridVM.gridPos.value.getRow(), platform) {
+                // Allow for early termination
+                return
             }
             gridVM.setPlatform(platform)
         } else if let obstacle = tileModel as? ObstacleModel {
@@ -218,14 +220,44 @@ class LevelGrid {
         }).addDisposableTo(disposeBag)
     }
     
-    // Special handler used for moving platforms to ensure that replace the entire row
-    internal func postProcessMovingPlatform(_ row: Int, _ movingPlatform: PlatformModel) {
-        for gridVM in gridViewModelArray.value[row] {
-            setGridVMType(gridVM, platform: nil, obstacle: nil)
+    /// Special handler used for moving platforms to ensure that replace the entire row
+    /// - Parameters:
+    ///     - row: Row to preprocess
+    ///     - platform: incoming platform model
+    /// - Returns: bool to indicate whether to termination of execution
+    internal func preProcessMovingPlatform(_ row: Int, _ platform: PlatformModel?) -> Bool {
+        guard let platformModel = platform else {
+            return false
         }
-        let middleCol = (LevelGrid.levelCols / 2)
-        let middleGridVM = gridViewModelArray.value[row][middleCol]
-        setGridVMType(middleGridVM, platform: movingPlatform, obstacle: nil)
+        if platformModel.platformBehaviour == .moving {
+            for gridVM in gridViewModelArray.value[row] {
+                setGridVMType(gridVM, platform: nil, obstacle: nil)
+            }
+            // Force insertion of moving platform to be at the middle
+            let middleCol = (LevelGrid.levelCols / 2)
+            let middleGridVM = gridViewModelArray.value[row][middleCol]
+            setGridVMType(middleGridVM, platform: platformModel, obstacle: nil)
+            if let _ = movingRows[row] {
+                return true
+            } else {
+                movingRows[row] = true
+            }
+            
+            // terminate execution
+            return true
+        } else {
+            // Check against cache
+            if let _ = movingRows[row] {
+                // Remove moving platform
+                let middleCol = (LevelGrid.levelCols / 2)
+                let middleGridVM = gridViewModelArray.value[row][middleCol]
+                setGridVMType(middleGridVM, platform: nil, obstacle: nil)
+                movingRows[row] = nil
+            }
+            // Continue with execution
+            return false
+        }
+        
     }
     
     internal func setGridVMType(_ gridVM: GridViewModel, platform: PlatformModel?, obstacle: ObstacleModel?) {

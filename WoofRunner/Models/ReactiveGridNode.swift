@@ -178,6 +178,7 @@ class ReactiveGridNode {
         } else {
             // Obstacle type == nil, return empty node
             let modelNode = SCNNode()
+            cachedObstacle = nil
             return modelNode
         }
     }
