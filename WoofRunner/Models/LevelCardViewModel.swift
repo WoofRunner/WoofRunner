@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FacebookCore
 
 public class LevelCardViewModel {
 	
@@ -42,9 +43,11 @@ public class LevelCardViewModel {
 		self.playerScore = StubLevelCardConstants.stubPlayerScore // Stub
 		
 		// If there's no ownerId tied to the game, level is created locally
-		if let _ = game.ownerId {
+		if let id = game.ownerId {
 			self.author = game.owner
+            setAuthorName(ownerId: id)
 		}
+
 	}
 
     init(game: DisplayedGame) {
@@ -54,6 +57,7 @@ public class LevelCardViewModel {
         self.levelImageUrl = "test-level-image" // Stubbed
         self.playerScore = StubLevelCardConstants.stubPlayerScore
         self.author = game.owner
+        setAuthorName(ownerId: game.owner)
     }
 	
 	struct StubLevelCardConstants {
@@ -77,6 +81,38 @@ public class LevelCardViewModel {
 		static let playIconImagePath = "play-overlay-icon"
 		
 	}
+
+    private func setAuthorName(ownerId: String) {
+        var req = FBProfileRequest()
+        req.setProfileId(id: ownerId)
+        req.start { (_, result: GraphRequestResult<FBProfileRequest>) in
+            switch result {
+            case .success(let response):
+                guard let name = response.dictionaryValue?["name"] as? String else {
+                    fatalError("Name not found")
+                }
+
+                self.author = name
+            case .failed(let error):
+                print("\(error)")
+            }
+        }
+    }
+
+    private struct FBProfileRequest: GraphRequestProtocol {
+        typealias Response = GraphResponse
+
+        public var graphPath = "/me"
+        public var parameters: [String : Any]? = ["fields": "id, name"]
+        public var accessToken = AccessToken.current
+        public var httpMethod: GraphRequestHTTPMethod = .GET
+        public var apiVersion: GraphAPIVersion = 2.7
+
+        public mutating func setProfileId(id: String) {
+            self.graphPath = "/\(id)"
+        }
+
+    }
 	
 	
 }
