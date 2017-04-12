@@ -57,7 +57,7 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
         
         // Add view elements
         //self.addChild(scoreLabel)
-        //self.addChild(menuButton)
+        self.addChild(menuButton)
 		self.addChild(menuOverlay)
     }
 	
