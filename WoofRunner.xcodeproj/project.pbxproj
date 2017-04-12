@@ -13,7 +13,6 @@
 		121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
-		12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12882B881E857059004C3B76 /* LMLoginViewController.swift */; };
 		12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
@@ -28,7 +27,6 @@
 		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
 		12CCB69C1E9A17B300C4FD45 /* DownloadGameTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */; };
 		12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LMCardViewCell.swift */; };
-		12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */; };
 		12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */; };
 		12DC8DBA1E8928FB00B8A40C /* GameStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */; };
 		12EE38C01E78E99F00D81378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */; };
@@ -149,7 +147,6 @@
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
-		12882B881E857059004C3B76 /* LMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewController.swift; sourceTree = "<group>"; };
 		12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FCE1E727072008B721E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,7 +163,6 @@
 		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
 		12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadGameTapGesture.swift; sourceTree = "<group>"; };
 		12DA42091E86699200C23137 /* LMCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCardViewCell.swift; sourceTree = "<group>"; };
-		12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMLoginViewModel.swift; sourceTree = "<group>"; };
 		12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewModel.swift; sourceTree = "<group>"; };
 		12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStorageManager.swift; sourceTree = "<group>"; };
 		12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -323,7 +319,6 @@
 				3FF229D41E9A4FAD0040F0AF /* LDOverlayMenuViewModel.swift */,
 				F33754E51E97811F00839AFD /* TileModel */,
 				4E90FFE81E8431690012B03F /* Position.swift */,
-				12DC8DB51E8924C000B8A40C /* LMLoginViewModel.swift */,
 				12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */,
 				4E1E11201E82D50D00AAC356 /* GridViewModel.swift */,
 				4E9DB3731E8953E70023A2A8 /* LevelGrid.swift */,
@@ -342,7 +337,6 @@
 				F33442A81E8156F3001C1D8D /* GameController.swift */,
 				4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */,
 				3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */,
-				12882B881E857059004C3B76 /* LMLoginViewController.swift */,
 				121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */,
 				3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */,
 				3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */,
@@ -846,7 +840,7 @@
 				F33442B51E8156F3001C1D8D /* GameController.swift in Sources */,
 				3F7348C81E86FADC00EB1264 /* OverlayButtonDelegate.swift in Sources */,
 				F33442CE1E815BFE001C1D8D /* TestCube.swift in Sources */,
-				12882B891E857059004C3B76 /* LMLoginViewController.swift in Sources */,
+				3FF229E31E9BDC530040F0AF /* GameplayOverlayMenu.swift in Sources */,
 				F33442C01E8156F3001C1D8D /* World.swift in Sources */,
 				F30ABE011E82AACA00BD1D02 /* PoolManager.swift in Sources */,
 				F34DEDC31E8D6A1F00BB8CA7 /* JumpPlatform.swift in Sources */,
@@ -888,7 +882,6 @@
 				3F0F81B91E91707400114CD0 /* CustomLevelViewController.swift in Sources */,
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
-				12DC8DB61E8924C000B8A40C /* LMLoginViewModel.swift in Sources */,
 				F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */,
 				F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift in Sources */,
 				3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */,
