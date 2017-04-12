@@ -14,7 +14,6 @@ class LevelCardView: UIView {
 	var levelImageView = LevelSelectorItemImageView() // Requires public access to set Tap Handler Gesture
 	private var levelNameLabel = StrokedLabel()
 	private var playerScoreLabel = UILabel()
-	private var playIconOverlay = UIImageView()
 	
 	// MARK: - Initialisers
 	
@@ -35,7 +34,6 @@ class LevelCardView: UIView {
 		// Add child views
 		addSubview(levelImageView)
 		addSubview(levelNameLabel)
-		levelImageView.addSubview(playIconOverlay)
 		//addSubview(playerScoreLabel)
 		
 		// Sizing label views
@@ -51,12 +49,6 @@ class LevelCardView: UIView {
 			make.centerX.equalTo(self)
 			make.centerY.equalTo(self)
 			//make.topMargin.equalTo(self).offset(170)
-		}
-		
-		// Set Constraints for play overlay icon
-		playIconOverlay.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalToSuperview()
-			make.centerY.equalToSuperview()
 		}
 		
 		// Set Constraints for Level Name label
@@ -120,9 +112,6 @@ class LevelCardView: UIView {
 			.resizedImageWithinRect(rectSize: viewModel.imageRectSize)
 		levelImageView.image = resized
 		levelImageView.isUserInteractionEnabled = true
-		
-		// Sets up play icon
-		playIconOverlay.image = UIImage(named: viewModel.playIconImageUrl)
 	}
 	
 	// Override this method to bind more buttons

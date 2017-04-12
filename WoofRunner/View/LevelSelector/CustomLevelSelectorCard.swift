@@ -17,10 +17,14 @@ class CustomLevelSelectorCard: LevelCardView {
 	var deleteButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	var uploadButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	
+	private var playIconOverlay = UIImageView()
+	
 	// MARK: - Override methods to customise LevelCardView
 	
 	override internal func didLoad() {
 		super.didLoad()
+		
+		levelImageView.addSubview(playIconOverlay)
 		
 		// Setup Author Label
 		addSubview(authorLabel)
@@ -58,11 +62,18 @@ class CustomLevelSelectorCard: LevelCardView {
 			make.left.equalToSuperview().offset(550)
 		}
 		
+		// Set Constraints for play overlay icon
+		playIconOverlay.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalToSuperview()
+			make.centerY.equalToSuperview()
+		}
+		
 	}
 	
 	override public func setupView(vm: LevelCardViewModel) {
 		super.setupView(vm: vm)
 		setupAuthorLabel(viewModel: vm)
+		setupPlayIconOverlay(viewModel: vm)
 	}
 	
 	override internal func bindUUIDToButtons(_ uuid: String) {
@@ -79,4 +90,9 @@ class CustomLevelSelectorCard: LevelCardView {
 		authorLabel.font = viewModel.authorLabelFont
 		authorLabel.textColor = viewModel.authorLabelColor
 	}
+	
+	private func setupPlayIconOverlay(viewModel: LevelCardViewModel) {
+		playIconOverlay.image = UIImage(named: viewModel.playIconImageUrl)
 	}
+	
+}
