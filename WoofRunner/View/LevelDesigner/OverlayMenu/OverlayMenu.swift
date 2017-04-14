@@ -5,12 +5,14 @@
 //  Created by See Loo Jane on 26/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
-//	OverlayMenu contains a MenuTitleLabel and a OverlayMenuSubsection
-//	which contains the OverayButtons. Its position should be set by the
-//	parent creator class, and should be rendered using a LDOverlayMenuViewModel.
 
 import SpriteKit
 
+/**
+SkNode that parents the MenuTitleLabel and OverlayMenuSubsection nodes. 
+Its position should be set by the parent creator class, and should be 
+rendered using a LDOverlayMenuViewModel.
+*/
 class OverlayMenu: SKNode {
 	
 	typealias Constants = LDOverlaySceneConstants.OverlayConstants

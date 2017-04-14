@@ -8,11 +8,18 @@
 
 import SpriteKit
 
+/**
+A SKSpriteNode that implements the LDOverlayButton protocol and represents a possible
+type of tile selection inside the OverlayMenu
+*/
 class OverlayButton: SKSpriteNode, LDOverlayButton {
 	
-	//private var tileType: TileType? = TileType.floorLight
+	// MARK: - Private Variables
+	
 	private var tileName: String? = ""
 	private var overlayButtonDelegate: OverlayButtonDelegate?
+	
+	// MARK: - Initialisers
 	
 	override init(texture: SKTexture!, color: SKColor, size: CGSize) {
 		super.init(texture: texture, color: color, size: size)
@@ -23,11 +30,22 @@ class OverlayButton: SKSpriteNode, LDOverlayButton {
 		self.tileName = tileName
 	}
 	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	// MARK: - Public Methods
+	
+	/**
+	Sets the OverlayButtonDelegate this button
+	*/
 	public func setDelegate(_ delegate: OverlayButtonDelegate) {
 		self.overlayButtonDelegate = delegate
 	}
 	
-	// Logic for tap
+	
+	// MARK: - LDOverlayButton
+	
 	public func onTap() {
 		guard let delegate = overlayButtonDelegate else {
 			print("Please assign a OverlayButtonDelegate first!")
@@ -40,7 +58,5 @@ class OverlayButton: SKSpriteNode, LDOverlayButton {
 		})
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-	}
+	
 }
