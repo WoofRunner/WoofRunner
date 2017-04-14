@@ -8,6 +8,9 @@
 
 import SpriteKit
 
+/**
+Contains the constant values that configures the GameplayOverlayScene
+*/
 struct GameplayOverlayConstants {
 	
 	// Menu Backgrounds

@@ -6,6 +6,10 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+/**
+Encapsulates the details about current tile selection so that
+it can be passed onto the LevelDesignerScene easily
+*/
 struct BrushSelection {
 	var selectionType: BrushSelectionType
 	var tileModel: TileModel?

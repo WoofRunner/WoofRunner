@@ -8,6 +8,13 @@
 
 import Foundation
 
+/**
+Tappable button in the LevelDesignerOverlayScene
+*/
 protocol LDOverlayButton {
+	
+	/**
+	Performs the tap logic when the button is pressed
+	*/
 	func onTap()
 }
