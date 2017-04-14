@@ -9,8 +9,24 @@
 import Foundation
 import SpriteKit
 
+/**
+Contain static methods to create predefined custom SKShapeNodes
+*/
 struct CustomShapeNodes {
 	
+	/**
+	Creates a rectangular SKShapeNode with rounded corners
+	
+	- parameters:
+		- height: CGFloat height of the rectangle
+		- width: CGFloat width of the rectange
+		- radius: CGFloat corner radius
+		- backgroundColor: Fill color of the rectangle
+	
+	- returns:
+	A rounded rectangular SKShapeNode of the input attributes.
+	
+	*/
 	static func getRoundedRectangleNode(height: CGFloat,
 	                                    width: CGFloat,
 	                                    radius: CGFloat,

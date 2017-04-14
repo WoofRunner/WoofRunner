@@ -6,13 +6,15 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 //
-//	The LevelDesignerBottomMenu contains the BottomMenuSpriteButtons 
-//	and BottomMenuLabelButtons that is in charge of functionalities 
-//	like saving, back and renaming. Its posiiton should be set by the 
-//	object creating this menu
+//	The LevelDesignerBottomMenu
 
 import SpriteKit
 
+/**
+Contains BottomMenuSpriteButtons and BottomMenuLabelButtons that are 
+in charge of functionalities like saving, back and renaming. 
+Its posiiton should be set by the object creating this menu
+*/
 class LevelDesignerBottomMenu: SKNode {
 	
 	typealias BottomMenu = LDOverlaySceneConstants.BottomMenuConstants

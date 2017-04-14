@@ -235,7 +235,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         guard let skScene = spriteScene else {
             return true
         }
-        return skScene.overlayMenu.alpha == 0
+        return !skScene.isOverlayMenuVisible()
     }
 	
 	/**

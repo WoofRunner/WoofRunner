@@ -46,6 +46,13 @@ class OverlayButton: SKSpriteNode, LDOverlayButton {
 	
 	// MARK: - LDOverlayButton
 	
+	/**
+	Performs the tap logic for this button
+	
+	- important:
+	Requires a OverlayButtonDelegate to be set first.
+	
+	*/
 	public func onTap() {
 		guard let delegate = overlayButtonDelegate else {
 			print("Please assign a OverlayButtonDelegate first!")

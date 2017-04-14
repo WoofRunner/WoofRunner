@@ -11,6 +11,11 @@
 
 import SpriteKit
 
+/**
+It is a subclasses of SKLabelNode and conforms
+to the LDOverlayButton protocol. It requires a BottomMenuDelegate
+to perform tap callbacks.
+*/
 class BottomMenuLabelButton: SKLabelNode, LDOverlayButton {
 	
 	// MARK: - Private Variables
