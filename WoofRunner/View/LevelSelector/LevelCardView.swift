@@ -8,7 +8,12 @@
 
 import UIKit
 
+/**
+To be displayed for every item in the level selectors' carousel view
+*/
 class LevelCardView: UIView {
+	
+	// MARK: Variables
 	
 	// Views that are shared across all subclasses of LevelCardView
 	var levelImageView = LevelSelectorItemImageView() // Requires public access to set Tap Handler Gesture
@@ -28,7 +33,14 @@ class LevelCardView: UIView {
 		didLoad()
 	}
 	
-	// Override this method to initialise more customised child views
+	// MARK: - View Init Method
+	
+	/**
+	Initialises the child views that are to be displayed upon loading.
+	
+	- important:
+	Override this method to initialise more customised child views
+	*/
 	internal func didLoad() {
 		
 		// Add child views
@@ -71,8 +83,16 @@ class LevelCardView: UIView {
 	
 	// MARK: - Public Method
 	
-	// Call this method to setup the View using the input view model object
-	// Override this method if you have more child views to be set up
+	/**
+	Setup the view using the input view model object
+	
+	- parameters:
+		- vm: the LevelCardViewModel object to be used to set up the view
+	
+	- important;
+	Override this method if you have more child views to be set up
+	
+	*/
 	public func setupView(vm: LevelCardViewModel) {
 		self.backgroundColor = UIColor.clear
 		
@@ -114,12 +134,6 @@ class LevelCardView: UIView {
 		levelImageView.isUserInteractionEnabled = true
 	}
 	
-	// Override this method to bind more buttons
-	internal func bindUUIDToButtons(_ uuid: String) {
-		levelImageView.bindUUID(uuid)
-	}
-	
-	// TODO: Check why 1st 2 items do not have shadow rendered. Sth to do with recycling in iCarousel
 	private func setShadows() {
 		configureImageViewShadow()
 		configureLabelShadow()
@@ -133,5 +147,17 @@ class LevelCardView: UIView {
 	private func configureImageViewShadow() {
 		levelImageView.setShadow()
 	}
+	
+	/**
+	Binds input UUID to the buttons in the view as required for their callbacks.
+	
+	- important:
+	Override this method to bind more buttons
+	*/
+	internal func bindUUIDToButtons(_ uuid: String) {
+		levelImageView.bindUUID(uuid)
+	}
+	
+	
 
 }

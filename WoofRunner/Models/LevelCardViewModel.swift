@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import FacebookCore
 
+/**
+Contains the properties required to render a LevelCardView (and its subclasses)
+*/
 public class LevelCardViewModel {
 	
 	private(set) var levelUUID: String // For tap handler
@@ -36,6 +39,9 @@ public class LevelCardViewModel {
 	private(set) var authorLabelFont = StubLevelCardConstants.authorLabelFont
 	private(set) var authorLabelColor = StubLevelCardConstants.authorLabelColor
 	
+	
+	// MARK: - Initialisers
+	
 	init(game: StoredGame) {
 		self.levelUUID = game.uuid!
 		self.levelName = game.name ?? "No Title"
@@ -59,6 +65,7 @@ public class LevelCardViewModel {
         self.author = game.owner
         setAuthorName(ownerId: game.owner)
     }
+	
 	
 	struct StubLevelCardConstants {
 		// Level Title

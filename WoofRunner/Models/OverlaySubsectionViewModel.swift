@@ -6,6 +6,9 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+/**
+Contains the variables required to render an OverlaySubsection
+*/
 struct OverlaySubsectionViewModel {
 	private(set) var title: String
 	private(set) var set: [TileType]

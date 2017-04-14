@@ -6,6 +6,9 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+/**
+Contains the properties requried to render a LevelDesignerOverlayMenu
+*/
 struct LDOverlayMenuViewModel {
 	var tileModelArray: [TileModel] = []
 	var menuName: String = ""
@@ -13,7 +16,6 @@ struct LDOverlayMenuViewModel {
 	init(funcType: PaletteFunctionType, allTileModels: [TileModel]) {
 		
 		self.menuName = funcType.getOverlayMenuName()
-		
 		
 		// Filter list according to the funcType
 		switch funcType {
