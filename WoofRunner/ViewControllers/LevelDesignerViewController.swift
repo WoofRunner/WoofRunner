@@ -261,10 +261,12 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Pan Gesture: Scrolling
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         self.view.addGestureRecognizer(panGesture)
+        
         // Tap Gesture: Toggling Tile
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         tapGesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapGesture)
+        
         // Long Press Gesture: Activate Bulk Edit
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
         longPressGesture.minimumPressDuration = 0.5
