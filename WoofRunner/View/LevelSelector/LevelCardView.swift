@@ -41,30 +41,8 @@ class LevelCardView: UIView {
 	Override this method to initialise more customised child views
 	*/
 	internal func didLoad() {
-		
-		// Add child views
-		addSubview(levelImageView)
-		addSubview(levelNameLabel)
-		
-		// Sizing label views
-		levelNameLabel.sizeToFit()
-		
-		setShadows()
-		
-		//******** Setting Constraints *******//
-		
-		// Set Constraints for level image
-		levelImageView.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.centerY.equalTo(self)
-		}
-		
-		// Set Constraints for Level Name label
-		levelNameLabel.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.topMargin.equalTo(self).offset(80)
-		}
-	
+		initialiseLevelImageView()
+		initialiseLevelNameLabel()
 	}
 	
 	
@@ -89,11 +67,29 @@ class LevelCardView: UIView {
 		
 		// Bind current item's UUID to the buttons for callbacks later
 		bindUUIDToButtons(vm.levelUUID)
-		
-		setShadows()
+
 	}
 	
 	// MARK: - Private Helper Methods
+	
+	private func initialiseLevelImageView() {
+		addSubview(levelImageView)
+		levelImageView.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.centerY.equalTo(self)
+		}
+		levelImageView.setShadow()
+	}
+	
+	private func initialiseLevelNameLabel() {
+		addSubview(levelNameLabel)
+		levelNameLabel.sizeToFit()
+		levelNameLabel.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.topMargin.equalTo(self).offset(80)
+		}
+		levelNameLabel.setShadow()
+	}
 	
 	private func setupLevelNameLabel(viewModel: LevelCardViewModel) {
 		levelNameLabel.text = viewModel.levelName
@@ -112,19 +108,6 @@ class LevelCardView: UIView {
 			.resizedImageWithinRect(rectSize: viewModel.imageRectSize)
 		levelImageView.image = resized
 		levelImageView.isUserInteractionEnabled = true
-	}
-	
-	private func setShadows() {
-		configureImageViewShadow()
-		configureLabelShadow()
-	}
-	
-	private func configureLabelShadow() {
-		levelNameLabel.setShadow()
-	}
-	
-	private func configureImageViewShadow() {
-		levelImageView.setShadow()
 	}
 	
 	/**
