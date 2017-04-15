@@ -119,7 +119,7 @@ extension LevelGrid {
             }
         }
         // Preprocess for moving platforms
-        preProcessMovingPlatform(pos.getRow(), platform)
+        let _ = preProcessMovingPlatform(pos.getRow(), platform)
         setGridVMType(gridVM,
                       platform: platform,
                       obstacle: obstacle)

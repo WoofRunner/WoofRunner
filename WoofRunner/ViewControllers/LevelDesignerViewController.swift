@@ -11,8 +11,10 @@ import QuartzCore
 import SceneKit
 import RxSwift
 import RxCocoa
-import PopupDialog
 
+/// The LevelDesignerViewController is responsible for controlling all the feedback from
+/// the view back to the models. It also contains the sceneKit scenes and spriteKit overlays
+/// within.
 class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 	
 	typealias BottomMenu = LDOverlaySceneConstants.BottomMenuConstants
@@ -30,33 +32,40 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     
 	let disposeBag = DisposeBag();
     
-    var LDScene = LevelDesignerScene()
-    var sceneView = SCNView()
-    var currentLevel = LevelGrid()
-    var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
+    // Member Variables
+    private var LDScene = LevelDesignerScene()
+    private var sceneView = SCNView()
+    private var currentLevel = LevelGrid()
+    private var currentSelectedBrush: BrushSelection = BrushSelection.defaultSelection // Observing overlayScene
+    private var longPress = false
+    
+    // Popup Dialog
 	var currentLevelName = "Custom Level 1" // Default Name
     var spriteScene: LevelDesignerOverlayScene?
-    var longPress = false
 
+    // For Loading Levels
     private let gsm = GameStorageManager.getInstance()
 	var loadedLevel: StoredGame?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Initialise sceneView for Level Designer Scene (LDScene)
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         sceneView.allowsCameraControl = false
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = true
         sceneView.isPlaying = true
         
+        // Setup LDScene and add to sceneView
         LDScene.background.contents = UIImage(named: "art.scnassets/skybox01_cube.png") as UIImage!
         sceneView.scene = LDScene
         self.view.addSubview(sceneView)
 		
+        // Initialise empty level
 		let sampleLevel = LevelGrid(length: 50)
 		currentLevel = sampleLevel
 		
-		// Load a level if initialised from previous ViewController
+		// Load a level if provided any from previous ViewController
 		if let loadedLevel = loadedLevel {
 			currentLevel.load(from: loadedLevel)
 			
@@ -66,23 +75,12 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 			}
 		}
 
-        // Load level
+        // Load level and Render level
         LDScene.loadLevel(currentLevel)
         sampleLevel.reloadChunk(from: 0)
         
-        // Gestures
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        self.view.addGestureRecognizer(panGesture)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tapGesture.numberOfTapsRequired = 1
-        self.view.addGestureRecognizer(tapGesture)
-        
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-        longPressGesture.minimumPressDuration = 0.5
-        self.view.addGestureRecognizer(longPressGesture)
-		panGesture.cancelsTouchesInView = false // Turn this property to prevent touchesCancelled from happening
-		tapGesture.cancelsTouchesInView = false
+        // Setup Gestures
+        setupGestures()
         
 		// Attached overlay
 		spriteScene = LevelDesignerOverlayScene(size: self.view.frame.size)
@@ -93,7 +91,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
 		sceneView.overlaySKScene = spriteScene
 		spriteScene?.updateDisplayedLevelName(currentLevelName)
 
-        // Observe currentTileSelection
+        // Setup observer for currentTileSelection
 		skScene.currentBrushSelection.asObservable()
 			.subscribe(onNext: {
 				(brush) in
@@ -124,29 +122,37 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    // Unload all resources when segue out of current VC.
     override func viewWillDisappear(_ animated: Bool) {
         LDScene.unloadScene()
         currentLevel.unloadLevel()
     }
     
     // MARK: Handle Gestures
+    /**
+     Allow UIPanGesture to scroll through the level vertically and handles the scroll
+     distance and define the area to render.
+     - parameter sender: UIPanGestureRecognizer
+    */
     func handlePan(_ sender: UIPanGestureRecognizer) {
         if (!canEdit() || longPress) {
             return
         }
-		
+		// Prepare for panning; get camera position
         let camera = LDScene.cameraNode
         let translation = sender.translation(in: sceneView)
 
-        // Normal method
+        // Pan distance + Panning Sensitivity
         let diffR = Float(translation.y / self.view.frame.height)
             * LevelDesignerViewController.panningSensitivity
 
+        // Scrolling Logic
         switch sender.state {
             case .began:
                 LDScene.cameraLocation = camera.position
                 break;
             case .changed:
+                // Only allow panning along z-axis
                 let newPos = SCNVector3(LDScene.cameraLocation.x,
                                         LDScene.cameraLocation.y,
                                         LDScene.cameraLocation.z - diffR)
@@ -155,6 +161,8 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 }
                 // Add padding to near plane clipping
                 let padding = GameSettings.TILE_WIDTH * LevelDesignerViewController.paddingTiles
+                
+                // Inform Level Grid to re-render level
                 let startRow = Int(-camera.position.z +
                                     (LevelDesignerViewController.cameraOffset - padding) / GameSettings.TILE_WIDTH)
                 updateCurrentLevel(from: startRow)
@@ -164,7 +172,12 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         }
     }
 
-    func handleTap(_ sender: UIGestureRecognizer) {
+    /**
+     Allow UITapGesture to toggle the tile if any, with the selected brush.
+     - parameter sender: UITapGestureRecognizer
+     */
+    func handleTap(_ sender: UITapGestureRecognizer) {
+        // Locked when Overlay Menu is active
         if (!canEdit()) {
             return
         }
@@ -179,6 +192,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         
         // check that we clicked on at least one object
         if hitResults.count > 0 {
+            // Attempt to toggle the node if it is a tile
             guard let toggleNode = getValidNode(hitResults) else {
                 return
             }
@@ -186,14 +200,21 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         }
     }
     
-    // Bulk Toggle
-    func handleLongPress(_ sender: UIGestureRecognizer) {
+    /**
+     Allow UILongPressGesture to activate bulk toggle mode. Handles the logic from
+     begin selection for bulk toggle till end of selection.
+     - parameter sender: UILongPressGestureRecognizer
+     */
+    func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+        // Bulk Toggle Logic
         switch(sender.state) {
         case .began:
+            // Lock scrolling when activated
             longPress = true
             let pos = sender.location(in: sceneView)
             let hitResults = sceneView.hitTest(pos, options: [:])
             
+            // If long pressed on valid tile, begin selection
             guard hitResults.count > 0 else {
                 longPress = false
                 break
@@ -203,13 +224,16 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 longPress = false
                 break
             }
+            // Toggle the initial grid before begin selection
             currentLevel.toggleGrid(x: startNode.position.x, z: startNode.position.z, currentSelectedBrush)
+            // Special handler for moving platforms: Disallow
             guard isNotMovingPlatform(currentSelectedBrush) else {
                 break;
             }
             currentLevel.beginSelection((x: startNode.position.x, z: startNode.position.z))
             break
         case .changed:
+            // Update selection box
             let pos = sender.location(in: sceneView)
             let hitResults = sceneView.hitTest(pos, options: [:])
             guard hitResults.count > 0 else {
@@ -224,6 +248,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
             currentLevel.updateSelection((x: currentNode.position.x, z: currentNode.position.z))
             break
         default:
+            // Terminate selection
             longPress = false
             currentLevel.endSelection()
             break
@@ -231,6 +256,28 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     }
     
     // MARK: Helper Functions
+    
+    private func setupGestures() {
+        // Pan Gesture: Scrolling
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        self.view.addGestureRecognizer(panGesture)
+        
+        // Tap Gesture: Toggling Tile
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
+        
+        // Long Press Gesture: Activate Bulk Edit
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 0.5
+        self.view.addGestureRecognizer(longPressGesture)
+        
+        // Prevent touchesCancelled from triggering to protect Overlay Menu functionality
+        panGesture.cancelsTouchesInView = false
+        tapGesture.cancelsTouchesInView = false
+    }
+    
+    /// Locking function to prevent UI Taps falling through when Overlay Menu is active
     private func canEdit() -> Bool {
         guard let skScene = spriteScene else {
             return true
@@ -246,7 +293,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         return tap_y > menuHeight
     }
     
-    // Update the current level view after changes to level model
+    /// Update the current level view after changes to level model
     private func updateCurrentLevel(from startRow: Int) {
         if LevelDesignerViewController.autoExtendLevel {
             if startRow + LevelGrid.chunkLength > currentLevel.length {
@@ -260,7 +307,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         currentLevel.reloadChunk(from: startRow)
     }
     
-    // Handle the logic for toggling of grid nodes
+    /// Handle the logic to ensure that node tapped on is a valid tile node for toggling
     private func getValidNode(_ hitResults: [SCNHitTestResult]) -> SCNNode? {
         var togglingNode: SCNNode? = nil
         for result in hitResults {
@@ -279,6 +326,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         return nil
     }
     
+    /// Helper function to recursively look for parent nodes till a valid tile node is found
     private func findParentGridNode(_ node: SCNNode) -> SCNNode? {
         guard let parentNode = node.parent else {
             return nil
@@ -290,6 +338,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
         return parentNode
     }
     
+    /// Special handler to identify if moving platforms are currently selected
     private func isNotMovingPlatform(_ currentBrush: BrushSelection) -> Bool {
         guard currentBrush.selectionType == .platform else {
             return true
@@ -323,124 +372,6 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
                 self.showSaveFeedback(title: "Save Failed", message: "Oops! An error occured while saving!")
         }
     }
-	
-	// - MARK: Popup Dialogs
-	
-	private func showSaveFeedback(title: String, message: String) {
-		let popup = PopupDialog(title: title, message: message, image: nil)
-		
-		let okBtn = DefaultButton(title: "OK") {
-			popup.dismiss()
-		}
-		
-		// Add buttons to dialog
-		popup.addButton(okBtn)
-		
-		// Customising Dialog Style
-		customisePopupDialog()
-
-		self.present(popup, animated: true, completion: nil)
-	}
-	
-	private func showBackWarning() {
-		let popup = PopupDialog(title: "Warning", message: "Any unsaved changes will be lost, proceed anyway?", image: nil)
-		
-		let okBtn = DefaultButton(title: "OK") {
-			self.dismiss(animated: true, completion: nil)
-		}
-		
-		let cancelBtn = CancelButton(title: "CANCEL") {
-			popup.dismiss()
-		}
-		
-		// Add buttons to dialog
-		popup.addButtons([okBtn, cancelBtn])
-		
-		// Customising Dialog Style
-		customisePopupDialog()
-		
-		self.present(popup, animated: true, completion: nil)
-	}
-	
-	private func showRenameDialog() {
-		
-		// Create a custom view controller
-		let renameVC = RenameDialogViewController(nibName: "RenameDialogViewController", bundle: nil)
-		
-		// Create the dialog
-		let popup = PopupDialog(viewController: renameVC, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false)
-		
-		
-		// Configure and add buttons
-		let cancelBtn = CancelButton(title: "CANCEL", height: 60) {
-			popup.dismiss()
-		}
-		
-		let okBtn = DefaultButton(title: "OK", height: 60) {
-			
-			// Validate Input Level Name
-			if self.validateLevelName(renameVC.getLevelName()) {
-				
-				// Hide warning text (in case it was previously visible)
-				renameVC.hideWarningText()
-				
-				// Update Level Name
-				self.currentLevelName = renameVC.getLevelName()
-				self.spriteScene?.updateDisplayedLevelName(self.currentLevelName)
-				
-				// Dismiss popup
-				popup.dismiss()
-			} else {
-				renameVC.showWarningText()
-			}
-		}
-		okBtn.dismissOnTap = false
-		
-	
-		popup.addButtons([cancelBtn, okBtn])
-		customiseDialogButtons()
-		
-		// Present dialog
-		present(popup, animated: true, completion: nil)
-	}
-	
-	private func customisePopupDialog() {
-		customiseDialogAppearance()
-		customiseDialogOverlayAppearance()
-		customiseDialogButtons()
-	}
-	
-	private func customiseDialogAppearance() {
-		let dialogAppearance = PopupDialogDefaultView.appearance()
-		dialogAppearance.titleFont = UIFont(name: "AvenirNextCondensed-Bold", size: 25)!
-		dialogAppearance.titleColor = UIColor(white: 0.4, alpha: 1)
-		dialogAppearance.titleTextAlignment = .center
-		dialogAppearance.messageFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)!
-		dialogAppearance.messageColor = UIColor(white: 0.6, alpha: 1)
-		dialogAppearance.messageTextAlignment = .center
-	}
-	
-	private func customiseDialogOverlayAppearance() {
-		let overlayAppearance = PopupDialogOverlayView.appearance()
-		overlayAppearance.color = UIColor.clear
-		overlayAppearance.blurRadius = 30
-		overlayAppearance.blurEnabled = true
-		overlayAppearance.liveBlur = false
-	}
-	
-	private func customiseDialogButtons() {
-		// Default buttons
-		let defaultBtnAppearance = DefaultButton.appearance()
-		defaultBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
-		
-		// Cancel Button
-		let cancelBtnAppearance = CancelButton.appearance()
-		cancelBtnAppearance.titleFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20)
-	}
-	
-	private func validateLevelName(_ name: String) -> Bool {
-		return !(name.characters.count < 5 || name.characters.count > 40)
-	}
 
 	// - MARK: LDOverlayDelegate
 	
