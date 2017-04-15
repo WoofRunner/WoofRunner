@@ -5,11 +5,13 @@
 //  Created by See Loo Jane on 26/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //	
-//	PaletteMenu is a subclass of SKNode that contains child
-//	PaletteButton nodes. Its position is implicitly set.
 
 import SpriteKit
 
+/**
+PaletteMenu is a subclass of SKNode that contains children PaletteButton nodes. 
+Its position is set implicitly within the initialiser.
+*/
 class PaletteMenu: SKNode {
 	
 	typealias Palette = LDOverlaySceneConstants.PaletteConstants

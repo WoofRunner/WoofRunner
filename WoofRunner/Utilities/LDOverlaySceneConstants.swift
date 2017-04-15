@@ -8,6 +8,9 @@
 
 import SpriteKit
 
+/**
+Contains the constant values that configures the LevelDesignerOverlayScene
+*/
 struct LDOverlaySceneConstants {
 	
 	struct PaletteConstants {

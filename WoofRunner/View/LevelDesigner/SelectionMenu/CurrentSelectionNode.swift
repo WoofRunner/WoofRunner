@@ -11,6 +11,10 @@
 
 import SpriteKit
 
+/**
+Displays the name of the currently selected BrushSelection.
+Its position should be set by the parent object that creates it.
+*/
 class CurrentSelectionNode: SKNode {
 	
 	// CSUI is shorthand for CurrentSelectionUI
