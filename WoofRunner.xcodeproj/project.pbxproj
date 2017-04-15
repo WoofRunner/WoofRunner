@@ -101,6 +101,7 @@
 		4EA8B2001E9A484D00626010 /* SampleGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */; };
 		4EA8B2021E9A49A400626010 /* GameplayOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */; };
 		4EA8B2041E9A4D5D00626010 /* GameplayOverlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */; };
+		4EEC5E4D1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC5E4C1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */; };
 		F304D04D1E950D6D0021CB68 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304D04C1E950D6D0021CB68 /* GameSettings.swift */; };
@@ -240,6 +241,7 @@
 		4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGameController.swift; sourceTree = "<group>"; };
 		4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameplayOverlay.storyboard; sourceTree = "<group>"; };
 		4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayOverlayScene.sks; sourceTree = "<group>"; };
+		4EEC5E4C1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelDesignerViewController+PopupDialog.swift"; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CE24EBBD6B9167EF8714A2 /* Pods-WoofRunner-WoofRunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner-WoofRunnerTests/Pods-WoofRunner-WoofRunnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			children = (
 				F33442A81E8156F3001C1D8D /* GameController.swift */,
 				4E1E111C1E7AF33F00AAC356 /* LevelDesignerViewController.swift */,
+				4EEC5E4C1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift */,
 				3FCC89961E73E327005A7C03 /* LevelSelectorViewController.swift */,
 				121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */,
 				3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */,
@@ -882,6 +885,7 @@
 				F33442B81E8156F3001C1D8D /* GestureDelegate.swift in Sources */,
 				F33442C91E815BFE001C1D8D /* Camera.swift in Sources */,
 				F39DF6091E93C6AA00A72CF0 /* TileFactory.swift in Sources */,
+				4EEC5E4D1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift in Sources */,
 				F34DEDBD1E8D41DD00BB8CA7 /* DeadTriggerPlatform.swift in Sources */,
 				3FD5D0271E8FD328007573C4 /* LDOverlayButton.swift in Sources */,
 				3F0F81DF1E98140D00114CD0 /* UILabel+ShadowExtension.swift in Sources */,
