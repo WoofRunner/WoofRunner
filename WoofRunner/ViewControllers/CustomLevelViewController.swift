@@ -33,7 +33,6 @@ class CustomLevelViewController: UIViewController {
 		createBtn.setShadow()
 		levelsBtn.setShadow()
 		marketplaceBtn.setShadow()
-		
 	}
 	
 	

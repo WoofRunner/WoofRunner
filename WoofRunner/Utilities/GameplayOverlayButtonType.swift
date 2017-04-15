@@ -6,6 +6,9 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
+/**
+To represent the different function types of GameplayOverlayButtons
+*/
 enum GameplayOverlayButtonType {
 	case resume, retry, exit
 	

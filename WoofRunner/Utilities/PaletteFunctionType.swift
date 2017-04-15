@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+To distinguish the different types of palette functions in LevelDesignerOverlay
+*/
 enum PaletteFunctionType {
 	case platform, obstacle, delete
 	

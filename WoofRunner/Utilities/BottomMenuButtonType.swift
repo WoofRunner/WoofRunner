@@ -6,8 +6,9 @@
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
 
-import Foundation
-
+/**
+To describe the function type of BottomMenuButtons 
+*/
 enum BottomMenuButtonType {
 	case save, back, rename
 	

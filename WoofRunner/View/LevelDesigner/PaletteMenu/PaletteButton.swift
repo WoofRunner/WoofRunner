@@ -5,14 +5,15 @@
 //  Created by See Loo Jane on 26/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
 //
-//	The PaletteButton subclasses SKSpriteNode and conforms
-//	to the LDOverlayButton protocol. It requires a PaletteButtonDelegate
-//	to perform tap callbacks.
 
 import SpriteKit
 
+/**
+A SKSpriteNode that conforms to LDOverlayButton protocol. It represents a
+PaletteFunctionType in the PaletteMenu. It requires a PaletteButtonDelegate
+to perform tap callbacks.
+*/
 class PaletteButton: SKSpriteNode, LDOverlayButton {
-	
 	
 	// MARK: - Private Variables
 	
@@ -52,6 +53,9 @@ class PaletteButton: SKSpriteNode, LDOverlayButton {
 	public func setDelegate(_ delegate: PaletteButtonDelegate) {
 		self.paletteButtonDelegate = delegate
 	}
+	
+	
+	// MARK: - LDOverlayButton
 	
 	/**
 	Performs the tap logic for this button
