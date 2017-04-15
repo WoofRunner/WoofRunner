@@ -121,6 +121,9 @@ class ReactiveGridNode {
         self.platformNode.value.position = self.position
     }
     
+    /// Helper function to render the platform node's model.
+    /// Will check against cache to only render new models.
+    /// - Returns: Model SCNNode if any
     private func renderPlatformNode() -> SCNNode? {
         if let platform = platformType {
             // Check for cached
@@ -160,6 +163,9 @@ class ReactiveGridNode {
         }
     }
     
+    /// Helper function to render the obstacle node's model.
+    /// Will check against cache to only render new models.
+    /// - Returns: Model SCNNode if any
     private func renderObstacleNode() -> SCNNode? {
         if let obstacle = obstacleType {
             // Check for cached

@@ -18,7 +18,6 @@ class ReactiveGrid {
     
     let disposeBag = DisposeBag()
     
-    //var gridRows: Int
     var gridSize: Float = GameSettings.TILE_WIDTH
     var gridNodes: [ReactiveGridNode]
     var gridVMArray: [[GridViewModel]]
@@ -71,6 +70,10 @@ class ReactiveGrid {
     /// Called when the observed levelGrid has changed
     /// Will process the delta grid view models and append them to the rxGrid
     /// Usually called during extension of the level
+    /// - Note: Expensive operation.
+    /// - Complexity: O(nrc) where n is number of nodes, r is number of rows and c is number of columns
+    /// - Parameters:
+    ///     - gridVMArray: 2D array of GridViewModels in current level
     private func updateGridNodes(_ gridVMArray: [[GridViewModel]]) {
         // Map current reactive nodes into array of Positions
         var delta = [GridViewModel]()
@@ -97,7 +100,7 @@ class ReactiveGrid {
             return
         }
         
-        // Append nad observe new grid view models
+        // Append and observe new grid view models
         for gridVM in delta {
             let rxGridNode = ReactiveGridNode(gridVM)
             if rxGridNode.shouldRender.value {

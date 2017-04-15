@@ -74,6 +74,7 @@ extension LevelGrid {
         selectionTemplate = [nil, nil]
     }
     
+    /// Reverts the grid view model to the cached version if any in the given position
     private func revertGridInPosition(_ pos: Position) {
         // Look for cached tileModel
         guard let prevTileType = selectionCache[getPosString(pos)] else {
@@ -98,6 +99,7 @@ extension LevelGrid {
                       obstacle: obstacle)
     }
     
+    /// Toggles the grid view model in the given position
     private func toggleGridInPosition(_ pos: Position) {
         // Cache initial tileModel if not cached
         let gridVM = gridViewModelArray.value[pos.getRow()][pos.getCol()]
