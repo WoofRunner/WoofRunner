@@ -65,6 +65,10 @@ class LevelDesignerScene: SCNScene {
         return cameraNode
     }
     
+    func unloadScene() {
+        rxGrid.unloadGrid()
+    }
+    
     func directionalLightNode() -> SCNNode {
         // Add uniform directional light
         let lightNode = SCNNode()

@@ -118,6 +118,8 @@ extension LevelGrid {
                 obstacle = obstacleType
             }
         }
+        // Preprocess for moving platforms
+        preProcessMovingPlatform(pos.getRow(), platform)
         setGridVMType(gridVM,
                       platform: platform,
                       obstacle: obstacle)
@@ -173,7 +175,6 @@ extension LevelGrid {
                 toggleGridInPosition(pos)
             }
         }
-        
     }
     
     // Simple hash for caching grid nodes

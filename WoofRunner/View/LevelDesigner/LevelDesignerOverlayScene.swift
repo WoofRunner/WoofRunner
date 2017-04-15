@@ -64,7 +64,6 @@ class LevelDesignerOverlayScene: SKScene,
 	}
 	
 	private func initPaletteMenu() {
-		self.paletteMenu.renderPaletteMenu()
 		self.paletteMenu.assignDelegateForButtons(self)
 		self.addChild(paletteMenu)
 	}
@@ -110,7 +109,6 @@ class LevelDesignerOverlayScene: SKScene,
 			btnNode.onTap()
 			return
 		}
-	
 	}
 	
 	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -235,5 +233,4 @@ class LevelDesignerOverlayScene: SKScene,
 		self.overlayDelegate?.renameLevel(name)
 	}
 	
-
 }

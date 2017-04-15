@@ -36,7 +36,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         scnView.delegate = self
         scnScene.physicsWorld.contactDelegate = self
         scnView.autoenablesDefaultLighting = true
-        scnView.showsStatistics = true
+        scnView.showsStatistics = false
         scnView.isPlaying = true
         scnView.allowsCameraControl = false
         

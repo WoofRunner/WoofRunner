@@ -13,9 +13,10 @@ import iCarousel
 
 class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 	
-	var gsm = GameStorageManager.getInstance()
+	private var gsm = GameStorageManager.getInstance()
 	var levels = [StoredGame]()
     var fbOverlay: FacebookLoginOverlay?
+	fileprivate var loadingOverlay = UIImageView(image: UIImage(named: "loading-bg"))
 	
 	
 	@IBOutlet var carousel: iCarousel!
@@ -28,6 +29,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		configureCarouselView()
 		populateLevelData()
 		configureHomeButtonView()
+		setupLoadingOverlay()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -46,6 +48,16 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 	
 	private func configureHomeButtonView() {
 		self.view.bringSubview(toFront: homeButton)
+	}
+	
+	// Setup the loading overlay view
+	private func setupLoadingOverlay() {
+		loadingOverlay.image = UIImage(named: "loading-bg")
+		self.view.addSubview(loadingOverlay)
+		loadingOverlay.frame.size = CGSize(width: 350, height: 350)
+		loadingOverlay.frame.origin.x = (view.frame.size.width / 2) - (loadingOverlay.frame.size.width / 2)
+		loadingOverlay.frame.origin.y = (view.frame.size.height / 2) - (loadingOverlay.frame.size.height / 2)
+		loadingOverlay.isHidden = true
 	}
 	
 	// MARK: - Data retrieval
@@ -102,7 +114,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 		}
 		
 		if (option == iCarouselOption.wrap) {
-			return 1.0
+			return 0.0
 		}
 		return value
 	}
@@ -156,7 +168,14 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 
         let auth = AuthManager.shared
         if let _ = auth.facebookToken, let _ = auth.firebaseID {
-            gsm.uploadGame(uuid: uuid)
+			
+			// NOTE: Just a hack to show a fake loading screen for uploading
+			loadingOverlay.isHidden = false
+			gsm.uploadGame(uuid: uuid)
+			let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+			DispatchQueue.main.asyncAfter(deadline: when) {
+				self.loadingOverlay.isHidden = true
+			}
             return
         }
 

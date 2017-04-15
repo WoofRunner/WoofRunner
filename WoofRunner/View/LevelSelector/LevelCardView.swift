@@ -34,7 +34,7 @@ class LevelCardView: UIView {
 		// Add child views
 		addSubview(levelImageView)
 		addSubview(levelNameLabel)
-		addSubview(playerScoreLabel)
+		//addSubview(playerScoreLabel)
 		
 		// Sizing label views
 		levelNameLabel.sizeToFit()
@@ -47,7 +47,8 @@ class LevelCardView: UIView {
 		// Set Constraints for level image
 		levelImageView.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
-			make.topMargin.equalTo(self).offset(170)
+			make.centerY.equalTo(self)
+			//make.topMargin.equalTo(self).offset(170)
 		}
 		
 		// Set Constraints for Level Name label
@@ -56,12 +57,14 @@ class LevelCardView: UIView {
 			make.topMargin.equalTo(self).offset(80)
 		}
 		
-		
+		// Temporarily removed because game score functionality is not up yet
+		/*
 		// Set Constraints for score label
 		playerScoreLabel.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
 			make.bottom.equalTo(self).offset(-190)
 		}
+		*/
 	
 	}
 	

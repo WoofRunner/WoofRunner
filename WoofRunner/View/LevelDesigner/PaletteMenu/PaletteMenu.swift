@@ -4,75 +4,62 @@
 //
 //  Created by See Loo Jane on 26/3/17.
 //  Copyright © 2017 WoofRunner. All rights reserved.
-//
+//	
+//	PaletteMenu is a subclass of SKNode that contains child
+//	PaletteButton nodes. Its position is implicitly set.
 
 import SpriteKit
 
-struct PaletteConstants {
-	static let buttonTypesArray: [PaletteFunctionType] = [.platform, .obstacle, .delete]
-	static let numberOfPaletteButtons = CGFloat(buttonTypesArray.count)
-	static let paletteButtonWidth = CGFloat(60)
-	static let paletteButtonHeight = CGFloat(60)
-	static let paletteButtonSize = CGSize(width: paletteButtonWidth, height: paletteButtonHeight)
-	static let paletteButtonMargin = CGFloat(15)
-	
-	static let paletteWidth = paletteButtonWidth + (2 * paletteButtonMargin)
-	static let paletteHeight = (paletteButtonWidth * numberOfPaletteButtons) + ((numberOfPaletteButtons + 1) * paletteButtonMargin)
-	
-	// The bottom-left corner of the palette's frame
-	static let palettePosition = CGPoint(x: 45, y: 680)
-	
-	static let paletteButtonX0 = paletteWidth/2 // y-coord for the topmost palette button
-	static let paletteButtonY0 = paletteHeight - (paletteButtonWidth/2 + paletteButtonMargin) // x-coord for the topmost palette button
-	
-	static let paletteBackgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0.8)
-}
-
-
 class PaletteMenu: SKNode {
 	
-	private let backgroundNode = CustomShapeNodes.getRoundedRectangleNode(height: PaletteConstants.paletteHeight,
-		                                                             width: PaletteConstants.paletteWidth,
-		                                                             radius: 25,
-		                                                             backgroundColor: PaletteConstants.paletteBackgroundColor)
-	private var buttonArray = [PaletteButton]()
-	//var buttonTypesArray = [PaletteFunctionType]()
+	typealias Palette = LDOverlaySceneConstants.PaletteConstants
+	
+	// MARK: - Private Variables
+	
+	private var backgroundNode = SKNode()
+	private var buttonArray = [PaletteButton]() // Required to easily set PaletteButtonDelegate for the buttons
+	
+	// MARK: - Initialiser
 	
 	override init() {
 		super.init()
+		self.position = Palette.palettePosition
+		initPaletteBackground()
+		initPaletteButtons()
 	}
 	
-	/* Convenience init might be used if palette button types cannot be predetermined
-	convenience init(buttonTypesArray: [PaletteFunctionType]) {
-		self.init()
-		self.buttonTypesArray = buttonTypesArray
-		renderPaletteMenu()
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 	}
-	*/
 	
-	// Renders the palette menu at the input position (which is the bottom-left corner
-	// of the menu's frame)
-	public func renderPaletteMenu() {
-		
-		self.position = PaletteConstants.palettePosition
-		
-		// Base x and y positions for the palette buttons
-		var buttonY = PaletteConstants.paletteButtonY0
-		let buttonX = PaletteConstants.paletteButtonX0
-		
+	// MARK: - Public Methods
+	
+	private func initPaletteBackground() {
+		backgroundNode = CustomShapeNodes
+						.getRoundedRectangleNode(height: Palette.paletteHeight,
+						                         width: Palette.paletteWidth,
+		                                         radius: Palette.backgroundCornerRadius,
+		                                         backgroundColor: Palette.backgroundColor)
 		// Attach background first
 		self.addChild(backgroundNode)
+	}
+	
+	
+	private func initPaletteButtons() {
+		
+		// Base x and y positions for the palette buttons
+		var buttonY = Palette.paletteButtonY0
+		let buttonX = Palette.paletteButtonX0
 		
 		// Create and attach the palette button nodes
-		for type in PaletteConstants.buttonTypesArray {
+		for type in Palette.buttonTypesArray {
 			
 			// Create
-			let buttonImage = type.getSpriteImageName()
-			let buttonNode = PaletteButton(imageNamed: buttonImage, funcType: type, size: PaletteConstants.paletteButtonSize)
+			let buttonNode = PaletteButton(funcType: type, size: Palette.paletteButtonSize)
 			
 			// Set position according to offsets
 			buttonNode.position = CGPoint(x: buttonX, y: buttonY)
-			buttonY -= PaletteConstants.paletteButtonWidth + PaletteConstants.paletteButtonMargin
+			buttonY -= Palette.paletteButtonWidth + Palette.paletteButtonMargin
 			
 			// Add node
 			self.addChild(buttonNode)
@@ -80,14 +67,13 @@ class PaletteMenu: SKNode {
 		}
 	}
 	
+	/**
+	Assigns the PaletteButtonDelegate for all the PaletteButtons found in the PaletteMenu
+	*/
 	public func assignDelegateForButtons(_ delegate: PaletteButtonDelegate) {
 		for button in buttonArray {
 			button.setDelegate(delegate)
 		}
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
 	}
 	
 }
