@@ -84,9 +84,9 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		levelItemView.setupView(vm: vm)
 		
 		// Set Selectors for buttons
-		//levelItemView.editButton.addTarget(self, action: #selector(editLevelHandler(_:)), for: .touchUpInside)
 		levelItemView.playButton.addTarget(self, action: #selector(playBtnHandler(_:)), for: .touchUpInside)
 		
+		// Set Tap Handlers for tappable ImageView
 		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
 		levelItemView.levelImageView.addGestureRecognizer(playTapRecogniser)
 		
@@ -105,6 +105,7 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		}
 		return value
 	}
+
 	
 	// MARK: - TAP LOGIC HANDLERS
 	
@@ -128,23 +129,6 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 		self.performSegue(withIdentifier: "segueToGameplay", sender: uuid)
 	}
 	
-	/*
-	func editLevelHandler(_ sender: UIButton) {
-		let btn = sender as! LevelSelectorItemButton
-		let uuid = btn.getBindedUUID()
-		
-		print("Selected Item To Edit: \(uuid)")
-		
-		gsm.getGame(uuid: uuid)
-			.onSuccess { loadedGame in
-				self.performSegue(withIdentifier: "segueToLevelDesigner", sender: loadedGame)
-			}
-			.onFailure { error in
-				print("\(error.localizedDescription)")
-			}
-		
-	}
-	*/
 	
 	// MARK: - View Setup Methods
 
