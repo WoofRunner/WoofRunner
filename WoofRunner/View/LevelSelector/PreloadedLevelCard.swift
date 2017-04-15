@@ -11,27 +11,16 @@ import SnapKit
 
 class PreloadedLevelCard: LevelCardView {
 
-	//var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR DEBUG ONLY
-	var playButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) // FOR STEPS ONLY
+	var playButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	
 	private var playIconOverlay = UIImageView()
 	
 	
 	override internal func didLoad() {
 		super.didLoad()
-		
 		levelImageView.addSubview(playIconOverlay)
 		
-		/*
-		// Add and configure debug Edit button
-		addSubview(editButton)
-		editButton.setTitle("Edit", for: .normal)
-		editButton.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-40)
-		}
-		*/
-		
+
 		// Set Constraints for play overlay icon
 		playIconOverlay.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalToSuperview()
@@ -55,7 +44,6 @@ class PreloadedLevelCard: LevelCardView {
 	override internal func bindUUIDToButtons(_ uuid: String) {
 		super.bindUUIDToButtons(uuid)
 		playButton.bindUUID(uuid)
-		//editButton.bindUUID(uuid)
 	}
 	
 	private func setupPlayIconOverlay(viewModel: LevelCardViewModel) {

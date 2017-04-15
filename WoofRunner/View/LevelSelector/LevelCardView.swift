@@ -18,7 +18,6 @@ class LevelCardView: UIView {
 	// Views that are shared across all subclasses of LevelCardView
 	var levelImageView = LevelSelectorItemImageView() // Requires public access to set Tap Handler Gesture
 	private var levelNameLabel = StrokedLabel()
-	private var playerScoreLabel = UILabel()
 	
 	// MARK: - Initialisers
 	
@@ -46,11 +45,9 @@ class LevelCardView: UIView {
 		// Add child views
 		addSubview(levelImageView)
 		addSubview(levelNameLabel)
-		//addSubview(playerScoreLabel)
 		
 		// Sizing label views
 		levelNameLabel.sizeToFit()
-		playerScoreLabel.sizeToFit()
 		
 		setShadows()
 		
@@ -60,7 +57,6 @@ class LevelCardView: UIView {
 		levelImageView.snp.makeConstraints { (make) -> Void in
 			make.centerX.equalTo(self)
 			make.centerY.equalTo(self)
-			//make.topMargin.equalTo(self).offset(170)
 		}
 		
 		// Set Constraints for Level Name label
@@ -68,15 +64,6 @@ class LevelCardView: UIView {
 			make.centerX.equalTo(self)
 			make.topMargin.equalTo(self).offset(80)
 		}
-		
-		// Temporarily removed because game score functionality is not up yet
-		/*
-		// Set Constraints for score label
-		playerScoreLabel.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-190)
-		}
-		*/
 	
 	}
 	
@@ -98,7 +85,6 @@ class LevelCardView: UIView {
 		
 		// Setup Child Views
 		setupLevelNameLabel(viewModel: vm)
-		setupScoreLabel(viewModel: vm)
 		setupImageView(viewModel: vm)
 		
 		// Bind current item's UUID to the buttons for callbacks later
@@ -119,12 +105,6 @@ class LevelCardView: UIView {
 		levelNameLabel.textColor = viewModel.levelNameLabelColor
 	}
 	
-	private func setupScoreLabel(viewModel: LevelCardViewModel) {
-		playerScoreLabel.text = "\(viewModel.playerScore)%"
-		playerScoreLabel.font = viewModel.playerScoreLabelFont
-		playerScoreLabel.textColor = viewModel.playerScoreLabelColor
-	}
-	
 	private func setupImageView(viewModel: LevelCardViewModel) {
 		
 		// Resizes the image while keeping the aspect ratio
@@ -140,7 +120,6 @@ class LevelCardView: UIView {
 	}
 	
 	private func configureLabelShadow() {
-		playerScoreLabel.setShadow()
 		levelNameLabel.setShadow()
 	}
 	
