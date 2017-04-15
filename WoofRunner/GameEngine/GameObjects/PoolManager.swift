@@ -20,18 +20,6 @@ class PoolManager: TileDelegate {
     
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
-        
-        /*
-        for _ in 0..<NUM_FLOOR/2 {
-            poolTile(createNewTile(TileType.floorDark)!)
-        }
-        for _ in 0..<NUM_FLOOR/2 {
-            poolTile(createNewTile(TileType.floorLight)!)
-        }
-        for _ in 0..<10 {
-            poolTile(createNewTile(TileType.rock)!)
-        }
- */
     }
 
     public func getTile(_ tileModel: TileModel) -> Tile? {

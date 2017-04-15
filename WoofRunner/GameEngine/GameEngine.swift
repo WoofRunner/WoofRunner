@@ -11,16 +11,16 @@ import SceneKit
 
 class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  {
     
-    public var gameObjects: [GameObject] = []
-    let scnView: SCNView
-    let scnScene: SCNScene
+    private var gameObjects: [GameObject] = []
+    private let scnView: SCNView
+    private let scnScene: SCNScene
     
-    var lastTime: TimeInterval = 0
+    private var lastTime: TimeInterval = 0
     public var gestureDelegate: GestureDelegate?
-    let LEVEL_PATH = "art.scnassets/level.scn"
+    private let LEVEL_PATH = "art.scnassets/level.scn"
     
-    var isPause: Bool = false
-    var isDebug: Bool = false
+    public var isPause: Bool = false
+    private var isDebug: Bool = false
 
     init(_ view: SCNView) {
         self.scnView = view
@@ -99,7 +99,7 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
         }
     }
     
-    func removeDeadObjects() {
+    private func removeDeadObjects() {
         let toBeRemovedObjects = gameObjects.filter{$0.isWaitingToBeDestroyed}
         gameObjects = gameObjects.filter{!$0.isWaitingToBeDestroyed}
 

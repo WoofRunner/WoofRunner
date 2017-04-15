@@ -9,17 +9,19 @@
 import Foundation
 import SceneKit
 
+// World is a public class to contain the GameEngine
+
 class World {
     
     private static var gameEngine: GameEngine?
     
-    static let MSG_SPAWN_OBJECT = "Trying to spawn object"
-    static let MSG_REGISTER_INPUT = "Trying to register gesture input"
-    static let MSG_PROJECT_POINT = "Trying to project point"
-    static let MSG_UNPROJECT_POINT = "Trying to unproject point"
-    static let MSG_DESTROY_ENGINE = "Trying to destroy GameEngine"
-    static let MSG_WARNING = "WARNING: "
-    static let MSG_GAME_ENGINE_NIL = " but GameEngine is nil"
+    private static let MSG_SPAWN_OBJECT = "Trying to spawn object"
+    private static let MSG_REGISTER_INPUT = "Trying to register gesture input"
+    private static let MSG_PROJECT_POINT = "Trying to project point"
+    private static let MSG_UNPROJECT_POINT = "Trying to unproject point"
+    private static let MSG_DESTROY_ENGINE = "Trying to destroy GameEngine"
+    private static let MSG_WARNING = "WARNING: "
+    private static let MSG_GAME_ENGINE_NIL = " but GameEngine is nil"
     
     public static func setUpWorld(_ view: SCNView) {
         gameEngine = GameEngine(view)

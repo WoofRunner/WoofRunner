@@ -74,10 +74,7 @@ class MovingPlatform : Platform {
             }
         }
     }
-    
-    override func onTriggered() {
-    }
-    
+
     override func activate() {
         super.activate()
         moveDirection = MoveDirection.right

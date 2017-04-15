@@ -10,10 +10,11 @@ import SceneKit
 
 class GameObject: SCNNode, GestureDelegate {
 
-    var isWaitingToBeDestroyed: Bool = false
-    var isTickEnabled: Bool = false
+    public var isWaitingToBeDestroyed: Bool = false
+    public var isTickEnabled: Bool = false
     
-    let FAR_AWAY_POSITION = SCNVector3(-100, -100, -100)
+    private let FAR_AWAY_POSITION = SCNVector3(-100, -100, -100)
+    private let WARNING_CANT_LOAD = "WARNING: Cant find path name: "
     
     convenience required init?(coder aDecoder: NSCoder) {
         return nil
@@ -68,18 +69,13 @@ class GameObject: SCNNode, GestureDelegate {
     //      -pathName: path to scene
     public func loadModel(_ pathName: String) {
         guard let modelScene = SCNScene(named: pathName) else {
-            print("WARNING: Cant find path name: " + pathName)
+            print(WARNING_CANT_LOAD + pathName)
             return
         }
         
         for child in modelScene.rootNode.childNodes {
             addChildNode(child)
         }
-        
-        /*
-        guard let modelNode = modelScene.rootNode.childNodes.first else { return }
-        addChildNode(modelNode)
- */
     }
 }
 

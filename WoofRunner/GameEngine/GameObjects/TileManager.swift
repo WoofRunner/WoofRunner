@@ -49,7 +49,6 @@ class TileManager: GameObject {
         return TileModelFactory.sharedInstance.findTileModel(name: KILL_PLATFORM_NAME)
     }
     
-    
     var startPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
     }

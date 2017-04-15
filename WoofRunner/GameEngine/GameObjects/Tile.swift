@@ -10,13 +10,13 @@ import SceneKit
 
 class Tile: GameObject {
     
-    let tileId: Int
-    var delegate: TileDelegate?
+    public let tileId: Int
+    public var delegate: TileDelegate?
     
-    var triggerDistance: Float = 0
-    var isTriggered: Bool = false
+    public var triggerDistance: Float = 0
+    public var isTriggered: Bool = false
     
-    var positionOffSet: SCNVector3 = SCNVector3.zero()
+    public var positionOffSet: SCNVector3 = SCNVector3.zero()
     private var autoDestroyPositionZ: Float = 5
     
     init(_ tileModel: TileModel) {
@@ -35,10 +35,17 @@ class Tile: GameObject {
     }
 
     override func update(_ deltaTime: Float) {
+        handleAutoDestroy()
+        handleAutoTrigger()
+    }
+    
+    private func handleAutoDestroy() {
         if worldPosition.z > autoDestroyPositionZ {
             destroy()
         }
-        
+    }
+    
+    private func handleAutoTrigger() {
         if worldPosition.z > triggerDistance {
             if !isTriggered {
                 onTriggered()
@@ -47,6 +54,7 @@ class Tile: GameObject {
         }
     }
     
+    // to be overriden by subclasses to receive onTriggered event
     func onTriggered() {
     }
     
@@ -55,6 +63,7 @@ class Tile: GameObject {
         isTriggered = false
     }
     
+    // notify Tile got destroy
     override func destroy() {
         delegate?.onTileDestroy(self)
     }
