@@ -11,24 +11,24 @@ import SceneKit
 
 class Player: GameObject {
     
-    var startHeight: Float = -0.1
-    var startOffsetX: Float = 0.5
-    var delegate: PlayerDelegate?
-    let startPosition: SCNVector3
+    private var startHeight: Float = -0.1
+    private var startOffsetX: Float = 0.5
+    private let startPosition: SCNVector3
+    public var delegate: PlayerDelegate?
     
-    var isAir: Bool = false
-    var jumpHeight: Float = 2
-    var jumpSpeed: Float = 4.4
-    var jumpTime: Float = 0
+    private var isAir: Bool = false
+    private var jumpHeight: Float = 2
+    private var jumpSpeed: Float = 4.4
+    private var jumpTime: Float = 0
 
-    var isDeadFall: Bool = false
-    var deadFallSpeed: Float = 3
-    var deadFallLimitY: Float = -3
+    private var isDeadFall: Bool = false
+    private var deadFallSpeed: Float = 3
+    private var deadFallLimitY: Float = -3
     
-    var targetPositionX: Float = 0
-    let lerpSpeed: Float = 15
+    private var targetPositionX: Float = 0
+    private let lerpSpeed: Float = 15
     
-    let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
+    private let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
     
     
     override init() {
@@ -49,26 +49,7 @@ class Player: GameObject {
         targetPositionX = startOffsetX
     }
     
-    public func startJump() {
-        jumpTime = 0
-        isAir = true
-    }
-    
     public override func onCollide(other: GameObject) {
-        if other is Platform {
-        }
-        
-        if other is JumpPlatform {
-            //startJump()
-        }
-        
-        if other is DeadTriggerPlatform {
-            //isDeadFall = true
-        }
-        
-        if other is Obstacle {
-            //destroy()
-        }
     }
     
     override func update(_ deltaTime: Float) {
@@ -78,6 +59,7 @@ class Player: GameObject {
             handleInAir(deltaTime)
         }
         
+        // move player
         position = SCNVector3.lerp(position, SCNVector3(targetPositionX, position.y, position.z), deltaTime * lerpSpeed)
     }
     
@@ -114,6 +96,11 @@ class Player: GameObject {
     override func destroy() {
         isHidden = true
         delegate?.playerDied()
+    }
+    
+    public func startJump() {
+        jumpTime = 0
+        isAir = true
     }
     
     public func infiniteFalling() {

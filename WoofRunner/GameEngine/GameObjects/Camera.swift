@@ -11,12 +11,12 @@ import SceneKit
 
 class Camera: GameObject {
     
-    let height: Float = 5
-    let horizontalOffset: Float = 0.5
-    let verticalOffset: Float = 5
+    private let height: Float = 5
+    private let horizontalOffset: Float = 0.5
+    private let verticalOffset: Float = 5
     
-    let xAxis: Float = 1
-    let rotationAmount: Float = -0.77
+    private let xAxis: Float = 1
+    private let rotationAmount: Float = -0.77
     
     override init() {
         super.init()

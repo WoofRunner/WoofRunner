@@ -9,4 +9,5 @@
 class GameSettings {
     static let TILE_WIDTH: Float = 1
     static let PLATFORM_COLUMNS: Int = 5
+    static let KILL_PLATFORM_NAME = "Kill Platform"
 }

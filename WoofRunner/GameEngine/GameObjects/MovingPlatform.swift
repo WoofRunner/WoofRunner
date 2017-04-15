@@ -12,7 +12,7 @@ import SceneKit
 // A platform that moves to and fro from the start to the end column
 class MovingPlatform : Platform {
     
-    enum MoveDirection {
+    private enum MoveDirection {
         case right
         case left
     }
@@ -25,8 +25,9 @@ class MovingPlatform : Platform {
 
     private let MIN_NUM_OF_COL = 1
     
-    let KILL_PLATFORM_NAME = "Kill Platform"
-    var deadTriggerModel: TileModel? {
+    private let KILL_PLATFORM_NAME = GameSettings.KILL_PLATFORM_NAME
+    
+    private var deadTriggerModel: TileModel? {
         return TileModelFactory.sharedInstance.findTileModel(name: KILL_PLATFORM_NAME)
     }
     
@@ -36,7 +37,7 @@ class MovingPlatform : Platform {
         createAdjacentDeadTriggers()
     }
 
-    func createAdjacentDeadTriggers() {
+    private func createAdjacentDeadTriggers() {
         if GameSettings.PLATFORM_COLUMNS < MIN_NUM_OF_COL { return }
         
         for colIndex in MIN_NUM_OF_COL..<GameSettings.PLATFORM_COLUMNS {

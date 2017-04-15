@@ -11,53 +11,50 @@ import SceneKit
 
 class TileManager: GameObject {
     
-    enum MoveState {
+    private enum MoveState {
         case wait
         case moving
         case ended
     }
     
-    var moveState: MoveState = MoveState.wait
+    private var obstacleData: [[TileModel?]] = []
+    private var platformData: [[TileModel?]] = []
     
-    var obstacleData: [[TileModel?]] = []
-    var platformData: [[TileModel?]] = []
+    private var moveState: MoveState = MoveState.wait
+    private var platformSpeed: Float = 6
+    private var isMoving: Bool = false
+    private var delay: Float = 2
     
-    var platformSpeed: Float = 6
+    private var tailIndex: Int = 0
+    private var platformTail: Float = 0
+    private let TAIL_LENGTH: Float = 22
+    private let PLATFORM_Z_OFFSET: Float = 3.5
     
-    var tailIndex: Int = 0
-    var platformTail: Float = 0
+    private var poolManager: PoolManager?
+    private var NUM_ROWS_TO_POOL = 80
     
-    let TAIL_LENGTH: Float = 22
-    let PLATFORM_Z_OFFSET: Float = 3.5
+    private var isDebug: Bool = true
     
-    var poolManager: PoolManager?
-    var NUM_ROWS_TO_POOL = 40
+    private let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
+    private let WARNING_CANT_FIND_DEAD_TRIGGER = "WARNING: Cant Find Dead Trigger"
     
-    var isDebug: Bool = true
+    public var delegate: TileManagerDelegate?
     
-    let WARNING_INVALID_DATA = "WARNING: Data Loaded are Invalid"
-    let WARNING_CANT_FIND_DEAD_TRIGGER = "WARNING: Cant Find Dead Trigger"
+    private let KILL_PLATFORM_NAME = GameSettings.KILL_PLATFORM_NAME
     
-    var isMoving: Bool = false
-    var delay: Float = 2
-    
-    var delegate: TileManagerDelegate?
-    
-    let KILL_PLATFORM_NAME = "Kill Platform"
-    
-    var deadTriggerModel: TileModel? {
+    private var deadTriggerModel: TileModel? {
         return TileModelFactory.sharedInstance.findTileModel(name: KILL_PLATFORM_NAME)
     }
     
-    var startPosition: SCNVector3 {
+    private var startPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: 0 + PLATFORM_Z_OFFSET)
     }
     
-    var stopPosition: SCNVector3 {
+    private var stopPosition: SCNVector3 {
         return SCNVector3(x: 0, y: 0, z: Float(platformData.count) * GameSettings.TILE_WIDTH)
     }
     
-    var percentageCompleted: Float {
+    public var percentageCompleted: Float {
         return Float(tailIndex)/Float(obstacleData.count)
     }
     
@@ -90,7 +87,7 @@ class TileManager: GameObject {
         spawnTiles()
     }
     
-    public func initPooling() {
+    private func initPooling() {
         poolTiles()
         poolManager?.destroyAllActiveTiles()
     }
@@ -118,7 +115,7 @@ class TileManager: GameObject {
     }
     
     // remove other tiles in the same row as the moving platform
-    func processPlatformData(_ data: [[TileModel?]]) -> [[TileModel?]]{
+    private func processPlatformData(_ data: [[TileModel?]]) -> [[TileModel?]]{
         var data = data
         for rowIndex in 0..<data.count {
             for colIndex in 0..<data[rowIndex].count {
@@ -141,7 +138,7 @@ class TileManager: GameObject {
         return data
     }
     
-    func createEmptyDataRow() -> [TileModel?] {
+    private func createEmptyDataRow() -> [TileModel?] {
         var array = [TileModel?]()
         for _ in 0..<GameSettings.PLATFORM_COLUMNS {
             array.append(nil)
@@ -149,7 +146,7 @@ class TileManager: GameObject {
         return array
     }
     
-    func spawnTiles() {
+    private func spawnTiles() {
         let curTailIndex = tailIndex
         
         for row in curTailIndex..<platformData.count {
@@ -165,7 +162,7 @@ class TileManager: GameObject {
         }
     }
     
-    func poolTiles() {
+    private func poolTiles() {
         let length = min(NUM_ROWS_TO_POOL, platformData.count)
 
         for row in 0..<length {

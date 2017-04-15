@@ -11,12 +11,10 @@ import SceneKit
 
 class JumpingObstacle: Obstacle {
     
-    var startHeight: Float = 0
-    var jumpSpeed: Float = 4
-    
-    var jumpTime: Float = 0
-
-    let FULL_JUMP_LENGTH: Float = 3.142
+    private var startHeight: Float = 0
+    private var jumpSpeed: Float = 4
+    private var jumpTime: Float = 0
+    private let FULL_JUMP_LENGTH: Float = 3.142
     
     override init(_ tileModel: TileModel) {
         super.init(tileModel)

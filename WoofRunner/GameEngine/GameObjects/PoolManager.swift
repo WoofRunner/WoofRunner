@@ -10,13 +10,11 @@ import Foundation
 import SceneKit
 
 class PoolManager: TileDelegate {
+
+    private var availableTiles: [Tile] = []
+    private var inUseTiles: [Tile] = []
     
-    let NUM_FLOOR = 70
-    
-    var availableTiles: [Tile] = []
-    var inUseTiles: [Tile] = []
-    
-    let parentNode: GameObject
+    private let parentNode: GameObject
     
     init(_ parentNode: GameObject) {
         self.parentNode = parentNode
