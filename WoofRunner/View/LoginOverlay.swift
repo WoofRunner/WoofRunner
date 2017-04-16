@@ -73,7 +73,7 @@ public class LoginOverlay: UIView {
         addSubview(fbButton)
 
         let googleButton = UIButton()
-        googleButton.setImage(UIImage(named: "fb-login-btn"), for: .normal)
+        googleButton.setImage(UIImage(named: "google-login-btn"), for: .normal)
 
         self.googleButton = googleButton
         addSubview(googleButton)
