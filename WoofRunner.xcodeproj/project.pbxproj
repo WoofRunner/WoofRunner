@@ -14,6 +14,7 @@
 		124A63241EA374D6008BBCCB /* GoogleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A63231EA374D6008BBCCB /* GoogleProfile.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
+		128B0B8F1EA3B85E00F95431 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B0B8E1EA3B85E00F95431 /* Position.swift */; };
 		12A036831EA3AF81001BE61A /* PreloadedGames.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A036821EA3AF81001BE61A /* PreloadedGames.json */; };
 		12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
@@ -147,6 +148,7 @@
 		124A63231EA374D6008BBCCB /* GoogleProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleProfile.swift; sourceTree = "<group>"; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
+		128B0B8E1EA3B85E00F95431 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		12A036821EA3AF81001BE61A /* PreloadedGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PreloadedGames.json; sourceTree = "<group>"; };
 		12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +318,7 @@
 		126F50F81E7272AA000877F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				128B0B8E1EA3B85E00F95431 /* Position.swift */,
 				128B0B8C1EA3B61900F95431 /* ViewModels */,
 				F33754E51E97811F00839AFD /* TileModel */,
 				128B0B8D1EA3B72600F95431 /* LevelGrid */,
@@ -887,6 +890,7 @@
 				F33754E71E97812D00839AFD /* TileModel.swift in Sources */,
 				3FCC89B71E810D4B005A7C03 /* PaletteFunctionType.swift in Sources */,
 				4EA8B1FC1E9A449300626010 /* GameplayOverlayScene.swift in Sources */,
+				128B0B8F1EA3B85E00F95431 /* Position.swift in Sources */,
 				3F7348C41E86F89F00EB1264 /* OverlayButtonSet.swift in Sources */,
 				3FCC89971E73E327005A7C03 /* LevelSelectorViewController.swift in Sources */,
 				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
