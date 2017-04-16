@@ -295,3 +295,13 @@ extension LMHomeViewController: AuthManagerDelegate {
     }
 
 }
+
+fileprivate class DownloadGameTapGesture: UITapGestureRecognizer {
+
+    public private(set) var uuid: String?
+
+    public func setUUID(_ uuid: String) {
+        self.uuid = uuid
+    }
+
+}
