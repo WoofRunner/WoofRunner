@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import FacebookCore
 
+/**
+Contains the properties required to render a LevelCardView (and its subclasses)
+*/
 public class LevelCardViewModel {
 	
 	private(set) var levelUUID: String // For tap handler
@@ -26,21 +29,18 @@ public class LevelCardViewModel {
 	private(set) var imageRectSize = StubLevelCardConstants.levelImageSize
 	private(set) var playIconImageUrl = StubLevelCardConstants.playIconImagePath
 	
-	// Player Score
-	private(set) var playerScore: Int
-	private(set) var playerScoreLabelColor = StubLevelCardConstants.scoreLabelColor
-	private(set) var playerScoreLabelFont = StubLevelCardConstants.scoreLabelFont
-	
 	// Author
 	private(set) var author = "You"
 	private(set) var authorLabelFont = StubLevelCardConstants.authorLabelFont
 	private(set) var authorLabelColor = StubLevelCardConstants.authorLabelColor
 	
+	
+	// MARK: - Initialisers
+	
 	init(game: StoredGame) {
 		self.levelUUID = game.uuid!
 		self.levelName = game.name ?? "No Title"
 		self.levelImageUrl = "level-preview-image" // Stub
-		self.playerScore = StubLevelCardConstants.stubPlayerScore // Stub
 		
 		// If there's no ownerId tied to the game, level is created locally
 		if let id = game.ownerId {
@@ -55,10 +55,10 @@ public class LevelCardViewModel {
         // TODO: Add name in DisplayedGame
         self.levelName = "Stubbed"
         self.levelImageUrl = "level-preview-image" // Stubbed
-        self.playerScore = StubLevelCardConstants.stubPlayerScore
         self.author = game.owner
         setAuthorName(ownerId: game.owner)
     }
+	
 	
 	struct StubLevelCardConstants {
 		// Level Title
@@ -66,11 +66,6 @@ public class LevelCardViewModel {
 		static let levelTitleFont = UIFont(name: "AvenirNext-Bold", size: 40)
 		static let levelNameStrokeColor = UIColor(red: 0.78, green: 0.47, blue: 0.20, alpha: 1.0)
 		static let levelNameStrokeSize = CGFloat(4.0)
-		
-		// Player Score
-		static let scoreLabelColor = UIColor(red: 0.85, green: 0.82, blue: 0.91, alpha: 1.0)
-		static let scoreLabelFont = UIFont(name: "AvenirNext-Bold", size: 65)
-		static let stubPlayerScore = 47
 		
 		// Author
 		static let authorLabelColor = UIColor(red: 0.85, green: 0.82, blue: 0.91, alpha: 0.65)

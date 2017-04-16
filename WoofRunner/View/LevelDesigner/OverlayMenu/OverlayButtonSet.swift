@@ -8,20 +8,28 @@
 
 import SpriteKit
 
-
+/**
+Parents an OverlayButton node and a label describing the button.
+Its position should be set by the parent that created this object.
+*/
 class OverlayButtonSet: SKNode {
 	
 	typealias Constants = LDOverlaySceneConstants.OverlayConstants
 	
+	// MARK: - Private Variables
+	
 	private var btnLabel = SKLabelNode()
 	private var btn = OverlayButton()
+	
+	// MARK: - Initialisers
 	
 	override init() {
 		super.init()
 	}
 	
-	// Initialises a button with the input imageName and a display label
-	// with the input name text
+	/**
+	Initialises a button with the input imageName and a display label with the input name text
+	*/
 	convenience init(name: String, imageNamed: String) {
 		self.init()
 		let buttonName = name
@@ -33,10 +41,15 @@ class OverlayButtonSet: SKNode {
 		renderOverlayButtonSet()
 	}
 	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	// MARK: - Private View Set Up Methods
 	
 	private func renderOverlayButtonSet() {
 		// Configure and add name node
-		configureToNameLabel(self.btnLabel)
+		configureNameLabel(self.btnLabel)
 		self.addChild(self.btnLabel)
 		
 		// Set button position and add node
@@ -44,21 +57,20 @@ class OverlayButtonSet: SKNode {
 		self.addChild(self.btn)
 	}
 	
-	// Sets the font, color, size and position properties of input label
-	// to the presets for a button label node
-	private func configureToNameLabel(_ label: SKLabelNode) {
+	private func configureNameLabel(_ label: SKLabelNode) {
 		label.fontName = Constants.btnLabelFontName
 		label.fontColor = Constants.btnLabelFontColor
 		label.fontSize = Constants.btnLabelFontSize
 		label.position = Constants.btnLabelPosition
 	}
 	
+	// MARK: - Public Methods
+	
+	/**
+	Returns the OverlayButton child node
+	*/
 	public func getButtonNode() -> OverlayButton {
 		return self.btn
 	}
 	
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-	}
 }

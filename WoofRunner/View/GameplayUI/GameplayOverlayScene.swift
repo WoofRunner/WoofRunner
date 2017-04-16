@@ -9,23 +9,30 @@
 import UIKit
 import SpriteKit
 
+/**
+Shown during Gameplay and in charge of rendering and showing the
+game win/lose menus.
+*/
 class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
-    
-    private var scoreLabel: SKLabelNode!
+	
+	typealias Constants = GameplayOverlayConstants
+	
+	// MARK: - Private Variables
+	
     private var menuButton: SKSpriteNode!
     private var menuOverlay: SKNode!
 	
 	// Child Nodes to be attached to menuOverlay
-	private var pauseMenu = SKSpriteNode(imageNamed: "pause-menu-bg")
-	private var winMenu = SKSpriteNode(imageNamed: "win-menu-bg")
-	private var loseMenu = SKSpriteNode(imageNamed: "lose-menu-bg")
+	private var pauseMenu = SKSpriteNode(imageNamed: Constants.pauseMenuBG)
+	private var winMenu = SKSpriteNode(imageNamed: Constants.winMenuBG)
+	private var loseMenu = SKSpriteNode(imageNamed: Constants.loseMenuBG)
 	
     private var viewportSize: CGSize = CGSize()
-	
 	private var overlayDelegate: GameplayOverlayDelegate?
-	
 	private var currentlyShowingMenu: SKNode?
-    
+	
+	// MARK: - Initialisers
+	
     override init(size: CGSize) {
         super.init(size: size)
         viewportSize = size
@@ -35,48 +42,28 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    // Update functions
-    public func updateScore(_ newScore: Float) {
-        scoreLabel.text = String(newScore)
-    }
-	
-	public func setDelegate(_ delegate: GameplayOverlayDelegate) {
-		self.overlayDelegate = delegate
-	}
-    
-    // Helper functions
-    private func didLoad() {
-        // Init view elements
-        initScoreLabel()
-        initMenuButton()
-        initMenuOverlay()
-		initPauseMenu()
-		initGameEndMenu(menu: winMenu)
-		initGameEndMenu(menu: loseMenu)
-        
-        // Add view elements
-        //self.addChild(scoreLabel)
-        self.addChild(menuButton)
-		self.addChild(menuOverlay)
-    }
 	
 	
 	// MARK: - View Init Helper Methods
 	
-    private func initScoreLabel() {
-        let scoreNode = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        scoreNode.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
-        scoreNode.text = "0 %"
-        scoreNode.fontSize = 48
-        scoreLabel = scoreNode
-    }
-    
+	private func didLoad() {
+		initMenuButton()
+		initMenuOverlay()
+		initPauseMenu()
+		initGameEndMenu(menu: winMenu)
+		initGameEndMenu(menu: loseMenu)
+		
+		// Add view elements
+		self.addChild(menuButton)
+		self.addChild(menuOverlay)
+	}
+	
     private func initMenuButton() {
-        let menuButtonTexture = SKTexture(imageNamed: "pause-button")
-        let menuButtonSize = CGSize(width: 60.0, height: 60.0)
+        let menuButtonTexture = Constants.menuButtonSprite
+        let menuButtonSize = Constants.menuButtonSize
         let menuButtonNode = SKSpriteNode(texture: menuButtonTexture, size: menuButtonSize)
-		menuButtonNode.position = CGPoint(x: size.width * 0.1, y: size.height * 0.9)
+		menuButtonNode.position = CGPoint(x: size.width * Constants.menuButtonXPosScale,
+		                                  y: size.height * Constants.menuButtonYPosScale)
         menuButton = menuButtonNode
     }
     
@@ -84,17 +71,19 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 		
 		// Init MenuOverlay Parent Node
 		menuOverlay = SKNode()
-		menuOverlay.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
+		menuOverlay.position = CGPoint(x: size.width * Constants.overlayXPosScale,
+		                               y: size.height * Constants.overlayYPosScale)
 		menuOverlay.alpha = 0
 		
 		// Init and attach the black overlay
-		let blackScreenOverlay = SKSpriteNode(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.8),
-                                              size: CGSize(width: size.width, height: size.height))
+		let blackScreenOverlay = SKSpriteNode(color: Constants.overlayColor,
+                                              size: CGSize(width: size.width,
+                                                           height: size.height))
 		menuOverlay.addChild(blackScreenOverlay)
 	}
 	
 	private func initPauseMenu() {
-		pauseMenu.size = CGSize(width: 500, height: 500)
+		pauseMenu.size = Constants.pauseMenuSize
 		
 		// Init Child Views
 		let resumeButton = GameplayOverlayButton(type: .resume)
@@ -107,12 +96,9 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 		pauseMenu.addChild(exitButton)
 		
 		// Adjust Button Positions
-		resumeButton.position = CGPoint(x: 0,
-		                                y: pauseMenu.size.height / 3 - 60)
-		retryButton.position = CGPoint(x: 0,
-		                               y: pauseMenu.size.height / 3 - 160)
-		exitButton.position = CGPoint(x: 0,
-		                              y: pauseMenu.size.height / 3 - 260)
+		resumeButton.position = Constants.pResumeButtonPos
+		retryButton.position = Constants.pRetryButtonPos
+		exitButton.position = Constants.pExitButtonPos
 		
 		// Attach Delegates
 		resumeButton.setDelegate(self)
@@ -121,34 +107,19 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 	}
 	
 	private func initGameEndMenu(menu: SKSpriteNode) {
-		menu.size = CGSize(width: 500, height: 500)
+		menu.size = Constants.endMenuSize
 		
 		// Init Child Views
-		let finalScoreLabel = SKLabelNode(fontNamed: "AvenirNext-Bold")
-		finalScoreLabel.fontSize = 40
-		finalScoreLabel.text = scoreLabel.text
 		let retryButton = GameplayOverlayButton(type: .retry)
 		let exitButton = GameplayOverlayButton(type: .exit)
 		
 		// Attach Child View Nodes
-		//menu.addChild(finalScoreLabel)
 		menu.addChild(retryButton)
 		menu.addChild(exitButton)
 		
 		// Adjust Button Positions
-		/* UNUSED AT THE MOMENT BECAUSE TEMPORARILY REMOVING SCORE LABEL
-		finalScoreLabel.position = CGPoint(x: 0,
-		                                   y: menu.size.height / 3 - 80)
-		retryButton.position = CGPoint(x: 0,
-		                               y: menu.size.height / 3 - 180)
-		exitButton.position = CGPoint(x: 0,
-		                              y: menu.size.height / 3 - 260)
-		*/
-		
-		retryButton.position = CGPoint(x: 0,
-		                               y: menu.size.height / 3 - 130)
-		exitButton.position = CGPoint(x: 0,
-		                              y: menu.size.height / 3 - 210)
+		retryButton.position = Constants.eRetryButtonPos
+		exitButton.position = Constants.eExitButtonPos
 		
 		// Attach Delegates
 		retryButton.setDelegate(self)
@@ -161,7 +132,6 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		let firstTouch = touches.first
 		let location = firstTouch?.location(in: self)
-		
 		let node = self.atPoint(location!) as SKNode
 		
 		if node == menuButton {
@@ -184,12 +154,16 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 	
 	// MARK: - Menu Toggles
 	
-	private func showPauseMenu() {
-		menuOverlay.addChild(pauseMenu)
-		currentlyShowingMenu = pauseMenu
+	private func showOverlayMenu(_ menu: SKNode) {
+		menuOverlay.addChild(menu)
+		currentlyShowingMenu = menu
 		self.menuOverlay.alpha = 1.0
-		
 	}
+	
+	private func showPauseMenu() {
+		showOverlayMenu(pauseMenu)
+	}
+	
 	
 	private func hideOverlayMenu() {
 		self.menuOverlay.alpha = 0.0
@@ -197,34 +171,39 @@ class GameplayOverlayScene: SKScene, GameplayOverlayButtonDelegate {
 		currentlyShowingMenu = nil
 	}
 	
-	// Public functions to display menu so as can be called from View Controller
-	// NOTE: Have to check for parent before childNode's addChild because method is repeatedly
-	// called from the GameController every frame
+	// MARK: - Public Methods
+	
+	/**
+	Displays the winning menu screen.
+	*/
 	 public func showWinMenu() {
-		// If winMenu already has a parent, do not repeat method
+		// If winMenu already has a parent, do not assign another parent to it
 		if let _ = winMenu.parent {
 			return
 		}
-		
-		menuOverlay.addChild(winMenu)
-		currentlyShowingMenu = winMenu
-		self.menuOverlay.alpha = 1.0
+		showOverlayMenu(winMenu)
 	}
 	
+	/**
+	Displays the losing menu screen
+	*/
 	public func showLoseMenu() {
-		// If loseMenu already has a parent, do not repeat method
+		// If loseMenu already has a parent, do not assign another parent to it
 		if let _ = loseMenu.parent {
 			return
 		}
-		
-		menuOverlay.addChild(loseMenu)
-		currentlyShowingMenu = loseMenu
-		self.menuOverlay.alpha = 1.0
+		showOverlayMenu(loseMenu)
+	}
+
+	/**
+	Sets the GameplayOverlayDelegate for this scene.
+	*/
+	public func setDelegate(_ delegate: GameplayOverlayDelegate) {
+		self.overlayDelegate = delegate
 	}
 	
 	
-	
-	// MARK: - GameplayOverlayButtonDelegate 
+	// MARK: - GameplayOverlayButtonDelegate
 	
 	internal func handleButtonTap(_ type: GameplayOverlayButtonType) {
 		switch type {

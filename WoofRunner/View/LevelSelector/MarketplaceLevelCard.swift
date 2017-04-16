@@ -8,34 +8,22 @@
 
 import UIKit
 
+/**
+To be displayed for every item in the CustomLevelSelectorViewController carousel view
+*/
 class MarketplaceLevelCard: LevelCardView {
 	private var authorLabel = UILabel()
 	var downloadButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
 	
-	// MARK: - Overridden Methods for Customisation
+	// MARK: - Override Methods for Customisation
 	
 	override internal func didLoad() {
 		super.didLoad()
-		addSubview(authorLabel)
-		authorLabel.sizeToFit()
-		
-		// Set Constraints for author label
-		authorLabel.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-15)
-		}
-		
-		// Add and configure debug Download button
-		addSubview(downloadButton)
-		downloadButton.setImage(UIImage(named: "download-button"), for: .normal)
-		downloadButton.snp.makeConstraints { (make) -> Void in
-			make.bottom.equalToSuperview().offset(-90)
-			make.centerX.equalToSuperview()
-		}
-		
+		initialiseAuthorLabel()
+		initialiseDownloadButton()
 	}
 	
-	override public func setupView(vm: LevelCardViewModel) {
+	override internal func setupView(vm: LevelCardViewModel) {
 		super.setupView(vm: vm)
 		setupAuthorLabel(viewModel: vm)
 	}
@@ -46,6 +34,26 @@ class MarketplaceLevelCard: LevelCardView {
 	}
 	
 	// MARK: - Private Helper Methods
+	
+	private func initialiseAuthorLabel() {
+		addSubview(authorLabel)
+		authorLabel.sizeToFit()
+		
+		// Set Constraints for author label
+		authorLabel.snp.makeConstraints { (make) -> Void in
+			make.centerX.equalTo(self)
+			make.bottom.equalTo(self).offset(-15)
+		}
+	}
+	
+	private func initialiseDownloadButton() {
+		addSubview(downloadButton)
+		downloadButton.setImage(UIImage(named: "download-button"), for: .normal)
+		downloadButton.snp.makeConstraints { (make) -> Void in
+			make.bottom.equalToSuperview().offset(-90)
+			make.centerX.equalToSuperview()
+		}
+	}
 	
 	private func setupAuthorLabel(viewModel: LevelCardViewModel) {
 		authorLabel.text = "Level Created By \(viewModel.author)"
