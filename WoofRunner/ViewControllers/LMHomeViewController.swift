@@ -281,7 +281,11 @@ extension LMHomeViewController: GIDSignInDelegate {
 
 }
 
+// MARK: - GIDSignInUIDelegate
+
 extension LMHomeViewController: GIDSignInUIDelegate {}
+
+// MARK: - AuthManagerDelegate
 
 extension LMHomeViewController: AuthManagerDelegate {
 
@@ -295,6 +299,8 @@ extension LMHomeViewController: AuthManagerDelegate {
     }
 
 }
+
+// MARK: - DownloadGameTapGesture
 
 fileprivate class DownloadGameTapGesture: UITapGestureRecognizer {
 
