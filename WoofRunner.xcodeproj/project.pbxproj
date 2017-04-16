@@ -96,9 +96,7 @@
 		4E9DB3761E92EAAE0023A2A8 /* LevelGrid+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */; };
 		4E9DB3781E954DC10023A2A8 /* AVAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DB3771E954DC10023A2A8 /* AVAudioPlayerManager.swift */; };
 		4EA8B1FC1E9A449300626010 /* GameplayOverlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */; };
-		4EA8B2001E9A484D00626010 /* SampleGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */; };
 		4EA8B2021E9A49A400626010 /* GameplayOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */; };
-		4EA8B2041E9A4D5D00626010 /* GameplayOverlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */; };
 		4EEC5E4D1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC5E4C1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift */; };
 		521E5E09B25B2C872282EF0B /* Pods_WoofRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */; };
 		F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300361E1E967C24004C1B4F /* TileManagerDelegate.swift */; };
@@ -233,9 +231,7 @@
 		4E9DB3751E92EAAE0023A2A8 /* LevelGrid+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+Selection.swift"; sourceTree = "<group>"; };
 		4E9DB3771E954DC10023A2A8 /* AVAudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioPlayerManager.swift; sourceTree = "<group>"; };
 		4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayOverlayScene.swift; sourceTree = "<group>"; };
-		4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGameController.swift; sourceTree = "<group>"; };
 		4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameplayOverlay.storyboard; sourceTree = "<group>"; };
-		4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayOverlayScene.sks; sourceTree = "<group>"; };
 		4EEC5E4C1EA29B8100EF862B /* LevelDesignerViewController+PopupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelDesignerViewController+PopupDialog.swift"; sourceTree = "<group>"; };
 		81FBE97A6CC9991E780A7EF6 /* Pods_WoofRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C92350C6DC35F3FB37D4E /* Pods_WoofRunnerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,8 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				4EA8B1FB1E9A449300626010 /* GameplayOverlayScene.swift */,
-				4EA8B1FF1E9A484D00626010 /* SampleGameController.swift */,
-				4EA8B2031E9A4D5D00626010 /* GameplayOverlayScene.sks */,
 				3FF229DA1E9A8F000040F0AF /* GameplayOverlayButton.swift */,
 			);
 			path = GameplayUI;
@@ -751,7 +745,6 @@
 				4EA8B2021E9A49A400626010 /* GameplayOverlay.storyboard in Resources */,
 				3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */,
 				3F0F81DB1E980F7300114CD0 /* CustomLevelSelector.storyboard in Resources */,
-				4EA8B2041E9A4D5D00626010 /* GameplayOverlayScene.sks in Resources */,
 				12A036831EA3AF81001BE61A /* PreloadedGames.json in Resources */,
 				3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */,
 				12A82FD11E727072008B721E /* art.scnassets in Resources */,
@@ -830,7 +823,6 @@
 				3FEC5FAF1E8D71270039902D /* LDOverlayDelegate.swift in Sources */,
 				3F0F81DD1E9813DC00114CD0 /* CustomLevelSelectorCard.swift in Sources */,
 				120208051E744A420066BD4C /* CoreDataManager.swift in Sources */,
-				4EA8B2001E9A484D00626010 /* SampleGameController.swift in Sources */,
 				3F0F81C11E9556F400114CD0 /* LevelSelectorItemButton.swift in Sources */,
 				3FD5D0251E8FA59F007573C4 /* UIImage+ResizeExtension.swift in Sources */,
 				4E9DB3741E8953E70023A2A8 /* LevelGrid.swift in Sources */,
