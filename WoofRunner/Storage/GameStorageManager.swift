@@ -123,6 +123,7 @@ public class GameStorageManager {
 
         storedGame.uuid = json.value(forKey: "uuid") as? String
         storedGame.ownerId = json.value(forKey: "ownerId") as? String
+        storedGame.name = json.value(forKey: "name") as? String
 
         guard let rows = json.value(forKey: "rows") as? Int,
             let columns = json.value(forKey: "columns") as? Int else {
@@ -134,16 +135,14 @@ public class GameStorageManager {
 
         let platforms: [StoredPlatform]
         if let JSONPlatforms = json.value(forKey: "platforms") {
-            platforms = mapJSONtoStoredPlatforms(
-                json: JSONPlatforms as! [NSDictionary])
+            platforms = mapJSONtoStoredPlatforms(json: JSONPlatforms as! [NSDictionary])
         } else {
             platforms = []
         }
 
         let obstacles: [StoredObstacle]
         if let JSONObstacles = json.value(forKey: "obstacles") {
-            obstacles = mapJSONtoStoredObstacles(
-                json: JSONObstacles as! [NSDictionary])
+            obstacles = mapJSONtoStoredObstacles(json: JSONObstacles as! [NSDictionary])
         } else {
             obstacles = []
         }
@@ -220,6 +219,7 @@ public class GameStorageManager {
         let formatter = OnlineStorageManager.getDateFormatter()
         let preview = PreviewGame(
             uuid: json.value(forKey: "uuid") as! String,
+            name: json.value(forKey: "name") as! String,
             ownerID: json.value(forKey: "ownerId") as! String,
             createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
             updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!

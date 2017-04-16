@@ -9,4 +9,5 @@
 public protocol DisplayedGame {
     var id: String { get }
     var owner: String { get }
+    var displayedName: String { get }
 }

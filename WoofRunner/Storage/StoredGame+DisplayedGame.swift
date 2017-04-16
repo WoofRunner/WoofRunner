@@ -8,6 +8,10 @@
 
 extension StoredGame: DisplayedGame {
 
+    public var displayedName: String {
+        return name ?? "Rolling Deep"
+    }
+
     public var id: String {
         return uuid!
     }
