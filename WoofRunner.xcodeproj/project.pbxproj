@@ -372,10 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				3FCC89B61E810D4B005A7C03 /* PaletteFunctionType.swift */,
-				3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */,
-				3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */,
-				3FA4B1781E89628D00D93703 /* BottomMenuButtonDelegate.swift */,
-				3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */,
+				3FC4B7411EA3C46C0002D000 /* Delegates */,
 				3FD5D0261E8FD328007573C4 /* LDOverlayButton.swift */,
 				3FF229E41E9CE9AB0040F0AF /* LDOverlaySceneConstants.swift */,
 				3FD5D0281E91026E007573C4 /* BottomMenuButtonType.swift */,
@@ -386,8 +383,6 @@
 				3F0F81DE1E98140D00114CD0 /* UILabel+ShadowExtension.swift */,
 				3F0F81E01E98151D00114CD0 /* LevelSelectorItemImageView+ShadowExtension.swift */,
 				3F0F81D41E97FA1300114CD0 /* StrokedLabel.swift */,
-				3FF229D81E9A8DE00040F0AF /* GameplayOverlayDelegate.swift */,
-				3FF229DC1E9A8F860040F0AF /* GameplayOverlayButtonDelegate.swift */,
 				3FF229DE1E9A98660040F0AF /* GameplayOverlayButtonType.swift */,
 				3FC4B73F1EA155E60002D000 /* GameplayOverlayConstants.swift */,
 			);
@@ -563,6 +558,19 @@
 				3F0F81E41E99639D00114CD0 /* MarketplaceLevelCard.swift */,
 			);
 			path = LevelSelector;
+			sourceTree = "<group>";
+		};
+		3FC4B7411EA3C46C0002D000 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3F7348B71E86D96000EB1264 /* PaletteButtonDelegate.swift */,
+				3F7348C71E86FADC00EB1264 /* OverlayButtonDelegate.swift */,
+				3FA4B1781E89628D00D93703 /* BottomMenuButtonDelegate.swift */,
+				3FEC5FAE1E8D71270039902D /* LDOverlayDelegate.swift */,
+				3FF229D81E9A8DE00040F0AF /* GameplayOverlayDelegate.swift */,
+				3FF229DC1E9A8F860040F0AF /* GameplayOverlayButtonDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		4EA8B1FA1E9A444E00626010 /* GameplayUI */ = {
