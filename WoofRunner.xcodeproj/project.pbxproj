@@ -26,7 +26,6 @@
 		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
 		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
 		12CCB69C1E9A17B300C4FD45 /* DownloadGameTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */; };
-		12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DA42091E86699200C23137 /* LMCardViewCell.swift */; };
 		12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */; };
 		12DC8DBA1E8928FB00B8A40C /* GameStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */; };
 		12EE38C01E78E99F00D81378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */; };
@@ -162,7 +161,6 @@
 		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
 		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
 		12CCB69B1E9A17B300C4FD45 /* DownloadGameTapGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadGameTapGesture.swift; sourceTree = "<group>"; };
-		12DA42091E86699200C23137 /* LMCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCardViewCell.swift; sourceTree = "<group>"; };
 		12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewModel.swift; sourceTree = "<group>"; };
 		12DC8DB91E8928FB00B8A40C /* GameStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStorageManager.swift; sourceTree = "<group>"; };
 		12EE38BF1E78E99F00D81378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -354,7 +352,6 @@
 				3F0F81C91E96C1B200114CD0 /* LevelDesigner */,
 				3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
-				12DA42091E86699200C23137 /* LMCardViewCell.swift */,
 				3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */,
 				12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */,
 			);
@@ -852,7 +849,6 @@
 				12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */,
 				3FA4B1751E895AC500D93703 /* LevelDesignerBottomMenu.swift in Sources */,
 				F300361F1E967C24004C1B4F /* TileManagerDelegate.swift in Sources */,
-				12DA420A1E86699200C23137 /* LMCardViewCell.swift in Sources */,
 				3FF229D51E9A4FAD0040F0AF /* LDOverlayMenuViewModel.swift in Sources */,
 				3FF229D91E9A8DE00040F0AF /* GameplayOverlayDelegate.swift in Sources */,
 				F33754E71E97812D00839AFD /* TileModel.swift in Sources */,

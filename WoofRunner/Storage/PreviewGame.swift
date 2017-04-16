@@ -40,4 +40,8 @@ extension PreviewGame: DisplayedGame {
         return name
     }
 
+    public var displayEditButton: Bool {
+        return true
+    }
+
 }

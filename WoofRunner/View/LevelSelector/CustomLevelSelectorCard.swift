@@ -25,7 +25,6 @@ class CustomLevelSelectorCard: LevelCardView {
 	
 	override internal func didLoad() {
 		super.didLoad()
-		initialiseEditButton()
 		initialiseDeleteButton()
 		initialiseUploadButton()
 		initialiseOverlayIcon()
@@ -34,6 +33,9 @@ class CustomLevelSelectorCard: LevelCardView {
 	override public func setupView(vm: LevelCardViewModel) {
 		super.setupView(vm: vm)
 		setupPlayIconOverlay(viewModel: vm)
+        if vm.displayEditButton {
+            initialiseEditButton()
+        }
 	}
 	
 	override internal func bindUUIDToButtons(_ uuid: String) {

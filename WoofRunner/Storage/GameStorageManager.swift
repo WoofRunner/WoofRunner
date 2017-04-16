@@ -67,15 +67,20 @@ public class GameStorageManager {
     /// - Parameters:
     ///     - uuid: UUID string of the game to download
     public func downloadGame(uuid: String) -> Future<StoredGame, OnlineStorageManagerError> {
-        let future = osm.load(uuid)
-            .map { json in
-                self.mapJSONtoStoredGame(json: json!)
+        return osm.load(uuid)
+            .map { json -> StoredGame in
+                let game = self.mapJSONtoStoredGame(json: json!)
+                game.isDownloaded = true
+
+                return game
             }
             .andThen { storedGame in
-                let _ = self.cdm.save(storedGame.value!)
-            }
+                guard let game = storedGame.value else {
+                    fatalError("Stored game is not loaded")
+                }
 
-        return future
+                let _ = self.cdm.save(game)
+        }
     }
 
     /// Loads a preview of all the games loaded on Firebase.

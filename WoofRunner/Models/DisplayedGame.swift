@@ -7,7 +7,10 @@
 //
 
 public protocol DisplayedGame {
+
     var displayedId: String { get }
     var displayedOwner: String { get }
     var displayedName: String { get }
+    var displayEditButton: Bool { get }
+
 }
