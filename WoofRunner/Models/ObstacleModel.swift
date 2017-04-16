@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ObstacleModel: TileModel {
+public class ObstacleModel: TileModel {
     
     let obstacleBehaviour: ObstacleBehaviour
     

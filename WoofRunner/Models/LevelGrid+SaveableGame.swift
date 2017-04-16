@@ -52,12 +52,8 @@ extension LevelGrid: SaveableGame {
     func load(from storedGame: StoredGame) {
         self.storedGame = storedGame
 
-        obstacleArray = storedGame.getObstacles().map { column in
-            return column.map { $0 as? ObstacleModel }
-        }
-        platformArray = storedGame.getPlatforms().map { column in
-            return column.map { $0 as? PlatformModel }
-        }
+        obstacleArray = storedGame.getObstacles()
+        platformArray = storedGame.getPlatforms()
 		
 		// Reinit Level
 		length = platformArray.count

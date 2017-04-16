@@ -10,8 +10,8 @@ extension StoredGame: LoadableGame {
 
     /// Returns the stored platforms as a 2D array.
     /// - Returns: 2D array of platform types
-    public func getPlatforms() -> [[TileModel?]] {
-        var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
+    public func getPlatforms() -> [[PlatformModel?]] {
+        var res = create2DPlatformsArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
         let storedPlatforms = self.platforms?.map { platform in
             guard let storedPlatform = platform as? StoredPlatform else {
                 fatalError("Unable to convert to StoredPlatform")
@@ -32,8 +32,8 @@ extension StoredGame: LoadableGame {
 
     /// Returns the stored obstacles of a game as a 2D array.
     /// - Returns: 2D array of obstacle types
-    public func getObstacles() -> [[TileModel?]] {
-        var res = create2DArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
+    public func getObstacles() -> [[ObstacleModel?]] {
+        var res = create2DObstaclesArray(rows: Int(rows), cols: Int(columns), initialValue: nil)
         let storedObstacles = self.obstacles?.map { $0 as! StoredObstacle } ?? [StoredObstacle]()
 
         for obstacle in storedObstacles {
@@ -46,20 +46,43 @@ extension StoredGame: LoadableGame {
         return res
     }
 
-    private func mapToObstacleModel(_ obstacle: StoredObstacle) -> TileModel? {
+    private func mapToObstacleModel(_ obstacle: StoredObstacle) -> ObstacleModel? {
         let tileId = Int(obstacle.type)
         let tiles = TileModelFactory.sharedInstance.tileModels
-        return tiles[tileId]
+        guard let obstacle = tiles[tileId] as? ObstacleModel else {
+            return nil
+        }
+
+        return obstacle
     }
 
-    private func mapToPlatformModel(_ platform: StoredPlatform) -> TileModel? {
+    private func mapToPlatformModel(_ platform: StoredPlatform) -> PlatformModel? {
         let tileId = Int(platform.type)
         let tiles = TileModelFactory.sharedInstance.tileModels
-        return tiles[tileId]
+        guard let platform = tiles[tileId] as? PlatformModel else {
+            return nil
+        }
+
+        return platform
     }
 
     private func create2DArray(rows: Int, cols: Int, initialValue: TileModel?) -> [[TileModel?]] {
         return [[TileModel?]](repeating: [TileModel?](repeating: initialValue, count: cols), count: rows)
+    }
+
+
+    private func create2DObstaclesArray(rows: Int,
+                                        cols: Int,
+                                        initialValue: ObstacleModel?) -> [[ObstacleModel?]] {
+        return [[ObstacleModel?]](
+            repeating: [ObstacleModel?](repeating: initialValue, count: cols), count: rows)
+    }
+
+    private func create2DPlatformsArray(rows: Int,
+                                        cols: Int,
+                                        initialValue: PlatformModel?) -> [[PlatformModel?]] {
+        return [[PlatformModel?]](
+            repeating: [PlatformModel?](repeating: initialValue, count: cols), count: rows)
     }
 
 }

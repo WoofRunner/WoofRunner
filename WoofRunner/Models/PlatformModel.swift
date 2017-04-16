@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlatformModel: TileModel {
+public class PlatformModel: TileModel {
     
     let platformBehaviour: PlatformBehaviour
     
