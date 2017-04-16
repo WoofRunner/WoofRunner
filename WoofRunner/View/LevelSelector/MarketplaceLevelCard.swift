@@ -17,19 +17,16 @@ class MarketplaceLevelCard: LevelCardView {
 	
 	// MARK: - Override Methods for Customisation
 	
-	override internal func didLoad() {
-		super.didLoad()
+	override internal func initialiseCustomChildViews() {
 		initialiseAuthorLabel()
 		initialiseDownloadButton()
 	}
 	
-	override internal func setupView(vm: LevelCardViewModel) {
-		super.setupView(vm: vm)
+	override internal func setupCustomChildViews(vm: LevelCardViewModel) {
 		setupAuthorLabel(viewModel: vm)
 	}
 	
-	override internal func bindUUIDToButtons(_ uuid: String) {
-		super.bindUUIDToButtons(uuid)
+	override internal func bindUUIDToCustomChildViews(_ uuid: String) {
 		downloadButton.bindUUID(uuid)
 	}
 	

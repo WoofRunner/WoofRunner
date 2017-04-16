@@ -22,8 +22,7 @@ class PreloadedLevelCard: LevelCardView {
 	/**
 	Override method to initialise more child views
 	*/
-	override internal func didLoad() {
-		super.didLoad()
+	override internal func initialiseCustomChildViews() {
 		initialisePlayIconOverlay()
 		initialisePlayButton()
 	}
@@ -31,16 +30,14 @@ class PreloadedLevelCard: LevelCardView {
 	/**
 	Override method to setup more child views using the view model
 	*/
-	override internal func setupView(vm: LevelCardViewModel) {
-		super.setupView(vm: vm)
+	override internal func setupCustomChildViews(vm: LevelCardViewModel) {
 		setupPlayIconOverlay(viewModel: vm)
 	}
 	
 	/**
-	Override method to bind more buttons to level uuid
+	Override method to bind more views to level uuid
 	*/
-	override internal func bindUUIDToButtons(_ uuid: String) {
-		super.bindUUIDToButtons(uuid)
+	override internal func bindUUIDToCustomChildViews(_ uuid: String) {
 		playButton.bindUUID(uuid)
 	}
 	
