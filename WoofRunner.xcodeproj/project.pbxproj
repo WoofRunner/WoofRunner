@@ -11,6 +11,7 @@
 		120208051E744A420066BD4C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120208041E744A420066BD4C /* CoreDataManager.swift */; };
 		120B70881E9B7C0000E55C2B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B70871E9B7C0000E55C2B /* AuthManager.swift */; };
 		121A44EB1E864AF900F3EAA8 /* LMHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */; };
+		124A63241EA374D6008BBCCB /* GoogleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A63231EA374D6008BBCCB /* GoogleProfile.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
 		12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */; };
@@ -144,6 +145,7 @@
 		120208041E744A420066BD4C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		120B70871E9B7C0000E55C2B /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		121A44EA1E864AF900F3EAA8 /* LMHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewController.swift; sourceTree = "<group>"; };
+		124A63231EA374D6008BBCCB /* GoogleProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleProfile.swift; sourceTree = "<group>"; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
 		12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				3FF229DE1E9A98660040F0AF /* GameplayOverlayButtonType.swift */,
 				3FF229E41E9CE9AB0040F0AF /* LDOverlaySceneConstants.swift */,
 				3FC4B73F1EA155E60002D000 /* GameplayOverlayConstants.swift */,
+				124A63231EA374D6008BBCCB /* GoogleProfile.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				3F7348C01E86F39A00EB1264 /* OverlayMenuSubsection.swift in Sources */,
 				3F0F81D91E980F0700114CD0 /* CustomLevelSelectorViewController.swift in Sources */,
 				3F2CFBAE1E8D84F300C01036 /* PreloadedLevelCard.swift in Sources */,
+				124A63241EA374D6008BBCCB /* GoogleProfile.swift in Sources */,
 				120B70881E9B7C0000E55C2B /* AuthManager.swift in Sources */,
 				12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */,
 				F33442CA1E815BFE001C1D8D /* Obstacle.swift in Sources */,

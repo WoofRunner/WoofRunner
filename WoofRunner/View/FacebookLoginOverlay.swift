@@ -67,18 +67,12 @@ public class FacebookLoginOverlay: UIView {
     private func setupButton() {
         let button = UIButton()
 		button.setImage(UIImage(named: "fb-login-btn"), for: .normal)
-		//button.setTitle(FacebookLoginOverlay.BUTTON_TEXT, for: .normal)
-        //button.backgroundColor = UIColor.blue
-        //button.alpha = 1.0
 
         self.button = button
         addSubview(button)
 
         // Set contraints
         button.snp.makeConstraints { make in
-            //make.height.equalTo(FacebookLoginOverlay.BUTTON_HEIGHT)
-            //make.width.equalTo(FacebookLoginOverlay.BUTTON_WIDTH)
-            //make.center.equalTo(self)
 			make.center.equalToSuperview()
         }
     }

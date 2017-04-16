@@ -8,6 +8,8 @@
 //
 
 import UIKit
+import Google
+import GoogleSignIn
 import Firebase
 import FacebookCore
 import FacebookLogin
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         initFirebase()
+        initGoogleLogin()
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
@@ -51,8 +54,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
     }
 
+    private func initGoogleLogin() {
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+
+        GIDSignIn.sharedInstance().delegate = self
+    }
+
     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        let facebookDidHandle = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(
+            url,
+            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplicationOpenURLOptionsKey.annotation]
+        )
+
+        return facebookDidHandle || googleDidHandle
+    }
+
+}
+
+extension AppDelegate: GIDSignInDelegate {
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            let userId = user.userID
+            let idToken = user.authentication.idToken
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+
+            let googleProfile = GoogleProfile(
+                userId: userId,
+                idToken: idToken,
+                fullName: fullName,
+                givenName: givenName,
+                familyName: familyName,
+                email: email
+            )
+
+            AuthManager.shared.setGoogleProfile(googleProfile)
+        } else {
+            print("\(error.localizedDescription)")
+        }
     }
 
 }

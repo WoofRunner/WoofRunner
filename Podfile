@@ -28,6 +28,7 @@ target 'WoofRunner' do
   pod 'SnapKit', '~> 3.2.0'
   pod 'BrightFutures'
   pod 'PopupDialog', '~> 0.5'
+  pod 'Google/SignIn'
   rx_swift
   facebook
   firebase

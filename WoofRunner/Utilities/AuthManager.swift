@@ -33,6 +33,9 @@ public class AuthManager {
         return FIRAuth.auth()?.currentUser?.uid
     }
 
+    /// Google profile object that gets set if user is logged in.
+    public var googleProfile: GoogleProfile?
+
     /// MARK: - Initialisers
 
     /// Private init method to make class singleton.
@@ -46,6 +49,14 @@ public class AuthManager {
     /// - Returns: Future that contains AccessToken if successful authentication, AuthManagerError
     ///     otherwise
     public func authWithFacebook(vc: UIViewController) -> Future<AccessToken, AuthManagerError> {
+        if let provider = UserDefaults.value(forKey: "login-provider") as? String {
+            guard provider == "facebook" else {
+                fatalError("User should not be shown Facebook login if they already authenticated with Facebook")
+            }
+        } else {
+            UserDefaults.setValue("facebook", forKey: "login-provider")
+        }
+
         let loginManager = LoginManager()
 
         return Future { complete in
@@ -112,6 +123,13 @@ public class AuthManager {
                 }
             }
         }
+    }
+
+    /// Sets the Google profile for current user.
+    /// - Parameters:
+    ///     - profile: GoogleProfile to set for current user
+    public func setGoogleProfile(_ profile: GoogleProfile) {
+        self.googleProfile = profile
     }
 
     /**
