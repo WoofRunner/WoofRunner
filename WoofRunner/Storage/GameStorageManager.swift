@@ -22,8 +22,8 @@ public class GameStorageManager {
 
     // MARK: - Private variables
 
-    private let osm = OnlineStorageManager.getInstance()
-    private let cdm = CoreDataManager.getInstance()
+    private let osm = OnlineStorageManager.shared
+    private let cdm = CoreDataManager.shared
 
     // MARK: - Private initializer
 
