@@ -103,16 +103,6 @@ public class GameStorageManager {
     /// - Returns: array of GamePreviews
     public func loadAllPreviews() -> Future<[PreviewGame], OnlineStorageManagerError> {
         return osm.loadAll()
-            .map { json in
-                let games: [NSDictionary]
-                if let values = json?.allValues {
-                    games = values as! [NSDictionary]
-                } else {
-                    games = []
-                }
-
-                return games.map { self.mapJSONtoPreviewGame(json: $0) }
-        }
     }
 
     // MARK: - Private methods
@@ -213,19 +203,6 @@ public class GameStorageManager {
         }
 
         return res
-    }
-
-    private func mapJSONtoPreviewGame(json: NSDictionary) -> PreviewGame {
-        let formatter = OnlineStorageManager.getDateFormatter()
-        let preview = PreviewGame(
-            uuid: json.value(forKey: "uuid") as! String,
-            name: json.value(forKey: "name") as! String,
-            ownerID: json.value(forKey: "ownerId") as! String,
-            createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
-            updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!
-        )
-
-        return preview
     }
 
 }

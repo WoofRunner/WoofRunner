@@ -45,7 +45,6 @@ public class LevelCardViewModel {
 		// If there's no ownerId tied to the game, level is created locally
 		if let id = game.ownerId {
 			self.author = id
-            setAuthorName(ownerId: id)
 		}
 
 	}
@@ -56,10 +55,8 @@ public class LevelCardViewModel {
         self.levelName = game.displayedName
         self.levelImageUrl = "level-preview-image" // Stubbed
         self.author = game.displayedOwner
-        setAuthorName(ownerId: game.displayedOwner)
     }
-	
-	
+
 	struct StubLevelCardConstants {
 		// Level Title
 		static let levelTitleColor = UIColor(red: 0.96, green: 0.87, blue: 0.72, alpha: 1.0)
@@ -77,37 +74,4 @@ public class LevelCardViewModel {
 		
 	}
 
-    private func setAuthorName(ownerId: String) {
-        var req = FBProfileRequest()
-        req.setProfileId(id: ownerId)
-        req.start { (_, result: GraphRequestResult<FBProfileRequest>) in
-            switch result {
-            case .success(let response):
-                guard let name = response.dictionaryValue?["name"] as? String else {
-                    fatalError("Name not found")
-                }
-
-                self.author = name
-            case .failed(let error):
-                print("\(error)")
-            }
-        }
-    }
-
-    private struct FBProfileRequest: GraphRequestProtocol {
-        typealias Response = GraphResponse
-
-        public var graphPath = "/me"
-        public var parameters: [String : Any]? = ["fields": "id, name"]
-        public var accessToken = AccessToken.current
-        public var httpMethod: GraphRequestHTTPMethod = .GET
-        public var apiVersion: GraphAPIVersion = 2.7
-
-        public mutating func setProfileId(id: String) {
-            self.graphPath = "/\(id)"
-        }
-
-    }
-	
-	
 }
