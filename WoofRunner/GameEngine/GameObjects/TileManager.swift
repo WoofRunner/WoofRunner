@@ -31,7 +31,7 @@ class TileManager: GameObject {
     private let PLATFORM_Z_OFFSET: Float = 3.5
     
     private var poolManager: PoolManager?
-    private var NUM_ROWS_TO_POOL = 80
+    private var NUM_ROWS_TO_POOL = 20
     
     private var isDebug: Bool = true
     
@@ -75,7 +75,7 @@ class TileManager: GameObject {
             print(WARNING_INVALID_DATA)
             return nil
         }
-        initPooling()
+        //initPooling()
     }
 
     public func restartLevel() {
