@@ -12,11 +12,11 @@ extension StoredGame: DisplayedGame {
         return name ?? "Rolling Deep"
     }
 
-    public var id: String {
+    public var displayedId: String {
         return uuid!
     }
 
-    public var owner: String {
+    public var displayedOwner: String {
         return ownerId ?? ""
     }
 

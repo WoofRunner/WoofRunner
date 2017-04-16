@@ -44,19 +44,19 @@ public class LevelCardViewModel {
 		
 		// If there's no ownerId tied to the game, level is created locally
 		if let id = game.ownerId {
-			self.author = game.owner
+			self.author = id
             setAuthorName(ownerId: id)
 		}
 
 	}
 
     init(game: DisplayedGame) {
-        self.levelUUID = game.id
+        self.levelUUID = game.displayedId
         // TODO: Add name in DisplayedGame
         self.levelName = game.displayedName
         self.levelImageUrl = "level-preview-image" // Stubbed
-        self.author = game.owner
-        setAuthorName(ownerId: game.owner)
+        self.author = game.displayedOwner
+        setAuthorName(ownerId: game.displayedOwner)
     }
 	
 	

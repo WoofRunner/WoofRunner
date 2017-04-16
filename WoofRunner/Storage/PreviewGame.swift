@@ -23,11 +23,11 @@ public struct PreviewGame {
 
 extension PreviewGame: DisplayedGame {
 
-    public var owner: String {
+    public var displayedOwner: String {
         return ownerID
     }
 
-    public var id: String {
+    public var displayedId: String {
         return uuid
     }
 
