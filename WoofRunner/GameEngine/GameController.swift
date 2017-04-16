@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import SpriteKit
 
-class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, GameplayOverlayDelegate {
+class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate {
     
     private var overlaySpriteScene: GameplayOverlayScene?
     private var gameUUID: String?
@@ -21,7 +21,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     private var bgm: AVAudioPlayerManager?
     
-    let bgmFadeOutDuration: Float = 0.3
+    private let bgmFadeOutDuration: Float = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
             return
         }
         
-        // TODO: Swap self.view with sceneView
         World.setUpWorld(sceneView)
         
         // Setup Gameplay Overlay UI
@@ -69,7 +68,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
         
         if let tileManager = TileManager(obstacleModels: game.getObstacles(), platformModels: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
-            tileManager.delegate = self
             self.tileManager = tileManager
         }
         
@@ -99,10 +97,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     func getCompletedPercentage() -> Float {
         return tileManager?.percentageCompleted ?? 0.0
-    }
-    
-    func onCompletionUpdated(_ percentageCompleted: Float) {
-        //overlaySpriteScene?.updateScore(percentageCompleted * Float(100))
     }
     
     private func createPlayer() {

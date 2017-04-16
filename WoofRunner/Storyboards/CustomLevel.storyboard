@@ -70,9 +70,10 @@
                             <constraint firstItem="J7c-Mr-EEi" firstAttribute="leading" secondItem="uC6-5Q-gXm" secondAttribute="leadingMargin" id="77S-rh-ySB"/>
                             <constraint firstItem="c3z-sg-860" firstAttribute="centerY" secondItem="uC6-5Q-gXm" secondAttribute="centerY" id="cVJ-xz-eAH"/>
                             <constraint firstItem="c3z-sg-860" firstAttribute="centerX" secondItem="uC6-5Q-gXm" secondAttribute="centerX" id="u4r-Ui-VSw"/>
-                            <constraint firstItem="J7c-Mr-EEi" firstAttribute="top" secondItem="8sc-jE-S8M" secondAttribute="bottom" id="ycA-Zb-3gG"/>
+                            <constraint firstItem="J7c-Mr-EEi" firstAttribute="top" secondItem="8sc-jE-S8M" secondAttribute="bottom" constant="20" id="ycA-Zb-3gG"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="createBtn" destination="2v2-CI-sDh" id="Tvp-WD-xeH"/>
                         <outlet property="levelsBtn" destination="d50-mf-2rd" id="dam-ur-H2q"/>
