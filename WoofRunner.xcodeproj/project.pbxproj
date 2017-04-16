@@ -14,6 +14,7 @@
 		124A63241EA374D6008BBCCB /* GoogleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A63231EA374D6008BBCCB /* GoogleProfile.swift */; };
 		127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */; };
 		1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127898891E8A496000E937E0 /* LoadableGame.swift */; };
+		12A036811EA3A784001BE61A /* PreloadedGames.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A036801EA3A784001BE61A /* PreloadedGames.json */; };
 		12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */; };
 		12A82FCF1E727072008B721E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A82FCE1E727072008B721E /* AppDelegate.swift */; };
 		12A82FD11E727072008B721E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A82FD01E727072008B721E /* art.scnassets */; };
@@ -148,6 +149,7 @@
 		124A63231EA374D6008BBCCB /* GoogleProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleProfile.swift; sourceTree = "<group>"; };
 		127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+LoadableGame.swift"; sourceTree = "<group>"; };
 		127898891E8A496000E937E0 /* LoadableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableGame.swift; sourceTree = "<group>"; };
+		12A036801EA3A784001BE61A /* PreloadedGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PreloadedGames.json; sourceTree = "<group>"; };
 		12A0514D1E91641800724147 /* WoofRunner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WoofRunner.xcdatamodel; sourceTree = "<group>"; };
 		12A82FCB1E727072008B721E /* WoofRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoofRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A82FCE1E727072008B721E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		120208031E7449FB0066BD4C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				12A0367F1EA3A75E001BE61A /* PreloadedGames */,
 				12A856601E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift */,
 				127898871E8A494D00E937E0 /* StoredGame+LoadableGame.swift */,
 				12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */,
@@ -423,6 +426,14 @@
 				4EA8B2011E9A49A400626010 /* GameplayOverlay.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		12A0367F1EA3A75E001BE61A /* PreloadedGames */ = {
+			isa = PBXGroup;
+			children = (
+				12A036801EA3A784001BE61A /* PreloadedGames.json */,
+			);
+			path = PreloadedGames;
 			sourceTree = "<group>";
 		};
 		12A82FC21E727071008B721E = {
@@ -718,6 +729,7 @@
 				3FAE2D361E72818900D65B84 /* LevelSelector.storyboard in Resources */,
 				3F0F81DB1E980F7300114CD0 /* CustomLevelSelector.storyboard in Resources */,
 				4EA8B2041E9A4D5D00626010 /* GameplayOverlayScene.sks in Resources */,
+				12A036811EA3A784001BE61A /* PreloadedGames.json in Resources */,
 				3FAE2D3C1E72838200D65B84 /* LevelMarketplace.storyboard in Resources */,
 				12A82FD11E727072008B721E /* art.scnassets in Resources */,
 				12A82FD81E727072008B721E /* Assets.xcassets in Resources */,

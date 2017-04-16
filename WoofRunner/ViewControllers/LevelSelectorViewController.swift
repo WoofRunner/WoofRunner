@@ -47,15 +47,26 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
 	// MARK: - Data retrieval
 	
 	private func populateLevelData() {
-        gsm.getAllGames()
-            .onSuccess { games in
-                self.levels = games
-                self.carousel.reloadData()
-                print("\(self.levels.count) games loaded.")
+        if UserDefaults.standard.value(forKey: "preloaded") == nil {
+            gsm.injectPreloadedGames()
+                .onSuccess { games in
+                    self.levels = games
+                    self.carousel.reloadData()
+                }
+                .onFailure { error in
+                    print("\(error.localizedDescription)")
             }
-            .onFailure { error in
-                print("\(error.localizedDescription)")
-                // TODO: Handle error
+        } else {
+            gsm.getAllPreloadedGames()
+                .onSuccess { games in
+                    self.levels = games
+                    self.carousel.reloadData()
+                    print("\(self.levels.count) games loaded.")
+                }
+                .onFailure { error in
+                    print("\(error.localizedDescription)")
+                    // TODO: Handle error
+            }
         }
 	}
 

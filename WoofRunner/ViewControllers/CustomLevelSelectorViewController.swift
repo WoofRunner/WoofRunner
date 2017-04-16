@@ -51,7 +51,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 	// MARK: - Data retrieval
 	
 	private func populateLevelData() {
-		gsm.getAllGames()
+		gsm.getAllCustomGames()
 			.onSuccess { games in
                 print("\(games.count) games loaded.")
 				self.levels = games

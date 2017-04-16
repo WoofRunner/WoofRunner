@@ -30,10 +30,60 @@ public class GameStorageManager {
 
     // MARK: - Public methods
 
-    /// Returns an array of all the games stored in memory.
-    /// - Returns: array of UploadableGame from memory
-    public func getAllGames() -> Future<[StoredGame], CoreDataManagerError> {
+    /// Injects the preloaded JSON games into CoreData.
+    /// - Returns: A future containing all the StoredGame saved.
+    public func injectPreloadedGames() -> Future<[StoredGame], CoreDataManagerError> {
+        guard let path = Bundle.main.url(
+            forResource: "PreloadedGames", withExtension: "json") else {
+                fatalError("Preloaded games not found")
+        }
+
+        guard let data = try? Data(contentsOf: path, options: .mappedIfSafe) else {
+            fatalError("Preloaded JSON cannot be mapped")
+        }
+
+        guard let preloadedJSON = try? JSONSerialization.jsonObject(
+            with: data, options: .init(rawValue: 0)) else {
+                fatalError("JSON cannot be read.")
+        }
+
+        guard let json = preloadedJSON as? NSDictionary else {
+            fatalError("JSON cannot be mapped to NSDictionary")
+        }
+
+        var futures = [Future<StoredGame, CoreDataManagerError>]()
+        for game in json.allValues {
+            guard let gameDict = game as? NSDictionary else {
+                fatalError("Preloaded game cannot be decoded to NSDictionary")
+            }
+
+            let storedGame = mapJSONtoStoredGame(json: gameDict)
+            storedGame.isPreloaded = true
+            futures.append(cdm.save(storedGame))
+        }
+
+        return futures.sequence().andThen { _ in
+            // Mark the user's games as preloaded
+            UserDefaults.standard.set(true, forKey: "preloaded")
+        }
+    }
+
+    /// Returns an array of all custom games stored in memory.
+    /// - Returns: array of StoredGame in storage
+    public func getAllCustomGames() -> Future<[StoredGame], CoreDataManagerError> {
         return cdm.loadAll()
+            .map { games in
+                return games.filter { !$0.isPreloaded }
+        }
+    }
+
+    /// Returns an array of all preloaded games in memory.
+    /// - Returns: array of StoredGame in storage
+    public func getAllPreloadedGames() -> Future<[StoredGame], CoreDataManagerError> {
+        return cdm.loadAll()
+            .map { games in
+                return games.filter { $0.isPreloaded }
+        }
     }
 
     public func getGame(uuid: String) -> Future<StoredGame, CoreDataManagerError> {
