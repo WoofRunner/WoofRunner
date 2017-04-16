@@ -13,7 +13,7 @@ import iCarousel
 
 class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 	
-	private var gsm = GameStorageManager.getInstance()
+	private var gsm = GameStorageManager.shared
 	var levels = [StoredGame]()
     var fbOverlay: FacebookLoginOverlay?
 	fileprivate var loadingOverlay = UIImageView(image: UIImage(named: "loading-bg"))

@@ -11,7 +11,7 @@ import iCarousel
 
 class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 	
-	var gsm = GameStorageManager.getInstance()
+	var gsm = GameStorageManager.shared
 	var levels = [StoredGame]()
 	
 	@IBOutlet var carousel: iCarousel!

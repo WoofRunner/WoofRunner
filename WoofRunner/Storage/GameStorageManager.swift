@@ -16,9 +16,8 @@ import BrightFutures
  */
 public class GameStorageManager {
 
-    // MARK: - Private class variables
-
-    private static var instance: GameStorageManager?
+    // MARK: - Shared singleton instance
+    public static var shared = GameStorageManager()
 
     // MARK: - Private variables
 
@@ -28,19 +27,6 @@ public class GameStorageManager {
     // MARK: - Private initializer
 
     private init() {}
-
-    // MARK: - Public static methods
-
-    /// Returns an instance of GameStorageManager.
-    /// - Returns: the single GameStorageManager that exists
-    public static func getInstance() -> GameStorageManager {
-        if let existingInstance = instance {
-            return existingInstance
-        } else {
-            instance = GameStorageManager()
-            return instance!
-        }
-    }
 
     // MARK: - Public methods
 
