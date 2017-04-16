@@ -23,10 +23,14 @@ class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate 
     
     private let bgmFadeOutDuration: Float = 0.3
     
+    private let FATAL_ERROR = "Game UUID not defined"
+    private let SCNSCENE_ERROR = "Error: Unable to setup game world as SCNView cannt be found!"
+    private let AUDIO_PATH = "art.scnassets/TheFatRat.mp3"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let uuid = gameUUID else {
-            fatalError("Game UUID not defined")
+            fatalError(FATAL_ERROR)
         }
         
         GameStorageManager.getInstance().getGame(uuid: uuid)
@@ -53,7 +57,7 @@ class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate 
     
     private func setup(game: StoredGame) {
         guard let sceneView = self.view as? SCNView else {
-            print("Error: Unable to setup game world as SCNView cannt be found!")
+            print(SCNSCENE_ERROR)
             return
         }
         
@@ -109,7 +113,7 @@ class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate 
     
     // MARK: Audio Functions
     private func setupBGM() {
-        let audioManager = AVAudioPlayerManager(path: "art.scnassets/TheFatRat.mp3")
+        let audioManager = AVAudioPlayerManager(path: AUDIO_PATH)
         audioManager.setLoop(-1)
         bgm = audioManager
     }
