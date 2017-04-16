@@ -20,14 +20,12 @@ class ReactiveGrid {
     
     var gridSize: Float = GameSettings.TILE_WIDTH
     var gridNodes: [ReactiveGridNode]
-    var gridVMArray: [[GridViewModel]]
     var grid: SCNNode
     
     /// Creates an empty Reactive Grid that holds a parent grid node
     init() {
         self.grid = SCNNode()
         self.gridNodes = [ReactiveGridNode]()
-        self.gridVMArray = [[GridViewModel]]()
     }
     
     /// Creates a Reactive Grid that observes the specified LevelGrid object.
@@ -36,7 +34,7 @@ class ReactiveGrid {
     init(levelGrid: LevelGrid) {
         self.grid = SCNNode()
         self.gridNodes = [ReactiveGridNode]()
-        self.gridVMArray = levelGrid.gridViewModelArray.value
+        let gridVMArray = levelGrid.gridViewModelArray.value
         updateGridNodes(gridVMArray)
         
         // Subscribe to gridViewModelArray
@@ -62,7 +60,7 @@ class ReactiveGrid {
         // Refresh all references
         self.grid = SCNNode()
         self.gridNodes = [ReactiveGridNode]()
-        self.gridVMArray = [[GridViewModel]]()
+        
         // Unload self
         removeGrid()
     }

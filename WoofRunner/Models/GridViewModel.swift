@@ -20,7 +20,7 @@ class GridViewModel {
     
     // Observables
     var gridPos: Variable<Position>
-    var size = Variable<Float>(1.0)
+    var size = Variable<Float>(GameSettings.TILE_WIDTH)
 	var platformType = Variable<PlatformModel?>(nil)
 	var obstacleType = Variable<ObstacleModel?>(nil)
     var shouldRender = Variable<Bool>(false)

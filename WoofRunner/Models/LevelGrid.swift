@@ -25,17 +25,18 @@ class LevelGrid {
     var length: Int
     var platformArray: [[PlatformModel?]]
     var obstacleArray: [[ObstacleModel?]]
+    
     // GridViewModelArray observed by ReactiveGrid
     var gridViewModelArray: Variable<[[GridViewModel]]>
     
     // Selection extension variables
-    var selectionCache = [String: [TileModel?]]()
-    var selectionStartPos: Position?
-    var selectionEndPos: Position?
-    var selectionTemplate: [TileModel?] = [nil, nil]
+    internal var selectionCache = [String: [TileModel?]]()
+    internal var selectionStartPos: Position?
+    internal var selectionEndPos: Position?
+    internal var selectionTemplate: [TileModel?] = [nil, nil]
     
     // Caching
-    var movingRows: Dictionary<Int, Bool>
+    private var movingRows: Dictionary<Int, Bool>
     
     // MARK: - SaveableGame
     var storedGame: StoredGame?
@@ -180,6 +181,7 @@ class LevelGrid {
         
         // Update level length
         self.length += extend
+        print(self.length)
     }
     
     /// Unloads the level by de-referencing

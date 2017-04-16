@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import SpriteKit
 
-class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate {
+class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate,TileManagerDelegate {
     
     private var overlaySpriteScene: GameplayOverlayScene?
     private var gameUUID: String?
@@ -68,6 +68,7 @@ class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate 
         
         if let tileManager = TileManager(obstacleModels: game.getObstacles(), platformModels: game.getPlatforms()) {
             World.spawnGameObject(tileManager)
+            tileManager.delegate = self
             self.tileManager = tileManager
         }
         
