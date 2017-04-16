@@ -18,15 +18,13 @@ class CustomLevelSelectorCard: LevelCardView {
 	var editButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	var deleteButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 	var uploadButton = LevelSelectorItemButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-	
-	private var authorLabel = UILabel()
+
 	private var playIconOverlay = UIImageView()
 	
 	// MARK: - Override methods to customise LevelCardView
 	
 	override internal func didLoad() {
 		super.didLoad()
-		initialiseAuthorLabel()
 		initialiseEditButton()
 		initialiseDeleteButton()
 		initialiseUploadButton()
@@ -35,7 +33,6 @@ class CustomLevelSelectorCard: LevelCardView {
 	
 	override public func setupView(vm: LevelCardViewModel) {
 		super.setupView(vm: vm)
-		setupAuthorLabel(viewModel: vm)
 		setupPlayIconOverlay(viewModel: vm)
 	}
 	
@@ -47,17 +44,6 @@ class CustomLevelSelectorCard: LevelCardView {
 	}
 	
 	// MARK: - Private helper Methods
-	
-	private func initialiseAuthorLabel() {
-		addSubview(authorLabel)
-		authorLabel.sizeToFit()
-		
-		// Set Constraints for author label
-		authorLabel.snp.makeConstraints { (make) -> Void in
-			make.centerX.equalTo(self)
-			make.bottom.equalTo(self).offset(-15)
-		}
-	}
 	
 	private func initialiseEditButton() {
 		addSubview(editButton)
@@ -92,12 +78,6 @@ class CustomLevelSelectorCard: LevelCardView {
 			make.centerX.equalToSuperview()
 			make.centerY.equalToSuperview()
 		}
-	}
-	
-	private func setupAuthorLabel(viewModel: LevelCardViewModel) {
-		authorLabel.text = "Level Created By \(viewModel.author)"
-		authorLabel.font = viewModel.authorLabelFont
-		authorLabel.textColor = viewModel.authorLabelColor
 	}
 	
 	private func setupPlayIconOverlay(viewModel: LevelCardViewModel) {
