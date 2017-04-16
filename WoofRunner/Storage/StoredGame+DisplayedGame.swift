@@ -20,8 +20,12 @@ extension StoredGame: DisplayedGame {
         return ownerId ?? ""
     }
 
-    public var displayEditButton: Bool {
+    public var editable: Bool {
         return !isDownloaded
+    }
+
+    public var uploadable: Bool {
+        return false
     }
 
 }

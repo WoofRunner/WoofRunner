@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Immuatable preview game.
+ Immuatable struct for games downloaded from the online marketplace.
  */
 public struct PreviewGame {
 
@@ -36,7 +36,11 @@ extension PreviewGame: DisplayedGame {
         return name
     }
 
-    public var displayEditButton: Bool {
+    public var editable: Bool {
+        return true
+    }
+
+    public var uploadable: Bool {
         return true
     }
 

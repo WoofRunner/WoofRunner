@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: May Be Unused!
-
 extension UIButton {
 	public func setShadow() {
 		self.layer.shadowColor = UIColor.black.cgColor

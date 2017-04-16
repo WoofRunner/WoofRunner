@@ -108,8 +108,8 @@ public class GameStorageManager {
             .onSuccess { game in
                 self.osm.save(game)
             }
-            .onFailure { _ in
-                // TODO: Handle error
+            .onFailure { error in
+                print("\(error.localizedDescription)")
             }
     }
 
@@ -159,7 +159,6 @@ public class GameStorageManager {
     // MARK: - Private methods
 
     private func mapJSONtoStoredGame(json: NSDictionary) -> StoredGame {
-        // TODO: Check for existing game under the same UUID
         let storedGame = StoredGame(context: cdm.context)
 
         storedGame.uuid = json.value(forKey: "uuid") as? String

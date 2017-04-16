@@ -65,7 +65,6 @@ class LevelSelectorViewController: UIViewController, iCarouselDataSource, iCarou
                 }
                 .onFailure { error in
                     print("\(error.localizedDescription)")
-                    // TODO: Handle error
             }
         }
 	}

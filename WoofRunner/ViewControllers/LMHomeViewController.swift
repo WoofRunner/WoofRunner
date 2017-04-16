@@ -245,8 +245,6 @@ extension LMHomeViewController: iCarouselDataSource {
 extension LMHomeViewController: iCarouselDelegate {
 
     public func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
-        // TODO: Do something when a carousel is tapped at other places except the download button.
-        // Can show game details, difficulty etc.
         print("Carousel item \(index) selected")
     }
 

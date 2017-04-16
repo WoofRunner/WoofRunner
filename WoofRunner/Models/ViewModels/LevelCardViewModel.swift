@@ -54,12 +54,11 @@ public class LevelCardViewModel {
 
     init(game: DisplayedGame) {
         self.levelUUID = game.displayedId
-        // TODO: Add name in DisplayedGame
         self.levelName = game.displayedName
         self.levelImageUrl = "level-preview-image" // Stubbed
         self.author = game.displayedOwner
-        self.enableEditButton = game.displayEditButton // TODO: Change to "enable"
-		self.enableUploadButton = game.displayEditButton // TODO: Change to enableUploadButton
+        self.enableEditButton = game.editable
+		self.enableUploadButton = game.uploadable
     }
 
 	struct StubLevelCardConstants {

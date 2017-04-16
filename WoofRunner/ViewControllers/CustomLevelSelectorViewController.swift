@@ -59,7 +59,6 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 			}
 			.onFailure { error in
 				print("\(error.localizedDescription)")
-				// TODO: Handle error
 		}
 	}
 	
