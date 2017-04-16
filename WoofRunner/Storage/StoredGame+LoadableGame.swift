@@ -48,16 +48,12 @@ extension StoredGame: LoadableGame {
 
     private func mapToObstacleModel(_ obstacle: StoredObstacle) -> ObstacleModel? {
         let tileId = Int(obstacle.type)
-        // TODO: Fix this sharedInstance bug
-        let factory = TileModelFactory.sharedInstance
         let tiles = TileModelFactory.sharedInstance.tileModels
         return tiles[tileId] as? ObstacleModel
     }
 
     private func mapToPlatformModel(_ platform: StoredPlatform) -> PlatformModel? {
         let tileId = Int(platform.type)
-        // TODO: Fix this sharedInstance bug
-        let factory = TileModelFactory.sharedInstance
         let tiles = TileModelFactory.sharedInstance.tileModels
         return tiles[tileId] as? PlatformModel
     }
