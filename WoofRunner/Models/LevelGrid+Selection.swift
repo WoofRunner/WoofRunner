@@ -10,7 +10,7 @@ import Foundation
 
 /// Extension: Selection functionality for designing level grid.
 /// Allows the user to long tap and box an area to bulk edit.
-extension LevelGrid {
+extension LevelGrid: Selection {
     
     /**
      Called on .began of gesture to start selection.
@@ -183,4 +183,14 @@ extension LevelGrid {
     private func getPosString(_ gridPos: Position) -> String {
         return String(gridPos.getRow()) + "," + String(gridPos.getCol())
     }
+}
+
+/// Selection protocol; Must be able to process all 3 states of selection, begin, update and end.
+protocol Selection {
+    
+    func beginSelection(_ pos: (x: Float, z: Float))
+    
+    func updateSelection(_ pos: (x: Float, z: Float))
+    
+    func endSelection()
 }

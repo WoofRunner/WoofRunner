@@ -31,8 +31,8 @@ class ReactiveGridNode {
     var platformModelNode: SCNNode
     var obstacleModelNode: SCNNode
     
-    var cachedPlatform: String?
-    var cachedObstacle: String?
+    private var cachedPlatform: String?
+    private var cachedObstacle: String?
     
     /// Creates a Reactive Grid object that observes the specified Grid View Model
     /// - Parameters: 
