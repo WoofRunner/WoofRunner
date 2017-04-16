@@ -27,8 +27,8 @@ struct GameplayOverlayConstants {
 	// Menu Button
 	static let menuButtonSprite = SKTexture(imageNamed: "pause-button")
 	static let menuButtonSize = CGSize(width: 60.0, height: 60.0)
-	static let menuButtonXPosScale = CGFloat(0.1)
-	static let menuButtonYPosScale = CGFloat(0.9)
+	static let menuButtonXPosScale = CGFloat(0.08)
+	static let menuButtonYPosScale = CGFloat(0.93)
  
 	// Menu Overlay
 	static let overlayXPosScale = CGFloat(0.5)

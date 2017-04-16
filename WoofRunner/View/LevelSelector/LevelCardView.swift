@@ -36,13 +36,13 @@ class LevelCardView: UIView {
 	
 	/**
 	Initialises the child views that are to be displayed upon loading.
-	
-	- important:
-	Override this method to initialise more customised child views
 	*/
 	internal func didLoad() {
 		initialiseLevelImageView()
 		initialiseLevelNameLabel()
+		
+		// Initialise Extra Child Views
+		initialiseCustomChildViews()
 	}
 	
 	
@@ -52,10 +52,7 @@ class LevelCardView: UIView {
 	Setup the view using the input view model object
 	
 	- parameters:
-		- vm: the LevelCardViewModel object to be used to set up the view
-	
-	- important;
-	Override this method if you have more child views to be set up
+	- vm: the LevelCardViewModel object to be used to set up the view
 	
 	*/
 	public func setupView(vm: LevelCardViewModel) {
@@ -65,9 +62,41 @@ class LevelCardView: UIView {
 		setupLevelNameLabel(viewModel: vm)
 		setupImageView(viewModel: vm)
 		
+		// Setup Extra Child Views
+		setupCustomChildViews(vm: vm)
+		
 		// Bind current item's UUID to the buttons for callbacks later
-		bindUUIDToButtons(vm.levelUUID)
+		bindUUIDToViews(vm.levelUUID)
 
+	}
+	
+	// MARK: - Methods to be overriden
+	
+	/**
+	Initialise any additional custom child views
+	
+	- important:
+	Override this method to initialise additional child views
+	*/
+	internal func initialiseCustomChildViews() {
+	}
+	
+	/**
+	Setup any additional custom child views
+	
+	- important:
+	Override this method to setup additional child views
+	*/
+	internal func setupCustomChildViews(vm: LevelCardViewModel) {
+	}
+	
+	/**
+	Binds input UUID to the custom child views as required for their callbacks.
+	
+	- important:
+	Override this method to bind more views to UUID
+	*/
+	internal func bindUUIDToCustomChildViews(_ uuid: String) {
 	}
 	
 	// MARK: - Private Helper Methods
@@ -110,14 +139,9 @@ class LevelCardView: UIView {
 		levelImageView.isUserInteractionEnabled = true
 	}
 	
-	/**
-	Binds input UUID to the buttons in the view as required for their callbacks.
-	
-	- important:
-	Override this method to bind more buttons
-	*/
-	internal func bindUUIDToButtons(_ uuid: String) {
+	private func bindUUIDToViews(_ uuid: String) {
 		levelImageView.bindUUID(uuid)
+		bindUUIDToCustomChildViews(uuid)
 	}
 	
 	
