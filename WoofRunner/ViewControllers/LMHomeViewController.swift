@@ -198,7 +198,7 @@ public class LMHomeViewController: UIViewController {
     }
 
     /// Download button tap gesture recognizer
-    public func downloadButtonTap(_ sender: DownloadGameTapGesture) {
+    @objc fileprivate func downloadButtonTap(_ sender: DownloadGameTapGesture) {
         guard let uuid = sender.uuid else {
             fatalError("Game does not have UUID attached")
         }
