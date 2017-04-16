@@ -24,8 +24,6 @@
 		12A856631E910CD100B5EB4E /* DisplayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856621E910CD100B5EB4E /* DisplayedGame.swift */; };
 		12A856651E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */; };
 		12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18211E8969F700EF5C46 /* SaveableGame.swift */; };
-		12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */; };
-		12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */; };
 		12BC67EB1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */; };
 		12C457891E8D60C200CFD541 /* PreviewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C457881E8D60C200CFD541 /* PreviewGame.swift */; };
 		12DC8DB81E89254900B8A40C /* LMHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */; };
@@ -160,8 +158,6 @@
 		12A856621E910CD100B5EB4E /* DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayedGame.swift; sourceTree = "<group>"; };
 		12A856641E910D0B00B5EB4E /* StoredGame+DisplayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoredGame+DisplayedGame.swift"; sourceTree = "<group>"; };
 		12AD18211E8969F700EF5C46 /* SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableGame.swift; sourceTree = "<group>"; };
-		12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveableObstacle.swift; sourceTree = "<group>"; };
-		12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveablePlatform.swift; sourceTree = "<group>"; };
 		12BC67EA1E89877500CD6EC7 /* LevelGrid+SaveableGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LevelGrid+SaveableGame.swift"; sourceTree = "<group>"; };
 		12C457881E8D60C200CFD541 /* PreviewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGame.swift; sourceTree = "<group>"; };
 		12DC8DB71E89254900B8A40C /* LMHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMHomeViewModel.swift; sourceTree = "<group>"; };
@@ -308,8 +304,6 @@
 				12A856621E910CD100B5EB4E /* DisplayedGame.swift */,
 				127898891E8A496000E937E0 /* LoadableGame.swift */,
 				12AD18211E8969F700EF5C46 /* SaveableGame.swift */,
-				12AD18221E8969F700EF5C46 /* SaveableObstacle.swift */,
-				12AD18231E8969F700EF5C46 /* SaveablePlatform.swift */,
 				12A0514C1E91641800724147 /* WoofRunner.xcdatamodeld */,
 			);
 			path = Storage;
@@ -878,7 +872,6 @@
 				127898881E8A494D00E937E0 /* StoredGame+LoadableGame.swift in Sources */,
 				3FCC899D1E7AD72B005A7C03 /* LevelDesignerOverlayScene.swift in Sources */,
 				F3A73C6C1E95493F00B65435 /* CGFloat.swift in Sources */,
-				12AD18261E8969F700EF5C46 /* SaveablePlatform.swift in Sources */,
 				4E1E11231E82F7E600AAC356 /* ReactiveGridNode.swift in Sources */,
 				12A856611E90FE1D00B5EB4E /* StoredGame+SaveableGame.swift in Sources */,
 				4E1E111F1E7AF35400AAC356 /* LevelDesignerScene.swift in Sources */,
@@ -898,7 +891,6 @@
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,
 				12F9B60D1E9A740C00B2E4E6 /* LoginOverlay.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
-				12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */,
 				F34DEDC71E8D754D00BB8CA7 /* JumpingObstacle.swift in Sources */,
 				F3E51D3E1E92917D001FBAB2 /* RotatingObstacle.swift in Sources */,
 				1278988A1E8A496000E937E0 /* LoadableGame.swift in Sources */,
