@@ -87,13 +87,22 @@ public class GameStorageManager {
     /// - Returns: array of GamePreviews
     public func loadAllPreviews() -> Future<[PreviewGame], OnlineStorageManagerError> {
         let auth = AuthManager.shared
-        guard let facebookId = auth.facebookToken?.userId else {
+        guard auth.loggedIn else {
+            fatalError("User needs to be logged in before accessing marketplace")
+        }
+
+        let ownerId: String
+        if let googleId = auth.googleProfile?.userId {
+            ownerId = googleId
+        } else if let facebookId = auth.facebookToken?.userId {
+            ownerId = facebookId
+        } else {
             fatalError("User needs to be logged in before accessing marketplace")
         }
 
         return osm.loadAll()
             .map { games in
-                return games.filter { $0.ownerID != facebookId }
+                return games.filter { $0.ownerID != ownerId }
         }
     }
 

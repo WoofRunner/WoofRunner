@@ -15,7 +15,7 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
 	
 	private var gsm = GameStorageManager.shared
 	var levels = [StoredGame]()
-    var fbOverlay: FacebookLoginOverlay?
+    var loginOverlay: LoginOverlay?
 	fileprivate var loadingOverlay = UIImageView(image: UIImage(named: "loading-bg"))
 	
 	
@@ -179,14 +179,14 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
             return
         }
 
-        let fbOverlay = FacebookLoginOverlay(frame: view.frame)
+        let loginOverlay = LoginOverlay(frame: view.frame)
         let fbLoginRecognizer = PreuploadLoginTapGesture(
             target: self, action: #selector(facebookLogin))
         fbLoginRecognizer.uuid = uuid
-        fbOverlay.button?.addGestureRecognizer(fbLoginRecognizer)
+        loginOverlay.fbButton?.addGestureRecognizer(fbLoginRecognizer)
 
-        self.fbOverlay = fbOverlay
-        view.addSubview(fbOverlay)
+        self.loginOverlay = loginOverlay
+        view.addSubview(loginOverlay)
 	}
 
     @objc private func facebookLogin(_ sender: PreuploadLoginTapGesture) {
@@ -198,21 +198,21 @@ class CustomLevelSelectorViewController: UIViewController, iCarouselDataSource, 
                     fatalError("Preupload login gesture not attached to a UUID")
                 }
 
-                self.fbOverlay?.removeFromSuperview()
+                self.loginOverlay?.removeFromSuperview()
                 self.gsm.uploadGame(uuid: uuid)
             }
             .onFailure { error in print("\(error.localizedDescription)") }
     }
 
 	// MARK: - View Setup Methods
-	
+
 	// Add button selectors to the input CustomLevelSelectorCard view
 	private func setupButtonHandlers(_ view: CustomLevelSelectorCard) {
 		view.editButton.addTarget(self, action: #selector(editLevelHandler), for: .touchUpInside)
 		view.deleteButton.addTarget(self, action: #selector(deleteLevelHandler), for: .touchUpInside)
 		view.uploadButton.addTarget(self, action: #selector(uploadLevelHandler), for: .touchUpInside)
 	}
-	
+
 	private func setupImageTapHandler(_ view: CustomLevelSelectorCard) {
 		let playTapRecogniser = UITapGestureRecognizer(target: self, action: #selector(playLevelHandler(_:)))
 		view.levelImageView.addGestureRecognizer(playTapRecogniser)

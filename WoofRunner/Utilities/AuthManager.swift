@@ -7,6 +7,7 @@
 //
 
 import UIKit // Because Facebook auth requires a UIViewController
+import GoogleSignIn
 import FirebaseAuth
 import FacebookLogin
 import FacebookCore
@@ -36,6 +37,23 @@ public class AuthManager {
     /// Google profile object that gets set if user is logged in.
     public var googleProfile: GoogleProfile?
 
+    /// Computed variable that returns login status
+    public var loggedIn: Bool {
+        return facebookToken != nil || googleProfile != nil
+    }
+
+    /// Computed variable that represents the preferred login method
+    public var preferredLogin: String {
+        if let loginMethod = UserDefaults.standard.value(forKey: "login-provider") as? String {
+            return loginMethod
+        } else {
+            return ""
+        }
+    }
+
+    /// Delegate used here to accomodate for Google login
+    public var delegate: AuthManagerDelegate?
+
     /// MARK: - Initialisers
 
     /// Private init method to make class singleton.
@@ -49,12 +67,12 @@ public class AuthManager {
     /// - Returns: Future that contains AccessToken if successful authentication, AuthManagerError
     ///     otherwise
     public func authWithFacebook(vc: UIViewController) -> Future<AccessToken, AuthManagerError> {
-        if let provider = UserDefaults.value(forKey: "login-provider") as? String {
+        if let provider = UserDefaults.standard.value(forKey: "login-provider") as? String {
             guard provider == "facebook" else {
-                fatalError("User should not be shown Facebook login if they already authenticated with Facebook")
+                fatalError("User should not be shown Facebook login if they already authenticated with Google")
             }
         } else {
-            UserDefaults.setValue("facebook", forKey: "login-provider")
+            UserDefaults.standard.setValue("facebook", forKey: "login-provider")
         }
 
         let loginManager = LoginManager()
@@ -102,25 +120,59 @@ public class AuthManager {
         }
     }
 
-    /// Returns the name of a given Facebook profile ID.
+    /// Authenticates using Google profile.
     /// - Parameters:
-    ///     - id: Facebook profile ID
-    /// - Returns: a Future of the profile name if success, error if failure
-    public func getName(ownerId: String) -> Future<String, AuthManagerError> {
+    ///     - googleProfile: Google profile information
+    ///     - accessToken: access token of the authenticated Google user
+    public func authWithGoogle(googleProfile: GoogleProfile, accessToken: String) {
+        if let provider = UserDefaults.standard.value(forKey: "login-provider") as? String {
+            guard provider == "google" else {
+                fatalError("User should not be shown Google login if they already authenticated with Google")
+            }
+        } else {
+            UserDefaults.standard.setValue("google", forKey: "login-provider")
+        }
+
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: googleProfile.idToken!,
+                                                          accessToken: accessToken)
+
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+                self.delegate?.onGoogleLoginError()
+            } else {
+                self.setGoogleProfile(googleProfile)
+                self.delegate?.onGoogleLoginComplete()
+            }
+        }
+    }
+
+    /// Returns the owner of the game's name.
+    public func getName() -> Future<String, AuthManagerError> {
         return Future { complete in
-            var req = FBProfileRequest()
-            req.setProfileId(id: ownerId)
-            req.start { (_, result: GraphRequestResult<FBProfileRequest>) in
-                switch result {
-                case .success(let response):
-                    guard let name = response.dictionaryValue?["name"] as? String else {
-                        fatalError("Name not found")
+            if let _ = facebookToken {
+                let req = FBProfileRequest()
+                req.start { (_, result: GraphRequestResult<FBProfileRequest>) in
+                    switch result {
+                    case .success(let response):
+                        guard let name = response.dictionaryValue?["name"] as? String else {
+                            fatalError("Name not found")
+                        }
+                        complete(.success(name))
+                    case .failed(let error):
+                        print("\(error.localizedDescription)")
+                        complete(.failure(AuthManagerError.ProfileError))
                     }
-                    complete(.success(name))
-                case .failed(let error):
-                    print("\(error.localizedDescription)")
-                    complete(.failure(AuthManagerError.FacebookAuthError))
                 }
+            } else if let google = googleProfile {
+                guard let fullName = google.fullName else {
+                    fatalError("Current Google user does not have full name")
+                }
+
+                complete(.success(fullName))
+            } else {
+                print("User is not logged in")
+                complete(.failure(AuthManagerError.ProfileError))
             }
         }
     }
@@ -144,15 +196,17 @@ public class AuthManager {
         public var httpMethod: GraphRequestHTTPMethod = .GET
         public var apiVersion: GraphAPIVersion = 2.7
 
-        public mutating func setProfileId(id: String) {
-            self.graphPath = "/\(id)"
-        }
-
     }
 
+}
+
+public protocol AuthManagerDelegate {
+    func onGoogleLoginComplete()
+    func onGoogleLoginError()
 }
 
 public enum AuthManagerError: Error {
     case FacebookAuthError
     case FirebaseAuthError
+    case ProfileError
 }

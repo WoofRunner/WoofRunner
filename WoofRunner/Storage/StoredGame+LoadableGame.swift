@@ -46,16 +46,16 @@ extension StoredGame: LoadableGame {
         return res
     }
 
-    private func mapToObstacleModel(_ obstacle: StoredObstacle) -> ObstacleModel? {
+    private func mapToObstacleModel(_ obstacle: StoredObstacle) -> TileModel? {
         let tileId = Int(obstacle.type)
         let tiles = TileModelFactory.sharedInstance.tileModels
-        return tiles[tileId] as? ObstacleModel
+        return tiles[tileId]
     }
 
-    private func mapToPlatformModel(_ platform: StoredPlatform) -> PlatformModel? {
+    private func mapToPlatformModel(_ platform: StoredPlatform) -> TileModel? {
         let tileId = Int(platform.type)
         let tiles = TileModelFactory.sharedInstance.tileModels
-        return tiles[tileId] as? PlatformModel
+        return tiles[tileId]
     }
 
     private func create2DArray(rows: Int, cols: Int, initialValue: TileModel?) -> [[TileModel?]] {

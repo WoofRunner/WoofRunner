@@ -58,8 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
-
-        GIDSignIn.sharedInstance().delegate = self
     }
 
     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -75,31 +73,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: GIDSignInDelegate {
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error == nil {
-            let userId = user.userID
-            let idToken = user.authentication.idToken
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-
-            let googleProfile = GoogleProfile(
-                userId: userId,
-                idToken: idToken,
-                fullName: fullName,
-                givenName: givenName,
-                familyName: familyName,
-                email: email
-            )
-
-            AuthManager.shared.setGoogleProfile(googleProfile)
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
-
-}
 

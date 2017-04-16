@@ -74,11 +74,7 @@ public class OnlineStorageManager {
                     games = []
                 }
 
-                games.map { self.mapJSONtoPreviewGame(json: $0) }
-                    .sequence()
-                    .onSuccess { previews in
-                        complete(.success(previews))
-                }
+                complete(.success(games.map { self.mapJSONtoPreviewGame(json: $0) }))
             }) { error in
                 complete(.failure(OnlineStorageManagerError.FetchError))
             }
@@ -95,7 +91,14 @@ public class OnlineStorageManager {
         }
 
         game.ownerId = ownerId
-        ref.child(game.uuid!).setValue(mapToJSON(game: game))
+
+        // Set game's owner name before uploading game to Firebase.
+        var json = mapToJSON(game: game)
+        auth.getName()
+            .onSuccess { name in
+                json["ownerName"] = name
+                self.ref.child(game.uuid!).setValue(json)
+        }
     }
 
     /// Clears all game data in online storage manager
@@ -105,10 +108,11 @@ public class OnlineStorageManager {
 
     // MARK: - Private methods
 
-    private func mapToJSON(game: StoredGame) -> NSDictionary {
+    private func mapToJSON(game: StoredGame) -> [String: Any] {
         var gameJSON = [String: Any]()
 
         gameJSON["uuid"] = game.uuid
+        gameJSON["name"] = game.name
         gameJSON["ownerId"] = game.ownerId
         gameJSON["rows"] = game.rows
         gameJSON["columns"] = game.columns
@@ -120,7 +124,7 @@ public class OnlineStorageManager {
         gameJSON["createdAt"] = formatter.string(from: game.createdAt as! Date)
         gameJSON["updatedAt"] = formatter.string(from: game.updatedAt as! Date)
 
-        return NSDictionary(dictionary: gameJSON)
+        return gameJSON
     }
 
     private func mapObstaclesToJSON(game: StoredGame) -> [NSDictionary] {
@@ -163,24 +167,16 @@ public class OnlineStorageManager {
         return res
     }
 
-    private func mapJSONtoPreviewGame(json: NSDictionary) -> Future<PreviewGame, NoError> {
-        return Future { complete in
-            let formatter = OnlineStorageManager.getDateFormatter()
-            var preview = PreviewGame(
-                uuid: json.value(forKey: "uuid") as! String,
-                name: json.value(forKey: "name") as! String,
-                ownerID: json.value(forKey: "ownerId") as! String,
-                ownerName: nil,
-                createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
-                updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!
-            )
-
-            AuthManager.shared.getName(ownerId: preview.ownerID).onSuccess { name in
-                preview.setOwnerName(name)
-                complete(.success(preview))
-            }
-        }
-
+    private func mapJSONtoPreviewGame(json: NSDictionary) -> PreviewGame {
+        let formatter = OnlineStorageManager.getDateFormatter()
+        return PreviewGame(
+            uuid: json.value(forKey: "uuid") as! String,
+            name: json.value(forKey: "name") as! String,
+            ownerID: json.value(forKey: "ownerId") as! String,
+            ownerName: json.value(forKey: "ownerName") as! String,
+            createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
+            updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!
+        )
     }
 
 }

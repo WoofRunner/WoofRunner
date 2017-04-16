@@ -33,7 +33,7 @@
 		12EE38C21E78EA1C00D81378 /* OnlineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */; };
 		12EFDD671E727812005C63E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */; };
 		12EFDD681E727812005C63E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12EFDD661E727812005C63E2 /* Main.storyboard */; };
-		12F9B60D1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */; };
+		12F9B60D1E9A740C00B2E4E6 /* LoginOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9B60C1E9A740C00B2E4E6 /* LoginOverlay.swift */; };
 		3F0F81B71E916B7900114CD0 /* CustomLevel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F81B61E916B7900114CD0 /* CustomLevel.storyboard */; };
 		3F0F81B91E91707400114CD0 /* CustomLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81B81E91707400114CD0 /* CustomLevelViewController.swift */; };
 		3F0F81BB1E92974E00114CD0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F81BA1E92974E00114CD0 /* MenuViewController.swift */; };
@@ -169,7 +169,7 @@
 		12EE38C11E78EA1C00D81378 /* OnlineStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorageManager.swift; sourceTree = "<group>"; };
 		12EFDD651E727812005C63E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12EFDD661E727812005C63E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginOverlay.swift; sourceTree = "<group>"; };
+		12F9B60C1E9A740C00B2E4E6 /* LoginOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOverlay.swift; sourceTree = "<group>"; };
 		3138944BB9A6BF6AC4CDA580 /* Pods-WoofRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofRunner/Pods-WoofRunner.release.xcconfig"; sourceTree = "<group>"; };
 		33BAD35EE63B83A042A840E0 /* Pods_WoofRunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofRunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0F81B61E916B7900114CD0 /* CustomLevel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomLevel.storyboard; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 				3FCC89B41E804C07005A7C03 /* CustomShapeNodes.swift */,
 				3FCC89AE1E802A45005A7C03 /* ButtonActions.swift */,
 				3FD5D0241E8FA59F007573C4 /* UIImage+ResizeExtension.swift */,
-				12F9B60C1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift */,
+				12F9B60C1E9A740C00B2E4E6 /* LoginOverlay.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -863,7 +863,7 @@
 				12A0514E1E91641800724147 /* WoofRunner.xcdatamodeld in Sources */,
 				F39DF60B1E940DA300A72CF0 /* MovingPlatform.swift in Sources */,
 				12AD18241E8969F700EF5C46 /* SaveableGame.swift in Sources */,
-				12F9B60D1E9A740C00B2E4E6 /* FacebookLoginOverlay.swift in Sources */,
+				12F9B60D1E9A740C00B2E4E6 /* LoginOverlay.swift in Sources */,
 				4E1E111D1E7AF33F00AAC356 /* LevelDesignerViewController.swift in Sources */,
 				12AD18251E8969F700EF5C46 /* SaveableObstacle.swift in Sources */,
 				F34DEDC71E8D754D00BB8CA7 /* JumpingObstacle.swift in Sources */,

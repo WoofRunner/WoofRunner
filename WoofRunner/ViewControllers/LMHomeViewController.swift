@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import RxCocoa
 import RxSwift
+import GoogleSignIn
 import iCarousel
 
 public class LMHomeViewController: UIViewController {
@@ -18,7 +19,7 @@ public class LMHomeViewController: UIViewController {
 
     fileprivate var carousel: iCarousel!
     fileprivate var homeButton: UIButton!
-    fileprivate var fbLoginOverlay: FacebookLoginOverlay?
+    fileprivate var loginOverlay: LoginOverlay?
 	fileprivate var loadingOverlay = UIImageView(image: UIImage(named: "loading-bg"))
 
     // MARK: - Private variables
@@ -39,20 +40,34 @@ public class LMHomeViewController: UIViewController {
         } else {
             addFacebookLoginOverlay()
         }
-		
+
+        AuthManager.shared.delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
     }
 
     // MARK: - Private methods
 
     /// Adds in a Facebook login overlay if the user is not authenticated yet.
     private func addFacebookLoginOverlay() {
-        let fbLoginOverlay = FacebookLoginOverlay(frame: view.frame)
+        let loginOverlay = LoginOverlay(frame: view.frame)
         let fbLoginRecognizer = UITapGestureRecognizer(
             target: self, action: #selector(facebookLogin))
-        fbLoginOverlay.button?.addGestureRecognizer(fbLoginRecognizer)
+        let googleLoginRecognizer = UITapGestureRecognizer(
+            target: self, action: #selector(googleLogin)
+        )
 
-        self.fbLoginOverlay = fbLoginOverlay
-        view.addSubview(fbLoginOverlay)
+        loginOverlay.fbButton?.addGestureRecognizer(fbLoginRecognizer)
+        loginOverlay.googleButton?.addGestureRecognizer(googleLoginRecognizer)
+
+        if AuthManager.shared.preferredLogin == "facebook" {
+            loginOverlay.googleButton?.removeFromSuperview()
+        } else if AuthManager.shared.preferredLogin == "google" {
+            loginOverlay.fbButton?.removeFromSuperview()
+        }
+
+        self.loginOverlay = loginOverlay
+        view.addSubview(loginOverlay)
     }
 
     /// Tap gesture handler for Facebook login overlay button.
@@ -63,14 +78,19 @@ public class LMHomeViewController: UIViewController {
                 return auth.authWithFirebase(facebookToken: token.authenticationToken)
             }
             .onSuccess { _ in
-                self.fbLoginOverlay?.removeFromSuperview()
+                self.loginOverlay?.removeFromSuperview()
                 self.setup()
             }
             .onFailure { error in print("\(error.localizedDescription)") }
     }
 
+    /// Tap gesture handler for Google login overlay button.
+    @objc private func googleLogin(_ sender: UITapGestureRecognizer) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+
     /// Loads data, setup views and games.
-    private func setup() {
+    fileprivate func setup() {
         loadLevels()
         setupView()
         setupGames()
@@ -228,6 +248,50 @@ extension LMHomeViewController: iCarouselDelegate {
         // TODO: Do something when a carousel is tapped at other places except the download button.
         // Can show game details, difficulty etc.
         print("Carousel item \(index) selected")
+    }
+
+}
+
+// MARK: - GIDSignInDelegate
+
+extension LMHomeViewController: GIDSignInDelegate {
+
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+            return
+        }
+
+        guard let authentication = user.authentication else {
+            return
+        }
+
+        let profile = GoogleProfile(
+            userId: user.userID,
+            idToken: user.authentication.idToken,
+            fullName: user.profile.name,
+            givenName: user.profile.givenName,
+            familyName: user.profile.familyName,
+            email: user.profile.email
+        )
+
+        AuthManager.shared.authWithGoogle(googleProfile: profile,
+                                          accessToken: authentication.accessToken)
+    }
+
+}
+
+extension LMHomeViewController: GIDSignInUIDelegate {}
+
+extension LMHomeViewController: AuthManagerDelegate {
+
+    public func onGoogleLoginComplete() {
+        loginOverlay?.removeFromSuperview()
+        setup()
+    }
+
+    public func onGoogleLoginError() {
+        print("Error!")
     }
 
 }
