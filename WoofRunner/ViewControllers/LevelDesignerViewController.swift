@@ -44,7 +44,7 @@ class LevelDesignerViewController: UIViewController, LDOverlayDelegate {
     var spriteScene: LevelDesignerOverlayScene?
 
     // For Loading Levels
-    private let gsm = GameStorageManager.getInstance()
+    private let gsm = GameStorageManager.shared
 	var loadedLevel: StoredGame?
 
     override func viewDidLoad() {

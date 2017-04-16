@@ -14,20 +14,30 @@ import Foundation
 public struct PreviewGame {
 
     public let uuid: String
+    public let name: String
     public let ownerID: String
+    public var ownerName: String?
     public let createdAt: Date
     public let updatedAt: Date
+
+    public mutating func setOwnerName(_ name: String) {
+        self.ownerName = name
+    }
 
 }
 
 extension PreviewGame: DisplayedGame {
 
-    public var owner: String {
-        return ownerID
+    public var displayedOwner: String {
+        return ownerName ?? ""
     }
 
-    public var id: String {
+    public var displayedId: String {
         return uuid
+    }
+
+    public var displayedName: String {
+        return name
     }
 
 }

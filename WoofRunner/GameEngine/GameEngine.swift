@@ -114,6 +114,9 @@ class GameEngine:NSObject, SCNSceneRendererDelegate, SCNPhysicsContactDelegate  
     }
     
     public func destroyEngine() {
+        for gameObject in gameObjects {
+            gameObject.removeFromParentNode()
+        }
         gameObjects.removeAll()
         gestureDelegate = nil
     }

@@ -15,8 +15,7 @@ extension LevelGrid: SaveableGame {
     /// Translates the LevelGrid into a StoredGame object using the 
     /// values in the platform and obstacle arrays
     func toStoredGame() -> StoredGame {
-        let cdm = CoreDataManager.getInstance()
-        let context = cdm.context
+        let context = CoreDataManager.shared.context
 
         // If the game was originally loaded, we return the
         let res: StoredGame
@@ -84,8 +83,7 @@ extension LevelGrid: SaveableGame {
     ///     - game: StoredGame object which will be populated with level obstacle data
     /// - Returns: array of StoredObstacle objects
     private func createStoredObstacles(game: StoredGame) {
-        let cdm = CoreDataManager.getInstance()
-        let context = cdm.context
+        let context = CoreDataManager.shared.context
 
         for (row, obstacles) in obstacleArray.enumerated() {
             for (col, obstacle) in obstacles.enumerated() {
@@ -109,8 +107,7 @@ extension LevelGrid: SaveableGame {
     ///     - game: StoredGame object which will be populated with level platform data
     /// - Returns: array of StoredPlatform objects
     private func createStoredPlatforms(game: StoredGame) {
-        let cdm = CoreDataManager.getInstance()
-        let context = cdm.context
+        let context = CoreDataManager.shared.context
 
         for (row, platforms) in platformArray.enumerated() {
             for (col, platform) in platforms.enumerated() {
@@ -142,7 +139,7 @@ extension LevelGrid: SaveableGame {
                 fatalError("Current platform is not a StoredPlatform")
             }
 
-            CoreDataManager.getInstance().context.delete(platform)
+            CoreDataManager.shared.context.delete(platform)
         }
     }
 
@@ -159,7 +156,7 @@ extension LevelGrid: SaveableGame {
                 fatalError("Current platform is not a StoredObstacle")
             }
 
-            CoreDataManager.getInstance().context.delete(obstacle)
+            CoreDataManager.shared.context.delete(obstacle)
         }
     }
     

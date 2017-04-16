@@ -17,8 +17,8 @@ import Result
  */
 public class OnlineStorageManager {
 
-    // MARK: - Private static variables
-    private static var instance: OnlineStorageManager?
+    // MARK: - Shared singleton instance
+    public static var shared = OnlineStorageManager()
 
     // MARK: - Private variables
     private let ref: FIRDatabaseReference
@@ -36,31 +36,6 @@ public class OnlineStorageManager {
     }
 
     // MARK: - Public methods
-
-    /// Gets the singleton instance with the default reference.
-    /// - Returns: singleton instance of OnlineStorageManager
-    public static func getInstance() -> OnlineStorageManager {
-        if let singleton = instance {
-            return singleton
-        } else {
-            instance = OnlineStorageManager()
-            return instance!
-        }
-    }
-
-    /// Gets the singleton instance with a reference.
-    /// (Normally for testing purposes)
-    /// - Parameters:
-    ///     - with: Firebase DB reference to instantiate OnlineStorageManager with
-    /// - Returns: singleton instance of OnlineStorageManager
-    public static func getInstance(with reference: FIRDatabaseReference) -> OnlineStorageManager {
-        if let singleton = instance {
-            return singleton
-        } else {
-            instance = OnlineStorageManager(reference: reference)
-            return instance!
-        }
-    }
 
     public static func getDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
@@ -88,11 +63,22 @@ public class OnlineStorageManager {
     }
 
     /// Loads all game from Firebase database.
-    public func loadAll() -> Future<NSDictionary?, OnlineStorageManagerError> {
+    public func loadAll() -> Future<[PreviewGame], OnlineStorageManagerError> {
         return Future { complete in
             ref.observeSingleEvent(of: .value, with: { snapshot in
-                let value = snapshot.value
-                complete(.success(value as? NSDictionary))
+                let games: [NSDictionary]
+                let value = snapshot.value as? NSDictionary
+                if let values = value?.allValues {
+                    games = values as! [NSDictionary]
+                } else {
+                    games = []
+                }
+
+                games.map { self.mapJSONtoPreviewGame(json: $0) }
+                    .sequence()
+                    .onSuccess { previews in
+                        complete(.success(previews))
+                }
             }) { error in
                 complete(.failure(OnlineStorageManagerError.FetchError))
             }
@@ -175,6 +161,26 @@ public class OnlineStorageManager {
         }
 
         return res
+    }
+
+    private func mapJSONtoPreviewGame(json: NSDictionary) -> Future<PreviewGame, NoError> {
+        return Future { complete in
+            let formatter = OnlineStorageManager.getDateFormatter()
+            var preview = PreviewGame(
+                uuid: json.value(forKey: "uuid") as! String,
+                name: json.value(forKey: "name") as! String,
+                ownerID: json.value(forKey: "ownerId") as! String,
+                ownerName: nil,
+                createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
+                updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!
+            )
+
+            AuthManager.shared.getName(ownerId: preview.ownerID).onSuccess { name in
+                preview.setOwnerName(name)
+                complete(.success(preview))
+            }
+        }
+
     }
 
 }

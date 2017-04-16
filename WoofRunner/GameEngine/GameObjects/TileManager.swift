@@ -31,7 +31,7 @@ class TileManager: GameObject {
     private let PLATFORM_Z_OFFSET: Float = 3.5
     
     private var poolManager: PoolManager?
-    private var NUM_ROWS_TO_POOL = 80
+    private var NUM_ROWS_TO_POOL = 40
     
     private var isDebug: Bool = true
     
@@ -246,8 +246,6 @@ class TileManager: GameObject {
         }
 
         spawnTiles()
-        
-        delegate?.onCompletionUpdated(percentageCompleted)
     }
     
     public func stopMoving() {

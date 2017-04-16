@@ -10,18 +10,18 @@ import UIKit
 import SceneKit
 import SpriteKit
 
-class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, GameplayOverlayDelegate {
+class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate,TileManagerDelegate {
     
     private var overlaySpriteScene: GameplayOverlayScene?
     private var gameUUID: String?
-    private let gsm = GameStorageManager.getInstance()
+    private let gsm = GameStorageManager.shared
     
     private var player: Player?
     private var tileManager: TileManager?
     
     private var bgm: AVAudioPlayerManager?
     
-    let bgmFadeOutDuration: Float = 0.3
+    private let bgmFadeOutDuration: Float = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
             fatalError("Game UUID not defined")
         }
         
-        GameStorageManager.getInstance().getGame(uuid: uuid)
+        gsm.getGame(uuid: uuid)
             .onSuccess { game in
                 self.setup(game: game)
             }
@@ -57,7 +57,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
             return
         }
         
-        // TODO: Swap self.view with sceneView
         World.setUpWorld(sceneView)
         
         // Setup Gameplay Overlay UI
@@ -99,10 +98,6 @@ class GameController: UIViewController, PlayerDelegate, TileManagerDelegate, Gam
     
     func getCompletedPercentage() -> Float {
         return tileManager?.percentageCompleted ?? 0.0
-    }
-    
-    func onCompletionUpdated(_ percentageCompleted: Float) {
-        //overlaySpriteScene?.updateScore(percentageCompleted * Float(100))
     }
     
     private func createPlayer() {

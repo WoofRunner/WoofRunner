@@ -16,44 +16,23 @@ import BrightFutures
  */
 public class GameStorageManager {
 
-    // MARK: - Private class variables
-
-    private static var instance: GameStorageManager?
+    // MARK: - Shared singleton instance
+    public static var shared = GameStorageManager()
 
     // MARK: - Private variables
 
-    private let osm = OnlineStorageManager.getInstance()
-    private let cdm = CoreDataManager.getInstance()
+    private let osm = OnlineStorageManager.shared
+    private let cdm = CoreDataManager.shared
 
     // MARK: - Private initializer
 
     private init() {}
-
-    // MARK: - Public static methods
-
-    /// Returns an instance of GameStorageManager.
-    /// - Returns: the single GameStorageManager that exists
-    public static func getInstance() -> GameStorageManager {
-        if let existingInstance = instance {
-            return existingInstance
-        } else {
-            instance = GameStorageManager()
-            return instance!
-        }
-    }
 
     // MARK: - Public methods
 
     /// Returns an array of all the games stored in memory.
     /// - Returns: array of UploadableGame from memory
     public func getAllGames() -> Future<[StoredGame], CoreDataManagerError> {
-        return cdm.loadAll()
-    }
-
-    /// Returns all games created by the owner that have been uploaded to the marketplace.
-    /// - Returns: array of UploadableGame that has been uploaded
-    public func getUploadedGames() -> Future<[StoredGame], CoreDataManagerError> {
-        // TODO: Implement filter for uploaded games
         return cdm.loadAll()
     }
 
@@ -102,16 +81,14 @@ public class GameStorageManager {
     /// Loads a preview of all the games loaded on Firebase.
     /// - Returns: array of GamePreviews
     public func loadAllPreviews() -> Future<[PreviewGame], OnlineStorageManagerError> {
-        return osm.loadAll()
-            .map { json in
-                let games: [NSDictionary]
-                if let values = json?.allValues {
-                    games = values as! [NSDictionary]
-                } else {
-                    games = []
-                }
+        let auth = AuthManager.shared
+        guard let facebookId = auth.facebookToken?.userId else {
+            fatalError("User needs to be logged in before accessing marketplace")
+        }
 
-                return games.map { self.mapJSONtoPreviewGame(json: $0) }
+        return osm.loadAll()
+            .map { games in
+                return games.filter { $0.ownerID != facebookId }
         }
     }
 
@@ -123,6 +100,7 @@ public class GameStorageManager {
 
         storedGame.uuid = json.value(forKey: "uuid") as? String
         storedGame.ownerId = json.value(forKey: "ownerId") as? String
+        storedGame.name = json.value(forKey: "name") as? String
 
         guard let rows = json.value(forKey: "rows") as? Int,
             let columns = json.value(forKey: "columns") as? Int else {
@@ -134,16 +112,14 @@ public class GameStorageManager {
 
         let platforms: [StoredPlatform]
         if let JSONPlatforms = json.value(forKey: "platforms") {
-            platforms = mapJSONtoStoredPlatforms(
-                json: JSONPlatforms as! [NSDictionary])
+            platforms = mapJSONtoStoredPlatforms(json: JSONPlatforms as! [NSDictionary])
         } else {
             platforms = []
         }
 
         let obstacles: [StoredObstacle]
         if let JSONObstacles = json.value(forKey: "obstacles") {
-            obstacles = mapJSONtoStoredObstacles(
-                json: JSONObstacles as! [NSDictionary])
+            obstacles = mapJSONtoStoredObstacles(json: JSONObstacles as! [NSDictionary])
         } else {
             obstacles = []
         }
@@ -214,18 +190,6 @@ public class GameStorageManager {
         }
 
         return res
-    }
-
-    private func mapJSONtoPreviewGame(json: NSDictionary) -> PreviewGame {
-        let formatter = OnlineStorageManager.getDateFormatter()
-        let preview = PreviewGame(
-            uuid: json.value(forKey: "uuid") as! String,
-            ownerID: json.value(forKey: "ownerId") as! String,
-            createdAt: formatter.date(from: json.value(forKey: "createdAt") as! String)!,
-            updatedAt: formatter.date(from: json.value(forKey: "updatedAt") as! String)!
-        )
-
-        return preview
     }
 
 }

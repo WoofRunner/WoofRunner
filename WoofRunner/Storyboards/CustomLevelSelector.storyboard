@@ -44,13 +44,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RfU-rX-Owx" firstAttribute="leading" secondItem="T15-I5-Oxx" secondAttribute="leadingMargin" id="8j7-7a-hYh"/>
-                            <constraint firstItem="RfU-rX-Owx" firstAttribute="top" secondItem="2e5-WH-JKz" secondAttribute="bottom" id="Kok-rW-ks1"/>
+                            <constraint firstItem="RfU-rX-Owx" firstAttribute="top" secondItem="2e5-WH-JKz" secondAttribute="bottom" constant="20" id="Kok-rW-ks1"/>
                         </constraints>
                         <connections>
                             <outlet property="dataSource" destination="khD-N4-YD9" id="cu4-MQ-Z3d"/>
                             <outlet property="delegate" destination="khD-N4-YD9" id="NyQ-WT-4oW"/>
                         </connections>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="carousel" destination="T15-I5-Oxx" id="J1t-bC-DZh"/>
                         <outlet property="homeButton" destination="RfU-rX-Owx" id="4Uc-pS-u0k"/>

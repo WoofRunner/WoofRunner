@@ -30,7 +30,6 @@ class Player: GameObject {
     
     private let PLAYER_MODEL_PATH = "art.scnassets/player.scn"
     
-    
     override init() {
         startPosition = SCNVector3(x: startOffsetX, y: startHeight, z: 1.5)
         

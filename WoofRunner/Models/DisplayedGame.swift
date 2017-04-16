@@ -7,6 +7,7 @@
 //
 
 public protocol DisplayedGame {
-    var id: String { get }
-    var owner: String { get }
+    var displayedId: String { get }
+    var displayedOwner: String { get }
+    var displayedName: String { get }
 }

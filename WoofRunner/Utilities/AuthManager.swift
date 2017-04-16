@@ -91,6 +91,47 @@ public class AuthManager {
         }
     }
 
+    /// Returns the name of a given Facebook profile ID.
+    /// - Parameters:
+    ///     - id: Facebook profile ID
+    /// - Returns: a Future of the profile name if success, error if failure
+    public func getName(ownerId: String) -> Future<String, AuthManagerError> {
+        return Future { complete in
+            var req = FBProfileRequest()
+            req.setProfileId(id: ownerId)
+            req.start { (_, result: GraphRequestResult<FBProfileRequest>) in
+                switch result {
+                case .success(let response):
+                    guard let name = response.dictionaryValue?["name"] as? String else {
+                        fatalError("Name not found")
+                    }
+                    complete(.success(name))
+                case .failed(let error):
+                    print("\(error.localizedDescription)")
+                    complete(.failure(AuthManagerError.FacebookAuthError))
+                }
+            }
+        }
+    }
+
+    /**
+     Private struct for making a Facebook graph request for user Profile
+     */
+    private struct FBProfileRequest: GraphRequestProtocol {
+        typealias Response = GraphResponse
+
+        public var graphPath = "/me"
+        public var parameters: [String : Any]? = ["fields": "id, name"]
+        public var accessToken = AccessToken.current
+        public var httpMethod: GraphRequestHTTPMethod = .GET
+        public var apiVersion: GraphAPIVersion = 2.7
+
+        public mutating func setProfileId(id: String) {
+            self.graphPath = "/\(id)"
+        }
+
+    }
+
 }
 
 public enum AuthManagerError: Error {
