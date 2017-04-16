@@ -32,10 +32,11 @@ class CustomLevelSelectorCard: LevelCardView {
 	override func setupCustomChildViews(vm: LevelCardViewModel) {
 		setupPlayIconOverlay(viewModel: vm)
 		initialiseEditButton()
-		editButton.isEnabled = false
-		uploadButton.isEnabled = false
-        if vm.displayEditButton {
+        if !vm.enableEditButton {
 			editButton.isEnabled = false
+		}
+		
+		if !vm.enableUploadButton {
 			uploadButton.isEnabled = false
         }
 	}

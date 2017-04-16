@@ -33,8 +33,8 @@ public class LevelCardViewModel {
 	private(set) var authorLabelFont = StubLevelCardConstants.authorLabelFont
 	private(set) var authorLabelColor = StubLevelCardConstants.authorLabelColor
 
-    private(set) var displayEditButton: Bool
-	
+    private(set) var enableEditButton: Bool
+	private(set) var enableUploadButton: Bool
 	
 	// MARK: - Initialisers
 	
@@ -42,7 +42,8 @@ public class LevelCardViewModel {
 		self.levelUUID = game.uuid!
 		self.levelName = game.name ?? "Rolling in the Deep"
 		self.levelImageUrl = "level-preview-image" // Stub
-        self.displayEditButton = !game.isDownloaded
+        self.enableEditButton = !game.isDownloaded
+		self.enableUploadButton = !game.isDownloaded
 		
 		// If there's no ownerId tied to the game, level is created locally
 		if let id = game.ownerId {
@@ -57,7 +58,8 @@ public class LevelCardViewModel {
         self.levelName = game.displayedName
         self.levelImageUrl = "level-preview-image" // Stubbed
         self.author = game.displayedOwner
-        self.displayEditButton = game.displayEditButton
+        self.enableEditButton = game.displayEditButton // TODO: Change to "enable"
+		self.enableUploadButton = game.displayEditButton // TODO: Change to enableUploadButton
     }
 
 	struct StubLevelCardConstants {
