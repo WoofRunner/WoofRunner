@@ -14,7 +14,7 @@ class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate,
     
     private var overlaySpriteScene: GameplayOverlayScene?
     private var gameUUID: String?
-    private let gsm = GameStorageManager.getInstance()
+    private let gsm = GameStorageManager.shared
     
     private var player: Player?
     private var tileManager: TileManager?
@@ -29,7 +29,7 @@ class GameController: UIViewController, PlayerDelegate, GameplayOverlayDelegate,
             fatalError("Game UUID not defined")
         }
         
-        GameStorageManager.getInstance().getGame(uuid: uuid)
+        gsm.getGame(uuid: uuid)
             .onSuccess { game in
                 self.setup(game: game)
             }

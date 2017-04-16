@@ -23,7 +23,7 @@ public class LMHomeViewController: UIViewController {
 
     // MARK: - Private variables
 
-    fileprivate let gsm = GameStorageManager.getInstance()
+    fileprivate let gsm = GameStorageManager.shared
     fileprivate var vm = LMHomeViewModel()
     fileprivate let disposeBag = DisposeBag()
 

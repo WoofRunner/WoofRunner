@@ -17,8 +17,8 @@ import Result
  */
 public class OnlineStorageManager {
 
-    // MARK: - Private static variables
-    private static var instance: OnlineStorageManager?
+    // MARK: - Shared singleton instance
+    public static var shared = OnlineStorageManager()
 
     // MARK: - Private variables
     private let ref: FIRDatabaseReference
@@ -36,31 +36,6 @@ public class OnlineStorageManager {
     }
 
     // MARK: - Public methods
-
-    /// Gets the singleton instance with the default reference.
-    /// - Returns: singleton instance of OnlineStorageManager
-    public static func getInstance() -> OnlineStorageManager {
-        if let singleton = instance {
-            return singleton
-        } else {
-            instance = OnlineStorageManager()
-            return instance!
-        }
-    }
-
-    /// Gets the singleton instance with a reference.
-    /// (Normally for testing purposes)
-    /// - Parameters:
-    ///     - with: Firebase DB reference to instantiate OnlineStorageManager with
-    /// - Returns: singleton instance of OnlineStorageManager
-    public static func getInstance(with reference: FIRDatabaseReference) -> OnlineStorageManager {
-        if let singleton = instance {
-            return singleton
-        } else {
-            instance = OnlineStorageManager(reference: reference)
-            return instance!
-        }
-    }
 
     public static func getDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()

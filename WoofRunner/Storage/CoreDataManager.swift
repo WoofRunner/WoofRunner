@@ -22,11 +22,14 @@ import Result
  */
 public class CoreDataManager {
 
+    // MARK: - Shared instance
+    public static let shared = CoreDataManager()
+
     // MARK: - Public variables
     public let context: NSManagedObjectContext
 
     // MARK: - Private variables
-    private static var instance: CoreDataManager?
+
     private let privateContext = NSManagedObjectContext(
         concurrencyType: .privateQueueConcurrencyType)
 
@@ -45,30 +48,6 @@ public class CoreDataManager {
     }
 
     // MARK: - Public methods
-
-    /// Returns an instance of CoreDataManager
-    /// - Returns: the single CoreDataManager that exists
-    public static func getInstance() -> CoreDataManager {
-        if let existingInstance = instance {
-            return existingInstance
-        } else {
-            instance = CoreDataManager()
-            return instance!
-        }
-    }
-
-    /// Returns an instance of CoreDataManager with NSManagedObjectContext
-    /// - Parameters:
-    ///     - context: NSManagedContext to get CoreDataManager with
-    /// - Returns: the single CoreDataManager that exists
-    public static func getInstance(with context: NSManagedObjectContext) -> CoreDataManager {
-        if let existingInstance = instance {
-            return existingInstance
-        } else {
-            instance = CoreDataManager(context: context)
-            return instance!
-        }
-    }
 
     /// Saves a Saveable object into CoreData.
     /// - Parameters:
